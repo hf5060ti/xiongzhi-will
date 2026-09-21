@@ -44,6 +44,25 @@ export default function HeroSection() {
           <p className="mt-4 max-w-md rounded-md border border-primary/30 bg-primary/10 px-3 py-2 text-xs leading-relaxed text-primary-foreground/95 backdrop-blur-sm">
             <b className="font-semibold">本站只提供健康自然的健身方式</b>，不提供任何极端训练或药物方案；请遵守你所在国家 / 地区的法律法规。
           </p>
+
+          {/* 核心理念 */}
+          <div className="mt-6 max-w-lg space-y-3 rounded-xl border border-primary/20 bg-background/60 p-4 backdrop-blur-xl">
+            <p className="text-sm leading-relaxed text-foreground/90">
+              健身只是生活的调味剂。<b className="text-primary">一切运动健身，都是为了服务于更好的生活，而不是被健身绑架。</b>
+            </p>
+            <p className="text-sm leading-relaxed text-foreground/90">
+              别熬夜——熬夜升高皮质醇，压制雄性激素，练了也白练。
+            </p>
+            <p className="text-sm leading-relaxed text-foreground/90">
+              真正的力量，不是你多能打、肌肉多大。
+            </p>
+            <p className="font-display text-base font-bold leading-relaxed text-primary">
+              是你面对生活的压力，能否被击倒再站起来。
+            </p>
+            <p className="text-sm leading-relaxed text-foreground/90">
+              像一个斗志昂扬的战士一样，去面对，去承担。
+            </p>
+          </div>
         </div>
       </div>
     </section>
