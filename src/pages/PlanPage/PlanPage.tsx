@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import TrainingSection from './sections/TrainingSection';
 import TrainingArchitecture from './sections/TrainingArchitecture';
 import TrainingRules from './sections/TrainingRules';
+import SpecialNeedsGuide from './sections/SpecialNeedsGuide';
 import DietSection from './sections/DietSection';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
@@ -57,6 +58,7 @@ export default function PlanPage() {
 
       <TrainingArchitecture />
       <TrainingRules />
+      <SpecialNeedsGuide />
       <TrainingSection goal={goal} />
       <DietSection diet={diet} weightKg={weightKg} />
     </div>
