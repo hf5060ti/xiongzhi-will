@@ -100,10 +100,13 @@ export default function ExerciseLibraryPage() {
       if (muscle !== 'all' && !e.primaryMuscles.includes(muscle)) return false;
       if (equip !== 'all' && e.equipment !== equip) return false;
       if (query) {
-        const q = query.toLowerCase();
+        const q = query.toLowerCase().trim();
         const enName = e.name.toLowerCase();
         const cnName = (NAME_CN[e.name] || '').toLowerCase();
-        if (!enName.includes(q) && !cnName.includes(q)) return false;
+        // 搜索英文名、中文名、肌群中文名
+        const musclesCn = e.primaryMuscles.map((m) => (MUSCLE_CN[m] || '').toLowerCase()).join(' ');
+        const equipCn = (EQUIP_CN[e.equipment] || '').toLowerCase();
+        if (!enName.includes(q) && !cnName.includes(q) && !musclesCn.includes(q) && !equipCn.includes(q)) return false;
       }
       return true;
     });

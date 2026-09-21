@@ -64,12 +64,12 @@ export const Layout = () => {
         style={{ backgroundImage: "url('/images/spartan.png')" }}
       />
 
-      {/* 右侧格斯人物（桌面端固定显示） */}
+      {/* 右侧格斯人物（桌面端固定显示，带缓慢浮动动画） */}
       <div className="pointer-events-none fixed bottom-0 right-0 top-0 z-0 hidden w-[380px] lg:block xl:w-[440px]">
         <img
           src={`${BASE}images/guts-full.png`}
           alt="格斯"
-          className="absolute bottom-0 right-0 h-full w-auto object-contain opacity-60 mix-blend-screen"
+          className="guts-animate absolute bottom-0 right-0 h-full w-auto object-contain opacity-60 mix-blend-screen"
         />
         {/* 右侧渐隐到背景色 */}
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent" />

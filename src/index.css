@@ -41,3 +41,12 @@
 .animate-hero-rise {
   animation: hero-rise 0.9s ease-out both;
 }
+/* 格斯人物缓慢呼吸浮动 */
+@keyframes guts-breathe {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
+  50% { transform: translateY(-8px) scale(1.005); opacity: 0.65; }
+}
+.guts-animate {
+  animation: guts-breathe 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
