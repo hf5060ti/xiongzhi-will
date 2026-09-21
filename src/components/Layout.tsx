@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { path: '/wealth', label: '财富', icon: Coins, end: false },
   { path: '/relation', label: '关系', icon: Heart, end: false },
   { path: '/skills', label: '技能', icon: Wrench, end: false },
+  { path: '/wild', label: '荒野', icon: Mountain, end: false },
 ];
 
 const TYPE_ICON = {

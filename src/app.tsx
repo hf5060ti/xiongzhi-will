@@ -12,6 +12,7 @@ import CareerPage from '@/pages/CareerPage';
 import WealthPage from '@/pages/WealthPage';
 import RelationPage from '@/pages/RelationPage';
 import SkillsPage from '@/pages/SkillsPage';
+import WildPage from '@/pages/WildPage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="wealth" element={<WealthPage />} />
         <Route path="relation" element={<RelationPage />} />
         <Route path="skills" element={<SkillsPage />} />
+        <Route path="wild" element={<WildPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
