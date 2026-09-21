@@ -68,7 +68,23 @@ npm run typecheck
 
 ---
 
-## 在线体验
+## 下载与使用
+
+### 方式一：直接下载（最简单，推荐）
+
+1. 打开本仓库主页：https://github.com/hf5060ti/xiongzhi-will
+2. 点右上角绿色 **Code** 按钮
+3. 点 **Download ZIP**
+4. 解压后，直接用浏览器打开 `index.html`
+
+### 方式二：命令行克隆
+
+```bash
+git clone https://github.com/hf5060ti/xiongzhi-will.git
+cd xiongzhi-will
+```
+
+### 方式三：部署到公网
 
 把 `dist/` 目录拖到任何静态托管平台即可：
 
