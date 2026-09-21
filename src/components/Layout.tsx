@@ -57,38 +57,23 @@ export const Layout = () => {
 
   return (
     <div className="relative flex min-h-screen bg-background">
-      {/* 纯黑背景 */}
-      <div className="pointer-events-none fixed inset-0 z-0 bg-black" />
-
-      {/* 右侧格斯动态人物（桌面端，半透明，不抢内容） */}
-      <div className="pointer-events-none fixed bottom-0 right-0 top-0 z-0 hidden w-[500px] lg:block xl:w-[580px]">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="guts-animate absolute bottom-0 right-0 h-full w-auto object-contain opacity-25"
-          src={`${BASE}images/guts-bg-new.mp4`}
-        />
-        {/* 左侧渐隐到黑色背景 */}
-        <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-black via-black/80 to-transparent" />
-      </div>
-
-      {/* 手机端格斯背景（半透明，铺满） */}
+      {/* 格斯动态背景视频：全屏一体，半透明 */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover opacity-[0.12] lg:hidden"
+        className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover opacity-[0.15]"
         src={`${BASE}images/guts-bg-new.mp4`}
       />
+      {/* 纯黑遮罩，确保文字可读 */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-black/85" />
 
-      {/* 左侧竖排导航（桌面端） */}
-      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-20 flex-col border-r border-border/50 bg-background/60 backdrop-blur-xl lg:flex">
+      {/* 左侧竖排导航（桌面端，玻璃质感，和背景一体） */}
+      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-20 flex-col border-r border-white/5 bg-black/30 backdrop-blur-2xl lg:flex">
         <Link to="/" className="flex flex-col items-center gap-1 py-5">
-          <Shield className="h-7 w-7 text-primary" strokeWidth={2.2} />
-          <span className="font-display text-[10px] font-bold tracking-[0.2em] text-foreground">
+          <Shield className="h-7 w-7 text-red-500" strokeWidth={2.2} />
+          <span className="font-display text-[10px] font-bold tracking-[0.2em] text-white">
             雄性
           </span>
         </Link>
