@@ -26,18 +26,12 @@ jobs:
       - run: npm run build
         env:
           MIAODA_CLIENT_BASE_PATH: /xiongzhi-will/
-      # 妙搭插件会删 dist/client，重新构建一次
-      - run: npm run build
-        env:
-          MIAODA_CLIENT_BASE_PATH: /xiongzhi-will/
-      # 用标准的 dist/client 作为 Pages 产物
-      - run: |
-          mkdir -p site
-          cp -r dist/client/* site/
-          echo '<%= htmlWebpackPlugin.options.title %>' > site/404.html || cp site/index.html site/404.html
+          SKIP_MIAODA: "1"
+      # SPA 路由回退：GitHub Pages 用 404.html
+      - run: cp dist/client/index.html dist/client/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: dist/client
 
   deploy:
     needs: build
