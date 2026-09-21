@@ -1,105 +1,155 @@
-# 项目技术规范
+# 雄性意志 (Xiongzhi Will)
+
+自然健身训练与营养定制系统。v0.1.0 初版发布。
+
+**本站只提供健康自然的健身方式，不提供任何极端训练或药物方案；请遵守你所在国家/地区的法律法规。**
+
+---
+
+## 这是什么
+
+一套基于 React + Vite + TypeScript 的纯前端健身应用。打开就能用，不需要登录、不需要后端、不需要数据库。所有数据存在你自己浏览器的 localStorage 里。
+
+设计目标：**给自然训练者一个够专业、够详细、不绕弯的训练和营养工具。**
+
+---
+
+## 功能一览
+
+| 模块 | 内容 |
+|---|---|
+| **目标设定** | 5 种训练目标：肌肥大 / 斗腕 / 大力士 / 综合体能 / 街头健身 |
+| **饮食方案** | 4 种饮食：高碳低脂 / 生酮 / 碳循环 / 中碳 |
+| **训练架构** | 三分化 / 四分化 / 五分化 / 二分化；正金字塔 / 倒金字塔 |
+| **训练法则** | 练一休一 / 轻断食 14h–16h / 蛋白质分级 / 一天两练 |
+| **动作百科** | 876 个动作动画演示，支持中英文搜索、部位/器械筛选 |
+| **营养库** | 200+ 食物营养表（肉/海鲜/蛋/奶/主食/蔬菜/水果/坚果/零食） |
+| **食物详情** | 每 100g 生重热量、蛋白质、脂肪、碳水、纤维、钠、维生素、矿物质、植物活性成分 |
+| **今日饮食记录** | 选食物+克数加入记录，自动统计热量/蛋白质/脂肪/碳水，按餐次分组 |
+| **身体数据** | BMR（Mifflin / Harris-Benedict / Katch-McArdle / Cunningham）、TDEE、FFMI 上限、Casey Butt 模型、IPF 力量等级、1RM 换算 |
+| **形体记录** | 二头/三头/胸型分类，附经典人物参考 |
+| **AI 教练** | 训练建议、生病/恢复判断 |
+| **冷兵器消耗** | 剑道/唐刀/苗刀/长枪等每小时热量估算 |
+
+---
 
 ## 技术栈
 
-- 前端: React 19 + TypeScript
-- 样式: Tailwind CSS v4
-- UI 组件: shadcn/ui `import { Button } from "@/components/ui/button";`
-- 图标: lucide-react `import { SearchIcon } from "lucide-react";`
-- 图表: echarts-for-react `import ReactECharts from "echarts-for-react";`
-- 动画: framer-motion `import { motion } from "framer-motion";`
-- 路由: react-router-dom `import { Link, useNavigate } from "react-router-dom";`
+- **React 19 + TypeScript**
+- **Vite 5** 构建
+- **Tailwind CSS 4** + shadcn/ui（玻璃质感风格）
+- **react-router-dom** 路由
+- 所有数据存 **localStorage**，无需后端
+
+---
+
+## 本地运行
+
+```bash
+# 克隆
+git clone https://github.com/hf5060ti/xiongzhi-will.git
+cd xiongzhi-will
+
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev
+# 打开 http://localhost:26666
+```
+
+```bash
+# 构建生产版本
+npm run build
+
+# 类型检查
+npm run typecheck
+```
+
+---
+
+## 在线体验
+
+把 `dist/` 目录拖到任何静态托管平台即可：
+
+- **Netlify Drop**：https://app.netlify.com/drop
+- **Vercel**：`vercel deploy`
+- **GitHub Pages**：推到 `gh-pages` 分支
+
+不需要后端，不需要数据库，纯静态文件。
 
 ---
 
 ## 目录结构
 
 ```
-src/
-├── index.tsx            # 入口（勿修改）
-├── app.tsx              # 路由配置（仅在 <Routes> 内增删 <Route>）
-├── index.css            # 全局样式 + 主题变量
-├── components/          # 基础 UI 组件（禁止存放业务组件）
-│   ├── layout.tsx       # 全局布局容器（含 <Outlet />）
-│   └── ui/              # shadcn/ui 内置组件（勿修改）
-├── pages/               # 页面模块（每个页面一个目录）
-│   ├── <PageName>/      # 页面目录示例
-│   │   ├── PageName.tsx        # 页面入口文件与目录同名
-│   │   └── components/         # 页面专属组件
-│   └── NotFoundPage/
-│       └── NotFoundPage.tsx
-├── hooks/               # 自定义 Hooks
-└── lib/                 # 工具函数（cn() 等）
-
-public/                  # 静态资源（dev server 原样服务；构建后随 dist/output 同源部署）
+├── src/
+│   ├── pages/           # 页面
+│   │   ├── HomePage/              # 目标设定
+│   │   ├── PlanPage/              # 我的方案
+│   │   ├── ExerciseLibraryPage/    # 动作百科
+│   │   ├── NutritionPage/         # 营养库
+│   │   ├── BodyDataPage/          # 身体数据
+│   │   ├── PhysiquePage/          # 形体记录
+│   │   └── CoachPage/             # AI 教练
+│   ├── components/      # 通用组件 + shadcn/ui
+│   ├── data/            # 数据（goals/diets/foods/exercises-db）
+│   ├── lib/             # 工具函数（store/body-math/search-index）
+│   └── hooks/           # React hooks
+├── public/images/       # 静态图片（格斯/斯巴达）
+└── dist/                # 构建产物
 ```
 
 ---
 
-## 模板初始状态
+## 公式参考
 
-- `app.tsx` 首页路由指向 `pages/HomePage`（占位欢迎页）
-- 开发时将 `HomePage` 替换为业务首页，或在 `pages/` 下创建新页面并调整 `index` 路由
-- `layout.tsx` 为空壳容器（仅 `<Outlet />`），需根据需求实现导航和布局
+### BMR 基础代谢（按优先级排序）
 
----
+| 公式 | 适用 | 公式 |
+|---|---|---|
+| Katch-McArdle | 自然训练者首选 | BMR = 370 + 21.6 × LBM |
+| Cunningham | 自然训练者备选 | BMR = 500 + 22 × LBM |
+| Mifflin-St Jeor | 通用 | 男：10W + 6.25H − 5A + 5 |
+| Harris-Benedict 修订 | 通用 | 男：88.362 + 13.397W + 4.799H − 5.677A |
 
-## 禁止修改的文件
+LBM = 去脂体重 = W × (1 − 体脂率)
 
-| 文件 | 原因 |
-|------|------|
-| `src/index.tsx` | Provider 层级 + 样式引入，由模板管理 |
-| `src/components/ui/*` | shadcn/ui 内置组件，版本锁定 |
+### TDEE 总消耗
 
----
+TDEE = BMR × 活动系数
 
-## 文件放置规则
+- 久坐 1.2 / 轻度 1.375 / 中度 1.55 / 高度 1.725 / 极高 1.9
+- 增肌：TDEE + 300~500 kcal
+- 减脂：TDEE − 300~500 kcal
 
-| 内容类型 | 放置位置 |
-|---------|---------|
-| 新页面 | `src/pages/<PageName>/PageName.tsx` |
-| 页面专属组件 | `src/pages/<PageName>/components/` |
-| 自定义 Hooks | `src/hooks/` |
-| 工具函数 | `src/lib/` |
-| 静态数据文件 | `public/data/` |
-| 静态图片 | `public/images/` |
+### 蛋白质摄入（按训练年限）
 
----
+| 级别 | 每公斤瘦体重 |
+|---|---|
+| 新手（0–1 年） | 1.5 g |
+| 中级（1–3 年） | 1.8 g |
+| 高级（3 年+ / 备赛） | 2.4–3.1 g |
 
-## 导入路径
+### 肌肉上限（FFMI）
 
-```typescript
-// @/ 别名 → src/
-import { cn } from "@/lib/utils";
-import { useIsMobile } from "@/hooks/use-mobile";
+FFMI = 去脂体重(kg) / 身高(m)²
 
-// public/ 下的静态资源通过 URL 引用（dev 与线上同源）
-// <img src="/images/hero.png" />  fetch("/data/config.json")
-```
+自然男性统计上限约 25，女性约 20–22。
 
 ---
 
-## 路由配置
+## 边界与免责
 
-- 新增页面需在 `src/app.tsx` 的 `<Routes>` 内注册 `<Route>`
-- `BrowserRouter` 已在 `index.tsx` 中配置，`app.tsx` 中**禁止**再包裹 Router
+- 本站提供一般训练规划与营养参考，**不是医疗诊断或康复建议**。
+- 糖尿病、孕妇、老年人、大病初愈者，**优先遵从医嘱**。
+- 出现胸部不适、晕厥、异常气短、锐痛、麻木等症状时，立即停止训练并寻求专业评估。
+- 所有食物营养数值为常见食物成分表每 100g 生重参考值，不同品种/产地/烹饪方式差异可达 ±10–20%。
+- 公式估算误差常见 ±10–15%。
+- 本站**不提供任何极端训练或药物方案**。
 
 ---
 
-## 主题变量
+## License
 
-主题色定义在 `src/index.css`，通过 `:root` CSS 变量 + `@theme inline` 注册到 Tailwind。
-
-| 用途 | Tailwind 类 | CSS 变量 |
-|------|------------|----------|
-| 页面背景 | `bg-background` | `--background` |
-| 主文本 | `text-foreground` | `--foreground` |
-| 卡片背景 | `bg-card` | `--card` |
-| 次要文本 | `text-muted-foreground` | `--muted-foreground` |
-| 主色 | `bg-primary` / `text-primary` | `--primary` |
-| 强调色 | `bg-accent` | `--accent` |
-| 边框 | `border-border` | `--border` |
-| 危险色 | `text-destructive` | `--destructive` |
-| 图表色 | `bg-chart-1` ~ `bg-chart-5` | `--chart-1` ~ `--chart-5` |
-
-HSL 格式使用**空格分隔**：`--primary: hsl(150 60% 40%);`
+MIT © 2026 hf5060ti
