@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
@@ -192,7 +192,7 @@ export default function TrainingRules() {
                   title="红线（必须遵守）"
                   items={[
                     "两练间隔至少 6 小时，让神经系统恢复",
-                    "总训练量可以达到 2 小时，具体根据个人恢复能力调整",
+                    "总训练时长单次最高 70 分钟左右，超过这个时间就是垃圾容量，只影响恢复，完全没用（除非是长跑等有氧耐力运动），具体根据个人恢复情况调整",
                     "连续两练期间，睡眠保持 8–9 小时，因人而异，恢复不够就停",
                     "出现持续疲劳、关节酸痛、睡眠变差 → 立刻回到一天一练",
                   ]}
