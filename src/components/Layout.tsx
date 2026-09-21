@@ -57,17 +57,17 @@ export const Layout = () => {
 
   return (
     <div className="relative flex min-h-screen bg-background">
-      {/* 格斯动态背景视频：全屏一体，半透明 */}
+      {/* 格斯动态背景视频：全屏一体，低透明度做底 */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover opacity-[0.15]"
+        className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover opacity-[0.12]"
         src={`${BASE}images/guts-bg-new.mp4`}
       />
-      {/* 纯黑遮罩，确保文字可读 */}
-      <div className="pointer-events-none fixed inset-0 z-0 bg-black/85" />
+      {/* 纯黑遮罩，确保字清晰 */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-black/90" />
 
       {/* 左侧竖排导航（桌面端，玻璃质感，和背景一体） */}
       <aside className="fixed left-0 top-0 z-40 hidden h-screen w-20 flex-col border-r border-white/5 bg-black/30 backdrop-blur-2xl lg:flex">
