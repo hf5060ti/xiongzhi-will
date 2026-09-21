@@ -60,14 +60,14 @@ export const Layout = () => {
       {/* 纯黑背景 */}
       <div className="pointer-events-none fixed inset-0 z-0 bg-black" />
 
-      {/* 右侧格斯动态人物（占右半屏，和参考图一样） */}
+      {/* 右侧格斯动态人物（占右半屏，完整显示） */}
       <div className="pointer-events-none fixed bottom-0 right-0 top-0 z-0 hidden w-[55%] lg:block">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="guts-animate absolute bottom-0 right-0 h-full w-auto object-contain opacity-30"
+          className="guts-animate absolute top-0 right-0 h-full w-auto object-contain opacity-30"
           src={`${BASE}images/guts-bg-new.mp4`}
         />
         {/* 左侧渐隐到纯黑，过渡自然 */}
