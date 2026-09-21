@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { Mountain, Flame, Droplets, Tent, Compass, Sword, TreePine, Wind } from 'lucide-react';
+import { Mountain, Flame, Droplets, Tent, Compass, Sword, TreePine, Wind, Knife, Axe, Lighter } from 'lucide-react';
 
 export default function WildPage() {
   return (
@@ -99,6 +99,83 @@ export default function WildPage() {
         />
       </div>
 
+      {/* 工具与装备 */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <Wrench className="h-5 w-5 text-primary" />
+          <h2 className="font-display text-2xl font-bold tracking-wide text-foreground">工具与装备</h2>
+        </div>
+
+        {/* 钢材知识 */}
+        <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
+          <CardContent className="p-6">
+            <h3 className="font-display text-xl font-bold text-foreground">钢材分类与用途</h3>
+            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+              <SteelCard
+                name="高碳钢（>0.6%）"
+                hard="硬，保持锋利"
+                cons="脆，容易生锈、崩口"
+                best="生存刀、直刀、需要保持锋利的切削工具"
+              />
+              <SteelCard
+                name="中碳钢（0.3–0.6%）"
+                hard="韧性与硬度平衡"
+                cons="硬度中等，需要经常磨"
+                best="斧头、砍刀、野营刀——最实用的选择"
+              />
+              <SteelCard
+                name="低碳钢（<0.3%）"
+                hard="韧，不易断"
+                cons="软，容易卷刃、不锋利"
+                best="撬棍、开山刀、需要耐冲击的工具"
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* 生存刀 */}
+        <WildCard
+          icon={<Knife className="h-5 w-5" />}
+          title="生存刀"
+          items={[
+            '直刀比折刀可靠——折刀的轴是弱点',
+            '刀长 10–15cm 最合适——太短砍不动，太长不好带',
+            '刃厚 4–5mm——太薄会弯，太重背着累',
+            '全龙骨（tang）——刀柄和刀身是一整块钢，不断',
+            '手柄材料：米卡塔、G10——防滑、不吸水、耐腐蚀',
+            '别用生存刀切电线、撬东西——那不是它的活',
+          ]}
+        />
+
+        {/* 斧头 */}
+        <WildCard
+          icon={<Axe className="h-5 w-5" />}
+          title="斧类"
+          items={[
+            '手斧（hatchet）：1kg 左右，单手用，砍小树、处理树枝',
+            '短柄斧：1.5kg，双手握，劈柴、清理营地',
+            '长柄斧：2kg+，专门劈柴，不适合徒步带',
+            '斧刃角度：25°–30°——太钝砍不动，太锋利容易崩',
+            '斧头用中碳钢——韧性好，砍硬木不会崩口',
+            '别用斧头砍金属、石头——刃口会废',
+          ]}
+        />
+
+        {/* 打火工具 */}
+        <WildCard
+          icon={<Lighter className="h-5 w-5" />}
+          title="打火工具"
+          items={[
+            '打火机：最方便，但天冷、高海拔会失效',
+            '火柴：防水火柴最好，普通火柴怕潮',
+            '打火石（镁棒）：不怕水、不怕低温，就是需要技巧',
+            '火镰：传统方式，最可靠，但火花小',
+            '至少带两种——打火机 + 打火石',
+            '引火物：桦树皮、火绒、棉花球——比直接点木头容易 100 倍',
+          ]}
+        />
+      </div>
+
       <Card className="border-primary/30 bg-primary/5">
         <CardContent className="p-6">
           <h2 className="font-display text-xl font-bold text-primary">荒野底线</h2>
@@ -110,6 +187,23 @@ export default function WildPage() {
           </div>
         </CardContent>
       </Card>
+    </div>
+  );
+}
+
+function SteelCard({ name, hard, cons, best }: { name: string; hard: string; cons: string; best: string }) {
+  return (
+    <div className="rounded-xl border border-border/50 bg-background/40 p-3">
+      <h4 className="font-display text-base font-bold text-primary">{name}</h4>
+      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+        <b className="text-foreground">特点：</b>{hard}
+      </p>
+      <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+        <b className="text-foreground">缺点：</b>{cons}
+      </p>
+      <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+        <b className="text-foreground">适合：</b>{best}
+      </p>
     </div>
   );
 }
