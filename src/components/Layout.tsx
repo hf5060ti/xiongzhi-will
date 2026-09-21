@@ -202,6 +202,11 @@ export const Layout = () => {
               <b className="text-foreground">糖尿病、高血压、心脏病、肝肾疾病、痛风等慢性疾病患者，孕期 / 哺乳期女性、老年人、大病初愈者，以及任何有关节旧伤或长期服药者，开始训练或调整饮食前请优先遵从医嘱。</b>
               本站只提供尽可能健康、安全的运动与营养思路，<b className="text-foreground">不建议任何用户逞强、冲超出技术水平的重量、或模仿未掌握的高阶动作</b>。出现头晕、胸痛、关节刺痛、异常气短时立即停止并就医。
             </p>
+            <p className="mt-2 flex flex-wrap gap-3">
+              <a href="https://github.com/hf5060ti/xiongzhi-will/issues" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">反馈 / 提 Bug</a>
+              <a href="https://github.com/hf5060ti/xiongzhi-will" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">GitHub 仓库</a>
+              <Link to="/privacy" className="underline hover:text-foreground">隐私政策</Link>
+            </p>
           </div>
         </footer>
       </main>
