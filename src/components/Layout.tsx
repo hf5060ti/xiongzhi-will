@@ -57,17 +57,32 @@ export const Layout = () => {
 
   return (
     <div className="relative flex min-h-screen bg-background">
-      {/* 全站格斯动态背景视频 */}
+      {/* 纯黑背景 */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-black" />
+
+      {/* 右侧格斯动态人物（桌面端，半透明，不抢内容） */}
+      <div className="pointer-events-none fixed bottom-0 right-0 top-0 z-0 hidden w-[500px] lg:block xl:w-[580px]">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="guts-animate absolute bottom-0 right-0 h-full w-auto object-contain opacity-25"
+          src={`${BASE}images/guts-bg-new.mp4`}
+        />
+        {/* 左侧渐隐到黑色背景 */}
+        <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-black via-black/80 to-transparent" />
+      </div>
+
+      {/* 手机端格斯背景（半透明，铺满） */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover opacity-20"
-        src={`${BASE}images/guts-bg.mp4`}
+        className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover opacity-[0.12] lg:hidden"
+        src={`${BASE}images/guts-bg-new.mp4`}
       />
-      {/* 背景遮罩，确保内容可读 */}
-      <div className="pointer-events-none fixed inset-0 z-0 bg-background/70" />
 
       {/* 左侧竖排导航（桌面端） */}
       <aside className="fixed left-0 top-0 z-40 hidden h-screen w-20 flex-col border-r border-border/50 bg-background/60 backdrop-blur-xl lg:flex">
@@ -140,7 +155,7 @@ export const Layout = () => {
         {/* 全局搜索（桌面端在内容区顶部） */}
         <div className="mx-auto w-full max-w-4xl px-4 pt-4 lg:px-8">
           <div ref={rootRef} className="relative hidden lg:block">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
             <Input
               type="search"
               placeholder="搜索动作 / 食物 / 公式，如「卧推」「牛里脊」「BMR」"
@@ -150,7 +165,7 @@ export const Layout = () => {
                 setOpen(true);
               }}
               onFocus={() => setOpen(true)}
-              className="pl-9 bg-background/40 backdrop-blur-xl border-border/50"
+              className="pl-9 bg-white/[0.04] backdrop-blur-2xl border-white/10 text-white placeholder:text-neutral-500"
             />
             {open && results.length > 0 && (
               <div className="absolute left-0 right-0 top-full z-50 mt-1 max-h-[60vh] overflow-auto rounded-lg border border-border/50 bg-popover/90 backdrop-blur-xl shadow-xl">
