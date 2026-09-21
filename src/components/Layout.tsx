@@ -57,23 +57,17 @@ export const Layout = () => {
 
   return (
     <div className="relative flex min-h-screen bg-background">
-      {/* 全站斯巴达蚀刻版画底纹 */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-[0.04]"
-        style={{ backgroundImage: "url('/images/spartan.png')" }}
+      {/* 全站格斯动态背景视频 */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover opacity-20"
+        src={`${BASE}images/guts-bg.mp4`}
       />
-
-      {/* 右侧格斯人物（桌面端固定显示，带缓慢浮动动画） */}
-      <div className="pointer-events-none fixed bottom-0 right-0 top-0 z-0 hidden w-[380px] lg:block xl:w-[440px]">
-        <img
-          src={`${BASE}images/guts-full.png`}
-          alt="格斯"
-          className="guts-animate absolute bottom-0 right-0 h-full w-auto object-contain opacity-60 mix-blend-screen"
-        />
-        {/* 右侧渐隐到背景色 */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent" />
-      </div>
+      {/* 背景遮罩，确保内容可读 */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-background/70" />
 
       {/* 左侧竖排导航（桌面端） */}
       <aside className="fixed left-0 top-0 z-40 hidden h-screen w-20 flex-col border-r border-border/50 bg-background/60 backdrop-blur-xl lg:flex">
