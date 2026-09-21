@@ -1,0 +1,28 @@
+{
+  "app": {
+    "id": "app_17egf2wu8vm",
+    "online_url": "https://4m3cmrv5js15m.aiforce.cloud/app/app_17egf2wu8vm"
+  },
+  "build": {
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "output": "dist/output",
+    "output_cdn": "dist/output_resource"
+  },
+  "dev": {
+    "command": [
+      "npm",
+      "run",
+      "dev",
+      "--",
+      "--port",
+      "26666"
+    ],
+    "port": 26666
+  },
+  "stack": "react-standard-webapp",
+  "version": "0.1.3"
+}

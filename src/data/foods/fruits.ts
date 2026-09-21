@@ -1,0 +1,36 @@
+// EXPORTS: FRUITS
+// 水果（常见 / 浆果与特色果），每 100g 可食部参考值
+import type { IFood } from './types';
+
+export const FRUITS: IFood[] = [
+  // ---- 常见 ----
+  { id: 'banana', name: '香蕉', cat: 'fruit', kcal: 89, protein: 1.1, fat: 0.3, carb: 23, fiber: 2.6, sodium: 1, vitFat: [], vitWater: ['B6', 'C'], minerals: ['钾'], note: '训练前后补碳好选择' },
+  { id: 'apple', name: '苹果', cat: 'fruit', kcal: 52, protein: 0.3, fat: 0.2, carb: 14, fiber: 2.4, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
+  { id: 'orange', name: '橙子', cat: 'fruit', kcal: 47, protein: 0.9, fat: 0.1, carb: 12, fiber: 2.4, sodium: 0, vitFat: [], vitWater: ['C', '叶酸'], minerals: ['钾'] },
+  { id: 'kiwi', name: '猕猴桃', cat: 'fruit', kcal: 61, protein: 1.1, fat: 0.5, carb: 15, fiber: 3, sodium: 3, vitFat: ['E', 'K'], vitWater: ['C'], minerals: ['钾'], note: '维C含量高' },
+  { id: 'strawberry', name: '草莓', cat: 'fruit', kcal: 32, protein: 0.7, fat: 0.3, carb: 7.7, fiber: 2, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['锰'] },
+  { id: 'blueberry', name: '蓝莓', cat: 'fruit', kcal: 57, protein: 0.7, fat: 0.3, carb: 14.5, fiber: 2.4, sodium: 1, vitFat: ['K'], vitWater: ['C'], minerals: ['锰'], phytochem: ['花青素（花色苷）：强抗氧化、改善血管内皮、研究提示有助于认知功能', '紫檀芪：白藜芦醇类似物'], note: '花青素丰富，抗氧化' },
+  { id: 'grape', name: '葡萄', cat: 'fruit', kcal: 69, protein: 0.7, fat: 0.2, carb: 18, fiber: 0.9, sodium: 2, vitFat: ['K'], vitWater: ['C'], minerals: ['钾'], phytochem: ['白藜芦醇（红葡萄皮）：抗氧化、保护心血管', '原花青素：抗氧化'] },
+  { id: 'watermelon', name: '西瓜', cat: 'fruit', kcal: 30, protein: 0.6, fat: 0.2, carb: 7.6, fiber: 0.4, sodium: 1, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'] },
+  { id: 'pear', name: '梨', cat: 'fruit', kcal: 57, protein: 0.4, fat: 0.1, carb: 15, fiber: 3.1, sodium: 1, vitFat: ['K'], vitWater: ['C'], minerals: ['钾'] },
+  { id: 'peach', name: '桃', cat: 'fruit', kcal: 39, protein: 0.9, fat: 0.3, carb: 9.5, fiber: 1.5, sodium: 0, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'] },
+  { id: 'mango', name: '芒果', cat: 'fruit', kcal: 60, protein: 0.8, fat: 0.4, carb: 15, fiber: 1.6, sodium: 1, vitFat: ['A'], vitWater: ['C', '叶酸'], minerals: ['钾'] },
+  { id: 'pineapple', name: '菠萝', cat: 'fruit', kcal: 50, protein: 0.5, fat: 0.1, carb: 13, fiber: 1.4, sodium: 1, vitFat: [], vitWater: ['C', 'B6'], minerals: ['锰'] },
+  { id: 'cherry', name: '樱桃', cat: 'fruit', kcal: 63, protein: 1.1, fat: 0.2, carb: 16, fiber: 2.1, sodium: 0, vitFat: ['K'], vitWater: ['C'], minerals: ['钾'], phytochem: ['花青素：抗炎、研究提示可缓解运动后肌肉酸痛', '褪黑素：助眠'], note: '富含花青素' },
+  { id: 'pomelo', name: '柚子', cat: 'fruit', kcal: 42, protein: 0.8, fat: 0.2, carb: 9.6, fiber: 1, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
+  { id: 'pomegranate', name: '石榴', cat: 'fruit', kcal: 83, protein: 1.7, fat: 1.2, carb: 19, fiber: 4, sodium: 3, vitFat: ['K'], vitWater: ['C', '叶酸'], minerals: ['钾'], phytochem: ['安石榴苷：强效抗氧化，研究提示改善血流、保护前列腺', '鞣花酸：抗氧化、抗炎'] },
+
+  // ---- 浆果与特色 ----
+  { id: 'avocado', name: '牛油果', cat: 'fruit', kcal: 160, protein: 2, fat: 15, carb: 9, fiber: 7, sodium: 7, vitFat: ['E', 'K'], vitWater: ['B5', 'B6', 'C'], minerals: ['钾'], phytochem: ['谷胱甘肽：肝脏抗氧化底物', '植物甾醇：辅助降胆固醇'], note: '优质脂肪来源，热量较高' },
+  { id: 'mulberry', name: '桑葚', cat: 'fruit', kcal: 43, protein: 1.4, fat: 0.4, carb: 9.8, fiber: 1.7, sodium: 3, vitFat: [], vitWater: ['C'], minerals: ['铁'], phytochem: ['花青素：抗氧化、护眼', '白藜芦醇：心血管保护'], note: '花青素丰富' },
+  { id: 'goji-berry', name: '枸杞（干）', cat: 'fruit', kcal: 349, protein: 14, fat: 0.4, carb: 77, fiber: 13, sodium: 25, vitFat: ['A'], vitWater: ['C', 'B1'], minerals: ['铁', '锌'], phytochem: ['玉米黄质：护眼黄斑', '枸杞多糖：免疫调节'], note: '干品热量密度高，少量食用' },
+  { id: 'cranberry', name: '蔓越莓', cat: 'fruit', kcal: 46, protein: 0.4, fat: 0.1, carb: 12, fiber: 4.6, sodium: 2, vitFat: ['K'], vitWater: ['C'], minerals: ['锰'], phytochem: ['原花青素（A型）：抑制大肠杆菌黏附泌尿道，预防尿路感染'], note: '原花青素丰富' },
+  { id: 'raspberry', name: '树莓', cat: 'fruit', kcal: 52, protein: 1.2, fat: 0.7, carb: 12, fiber: 6.5, sodium: 1, vitFat: ['K', 'E'], vitWater: ['C'], minerals: ['锰'], phytochem: ['鞣花单宁：抗氧化、抗癌研究', '覆盆子酮：研究提示辅助脂代谢'], note: '低糖高纤维' },
+  { id: 'blackberry', name: '黑莓', cat: 'fruit', kcal: 43, protein: 1.4, fat: 0.5, carb: 10, fiber: 5.3, sodium: 1, vitFat: ['K', 'E'], vitWater: ['C'], minerals: ['锰'], phytochem: ['花青素：抗氧化', '鞣花酸：抗炎'] },
+  { id: 'acai-pulp', name: '巴西莓（果泥）', cat: 'fruit', kcal: 70, protein: 0.7, fat: 4.5, carb: 6.7, fiber: 3, sodium: 8, vitFat: ['E'], vitWater: [], minerals: ['钾'], phytochem: ['花青素（飞燕草素）：抗氧化能力在浆果中名列前茅', '植物甾醇：辅助降胆固醇'], note: '花青素抗氧化极强，冷冻果泥常见' },
+  { id: 'sea-buckthorn', name: '沙棘果', cat: 'fruit', kcal: 82, protein: 1.4, fat: 5.4, carb: 8, fiber: 4, sodium: 2, vitFat: ['A', 'E', 'K'], vitWater: ['C'], minerals: ['钾', '钙'], phytochem: ['维C：含量约为橙子 10 倍', '沙棘黄酮：抗炎、保护血管', 'ω-7（棕榈油酸）：皮肤黏膜修复'], note: '维C含量约为橙子10倍，类黄酮丰富' },
+  { id: 'prune-dry', name: '西梅（干）', cat: 'fruit', kcal: 240, protein: 2.2, fat: 0.4, carb: 64, fiber: 7, sodium: 2, vitFat: ['K', 'A'], vitWater: ['B6'], minerals: ['钾'], note: '干品高糖，润肠通便' },
+  { id: 'fig', name: '无花果（鲜）', cat: 'fruit', kcal: 74, protein: 0.8, fat: 0.3, carb: 19, fiber: 2.9, sodium: 1, vitFat: ['K'], vitWater: ['B6'], minerals: ['钾', '钙'] },
+  { id: 'lychee', name: '荔枝', cat: 'fruit', kcal: 66, protein: 0.8, fat: 0.4, carb: 16.5, fiber: 1.3, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '高糖，控制份量' },
+  { id: 'coconut-meat', name: '椰肉', cat: 'fruit', kcal: 354, protein: 3.3, fat: 33, carb: 15, fiber: 9, sodium: 20, vitFat: ['E'], vitWater: ['B6'], minerals: ['钾'], note: '高脂高热量，少量' },
+];
