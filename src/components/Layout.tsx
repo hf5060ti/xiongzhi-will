@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
@@ -8,13 +8,12 @@ import { cn } from '@/lib/utils';
 import { BASE } from '@/lib/base';
 
 const NAV_ITEMS = [
-  { path: '/', label: '目标设定', icon: Home, end: true },
-  { path: '/plan', label: '我的方案', icon: BarChart3, end: false },
-  { path: '/library', label: '动作百科', icon: BookOpen, end: false },
-  { path: '/nutrition', label: '营养库', icon: Apple, end: false },
-  { path: '/body', label: '身体数据', icon: Sigma, end: false },
-  { path: '/physique', label: '形体记录', icon: User, end: false },
-  { path: '/coach', label: 'AI 教练', icon: Bot, end: false },
+  { path: '/', label: '身体', icon: Dumbbell, end: true },
+  { path: '/mind', label: '心智', icon: Brain, end: false },
+  { path: '/career', label: '事业', icon: Briefcase, end: false },
+  { path: '/wealth', label: '财富', icon: Coins, end: false },
+  { path: '/relation', label: '关系', icon: Heart, end: false },
+  { path: '/skills', label: '技能', icon: Wrench, end: false },
 ];
 
 const TYPE_ICON = {
