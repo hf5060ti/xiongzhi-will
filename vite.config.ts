@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 // 构建期环境变量（托管构建时由部署链路自动注入；本地开发不需要，缺省回退）：
 //   MIAODA_CLIENT_BASE_PATH     应用路由根目录，如 /app/app_xxx
 //   MIAODA_RESOURCE_CDN_PREFIX  JS/CSS 静态资源 CDN 前缀
-const basePath = process.env.MIAODA_CLIENT_BASE_PATH || '/';
+const basePath = process.env.MIAODA_CLIENT_BASE_PATH || './';
 const cdnPrefix = process.env.MIAODA_RESOURCE_CDN_PREFIX;
 
 // 产物分层：vite 原生产物（dist/client，中间产物，整理后删除）→ 妙搭托管产物结构：
