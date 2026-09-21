@@ -1,7 +1,7 @@
-﻿import { useState } from 'react';
+﻿import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Download, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -17,6 +17,8 @@ import {
   saveGoalId,
   saveDietId,
   saveWeightKg,
+  exportAllData,
+  importAllData,
 } from '@/lib/store';
 
 export default function HomePage() {
@@ -27,6 +29,35 @@ export default function HomePage() {
     return w > 0 ? String(w) : '';
   });
   const navigate = useNavigate();
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const handleExport = () => {
+    const json = exportAllData();
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `雄性意志-备份-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success('数据已导出');
+  };
+
+  const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = importAllData(reader.result as string);
+      if (result.success) {
+        toast.success(`导入成功，共 ${result.count} 项数据`);
+        setTimeout(() => window.location.reload(), 1000);
+      } else {
+        toast.error(result.error || '导入失败');
+      }
+    };
+    reader.readAsText(file);
+  };
 
   const savedGoal = GOALS.find((g) => g.id === goalId);
   const savedDiet = DIETS.find((d) => d.id === dietId);
@@ -93,6 +124,33 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
+
+      {/* 数据备份 */}
+      <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
+        <CardContent className="p-5">
+          <h3 className="font-display text-lg font-bold text-foreground">数据备份</h3>
+          <p className="mt-1 text-xs text-muted-foreground">
+            所有数据存在你自己的浏览器里。换浏览器或清理缓存前，先导出备份。
+          </p>
+          <div className="mt-3 flex gap-2">
+            <Button variant="outline" size="sm" onClick={handleExport}>
+              <Download className="mr-1.5 h-3.5 w-3.5" />
+              导出备份
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => fileRef.current?.click()}>
+              <Upload className="mr-1.5 h-3.5 w-3.5" />
+              导入恢复
+            </Button>
+            <input
+              ref={fileRef}
+              type="file"
+              accept=".json"
+              className="hidden"
+              onChange={handleImport}
+            />
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

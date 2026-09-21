@@ -94,3 +94,37 @@ export function loadPyramid(): PyramidType {
   return read<PyramidType>('pyramid', 'reverse');
 }
 export function savePyramid(p: PyramidType) { write('pyramid', p); }
+
+// ---------- 数据备份与恢复 ----------
+export function exportAllData(): string {
+  const data: Record<string, unknown> = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.startsWith(`${NS}:`)) {
+      const shortKey = key.slice(NS.length + 1);
+      try {
+        data[shortKey] = JSON.parse(localStorage.getItem(key) || '');
+      } catch {
+        data[shortKey] = localStorage.getItem(key);
+      }
+    }
+  }
+  return JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), data }, null, 2);
+}
+
+export function importAllData(json: string): { success: boolean; count: number; error?: string } {
+  try {
+    const parsed = JSON.parse(json);
+    if (!parsed.data || typeof parsed.data !== 'object') {
+      return { success: false, count: 0, error: '文件格式不正确' };
+    }
+    let count = 0;
+    for (const [key, value] of Object.entries(parsed.data)) {
+      localStorage.setItem(`${NS}:${key}`, JSON.stringify(value));
+      count++;
+    }
+    return { success: true, count };
+  } catch {
+    return { success: false, count: 0, error: 'JSON 解析失败' };
+  }
+}
