@@ -104,12 +104,23 @@ export default defineConfig(({ command }) => ({
   // 生产构建：JS/CSS 引用带 CDN 前缀（无 CDN 时退回 base path）；dev 恒为 /
   base: command === 'build' ? cdnPrefix || basePath : '/',
   define: {
-    // 路由 basename 与资源前缀解耦，单独注入
-    'import.meta.env.MIAODA_CLIENT_BASE_PATH': JSON.stringify(basePath),
+    // 路由 basename 与资源前缀解耦，单独注入；
+    // dev 下必须为 '/'，否则 basename='./' 会让 React Router 无法匹配任何路由（整站白屏）
+    'import.meta.env.MIAODA_CLIENT_BASE_PATH': JSON.stringify(command === 'serve' ? '/' : basePath),
   },
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, 'src'),
+    },
+  },
+  // 本地开发：把 /api 转发到本地 AI 后台服务（server/server.js，默认 8787）
+  server: {
+    port: 26666,
+    proxy: {
+      '/api': {
+        target: process.env.API_PROXY_TARGET || 'http://127.0.0.1:8787',
+        changeOrigin: true,
+      },
     },
   },
   build: {

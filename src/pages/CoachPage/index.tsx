@@ -1,5 +1,20 @@
-import { useMemo, useState } from 'react';
-import { Activity, BedDouble, HeartPulse, Pill, Smile, TrendingUp, Zap, ShieldAlert, Stethoscope } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Activity,
+  BedDouble,
+  Bot,
+  HeartPulse,
+  Loader2,
+  Pill,
+  Send,
+  ShieldAlert,
+  Smile,
+  Stethoscope,
+  Trash2,
+  TrendingUp,
+  Zap,
+} from 'lucide-react';
+import { chatStream, fetchProviders, type ChatMessage, type ProviderInfo } from '@/lib/ai';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -330,6 +345,199 @@ export default function CoachPage() {
       <p className="text-xs leading-relaxed text-muted-foreground">
         本"AI 教练"基于运动医学通用原则做规则判断，不是真正的 AI 对话模型。它的价值在于<b className="text-foreground">把"生病就停训"这条红线写死</b>——很多人带病训练反而练得更差。真正的个性化追踪、周期化调整，还是要靠你自己按周观察体重、力量、睡眠。
       </p>
+
+      <AIChatPanel />
     </div>
+  );
+}
+
+// ── AI 对话面板：接本地后台（server/server.js），支持豆包 / Marvis 两路切换 ──
+function AIChatPanel() {
+  const [providers, setProviders] = useState<ProviderInfo[]>([]);
+  const [providerId, setProviderId] = useState('');
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [input, setInput] = useState('');
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
+  const [loadingProviders, setLoadingProviders] = useState(true);
+  const abortRef = useRef<AbortController | null>(null);
+  const listRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    let alive = true;
+    fetchProviders()
+      .then((list) => {
+        if (!alive) return;
+        setProviders(list);
+        const ready = list.find((p) => p.configured) ?? list[0];
+        if (ready) setProviderId(ready.id);
+      })
+      .catch((e: unknown) => {
+        if (!alive) return;
+        setError(e instanceof Error ? e.message : String(e));
+      })
+      .finally(() => {
+        if (alive) setLoadingProviders(false);
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    const el = listRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [messages, sending]);
+
+  const current = providers.find((p) => p.id === providerId);
+
+  const handleSend = async () => {
+    const text = input.trim();
+    if (!text || sending) return;
+    if (!current) {
+      setError('后台没返回可用模型，先确认 server/server.js 已启动');
+      return;
+    }
+    if (!current.configured) {
+      setError(`${current.label} 还没配置：在 server/.env 填好 BASE_URL / API_KEY / MODEL，再重启后台服务`);
+      return;
+    }
+
+    setError('');
+    const history: ChatMessage[] = [...messages, { role: 'user', content: text }];
+    setMessages([...history, { role: 'assistant', content: '' }]);
+    setInput('');
+    setSending(true);
+
+    const controller = new AbortController();
+    abortRef.current = controller;
+    try {
+      await chatStream({
+        provider: providerId,
+        messages: history,
+        signal: controller.signal,
+        onDelta: (delta) => {
+          setMessages((prev) => {
+            const copy = [...prev];
+            const last = copy[copy.length - 1];
+            if (last?.role === 'assistant') {
+              copy[copy.length - 1] = { ...last, content: last.content + delta };
+            }
+            return copy;
+          });
+        },
+      });
+    } catch (e) {
+      const aborted = e instanceof DOMException && e.name === 'AbortError';
+      setMessages((prev) => {
+        const copy = [...prev];
+        const last = copy[copy.length - 1];
+        if (last?.role === 'assistant' && !last.content) copy.pop();
+        return copy;
+      });
+      if (!aborted) setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setSending(false);
+      abortRef.current = null;
+    }
+  };
+
+  return (
+    <Card>
+      <CardHeader className="pb-2">
+        <CardTitle className="flex flex-wrap items-center gap-2 text-base">
+          <Bot className="h-4 w-4 text-primary" />
+          AI 教练对话
+          <span className="text-xs font-normal text-muted-foreground">（本地后台，可切换模型）</span>
+          <span className="ml-auto flex items-center gap-1.5">
+            {loadingProviders && <Loader2 className="h-3.5 w-3.5 animate-spin text-muted-foreground" />}
+            {providers.map((p) => (
+              <Badge
+                key={p.id}
+                variant={p.id === providerId ? 'default' : 'outline'}
+                className={cn(
+                  'cursor-pointer select-none',
+                  p.id !== providerId && 'hover:bg-accent',
+                  !p.configured && 'opacity-60',
+                )}
+                onClick={() => setProviderId(p.id)}
+                title={p.configured ? `模型：${p.model}` : '未配置（在 server/.env 里填 Key）'}
+              >
+                {p.label}
+              </Badge>
+            ))}
+          </span>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3">
+        {current && (
+          <p className="text-xs text-muted-foreground">
+            当前模型：<b className="text-foreground">{current.model || '未填写 MODEL'}</b>
+            {!current.configured && <span className="text-warning"> · 尚未配置，去 server/.env 填 Key</span>}
+          </p>
+        )}
+
+        <div ref={listRef} className="max-h-80 space-y-2 overflow-y-auto rounded-md border border-border bg-muted/30 p-3">
+          {messages.length === 0 ? (
+            <p className="py-6 text-center text-xs text-muted-foreground">
+              问点具体的，比如“今天练背，只睡了 6 小时，重量怎么调？”
+            </p>
+          ) : (
+            messages.map((m, i) => (
+              <div
+                key={i}
+                className={cn(
+                  'whitespace-pre-wrap rounded-md px-3 py-2 text-sm leading-relaxed',
+                  m.role === 'user' ? 'bg-primary/10 text-foreground' : 'bg-background text-foreground/90',
+                )}
+              >
+                <span className="mb-0.5 block text-[10px] uppercase tracking-wide text-muted-foreground">
+                  {m.role === 'user' ? '我' : (current?.label ?? 'AI')}
+                </span>
+                {m.content || (sending ? '…' : '')}
+              </div>
+            ))
+          )}
+        </div>
+
+        {error && (
+          <p className="rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-xs leading-relaxed text-destructive">
+            {error}
+          </p>
+        )}
+
+        <div className="flex gap-2">
+          <Input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                void handleSend();
+              }
+            }}
+            placeholder="输入你的问题，回车发送"
+            disabled={sending}
+          />
+          <Button type="button" onClick={() => void handleSend()} disabled={sending || !input.trim()}>
+            {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+          </Button>
+          {messages.length > 0 && (
+            <Button
+              type="button"
+              variant="outline"
+              title="清空对话"
+              onClick={() => {
+                abortRef.current?.abort();
+                setMessages([]);
+                setError('');
+              }}
+            >
+              <Trash2 className="h-4 w-4" />
+            </Button>
+          )}
+        </div>
+      </CardContent>
+    </Card>
   );
 }

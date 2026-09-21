@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
 import { cn } from '@/lib/utils';
-import { BASE } from '@/lib/base';
+import VideoBackground from '@/components/VideoBackground';
 
 const NAV_ITEMS = [
   { path: '/', label: '身体', icon: Dumbbell, end: true },
@@ -56,36 +56,12 @@ export const Layout = () => {
   };
 
   return (
-    <div className="relative flex min-h-screen bg-background">
-      {/* 纯黑背景 */}
-      <div className="pointer-events-none fixed inset-0 z-0 bg-black" />
-
-      {/* 右侧格斯动态人物（占右半屏，完整显示） */}
-      <div className="pointer-events-none fixed bottom-0 right-0 top-0 z-0 hidden w-[55%] lg:block">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="guts-animate absolute top-0 right-0 h-full w-auto object-contain opacity-30"
-          src={`${BASE}images/guts-bg-final.mp4`}
-        />
-        {/* 左侧渐隐到纯黑，过渡自然 */}
-        <div className="absolute inset-y-0 left-0 w-[40%] bg-gradient-to-r from-black via-black/90 to-transparent" />
-      </div>
-
-      {/* 手机端格斯背景（半透明，铺满） */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover opacity-[0.12] lg:hidden"
-        src={`${BASE}images/guts-bg-final.mp4`}
-      />
+    <div className="relative flex min-h-screen">
+      {/* 全屏动态视频背景（站点级，全站页面共用） */}
+      <VideoBackground />
 
       {/* 左侧竖排导航（桌面端） */}
-      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-20 flex-col border-r border-border/50 bg-background/60  lg:flex">
+      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-20 flex-col border-r border-border/60 bg-card/70 backdrop-blur-2xl lg:flex">
         <Link to="/" className="flex flex-col items-center gap-1 py-5">
           <Shield className="h-7 w-7 text-primary" strokeWidth={2.2} />
           <span className="font-display text-[10px] font-bold tracking-[0.2em] text-foreground">
@@ -119,7 +95,7 @@ export const Layout = () => {
       </aside>
 
       {/* 手机端顶部导航 */}
-      <header className="sticky top-0 z-40 border-b border-border/50 bg-background/70  lg:hidden">
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-card/70 backdrop-blur-2xl lg:hidden">
         <div className="flex h-14 items-center justify-between gap-2 px-3">
           <Link to="/" className="flex shrink-0 items-center gap-2">
             <Shield className="h-5 w-5 text-primary" strokeWidth={2.2} />
@@ -165,10 +141,10 @@ export const Layout = () => {
                 setOpen(true);
               }}
               onFocus={() => setOpen(true)}
-              className="pl-9 bg-black/60  border-white/10 text-white placeholder:text-neutral-500"
+              className="pl-9 border-white/12 bg-white/[0.06] text-white backdrop-blur-xl placeholder:text-neutral-500"
             />
             {open && results.length > 0 && (
-              <div className="absolute left-0 right-0 top-full z-50 mt-1 max-h-[60vh] overflow-auto rounded-lg border border-border/50 bg-popover/90  shadow-xl">
+              <div className="absolute left-0 right-0 top-full z-50 mt-1 max-h-[60vh] overflow-auto rounded-xl border border-border/60 bg-popover/85 shadow-2xl backdrop-blur-2xl">
                 {results.map((r, i) => {
                   const Icon = TYPE_ICON[r.type];
                   return (
@@ -200,7 +176,7 @@ export const Layout = () => {
           <Outlet />
         </div>
 
-        <footer className="border-t border-border/30 bg-background/40 px-4 py-4  lg:px-8">
+        <footer className="border-t border-border/30 bg-card/40 px-4 py-4 backdrop-blur-xl lg:px-8">
           <div className="max-w-4xl text-[11px] leading-relaxed text-muted-foreground">
             <p>
               <b className="text-foreground">本站只提供健康自然的健身方式，不提供任何极端训练或药物方案；请遵守你所在国家 / 地区的法律法规。</b>

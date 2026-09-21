@@ -53,7 +53,7 @@ export const GOAL_PROTEIN: Record<string, { kg: string; note: string }> = {
   hypertrophy: { kg: '1.6–2.2', note: '容量训练恢复需求高，吃够上限附近更稳。' },
   armwrestling: { kg: '1.6–2.0', note: '前臂与支撑组织反复受压，蛋白质别低于 1.6。' },
   strongman: { kg: '1.6–2.2', note: '大重量对神经与结缔组织消耗大，按上限走。' },
-  conditioning: { kg: '1.4–1.8', note: '耐力占比高，蛋白质维持即可，碳水才是主燃料。' },
+  conditioning: { kg: '1.6–2.0', note: '力量 + 耐力 + 劳作三线并行，吃够 1.6 保力量，碳水供循环。' },
   calisthenics: { kg: '1.6–2.0', note: '自重增肌，按体重吃够，练技巧日可略降。' },
 };
 

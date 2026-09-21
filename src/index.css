@@ -3,17 +3,49 @@
 @import "tw-animate-css";
 @import "./tailwind-theme.css";
 @import "./typography.css";
-/* Ken Burns 动态壁纸：更明显的缩放+平移+光线扫过 */
-@keyframes ken-burns {
-  0% { transform: scale(1.0) translate(0%, 0%); }
-  25% { transform: scale(1.12) translate(-2%, -1.5%); }
-  50% { transform: scale(1.15) translate(1.5%, -2%); }
-  75% { transform: scale(1.1) translate(2%, 1%); }
-  100% { transform: scale(1.0) translate(0%, 0%); }
+/* ── 全屏动态视频背景 ───────────────────────────────── */
+/* 极缓慢推近：让画面有呼吸感，同时掩盖视频循环接口的跳变 */
+@keyframes bg-drift {
+  0% { transform: scale(1.02) translate3d(0, 0, 0); }
+  50% { transform: scale(1.07) translate3d(0, -1.2%, 0); }
+  100% { transform: scale(1.02) translate3d(0, 0, 0); }
 }
-.animate-ken-burns {
-  animation: ken-burns 12s ease-in-out infinite;
+.bg-drift {
+  animation: bg-drift 36s ease-in-out infinite;
+  transform-origin: center center;
   will-change: transform;
+}
+
+/* ── 玻璃拟态（glassmorphism）────────────────────────────
+ * 半透明灰黑玻璃面板：背景模糊 + 高光描边 + 深阴影
+ */
+.glass {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--glass-shadow), var(--glass-highlight);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+}
+
+/* 所有使用卡片 / 弹层底色的表面统一补上背景模糊，保证全站玻璃质感一致 */
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  [class*="bg-card"],
+  [class*="bg-popover"] {
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  }
+}
+
+/* 系统开启「减少动态效果」时关闭动效，只保留静态背景 */
+@media (prefers-reduced-motion: reduce) {
+  .bg-drift,
+  .animate-glow,
+  .animate-light-sweep {
+    animation: none;
+  }
+  .bg-video-motion {
+    display: none;
+  }
 }
 /* 光线扫过效果：缓慢移动的光斑 */
 @keyframes light-sweep {
@@ -40,13 +72,4 @@
 }
 .animate-hero-rise {
   animation: hero-rise 0.9s ease-out both;
-}
-/* 格斯人物缓慢呼吸浮动 */
-@keyframes guts-breathe {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
-  50% { transform: translateY(-8px) scale(1.005); opacity: 0.65; }
-}
-.guts-animate {
-  animation: guts-breathe 8s ease-in-out infinite;
-  will-change: transform, opacity;
 }

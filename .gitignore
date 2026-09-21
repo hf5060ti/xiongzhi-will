@@ -8,7 +8,11 @@ dist/
 build/
 */build/
 
-# Environment files
+# Environment files（.env 含密钥，只提交 .env.example 模板）
+.env
+.env.*
+!.env.example
+!**/.env.example
 .env.local
 
 # Logs
