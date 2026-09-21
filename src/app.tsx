@@ -1,5 +1,6 @@
 ﻿import { Routes, Route } from 'react-router-dom';
 import { Layout } from '@/components/Layout';
+import ErrorBoundary from '@/components/ErrorBoundary';
 import HomePage from '@/pages/HomePage/HomePage';
 import PlanPage from '@/pages/PlanPage/PlanPage';
 import NutritionPage from '@/pages/NutritionPage/NutritionPage';
@@ -13,27 +14,31 @@ import WealthPage from '@/pages/WealthPage';
 import RelationPage from '@/pages/RelationPage';
 import SkillsPage from '@/pages/SkillsPage';
 import WildPage from '@/pages/WildPage';
+import PrivacyPage from '@/pages/PrivacyPage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="plan" element={<PlanPage />} />
-        <Route path="nutrition" element={<NutritionPage />} />
-        <Route path="body" element={<BodyDataPage />} />
-        <Route path="physique" element={<PhysiquePage />} />
-        <Route path="coach" element={<CoachPage />} />
-        <Route path="library" element={<ExerciseLibraryPage />} />
-        <Route path="mind" element={<MindPage />} />
-        <Route path="career" element={<CareerPage />} />
-        <Route path="wealth" element={<WealthPage />} />
-        <Route path="relation" element={<RelationPage />} />
-        <Route path="skills" element={<SkillsPage />} />
-        <Route path="wild" element={<WildPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
+    <ErrorBoundary>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="plan" element={<PlanPage />} />
+          <Route path="nutrition" element={<NutritionPage />} />
+          <Route path="body" element={<BodyDataPage />} />
+          <Route path="physique" element={<PhysiquePage />} />
+          <Route path="coach" element={<CoachPage />} />
+          <Route path="library" element={<ExerciseLibraryPage />} />
+          <Route path="mind" element={<MindPage />} />
+          <Route path="career" element={<CareerPage />} />
+          <Route path="wealth" element={<WealthPage />} />
+          <Route path="relation" element={<RelationPage />} />
+          <Route path="skills" element={<SkillsPage />} />
+          <Route path="wild" element={<WildPage />} />
+          <Route path="privacy" element={<PrivacyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </ErrorBoundary>
   );
 }
