@@ -1,1 +1,0 @@
-{"code":0,"data":{"permission_public":{"link_share_entity":"anyone_readable"}},"msg":""}

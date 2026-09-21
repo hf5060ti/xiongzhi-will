@@ -68,31 +68,31 @@ npm run typecheck
 
 ---
 
-## 下载与使用
+## 下载与部署
 
-### 方式一：直接下载（最简单，推荐）
+### 方式一：部署到公网（推荐）
 
 1. 打开本仓库主页：https://github.com/hf5060ti/xiongzhi-will
-2. 点右上角绿色 **Code** 按钮
-3. 点 **Download ZIP**
-4. 解压后，直接用浏览器打开 `index.html`
+2. 点右上角绿色 **Code** → **Download ZIP** 下载源码
+3. 或者直接把 `dist/` 目录拖到 [Netlify Drop](https://app.netlify.com/drop)
+4. 仓库根目录已自带 `vercel.json` 和 `netlify.toml`，路由回退自动生效
 
-### 方式二：命令行克隆
+### 方式二：本地运行
 
 ```bash
 git clone https://github.com/hf5060ti/xiongzhi-will.git
 cd xiongzhi-will
+npm install
+npm run dev          # 开发：http://localhost:26666
+npm run build        # 构建：产物在 dist/ 目录
 ```
 
-### 方式三：部署到公网
+构建完后，直接用浏览器打开 `dist/index.html` 即可使用。
 
-把 `dist/` 目录拖到任何静态托管平台即可：
+### 缓存策略
 
-- **Netlify Drop**：https://app.netlify.com/drop
-- **Vercel**：`vercel deploy`
-- **GitHub Pages**：推到 `gh-pages` 分支
-
-不需要后端，不需要数据库，纯静态文件。
+- `index.html` → `Cache-Control: no-cache`
+- `/assets/*`（带哈希文件名）→ `Cache-Control: public, max-age=31536000, immutable`
 
 ---
 

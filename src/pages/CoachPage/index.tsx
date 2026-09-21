@@ -183,6 +183,16 @@ export default function CoachPage() {
         </p>
       </header>
 
+      {/* UI 级免责声明 */}
+      <div className="flex items-start gap-2 rounded-lg border border-yellow-500/30 bg-yellow-500/10 p-3 text-xs leading-relaxed text-yellow-700 dark:text-yellow-400">
+        <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" />
+        <p>
+          本工具提供的所有建议仅供一般健身参考，<b>不构成医疗诊断、治疗或处方</b>。
+          如果你有任何疾病、正在服药、或出现异常症状，<b>请优先咨询医生</b>。
+          糖尿病、孕妇、老年人、大病初愈者，请遵从医嘱。
+        </p>
+      </div>
+
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader className="pb-2">

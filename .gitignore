@@ -62,3 +62,10 @@ pnpm-lock.yaml
 
 # Agent files
 .agent/
+
+# 临时参考文件
+ref-*.jpg
+ref1.jpg
+ref2.jpg
+download.txt
+spark.json
