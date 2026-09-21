@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { Mountain, Flame, Droplets, Tent, Compass, Sword, TreePine, Wind, Knife, Axe, Lighter } from 'lucide-react';
+import { Mountain, Flame, Droplets, Tent, Compass, Sword, TreePine, Wind, Wrench, Axe, Sparkles } from 'lucide-react';
 
 export default function WildPage() {
   return (
@@ -135,7 +135,7 @@ export default function WildPage() {
 
         {/* 生存刀 */}
         <WildCard
-          icon={<Knife className="h-5 w-5" />}
+          icon={<Sword className="h-5 w-5" />}
           title="生存刀"
           items={[
             '直刀比折刀可靠——折刀的轴是弱点',
@@ -163,7 +163,7 @@ export default function WildPage() {
 
         {/* 打火工具 */}
         <WildCard
-          icon={<Lighter className="h-5 w-5" />}
+          icon={<Sparkles className="h-5 w-5" />}
           title="打火工具"
           items={[
             '打火机：最方便，但天冷、高海拔会失效',
