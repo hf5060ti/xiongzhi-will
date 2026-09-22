@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Activity,
   BedDouble,
@@ -6,15 +6,28 @@ import {
   HeartPulse,
   Loader2,
   Pill,
+  RefreshCw,
   Send,
   ShieldAlert,
   Smile,
   Stethoscope,
   Trash2,
   TrendingUp,
+  Unplug,
   Zap,
 } from 'lucide-react';
-import { chatStream, fetchProviders, type ChatMessage, type ProviderInfo } from '@/lib/ai';
+import {
+  BackendOfflineError,
+  chatStream,
+  fetchProviders,
+  getApiBase,
+  hasCustomApiBase,
+  LOCAL_BACKEND_HINT,
+  resetApiBase,
+  setApiBase,
+  type ChatMessage,
+  type ProviderInfo,
+} from '@/lib/ai';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -359,30 +372,91 @@ function AIChatPanel() {
   const [input, setInput] = useState('');
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
-  const [loadingProviders, setLoadingProviders] = useState(true);
+  const [backend, setBackend] = useState<'loading' | 'ready' | 'offline'>('loading');
+  const [offlineDetail, setOfflineDetail] = useState('');
+  const [address, setAddress] = useState(() => getApiBase());
+  const [apiBase, setApiBaseState] = useState(() => getApiBase());
+  const [customBase, setCustomBase] = useState(() => hasCustomApiBase());
+  const [showAddress, setShowAddress] = useState(false);
+  const [busy, setBusy] = useState(true);
   const abortRef = useRef<AbortController | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
+  const aliveRef = useRef(true);
+
+  /** 拉取成功：应用模型列表 */
+  const applyProviders = useCallback((list: ProviderInfo[]) => {
+    setProviders(list);
+    const ready = list.find((p) => p.configured) ?? list[0];
+    if (ready) setProviderId(ready.id);
+    setOfflineDetail('');
+    setBackend('ready');
+  }, []);
+
+  /** 拉取失败：区分"后台连不上"（引导态）与"后台在线但报错"（原有红字提示） */
+  const handleLoadError = useCallback((e: unknown) => {
+    if (e instanceof BackendOfflineError) {
+      // 后台连不上：进入引导态，不再把 HTTP 404 之类的原始报错甩给用户
+      setProviders([]);
+      setOfflineDetail(e.detail);
+      setBackend('offline');
+      return;
+    }
+    // 后台在线但返回了业务错误：沿用原有的红字提示
+    setBackend('ready');
+    setError(e instanceof Error ? e.message : String(e));
+  }, []);
+
+  const loadProviders = useCallback(
+    () =>
+      fetchProviders()
+        .then(
+          (list) => {
+            if (aliveRef.current) applyProviders(list);
+          },
+          (e: unknown) => {
+            if (aliveRef.current) handleLoadError(e);
+          },
+        )
+        .finally(() => {
+          if (aliveRef.current) setBusy(false);
+        }),
+    [applyProviders, handleLoadError],
+  );
 
   useEffect(() => {
-    let alive = true;
-    fetchProviders()
-      .then((list) => {
-        if (!alive) return;
-        setProviders(list);
-        const ready = list.find((p) => p.configured) ?? list[0];
-        if (ready) setProviderId(ready.id);
-      })
-      .catch((e: unknown) => {
-        if (!alive) return;
-        setError(e instanceof Error ? e.message : String(e));
-      })
-      .finally(() => {
-        if (alive) setLoadingProviders(false);
-      });
+    aliveRef.current = true;
+    void loadProviders();
     return () => {
-      alive = false;
+      aliveRef.current = false;
     };
-  }, []);
+  }, [loadProviders]);
+
+  /** 用户在页面上点了重连（保存地址 / 重试）：显示加载态后重新拉取 */
+  const reconnect = () => {
+    setBusy(true);
+    setError('');
+    void loadProviders();
+  };
+
+  /** 保存自定义后台地址（持久化到 localStorage）并立即重连 */
+  const applyAddress = () => {
+    const saved = setApiBase(address);
+    setAddress(saved);
+    setApiBaseState(saved);
+    setCustomBase(Boolean(saved));
+    setShowAddress(false);
+    reconnect();
+  };
+
+  /** 清除自定义地址，回到构建期默认值 */
+  const clearAddress = () => {
+    const fallback = resetApiBase();
+    setAddress(fallback);
+    setApiBaseState(fallback);
+    setCustomBase(false);
+    setShowAddress(false);
+    reconnect();
+  };
 
   useEffect(() => {
     const el = listRef.current;
@@ -394,6 +468,10 @@ function AIChatPanel() {
   const handleSend = async () => {
     const text = input.trim();
     if (!text || sending) return;
+    if (backend === 'offline') {
+      setShowAddress(true);
+      return;
+    }
     if (!current) {
       setError('后台没返回可用模型，先确认 server/server.js 已启动');
       return;
@@ -450,7 +528,7 @@ function AIChatPanel() {
           AI 教练对话
           <span className="text-xs font-normal text-muted-foreground">（本地后台，可切换模型）</span>
           <span className="ml-auto flex items-center gap-1.5">
-            {loadingProviders && <Loader2 className="h-3.5 w-3.5 animate-spin text-muted-foreground" />}
+            {busy && <Loader2 className="h-3.5 w-3.5 animate-spin text-muted-foreground" />}
             {providers.map((p) => (
               <Badge
                 key={p.id}
@@ -470,6 +548,86 @@ function AIChatPanel() {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
+        {backend === 'offline' && (
+          <div className="space-y-3 rounded-lg border border-warning/40 bg-warning/5 p-3.5">
+            <p className="flex items-center gap-2 text-sm font-semibold text-warning">
+              <Unplug className="h-4 w-4 shrink-0" />
+              本地后台未连接
+            </p>
+            <div className="space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+              <p>
+                这个对话面板要靠你自己电脑上跑的后台服务（<code className="rounded bg-muted px-1">server/server.js</code>）转发请求：
+                <b className="text-foreground">API Key 只存在你本机的 server/.env 里，不会上传到公网</b>。
+                线上页面是纯静态托管，只能放网页文件、跑不了后台，所以用公网地址访问时对话功能天然连不上——
+                <b className="text-foreground">这是预期状态，不是页面出错</b>，页面其余功能（训练建议、计划等）不受影响。
+              </p>
+              <p className="font-semibold text-foreground">想用对话功能，按三步把后台开起来：</p>
+              <ol className="list-decimal space-y-0.5 pl-4">
+                <li>在本机打开项目目录（例如 <code className="rounded bg-muted px-1">D:\雄性意志</code>）</li>
+                <li>
+                  双击 <code className="rounded bg-muted px-1">启动网站.bat</code>，或在该目录执行
+                  <code className="rounded bg-muted px-1">node server/server.js</code>（默认监听 127.0.0.1:8787）
+                </li>
+                <li>把后台地址填到下面，点「连接」</li>
+              </ol>
+              <p className="text-[11px]">
+                直连本机地址（<code className="rounded bg-muted px-1">http://127.0.0.1:8787</code>）在 Chrome / Edge / Firefox 可用；
+                若被浏览器拦截，回到本机用 <code className="rounded bg-muted px-1">npm run dev</code> 打开
+                <code className="rounded bg-muted px-1">http://localhost:26666</code> 即可，功能完全一样。
+                地址只保存在你自己的浏览器里，随时可点「恢复默认」清除。
+              </p>
+            </div>
+            <BackendAddressForm
+              value={address}
+              onChange={setAddress}
+              onApply={applyAddress}
+              onReset={clearAddress}
+              busy={busy}
+              custom={customBase}
+            />
+            <div className="flex flex-wrap items-center gap-2">
+              <Button
+                type="button"
+                size="sm"
+                variant="ghost"
+                onClick={() => reconnect()}
+                disabled={busy}
+              >
+                <RefreshCw className="h-3.5 w-3.5" />
+                重试连接
+              </Button>
+              {offlineDetail && <span className="text-[11px] text-muted-foreground/80">诊断：{offlineDetail}</span>}
+            </div>
+          </div>
+        )}
+
+        {backend === 'ready' && (
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-muted-foreground">
+            <span>
+              后台地址：<b className="font-normal text-foreground">{apiBase || '同源 /api（本地开发代理）'}</b>
+              {customBase && ' · 自定义'}
+            </span>
+            <button
+              type="button"
+              className="underline decoration-dotted underline-offset-2 transition-colors hover:text-foreground"
+              onClick={() => setShowAddress((v) => !v)}
+            >
+              {showAddress ? '收起' : '修改'}
+            </button>
+          </p>
+        )}
+        {showAddress && backend !== 'offline' && (
+          <BackendAddressForm
+            value={address}
+            onChange={setAddress}
+            onApply={applyAddress}
+            onReset={clearAddress}
+            busy={busy}
+            custom={customBase}
+            applyLabel="保存并连接"
+          />
+        )}
+
         {current && (
           <p className="text-xs text-muted-foreground">
             当前模型：<b className="text-foreground">{current.model || '未填写 MODEL'}</b>
@@ -516,10 +674,14 @@ function AIChatPanel() {
                 void handleSend();
               }
             }}
-            placeholder="输入你的问题，回车发送"
-            disabled={sending}
+            placeholder={backend === 'offline' ? '本地后台未连接，先按上方说明启动后台' : '输入你的问题，回车发送'}
+            disabled={sending || backend === 'offline'}
           />
-          <Button type="button" onClick={() => void handleSend()} disabled={sending || !input.trim()}>
+          <Button
+            type="button"
+            onClick={() => void handleSend()}
+            disabled={sending || backend === 'offline' || !input.trim()}
+          >
             {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
           </Button>
           {messages.length > 0 && (
@@ -539,5 +701,60 @@ function AIChatPanel() {
         </div>
       </CardContent>
     </Card>
+  );
+}
+
+// ── 后台地址设置：线上页面连回本机后台（server/server.js）用，写入 localStorage 持久化 ──
+function BackendAddressForm({
+  value,
+  onChange,
+  onApply,
+  onReset,
+  busy,
+  custom,
+  applyLabel = '连接',
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  onApply: () => void;
+  onReset: () => void;
+  busy: boolean;
+  custom: boolean;
+  applyLabel?: string;
+}) {
+  return (
+    <div className="flex flex-col gap-2 sm:flex-row">
+      <Input
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            onApply();
+          }
+        }}
+        placeholder={`${LOCAL_BACKEND_HINT}（留空＝同源 /api）`}
+        aria-label="后台地址"
+        className="h-8 text-xs sm:flex-1"
+        disabled={busy}
+      />
+      <Button type="button" size="sm" onClick={onApply} disabled={busy}>
+        {busy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : applyLabel}
+      </Button>
+      <Button
+        type="button"
+        size="sm"
+        variant="outline"
+        onClick={() => onChange(LOCAL_BACKEND_HINT)}
+        disabled={busy}
+      >
+        填本机默认
+      </Button>
+      {custom && (
+        <Button type="button" size="sm" variant="outline" onClick={onReset} disabled={busy}>
+          恢复默认
+        </Button>
+      )}
+    </div>
   );
 }
