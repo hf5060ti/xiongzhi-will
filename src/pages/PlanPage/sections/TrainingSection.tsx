@@ -1,5 +1,6 @@
-import { CalendarClock, LayoutGrid, ShieldAlert, TrendingUp, Clock, Droplets, Brain } from 'lucide-react';
+import { CalendarClock, LayoutGrid, ShieldAlert, TrendingUp, Clock, Droplets, Brain, Images, ClipboardList } from 'lucide-react';
 import type { IGoal } from '@/data/goals';
+import { BASE } from '@/lib/base';
 import {
   Card,
   CardContent,
@@ -87,12 +88,110 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
         </CardContent>
       </Card>
 
+      {goal.plans && goal.plans.length > 0 && (
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Images className="h-4 w-4 text-primary" />
+              专项计划图
+            </CardTitle>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              焚诀原图按部位挂图，点开可看大图；下方「按部位训练计划」为公开资料整理的组次参数，两者并存。
+            </p>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-3 grid-cols-2 lg:grid-cols-3">
+              {goal.plans.map((p) => (
+                <a
+                  key={p.part}
+                  href={`${BASE}images/${p.image}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group overflow-hidden rounded-lg border border-border bg-muted/40 transition-colors hover:border-primary/40"
+                >
+                  <span className="flex aspect-[3/4] items-center justify-center overflow-hidden bg-muted/60">
+                    <img
+                      src={`${BASE}images/${p.image}`}
+                      alt={`${p.part}专项计划图`}
+                      loading="lazy"
+                      className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    />
+                  </span>
+                  <span className="flex items-center justify-between gap-2 px-3 py-2">
+                    <span className="font-display text-sm font-bold tracking-wide text-foreground">
+                      {p.part}
+                    </span>
+                    <span className="text-xs text-muted-foreground transition-colors group-hover:text-primary">
+                      查看大图
+                    </span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {goal.partPlans && goal.partPlans.length > 0 && (
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <ClipboardList className="h-4 w-4 text-primary" />
+              按部位训练计划
+            </CardTitle>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              与上方焚诀计划图并存、互为参考：图是原图，这里是按公开经典方案整理的组次参数；按自己的器械与恢复情况取用，冲突时以身体反馈为准。
+            </p>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {goal.partPlans.map((p) => (
+              <div key={p.part} className="rounded-lg border border-border bg-muted/40 p-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-display text-base font-bold tracking-wide text-foreground">
+                    {p.part}
+                  </span>
+                  <span className="text-xs text-muted-foreground">来源：{p.source}</span>
+                </div>
+                <p className="mt-1 text-xs text-muted-foreground">{p.frequency}</p>
+                <div className="mt-2 space-y-1.5">
+                  {p.blocks.map((b) => (
+                    <div key={b.name} className="rounded-md border border-border bg-card p-2.5">
+                      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
+                        <span className="text-sm font-medium text-foreground">{b.name}</span>
+                        <span className="text-xs font-medium text-primary">{b.set}</span>
+                      </div>
+                      {b.note && (
+                        <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{b.note}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <ul className="mt-2 space-y-1.5">
+                  {p.points.map((point) => (
+                    <li key={point} className="flex gap-2 text-xs leading-relaxed text-muted-foreground">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              计划参数整理自公开经典方案的通用版本：StrongLifts 5×5、Push / Pull / Legs 分化、Wendler 5/3/1、German Volume Training (GVT 10×10)、PHUL。动作可依器械与关节状况替换，但建议保留原计划的组次结构与频率逻辑。
+            </p>
+          </CardContent>
+        </Card>
+      )}
+
       <Card>
         <CardHeader className="pb-2">
           <CardTitle className="text-base">核心动作参数</CardTitle>
           <p className="mt-1 flex items-start gap-1.5 text-xs leading-relaxed text-primary">
             <ShieldAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
             在安全的范围内去运动：以下动作均为参考，重量与次数按自己当前能力取，动作变形、关节刺痛或头晕恶心时立即停止；新重量先做 1–2 组热身，不冲超出技术水平的极限。
+          </p>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            每个动作的「优点 / 缺点 / 训练要点 / 适合人群」为通用训练常识与公开资料整理，用于挑选与替换动作时参考。
           </p>
         </CardHeader>
         <CardContent>
@@ -107,11 +206,36 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
             <TableBody>
               {goal.movements.map((m) => (
                 <TableRow key={m.name}>
-                  <TableCell className="whitespace-nowrap font-medium text-foreground">
+                  <TableCell className="whitespace-nowrap align-top font-medium text-foreground">
                     {m.name}
                     {m.tip && (
                       <span className="mt-1 block whitespace-normal text-xs font-normal leading-snug text-muted-foreground">
+                        <b className="font-semibold text-foreground/80">动作要点：</b>
                         {m.tip}
+                      </span>
+                    )}
+                    {m.pros && m.pros.length > 0 && (
+                      <span className="mt-1 block whitespace-normal text-xs font-normal leading-snug text-primary">
+                        <b className="font-semibold">优点：</b>
+                        {m.pros.map((s) => s.replace(/[。；]$/, '')).join('；')}。
+                      </span>
+                    )}
+                    {m.cons && m.cons.length > 0 && (
+                      <span className="mt-1 block whitespace-normal text-xs font-normal leading-snug text-muted-foreground">
+                        <b className="font-semibold text-foreground/80">缺点：</b>
+                        {m.cons.map((s) => s.replace(/[。；]$/, '')).join('；')}。
+                      </span>
+                    )}
+                    {m.focus && m.focus.length > 0 && (
+                      <span className="mt-1 block whitespace-normal text-xs font-normal leading-snug text-muted-foreground">
+                        <b className="font-semibold text-foreground/80">训练要点：</b>
+                        {m.focus.map((s) => s.replace(/[。；]$/, '')).join('；')}。
+                      </span>
+                    )}
+                    {m.suitable && (
+                      <span className="mt-1 block whitespace-normal text-xs font-normal leading-snug text-muted-foreground">
+                        <b className="font-semibold text-foreground/80">适合人群：</b>
+                        {m.suitable}
                       </span>
                     )}
                   </TableCell>

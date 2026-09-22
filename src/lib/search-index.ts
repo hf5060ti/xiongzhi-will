@@ -6,7 +6,8 @@ import { FOODS } from '@/data/foods';
 export type SearchTarget =
   | { route: '/plan'; goalId?: string }
   | { route: '/nutrition'; foodId: string }
-  | { route: '/body' };
+  | { route: '/body' }
+  | { route: '/cardio'; itemId?: string };
 
 export interface SearchEntry {
   type: 'movement' | 'food' | 'formula';
@@ -40,6 +41,8 @@ const FORMULAS: SearchEntry[] = [
   { type: 'formula', label: '1RM 最大筋力换算', sublabel: '身体数据 · 次数法反推', target: { route: '/body' } },
   { type: 'formula', label: 'FFMI / 肌肉量上限', sublabel: '身体数据 · 4 个公式对照', target: { route: '/body' } },
   { type: 'formula', label: 'Aragon 增肌速率', sublabel: '身体数据 · 初/中/高级月增重', target: { route: '/body' } },
+  { type: 'formula', label: '有氧运动消耗', sublabel: '有氧运动 · MET × 体重 × 时长', target: { route: '/cardio' } },
+  { type: 'formula', label: '散步消耗', sublabel: '有氧运动 · 4 档配速 MET 换算', target: { route: '/cardio', itemId: 'walking' } },
 ];
 
 export const SEARCH_INDEX: SearchEntry[] = [...MOVEMENTS, ...FOOD_ENTRIES, ...FORMULAS];

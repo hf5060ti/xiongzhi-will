@@ -5,6 +5,7 @@ import HomePage from '@/pages/HomePage/HomePage';
 import PlanPage from '@/pages/PlanPage/PlanPage';
 import NutritionPage from '@/pages/NutritionPage/NutritionPage';
 import BodyDataPage from '@/pages/BodyDataPage';
+import CardioPage from '@/pages/CardioPage';
 import PhysiquePage from '@/pages/PhysiquePage';
 import CoachPage from '@/pages/CoachPage';
 import ExerciseLibraryPage from '@/pages/ExerciseLibraryPage';
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="plan" element={<PlanPage />} />
           <Route path="nutrition" element={<NutritionPage />} />
           <Route path="body" element={<BodyDataPage />} />
+          <Route path="cardio" element={<CardioPage />} />
           <Route path="physique" element={<PhysiquePage />} />
           <Route path="coach" element={<CoachPage />} />
           <Route path="library" element={<ExerciseLibraryPage />} />

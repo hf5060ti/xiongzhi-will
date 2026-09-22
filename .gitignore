@@ -73,3 +73,9 @@ ref1.jpg
 ref2.jpg
 download.txt
 spark.json
+
+# 外部软件写入 public/images 的无关文件（不纳入仓库）
+public/images/.GamingRoot
+public/images/{5F76ACFE-F22D-4A75-8F77-2A23B7170209}
+public/images/guts-bg-final.mp4
+public/images/雄性意志/

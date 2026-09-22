@@ -1,7 +1,7 @@
 ﻿import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import { ArrowRight, Download, Upload } from 'lucide-react';
+import { ArrowRight, Download, Footprints, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -124,6 +124,25 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
+
+      {/* 有氧运动（散步等消耗计算） */}
+      <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
+        <CardContent className="flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
+              <Footprints className="h-4 w-4 text-primary" />
+              有氧运动
+            </h3>
+            <p className="mt-1 text-xs text-muted-foreground">
+              散步等有氧项目按 kcal = MET × 体重(kg) × 时长(h) 折算消耗，输入体重与时长实时出结果。
+            </p>
+          </div>
+          <Button variant="outline" onClick={() => navigate('/cardio')}>
+            进入有氧运动
+            <ArrowRight className="ml-1.5 h-4 w-4" />
+          </Button>
+        </CardContent>
+      </Card>
 
       {/* 数据备份 */}
       <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
