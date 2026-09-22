@@ -9,7 +9,7 @@ import extData from '@/data/exercises-ext.json';
 import { EXERCISE_MEDIA } from '@/data/exercise-media';
 
 // 图片 CDN 前缀
-const IMG_BASE = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises/';
+const IMG_BASE = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';
 
 // 动作百科（演示动图来源）
 const SITE_HOME = 'https://fitness.xingshuwen.com/';
