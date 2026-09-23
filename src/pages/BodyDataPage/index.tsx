@@ -197,6 +197,80 @@ export default function BodyDataPage() {
         </div>
       </section>
 
+      {/* TDEE */}
+      <section className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+        <div className="rounded-lg border border-border bg-card p-4">
+          <p className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <Activity className="h-4 w-4 text-primary" />
+            每日总消耗 TDEE
+          </p>
+          {d.bmr ? (
+            <>
+              <p className="mt-2 font-display text-4xl font-extrabold tracking-wide text-foreground">
+                {round0(d.tdeeVal)}
+                <span className="ml-2 text-base font-bold text-muted-foreground">kcal / 天</span>
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                推荐 BMR（Katch）× 活动系数 {d.activityFactor}（{d.activityLabel}）
+              </p>
+            </>
+          ) : (
+            <p className="mt-2 text-sm text-muted-foreground">BMR 计算后自动得出。</p>
+          )}
+        </div>
+        <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
+          <p className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <ShieldAlert className="h-4 w-4 text-primary" />
+            {d.phaseLabel}热量目标
+          </p>
+          {d.bmr ? (
+            <>
+              <p className="mt-2 font-display text-3xl font-extrabold tracking-wide text-primary">
+                {d.phase === 'maintain'
+                  ? round0(d.tdeeVal)
+                  : d.phase === 'bulk'
+                    ? `${round0(d.tdeeVal + 300)}–${round0(d.tdeeVal + 500)}`
+                    : `${round0(d.tdeeVal - 500)}–${round0(d.tdeeVal - 300)}`}
+                <span className="ml-2 text-base font-bold text-muted-foreground">kcal / 天</span>
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {d.phase === 'bulk' && '增肌：TDEE +300~500 kcal，配合蛋白质基准。'}
+                {d.phase === 'cut' && '减脂：TDEE −300~500 kcal，蛋白质不减反升（瘦体重 × 2.3）。'}
+                {d.phase === 'maintain' && '维持：吃回 TDEE，蛋白质按维持基准。'}
+              </p>
+            </>
+          ) : (
+            <p className="mt-2 text-sm text-muted-foreground">BMR 计算后自动得出。</p>
+          )}
+        </div>
+        <div className="rounded-lg border border-border bg-card p-4">
+          <p className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <Flame className="h-4 w-4 text-primary" />
+            食物热效应 TEF
+          </p>
+          {d.bmr ? (
+            <>
+              <p className="mt-2 font-display text-3xl font-extrabold tracking-wide text-foreground">
+                {round0(d.tdeeWithTef)}
+                <span className="ml-2 text-base font-bold text-muted-foreground">kcal / 天</span>
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                含食物热效应后。当前方案「{d.diet ? d.diet.name : '通用'}」加权 ≈ {round1(d.tefVal)}%
+                {!d.diet && '（未设饮食，按 10% 通用估）'}
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                蛋白 20–25% · 碳水 5–10% · 脂肪 1–5%；不想细算就按 10% 直接加。
+              </p>
+            </>
+          ) : (
+            <p className="mt-2 text-sm text-muted-foreground">BMR 计算后自动得出。</p>
+          )}
+        </div>
+      </section>
+
+      {/* 双栏：左 = 代谢与上限，右 = 训练工具（宽屏 xl 起并排） */}
+      <div className="grid gap-5 xl:grid-cols-2">
+        <div className="space-y-5">
       {/* 目标与饮食联动 */}
       <section className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-2">
         <div className="rounded-lg border border-border bg-card p-3 sm:p-4">
@@ -342,78 +416,10 @@ export default function BodyDataPage() {
           <p className="text-sm text-muted-foreground">填上年龄后即可计算 6 种 BMR。</p>
         )}
       </section>
+        </div>
 
-      {/* TDEE */}
-      <section className="grid grid-cols-2 gap-3 lg:grid-cols-3">
-        <div className="rounded-lg border border-border bg-card p-4">
-          <p className="flex items-center gap-2 text-sm font-medium text-foreground">
-            <Activity className="h-4 w-4 text-primary" />
-            每日总消耗 TDEE
-          </p>
-          {d.bmr ? (
-            <>
-              <p className="mt-2 font-display text-4xl font-extrabold tracking-wide text-foreground">
-                {round0(d.tdeeVal)}
-                <span className="ml-2 text-base font-bold text-muted-foreground">kcal / 天</span>
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                推荐 BMR（Katch）× 活动系数 {d.activityFactor}（{d.activityLabel}）
-              </p>
-            </>
-          ) : (
-            <p className="mt-2 text-sm text-muted-foreground">BMR 计算后自动得出。</p>
-          )}
-        </div>
-        <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
-          <p className="flex items-center gap-2 text-sm font-medium text-foreground">
-            <ShieldAlert className="h-4 w-4 text-primary" />
-            {d.phaseLabel}热量目标
-          </p>
-          {d.bmr ? (
-            <>
-              <p className="mt-2 font-display text-3xl font-extrabold tracking-wide text-primary">
-                {d.phase === 'maintain'
-                  ? round0(d.tdeeVal)
-                  : d.phase === 'bulk'
-                    ? `${round0(d.tdeeVal + 300)}–${round0(d.tdeeVal + 500)}`
-                    : `${round0(d.tdeeVal - 500)}–${round0(d.tdeeVal - 300)}`}
-                <span className="ml-2 text-base font-bold text-muted-foreground">kcal / 天</span>
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {d.phase === 'bulk' && '增肌：TDEE +300~500 kcal，配合蛋白质基准。'}
-                {d.phase === 'cut' && '减脂：TDEE −300~500 kcal，蛋白质不减反升（瘦体重 × 2.3）。'}
-                {d.phase === 'maintain' && '维持：吃回 TDEE，蛋白质按维持基准。'}
-              </p>
-            </>
-          ) : (
-            <p className="mt-2 text-sm text-muted-foreground">BMR 计算后自动得出。</p>
-          )}
-        </div>
-        <div className="rounded-lg border border-border bg-card p-4">
-          <p className="flex items-center gap-2 text-sm font-medium text-foreground">
-            <Flame className="h-4 w-4 text-primary" />
-            食物热效应 TEF
-          </p>
-          {d.bmr ? (
-            <>
-              <p className="mt-2 font-display text-3xl font-extrabold tracking-wide text-foreground">
-                {round0(d.tdeeWithTef)}
-                <span className="ml-2 text-base font-bold text-muted-foreground">kcal / 天</span>
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                含食物热效应后。当前方案「{d.diet ? d.diet.name : '通用'}」加权 ≈ {round1(d.tefVal)}%
-                {!d.diet && '（未设饮食，按 10% 通用估）'}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                蛋白 20–25% · 碳水 5–10% · 脂肪 1–5%；不想细算就按 10% 直接加。
-              </p>
-            </>
-          ) : (
-            <p className="mt-2 text-sm text-muted-foreground">BMR 计算后自动得出。</p>
-          )}
-        </div>
-      </section>
-
+        {/* 右列 · 训练工具 */}
+        <div className="space-y-5">
       {/* 冷兵器训练消耗 */}
       <section className="space-y-4 rounded-lg border border-border bg-card p-4 sm:p-5">
         <div>
@@ -539,6 +545,8 @@ export default function BodyDataPage() {
           <p className="text-sm text-muted-foreground">填上完成重量后自动估算 1RM。</p>
         )}
       </section>
+        </div>
+      </div>
 
       {/* 力量等级对照表（IPF） */}
       <section className="space-y-3 rounded-lg border border-border bg-card p-4 sm:p-5">
