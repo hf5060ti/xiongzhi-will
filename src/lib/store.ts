@@ -130,12 +130,24 @@ export function saveLightEntries(entries: LightEntry[]) {
   write('light-entries', entries);
 }
 
-/** 追加 / 覆盖一条记录（同日期覆盖），保持按日期升序 */
+/** 追加 / 覆盖一条记录（同日期覆盖），保持按日期升序；最新体重自动同步到全站体重档案 */
 export function upsertLightEntry(entry: LightEntry) {
   const entries = loadLightEntries().filter((e) => e.date !== entry.date);
   entries.push(entry);
   entries.sort((a, b) => a.date.localeCompare(b.date));
   saveLightEntries(entries);
+  // 只有记的是最新一条才同步，补录历史不打扰当前档案
+  if (entries[entries.length - 1].date === entry.date) syncLightWeightToProfile();
+}
+
+/** 把轻盈计划最新一条体重同步到全站：快捷体重（有氧/自重消耗计算）+ 身体数据页档案 */
+export function syncLightWeightToProfile() {
+  const entries = loadLightEntries();
+  const latest = entries[entries.length - 1];
+  if (!latest) return;
+  saveWeightKg(latest.weight);
+  const body = loadBodyProfile();
+  saveBodyProfile({ ...body, weightKg: String(latest.weight) });
 }
 
 export function loadLightCheckins(): LightCheckins {

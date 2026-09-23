@@ -44,6 +44,7 @@ import {
   loadWeightKg,
   saveLightEntries,
   saveLightTarget,
+  syncLightWeightToProfile,
   toggleLightCheckin,
   upsertLightEntry,
   type LightCheckinKey,
@@ -198,6 +199,7 @@ export default function LightPage() {
     [target, current],
   );
   const heatDays = useMemo(() => last14Days(checkins), [checkins]);
+  const achieved = Boolean(stats && stats.pct >= 100);
 
   const heightM = Number(body.heightCm) / 100;
   const bmi = heightM > 0 && current > 0 ? current / (heightM * heightM) : 0;
@@ -242,6 +244,7 @@ export default function LightPage() {
 
   const handleRemove = (date: string) => {
     saveLightEntries(loadLightEntries().filter((e) => e.date !== date));
+    syncLightWeightToProfile(); // 删掉最新一条时，档案体重回退到新最新
     setEntries(loadLightEntries());
     toast.success(`已删除 ${fmtDate(date)} 的记录`);
   };
@@ -293,6 +296,11 @@ export default function LightPage() {
           <h1 className="flex items-center gap-2 font-display text-2xl font-bold tracking-wide text-foreground">
             <TrendingDown className="h-6 w-6 text-primary" />
             轻盈计划 · 减脂追踪台
+            {achieved && (
+              <span className="rounded-full border border-primary/50 bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                已达成 · 维持期
+              </span>
+            )}
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {target.startDate} 启程：{target.startWeight} kg → 目标 {target.targetWeight} kg
@@ -364,7 +372,17 @@ export default function LightPage() {
               </span>
             </div>
             <Progress value={stats.pct} className="h-2" />
-            {stats.etaText && <p className="text-xs leading-relaxed text-muted-foreground">{stats.etaText}</p>}
+            {achieved ? (
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                {Math.abs(current - target.targetWeight) <= 1.5
+                  ? `目标已达成。维持带 ${target.targetWeight} ± 1.5 kg，你正在带内——保持就是胜利。`
+                  : current > target.targetWeight
+                    ? `超出维持带上沿 ${(current - target.targetWeight - 1.5).toFixed(1)} kg，轻微收紧饮食一两周即可回带。`
+                    : `比目标还轻 ${(target.targetWeight - current).toFixed(1)} kg，可以适当多吃一点，把代谢养回来。`}
+              </p>
+            ) : (
+              stats.etaText && <p className="text-xs leading-relaxed text-muted-foreground">{stats.etaText}</p>
+            )}
           </CardContent>
         </Card>
       )}
@@ -386,10 +404,19 @@ export default function LightPage() {
                 </p>
                 <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                   近 7 天均重 {weekly.thisAvg.toFixed(1)} kg，上 7 天 {weekly.prevAvg.toFixed(1)} kg。
-                  {weekly.delta <= -1 && ' 降速偏快，注意蛋白质与力量训练，别掉肌肉。'}
-                  {weekly.delta > -1 && weekly.delta <= -0.3 && ' 速度落在健康区间（0.5–1 kg/周），保持。'}
-                  {weekly.delta > -0.3 && weekly.delta < 0.3 && ' 基本持平，若持续两周以上，检查热量缺口。'}
-                  {weekly.delta >= 0.3 && ' 在回涨，回看这一周的外食、酒精与睡眠。'}
+                  {achieved
+                    ? weekly.delta >= 0.3
+                      ? ' 维持期在回涨，回看这一周的外食与酒精。'
+                      : weekly.delta <= -0.3
+                        ? ' 维持期还在降，可以多吃点，把热量拉回维持量。'
+                        : ' 体重稳住了，维持得很漂亮。'
+                    : weekly.delta <= -1
+                      ? ' 降速偏快，注意蛋白质与力量训练，别掉肌肉。'
+                      : weekly.delta > -0.3 && weekly.delta < 0.3
+                        ? ' 基本持平，若持续两周以上，检查热量缺口。'
+                        : weekly.delta >= 0.3
+                          ? ' 在回涨，回看这一周的外食、酒精与睡眠。'
+                          : ' 速度落在健康区间（0.5–1 kg/周），保持。'}
                 </p>
               </>
             ) : (
@@ -411,9 +438,11 @@ export default function LightPage() {
                   {milestone.hit} <span className="text-sm font-bold text-muted-foreground">个已达成</span>
                 </p>
                 <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                  {milestone.next != null
-                    ? `每减 2.5 kg 一个里程碑。下一个 ${milestone.next.toFixed(1)} kg，还差 ${milestone.toNext.toFixed(1)} kg。`
-                    : '里程碑全部踩完，最后一段直冲目标线。'}
+                  {achieved
+                    ? '目标线已踩过——从此每周稳住，就是新的胜利。'
+                    : milestone.next != null
+                      ? `每减 2.5 kg 一个里程碑。下一个 ${milestone.next.toFixed(1)} kg，还差 ${milestone.toNext.toFixed(1)} kg。`
+                      : '里程碑全部踩完，最后一段直冲目标线。'}
                 </p>
                 <div className="mt-3 flex gap-1.5">
                   {Array.from({ length: Math.max(1, milestone.hit + (milestone.next != null ? 1 : 0)) }).map((_, i) => (
