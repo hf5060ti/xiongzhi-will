@@ -6,6 +6,7 @@ import PlanPage from '@/pages/PlanPage/PlanPage';
 import NutritionPage from '@/pages/NutritionPage/NutritionPage';
 import BodyDataPage from '@/pages/BodyDataPage';
 import CardioPage from '@/pages/CardioPage';
+import BodyweightPage from '@/pages/BodyweightPage';
 import PhysiquePage from '@/pages/PhysiquePage';
 import CoachPage from '@/pages/CoachPage';
 import ExerciseLibraryPage from '@/pages/ExerciseLibraryPage';
@@ -15,6 +16,8 @@ import WealthPage from '@/pages/WealthPage';
 import RelationPage from '@/pages/RelationPage';
 import SkillsPage from '@/pages/SkillsPage';
 import WildPage from '@/pages/WildPage';
+import StomachPage from '@/pages/StomachPage';
+import LightPage from '@/pages/LightPage';
 import PrivacyPage from '@/pages/PrivacyPage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
@@ -28,6 +31,7 @@ export default function App() {
           <Route path="nutrition" element={<NutritionPage />} />
           <Route path="body" element={<BodyDataPage />} />
           <Route path="cardio" element={<CardioPage />} />
+          <Route path="bodyweight" element={<BodyweightPage />} />
           <Route path="physique" element={<PhysiquePage />} />
           <Route path="coach" element={<CoachPage />} />
           <Route path="library" element={<ExerciseLibraryPage />} />
@@ -37,6 +41,8 @@ export default function App() {
           <Route path="relation" element={<RelationPage />} />
           <Route path="skills" element={<SkillsPage />} />
           <Route path="wild" element={<WildPage />} />
+          <Route path="stomach" element={<StomachPage />} />
+          <Route path="light" element={<LightPage />} />
           <Route path="privacy" element={<PrivacyPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

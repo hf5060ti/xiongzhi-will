@@ -1,7 +1,7 @@
 ﻿import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import { ArrowRight, Download, Footprints, Upload } from 'lucide-react';
+import { ArrowRight, Download, Dumbbell, Footprints, Soup, TrendingDown, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -76,7 +76,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-6 sm:space-y-10">
       <HeroSection />
 
       {hasSaved && (
@@ -97,79 +97,145 @@ export default function HomePage() {
         </Card>
       )}
 
-      <GoalPicker selected={goalId} onSelect={(id) => { setGoalId(id); saveGoalId(id); if (loadDietId()) navigate('/plan'); }} />
-      <DietPicker selected={dietId} onSelect={(id) => { setDietId(id); saveDietId(id); if (loadGoalId()) navigate('/plan'); }} />
+      {/* 宽屏两列并排：左列主流程（选目标 → 选饮食 → 生成），右列侧栏（各功能入口 + 备份） */}
+      <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1fr)_340px] xl:grid-cols-[minmax(0,1fr)_380px]">
+        {/* 左列 · 主流程 */}
+        <div className="space-y-6 sm:space-y-10">
+          <GoalPicker selected={goalId} onSelect={(id) => { setGoalId(id); saveGoalId(id); if (loadDietId()) navigate('/plan'); }} />
+          <DietPicker selected={dietId} onSelect={(id) => { setDietId(id); saveDietId(id); if (loadGoalId()) navigate('/plan'); }} />
 
-      <section className="rounded-lg border border-border bg-card p-4 sm:p-5">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div className="sm:max-w-xs">
-            <label htmlFor="weight-input" className="text-sm font-medium text-foreground">
-              当前体重（选填）
-            </label>
-            <p className="mt-0.5 text-xs text-muted-foreground">用于估算每日热量参考，单位 kg。</p>
-            <Input
-              id="weight-input"
-              type="number"
-              min={20}
-              max={300}
-              placeholder="如 63"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              className="mt-2"
-            />
-          </div>
-          <Button size="lg" onClick={handleGenerate}>
-            生成我的方案
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          <section className="rounded-lg border border-border bg-card p-4 sm:p-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div className="sm:max-w-xs">
+                <label htmlFor="weight-input" className="text-sm font-medium text-foreground">
+                  当前体重（选填）
+                </label>
+                <p className="mt-0.5 text-xs text-muted-foreground">用于估算每日热量参考，单位 kg。</p>
+                <Input
+                  id="weight-input"
+                  type="number"
+                  min={20}
+                  max={300}
+                  placeholder="如 63"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                  className="mt-2"
+                />
+              </div>
+              <Button size="lg" onClick={handleGenerate}>
+                生成我的方案
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </section>
         </div>
-      </section>
 
-      {/* 有氧运动（散步等消耗计算） */}
-      <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
-        <CardContent className="flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
-              <Footprints className="h-4 w-4 text-primary" />
-              有氧运动
-            </h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              散步等有氧项目按 kcal = MET × 体重(kg) × 时长(h) 折算消耗，输入体重与时长实时出结果。
-            </p>
-          </div>
-          <Button variant="outline" onClick={() => navigate('/cardio')}>
-            进入有氧运动
-            <ArrowRight className="ml-1.5 h-4 w-4" />
-          </Button>
-        </CardContent>
-      </Card>
+        {/* 右列 · 侧栏 */}
+        <div className="space-y-4 sm:space-y-5">
+          {/* 轻盈计划（减脂追踪台） */}
+          <Card className="border-primary/30 bg-primary/5 backdrop-blur-xl">
+            <CardContent className="flex flex-col gap-3 p-4 sm:p-5">
+              <div>
+                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
+                  <TrendingDown className="h-4 w-4 text-primary" />
+                  轻盈计划
+                </h3>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  减脂追踪台：定目标体重，每天记体重、打卡，趋势图与达成预估自动算。
+                </p>
+              </div>
+              <Button className="self-start" onClick={() => navigate('/light')}>
+                进入轻盈计划
+                <ArrowRight className="ml-1.5 h-4 w-4" />
+              </Button>
+            </CardContent>
+          </Card>
 
-      {/* 数据备份 */}
-      <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
-        <CardContent className="p-5">
-          <h3 className="font-display text-lg font-bold text-foreground">数据备份</h3>
-          <p className="mt-1 text-xs text-muted-foreground">
-            所有数据存在你自己的浏览器里。换浏览器或清理缓存前，先导出备份。
-          </p>
-          <div className="mt-3 flex gap-2">
-            <Button variant="outline" size="sm" onClick={handleExport}>
-              <Download className="mr-1.5 h-3.5 w-3.5" />
-              导出备份
-            </Button>
-            <Button variant="outline" size="sm" onClick={() => fileRef.current?.click()}>
-              <Upload className="mr-1.5 h-3.5 w-3.5" />
-              导入恢复
-            </Button>
-            <input
-              ref={fileRef}
-              type="file"
-              accept=".json"
-              className="hidden"
-              onChange={handleImport}
-            />
-          </div>
-        </CardContent>
-      </Card>
+          {/* 有氧运动（散步等消耗计算） */}
+          <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
+            <CardContent className="flex flex-col gap-3 p-4 sm:p-5">
+              <div>
+                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
+                  <Footprints className="h-4 w-4 text-primary" />
+                  有氧运动
+                </h3>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  散步等有氧项目按 kcal = MET × 体重(kg) × 时长(h) 折算消耗，输入体重与时长实时出结果。
+                </p>
+              </div>
+              <Button variant="outline" className="self-start" onClick={() => navigate('/cardio')}>
+                进入有氧运动
+                <ArrowRight className="ml-1.5 h-4 w-4" />
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* 自重力量（俯卧撑 / 引体向上 / 自重深蹲消耗） */}
+          <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
+            <CardContent className="flex flex-col gap-3 p-4 sm:p-5">
+              <div>
+                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
+                  <Dumbbell className="h-4 w-4 text-primary" />
+                  自重力量
+                </h3>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  俯卧撑（含 8 种变式）、引体向上、自重深蹲按 kcal = MET × 体重(kg) × 时长(h) 折算消耗；次数按节奏换算成时长，输入体重与组次实时出结果。
+                </p>
+              </div>
+              <Button variant="outline" className="self-start" onClick={() => navigate('/bodyweight')}>
+                进入自重力量
+                <ArrowRight className="ml-1.5 h-4 w-4" />
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* 胃部（消化系统修复与 FODMAP 排查） */}
+          <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
+            <CardContent className="flex flex-col gap-3 p-4 sm:p-5">
+              <div>
+                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
+                  <Soup className="h-4 w-4 text-primary" />
+                  胃部
+                </h3>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  3 分练，7 分吃，90 分靠睡眠：肠漏成因、FODMAPs 排查与低 FODMAP 三阶段框架，对照腹胀、异常储水与增肌停滞的真实来源。
+                </p>
+              </div>
+              <Button variant="outline" className="self-start" onClick={() => navigate('/stomach')}>
+                进入胃部
+                <ArrowRight className="ml-1.5 h-4 w-4" />
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* 数据备份 */}
+          <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
+            <CardContent className="p-5">
+              <h3 className="font-display text-lg font-bold text-foreground">数据备份</h3>
+              <p className="mt-1 text-xs text-muted-foreground">
+                所有数据存在你自己的浏览器里。换浏览器或清理缓存前，先导出备份。
+              </p>
+              <div className="mt-3 flex gap-2">
+                <Button variant="outline" size="sm" onClick={handleExport}>
+                  <Download className="mr-1.5 h-3.5 w-3.5" />
+                  导出备份
+                </Button>
+                <Button variant="outline" size="sm" onClick={() => fileRef.current?.click()}>
+                  <Upload className="mr-1.5 h-3.5 w-3.5" />
+                  导入恢复
+                </Button>
+                <input
+                  ref={fileRef}
+                  type="file"
+                  accept=".json"
+                  className="hidden"
+                  onChange={handleImport}
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }

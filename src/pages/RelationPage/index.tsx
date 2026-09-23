@@ -3,8 +3,8 @@ import { Heart, MessageCircle, Shield, Users } from 'lucide-react';
 
 export default function RelationPage() {
   return (
-    <div className="space-y-8">
-      <header className="border-b border-border pb-5">
+    <div className="space-y-6 sm:space-y-8">
+      <header className="border-b border-border pb-4 sm:pb-5">
         <p className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-primary">
           Relation · 关系
         </p>
@@ -16,7 +16,7 @@ export default function RelationPage() {
         </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
         <RelationCard
           icon={<MessageCircle className="h-5 w-5" />}
           title="沟通"
@@ -60,7 +60,7 @@ export default function RelationPage() {
       </div>
 
       <Card className="border-destructive/30 bg-destructive/5">
-        <CardContent className="p-6">
+        <CardContent className="p-4 sm:p-6">
           <h2 className="font-display text-xl font-bold text-destructive">这些事别做</h2>
           <div className="mt-4 space-y-2 text-sm text-foreground/90">
             <p>· 不 PUA——操控别人不是本事</p>

@@ -14,7 +14,7 @@ export default function SpecialNeedsGuide() {
         不管身体状况如何，都有适合你的运动方式。
       </p>
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-2">
         <SpecialCard
           title="下肢不便 / 轮椅使用者"
           suitable="轮椅俯卧撑、墙上俯卧撑、哑铃划船、坐姿哑铃推胸、弹力带下拉"

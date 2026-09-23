@@ -3,8 +3,8 @@ import { Brain, Shield, Clock, Moon, BookOpen, Flame } from 'lucide-react';
 
 export default function MindPage() {
   return (
-    <div className="space-y-8">
-      <header className="border-b border-border pb-5">
+    <div className="space-y-6 sm:space-y-8">
+      <header className="border-b border-border pb-4 sm:pb-5">
         <p className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-primary">
           Mind · 心智
         </p>
@@ -17,7 +17,7 @@ export default function MindPage() {
       </header>
 
       {/* 核心原则 */}
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
         <MindCard
           icon={<Brain className="h-5 w-5" />}
           title="斯多葛哲学"
@@ -82,7 +82,7 @@ export default function MindPage() {
 
       {/* 30 天挑战 */}
       <Card className="border-primary/30 bg-primary/5">
-        <CardContent className="p-6">
+        <CardContent className="p-4 sm:p-6">
           <h2 className="font-display text-xl font-bold text-primary">30 天心智挑战</h2>
           <div className="mt-4 space-y-2 text-sm text-foreground/90">
             <p><b>第 1 周：</b>每天早起 15 分钟 + 写 3 件今天做得好的事</p>
@@ -102,14 +102,14 @@ export default function MindPage() {
 function MindCard({ icon, title, points }: { icon: React.ReactNode; title: string; points: string[] }) {
   return (
     <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
-      <CardContent className="p-5">
-        <div className="flex items-center gap-2">
-          <span className="text-primary">{icon}</span>
-          <h3 className="font-display text-lg font-bold text-foreground">{title}</h3>
+      <CardContent className="p-3 sm:p-5">
+        <div className="flex items-center gap-1.5">
+          <span className="shrink-0 text-primary">{icon}</span>
+          <h3 className="font-display text-base font-bold leading-tight text-foreground">{title}</h3>
         </div>
-        <ul className="mt-3 space-y-1.5">
+        <ul className="mt-2 space-y-1">
           {points.map((p, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
+            <li key={i} className="flex items-start gap-1.5 text-xs leading-snug text-muted-foreground">
               <span className="mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full bg-primary" />
               {p}
             </li>

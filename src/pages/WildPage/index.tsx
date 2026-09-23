@@ -3,8 +3,8 @@ import { Mountain, Flame, Droplets, Tent, Compass, Sword, TreePine, Wind, Wrench
 
 export default function WildPage() {
   return (
-    <div className="space-y-8">
-      <header className="border-b border-border pb-5">
+    <div className="space-y-6 sm:space-y-8">
+      <header className="border-b border-border pb-4 sm:pb-5">
         <p className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-primary">
           Wild · 荒野
         </p>
@@ -16,7 +16,7 @@ export default function WildPage() {
         </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
         <WildCard
           icon={<Mountain className="h-5 w-5" />}
           title="徒步与登山"
@@ -108,9 +108,9 @@ export default function WildPage() {
 
         {/* 钢材知识 */}
         <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <h3 className="font-display text-xl font-bold text-foreground">钢材分类与用途</h3>
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <div className="mt-4 grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-3">
               <SteelCard
                 name="高碳钢（>0.6%）"
                 hard="硬，保持锋利"
@@ -177,7 +177,7 @@ export default function WildPage() {
       </div>
 
       <Card className="border-primary/30 bg-primary/5">
-        <CardContent className="p-6">
+        <CardContent className="p-4 sm:p-6">
           <h2 className="font-display text-xl font-bold text-primary">荒野底线</h2>
           <div className="mt-4 space-y-2 text-sm text-foreground/90">
             <p>· 别逞强——你不是贝爷，你会死在山里</p>
@@ -211,14 +211,14 @@ function SteelCard({ name, hard, cons, best }: { name: string; hard: string; con
 function WildCard({ icon, title, items }: { icon: React.ReactNode; title: string; items: string[] }) {
   return (
     <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
-      <CardContent className="p-5">
-        <div className="flex items-center gap-2">
-          <span className="text-primary">{icon}</span>
-          <h3 className="font-display text-lg font-bold text-foreground">{title}</h3>
+      <CardContent className="p-3 sm:p-5">
+        <div className="flex items-center gap-1.5">
+          <span className="shrink-0 text-primary">{icon}</span>
+          <h3 className="font-display text-base font-bold leading-tight text-foreground">{title}</h3>
         </div>
-        <ul className="mt-3 space-y-1.5">
+        <ul className="mt-2 space-y-1">
           {items.map((p, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
+            <li key={i} className="flex items-start gap-1.5 text-xs leading-snug text-muted-foreground">
               <span className="mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full bg-primary" />
               {p}
             </li>

@@ -22,7 +22,7 @@ export default function TrainingRules() {
       </p>
 
       <Tabs defaultValue="rest">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
           <TabsTrigger value="rest">练一休一</TabsTrigger>
           <TabsTrigger value="fasting">轻断食</TabsTrigger>
           <TabsTrigger value="protein">蛋白质摄入</TabsTrigger>
@@ -32,7 +32,7 @@ export default function TrainingRules() {
         {/* 练一休一 */}
         <TabsContent value="rest" className="space-y-4">
           <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <h3 className="font-display text-xl font-bold text-foreground">练一休一（Full Body × Rest）</h3>
                 <Button
@@ -80,7 +80,7 @@ export default function TrainingRules() {
         {/* 轻断食 */}
         <TabsContent value="fasting" className="space-y-4">
           <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <h3 className="font-display text-xl font-bold text-foreground">轻断食（16:8 / 14:10）</h3>
                 <Button
@@ -129,7 +129,7 @@ export default function TrainingRules() {
         {/* 蛋白质摄入 */}
         <TabsContent value="protein" className="space-y-4">
           <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <h3 className="font-display text-xl font-bold text-foreground">
                 每公斤瘦体重该吃多少蛋白质？
               </h3>
@@ -165,7 +165,7 @@ export default function TrainingRules() {
         {/* 一天两练 */}
         <TabsContent value="double" className="space-y-4">
           <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <h3 className="font-display text-xl font-bold text-foreground">一天两练（Split in Two）</h3>
                 <Button

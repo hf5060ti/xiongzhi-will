@@ -95,6 +95,65 @@ export function loadPyramid(): PyramidType {
 }
 export function savePyramid(p: PyramidType) { write('pyramid', p); }
 
+// ---------- 轻盈计划：减脂追踪（目标 / 体重体脂记录 / 每日打卡） ----------
+export interface LightTarget {
+  startWeight: number;   // 起始体重 kg
+  targetWeight: number;  // 目标体重 kg
+  startDate: string;     // YYYY-MM-DD
+}
+
+export interface LightEntry {
+  date: string;          // YYYY-MM-DD，同一天只保留最新一条
+  weight: number;        // kg
+  bodyFat?: number;      // 体脂率 %（选填）
+}
+
+export type LightCheckinKey = 'diet' | 'training' | 'sleep';
+export type LightCheckins = Record<string, Partial<Record<LightCheckinKey, boolean>>>;
+
+export function loadLightTarget(): LightTarget | null {
+  const v = read<LightTarget | null>('light-target', null);
+  if (v && v.startWeight > 0 && v.targetWeight > 0 && v.startDate) return v;
+  return null;
+}
+
+export function saveLightTarget(t: LightTarget) {
+  write('light-target', t);
+}
+
+export function loadLightEntries(): LightEntry[] {
+  const v = read<LightEntry[]>('light-entries', []);
+  return Array.isArray(v) ? v.filter((e) => e && e.date && e.weight > 0) : [];
+}
+
+export function saveLightEntries(entries: LightEntry[]) {
+  write('light-entries', entries);
+}
+
+/** 追加 / 覆盖一条记录（同日期覆盖），保持按日期升序 */
+export function upsertLightEntry(entry: LightEntry) {
+  const entries = loadLightEntries().filter((e) => e.date !== entry.date);
+  entries.push(entry);
+  entries.sort((a, b) => a.date.localeCompare(b.date));
+  saveLightEntries(entries);
+}
+
+export function loadLightCheckins(): LightCheckins {
+  return read<LightCheckins>('light-checkins', {});
+}
+
+export function saveLightCheckins(all: LightCheckins) {
+  write('light-checkins', all);
+}
+
+export function toggleLightCheckin(date: string, key: LightCheckinKey) {
+  const all = loadLightCheckins();
+  const day = all[date] ?? {};
+  all[date] = { ...day, [key]: !day[key] };
+  saveLightCheckins(all);
+  return all;
+}
+
 // ---------- 数据备份与恢复 ----------
 export function exportAllData(): string {
   const data: Record<string, unknown> = {};

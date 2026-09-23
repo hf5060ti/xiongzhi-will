@@ -389,7 +389,7 @@ export default function PhysiquePage() {
           </CardTitle>
           <p className="text-xs text-muted-foreground">拍摄建议：{part.hint}</p>
         </CardHeader>
-        <CardContent className="grid gap-3 sm:grid-cols-2">
+        <CardContent className="grid grid-cols-2 gap-3">
           {part.types.map((t) => {
             const active = typeId === t.id;
             return (
@@ -496,7 +496,7 @@ export default function PhysiquePage() {
             <p className="text-xs text-muted-foreground">按时间倒序，越新的越靠前。</p>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
               {history.map((e) => {
                 const t = part.types.find((x) => x.id === e.typeId);
                 return (

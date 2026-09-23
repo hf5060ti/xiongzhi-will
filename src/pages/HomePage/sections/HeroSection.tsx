@@ -1,6 +1,6 @@
 export default function HeroSection() {
   return (
-    <section className="relative -mx-4 mb-8 overflow-hidden rounded-b-2xl border-b border-border md:-mx-8 md:mb-10">
+    <section className="relative -mx-3 mb-6 overflow-hidden rounded-b-2xl border-b border-border sm:-mx-4 sm:mb-8 lg:-mx-8 lg:mb-10">
       {/* 背景层：动态视频由站点级 VideoBackground 提供，这里只叠加压暗与光线特效 */}
       <div className="absolute inset-0 overflow-hidden">
         {/* 横向渐变压暗：左侧重、右侧轻，保证标题可读 */}
@@ -14,7 +14,7 @@ export default function HeroSection() {
       </div>
 
       {/* 文字层 */}
-      <div className="relative z-10 px-6 py-16 md:px-12 md:py-24">
+      <div className="relative z-10 px-5 py-10 sm:px-6 sm:py-16 md:px-12 md:py-24">
         <div className="animate-hero-rise max-w-xl">
           <p className="mb-4 font-display text-sm font-semibold uppercase tracking-[0.35em] text-primary">
             Berserk · 雄性意志
@@ -32,7 +32,7 @@ export default function HeroSection() {
           </p>
 
           {/* 核心理念 */}
-          <div className="glass mt-6 max-w-lg space-y-3 rounded-2xl p-5">
+          <div className="glass mt-5 max-w-lg space-y-2.5 rounded-2xl p-4 sm:p-5">
             <p className="text-sm leading-relaxed text-foreground/90">
               健身只是生活的调味剂。<b className="text-primary">一切运动健身，都是为了服务于更好的生活，而不是被健身绑架。</b>
             </p>

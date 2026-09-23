@@ -106,9 +106,9 @@ export default function NutritionCalculator({
               <div className="overflow-hidden rounded-2xl border border-border/50 bg-card/60 backdrop-blur-xl">
                 <div className="grid gap-0 md:grid-cols-[280px_1fr]">
                   {/* 左侧：大图标 */}
-                  <div className="flex flex-col items-center justify-center bg-gradient-to-br from-primary/10 to-transparent p-8">
-                    <div className="text-7xl">{foodEmoji(selectedFood)}</div>
-                    <h2 className="mt-4 text-center font-display text-2xl font-bold tracking-wide text-foreground">
+                  <div className="flex flex-col items-center justify-center bg-gradient-to-br from-primary/10 to-transparent p-5 sm:p-8">
+                    <div className="text-5xl sm:text-7xl">{foodEmoji(selectedFood)}</div>
+                    <h2 className="mt-4 text-center font-display text-xl font-bold tracking-wide text-foreground sm:text-2xl">
                       {selectedFood.name}
                     </h2>
                     <p className="mt-1 text-xs text-muted-foreground">每 100g 生重参考值</p>
@@ -129,7 +129,7 @@ export default function NutritionCalculator({
                   </div>
 
                   {/* 右侧：玻璃信息面板 */}
-                  <div className="space-y-4 p-6">
+                  <div className="space-y-4 p-4 sm:p-6">
                     <div className="grid grid-cols-2 gap-3">
                       <InfoRow label="热量" value={`${selectedFood.kcal} kcal`} />
                       <InfoRow label="蛋白质" value={`${selectedFood.protein} g`} />
@@ -159,7 +159,7 @@ export default function NutritionCalculator({
                       </div>
                     )}
 
-                    <div className="grid grid-cols-1 gap-2 text-xs sm:grid-cols-2">
+                    <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-2">
                       <div className="rounded-lg border border-border/50 bg-background/40 p-2.5">
                         <p className="text-muted-foreground">脂溶性维生素</p>
                         <p className="mt-0.5 font-medium text-foreground">

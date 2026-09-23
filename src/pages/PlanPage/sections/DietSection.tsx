@@ -38,7 +38,7 @@ export default function DietSection({ diet, weightKg }: DietSectionProps) {
         </div>
       </div>
 
-      <div className="grid gap-3 lg:grid-cols-2">
+      <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-2">
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-base">宏量营养占比</CardTitle>
@@ -53,13 +53,13 @@ export default function DietSection({ diet, weightKg }: DietSectionProps) {
                 />
               ))}
             </div>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
               {MACRO_META.map((m) => (
-                <div key={m.key} className="rounded-md border border-border bg-muted/40 p-2.5 text-center">
-                  <p className="font-display text-2xl font-bold leading-none text-foreground">
+                <div key={m.key} className="rounded-md border border-border bg-muted/40 p-1.5 text-center sm:p-2.5">
+                  <p className="font-display text-base font-bold leading-none text-foreground sm:text-2xl">
                     {diet.macro[m.key]}%
                   </p>
-                  <p className="mt-1 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
+                  <p className="mt-1 flex flex-col items-center justify-center gap-0.5 text-[10px] text-muted-foreground sm:flex-row sm:gap-1.5 sm:text-xs">
                     <span className={cn('h-2 w-2 rounded-full', m.className)} />
                     {m.label}
                   </p>
@@ -76,18 +76,18 @@ export default function DietSection({ diet, weightKg }: DietSectionProps) {
           </CardHeader>
           <CardContent>
             {hasWeight ? (
-              <div className="grid grid-cols-3 gap-2">
-                <div className="rounded-md border border-border bg-muted/40 p-2.5 text-center">
-                  <p className="font-display text-xl font-bold leading-none text-primary">~{kcal(35)}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">增肌</p>
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+                <div className="rounded-md border border-border bg-muted/40 p-1.5 text-center sm:p-2.5">
+                  <p className="font-display text-base font-bold leading-none text-primary sm:text-xl">~{kcal(35)}</p>
+                  <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">增肌</p>
                 </div>
-                <div className="rounded-md border border-border bg-muted/40 p-2.5 text-center">
-                  <p className="font-display text-xl font-bold leading-none text-foreground">~{kcal(30)}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">维持</p>
+                <div className="rounded-md border border-border bg-muted/40 p-1.5 text-center sm:p-2.5">
+                  <p className="font-display text-base font-bold leading-none text-foreground sm:text-xl">~{kcal(30)}</p>
+                  <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">维持</p>
                 </div>
-                <div className="rounded-md border border-border bg-muted/40 p-2.5 text-center">
-                  <p className="font-display text-xl font-bold leading-none text-foreground">~{kcal(25)}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">减脂</p>
+                <div className="rounded-md border border-border bg-muted/40 p-1.5 text-center sm:p-2.5">
+                  <p className="font-display text-base font-bold leading-none text-foreground sm:text-xl">~{kcal(25)}</p>
+                  <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">减脂</p>
                 </div>
               </div>
             ) : (
@@ -115,7 +115,7 @@ export default function DietSection({ diet, weightKg }: DietSectionProps) {
         </CardContent>
       </Card>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
         <div className="rounded-lg border border-border bg-card p-4">
           <p className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <ThumbsUp className="h-4 w-4 text-primary" />

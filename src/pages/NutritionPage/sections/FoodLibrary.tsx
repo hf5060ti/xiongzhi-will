@@ -66,7 +66,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
           没有找到「{query}」，试试其它关键词，或用下方的「拍照营养表」自定义录入。
         </p>
       ) : (
-        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((food) => {
             const active = selectedId === food.id;
             return (
@@ -75,7 +75,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                 type="button"
                 onClick={() => onSelect(food)}
                 className={cn(
-                  'flex flex-col gap-2 rounded-lg border p-3.5 text-left transition-colors',
+                  'flex flex-col gap-1.5 rounded-lg border p-2.5 text-left transition-colors sm:gap-2 sm:p-3.5',
                   active
                     ? 'border-primary bg-primary/10'
                     : 'border-border bg-card hover:border-primary/50 hover:bg-accent',

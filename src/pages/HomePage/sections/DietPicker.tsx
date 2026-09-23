@@ -20,7 +20,7 @@ export default function DietPicker({ selected, onSelect }: DietPickerProps) {
       <p className="mt-1 text-sm text-muted-foreground">
         和训练目标配套，决定你的能量来源与恢复速度。
       </p>
-      <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-4 grid grid-cols-2 gap-2.5 sm:gap-3 xl:grid-cols-4">
         {DIETS.map((diet) => {
           const active = selected === diet.id;
           return (
@@ -29,26 +29,26 @@ export default function DietPicker({ selected, onSelect }: DietPickerProps) {
               type="button"
               onClick={() => onSelect(diet.id)}
               className={cn(
-                'group relative flex flex-col gap-3 rounded-lg border p-4 text-left transition-colors',
+                'group relative flex flex-col gap-2 rounded-lg border p-3 text-left transition-colors',
                 active
                   ? 'border-primary bg-primary/10'
                   : 'border-border bg-card hover:border-primary/50 hover:bg-accent',
               )}
             >
               {active && (
-                <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                  <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                <span className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                  <Check className="h-3 w-3" strokeWidth={3} />
                 </span>
               )}
               <span>
-                <span className="block font-display text-lg font-bold leading-none tracking-wide text-foreground">
+                <span className="block font-display text-base font-bold leading-tight tracking-wide text-foreground">
                   {diet.name}
                 </span>
-                <span className="mt-1 block text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-[0.06em] text-muted-foreground">
                   {diet.en}
                 </span>
               </span>
-              <span className="block text-sm leading-snug text-muted-foreground">{diet.tagline}</span>
+              <span className="block text-[11px] leading-snug text-muted-foreground">{diet.tagline}</span>
               <span className="mt-auto space-y-2">
                 <span className="flex h-1.5 w-full overflow-hidden rounded-full bg-muted">
                   {MACRO_META.map((m) => (
@@ -59,7 +59,7 @@ export default function DietPicker({ selected, onSelect }: DietPickerProps) {
                     />
                   ))}
                 </span>
-                <span className="flex items-center gap-3 text-[11px] text-muted-foreground">
+                <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-muted-foreground">
                   {MACRO_META.map((m) => (
                     <span key={m.key} className="flex items-center gap-1">
                       <span className={cn('h-1.5 w-1.5 rounded-full', m.className)} />

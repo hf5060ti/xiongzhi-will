@@ -40,13 +40,13 @@ export default function PlanPage() {
   }
 
   return (
-    <div className="space-y-12">
-      <header className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-5">
+    <div className="space-y-8 sm:space-y-12">
+      <header className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4 sm:pb-5">
         <div>
           <p className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             Your Plan · 雄性意志
           </p>
-          <h1 className="mt-1 font-display text-4xl font-extrabold tracking-tight text-foreground">
+          <h1 className="mt-1 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
             你的专属方案
           </h1>
         </div>
@@ -56,11 +56,18 @@ export default function PlanPage() {
         </Button>
       </header>
 
-      <TrainingArchitecture />
-      <TrainingRules />
-      <SpecialNeedsGuide />
-      <TrainingSection goal={goal} />
-      <DietSection diet={diet} weightKg={weightKg} />
+      {/* 宽屏两列并排：左列是你的方案（架构 → 训练 → 饮食），右列是通用法则与指南 */}
+      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_400px]">
+        <div className="space-y-8 sm:space-y-12">
+          <TrainingArchitecture />
+          <TrainingSection goal={goal} />
+          <DietSection diet={diet} weightKg={weightKg} />
+        </div>
+        <div className="space-y-8 sm:space-y-12 lg:sticky lg:top-6">
+          <TrainingRules />
+          <SpecialNeedsGuide />
+        </div>
+      </div>
     </div>
   );
 }

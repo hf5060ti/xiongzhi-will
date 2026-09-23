@@ -1,6 +1,6 @@
 ﻿import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
@@ -9,6 +9,8 @@ import VideoBackground from '@/components/VideoBackground';
 
 const NAV_ITEMS = [
   { path: '/', label: '身体', icon: Dumbbell, end: true },
+  { path: '/light', label: '轻盈', icon: TrendingDown, end: false },
+  { path: '/stomach', label: '胃部', icon: Soup, end: false },
   { path: '/mind', label: '心智', icon: Brain, end: false },
   { path: '/career', label: '事业', icon: Briefcase, end: false },
   { path: '/wealth', label: '财富', icon: Coins, end: false },
@@ -50,13 +52,15 @@ export const Layout = () => {
     } else if (entry.target.route === '/plan' && entry.target.goalId) {
       saveGoalId(entry.target.goalId);
       navigate('/plan');
+    } else if (entry.target.route === '/bodyweight' && 'itemId' in entry.target && entry.target.itemId) {
+      navigate(`/bodyweight?item=${entry.target.itemId}`);
     } else {
       navigate(entry.target.route);
     }
   };
 
   return (
-    <div className="relative flex min-h-screen">
+    <div className="relative flex min-h-screen flex-col lg:flex-row">
       {/* 全屏动态视频背景（站点级，全站页面共用） */}
       <VideoBackground />
 
@@ -129,7 +133,7 @@ export const Layout = () => {
       {/* 主内容区 */}
       <main className="relative z-10 flex-1 lg:ml-20">
         {/* 全局搜索（桌面端在内容区顶部） */}
-        <div className="mx-auto w-full max-w-4xl px-4 pt-4 lg:px-8">
+        <div className="mx-auto w-full max-w-7xl px-3 pt-3 sm:px-4 sm:pt-4 lg:px-8">
           <div ref={rootRef} className="relative hidden lg:block">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
             <Input
@@ -172,7 +176,7 @@ export const Layout = () => {
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-4xl px-4 py-6 lg:px-8 lg:py-8">
+        <div className="mx-auto w-full max-w-7xl px-3 py-5 sm:px-4 sm:py-6 lg:px-8 lg:py-8">
           <Outlet />
         </div>
 

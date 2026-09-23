@@ -2,12 +2,15 @@
 // 全局通用搜索：合并动作 / 食物 / 公式三类条目，导航栏搜索框直接用
 import { GOALS } from '@/data/goals';
 import { FOODS } from '@/data/foods';
+import { BODYWEIGHT_ITEMS } from '@/data/bodyweight';
 
 export type SearchTarget =
   | { route: '/plan'; goalId?: string }
   | { route: '/nutrition'; foodId: string }
   | { route: '/body' }
-  | { route: '/cardio'; itemId?: string };
+  | { route: '/cardio'; itemId?: string }
+  | { route: '/bodyweight'; itemId?: string }
+  | { route: '/stomach' };
 
 export interface SearchEntry {
   type: 'movement' | 'food' | 'formula';
@@ -43,9 +46,29 @@ const FORMULAS: SearchEntry[] = [
   { type: 'formula', label: 'Aragon 增肌速率', sublabel: '身体数据 · 初/中/高级月增重', target: { route: '/body' } },
   { type: 'formula', label: '有氧运动消耗', sublabel: '有氧运动 · MET × 体重 × 时长', target: { route: '/cardio' } },
   { type: 'formula', label: '散步消耗', sublabel: '有氧运动 · 4 档配速 MET 换算', target: { route: '/cardio', itemId: 'walking' } },
+  { type: 'formula', label: '自重力量消耗', sublabel: '自重力量 · MET × 体重 × 时长（次数换算）', target: { route: '/bodyweight' } },
+  { type: 'formula', label: '俯卧撑消耗', sublabel: '自重力量 · 标准/钻石/下斜等 8 个变式', target: { route: '/bodyweight', itemId: 'pushup-standard' } },
+  { type: 'formula', label: '引体向上消耗', sublabel: '自重力量 · 斜身/离心/正握/反握', target: { route: '/bodyweight', itemId: 'pullup-standard' } },
+  { type: 'formula', label: '自重深蹲消耗', sublabel: '自重力量 · 相扑/弓步/保加利亚/手枪蹲', target: { route: '/bodyweight', itemId: 'squat-standard' } },
 ];
 
-export const SEARCH_INDEX: SearchEntry[] = [...MOVEMENTS, ...FOOD_ENTRIES, ...FORMULAS];
+/** 自重动作（俯卧撑全变式 / 引体向上 / 自重深蹲）：搜索直达对应动作页 */
+const BODYWEIGHT_ENTRIES: SearchEntry[] = BODYWEIGHT_ITEMS.map((i) => ({
+  type: 'movement' as const,
+  label: i.name,
+  sublabel: `自重力量 · ${i.group} · ${i.level} · ${i.met} MET`,
+  target: { route: '/bodyweight', itemId: i.id },
+}));
+
+/** 胃部（消化系统修复）：搜索直达肠漏 / FODMAP 排查页面 */
+const STOMACH_ENTRIES: SearchEntry[] = [
+  { type: 'formula', label: '肠漏', sublabel: '胃部 · 屏障受损四类核心诱因', target: { route: '/stomach' } },
+  { type: 'formula', label: 'FODMAP 排查表', sublabel: '胃部 · 四类构成与健身饮食常见来源', target: { route: '/stomach' } },
+  { type: 'formula', label: '低 FODMAP 三阶段', sublabel: '胃部 · 排除 / 重引入 / 个性化', target: { route: '/stomach' } },
+  { type: 'formula', label: '腹胀', sublabel: '胃部 · 高 FODMAP 与「干净饮食」悖论', target: { route: '/stomach' } },
+];
+
+export const SEARCH_INDEX: SearchEntry[] = [...MOVEMENTS, ...FOOD_ENTRIES, ...BODYWEIGHT_ENTRIES, ...FORMULAS, ...STOMACH_ENTRIES];
 
 export function searchEntries(query: string, limit = 8): SearchEntry[] {
   const q = query.trim().toLowerCase();

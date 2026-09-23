@@ -212,7 +212,7 @@ export default function PhotoNutritionForm() {
         </div>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <NumberField label="每100g 热量（kcal）" value={values.energy} onChange={setField('energy')} />
         <NumberField label="每100g 蛋白质（g）" value={values.protein} onChange={setField('protein')} />
         <NumberField label="每100g 脂肪（g）" value={values.fat} onChange={setField('fat')} />
@@ -221,7 +221,7 @@ export default function PhotoNutritionForm() {
         <NumberField label="钠（mg，可选）" value={values.sodium} onChange={setField('sodium')} />
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-3">
         <div>
           <label htmlFor="base-grams" className="text-xs text-muted-foreground">
             营养表基准（g）：默认 100；若标注「每份 30g」请改为 30

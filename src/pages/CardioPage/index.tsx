@@ -136,7 +136,7 @@ export default function CardioPage() {
             点进去即显示该项目的消耗公式与计算器。
           </p>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {CARDIO_ITEMS.map((it) => {
             const Icon = it.icon;
             const active = it.id === item.id;
@@ -146,13 +146,13 @@ export default function CardioPage() {
                 type="button"
                 onClick={() => selectItem(it.id)}
                 className={cn(
-                  'rounded-lg border p-4 text-left transition-colors hover-elevate',
+                  'rounded-lg border p-3 text-left transition-colors hover-elevate sm:p-4',
                   active ? 'border-primary/60 bg-primary/10' : 'border-border bg-muted/20',
                 )}
               >
                 <span className="flex items-center gap-2">
                   <Icon className="h-4 w-4 text-primary" />
-                  <span className="font-display text-lg font-bold text-foreground">{it.name}</span>
+                  <span className="font-display text-base font-bold text-foreground sm:text-lg">{it.name}</span>
                   <span className="text-xs uppercase tracking-wider text-muted-foreground">
                     {it.en}
                   </span>
@@ -210,7 +210,7 @@ export default function CardioPage() {
         {/* 速度档位 */}
         <div className="space-y-2">
           <Label className="text-sm">{item.name} · 强度 / 速度档位（MET 参考值）</Label>
-          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 lg:grid-cols-4">
             {item.metRows.map((m) => {
               const active = m.id === metRow.id;
               return (
@@ -243,7 +243,7 @@ export default function CardioPage() {
         </div>
 
         {/* 体重 / 时长 */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-3">
           <div>
             <Label htmlFor="cardio-weight" className="text-sm">
               体重
@@ -407,7 +407,7 @@ export default function CardioPage() {
           <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.desc}</p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-3">
           <div className="rounded-md border border-primary/30 bg-primary/5 p-3">
             <p className="flex items-center gap-2 text-sm font-medium text-foreground">
               <Check className="h-4 w-4 text-primary" />
@@ -460,7 +460,7 @@ export default function CardioPage() {
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-2">
             {WALK_BENEFITS.map((b) => (
               <div key={b.title} className="rounded-md border border-border bg-muted/20 p-3">
                 <p className="text-sm font-medium text-foreground">{b.title}</p>

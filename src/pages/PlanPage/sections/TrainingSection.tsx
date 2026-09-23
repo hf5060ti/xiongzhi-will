@@ -44,7 +44,7 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
       </div>
       <p className="text-sm leading-relaxed text-foreground/85">{goal.desc}</p>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-2">
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center gap-2 text-base">
@@ -261,7 +261,7 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
         </CardContent>
       </Card>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-3">
         <div className="rounded-lg border border-border bg-card p-4">
           <p className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <TrendingUp className="h-4 w-4 text-primary" />

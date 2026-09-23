@@ -3,8 +3,8 @@ import { Wrench, HeartPulse, Utensils, Car, Mountain } from 'lucide-react';
 
 export default function SkillsPage() {
   return (
-    <div className="space-y-8">
-      <header className="border-b border-border pb-5">
+    <div className="space-y-6 sm:space-y-8">
+      <header className="border-b border-border pb-4 sm:pb-5">
         <p className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-primary">
           Skills · 技能
         </p>
@@ -16,7 +16,7 @@ export default function SkillsPage() {
         </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
         <SkillCard
           icon={<HeartPulse className="h-5 w-5" />}
           title="急救"
@@ -63,14 +63,14 @@ export default function SkillsPage() {
 function SkillCard({ icon, title, items }: { icon: React.ReactNode; title: string; items: string[] }) {
   return (
     <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
-      <CardContent className="p-5">
-        <div className="flex items-center gap-2">
-          <span className="text-primary">{icon}</span>
-          <h3 className="font-display text-lg font-bold text-foreground">{title}</h3>
+      <CardContent className="p-3 sm:p-5">
+        <div className="flex items-center gap-1.5">
+          <span className="shrink-0 text-primary">{icon}</span>
+          <h3 className="font-display text-base font-bold leading-tight text-foreground">{title}</h3>
         </div>
-        <ul className="mt-3 space-y-1.5">
+        <ul className="mt-2 space-y-1">
           {items.map((p, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
+            <li key={i} className="flex items-start gap-1.5 text-xs leading-snug text-muted-foreground">
               <span className="mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full bg-primary" />
               {p}
             </li>

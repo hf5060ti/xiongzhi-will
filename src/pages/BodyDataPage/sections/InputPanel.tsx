@@ -140,7 +140,7 @@ export default function InputPanel({ profile, onChange }: InputPanelProps) {
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <div>
           <Label htmlFor="bd-level" className="text-sm">
             <Dumbbell className="mr-1 inline h-3.5 w-3.5 text-muted-foreground" />

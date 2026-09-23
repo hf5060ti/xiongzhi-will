@@ -198,8 +198,8 @@ export default function BodyDataPage() {
       </section>
 
       {/* 目标与饮食联动 */}
-      <section className="grid gap-3 sm:grid-cols-2">
-        <div className="rounded-lg border border-border bg-card p-4">
+      <section className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-2">
+        <div className="rounded-lg border border-border bg-card p-3 sm:p-4">
           <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">当前训练目标</p>
           {d.goal ? (
             <>
@@ -214,7 +214,7 @@ export default function BodyDataPage() {
             </p>
           )}
         </div>
-        <div className="rounded-lg border border-border bg-card p-4">
+        <div className="rounded-lg border border-border bg-card p-3 sm:p-4">
           <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">当前饮食方案</p>
           {d.diet ? (
             <>
@@ -344,7 +344,7 @@ export default function BodyDataPage() {
       </section>
 
       {/* TDEE */}
-      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="grid grid-cols-2 gap-3 lg:grid-cols-3">
         <div className="rounded-lg border border-border bg-card p-4">
           <p className="flex items-center gap-2 text-sm font-medium text-foreground">
             <Activity className="h-4 w-4 text-primary" />
@@ -425,7 +425,7 @@ export default function BodyDataPage() {
             选武器 + 时长，按你当前体重自动折算。剑道基准 270 kcal/h；唐刀 / 武士刀 / 苗刀 / 长枪 200–600 kcal/h；重兵器按重量上浮。
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-3">
           <div className="space-y-2">
             <Label htmlFor="weapon" className="text-sm">武器 / 项目</Label>
             <NativeSelect
@@ -466,7 +466,7 @@ export default function BodyDataPage() {
             输入你能标准做完某重量的次数与重量，反推最大单次重量；再列出各次数的建议训练重量。
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-3">
           <div>
             <Label htmlFor="rm-reps" className="text-sm">完成次数</Label>
             <NativeSelect

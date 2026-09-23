@@ -93,7 +93,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
 
   return (
     <Card className="overflow-hidden border-border/50 bg-card/60 backdrop-blur-xl">
-      <CardContent className="p-6">
+      <CardContent className="p-4 sm:p-6">
         {/* 标题栏 */}
         <div className="flex items-center justify-between">
           <h2 className="flex items-center gap-2 font-display text-xl font-bold text-foreground">
@@ -242,14 +242,14 @@ function StatCard({
 }) {
   const pct = goal > 0 ? Math.min(100, (value / goal) * 100) : 0;
   return (
-    <div className="rounded-xl border border-border/50 bg-background/40 p-3">
-      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+    <div className="rounded-xl border border-border/50 bg-background/40 p-2.5 sm:p-3">
+      <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground sm:text-xs">
         <span className={color}>{icon}</span>
         {label}
       </div>
-      <p className="mt-1 font-display text-2xl font-bold leading-none text-foreground">
+      <p className="mt-1 font-display text-lg font-bold leading-none text-foreground sm:text-2xl">
         {value}
-        <span className="ml-1 text-xs font-normal text-muted-foreground">/ {goal} {unit}</span>
+        <span className="ml-1 text-[10px] font-normal text-muted-foreground sm:text-xs">/ {goal} {unit}</span>
       </p>
       <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted/40">
         <div

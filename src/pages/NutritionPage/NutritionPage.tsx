@@ -35,12 +35,12 @@ export default function NutritionPage() {
   };
 
   return (
-    <div className="space-y-8">
-      <header className="border-b border-border pb-5">
+    <div className="space-y-6 sm:space-y-8">
+      <header className="border-b border-border pb-4 sm:pb-5">
         <p className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-primary">
           Nutrition · 营养库
         </p>
-        <h1 className="mt-1 font-display text-4xl font-extrabold tracking-tight text-foreground">
+        <h1 className="mt-1 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           食物营养库与计算器
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
