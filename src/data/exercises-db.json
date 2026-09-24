@@ -97,51 +97,6 @@
     "id": "Ab_Roller"
   },
   {
-    "name": "Adductor",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "adductors"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lie face down with one leg on a foam roll.",
-      "Rotate the leg so that the foam roll contacts against your inner thigh. Shift as much weight onto the foam roll as can be tolerated.",
-      "While trying to relax the muscles if the inner thigh, roll over the foam between your hip and knee, holding points of tension for 10-30 seconds. Repeat with the other leg."
-    ],
-    "category": "stretching",
-    "images": [
-      "Adductor/0.jpg",
-      "Adductor/1.jpg"
-    ],
-    "id": "Adductor"
-  },
-  {
-    "name": "Adductor/Groin",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "adductors"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lie on your back with your feet raised towards the ceiling.",
-      "Have your partner hold your feet or ankles. Abduct your legs as far as you can. This will be your starting position.",
-      "Attempt to squeeze your legs together for 10 or more seconds, while your partner prevents you from doing so.",
-      "Now, relax the muscles in your legs as your partner pushes your feet apart, stretching as far as is comfortable for you. Be sure to let your partner know when the stretch is adequate to prevent overstretching or injury."
-    ],
-    "category": "stretching",
-    "images": [
-      "Adductor_Groin/0.jpg",
-      "Adductor_Groin/1.jpg"
-    ],
-    "id": "Adductor_Groin"
-  },
-  {
     "name": "Advanced Kettlebell Windmill",
     "force": "push",
     "level": "intermediate",
@@ -293,35 +248,6 @@
       "Alternate_Incline_Dumbbell_Curl/1.jpg"
     ],
     "id": "Alternate_Incline_Dumbbell_Curl"
-  },
-  {
-    "name": "Alternate Leg Diagonal Bound",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": null,
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Assume a comfortable stance with one foot slightly in front of the other.",
-      "Begin by pushing off with the front leg, driving the opposite knee forward and as high as possible before landing. Attempt to cover as much distance to each side with each bound.",
-      "It may help to use a line on the ground to guage distance from side to side.",
-      "Repeat the sequence with the other leg."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Alternate_Leg_Diagonal_Bound/0.jpg",
-      "Alternate_Leg_Diagonal_Bound/1.jpg"
-    ],
-    "id": "Alternate_Leg_Diagonal_Bound"
   },
   {
     "name": "Alternating Cable Shoulder Press",
@@ -550,27 +476,6 @@
     "id": "Ankle_On_The_Knee"
   },
   {
-    "name": "Anterior Tibialis-SMR",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "other",
-    "primaryMuscles": [
-      "calves"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Begin seated on the ground with your legs bent and your feet on the floor.",
-      "Using a Muscle Roller or a rolling pin, apply pressure to the muscles on the outside of your shins. Work from just below the knee to above the ankle, pausing at points of tension for 10-30 seconds. Repeat on the other leg."
-    ],
-    "category": "stretching",
-    "images": [
-      "Anterior_Tibialis-SMR/0.jpg",
-      "Anterior_Tibialis-SMR/1.jpg"
-    ],
-    "id": "Anterior_Tibialis-SMR"
-  },
-  {
     "name": "Anti-Gravity Press",
     "force": "push",
     "level": "beginner",
@@ -672,69 +577,6 @@
     "id": "Around_The_Worlds"
   },
   {
-    "name": "Atlas Stone Trainer",
-    "force": "pull",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "lower back"
-    ],
-    "secondaryMuscles": [
-      "biceps",
-      "forearms",
-      "glutes",
-      "hamstrings",
-      "quadriceps"
-    ],
-    "instructions": [
-      "This trainer is effective for developing Atlas Stone strength for those who don't have access to stones, and are typically made from bar ends or heavy pipe.",
-      "Begin by loading the desired weight onto the bar. Straddle the weight, wrapping your arms around the implement, bending at the hips.",
-      "Begin by pulling the weight up past the knees, extending through the hips. As the weight clears the knees, it can be lapped by resting it on your thighs and sitting back, hugging it tightly to your chest.",
-      "Finish the movement by extending through your hips and knees to raise the weight as high as possible. The weight can be returned to the lap or to the ground for successive repetitions."
-    ],
-    "category": "strongman",
-    "images": [
-      "Atlas_Stone_Trainer/0.jpg",
-      "Atlas_Stone_Trainer/1.jpg"
-    ],
-    "id": "Atlas_Stone_Trainer"
-  },
-  {
-    "name": "Atlas Stones",
-    "force": "pull",
-    "level": "expert",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "lower back"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "adductors",
-      "biceps",
-      "calves",
-      "forearms",
-      "glutes",
-      "hamstrings",
-      "middle back",
-      "quadriceps",
-      "traps"
-    ],
-    "instructions": [
-      "Begin with the atlas stone between your feet. Bend at the hips to wrap your arms vertically around the Atlas Stone, attempting to get your fingers underneath the stone. Many stones will have a small flat portion on the bottom, which will make the stone easier to hold.",
-      "Pulling the stone into your torso, drive through the back half of your feet to pull the stone from the ground.",
-      "As the stone passes the knees, lap it by sitting backward, pulling the stone on top of your thighs.",
-      "Sit low, getting the stone high onto your chest as you change your grip to reach over the stone. Stand, driving through with your hips. Close distance to the loading platform, and lean back, extending the hips to get the stone as high as possible."
-    ],
-    "category": "strongman",
-    "images": [
-      "Atlas_Stones/0.jpg",
-      "Atlas_Stones/1.jpg"
-    ],
-    "id": "Atlas_Stones"
-  },
-  {
     "name": "Axle Deadlift",
     "force": "pull",
     "level": "intermediate",
@@ -791,56 +633,6 @@
       "Back_Flyes_-_With_Bands/1.jpg"
     ],
     "id": "Back_Flyes_-_With_Bands"
-  },
-  {
-    "name": "Backward Drag",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "forearms",
-      "glutes",
-      "hamstrings",
-      "lower back"
-    ],
-    "instructions": [
-      "Load a sled with the desired weight, attaching a rope or straps to the sled that you can hold onto.",
-      "Begin the exercise by moving backwards for a given distance. Leaning back, extend through the legs for short steps to move as quickly as possible."
-    ],
-    "category": "strongman",
-    "images": [
-      "Backward_Drag/0.jpg",
-      "Backward_Drag/1.jpg"
-    ],
-    "id": "Backward_Drag"
-  },
-  {
-    "name": "Backward Medicine Ball Throw",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "medicine ball",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "This exercise is best done with a partner. If you lack a partner, the ball can be thrown and retrieved or thrown against a wall.",
-      "Begin standing a few meters in front of your partner, both facing the same direction. Begin holding the ball between your legs.",
-      "Squat down and then forcefully reverse direction, coming to full extension and you toss the ball over your head to your partner.",
-      "Your partner can then roll the ball back to you. Repeat for the desired number of repetitions."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Backward_Medicine_Ball_Throw/0.jpg",
-      "Backward_Medicine_Ball_Throw/1.jpg"
-    ],
-    "id": "Backward_Medicine_Ball_Throw"
   },
   {
     "name": "Balance Board",
@@ -1021,28 +813,6 @@
       "Band_Pull_Apart/1.jpg"
     ],
     "id": "Band_Pull_Apart"
-  },
-  {
-    "name": "Band Skull Crusher",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "bands",
-    "primaryMuscles": [
-      "triceps"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Secure a band to the base of a rack or the bench. Lay on the bench so that the band is lined up with your head.",
-      "Take hold of the band, raising your elbows so that the upper arm is perpendicular to the floor. With the elbow flexed, the band should be above your head. This will be your starting position.",
-      "Extend through the elbow to straighten your arm, keeping your upper arm in place. Pause at the top of the motion, and return to the starting position."
-    ],
-    "category": "strength",
-    "images": [
-      "Band_Skull_Crusher/0.jpg",
-      "Band_Skull_Crusher/1.jpg"
-    ],
-    "id": "Band_Skull_Crusher"
   },
   {
     "name": "Barbell Ab Rollout",
@@ -1847,34 +1617,6 @@
     "id": "Bench_Dips"
   },
   {
-    "name": "Bench Jump",
-    "force": "push",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Begin with a box or bench 1-2 feet in front of you. Stand with your feet shoulder width apart. This will be your starting position.",
-      "Perform a short squat in preparation for the jump; swing your arms behind you.",
-      "Rebound out of this position, extending through the hips, knees, and ankles to jump as high as possible. Swing your arms forward and up.",
-      "Jump over the bench, landing with the knees bent, absorbing the impact through the legs.",
-      "Turn around and face the opposite direction, then jump back over the bench."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Bench_Jump/0.jpg",
-      "Bench_Jump/1.jpg"
-    ],
-    "id": "Bench_Jump"
-  },
-  {
     "name": "Bench Press - Powerlifting",
     "force": "push",
     "level": "intermediate",
@@ -1957,33 +1699,6 @@
       "Bench_Press_with_Chains/1.jpg"
     ],
     "id": "Bench_Press_with_Chains"
-  },
-  {
-    "name": "Bench Sprint",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Stand on the ground with one foot resting on a bench or box with your heel close to the edge.",
-      "Push off with your foot on top of the bench, extending through the hip and knee.",
-      "Land with the opposite foot on top of the box, returning your other foot back to the start position.",
-      "Continue alternating from one foot to another to complete the set."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Bench_Sprint/0.jpg",
-      "Bench_Sprint/1.jpg"
-    ],
-    "id": "Bench_Sprint"
   },
   {
     "name": "Bent-Arm Barbell Pullover",
@@ -2117,34 +1832,6 @@
       "Bent_Over_Dumbbell_Rear_Delt_Raise_With_Head_On_Bench/1.jpg"
     ],
     "id": "Bent_Over_Dumbbell_Rear_Delt_Raise_With_Head_On_Bench"
-  },
-  {
-    "name": "Bent Over Low-Pulley Side Lateral",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "cable",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "lower back",
-      "middle back",
-      "traps"
-    ],
-    "instructions": [
-      "Select a weight and hold the handle of the low pulley with your right hand.",
-      "Bend at the waist until your torso is nearly parallel to the floor. Your legs should be slightly bent with your left hand placed on your lower left thigh. Your right arm should be hanging from your shoulder in front of you and with a slight bend at the elbow. This will be your starting position.",
-      "Raise your right arm, elbow slightly bent, to the side until the arm is parallel to the floor and in line with your right ear. Breathe out as you perform this step.",
-      "Slowly lower the weight back to the starting position as you breathe in.",
-      "Repeat for the recommended amount of repetitions and repeat the movement with the other arm."
-    ],
-    "category": "strength",
-    "images": [
-      "Bent_Over_Low-Pulley_Side_Lateral/0.jpg",
-      "Bent_Over_Low-Pulley_Side_Lateral/1.jpg"
-    ],
-    "id": "Bent_Over_Low-Pulley_Side_Lateral"
   },
   {
     "name": "Bent Over One-Arm Long Bar Row",
@@ -2414,34 +2101,6 @@
     "id": "Body_Tricep_Press"
   },
   {
-    "name": "Bodyweight Flyes",
-    "force": "push",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "e-z curl bar",
-    "primaryMuscles": [
-      "chest"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "shoulders",
-      "triceps"
-    ],
-    "instructions": [
-      "Position two equally loaded EZ bars on the ground next to each other. Ensure they are able to roll.",
-      "Assume a push-up position over the bars, supporting your weight on your toes and hands with your arms extended and body straight.",
-      "Place your hands on the bars. This will be your starting position.",
-      "Using a slow and controlled motion, move your hands away from the midline of your body, rolling the bars apart. Inhale during this portion of the motion.",
-      "After moving the bars as far apart as you can, return to the starting position by pulling them back together. Exhale as you perform this movement."
-    ],
-    "category": "strength",
-    "images": [
-      "Bodyweight_Flyes/0.jpg",
-      "Bodyweight_Flyes/1.jpg"
-    ],
-    "id": "Bodyweight_Flyes"
-  },
-  {
     "name": "Bodyweight Mid Row",
     "force": "pull",
     "level": "intermediate",
@@ -2594,64 +2253,6 @@
     "id": "Bottoms_Up"
   },
   {
-    "name": "Box Jump (Multiple Response)",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "quadriceps"
-    ],
-    "instructions": [
-      "Assume a relaxed stance facing the box or platform approximately an arm's length away. Arms should be down at the sides and legs slightly bent.",
-      "Using the arms to aid in the initial burst, jump upward and forward, landing with feet simultaneously on top of the box or platform.",
-      "Immediately drop or jump back down to the original starting place; then repeat the sequence."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Box_Jump_Multiple_Response/0.jpg",
-      "Box_Jump_Multiple_Response/1.jpg"
-    ],
-    "id": "Box_Jump_Multiple_Response"
-  },
-  {
-    "name": "Box Skip",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "quadriceps"
-    ],
-    "instructions": [
-      "You will need several boxes lined up about 8 feet apart.",
-      "Begin facing the first box with one leg slightly behind the other.",
-      "Drive off the back leg, attempting to gain as much height with the hips as possible.",
-      "Immediately upon landing on the box, drive the other leg forward and upward to gain height and distance, leaping from the box. Land between the first two boxes with the same leg that landed on the first box.",
-      "Then, step to the next box and repeat."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Box_Skip/0.jpg",
-      "Box_Skip/1.jpg"
-    ],
-    "id": "Box_Skip"
-  },
-  {
     "name": "Box Squat",
     "force": "push",
     "level": "intermediate",
@@ -2740,27 +2341,6 @@
       "Box_Squat_with_Chains/1.jpg"
     ],
     "id": "Box_Squat_with_Chains"
-  },
-  {
-    "name": "Brachialis-SMR",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "biceps"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lie on your side, with your upper arm against the foam roller. The upper arm should be more or less aligned with your body, with the outside of the bicep pressed against the foam roller.",
-      "Raise your hips off of the floor, supporting your weight on your arm and on your feet. Hold for 10-30 seconds, and then switch sides."
-    ],
-    "category": "stretching",
-    "images": [
-      "Brachialis-SMR/0.jpg",
-      "Brachialis-SMR/1.jpg"
-    ],
-    "id": "Brachialis-SMR"
   },
   {
     "name": "Bradford/Rocky Presses",
@@ -3630,27 +3210,6 @@
     "id": "Calf_Stretch_Hands_Against_Wall"
   },
   {
-    "name": "Calves-SMR",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "calves"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Begin seated on the floor. Place a foam roller underneath your lower leg. Your other leg can either be crossed over the opposite or be placed on the floor, supporting some of your weight. This will be your starting position.",
-      "Place your hands to your side or just behind you, and press down to raise your hips off of the floor, placing much of your weight against your calf muscle. Roll from below the knee to above the ankle, pausing at points of tension for 10-30 seconds. Repeat for the other leg."
-    ],
-    "category": "stretching",
-    "images": [
-      "Calves-SMR/0.jpg",
-      "Calves-SMR/1.jpg"
-    ],
-    "id": "Calves-SMR"
-  },
-  {
     "name": "Car Deadlift",
     "force": "pull",
     "level": "intermediate",
@@ -3680,85 +3239,6 @@
     "id": "Car_Deadlift"
   },
   {
-    "name": "Car Drivers",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "barbell",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "forearms"
-    ],
-    "instructions": [
-      "While standing upright, hold a barbell plate in both hands at the 3 and 9 o'clock positions. Your palms should be facing each other and your arms should be extended straight out in front of you. This will be your starting position.",
-      "Initiate the movement by rotating the plate as far to one side as possible. Use the same type of movement you would use to turn a steering wheel to one side.",
-      "Reverse the motion, turning it all the way to the opposite side.",
-      "Repeat for the recommended amount of repetitions."
-    ],
-    "category": "strength",
-    "images": [
-      "Car_Drivers/0.jpg",
-      "Car_Drivers/1.jpg"
-    ],
-    "id": "Car_Drivers"
-  },
-  {
-    "name": "Carioca Quick Step",
-    "force": null,
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "adductors"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "abductors",
-      "calves",
-      "glutes",
-      "hamstrings",
-      "quadriceps"
-    ],
-    "instructions": [
-      "Begin with your feet a few inches apart and your left arm up in a relaxed, athletic position.",
-      "With your right foot, quick step behind and pull the knee up.",
-      "Fire your arms back up when you pull the right knee, being sure that your knee goes straight up and down. Avoid turning your feet as you move and continue to look forward as you move to the side."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Carioca_Quick_Step/0.jpg",
-      "Carioca_Quick_Step/1.jpg"
-    ],
-    "id": "Carioca_Quick_Step"
-  },
-  {
-    "name": "Cat Stretch",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "lower back"
-    ],
-    "secondaryMuscles": [
-      "middle back",
-      "traps"
-    ],
-    "instructions": [
-      "Position yourself on the floor on your hands and knees.",
-      "Pull your belly in and round your spine, lower back, shoulders, and neck, letting your head drop.",
-      "Hold for 15 seconds."
-    ],
-    "category": "stretching",
-    "images": [
-      "Cat_Stretch/0.jpg",
-      "Cat_Stretch/1.jpg"
-    ],
-    "id": "Cat_Stretch"
-  },
-  {
     "name": "Catch and Overhead Throw",
     "force": "push",
     "level": "beginner",
@@ -3783,28 +3263,6 @@
       "Catch_and_Overhead_Throw/1.jpg"
     ],
     "id": "Catch_and_Overhead_Throw"
-  },
-  {
-    "name": "Chain Handle Extension",
-    "force": "push",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "other",
-    "primaryMuscles": [
-      "triceps"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "You will need two cable handle attachments and a flat bench, as well as chains, for this exercise. Clip the middle of the chains to the handles, and position yourself on the flat bench. Your elbows should be pointing straight up.",
-      "Begin by extending through the elbow, keeping your upper arm still, with your wrists pronated.",
-      "Pause at the lockout, and reverse the motion to return to the starting position."
-    ],
-    "category": "powerlifting",
-    "images": [
-      "Chain_Handle_Extension/0.jpg",
-      "Chain_Handle_Extension/1.jpg"
-    ],
-    "id": "Chain_Handle_Extension"
   },
   {
     "name": "Chain Press",
@@ -4085,31 +3543,6 @@
     "id": "Chest_Stretch_on_Stability_Ball"
   },
   {
-    "name": "Child's Pose",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "lower back"
-    ],
-    "secondaryMuscles": [
-      "glutes",
-      "middle back"
-    ],
-    "instructions": [
-      "Get on your hands and knees, walk your hands in front of you.",
-      "Lower your buttocks down to sit on your heels. Let your arms drag along the floor as you sit back to stretch your entire spine.",
-      "Once you settle onto your heels, bring your hands next to your feet and relax. \"breathe\" into your back. Rest your forehead on the floor. Avoid this position if you have knee problems."
-    ],
-    "category": "stretching",
-    "images": [
-      "Childs_Pose/0.jpg",
-      "Childs_Pose/1.jpg"
-    ],
-    "id": "Childs_Pose"
-  },
-  {
     "name": "Chin-Up",
     "force": "pull",
     "level": "beginner",
@@ -4159,36 +3592,6 @@
       "Chin_To_Chest_Stretch/1.jpg"
     ],
     "id": "Chin_To_Chest_Stretch"
-  },
-  {
-    "name": "Circus Bell",
-    "force": "push",
-    "level": "expert",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "forearms",
-      "glutes",
-      "hamstrings",
-      "lower back",
-      "traps",
-      "triceps"
-    ],
-    "instructions": [
-      "The circus bell is an oversized dumbbell with a thick handle. Begin with the dumbbell between your feet, and grip the handle with both hands.",
-      "Clean the dumbbell by extending through your hips and knees to deliver the implement to the desired shoulder, letting go with the extra hand.",
-      "Ensure that you get one of the dumbbell heads behind the shoulder to keep from being thrown off balance. To raise it overhead, dip by flexing the knees, and the drive upwards as you extend the dumbbell overhead, leaning slightly away from it as you do so.",
-      "Carefully guide the bell back to the floor, keeping it under control as much as possible. It is best to perform this event on a thick rubber mat to prevent damage to the floor."
-    ],
-    "category": "strongman",
-    "images": [
-      "Circus_Bell/0.jpg",
-      "Circus_Bell/1.jpg"
-    ],
-    "id": "Circus_Bell"
   },
   {
     "name": "Clean",
@@ -4671,35 +4074,6 @@
     "id": "Cocoons"
   },
   {
-    "name": "Conan's Wheel",
-    "force": null,
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "biceps",
-      "calves",
-      "forearms",
-      "lower back",
-      "shoulders",
-      "traps"
-    ],
-    "instructions": [
-      "With the weight loaded, take a zurcher hold on the end of the implement. Place the bar in the crook of the elbow and hold onto your wrist. Try to keep the weight off of the forearms.",
-      "Begin by lifting the weight from the ground. Keep a tight, upright posture as you being to walk, taking short, fast steps. Look up and away as you turn in a circle. Do not hold your breath during the event. Continue walking until you complete one or more complete turns."
-    ],
-    "category": "strongman",
-    "images": [
-      "Conans_Wheel/0.jpg",
-      "Conans_Wheel/1.jpg"
-    ],
-    "id": "Conans_Wheel"
-  },
-  {
     "name": "Concentration Curls",
     "force": "pull",
     "level": "beginner",
@@ -4775,34 +4149,6 @@
     "id": "Cross_Body_Hammer_Curl"
   },
   {
-    "name": "Cross Over - With Bands",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "bands",
-    "primaryMuscles": [
-      "chest"
-    ],
-    "secondaryMuscles": [
-      "biceps",
-      "shoulders"
-    ],
-    "instructions": [
-      "Secure an exercise band around a stationary post.",
-      "While facing away from the post, grab the handles on both ends of the band and step forward enough to create tension on the band.",
-      "Raise your arms to the sides, parallel to the floor, perpendicular to your torso (your torso and the arms should resemble the letter \"T\") and with the palms facing forward. Have them extended with a slight bend at the elbows. This will be your starting position.",
-      "While keeping your arms straight, bring them across your chest in a semicircular motion to the front as you exhale and flex your pecs. Hold the contraction for a second.",
-      "Slowly return to the starting position as you inhale.",
-      "Perform for the recommended amount of repetitions."
-    ],
-    "category": "strength",
-    "images": [
-      "Cross_Over_-_With_Bands/0.jpg",
-      "Cross_Over_-_With_Bands/1.jpg"
-    ],
-    "id": "Cross_Over_-_With_Bands"
-  },
-  {
     "name": "Crossover Reverse Lunge",
     "force": "pull",
     "level": "intermediate",
@@ -4829,29 +4175,6 @@
       "Crossover_Reverse_Lunge/1.jpg"
     ],
     "id": "Crossover_Reverse_Lunge"
-  },
-  {
-    "name": "Crucifix",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "other",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "forearms"
-    ],
-    "instructions": [
-      "In the crucifix, you statically hold weights out to the side for time. While the event can be practiced using dumbbells, it is best to practice with one of the various implements used, such as axes and hammers, as it feels different.",
-      "Begin standing, and raise your arms out to the side holding the implements. Your arms should be parallel to the ground. In competition, judges or sensors are used to let you know when you break parallel. Hold for as long as you can. Typically, the weights should be heavy enough that you fail in 30-60 seconds."
-    ],
-    "category": "strongman",
-    "images": [
-      "Crucifix/0.jpg",
-      "Crucifix/1.jpg"
-    ],
-    "id": "Crucifix"
   },
   {
     "name": "Crunch - Hands Overhead",
@@ -4953,32 +4276,6 @@
       "Cuban_Press/1.jpg"
     ],
     "id": "Cuban_Press"
-  },
-  {
-    "name": "Dancer's Stretch",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "lower back"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "glutes"
-    ],
-    "instructions": [
-      "Sit up on the floor.",
-      "Cross your right leg over your left, keeping the knee bent. Your left leg is straight and down on the floor.",
-      "Place your left arm on your right leg and your right hand on the floor.",
-      "Rotate your upper body to the right, and hold for 10-20 seconds. Switch sides."
-    ],
-    "category": "stretching",
-    "images": [
-      "Dancers_Stretch/0.jpg",
-      "Dancers_Stretch/1.jpg"
-    ],
-    "id": "Dancers_Stretch"
   },
   {
     "name": "Dead Bug",
@@ -5379,35 +4676,6 @@
     "id": "Deficit_Deadlift"
   },
   {
-    "name": "Depth Jump Leap",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "For this drill you will need two boxes or benches, one 12 to 16 inches high and the other 22 to 26 inches high.",
-      "Stand on one of the two boxes with arms at the sides; feet should be together and slightly off the edge as in the depth jump. Place the other box approximately two or three feet in front of and facing the performer.",
-      "Begin by dropping off the initial box, landing and simultaneously taking off with both feet.",
-      "Rebound by driving upward and outward as intensely as possible, using the arms and full extension of the body to jump onto the higher box. Again, allow the legs to absorb the impact."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Depth_Jump_Leap/0.jpg",
-      "Depth_Jump_Leap/1.jpg"
-    ],
-    "id": "Depth_Jump_Leap"
-  },
-  {
     "name": "Dip Machine",
     "force": "push",
     "level": "beginner",
@@ -5649,59 +4917,6 @@
       "Double_Kettlebell_Windmill/1.jpg"
     ],
     "id": "Double_Kettlebell_Windmill"
-  },
-  {
-    "name": "Double Leg Butt Kick",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Begin standing with your knees slightly bent.",
-      "Quickly squat a short distance, flexing the hips and knees, and immediately extend to jump for maximum vertical height.",
-      "As you go up, tuck your heels by flexing the knees, attempting to touch the buttocks.",
-      "Finish the motion by landing with the knees only partially bent, using your legs to absorb the impact."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Double_Leg_Butt_Kick/0.jpg",
-      "Double_Leg_Butt_Kick/1.jpg"
-    ],
-    "id": "Double_Leg_Butt_Kick"
-  },
-  {
-    "name": "Downward Facing Balance",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "exercise ball",
-    "primaryMuscles": [
-      "glutes"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Lie facedown on top of an exercise ball.",
-      "While resting on your stomach on the ball, walk your hands forward along the floor and lift your legs, extending your elbows and knees."
-    ],
-    "category": "strength",
-    "images": [
-      "Downward_Facing_Balance/0.jpg",
-      "Downward_Facing_Balance/1.jpg"
-    ],
-    "id": "Downward_Facing_Balance"
   },
   {
     "name": "Drag Curl",
@@ -6276,57 +5491,6 @@
     "id": "Dumbbell_Rear_Lunge"
   },
   {
-    "name": "Dumbbell Scaption",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "dumbbell",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "traps"
-    ],
-    "instructions": [
-      "This corrective exercise strengthens the muscles that stabilize your shoulder blade. Hold a light weight in each hand, hanging at your sides. Your thumbs should pointing up.",
-      "Begin the movement raising your arms out in front of you, about 30 degrees off center. Your arms should be fully extended as you perform the movement.",
-      "Continue until your arms are parallel to the ground, and then return to the starting position."
-    ],
-    "category": "strength",
-    "images": [
-      "Dumbbell_Scaption/0.jpg",
-      "Dumbbell_Scaption/1.jpg"
-    ],
-    "id": "Dumbbell_Scaption"
-  },
-  {
-    "name": "Dumbbell Seated Box Jump",
-    "force": "push",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "dumbbell",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Position a box a couple feet to the side of a bench. Hold a dumbbell to your chest with both hands and seat yourself on the bench facing the box. This will be your starting position.",
-      "Plant your feet firmly on the ground as you lean forward, extending through the hips and knees to jump up and forward.",
-      "Land on the box with both feet, absorbing the impact by allowing the hips and knees to bend.",
-      "Step down and return to the starting position."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Dumbbell_Seated_Box_Jump/0.jpg",
-      "Dumbbell_Seated_Box_Jump/1.jpg"
-    ],
-    "id": "Dumbbell_Seated_Box_Jump"
-  },
-  {
     "name": "Dumbbell Seated One-Leg Calf Raise",
     "force": "push",
     "level": "beginner",
@@ -6626,30 +5790,6 @@
     "id": "EZ-Bar_Skullcrusher"
   },
   {
-    "name": "Elbow Circles",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": null,
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "traps"
-    ],
-    "instructions": [
-      "Sit or stand with your feet slightly apart.",
-      "Place your hands on your shoulders with your elbows at shoulder level and pointing out.",
-      "Slowly make a circle with your elbows. Breathe out as you start the circle and breathe in as you complete the circle."
-    ],
-    "category": "stretching",
-    "images": [
-      "Elbow_Circles/0.jpg",
-      "Elbow_Circles/1.jpg"
-    ],
-    "id": "Elbow_Circles"
-  },
-  {
     "name": "Elbow to Knee",
     "force": "pull",
     "level": "beginner",
@@ -6670,30 +5810,6 @@
       "Elbow_to_Knee/1.jpg"
     ],
     "id": "Elbow_to_Knee"
-  },
-  {
-    "name": "Elbows Back",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": null,
-    "primaryMuscles": [
-      "chest"
-    ],
-    "secondaryMuscles": [
-      "shoulders"
-    ],
-    "instructions": [
-      "Stand up straight.",
-      "Place both hands on your lower back, fingers pointing downward and elbows out.",
-      "Then gently pull your elbows back aiming to touch them together."
-    ],
-    "category": "stretching",
-    "images": [
-      "Elbows_Back/0.jpg",
-      "Elbows_Back/1.jpg"
-    ],
-    "id": "Elbows_Back"
   },
   {
     "name": "Elevated Back Lunge",
@@ -6873,30 +5989,6 @@
     "id": "External_Rotation"
   },
   {
-    "name": "External Rotation with Band",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "bands",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Choke the band around a post. The band should be at the same height as your elbow. Stand with your left side to the band a couple of feet away.",
-      "Grasp the end of the band with your right hand, and keep your elbow pressed firmly to your side. We recommend you hold a pad or foam roll in place with your elbow to keep it firmly in position.",
-      "With your upper arm in position, your elbow should be flexed to 90 degrees with your hand reaching across the front of your torso. This will be your starting position.",
-      "Execute the movement by rotating your arm in a backhand motion, keeping your elbow in place.",
-      "Continue as far as you are able, pause, and then return to the starting position."
-    ],
-    "category": "strength",
-    "images": [
-      "External_Rotation_with_Band/0.jpg",
-      "External_Rotation_with_Band/1.jpg"
-    ],
-    "id": "External_Rotation_with_Band"
-  },
-  {
     "name": "External Rotation with Cable",
     "force": "pull",
     "level": "beginner",
@@ -6969,34 +6061,6 @@
       "Farmers_Walk/1.jpg"
     ],
     "id": "Farmers_Walk"
-  },
-  {
-    "name": "Fast Skipping",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Start in a relaxed position with one leg slightly forward. This will be your starting position.",
-      "Skip by executing a step-hop pattern of right-right-step to left-left-step, and so on, alternating back and forth.",
-      "Perform fast skips by maintaining close contact with the ground and reduce air time, moving as quickly as possible."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Fast_Skipping/0.jpg",
-      "Fast_Skipping/1.jpg"
-    ],
-    "id": "Fast_Skipping"
   },
   {
     "name": "Finger Curls",
@@ -7223,55 +6287,6 @@
     "id": "Flutter_Kicks"
   },
   {
-    "name": "Foot-SMR",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "other",
-    "primaryMuscles": [
-      "calves"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "This exercise stretches the fascia of the muscles in the feet. Start off seated with your shoes removed. Using a foot roller or a similar object, such as a small section of pvc pipe, place your foot against the roller across the arch of your foot. This will be your starting position.",
-      "Press down firmly, rolling across the arch of your foot. Hold for 10-30 seconds, and then switch feet."
-    ],
-    "category": "stretching",
-    "images": [
-      "Foot-SMR/0.jpg",
-      "Foot-SMR/1.jpg"
-    ],
-    "id": "Foot-SMR"
-  },
-  {
-    "name": "Forward Drag with Press",
-    "force": "push",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "chest"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings",
-      "quadriceps",
-      "shoulders",
-      "triceps"
-    ],
-    "instructions": [
-      "Attach a dual handled chain or rope attachment to the sled. You should be facing away from the sled, holding a handle in each hand.",
-      "Begin the movement by moving forward for one step. Leaning forward, extend through the legs and hips to move, pausing with each step to extend through the elbows, pressing your hands forward. Step forward until you return to the start position prepared to press."
-    ],
-    "category": "strongman",
-    "images": [
-      "Forward_Drag_with_Press/0.jpg",
-      "Forward_Drag_with_Press/1.jpg"
-    ],
-    "id": "Forward_Drag_with_Press"
-  },
-  {
     "name": "Frankenstein Squat",
     "force": "push",
     "level": "intermediate",
@@ -7327,31 +6342,6 @@
       "Freehand_Jump_Squat/1.jpg"
     ],
     "id": "Freehand_Jump_Squat"
-  },
-  {
-    "name": "Frog Hops",
-    "force": "push",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": null,
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Stand with your hands behind your head, and squat down keeping your torso upright and your head up. This will be your starting position.",
-      "Jump forward several feet, avoiding jumping unnecessarily high. As your feet contact the ground, absorb the impact through your legs, and jump again. Repeat this action 5-10 times."
-    ],
-    "category": "stretching",
-    "images": [
-      "Frog_Hops/0.jpg",
-      "Frog_Hops/1.jpg"
-    ],
-    "id": "Frog_Hops"
   },
   {
     "name": "Frog Sit-Ups",
@@ -7438,35 +6428,6 @@
     "id": "Front_Barbell_Squat_To_A_Bench"
   },
   {
-    "name": "Front Box Jump",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "quadriceps"
-    ],
-    "instructions": [
-      "Begin with a box of an appropriate height 1-2 feet in front of you. Stand with your feet should width apart. This will be your starting position.",
-      "Perform a short squat in preparation for jumping, swinging your arms behind you.",
-      "Rebound out of this position, extending through the hips, knees, and ankles to jump as high as possible. Swing your arms forward and up.",
-      "Land on the box with the knees bent, absorbing the impact through the legs. You can jump from the box back to the ground, or preferably step down one leg at a time."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Front_Box_Jump/0.jpg",
-      "Front_Box_Jump/1.jpg"
-    ],
-    "id": "Front_Box_Jump"
-  },
-  {
     "name": "Front Cable Raise",
     "force": "push",
     "level": "beginner",
@@ -7489,36 +6450,6 @@
       "Front_Cable_Raise/1.jpg"
     ],
     "id": "Front_Cable_Raise"
-  },
-  {
-    "name": "Front Cone Hops (or hurdle hops)",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Set up a row of cones or other small barriers, placing them a few feet apart.",
-      "Stand in front of the first cone with your feet shoulder width apart. This will be your starting position.",
-      "Begin by jumping with both feet over the first cone, swinging both arms as you jump.",
-      "Absorb the impact of landing by bending the knees, rebounding out of the first leap by jumping over the next cone.",
-      "Continue until you have jumped over all of the cones."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Front_Cone_Hops_or_hurdle_hops/0.jpg",
-      "Front_Cone_Hops_or_hurdle_hops/1.jpg"
-    ],
-    "id": "Front_Cone_Hops_or_hurdle_hops"
   },
   {
     "name": "Front Dumbbell Raise",
@@ -7793,31 +6724,6 @@
     "id": "Glute_Ham_Raise"
   },
   {
-    "name": "Glute Kickback",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "glutes"
-    ],
-    "secondaryMuscles": [
-      "hamstrings"
-    ],
-    "instructions": [
-      "Kneel on the floor or an exercise mat and bend at the waist with your arms extended in front of you (perpendicular to the torso) in order to get into a kneeling push-up position but with the arms spaced at shoulder width. Your head should be looking forward and the bend of the knees should create a 90-degree angle between the hamstrings and the calves. This will be your starting position.",
-      "As you exhale, lift up your right leg until the hamstrings are in line with the back while maintaining the 90-degree angle bend. Contract the glutes throughout this movement and hold the contraction at the top for a second. Tip: At the end of the movement the upper leg should be parallel to the floor while the calf should be perpendicular to it.",
-      "Go back to the initial position as you inhale and now repeat with the left leg.",
-      "Continue to alternate legs until all of the recommended repetitions have been performed."
-    ],
-    "category": "strength",
-    "images": [
-      "Glute_Kickback/0.jpg",
-      "Glute_Kickback/1.jpg"
-    ],
-    "id": "Glute_Kickback"
-  },
-  {
     "name": "Goblet Squat",
     "force": "push",
     "level": "beginner",
@@ -7945,28 +6851,6 @@
     "id": "Groin_and_Back_Stretch"
   },
   {
-    "name": "Groiners",
-    "force": "pull",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "adductors"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Begin in a pushup position on the floor. This will be your starting position.",
-      "Using both legs, jump forward landing with your feet next to your hands. Keep your head up as you do so.",
-      "Return to the starting position and immediately repeat the movement, continuing for 10-20 repetitions."
-    ],
-    "category": "stretching",
-    "images": [
-      "Groiners/0.jpg",
-      "Groiners/1.jpg"
-    ],
-    "id": "Groiners"
-  },
-  {
     "name": "Hack Squat",
     "force": "push",
     "level": "beginner",
@@ -8048,28 +6932,6 @@
       "Hammer_Grip_Incline_DB_Bench_Press/1.jpg"
     ],
     "id": "Hammer_Grip_Incline_DB_Bench_Press"
-  },
-  {
-    "name": "Hamstring-SMR",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "In a seated position, extend your legs over a foam roll so that it is position on the back of the upper legs. Place your hands to the side or behind you to help support your weight. This will be your starting position.",
-      "Using your hands, lift your hips off of the floor and shift your weight on the foam roll to one leg. Relax the hamstrings of the leg you are stretching.",
-      "Roll over the foam from below the hip to above the back of the knee, pausing at points of tension for 10-30 seconds. Repeat for the other leg."
-    ],
-    "category": "stretching",
-    "images": [
-      "Hamstring-SMR/0.jpg",
-      "Hamstring-SMR/1.jpg"
-    ],
-    "id": "Hamstring-SMR"
   },
   {
     "name": "Hamstring Stretch",
@@ -8319,61 +7181,6 @@
     "id": "Hanging_Pike"
   },
   {
-    "name": "Heaving Snatch Balance",
-    "force": "push",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "barbell",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "forearms",
-      "glutes",
-      "hamstrings",
-      "shoulders",
-      "triceps"
-    ],
-    "instructions": [
-      "This drill helps you learn the snatch. Begin by holding a light weight across the back of the shoulders. Your feet should be slightly wider than hip width apart with the feet turned out, the same position that you would perform a squat with.",
-      "Begin by dipping with the knees slightly, and popping back up to briefly unload the bar. Drive yourself underneath the bar, elevating it overhead as you descend into a full squat.",
-      "Return to a standing position."
-    ],
-    "category": "olympic weightlifting",
-    "images": [
-      "Heaving_Snatch_Balance/0.jpg",
-      "Heaving_Snatch_Balance/1.jpg"
-    ],
-    "id": "Heaving_Snatch_Balance"
-  },
-  {
-    "name": "Heavy Bag Thrust",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "chest"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "shoulders",
-      "triceps"
-    ],
-    "instructions": [
-      "Utilize a heavy bag for this exercise. Assume an upright stance next to the bag, with your feet staggered, fairly wide apart. Place your hand on the bag at about chest height. This will be your starting position.",
-      "Begin by twisting at the waist, pushing the bag forward as hard as possible. Perform this move quickly, pushing the bag away from your body.",
-      "Receive the bag as it swings back by reversing these steps."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Heavy_Bag_Thrust/0.jpg",
-      "Heavy_Bag_Thrust/1.jpg"
-    ],
-    "id": "Heavy_Bag_Thrust"
-  },
-  {
     "name": "High Cable Curls",
     "force": "pull",
     "level": "intermediate",
@@ -8395,30 +7202,6 @@
       "High_Cable_Curls/1.jpg"
     ],
     "id": "High_Cable_Curls"
-  },
-  {
-    "name": "Hip Circles (prone)",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "abductors"
-    ],
-    "secondaryMuscles": [
-      "adductors"
-    ],
-    "instructions": [
-      "Position yourself on your hands and knees on the ground. Maintaining good posture, raise one bent knee off of the ground. This will be your starting position.",
-      "Keeping the knee in a bent position, rotate the femur in an arc, attempting to make a big circle with your knee.",
-      "Perform this slowly for a number of repetitions, and repeat on the other side."
-    ],
-    "category": "stretching",
-    "images": [
-      "Hip_Circles_prone/0.jpg",
-      "Hip_Circles_prone/1.jpg"
-    ],
-    "id": "Hip_Circles_prone"
   },
   {
     "name": "Hip Extension with Bands",
@@ -8544,35 +7327,6 @@
     "id": "Hug_Knees_To_Chest"
   },
   {
-    "name": "Hurdle Hops",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Set up a row of hurdles or other small barriers, placing them a few feet apart.",
-      "Stand in front of the first hurdle with your feet shoulder width apart. This will be your starting position.",
-      "Begin by jumping with both feet over the first hurdle, swinging both arms as you jump.",
-      "Absorb the impact of landing by bending the knees, rebounding out of the first leap by jumping over the next hurdle. Continue until you have jumped over all of the hurdles."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Hurdle_Hops/0.jpg",
-      "Hurdle_Hops/1.jpg"
-    ],
-    "id": "Hurdle_Hops"
-  },
-  {
     "name": "Hyperextensions (Back Extensions)",
     "force": "pull",
     "level": "beginner",
@@ -8647,28 +7401,6 @@
       "IT_Band_and_Glute_Stretch/1.jpg"
     ],
     "id": "IT_Band_and_Glute_Stretch"
-  },
-  {
-    "name": "Iliotibial Tract-SMR",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "abductors"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lay on your side, with the bottom leg placed onto a foam roller between the hip and the knee. The other leg can be crossed in front of you.",
-      "Place as much of your weight as is tolerable onto your bottom leg; there is no need to keep your bottom leg in contact with the ground. Be sure to relax the muscles of the leg you are stretching.",
-      "Roll your leg over the foam from you hip to your knee, pausing for 10-30 seconds at points of tension. Repeat with the opposite leg."
-    ],
-    "category": "stretching",
-    "images": [
-      "Iliotibial_Tract-SMR/0.jpg",
-      "Iliotibial_Tract-SMR/1.jpg"
-    ],
-    "id": "Iliotibial_Tract-SMR"
   },
   {
     "name": "Inchworm",
@@ -9146,27 +7878,6 @@
     "id": "Incline_Push-Up_Wide"
   },
   {
-    "name": "Intermediate Groin Stretch",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "other",
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lie on your back with your legs extended. Loop a belt, rope, or band around one of your feet, and swing that leg as far to the side as you can. This will be your starting position.",
-      "Pull gently on the belt to create tension in your groin and hamstring muscles. Hold for 10-20 seconds, and repeat on the other side."
-    ],
-    "category": "stretching",
-    "images": [
-      "Intermediate_Groin_Stretch/0.jpg",
-      "Intermediate_Groin_Stretch/1.jpg"
-    ],
-    "id": "Intermediate_Groin_Stretch"
-  },
-  {
     "name": "Intermediate Hip Flexor and Quad Stretch",
     "force": "static",
     "level": "intermediate",
@@ -9336,30 +8047,6 @@
       "Isometric_Chest_Squeezes/1.jpg"
     ],
     "id": "Isometric_Chest_Squeezes"
-  },
-  {
-    "name": "Isometric Neck Exercise - Front And Back",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "neck"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "With your head and neck in a neutral position (normal position with head erect facing forward), place both of your hands on the front side of your head.",
-      "Now gently push forward as you contract the neck muscles but resisting any movement of your head. Start with slow tension and increase slowly. Keep breathing normally as you execute this contraction.",
-      "Hold for the recommended number of seconds.",
-      "Now release the tension slowly.",
-      "Rest for the recommended amount of time and repeat with your hands placed on the back side of your head."
-    ],
-    "category": "strength",
-    "images": [
-      "Isometric_Neck_Exercise_-_Front_And_Back/0.jpg",
-      "Isometric_Neck_Exercise_-_Front_And_Back/1.jpg"
-    ],
-    "id": "Isometric_Neck_Exercise_-_Front_And_Back"
   },
   {
     "name": "Isometric Neck Exercise - Sides",
@@ -9593,40 +8280,6 @@
     "id": "Jogging_Treadmill"
   },
   {
-    "name": "Keg Load",
-    "force": "pull",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "lower back"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "biceps",
-      "calves",
-      "forearms",
-      "glutes",
-      "hamstrings",
-      "middle back",
-      "quadriceps",
-      "shoulders",
-      "traps"
-    ],
-    "instructions": [
-      "To load kegs, place the desired number a distance from the loading platform, typically 30-50 feet.",
-      "Begin by grabbing the close handle of the first keg, tilting it onto its side to grab the opposite edge of the bottom of the keg. Lift the keg up to your chest.",
-      "The higher you can place the keg, the faster you should be able to move to the platform. Shouldering is usually not allowed. Be sure to keep a firm hold on the keg. Move as quickly as possible to the platform, and load it, extending through your hips, knees, and ankles to get it as high as possible.",
-      "Return to the starting position to retrieve the next keg, and repeat until the event is completed."
-    ],
-    "category": "strongman",
-    "images": [
-      "Keg_Load/0.jpg",
-      "Keg_Load/1.jpg"
-    ],
-    "id": "Keg_Load"
-  },
-  {
     "name": "Kettlebell Arnold Press",
     "force": "push",
     "level": "intermediate",
@@ -9701,59 +8354,6 @@
       "Kettlebell_Figure_8/1.jpg"
     ],
     "id": "Kettlebell_Figure_8"
-  },
-  {
-    "id": "Kettlebell_Halo",
-    "name": "Kettlebell Halo",
-    "force": null,
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "kettlebells",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "traps",
-      "middle back",
-      "abdominals",
-      "triceps"
-    ],
-    "instructions": [
-      "Stand tall with your feet hip-width apart. Hold a kettlebell upside down by the horns, with the bell above your hands and close to your chest. Brace your abdominals and squeeze your glutes so your ribcage stays down. This is your starting position.",
-      "Keeping your elbows close to your head, move the kettlebell up past one ear and around behind your head.",
-      "Continue the circle past the opposite ear and back down to the starting position in front of your chest, letting the bell pass close to your body throughout.",
-      "Complete the prescribed number of circles in one direction, then repeat the same number in the opposite direction.",
-      "Move slowly and keep your head, hips and lower back still. If your lower back arches or the bell drifts far from your head, use a lighter weight."
-    ],
-    "category": "strength",
-    "images": []
-  },
-  {
-    "id": "Kettlebell_Halo_With_Overhead_Extension",
-    "name": "Kettlebell Halo with Overhead Extension",
-    "force": "push",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "kettlebells",
-    "primaryMuscles": [
-      "shoulders",
-      "triceps"
-    ],
-    "secondaryMuscles": [
-      "traps",
-      "middle back",
-      "abdominals"
-    ],
-    "instructions": [
-      "Stand tall with your feet hip-width apart. Hold a kettlebell upside down by the horns, with the bell above your hands and close to your chest. Brace your abdominals and squeeze your glutes so your ribcage stays down. This is your starting position.",
-      "Keeping your elbows close to your head, move the kettlebell up past one ear and around until it sits behind your head. Pause here.",
-      "From this position, extend your elbows to press the kettlebell up and overhead until your arms are straight, keeping your upper arms alongside your head.",
-      "Bend your elbows to lower the kettlebell back to the pause position behind your head, under control.",
-      "Continue the circle past the opposite ear and back down to the starting position in front of your chest to complete one repetition.",
-      "Alternate the direction of the circle on each repetition. Keep your head, hips and lower back still throughout; if your lower back arches or you cannot reach the overhead position without leaning back, use a lighter weight or perform the halo and the extension as separate exercises."
-    ],
-    "category": "strength",
-    "images": []
   },
   {
     "name": "Kettlebell Hang Clean",
@@ -10126,30 +8726,6 @@
     "id": "Kipping_Muscle_Up"
   },
   {
-    "name": "Knee Across The Body",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "glutes"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "lower back"
-    ],
-    "instructions": [
-      "Lie down on the floor with your right leg straight. Bend your left leg and lower it across your body, holding the knee down toward the floor with your right hand. (The knee doesn't need to touch the floor if you're tight.)",
-      "Place your left arm comfortably beside you and turn your head to the left. Imagine you have a weight tied to your tailbone. let your tailbone fall back toward the floor as your chest reaches in the opposite direction to stretch your lower back. Switch sides."
-    ],
-    "category": "stretching",
-    "images": [
-      "Knee_Across_The_Body/0.jpg",
-      "Knee_Across_The_Body/1.jpg"
-    ],
-    "id": "Knee_Across_The_Body"
-  },
-  {
     "name": "Knee Circles",
     "force": "pull",
     "level": "beginner",
@@ -10197,59 +8773,6 @@
       "Knee_Hip_Raise_On_Parallel_Bars/1.jpg"
     ],
     "id": "Knee_Hip_Raise_On_Parallel_Bars"
-  },
-  {
-    "name": "Knee Tuck Jump",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "quadriceps"
-    ],
-    "instructions": [
-      "Begin in a comfortable standing position with your knees slightly bent. Hold your hands in front of you, palms down with your fingertips together at chest height. This will be your starting position.",
-      "Rapidly dip down into a quarter squat and immediately explode upward. Drive the knees towards the chest, attempting to touch them to the palms of the hands.",
-      "Jump as high as you can, raising your knees up, and then ensure a good land be re-extending your legs, absorbing impact through be allowing the knees to rebend."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Knee_Tuck_Jump/0.jpg",
-      "Knee_Tuck_Jump/1.jpg"
-    ],
-    "id": "Knee_Tuck_Jump"
-  },
-  {
-    "name": "Kneeling Arm Drill",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "abdominals"
-    ],
-    "instructions": [
-      "This drill helps increase arm efficiency during the run. Begin kneeling, left foot in front, right knee down. Apply pressure through the front heel to keep your glutes and hamstrings activated.",
-      "Begin by blocking the arms in long, pendulum like swings. Close the arm angle, blocking with the arms as you would when jogging, progressing to a run and finally a sprint.",
-      "As soon as your hands pass the hip, accelerate them forward during the sprinting motion to move them as quickly as possible.",
-      "Switch knees and repeat."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Kneeling_Arm_Drill/0.jpg",
-      "Kneeling_Arm_Drill/1.jpg"
-    ],
-    "id": "Kneeling_Arm_Drill"
   },
   {
     "name": "Kneeling Cable Crunch With Alternating Oblique Twists",
@@ -10304,27 +8827,6 @@
       "Kneeling_Cable_Triceps_Extension/1.jpg"
     ],
     "id": "Kneeling_Cable_Triceps_Extension"
-  },
-  {
-    "name": "Kneeling Forearm Stretch",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": null,
-    "primaryMuscles": [
-      "forearms"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Start by kneeling on a mat with your palms flat and your fingers pointing back toward your knees.",
-      "Slowly lean back keeping your palms flat on the floor until you feel a stretch in your wrists and forearms. Hold for 20-30 seconds."
-    ],
-    "category": "stretching",
-    "images": [
-      "Kneeling_Forearm_Stretch/0.jpg",
-      "Kneeling_Forearm_Stretch/1.jpg"
-    ],
-    "id": "Kneeling_Forearm_Stretch"
   },
   {
     "name": "Kneeling High Pulley Row",
@@ -10513,95 +9015,6 @@
     "id": "Landmine_Linear_Jammer"
   },
   {
-    "name": "Lateral Bound",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "adductors"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "calves",
-      "glutes",
-      "hamstrings",
-      "quadriceps"
-    ],
-    "instructions": [
-      "Assume a half squat position facing 90 degrees from your direction of travel. This will be your starting position.",
-      "Allow your lead leg to do a countermovement inward as you shift your weight to the outside leg.",
-      "Immediately push off and extend, attempting to bound to the side as far as possible.",
-      "Upon landing, immediately push off in the opposite direction, returning to your original start position.",
-      "Continue back and forth for several repetitions."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Lateral_Bound/0.jpg",
-      "Lateral_Bound/1.jpg"
-    ],
-    "id": "Lateral_Bound"
-  },
-  {
-    "name": "Lateral Box Jump",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "adductors"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "calves",
-      "glutes",
-      "hamstrings",
-      "quadriceps"
-    ],
-    "instructions": [
-      "Assume a comfortable standing position, with a short box positioned next to you. This will be your starting position.",
-      "Quickly dip into a quarter squat to initiate the stretch reflex, and immediately reverse direction to jump up and to the side.",
-      "Bring your knees high enough to ensure your feet have good clearance over the box.",
-      "Land on the center of the box, using your legs to absorb the impact.",
-      "Carefully jump down to the other side of the box, and continue going back and forth for several repetitions."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Lateral_Box_Jump/0.jpg",
-      "Lateral_Box_Jump/1.jpg"
-    ],
-    "id": "Lateral_Box_Jump"
-  },
-  {
-    "name": "Lateral Cone Hops",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "adductors"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "calves",
-      "glutes",
-      "hamstrings",
-      "quadriceps"
-    ],
-    "instructions": [
-      "Position a number of cones in a row several feet apart.",
-      "Stand next to the end of the cones, facing 90 degrees to the direction of travel. This will be your starting position.",
-      "Begin the jump by dipping with the knees to initiate a stretch reflex, and immediately reverse direction to push off the ground, jumping up and sideways over the cone.",
-      "Use your legs to absorb impact upon landing, and rebound into the next jump, continuing down the row of cones."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Lateral_Cone_Hops/0.jpg",
-      "Lateral_Cone_Hops/1.jpg"
-    ],
-    "id": "Lateral_Cone_Hops"
-  },
-  {
     "name": "Lateral Raise - With Bands",
     "force": "push",
     "level": "beginner",
@@ -10623,27 +9036,6 @@
       "Lateral_Raise_-_With_Bands/1.jpg"
     ],
     "id": "Lateral_Raise_-_With_Bands"
-  },
-  {
-    "name": "Latissimus Dorsi-SMR",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "lats"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "While lying on the floor, place a foam roll under your back and to one side, just behind your arm pit. This will be your starting position.",
-      "Keep the arm of the side being stretched behind and to the side of you as you shift your weight onto your lats, keeping your upper body off of the ground. Hold for 10-30 seconds, and switch sides."
-    ],
-    "category": "stretching",
-    "images": [
-      "Latissimus_Dorsi-SMR/0.jpg",
-      "Latissimus_Dorsi-SMR/1.jpg"
-    ],
-    "id": "Latissimus_Dorsi-SMR"
   },
   {
     "name": "Leg-Over Floor Press",
@@ -10993,118 +9385,6 @@
     "id": "Leverage_Shrug"
   },
   {
-    "name": "Linear 3-Part Start Technique",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": null,
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "quadriceps"
-    ],
-    "instructions": [
-      "This drill helps you accelerate as quickly as possible into a sprint from a dead stop. It helps to use a line to start from. Begin with two feet on the line. Place your left foot with the toe next to your right ankle. Place your right foot 4-6 inches behind the left.",
-      "Place your right hand onto the line, and thing bring your nose close to your left knee.",
-      "Squat down as you lean foward, your head being lower than your hips and your weight loaded onto the left leg. This will be your starting position.",
-      "Take your left hand up so that it is parallel to the ground, pointing behind you, and explode out when ready."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Linear_3-Part_Start_Technique/0.jpg",
-      "Linear_3-Part_Start_Technique/1.jpg"
-    ],
-    "id": "Linear_3-Part_Start_Technique"
-  },
-  {
-    "name": "Linear Acceleration Wall Drill",
-    "force": null,
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": null,
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "quadriceps"
-    ],
-    "instructions": [
-      "Lean at around 45 degrees against a wall. Your feet should be together, glutes contracted.",
-      "Begin by lifting your right knee quickly, pausing, and then driving it straight down into the ground.",
-      "Switch legs, raising the opposite knee, and then attacking the ground straight down.",
-      "Repeat once more with your right leg, and as soon as the right foot strikes the ground hammer them out rapidly, alternating left and right as fast as you can."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Linear_Acceleration_Wall_Drill/0.jpg",
-      "Linear_Acceleration_Wall_Drill/1.jpg"
-    ],
-    "id": "Linear_Acceleration_Wall_Drill"
-  },
-  {
-    "name": "Linear Depth Jump",
-    "force": "push",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "You will need two boxes or benches spaced a few feet away from each other. Begin by standing on one box facing towards the other platform.",
-      "To initiate the movement, gently drop down to the ground between your platforms, allowing the knees and hips to flex.",
-      "Reverse the motion by exploding, extending through the hips, knees, and ankles to jump onto the other platform.",
-      "Land softly, asborbing the impact through the legs."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Linear_Depth_Jump/0.jpg",
-      "Linear_Depth_Jump/1.jpg"
-    ],
-    "id": "Linear_Depth_Jump"
-  },
-  {
-    "name": "Log Lift",
-    "force": "push",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "chest",
-      "glutes",
-      "hamstrings",
-      "lower back",
-      "middle back",
-      "quadriceps",
-      "traps",
-      "triceps"
-    ],
-    "instructions": [
-      "Begin standing with the log in front of you. Grasp the handles, and begin to clean the log. As you are bent over to start the clean, attempt to get the log as high as possible, pulling it into your chest. Extend through the hips and knees to bring it up to complete the clean.",
-      "Push your head back and look up, creating a shelf on your chest to rest the log. Begin the press by dipping, flexing slightly through the knees and reversing the motion. This push press will generate momentum to start the log moving vertically. Continue by extending through the elbows to press the log above your head. There are no strict rules on form, so use whatever techniques you are most efficient with. As the log is pressed, ensure that you push your head through on each repetition, looking forward.",
-      "Repeat as many times as possible. Attempt to control the descent of the log as it is returned to the ground."
-    ],
-    "category": "strongman",
-    "images": [
-      "Log_Lift/0.jpg",
-      "Log_Lift/1.jpg"
-    ],
-    "id": "Log_Lift"
-  },
-  {
     "name": "London Bridges",
     "force": "pull",
     "level": "intermediate",
@@ -11130,27 +9410,6 @@
       "London_Bridges/1.jpg"
     ],
     "id": "London_Bridges"
-  },
-  {
-    "name": "Looking At Ceiling",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": null,
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Kneel on the floor, holding your heels with both hands.",
-      "Lift your buttocks up and forward while bringing your head back to look up at the ceiling, to give an arch in your back."
-    ],
-    "category": "stretching",
-    "images": [
-      "Looking_At_Ceiling/0.jpg",
-      "Looking_At_Ceiling/1.jpg"
-    ],
-    "id": "Looking_At_Ceiling"
   },
   {
     "name": "Low Cable Crossover",
@@ -11231,27 +9490,6 @@
     "id": "Low_Pulley_Row_To_Neck"
   },
   {
-    "name": "Lower Back-SMR",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "lower back"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "In a seated position, place a foam roll under your lower back. Cross your arms in front of you and protract your shoulders. This will be your starting position.",
-      "Raise your hips off of the floor and lean back, keeping your weight on your lower back. Now shift your weight slightly to one side, keeping your weight off of the spine and on the muscles to the side of it. Roll over your lower back, holding points of tension for 10-30 seconds. Repeat on the other side."
-    ],
-    "category": "stretching",
-    "images": [
-      "Lower_Back-SMR/0.jpg",
-      "Lower_Back-SMR/1.jpg"
-    ],
-    "id": "Lower_Back-SMR"
-  },
-  {
     "name": "Lower Back Curl",
     "force": "static",
     "level": "beginner",
@@ -11326,28 +9564,6 @@
       "Lunge_Sprint/1.jpg"
     ],
     "id": "Lunge_Sprint"
-  },
-  {
-    "name": "Lying Bent Leg Groin",
-    "force": "static",
-    "level": "expert",
-    "mechanic": null,
-    "equipment": "other",
-    "primaryMuscles": [
-      "adductors"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lie on your back with your knees bent and the soles of the feet pressed together. Have your partner hold your knees. This will be your starting position.",
-      "Attempt to squeeze your knees together, while your partner prevents any movement from occurring.",
-      "After 10-20 seconds, relax your muscles as your partner gently pushes your knees towards the floor. Be sure to inform your helper when the stretch is adequate to prevent injury or overstretching."
-    ],
-    "category": "stretching",
-    "images": [
-      "Lying_Bent_Leg_Groin/0.jpg",
-      "Lying_Bent_Leg_Groin/1.jpg"
-    ],
-    "id": "Lying_Bent_Leg_Groin"
   },
   {
     "name": "Lying Cable Curl",
@@ -11476,29 +9692,6 @@
     "id": "Lying_Close-Grip_Barbell_Triceps_Press_To_Chin"
   },
   {
-    "name": "Lying Crossover",
-    "force": "static",
-    "level": "expert",
-    "mechanic": null,
-    "equipment": "body only",
-    "primaryMuscles": [
-      "abductors"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lie on your back with your legs extended.",
-      "Cross one leg over your body with the knee bent, attempting to touch the knee to the ground. Your partner should kneel beside you, holding your shoulder down with one hand and controlling the crossed leg with the other. this will be your starting position.",
-      "Attempt to raise the bent knee off of the ground as your partner prevents any actual movement.",
-      "After 10-20 seconds, relax the leg as your partner gently presses the knee towards the floor. Repeat with the other side."
-    ],
-    "category": "stretching",
-    "images": [
-      "Lying_Crossover/0.jpg",
-      "Lying_Crossover/1.jpg"
-    ],
-    "id": "Lying_Crossover"
-  },
-  {
     "name": "Lying Dumbbell Tricep Extension",
     "force": "push",
     "level": "intermediate",
@@ -11523,52 +9716,6 @@
       "Lying_Dumbbell_Tricep_Extension/1.jpg"
     ],
     "id": "Lying_Dumbbell_Tricep_Extension"
-  },
-  {
-    "name": "Lying Face Down Plate Neck Resistance",
-    "force": "pull",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "other",
-    "primaryMuscles": [
-      "neck"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lie face down with your whole body straight on a flat bench while holding a weight plate behind your head. Tip: You will need to position yourself so that your shoulders are slightly above the end of a flat bench in order for the upper chest, neck and face to be off the bench. This will be your starting position.",
-      "While keeping the plate secure on the back of your head slowly lower your head (as in saying \"yes\") as you breathe in.",
-      "Raise your head back up to the starting position in a semi-circular motion as you breathe out. Hold the contraction for a second.",
-      "Repeat for the recommended amount of repetitions."
-    ],
-    "category": "strength",
-    "images": [
-      "Lying_Face_Down_Plate_Neck_Resistance/0.jpg",
-      "Lying_Face_Down_Plate_Neck_Resistance/1.jpg"
-    ],
-    "id": "Lying_Face_Down_Plate_Neck_Resistance"
-  },
-  {
-    "name": "Lying Face Up Plate Neck Resistance",
-    "force": "pull",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "other",
-    "primaryMuscles": [
-      "neck"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lie face up with your whole body straight on a flat bench while holding a weight plate on top of your forehead. Tip: You will need to position yourself so that your shoulders are slightly above the end of a flat bench in order for the traps, neck and head to be off the bench. This will be your starting position.",
-      "While keeping the plate secure on your forehead slowly lower your head back in a semi-circular motion as you breathe in.",
-      "Raise your head back up to the starting position in a semi-circular motion as you breathe out. Hold the contraction for a second.",
-      "Repeat for the recommended amount of repetitions."
-    ],
-    "category": "strength",
-    "images": [
-      "Lying_Face_Up_Plate_Neck_Resistance/0.jpg",
-      "Lying_Face_Up_Plate_Neck_Resistance/1.jpg"
-    ],
-    "id": "Lying_Face_Up_Plate_Neck_Resistance"
   },
   {
     "name": "Lying Glute",
@@ -11994,57 +10141,6 @@
     "id": "Medicine_Ball_Chest_Pass"
   },
   {
-    "name": "Medicine Ball Full Twist",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "medicine ball",
-    "primaryMuscles": [
-      "abdominals"
-    ],
-    "secondaryMuscles": [
-      "shoulders"
-    ],
-    "instructions": [
-      "For this exercise you will need a medicine ball and a partner. Stand back to back with your partner, spaced 2-3 feet apart. This will be your starting position.",
-      "Hold the ball in front of the trunk. Open the hips and turn the shoulders at the same time as your partner.",
-      "For full rotation, you and your partner should twist in the same direction, i.e. counter-clockwise.",
-      "Pass the ball to your partner, and both of you can now twist in the opposite direction to repeat the procedure."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Medicine_Ball_Full_Twist/0.jpg",
-      "Medicine_Ball_Full_Twist/1.jpg"
-    ],
-    "id": "Medicine_Ball_Full_Twist"
-  },
-  {
-    "name": "Medicine Ball Scoop Throw",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "medicine ball",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "hamstrings",
-      "quadriceps"
-    ],
-    "instructions": [
-      "Assume a semisquat stance with a medicine ball in your hands. Your arms should hang so the ball is near your feet.",
-      "Begin by thrusting the hips forward as you extend through the legs, jumping up.",
-      "As you do, swing your arms up and over your head, keeping them extended, releasing the ball at the peak of your movement. The goal is to throw the ball the greatest distance behind you."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Medicine_Ball_Scoop_Throw/0.jpg",
-      "Medicine_Ball_Scoop_Throw/1.jpg"
-    ],
-    "id": "Medicine_Ball_Scoop_Throw"
-  },
-  {
     "name": "Middle Back Shrug",
     "force": "pull",
     "level": "intermediate",
@@ -12165,31 +10261,6 @@
       "Mountain_Climbers/1.jpg"
     ],
     "id": "Mountain_Climbers"
-  },
-  {
-    "name": "Moving Claw Series",
-    "force": null,
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": null,
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "quadriceps"
-    ],
-    "instructions": [
-      "This move helps prepare your running form to help you excel at sprinting. As you run, be sure to flex the knee, aiming to kick your glutes as the hip extends.",
-      "Reload the quad as the leg moves back forward, attacking the ground on the next step.",
-      "Ensure that as you run, you block with the arms, punching through in a rapid 1-2 motion."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Moving_Claw_Series/0.jpg",
-      "Moving_Claw_Series/1.jpg"
-    ],
-    "id": "Moving_Claw_Series"
   },
   {
     "name": "Muscle Snatch",
@@ -12364,27 +10435,6 @@
       "Natural_Glute_Ham_Raise/1.jpg"
     ],
     "id": "Natural_Glute_Ham_Raise"
-  },
-  {
-    "name": "Neck-SMR",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "other",
-    "primaryMuscles": [
-      "neck"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Using a muscle roller or a rolling pin, place the roller behind your head and against your neck. Make sure that you do not place the roller directly against the spine, but turned slightly so that the roller is pressed against the muscles to either side of the spine. This will be your starting position.",
-      "Starting at the top of your neck, slowly roll down the muscles of your neck, pausing at points of tension for 10-30 seconds."
-    ],
-    "category": "stretching",
-    "images": [
-      "Neck-SMR/0.jpg",
-      "Neck-SMR/1.jpg"
-    ],
-    "id": "Neck-SMR"
   },
   {
     "name": "Neck Press",
@@ -12587,33 +10637,6 @@
       "One-Arm_Flat_Bench_Dumbbell_Flye/1.jpg"
     ],
     "id": "One-Arm_Flat_Bench_Dumbbell_Flye"
-  },
-  {
-    "name": "One-Arm High-Pulley Cable Side Bends",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "cable",
-    "primaryMuscles": [
-      "abdominals"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Connect a standard handle to a tower. Move cable to highest pulley position.",
-      "Stand with side to cable. With one hand, reach up and grab handle with underhand grip.",
-      "Pull down cable until elbow touches your side and the handle is by your shoulder.",
-      "Position feet hip-width apart. Place free hand on hip to help gauge pivot point.",
-      "Keep arm in static position. Contract oblique to bring the weight down in a side crunch.",
-      "Once you reach maximum contraction, slowly release the weight to the starting position. The weight stack should never be unloaded in a resting position. The aim is constant tension during the set.",
-      "Repeat to failure.",
-      "Then, reposition and repeat the same series of movements on the opposite side."
-    ],
-    "category": "strength",
-    "images": [
-      "One-Arm_High-Pulley_Cable_Side_Bends/0.jpg",
-      "One-Arm_High-Pulley_Cable_Side_Bends/1.jpg"
-    ],
-    "id": "One-Arm_High-Pulley_Cable_Side_Bends"
   },
   {
     "name": "One-Arm Incline Lateral Raise",
@@ -13351,81 +11374,6 @@
     "id": "One_Arm_Supinated_Dumbbell_Triceps_Extension"
   },
   {
-    "name": "One Half Locust",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "biceps",
-      "chest"
-    ],
-    "instructions": [
-      "Lie facedown on the floor.",
-      "Put your left hand under your left hipbone to pad your hip and pubic bone.",
-      "Bend your right knee so you can hold the foot in your right hand.",
-      "Lift the foot in the air and simultaneously lift your shoulders off the floor. This also stretches the right hip flexor and the chest and shoulders. Switch sides. If it doesn't bother your back, you can try it with both arms and legs at the same time."
-    ],
-    "category": "stretching",
-    "images": [
-      "One_Half_Locust/0.jpg",
-      "One_Half_Locust/1.jpg"
-    ],
-    "id": "One_Half_Locust"
-  },
-  {
-    "name": "One Handed Hang",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": "other",
-    "primaryMuscles": [
-      "lats"
-    ],
-    "secondaryMuscles": [
-      "biceps"
-    ],
-    "instructions": [
-      "Grab onto a chinup bar with one hand, using a pronated grip. Keep your feet on the floor or a step. Allow the majority of your weight to hang from that hand, while keeping your feet on the ground. Hold for 10-20 seconds and switch sides."
-    ],
-    "category": "stretching",
-    "images": [
-      "One_Handed_Hang/0.jpg",
-      "One_Handed_Hang/1.jpg"
-    ],
-    "id": "One_Handed_Hang"
-  },
-  {
-    "name": "One Knee To Chest",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": null,
-    "primaryMuscles": [
-      "glutes"
-    ],
-    "secondaryMuscles": [
-      "hamstrings",
-      "lower back"
-    ],
-    "instructions": [
-      "Start off by lying on the floor.",
-      "Extend one leg straight and pull the other knee to your chest. Hold under the knee joint to protect the kneecap.",
-      "Gently tug that knee toward your nose.",
-      "Switch sides. This stretches the buttocks and lower back of the bent leg and the hip flexor of the straight leg."
-    ],
-    "category": "stretching",
-    "images": [
-      "One_Knee_To_Chest/0.jpg",
-      "One_Knee_To_Chest/1.jpg"
-    ],
-    "id": "One_Knee_To_Chest"
-  },
-  {
     "name": "One Leg Barbell Squat",
     "force": "push",
     "level": "expert",
@@ -13878,27 +11826,6 @@
     "id": "Pelvic_Tilt_Into_Bridge"
   },
   {
-    "name": "Peroneals-SMR",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "calves"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lay on your side, supporting your weight on your forearm and on a foam roller placed on the outside of your lower leg. Your upper leg can either be on top of your lower leg, or you can cross it in front of you. This will be your starting position.",
-      "Raise your hips off of the ground and begin to roll from below the knee to above the ankle on the side of your leg, pausing at points of tension for 10-30 seconds. Repeat on the other leg."
-    ],
-    "category": "stretching",
-    "images": [
-      "Peroneals-SMR/0.jpg",
-      "Peroneals-SMR/1.jpg"
-    ],
-    "id": "Peroneals-SMR"
-  },
-  {
     "name": "Peroneals Stretch",
     "force": "static",
     "level": "intermediate",
@@ -13975,27 +11902,6 @@
     "id": "Pin_Presses"
   },
   {
-    "name": "Piriformis-SMR",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "glutes"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Sit with your buttocks on top of a foam roll. Bend your knees, and then cross one leg so that the ankle is over the knee. This will be your starting position.",
-      "Shift your weight to the side of the crossed leg, rolling over the buttocks until you feel tension in your upper glute. You may assist the stretch by using one hand to pull the bent knee towards your chest. Hold this position for 10-30 seconds, and then switch sides."
-    ],
-    "category": "stretching",
-    "images": [
-      "Piriformis-SMR/0.jpg",
-      "Piriformis-SMR/1.jpg"
-    ],
-    "id": "Piriformis-SMR"
-  },
-  {
     "name": "Plank",
     "force": "static",
     "level": "beginner",
@@ -14015,30 +11921,6 @@
       "Plank/1.jpg"
     ],
     "id": "Plank"
-  },
-  {
-    "name": "Plate Pinch",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "other",
-    "primaryMuscles": [
-      "forearms"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Grab two wide-rimmed plates and put them together with the smooth sides facing outward",
-      "Use your fingers to grip the outside part of the plate and your thumb for the other side thus holding both plates together. This is the starting position.",
-      "Squeeze the plate with your fingers and thumb. Hold this position for as long as you can.",
-      "Repeat for the recommended amount of sets prescribed in your program.",
-      "Switch arms and repeat the movements."
-    ],
-    "category": "strength",
-    "images": [
-      "Plate_Pinch/0.jpg",
-      "Plate_Pinch/1.jpg"
-    ],
-    "id": "Plate_Pinch"
   },
   {
     "name": "Plate Twist",
@@ -14303,30 +12185,6 @@
     "id": "Power_Jerk"
   },
   {
-    "name": "Power Partials",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "dumbbell",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Stand up with your torso upright and a dumbbell on each hand being held at arms length. The elbows should be close to the torso.",
-      "The palms of the hands should be facing your torso. Your feet should be about shoulder width apart. This will be your starting position.",
-      "Keeping your arms straight and the torso stationary, lift the weights out to your sides until they are about shoulder level height while exhaling.",
-      "Feel the contraction for a second and begin to lower the weights back down to the starting position while inhaling. Tip: Keep the palms facing down with the little finger slightly higher while lifting and lowering the weights as it will concentrate the stress on your shoulders mainly.",
-      "Repeat for the recommended amount of repetitions."
-    ],
-    "category": "strength",
-    "images": [
-      "Power_Partials/0.jpg",
-      "Power_Partials/1.jpg"
-    ],
-    "id": "Power_Partials"
-  },
-  {
     "name": "Power Snatch",
     "force": "pull",
     "level": "expert",
@@ -14390,37 +12248,6 @@
       "Power_Snatch_from_Blocks/1.jpg"
     ],
     "id": "Power_Snatch_from_Blocks"
-  },
-  {
-    "name": "Power Stairs",
-    "force": "pull",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "adductors",
-      "calves",
-      "glutes",
-      "lower back",
-      "quadriceps",
-      "shoulders",
-      "traps"
-    ],
-    "instructions": [
-      "In the power stairs, implements are moved up a staircase. For training purposes, these can be performed with a tire or box.",
-      "Begin by taking the implement with both hands. Set your feet wide, with your head and chest up. Drive through the ground with your heels, extending your knees and hips to raise the weight from the ground.",
-      "As you lean back, attempt to swing the weight onto the stairs, which are usually around 16-18\" high. You can use your legs to help push the weight onto the stair.",
-      "Repeat for 3-5 repetitions, and continue with a heavier weight, moving as fast as possible."
-    ],
-    "category": "strongman",
-    "images": [
-      "Power_Stairs/0.jpg",
-      "Power_Stairs/1.jpg"
-    ],
-    "id": "Power_Stairs"
   },
   {
     "name": "Preacher Curl",
@@ -14519,34 +12346,6 @@
       "Prone_Manual_Hamstring/1.jpg"
     ],
     "id": "Prone_Manual_Hamstring"
-  },
-  {
-    "name": "Prowler Sprint",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "chest",
-      "glutes",
-      "quadriceps",
-      "shoulders"
-    ],
-    "instructions": [
-      "Place your sled on an appropriate surface, loaded to a suitable weight. The sled should provide enough resistance to require effort, but not so heavy that you are significantly slowed down.",
-      "You may use the upright or the low handles for this exercise. Place your hands on the handles with your arms extended, leaning into the implement.",
-      "With good posture, drive through the ground with alternating, short steps. Move as fast as you can for a short distance."
-    ],
-    "category": "cardio",
-    "images": [
-      "Prowler_Sprint/0.jpg",
-      "Prowler_Sprint/1.jpg"
-    ],
-    "id": "Prowler_Sprint"
   },
   {
     "name": "Pull Through",
@@ -14876,78 +12675,6 @@
       "Quad_Stretch/1.jpg"
     ],
     "id": "Quad_Stretch"
-  },
-  {
-    "name": "Quadriceps-SMR",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lay facedown on the floor with your weight supported by your hands or forearms. Place a foam roll underneath one leg on the quadriceps, and keep the foot off of the ground. Make sure to relax the leg as much as possible. This will be your starting position.",
-      "Shifting as much weight onto the leg to be stretched as is tolerable, roll over the foam from above the knee to below the hip, holding points of tension for 10-30 seconds. Switch sides."
-    ],
-    "category": "stretching",
-    "images": [
-      "Quadriceps-SMR/0.jpg",
-      "Quadriceps-SMR/1.jpg"
-    ],
-    "id": "Quadriceps-SMR"
-  },
-  {
-    "name": "Quick Leap",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "hamstrings"
-    ],
-    "instructions": [
-      "You will need a box for this exerise.",
-      "Begin facing the box standing 1-2 feet from its edge.",
-      "By utilizing your hips, hop onto the box, landing on both legs. Ensure that you land with your legs bent and your feet flat.",
-      "Immediately upon landing, fully extend through the entire body and swing your arms overhead to explode off of the box. Use your legs to absorb the impact of landing."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Quick_Leap/0.jpg",
-      "Quick_Leap/1.jpg"
-    ],
-    "id": "Quick_Leap"
-  },
-  {
-    "name": "Rack Delivery",
-    "force": "pull",
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "barbell",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "forearms",
-      "traps"
-    ],
-    "instructions": [
-      "This drill teaches the delivery of the barbell to the rack position on the shoulders. Begin holding a bar in the scarecrow position, with the upper arms parallel to the floor, and the forearms hanging down. Use a hook grip, with your fingers wrapped over your thumbs.",
-      "Begin by rotating the elbows around the bar, delivering the bar to the shoulders. As your elbows come forward, relax your grip. The shoulders should be protracted, providing a shelf for the bar, which should lightly contact the throat.",
-      "It is important that the bar stay close to the body at all times, as with a heavier load any distance will result in an unwanted collision. As the movement becomes smoother, speed and load can be increased before progressing further."
-    ],
-    "category": "olympic weightlifting",
-    "images": [
-      "Rack_Delivery/0.jpg",
-      "Rack_Delivery/1.jpg"
-    ],
-    "id": "Rack_Delivery"
   },
   {
     "name": "Rack Pull with Bands",
@@ -15538,58 +13265,6 @@
     "id": "Reverse_Triceps_Bench_Press"
   },
   {
-    "name": "Rhomboids-SMR",
-    "force": "static",
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "foam roll",
-    "primaryMuscles": [
-      "middle back"
-    ],
-    "secondaryMuscles": [
-      "traps"
-    ],
-    "instructions": [
-      "Lay down with your back on the floor. Place a foam roll underneath your upper back, and cross your arms in front of you, protracting your shoulders. This will be your starting position.",
-      "Raise your hips off of the ground, placing your weight onto the foam roll. Shift your weight to one side at a time, rolling over your middle and upper back. Pause at points of tension for 10-30 seconds."
-    ],
-    "category": "stretching",
-    "images": [
-      "Rhomboids-SMR/0.jpg",
-      "Rhomboids-SMR/1.jpg"
-    ],
-    "id": "Rhomboids-SMR"
-  },
-  {
-    "name": "Rickshaw Carry",
-    "force": null,
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "forearms"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "calves",
-      "glutes",
-      "hamstrings",
-      "lower back",
-      "quadriceps",
-      "traps"
-    ],
-    "instructions": [
-      "Position the frame at the starting point, and load with the appropriate weight. Standing in the center of the frame, begin by gripping the handles and driving through your heels to lift the frame. Ensure your chest and head are up and your back is straight.",
-      "Immediately begin walking briskly with quick, controlled steps. Keep your chest up and head forward, and make sure you continue breathing. Bring the frame to the ground after you have reached the end point."
-    ],
-    "category": "strongman",
-    "images": [
-      "Rickshaw_Carry/0.jpg",
-      "Rickshaw_Carry/1.jpg"
-    ],
-    "id": "Rickshaw_Carry"
-  },
-  {
     "name": "Rickshaw Deadlift",
     "force": "pull",
     "level": "intermediate",
@@ -15880,60 +13555,6 @@
     "id": "Rope_Straight-Arm_Pulldown"
   },
   {
-    "name": "Round The World Shoulder Stretch",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": "other",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "biceps",
-      "chest"
-    ],
-    "instructions": [
-      "Stand up straight with your legs together, holding a bodybar or broomstick.",
-      "Hold the pole behind your hips with a wider than shoulder width grip. Your palms should be down and your thumbs facing out.",
-      "Slowly lift your arms up behind your head. Don't force it if it gets hard to lift further."
-    ],
-    "category": "stretching",
-    "images": [
-      "Round_The_World_Shoulder_Stretch/0.jpg",
-      "Round_The_World_Shoulder_Stretch/1.jpg"
-    ],
-    "id": "Round_The_World_Shoulder_Stretch"
-  },
-  {
-    "name": "Rowing, Stationary",
-    "force": null,
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "machine",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "biceps",
-      "calves",
-      "glutes",
-      "hamstrings",
-      "lower back",
-      "middle back"
-    ],
-    "instructions": [
-      "To begin, seat yourself on the rower. Make sure that your heels are resting comfortably against the base of the foot pedals and that the straps are secured. Select the program that you wish to use, if applicable. Sit up straight and bend forward at the hips.",
-      "There are three phases of movement when using a rower. The first phase is when you come forward on the rower. Your knees are bent and against your chest. Your upper body is leaning slightly forward while still maintaining good posture. Next, push against the foot pedals and extend your legs while bringing your hands to your upper abdominal area, squeezing your shoulders back as you do so. To avoid straining your back, use primarily your leg and hip muscles.",
-      "The recovery phase simply involves straightening your arms, bending the knees, and bringing your body forward again as you transition back into the first phase."
-    ],
-    "category": "cardio",
-    "images": [
-      "Rowing_Stationary/0.jpg",
-      "Rowing_Stationary/1.jpg"
-    ],
-    "id": "Rowing_Stationary"
-  },
-  {
     "name": "Runner's Stretch",
     "force": "static",
     "level": "beginner",
@@ -16007,40 +13628,6 @@
       "Russian_Twist/1.jpg"
     ],
     "id": "Russian_Twist"
-  },
-  {
-    "name": "Sandbag Load",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "biceps",
-      "calves",
-      "forearms",
-      "glutes",
-      "hamstrings",
-      "lower back",
-      "middle back",
-      "shoulders",
-      "traps"
-    ],
-    "instructions": [
-      "To load sandbags or other objects, begin with the implements placed a distance from the loading platform, typically 50 feet.",
-      "Begin by lifting the sandbag. Sandbags are extremely awkward, and the manner of lifting them can vary depending on the particular sandbag used. Reach as far around it as possible, extending through the hips and knees to pull it up high. Shouldering is usually not allowed.",
-      "Move as quickly as possible to the platform, and load it, extending through your hips, knees, and ankles to get it as high as possible. Place it onto the platform, ensuring it doesn't fall off.",
-      "Return to the starting position to retrieve the next sandbag, and repeat until the event is completed."
-    ],
-    "category": "strongman",
-    "images": [
-      "Sandbag_Load/0.jpg",
-      "Sandbag_Load/1.jpg"
-    ],
-    "id": "Sandbag_Load"
   },
   {
     "name": "Scapular Pull-Up",
@@ -16266,31 +13853,6 @@
       "Seated_Bent-Over_Two-Arm_Dumbbell_Triceps_Extension/1.jpg"
     ],
     "id": "Seated_Bent-Over_Two-Arm_Dumbbell_Triceps_Extension"
-  },
-  {
-    "name": "Seated Biceps",
-    "force": "static",
-    "level": "expert",
-    "mechanic": "isolation",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "biceps"
-    ],
-    "secondaryMuscles": [
-      "chest",
-      "shoulders"
-    ],
-    "instructions": [
-      "Sit on the floor with your knees bent and your partner standing behind you. Extend your arms straight behind you with your palms facing each other. Your partner will hold your wrists for you. This will be the starting position.",
-      "Attempt to flex your elbows, while your partner prevents any actual movement.",
-      "After 10-20 seconds, relax your arms while your partner gently pulls your wrists up to stretch your biceps. Be sure to let your partner know when the stretch is appropriate to prevent injury or overstretching."
-    ],
-    "category": "stretching",
-    "images": [
-      "Seated_Biceps/0.jpg",
-      "Seated_Biceps/1.jpg"
-    ],
-    "id": "Seated_Biceps"
   },
   {
     "name": "Seated Cable Rows",
@@ -16713,31 +14275,6 @@
       "Seated_Hamstring_and_Calf_Stretch/1.jpg"
     ],
     "id": "Seated_Hamstring_and_Calf_Stretch"
-  },
-  {
-    "name": "Seated Head Harness Neck Resistance",
-    "force": "pull",
-    "level": "intermediate",
-    "mechanic": "isolation",
-    "equipment": "other",
-    "primaryMuscles": [
-      "neck"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Place a neck strap on the floor at the end of a flat bench. Once you have selected the weights, sit at the end of the flat bench with your feet wider than shoulder width apart from each other. Your toes should be pointed out.",
-      "Slowly move your torso forward until it is almost parallel with the floor. Using both hands, securely position the neck strap around your head. Tip: Make sure the weights are still lying on the floor to prevent any strain on the neck. Now grab the weight with both hands while elevating your torso back until it is almost perpendicular to the floor. Note: Your head and torso needs to be slightly tilted forward to perform this exercise.",
-      "Now place both hands on top of your knees. This is the starting position.",
-      "Slowly lower your neck down until your chin touches the upper part of your chest while breathing in.",
-      "While exhaling, bring your neck back to the starting position.",
-      "Repeat for the recommended amount of repetitions."
-    ],
-    "category": "strength",
-    "images": [
-      "Seated_Head_Harness_Neck_Resistance/0.jpg",
-      "Seated_Head_Harness_Neck_Resistance/1.jpg"
-    ],
-    "id": "Seated_Head_Harness_Neck_Resistance"
   },
   {
     "name": "Seated Leg Curl",
@@ -17194,33 +14731,6 @@
     "id": "Side_Bridge"
   },
   {
-    "name": "Side Hop-Sprint",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Stand to the side of a cone or hurdle.",
-      "Begin this drill by hopping sideways over the obstacle, rebounding out of your landing to hop back to where you started.",
-      "Hop for a prescribed number or repetitions as quickly as possible, and finish this drill by sprinting a short distance upon landing the last hop."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Side_Hop-Sprint/0.jpg",
-      "Side_Hop-Sprint/1.jpg"
-    ],
-    "id": "Side_Hop-Sprint"
-  },
-  {
     "name": "Side Jackknife",
     "force": "pull",
     "level": "beginner",
@@ -17356,32 +14866,6 @@
     "id": "Side_Neck_Stretch"
   },
   {
-    "name": "Side Standing Long Jump",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": null,
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Begin standing with your feet hip width apart in an athletic stance. Your head and chest should be up, knees and hips slightly bent. This will be your starting position.",
-      "Leaning to your right, extend through your hips, knees, and ankles to jump into the air. Block with the arms to lead the movement, jumping as far to your right as you can.",
-      "Land facing the same direction with your feet hip width apart, absorbing the impact through your lower body."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Side_Standing_Long_Jump/0.jpg",
-      "Side_Standing_Long_Jump/1.jpg"
-    ],
-    "id": "Side_Standing_Long_Jump"
-  },
-  {
     "name": "Side To Side Chins",
     "force": "pull",
     "level": "intermediate",
@@ -17435,33 +14919,6 @@
       "Side_Wrist_Pull/1.jpg"
     ],
     "id": "Side_Wrist_Pull"
-  },
-  {
-    "name": "Side to Side Box Shuffle",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Stand to one side of the box with your left foot resting on the middle of it.",
-      "To begin, jump up and over to the other side of the box, landing with your right foot on top of the box and your left foot on the floor. Swing your arms to aid your movement.",
-      "Continue shuffling back and forth across the box."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Side_to_Side_Box_Shuffle/0.jpg",
-      "Side_to_Side_Box_Shuffle/1.jpg"
-    ],
-    "id": "Side_to_Side_Box_Shuffle"
   },
   {
     "name": "Single-Arm Cable Crossover",
@@ -17540,32 +14997,6 @@
     "id": "Single-Arm_Push-Up"
   },
   {
-    "name": "Single-Cone Sprint Drill",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "This drill teaches quick foot action. You need a single cone. Begin standing next to the cone with one arm back and one arm forward.",
-      "Chop the feet as quickly as possible, blocking with the arms. Circle the cone, keep your knees up, with violent foot action.",
-      "Rest after three trips around the cone."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Single-Cone_Sprint_Drill/0.jpg",
-      "Single-Cone_Sprint_Drill/1.jpg"
-    ],
-    "id": "Single-Cone_Sprint_Drill"
-  },
-  {
     "name": "Single-Leg High Box Squat",
     "force": "push",
     "level": "beginner",
@@ -17591,62 +15022,6 @@
     "id": "Single-Leg_High_Box_Squat"
   },
   {
-    "name": "Single-Leg Hop Progression",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Arrange a line of cones in front of you. Assume a relaxed standing position, balanced on one leg. Raise the knee of your opposite leg. This will be your starting position.",
-      "Hop forward, jumping and landing with the same leg over the cone.",
-      "Use a countermovement jump to hop from cone to cone.",
-      "At the end, turn around and go back on the other leg."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Single-Leg_Hop_Progression/0.jpg",
-      "Single-Leg_Hop_Progression/1.jpg"
-    ],
-    "id": "Single-Leg_Hop_Progression"
-  },
-  {
-    "name": "Single-Leg Lateral Hop",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Stand to the side of a cone or hurdle. To get into the start position, stand on one leg with your knee slightly bent.",
-      "To begin, execute a counterjump to hop sideways over the cone.",
-      "Land on your jumping leg, and immediately rebound out of it by jumping back to the start position.",
-      "Continue hopping back and forth."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Single-Leg_Lateral_Hop/0.jpg",
-      "Single-Leg_Lateral_Hop/1.jpg"
-    ],
-    "id": "Single-Leg_Lateral_Hop"
-  },
-  {
     "name": "Single-Leg Leg Extension",
     "force": "push",
     "level": "beginner",
@@ -17668,33 +15043,6 @@
       "Single-Leg_Leg_Extension/1.jpg"
     ],
     "id": "Single-Leg_Leg_Extension"
-  },
-  {
-    "name": "Single-Leg Stride Jump",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Stand to the side of a box with your inside foot on top of it, close to the edge.",
-      "Begin by swinging the arms upward as you push through the top leg, jumping upward as high as possible. Attempt to drive the opposite knee upward.",
-      "Land in the same position that you started, using your inside leg to decelerate the impact."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Single-Leg_Stride_Jump/0.jpg",
-      "Single-Leg_Stride_Jump/1.jpg"
-    ],
-    "id": "Single-Leg_Stride_Jump"
   },
   {
     "name": "Single Dumbbell Raise",
@@ -17722,32 +15070,6 @@
     "id": "Single_Dumbbell_Raise"
   },
   {
-    "name": "Single Leg Butt Kick",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Begin by standing on one leg, with the bent knee raised. This will be your start position.",
-      "Using a countermovement jump, take off upward by extending the hip, knee, and ankle of the grounded leg.",
-      "Immediately flex the knee and attempt to touch your butt with the heel of your jumping leg.",
-      "Return the leg to a partially bent position underneath the hips and land. Your opposite leg should stay in relatively the same position throughout the drill."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Single_Leg_Butt_Kick/0.jpg",
-      "Single_Leg_Butt_Kick/1.jpg"
-    ],
-    "id": "Single_Leg_Butt_Kick"
-  },
-  {
     "name": "Single Leg Glute Bridge",
     "force": "push",
     "level": "beginner",
@@ -17771,31 +15093,6 @@
       "Single_Leg_Glute_Bridge/1.jpg"
     ],
     "id": "Single_Leg_Glute_Bridge"
-  },
-  {
-    "name": "Single Leg Push-off",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Stand on the ground with one foot resting on the box, heel close to the edge.",
-      "Push off with your foot on top of the box, trying to gain as much height as possible by extending through the hip and knee.",
-      "Land with the same foot on top of the box, returning your other foot back to the start position."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Single_Leg_Push-off/0.jpg",
-      "Single_Leg_Push-off/1.jpg"
-    ],
-    "id": "Single_Leg_Push-off"
   },
   {
     "name": "Sit-Up",
@@ -17848,84 +15145,6 @@
     "id": "Sit_Squats"
   },
   {
-    "name": "Skating",
-    "force": null,
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Roller skating is a fun activity which can be effective in improving cardiorespiratory fitness and muscular endurance. It requires relatively good balance and coordination. It is necessary to learn the basics of skating including turning and stopping and to wear protective gear to avoid possible injury.",
-      "You can skate at a comfortable pace for 30 minutes straight. If you want a cardio challenge, do interval skating — speed skate two minutes of every five minutes, using the remaining three minutes to recover. A 150 lb person will typically burn about 175 calories in 30 minutes skating at a comfortable pace, similar to brisk walking."
-    ],
-    "category": "cardio",
-    "images": [
-      "Skating/0.jpg",
-      "Skating/1.jpg"
-    ],
-    "id": "Skating"
-  },
-  {
-    "name": "Sled Drag - Harness",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "To begin, load the sled with the desired weight and attach the pulling strap. You can pull with handles, use a harness, or attach the pulling strap to a weight belt.",
-      "Whether pulling forwards or backwards, lean in the direction of travel and progress by extending through the hips and knees."
-    ],
-    "category": "strongman",
-    "images": [
-      "Sled_Drag_-_Harness/0.jpg",
-      "Sled_Drag_-_Harness/1.jpg"
-    ],
-    "id": "Sled_Drag_-_Harness"
-  },
-  {
-    "name": "Sled Overhead Backward Walk",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "middle back",
-      "quadriceps"
-    ],
-    "instructions": [
-      "Attach dual handles to a sled connected by a rope or chain. Load the sled to a light weight.",
-      "Face the sled, backing up until there is some tension in the line. Hold your hands directly above your head with your elbows extended. This will be your starting position.",
-      "Walk backwards, keeping your arms raised above your head. Avoid jerky movements."
-    ],
-    "category": "strength",
-    "images": [
-      "Sled_Overhead_Backward_Walk/0.jpg",
-      "Sled_Overhead_Backward_Walk/1.jpg"
-    ],
-    "id": "Sled_Overhead_Backward_Walk"
-  },
-  {
     "name": "Sled Overhead Triceps Extension",
     "force": "push",
     "level": "beginner",
@@ -17947,33 +15166,6 @@
       "Sled_Overhead_Triceps_Extension/1.jpg"
     ],
     "id": "Sled_Overhead_Triceps_Extension"
-  },
-  {
-    "name": "Sled Push",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "chest",
-      "glutes",
-      "hamstrings",
-      "triceps"
-    ],
-    "instructions": [
-      "Load your pushing sled with the desired weight.",
-      "Take an athletic posture, leaning into the sled with your arms fully extended, grasping the handles. Push the sled as fast as possible, focusing on extending your hips and knees to strengthen your posterior chain."
-    ],
-    "category": "strongman",
-    "images": [
-      "Sled_Push/0.jpg",
-      "Sled_Push/1.jpg"
-    ],
-    "id": "Sled_Push"
   },
   {
     "name": "Sled Reverse Flye",
@@ -18747,29 +15939,6 @@
     "id": "Snatch_from_Blocks"
   },
   {
-    "name": "Speed Band Overhead Triceps",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "bands",
-    "primaryMuscles": [
-      "triceps"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "For this exercise anchor a band to the ground. We used an incline bench and anchored the band to the base, standing over the bench. Alternatively, this could be performed standing on the band.",
-      "To begin, pull the band behind your head, holding it with a pronated grip and your elbows up. This will be your starting position.",
-      "To perform the movement, extend through the elbow to to straighten your arms, ensuring that you keep your upper arm in place.",
-      "Pause, and then return to the starting position."
-    ],
-    "category": "strength",
-    "images": [
-      "Speed_Band_Overhead_Triceps/0.jpg",
-      "Speed_Band_Overhead_Triceps/1.jpg"
-    ],
-    "id": "Speed_Band_Overhead_Triceps"
-  },
-  {
     "name": "Speed Box Squat",
     "force": "push",
     "level": "intermediate",
@@ -18904,34 +16073,6 @@
       "Spider_Curl/1.jpg"
     ],
     "id": "Spider_Curl"
-  },
-  {
-    "name": "Spinal Stretch",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": null,
-    "primaryMuscles": [
-      "middle back"
-    ],
-    "secondaryMuscles": [
-      "lats",
-      "lower back",
-      "neck",
-      "traps"
-    ],
-    "instructions": [
-      "Sit in a chair so your back is straight and your feet planted on the floor.",
-      "Interlace your fingers behind your head, elbows out and your chin down.",
-      "Twist your upper body to one side about 3 times as far as you can. Then lean forward and twist your torso to reach your elbow to the floor on the inside of your knee.",
-      "Return to upright position and then repeat for your other side."
-    ],
-    "category": "stretching",
-    "images": [
-      "Spinal_Stretch/0.jpg",
-      "Spinal_Stretch/1.jpg"
-    ],
-    "id": "Spinal_Stretch"
   },
   {
     "name": "Split Clean",
@@ -19257,32 +16398,6 @@
     "id": "Squats_-_With_Bands"
   },
   {
-    "name": "Stairmaster",
-    "force": null,
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "machine",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "To begin, step onto the stairmaster and select the desired option from the menu. You can choose a manual setting, or you can select a program to run. Typically, you can enter your age and weight to estimate the amount of calories burned during exercise.",
-      "Pump your legs up and down in an established rhythm, driving the pedals down but not all the way to the floor. It is recommended that you maintain your grip on the handles so that you don't fall. The handles can be used to monitor your heart rate to help you stay at an appropriate intensity.",
-      "Stairmasters offer convenience, cardiovascular benefits, and usually have less impact than running outside. They are typically much harder than other cardio equipment. A 150 lb person will typically burn over 300 calories in 30 minutes, compared to about 175 calories walking."
-    ],
-    "category": "cardio",
-    "images": [
-      "Stairmaster/0.jpg",
-      "Stairmaster/1.jpg"
-    ],
-    "id": "Stairmaster"
-  },
-  {
     "name": "Standing Alternating Dumbbell Press",
     "force": "push",
     "level": "beginner",
@@ -19433,30 +16548,6 @@
     "id": "Standing_Biceps_Cable_Curl"
   },
   {
-    "name": "Standing Biceps Stretch",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "other",
-    "primaryMuscles": [
-      "biceps"
-    ],
-    "secondaryMuscles": [
-      "chest",
-      "shoulders"
-    ],
-    "instructions": [
-      "Clasp your hands behind your back with your palms together, straighten arms and then rotate them so your palms face downward.",
-      "Raise your arms up and hold until you feel a stretch in your biceps."
-    ],
-    "category": "stretching",
-    "images": [
-      "Standing_Biceps_Stretch/0.jpg",
-      "Standing_Biceps_Stretch/1.jpg"
-    ],
-    "id": "Standing_Biceps_Stretch"
-  },
-  {
     "name": "Standing Bradford Press",
     "force": "push",
     "level": "beginner",
@@ -19537,35 +16628,6 @@
       "Standing_Cable_Lift/1.jpg"
     ],
     "id": "Standing_Cable_Lift"
-  },
-  {
-    "name": "Standing Cable Wood Chop",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "cable",
-    "primaryMuscles": [
-      "abdominals"
-    ],
-    "secondaryMuscles": [
-      "shoulders"
-    ],
-    "instructions": [
-      "Connect a standard handle to a tower, and move the cable to the highest pulley position.",
-      "With your side to the cable, grab the handle with one hand and step away from the tower. You should be approximately arm's length away from the pulley, with the tension of the weight on the cable. Your outstretched arm should be aligned with the cable.",
-      "With your feet positioned shoulder width apart, reach upward with your other hand and grab the handle with both hands. Your arms should still be fully extended.",
-      "In one motion, pull the handle down and across your body to your front knee while rotating your torso.",
-      "Keep your back and arms straight and core tight while you pivot your back foot and bend your knees to get a full range of motion.",
-      "Maintain your stance and straight arms. Return to the neutral position in a slow and controlled manner.",
-      "Repeat to failure.",
-      "Then, reposition and repeat the same series of movements on the opposite side."
-    ],
-    "category": "strength",
-    "images": [
-      "Standing_Cable_Wood_Chop/0.jpg",
-      "Standing_Cable_Wood_Chop/1.jpg"
-    ],
-    "id": "Standing_Cable_Wood_Chop"
   },
   {
     "name": "Standing Calf Raises",
@@ -19855,31 +16917,6 @@
     "id": "Standing_Hamstring_and_Calf_Stretch"
   },
   {
-    "name": "Standing Hip Circles",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "abductors"
-    ],
-    "secondaryMuscles": [
-      "adductors"
-    ],
-    "instructions": [
-      "Begin standing on one leg, holding to a vertical support.",
-      "Raise the unsupported knee to 90 degrees. This will be your starting position.",
-      "Open the hip as far as possible, attempting to make a big circle with your knee.",
-      "Perform this movement slowly for a number of repetitions, and repeat on the other side."
-    ],
-    "category": "stretching",
-    "images": [
-      "Standing_Hip_Circles/0.jpg",
-      "Standing_Hip_Circles/1.jpg"
-    ],
-    "id": "Standing_Hip_Circles"
-  },
-  {
     "name": "Standing Hip Flexors",
     "force": "static",
     "level": "beginner",
@@ -19972,60 +17009,6 @@
       "Standing_Leg_Curl/1.jpg"
     ],
     "id": "Standing_Leg_Curl"
-  },
-  {
-    "name": "Standing Long Jump",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "This drill is best done in sand or other soft landing surface. Ensure that you are able to measure distance. Stand in a partial squat stance with feet shoulder width apart.",
-      "Utilizing a big arm swing and a countermovement of the legs, jump forward as far as you can.",
-      "Attempt to land with your feet out in front you, reaching as far as possible with your legs.",
-      "Measure the distance from your landing point to the starting point and track results."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Standing_Long_Jump/0.jpg",
-      "Standing_Long_Jump/1.jpg"
-    ],
-    "id": "Standing_Long_Jump"
-  },
-  {
-    "name": "Standing Low-Pulley Deltoid Raise",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "cable",
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "forearms"
-    ],
-    "instructions": [
-      "Start by standing to the right side of a low pulley row. Use your left hand to come across the body and grab a single handle attached to the low pulley with a pronated grip (palms facing down). Rest your arm in front of you. Your right hand should grab the machine for better support and balance.",
-      "Make sure that your back is erect and your feet are shoulder width apart from each other. This is the starting position.",
-      "Begin to use the left hand and come across your body out until it is elevated to shoulder height while exhaling.",
-      "Feel the contraction at the top for a second and begin to slowly lower the handle back down to the original starting position while inhaling.",
-      "Repeat for the recommended amount of repetitions.",
-      "Switch arms and repeat the exercise."
-    ],
-    "category": "strength",
-    "images": [
-      "Standing_Low-Pulley_Deltoid_Raise/0.jpg",
-      "Standing_Low-Pulley_Deltoid_Raise/1.jpg"
-    ],
-    "id": "Standing_Low-Pulley_Deltoid_Raise"
   },
   {
     "name": "Standing Low-Pulley One-Arm Triceps Extension",
@@ -20336,27 +17319,6 @@
     "id": "Standing_Rope_Crunch"
   },
   {
-    "name": "Standing Soleus And Achilles Stretch",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": null,
-    "primaryMuscles": [
-      "calves"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "Stand with your feet hip-distance apart, one foot slightly in front of the other.",
-      "Bend both knees, keeping your back heel on the floor. Switch sides."
-    ],
-    "category": "stretching",
-    "images": [
-      "Standing_Soleus_And_Achilles_Stretch/0.jpg",
-      "Standing_Soleus_And_Achilles_Stretch/1.jpg"
-    ],
-    "id": "Standing_Soleus_And_Achilles_Stretch"
-  },
-  {
     "name": "Standing Toe Touches",
     "force": "static",
     "level": "beginner",
@@ -20480,31 +17442,6 @@
     "id": "Step-up_with_Knee_Raise"
   },
   {
-    "name": "Step Mill",
-    "force": null,
-    "level": "intermediate",
-    "mechanic": null,
-    "equipment": "machine",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "To begin, step onto the stepmill and select the desired option from the menu. You can choose a manual setting, or you can select a program to run. Typically, you can enter your age and weight to estimate the amount of calories burned during exercise. Use caution so that you don't trip as you climb the stairs. It is recommended that you maintain your grip on the handles so that you don't fall.",
-      "Stepmills offer convenience, cardiovascular benefits, and usually have less impact than running outside while offering a similar rate of calories burned. They are typically much harder than other cardio equipment. A 150 lb person will typically burn over 300 calories in 30 minutes, compared to about 175 calories walking."
-    ],
-    "category": "cardio",
-    "images": [
-      "Step_Mill/0.jpg",
-      "Step_Mill/1.jpg"
-    ],
-    "id": "Step_Mill"
-  },
-  {
     "name": "Stiff-Legged Barbell Deadlift",
     "force": "pull",
     "level": "intermediate",
@@ -20587,30 +17524,6 @@
     "id": "Stiff_Leg_Barbell_Good_Morning"
   },
   {
-    "name": "Stomach Vacuum",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": "isolation",
-    "equipment": "body only",
-    "primaryMuscles": [
-      "abdominals"
-    ],
-    "secondaryMuscles": [],
-    "instructions": [
-      "To begin, stand straight with your feet shoulder width apart from each other. Place your hands on your hips. This is the starting position.",
-      "Now slowly inhale as much air as possible and then start to exhale as much as possible while bringing your stomach in as much as possible and hold this position. Try to visualize your navel touching your backbone.",
-      "One isometric contraction is around 20 seconds. During the 20 second hold, try to breathe normally. Then inhale and bring your stomach back to the starting position.",
-      "Once you have practiced this exercise, try to perform this exercise for longer than 20 seconds. Tip: You can work your way up to 40-60 seconds.",
-      "Repeat for the recommended amount of sets."
-    ],
-    "category": "stretching",
-    "images": [
-      "Stomach_Vacuum/0.jpg",
-      "Stomach_Vacuum/1.jpg"
-    ],
-    "id": "Stomach_Vacuum"
-  },
-  {
     "name": "Straight-Arm Dumbbell Pullover",
     "force": "pull",
     "level": "intermediate",
@@ -20664,31 +17577,6 @@
     "id": "Straight-Arm_Pulldown"
   },
   {
-    "name": "Straight Bar Bench Mid Rows",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "barbell",
-    "primaryMuscles": [
-      "middle back"
-    ],
-    "secondaryMuscles": [
-      "biceps",
-      "lats"
-    ],
-    "instructions": [
-      "Place a loaded barbell on the end of a bench. Standing on the bench behind the bar, take a medium, pronated grip. Stand with your hips back and chest up, maintaining a neutral spine. This will be your starting position.",
-      "Row the bar to your torso by retracting the shoulder blades and flexing the elbows. Use a controlled movement with no jerking.",
-      "After a brief pause, slowly return the bar to the starting position, ensuring to go all the way down."
-    ],
-    "category": "strength",
-    "images": [
-      "Straight_Bar_Bench_Mid_Rows/0.jpg",
-      "Straight_Bar_Bench_Mid_Rows/1.jpg"
-    ],
-    "id": "Straight_Bar_Bench_Mid_Rows"
-  },
-  {
     "name": "Straight Raises on Incline Bench",
     "force": "push",
     "level": "beginner",
@@ -20712,34 +17600,6 @@
       "Straight_Raises_on_Incline_Bench/1.jpg"
     ],
     "id": "Straight_Raises_on_Incline_Bench"
-  },
-  {
-    "name": "Stride Jump Crossover",
-    "force": "push",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abductors",
-      "adductors",
-      "calves",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Stand to the side of a box with your inside foot on top of it, close to the edge.",
-      "Begin by swinging the arms upward as you push through the top leg, jumping upward as high as possible. Attempt to drive the opposite knee upward.",
-      "Land in the opposite position that you started, on the opposite side of the box. The foot that was initially on the box will now be on the ground, with the opposite foot now on the box.",
-      "Repeat the movement, crossing back over to the other side."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Stride_Jump_Crossover/0.jpg",
-      "Stride_Jump_Crossover/1.jpg"
-    ],
-    "id": "Stride_Jump_Crossover"
   },
   {
     "name": "Sumo Deadlift",
@@ -21308,31 +18168,6 @@
     "id": "Torso_Rotation"
   },
   {
-    "name": "Trail Running/Walking",
-    "force": null,
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "calves",
-      "glutes",
-      "hamstrings"
-    ],
-    "instructions": [
-      "Running or hiking on trails will get the blood pumping and heart beating almost immediately. Make sure you have good shoes. While you use the muscles in your calves and buttocks to pull yourself up a hill, the knees, joints and ankles absorb the bulk of the pounding coming back down. Take smaller steps as you walk downhill, keep your knees bent to reduce the impact and slow down to avoid falling.",
-      "A 150 lb person can burn over 200 calories for 30 minutes walking uphill, compared to 175 on a flat surface. If running the trail, a 150 lb person can burn well over 500 calories in 30 minutes."
-    ],
-    "category": "cardio",
-    "images": [
-      "Trail_Running_Walking/0.jpg",
-      "Trail_Running_Walking/1.jpg"
-    ],
-    "id": "Trail_Running_Walking"
-  },
-  {
     "name": "Trap Bar Deadlift",
     "force": "pull",
     "level": "beginner",
@@ -21697,30 +18532,6 @@
     "id": "Underhand_Cable_Pulldowns"
   },
   {
-    "name": "Upper Back-Leg Grab",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "lower back",
-      "middle back"
-    ],
-    "instructions": [
-      "While seated, bend forward to hug your thighs from underneath with both arms.",
-      "Keep your knees together and your legs extended out as you bring your chest down to your knees. You can also stretch your middle back by pulling your back away from your knees as your hugging them."
-    ],
-    "category": "stretching",
-    "images": [
-      "Upper_Back-Leg_Grab/0.jpg",
-      "Upper_Back-Leg_Grab/1.jpg"
-    ],
-    "id": "Upper_Back-Leg_Grab"
-  },
-  {
     "name": "Upper Back Stretch",
     "force": "static",
     "level": "beginner",
@@ -21818,30 +18629,6 @@
     "id": "Upright_Row_-_With_Bands"
   },
   {
-    "name": "Upward Stretch",
-    "force": "static",
-    "level": "beginner",
-    "mechanic": null,
-    "equipment": null,
-    "primaryMuscles": [
-      "shoulders"
-    ],
-    "secondaryMuscles": [
-      "chest",
-      "lats"
-    ],
-    "instructions": [
-      "Extend both hands straight above your head, palms touching.",
-      "Slowly push your hands up and back, keeping your back straight."
-    ],
-    "category": "stretching",
-    "images": [
-      "Upward_Stretch/0.jpg",
-      "Upward_Stretch/1.jpg"
-    ],
-    "id": "Upward_Stretch"
-  },
-  {
     "name": "V-Bar Pulldown",
     "force": "pull",
     "level": "intermediate",
@@ -21897,33 +18684,6 @@
       "V-Bar_Pullup/1.jpg"
     ],
     "id": "V-Bar_Pullup"
-  },
-  {
-    "name": "Vertical Swing",
-    "force": "pull",
-    "level": "beginner",
-    "mechanic": "compound",
-    "equipment": "dumbbell",
-    "primaryMuscles": [
-      "hamstrings"
-    ],
-    "secondaryMuscles": [
-      "glutes",
-      "quadriceps",
-      "shoulders"
-    ],
-    "instructions": [
-      "Allow the dumbbell to hang at arms length between your legs, holding it with both hands. Keep your back straight and your head up.",
-      "Swing the dumbbell between your legs, flexing at the hips and bending the knees slightly.",
-      "Powerfully reverse the motion by extending at the hips, knees, and ankles to propel yourself upward, swinging the dumbell over your head.",
-      "As you land, absorb the impact through your legs and draw the dumbbell to your torso before the next repetition."
-    ],
-    "category": "plyometrics",
-    "images": [
-      "Vertical_Swing/0.jpg",
-      "Vertical_Swing/1.jpg"
-    ],
-    "id": "Vertical_Swing"
   },
   {
     "name": "Walking, Treadmill",
@@ -22575,36 +19335,6 @@
       "Wrist_Rotations_with_Straight_Bar/1.jpg"
     ],
     "id": "Wrist_Rotations_with_Straight_Bar"
-  },
-  {
-    "name": "Yoke Walk",
-    "force": null,
-    "level": "intermediate",
-    "mechanic": "compound",
-    "equipment": "other",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "secondaryMuscles": [
-      "abdominals",
-      "abductors",
-      "adductors",
-      "calves",
-      "glutes",
-      "hamstrings",
-      "lower back"
-    ],
-    "instructions": [
-      "The yoke is usually done with a yoke apparatus, but is sometimes seen with refrigerators or other heavy objects.",
-      "Begin by racking the apparatus across the back of the shoulders. With your head looking forward and back arched, lift the yoke by driving through the heels.",
-      "Begin walking as quickly as possible using short, quick steps. You may hold the side posts of the yoke to help steady it and hold it in position. Continue for the given distance as fast as possible, usually 75-100 feet."
-    ],
-    "category": "strongman",
-    "images": [
-      "Yoke_Walk/0.jpg",
-      "Yoke_Walk/1.jpg"
-    ],
-    "id": "Yoke_Walk"
   },
   {
     "name": "Zercher Squats",

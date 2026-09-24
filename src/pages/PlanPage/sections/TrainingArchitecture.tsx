@@ -160,20 +160,28 @@ export default function TrainingArchitecture() {
                       to={`/library?q=${encodeURIComponent(m.label)}`}
                       className="flex flex-col items-center gap-1 rounded-md border border-border bg-card p-2 transition-colors hover:border-primary/50"
                     >
-                      {md ? (
-                        <img
-                          src={md.gif}
-                          alt={`${m.label} 演示动图`}
-                          loading="lazy"
-                          className="h-16 w-16 object-contain"
-                        />
+                      {md?.gif ? (
+                        <div className="relative">
+                          <img
+                            src={md.gif}
+                            alt={`${m.label} ${md.approx ? '近似演示' : ''}演示动图`}
+                            loading="lazy"
+                            className="h-16 w-16 object-contain"
+                          />
+                          {md.approx && (
+                            <span className="absolute -left-1 -top-1 rounded bg-amber-500/90 px-0.5 py-px text-[8px] font-bold text-white">
+                              近似演示
+                            </span>
+                          )}
+                        </div>
                       ) : (
-                        <div className="flex h-16 w-16 items-center justify-center text-[10px] text-muted-foreground">
-                          暂无动图
+                        <div className="flex h-16 w-16 items-center justify-center text-center text-[10px] text-muted-foreground">
+                          {md?.none ? '站上暂无演示' : '暂无动图'}
                         </div>
                       )}
                       <span className="text-center text-[11px] leading-tight text-foreground">
                         {m.label}
+                        {md?.approx && <span className="ml-0.5 text-[9px] text-amber-600">（近似演示）</span>}
                       </span>
                     </Link>
                   );

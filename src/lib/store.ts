@@ -166,6 +166,28 @@ export function toggleLightCheckin(date: string, key: LightCheckinKey) {
   return all;
 }
 
+// ---------- 今日饮食记录（营养页写入，目标比对见 lib/nutrition-targets.ts） ----------
+// 说明：shortKey 与数据结构沿用既有约定，旧数据零迁移
+export interface LogEntry {
+  foodId: string;
+  name: string;
+  grams: number;
+  meal: string;
+  kcal: number;
+  protein: number;
+  fat: number;
+  carb: number;
+}
+
+export function loadDailyLog(): LogEntry[] {
+  const v = read<LogEntry[]>('daily-log', []);
+  return Array.isArray(v) ? v.filter((e) => e && typeof e.name === 'string') : [];
+}
+
+export function saveDailyLog(entries: LogEntry[]) {
+  write('daily-log', entries);
+}
+
 // ---------- 数据备份与恢复 ----------
 export function exportAllData(): string {
   const data: Record<string, unknown> = {};

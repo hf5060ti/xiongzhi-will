@@ -1,47 +1,61 @@
-import { useEffect, useState } from 'react';
-import { Trash2, Plus, Flame, Beef, Drumstick, Wheat } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Trash2, Plus, Flame, Beef, Drumstick, Wheat, Info, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { FOODS, type IFood } from '@/data/foods';
+import { FOODS, FOOD_CATEGORIES, getServings, type IFood } from '@/data/foods';
 import { Card, CardContent } from '@/components/ui/card';
+import { loadDailyLog, saveDailyLog, type LogEntry } from '@/lib/store';
+import { getDailyTargets } from '@/lib/nutrition-targets';
+import { cn } from '@/lib/utils';
 
-interface LogEntry {
-  foodId: string;
-  name: string;
-  grams: number;
-  meal: string;
-  kcal: number;
-  protein: number;
-  fat: number;
-  carb: number;
-}
-
-const STORAGE_KEY = 'fitness-goal-app:daily-log';
 const MEALS = ['早餐', '午餐', '晚餐', '加餐'];
 
-function loadLog(): LogEntry[] {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
+/** 记录条目回显常见份量：克数正好等于某个锚点时附上「· 1 个（中）」 */
+function servingNote(foodId: string, grams: number): string {
+  const f = FOODS.find((x) => x.id === foodId);
+  if (!f) return '';
+  const s = getServings(f).find((x) => Math.abs(x.grams - grams) < 0.01);
+  return s ? ` · ${s.label}` : '';
 }
 
-function saveLog(entries: LogEntry[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+/** 按当前时间猜一个默认餐次，省一步操作 */
+function defaultMeal(): string {
+  const h = new Date().getHours();
+  if (h < 10) return '早餐';
+  if (h < 15) return '午餐';
+  if (h < 21) return '晚餐';
+  return '加餐';
 }
 
 export default function DailyLog({ refreshKey }: { refreshKey: number }) {
   const [entries, setEntries] = useState<LogEntry[]>([]);
   const [showAdd, setShowAdd] = useState(false);
   const [foodId, setFoodId] = useState('');
+  const [q, setQ] = useState('');
   const [grams, setGrams] = useState('100');
-  const [meal, setMeal] = useState('早餐');
+  const [meal, setMeal] = useState(defaultMeal);
 
   useEffect(() => {
-    setEntries(loadLog());
+    setEntries(loadDailyLog());
   }, [refreshKey]);
+
+  // 食物下拉：按 9 大分类分组全量展示（此前只取前 100 条，导致水果 / 坚果 / 零食选不到）
+  const grouped = useMemo(() => {
+    const kw = q.trim().toLowerCase();
+    return FOOD_CATEGORIES.map((c) => ({
+      ...c,
+      items: FOODS.filter((f) => f.cat === c.id && (kw === '' || f.name.toLowerCase().includes(kw))),
+    })).filter((g) => g.items.length > 0);
+  }, [q]);
+
+  const selectedFood: IFood | null = useMemo(
+    () => FOODS.find((f) => f.id === foodId) ?? null,
+    [foodId],
+  );
+  const servings = selectedFood ? getServings(selectedFood) : [];
+  const gramsNum = parseFloat(grams);
+  const gramsValid = Number.isFinite(gramsNum) && gramsNum > 0;
 
   const totals = entries.reduce(
     (acc, e) => ({
@@ -53,8 +67,8 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
     { kcal: 0, protein: 0, fat: 0, carb: 0 },
   );
 
-  // 目标值（用户之前的截图：2730 kcal, 173g 蛋白, 81g 脂肪, 353g 碳水）
-  const goals = { kcal: 2730, protein: 173, fat: 81, carb: 353 };
+  // 目标值：按身体数据实时计算（体重 / 体脂 / 阶段 / 活动系数 / 饮食方案变更即时生效）
+  const targets = getDailyTargets();
 
   const addEntry = () => {
     if (!foodId || !grams) return;
@@ -75,7 +89,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
     };
     const newLog = [...entries, entry];
     setEntries(newLog);
-    saveLog(newLog);
+    saveDailyLog(newLog);
     setFoodId('');
     setGrams('100');
   };
@@ -83,12 +97,12 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
   const removeEntry = (idx: number) => {
     const newLog = entries.filter((_, i) => i !== idx);
     setEntries(newLog);
-    saveLog(newLog);
+    saveDailyLog(newLog);
   };
 
   const clearAll = () => {
     setEntries([]);
-    saveLog([]);
+    saveDailyLog([]);
   };
 
   return (
@@ -119,7 +133,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
             icon={<Flame className="h-4 w-4" />}
             label="热量"
             value={Math.round(totals.kcal)}
-            goal={goals.kcal}
+            goal={targets.kcal}
             unit="kcal"
             color="text-orange-400"
           />
@@ -127,7 +141,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
             icon={<Beef className="h-4 w-4" />}
             label="蛋白质"
             value={Math.round(totals.protein)}
-            goal={goals.protein}
+            goal={targets.protein}
             unit="g"
             color="text-red-400"
           />
@@ -135,7 +149,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
             icon={<Drumstick className="h-4 w-4" />}
             label="脂肪"
             value={Math.round(totals.fat)}
-            goal={goals.fat}
+            goal={targets.fat}
             unit="g"
             color="text-yellow-400"
           />
@@ -143,24 +157,103 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
             icon={<Wheat className="h-4 w-4" />}
             label="碳水"
             value={Math.round(totals.carb)}
-            goal={goals.carb}
+            goal={targets.carb}
             unit="g"
             color="text-green-400"
           />
         </div>
 
+        {/* 热量目标区间文案（进度条与三大宏量均按下限计） */}
+        {targets.kcal > 0 && (
+          <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+            {targets.kcalMax > targets.kcalMin ? (
+              <>
+                热量目标区间{' '}
+                <span className="font-semibold text-foreground">{targets.kcalRangeText} kcal</span>
+                （进度条与蛋白质 / 脂肪 / 碳水均按区间下限 {targets.kcal} kcal 计）
+              </>
+            ) : (
+              <>
+                热量目标 <span className="font-semibold text-foreground">{targets.kcal} kcal</span>
+                （维持期即含 TEF 的 TDEE）
+              </>
+            )}
+            {targets.tdeeWithTef > 0 && (
+              <>
+                <span className="mx-1.5 text-border">|</span>
+                基数：含 TEF 的 TDEE {targets.tdeeWithTef} kcal
+              </>
+            )}
+          </p>
+        )}
+
+        {/* 目标来源说明（按身体数据实时计算 / 兜底提示） */}
+        {targets.kcal > 0 ? (
+          <p className="mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[11px] leading-relaxed text-muted-foreground">
+            <Info
+              className={cn(
+                'h-3.5 w-3.5 shrink-0',
+                targets.source === 'fallback' ? 'text-warning' : 'text-primary',
+              )}
+            />
+            <span>{targets.basis}</span>
+            <Link
+              to="/body"
+              className="inline-flex items-center gap-0.5 font-medium text-primary hover:underline"
+            >
+              去身体数据页
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+          </p>
+        ) : (
+          <div className="mt-3 rounded-xl border border-dashed border-warning/50 bg-warning/5 p-3">
+            <p className="flex items-start gap-2 text-[11px] leading-relaxed text-muted-foreground">
+              <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-warning" />
+              <span>
+                {targets.basis}
+                <Link
+                  to="/body"
+                  className="ml-1 inline-flex items-center gap-0.5 font-medium text-primary hover:underline"
+                >
+                  去填写
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              </span>
+            </p>
+          </div>
+        )}
+
         {/* 添加表单 */}
         {showAdd && (
-          <div className="mt-4 rounded-xl border border-border/50 bg-background/40 p-3">
+          <div className="mt-4 space-y-2.5 rounded-xl border border-border/50 bg-background/40 p-3">
             <div className="flex flex-wrap gap-2">
+              <Input
+                type="search"
+                placeholder="筛选食物"
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                className="h-9 w-full bg-background/50 sm:w-36"
+              />
               <select
                 value={foodId}
-                onChange={(e) => setFoodId(e.target.value)}
-                className="h-9 flex-1 rounded-md border border-border bg-background px-2 text-sm"
+                onChange={(e) => {
+                  const id = e.target.value;
+                  setFoodId(id);
+                  // 有常见份量锚点的食物，默认按第一档份量填好克数
+                  const f = FOODS.find((x) => x.id === id);
+                  const first = f ? getServings(f)[0] : undefined;
+                  setGrams(first ? String(first.grams) : '100');
+                }}
+                className="h-9 min-w-[150px] flex-1 rounded-md border border-border bg-background px-2 text-sm"
               >
                 <option value="">选择食物</option>
-                {FOODS.slice(0, 100).map((f) => (
-                  <option key={f.id} value={f.id}>{f.name}</option>
+                {grouped.length === 0 && <option value="">无匹配食物</option>}
+                {grouped.map((g) => (
+                  <optgroup key={g.id} label={g.label}>
+                    {g.items.map((f) => (
+                      <option key={f.id} value={f.id}>{f.name}</option>
+                    ))}
+                  </optgroup>
                 ))}
               </select>
               <Input
@@ -183,6 +276,41 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
                 添加
               </Button>
             </div>
+
+            {/* 常见份量锚点：点一下直接折算克数 */}
+            {selectedFood && servings.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-[11px] text-muted-foreground">常见份量：</span>
+                {servings.map((s) => {
+                  const on = gramsValid && Math.abs(gramsNum - s.grams) < 0.01;
+                  return (
+                    <button
+                      key={s.label}
+                      type="button"
+                      onClick={() => setGrams(String(s.grams))}
+                      className={cn(
+                        'rounded-full border px-2 py-0.5 text-[11px] font-medium transition-colors',
+                        on
+                          ? 'border-primary bg-primary/15 text-primary'
+                          : 'border-border/60 bg-background/40 text-muted-foreground hover:border-primary/40 hover:text-foreground',
+                      )}
+                    >
+                      {s.label} {s.grams}g · {Math.round((selectedFood.kcal * s.grams) / 100)} kcal
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* 实时换算预览 */}
+            {selectedFood && gramsValid && (
+              <p className="text-[11px] text-primary">
+                「{selectedFood.name}」{gramsNum}g ≈ {Math.round((selectedFood.kcal * gramsNum) / 100)} kcal ·
+                蛋白 {Math.round(selectedFood.protein * gramsNum) / 100}g · 脂肪{' '}
+                {Math.round(selectedFood.fat * gramsNum) / 100}g · 碳水{' '}
+                {Math.round(selectedFood.carb * gramsNum) / 100}g
+              </p>
+            )}
           </div>
         )}
 
@@ -207,7 +335,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
                       >
                         <span className="text-foreground">{e.name}</span>
                         <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                          <span>{e.grams}g</span>
+                          <span>{e.grams}g{servingNote(e.foodId, e.grams)}</span>
                           <span>{e.kcal} kcal</span>
                           <span>蛋白 {e.protein}g</span>
                           <button

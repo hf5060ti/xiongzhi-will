@@ -58,6 +58,14 @@ interface ExerciseView {
   gif?: string;
   page?: string;
   source?: string;
+  /** 近似演示：站上无同名动作，此处为最接近动作的演示 */
+  approx?: boolean;
+  /** 近似说明，如「近似动作：壶铃单臂高翻挺举」 */
+  approxNote?: string;
+  /** 站上暂无演示：详情页改为展示动作百科站内搜索入口 */
+  none?: boolean;
+  /** 站内搜索用的英文动作名 */
+  searchName?: string;
 }
 
 // 肌群中英映射
@@ -119,14 +127,14 @@ const MECHANIC_CN: Record<string, string> = {
   compound: '复合动作', isolation: '孤立动作',
 };
 
-// 全量动作：本地动作库（876）+ 动作百科补充动作（1012）
+// 全量动作：本地动作库（exercises-db）+ 动作百科补充动作（exercises-ext，已排除与本地库重复的条目）
 const ALL_EXERCISES: ExerciseView[] = [
   ...(exercisesData as RawExercise[]).map((e) => {
     const media = EXERCISE_MEDIA[e.id];
     return {
       id: e.id,
       name: e.name,
-      nameZh: NAME_CN[e.name] || media?.zh || '',
+      nameZh: NAME_CN[e.name] || (media && !media.none ? media.zh : '') || '',
       equipment: e.equipment,
       primaryMuscles: e.primaryMuscles,
       secondaryMuscles: e.secondaryMuscles,
@@ -136,7 +144,12 @@ const ALL_EXERCISES: ExerciseView[] = [
       images: e.images.map((i) => IMG_BASE + i),
       gif: media?.gif,
       page: media?.page,
-      source: media ? '动作百科' : undefined,
+      // 仅在站上真有演示动图时才标注来源；近似演示另有显式标注
+      source: media?.gif ? '动作百科' : undefined,
+      approx: media?.approx,
+      approxNote: media?.approxNote,
+      none: media?.none,
+      searchName: media?.searchName,
     };
   }),
   ...(extData as ExtExercise[]).map((e) => ({
@@ -157,8 +170,15 @@ const ALL_EXERCISES: ExerciseView[] = [
 ];
 
 const WITH_ANIM = ALL_EXERCISES.filter((e) => e.gif).length;
+// 精确演示（站上同名动作）/ 近似演示 / 站上暂无演示
+const EXACT_ANIM = ALL_EXERCISES.filter((e) => e.gif && !e.approx).length;
+const APPROX_ANIM = ALL_EXERCISES.filter((e) => e.gif && e.approx).length;
+const NO_ANIM = ALL_EXERCISES.length - WITH_ANIM;
 
-// 每次渲染的卡片数量，避免一次性渲染近 1900 张卡片
+// 动作百科站内搜索入口（站上暂无演示时使用；站内搜索框支持英文原名）
+const SITE_SEARCH_URL = SITE_HOME;
+
+// 每次渲染的卡片数量，避免一次性渲染全部 1500+ 张卡片
 const PAGE_SIZE = 120;
 
 function getCnName(ex: ExerciseView): string {
@@ -222,8 +242,11 @@ export default function ExerciseLibraryPage() {
       <header className="space-y-1">
         <h1 className="font-display text-3xl font-extrabold tracking-wide text-foreground">动作百科</h1>
         <p className="text-sm text-muted-foreground">
-          共 {ALL_EXERCISES.length} 个动作，其中 {WITH_ANIM} 个带演示动图（鼠标悬停即可播放），点击卡片看分步讲解；
-          暂无动图的动作可一键跳转 B 站搜索该动作名。
+          共 {ALL_EXERCISES.length} 个动作，其中 {WITH_ANIM} 个带演示动图（{EXACT_ANIM} 个为站上同名动作，
+          {APPROX_ANIM} 个为近似演示，鼠标悬停即可播放）
+          {NO_ANIM > 0
+            ? `；${NO_ANIM} 个动作在动作百科站上暂无演示，详情页可一键跳转站内搜索该动作英文名。`
+            : '。'}
         </p>
       </header>
 
@@ -300,6 +323,16 @@ export default function ExerciseLibraryPage() {
                     动图
                   </span>
                 )}
+                {ex.approx && (
+                  <span className="absolute left-1 top-1 rounded bg-amber-500/90 px-1 py-0.5 text-[9px] font-bold text-white">
+                    近似演示
+                  </span>
+                )}
+                {!ex.gif && (
+                  <span className="absolute left-1 top-1 rounded bg-black/50 px-1 py-0.5 text-[9px] font-medium text-white">
+                    站上暂无演示
+                  </span>
+                )}
               </div>
               <div className="p-2">
                 <p className="truncate text-xs font-medium text-foreground">
@@ -316,19 +349,34 @@ export default function ExerciseLibraryPage() {
                 {ex.gif ? (
                   <span className="mt-1 inline-flex items-center gap-0.5 text-[10px] font-medium text-primary">
                     <PlayCircle className="h-3 w-3" />
-                    悬停看演示
+                    {ex.approx ? '近似演示·悬停播放' : '悬停看演示'}
                   </span>
                 ) : (
-                  <a
-                    href={biliSearchUrl(ex)}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="mt-1 inline-flex items-center gap-0.5 text-[10px] font-medium text-primary hover:underline"
-                  >
-                    <ExternalLink className="h-3 w-3" />
-                    去 B 站搜教学
-                  </a>
+                  <div className="mt-1 space-y-0.5">
+                    <p className="text-[10px] text-muted-foreground">站上暂无演示</p>
+                    <div className="flex flex-wrap items-center gap-x-2">
+                      <a
+                        href={SITE_SEARCH_URL}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-0.5 text-[10px] font-medium text-primary hover:underline"
+                      >
+                        <ExternalLink className="h-3 w-3" />
+                        站内搜索
+                      </a>
+                      <a
+                        href={biliSearchUrl(ex)}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-0.5 text-[10px] font-medium text-muted-foreground hover:underline"
+                      >
+                        <ExternalLink className="h-3 w-3" />
+                        B 站
+                      </a>
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
@@ -363,11 +411,22 @@ export default function ExerciseLibraryPage() {
               <div className="flex items-start gap-4">
                 <div className="flex shrink-0 flex-col gap-2">
                   {selected.gif ? (
-                    <img
-                      src={selected.gif}
-                      alt={`${getCnName(selected) || selected.name} 演示动图`}
-                      className="h-40 w-40 rounded-lg border border-border bg-muted/30 object-contain"
-                    />
+                    <div className="flex flex-col gap-1">
+                      <img
+                        src={selected.gif}
+                        alt={`${getCnName(selected) || selected.name}${selected.approx ? '（近似演示）' : ''} 演示动图`}
+                        className="h-40 w-40 rounded-lg border border-border bg-muted/30 object-contain"
+                      />
+                      <span
+                        className={
+                          selected.approx
+                            ? 'rounded bg-amber-500/90 px-1.5 py-0.5 text-center text-[10px] font-bold text-white'
+                            : 'text-center text-[10px] text-muted-foreground'
+                        }
+                      >
+                        {selected.approx ? '近似演示' : '站上同名演示'}
+                      </span>
+                    </div>
                   ) : (
                     selected.images.map((img, i) => (
                       <img
@@ -395,6 +454,10 @@ export default function ExerciseLibraryPage() {
                     {selected.mechanic && (
                       <Badge variant="outline">{MECHANIC_CN[selected.mechanic] || selected.mechanic}</Badge>
                     )}
+                    {selected.approx && (
+                      <Badge className="bg-amber-500 text-white hover:bg-amber-500">近似演示</Badge>
+                    )}
+                    {!selected.gif && <Badge variant="outline">站上暂无演示</Badge>}
                   </div>
                   {selected.secondaryMuscles.length > 0 && (
                     <div className="mt-2 text-xs text-muted-foreground">
@@ -410,11 +473,39 @@ export default function ExerciseLibraryPage() {
                 </div>
               </div>
 
+              {selected.approx && (
+                <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-xs text-amber-700 dark:text-amber-300">
+                  <b>近似演示：</b>
+                  动作百科站上没有收录这个动作的同名演示，此处展示的是站内最接近的
+                  {selected.approxNote ? `「${selected.approxNote.replace(/^近似动作：/, '')}」` : '相关动作'}
+                  动图。器械、握距或身体角度可能与标准动作有差异，仅供动作轨迹参考，请以上方文字步骤为准。
+                </div>
+              )}
+
+              {!selected.gif && (
+                <div className="rounded-md border border-border bg-muted/40 p-3 text-xs text-muted-foreground">
+                  <b className="text-foreground">站上暂无演示：</b>
+                  动作百科（fitness.xingshuwen.com）站内暂无「{selected.name}」的演示动图，
+                  可打开站内搜索并在搜索框粘贴英文名「{selected.name}」（站内支持英文原名检索），查看相关动作。
+                </div>
+              )}
+
               <div className="rounded-md border border-primary/20 bg-primary/5 p-3 text-xs text-primary">
                 <b>安全提示：</b>在安全的范围内去运动。糖尿病、孕妇、老年人、大病初愈者优先遵从医嘱。出现头晕、关节刺痛、异常气短时立即停止。
               </div>
 
               <div className="flex flex-wrap gap-2">
+                {!selected.gif && (
+                  <a
+                    href={SITE_SEARCH_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-md border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    去动作百科站内搜索「{selected.name}」
+                  </a>
+                )}
                 {selected.page && (
                   <a
                     href={selected.page}
@@ -423,7 +514,7 @@ export default function ExerciseLibraryPage() {
                     className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-primary/50"
                   >
                     <ExternalLink className="h-3.5 w-3.5" />
-                    查看动作百科详情
+                    {selected.approx ? '查看近似动作详情' : '查看动作百科详情'}
                   </a>
                 )}
                 <a

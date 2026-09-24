@@ -79,3 +79,9 @@ public/images/.GamingRoot
 public/images/{5F76ACFE-F22D-4A75-8F77-2A23B7170209}
 public/images/guts-bg-final.mp4
 public/images/雄性意志/
+
+# 部署镜像目录中同源带出的 Windows 系统标记文件（构建同步带入，不纳入仓库）
+docs/images/.GamingRoot
+docs/images/{5F76ACFE-F22D-4A75-8F77-2A23B7170209}
+桌面版/images/.GamingRoot
+桌面版/images/{5F76ACFE-F22D-4A75-8F77-2A23B7170209}

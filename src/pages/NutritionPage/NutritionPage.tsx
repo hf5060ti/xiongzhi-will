@@ -24,9 +24,10 @@ export default function NutritionPage() {
     }
   }, [searchParams]);
 
-  const handleSelect = (food: IFood) => {
+  const handleSelect = (food: IFood, presetGrams?: string) => {
     setSelectedFood(food);
-    setWeight('');
+    // 点了常见份量（如「1 个 50g」）就直接带入克数，营养值随即算出
+    setWeight(presetGrams ?? '');
   };
 
   // 从计算器加入今日记录后刷新

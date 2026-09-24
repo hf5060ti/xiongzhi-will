@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { Calculator, Info, Leaf, Droplets, ShieldAlert, PlusCircle } from 'lucide-react';
 import type { IFood } from '@/data/foods';
+import { getServings } from '@/data/foods';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { loadDailyLog, saveDailyLog } from '@/lib/store';
+import { cn } from '@/lib/utils';
 import PhotoNutritionForm from './PhotoNutritionForm';
 
 interface NutritionCalculatorProps {
@@ -10,6 +14,17 @@ interface NutritionCalculatorProps {
   weight: string;
   onWeightChange: (v: string) => void;
   onLogged?: () => void;
+}
+
+const MEALS = ['早餐', '午餐', '晚餐', '加餐'];
+
+/** 按当前时间猜一个默认餐次，省一步操作 */
+function defaultMeal(): string {
+  const h = new Date().getHours();
+  if (h < 10) return '早餐';
+  if (h < 15) return '午餐';
+  if (h < 21) return '晚餐';
+  return '加餐';
 }
 
 // 食物 emoji 映射（按 id 关键词匹配）
@@ -61,34 +76,32 @@ export default function NutritionCalculator({
   onWeightChange,
   onLogged,
 }: NutritionCalculatorProps) {
+  const [meal, setMeal] = useState(defaultMeal);
   const grams = parseFloat(weight);
   const valid = selectedFood !== null && Number.isFinite(grams) && grams > 0;
   const ratio = valid ? grams / 100 : 0;
+  const servings = selectedFood ? getServings(selectedFood) : [];
+  /** 当前克数正好等于某个常见份量时，回显该份量名称 */
+  const matchedServing = valid ? servings.find((s) => Math.abs(s.grams - grams) < 0.01) : undefined;
 
   const hasVitFat = Boolean(selectedFood && selectedFood.vitFat.length > 0);
   const hasVitWater = Boolean(selectedFood && selectedFood.vitWater.length > 0);
 
   const addToLog = () => {
     if (!selectedFood || !valid) return;
-    const STORAGE_KEY = 'fitness-goal-app:daily-log';
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      const log = raw ? JSON.parse(raw) : [];
-      log.push({
-        foodId: selectedFood.id,
-        name: selectedFood.name,
-        grams,
-        meal: '午餐',
-        kcal: Math.round(selectedFood.kcal * ratio),
-        protein: Math.round(selectedFood.protein * ratio * 10) / 10,
-        fat: Math.round(selectedFood.fat * ratio * 10) / 10,
-        carb: Math.round(selectedFood.carb * ratio * 10) / 10,
-      });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(log));
-      onLogged?.();
-    } catch {
-      // ignore
-    }
+    const log = loadDailyLog();
+    log.push({
+      foodId: selectedFood.id,
+      name: selectedFood.name,
+      grams,
+      meal,
+      kcal: Math.round(selectedFood.kcal * ratio),
+      protein: Math.round(selectedFood.protein * ratio * 10) / 10,
+      fat: Math.round(selectedFood.fat * ratio * 10) / 10,
+      carb: Math.round(selectedFood.carb * ratio * 10) / 10,
+    });
+    saveDailyLog(log);
+    onLogged?.();
   };
 
   return (
@@ -112,9 +125,9 @@ export default function NutritionCalculator({
                       {selectedFood.name}
                     </h2>
                     <p className="mt-1 text-xs text-muted-foreground">每 100g 生重参考值</p>
-                    <div className="mt-4 w-full max-w-[180px]">
+                    <div className="mt-4 w-full max-w-[240px]">
                       <label htmlFor="food-weight" className="text-xs text-muted-foreground">
-                        吃了多少（g）
+                        吃了多少（g，按实际称重填）
                       </label>
                       <Input
                         id="food-weight"
@@ -125,6 +138,36 @@ export default function NutritionCalculator({
                         onChange={(e) => onWeightChange(e.target.value)}
                         className="mt-1 bg-background/50"
                       />
+                      {matchedServing && (
+                        <p className="mt-1 text-[11px] text-primary">
+                          = {matchedServing.label}（{matchedServing.grams}g）
+                        </p>
+                      )}
+                      {servings.length > 0 && (
+                        <div className="mt-2">
+                          <p className="text-[11px] text-muted-foreground">或按常见份量快速填入</p>
+                          <div className="mt-1 flex flex-wrap justify-center gap-1.5">
+                            {servings.map((s) => {
+                              const on = matchedServing?.label === s.label;
+                              return (
+                                <button
+                                  key={s.label}
+                                  type="button"
+                                  onClick={() => onWeightChange(String(s.grams))}
+                                  className={cn(
+                                    'rounded-full border px-2 py-0.5 text-[11px] font-medium transition-colors',
+                                    on
+                                      ? 'border-primary bg-primary/15 text-primary'
+                                      : 'border-border/60 bg-background/40 text-muted-foreground hover:border-primary/40 hover:text-foreground',
+                                  )}
+                                >
+                                  {s.label} {s.grams}g
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -141,12 +184,26 @@ export default function NutritionCalculator({
 
                     {valid && (
                       <div className="rounded-xl border border-primary/20 bg-primary/5 p-3">
-                        <div className="mb-2 flex items-center justify-between">
-                          <p className="text-xs font-medium text-primary">实际摄入（{grams}g）</p>
-                          <Button size="sm" variant="secondary" onClick={addToLog} className="h-7 text-xs">
-                            <PlusCircle className="mr-1 h-3.5 w-3.5" />
-                            加入今日记录
-                          </Button>
+                        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                          <p className="text-xs font-medium text-primary">
+                            实际摄入（{grams}g{matchedServing ? ` ≈ ${matchedServing.label}` : ''}）
+                          </p>
+                          <div className="flex items-center gap-2">
+                            <select
+                              value={meal}
+                              onChange={(e) => setMeal(e.target.value)}
+                              aria-label="餐次"
+                              className="h-7 rounded-md border border-border bg-background px-1.5 text-xs"
+                            >
+                              {MEALS.map((m) => (
+                                <option key={m} value={m}>{m}</option>
+                              ))}
+                            </select>
+                            <Button size="sm" variant="secondary" onClick={addToLog} className="h-7 text-xs">
+                              <PlusCircle className="mr-1 h-3.5 w-3.5" />
+                              加入今日记录
+                            </Button>
+                          </div>
                         </div>
                         <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
                           <ResultCell label="热量" value={`${round1(selectedFood.kcal * ratio)}`} />
@@ -253,7 +310,7 @@ export default function NutritionCalculator({
               <p className="mt-4 text-sm text-muted-foreground">
                 先在上方「食物营养库」里点选一种食物
                 <br />
-                再输入克数计算实际摄入
+                再输入实际称重克数（或点「1 个 / 1 碗」等常见份量）即可算出实际摄入
               </p>
             </div>
           )}

@@ -1,7 +1,10 @@
-import { Info, Sparkles, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { Info, Sparkles, ThumbsUp, ThumbsDown, ArrowRight, BookOpen } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import type { IDiet } from '@/data/diets';
+import { knowledgeCountForDiet } from '@/data/diet-knowledge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { getDailyTargets } from '@/lib/nutrition-targets';
 import { cn } from '@/lib/utils';
 
 interface DietSectionProps {
@@ -15,9 +18,25 @@ const MACRO_META = [
   { key: 'fat', label: '脂肪', className: 'bg-chart-3' },
 ] as const;
 
-export default function DietSection({ diet, weightKg }: DietSectionProps) {
-  const hasWeight = weightKg > 0;
-  const kcal = (ratio: number) => Math.round(weightKg * ratio);
+export default function DietSection({ diet }: DietSectionProps) {
+  // 目标值：按身体数据实时计算，与营养页「今日饮食记录」同一口径
+  const targets = getDailyTargets();
+  const hasTarget = targets.kcal > 0;
+  // 讲解层入口：按 relatedDiets 过滤，该方案没有关联条目时整行隐藏
+  const knowledgeCount = knowledgeCountForDiet(diet.id);
+
+  const TARGET_CELLS = [
+    {
+      label: '热量',
+      value:
+        targets.kcalMax > targets.kcalMin ? `~${targets.kcalRangeText}` : `~${targets.kcal}`,
+      unit: 'kcal',
+      highlight: true,
+    },
+    { label: '蛋白质', value: `${targets.protein}`, unit: 'g', highlight: false },
+    { label: '脂肪', value: `${targets.fat}`, unit: 'g', highlight: false },
+    { label: '碳水', value: `${targets.carb}`, unit: 'g', highlight: false },
+  ];
 
   return (
     <section className="space-y-4">
@@ -71,28 +90,70 @@ export default function DietSection({ diet, weightKg }: DietSectionProps) {
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-base">每日热量参考</CardTitle>
-            <CardDescription>按当前体重估算，单位 kcal/天</CardDescription>
+            <CardTitle className="text-base">每日目标</CardTitle>
+            <CardDescription>按身体数据实时计算，与营养页口径一致</CardDescription>
           </CardHeader>
           <CardContent>
-            {hasWeight ? (
-              <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-                <div className="rounded-md border border-border bg-muted/40 p-1.5 text-center sm:p-2.5">
-                  <p className="font-display text-base font-bold leading-none text-primary sm:text-xl">~{kcal(35)}</p>
-                  <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">增肌</p>
+            {hasTarget ? (
+              <div className="space-y-2.5">
+                <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
+                  {TARGET_CELLS.map((c) => (
+                    <div
+                      key={c.label}
+                      className="rounded-md border border-border bg-muted/40 p-1.5 text-center sm:p-2.5"
+                    >
+                      <p
+                        className={cn(
+                          'font-display text-base font-bold leading-none sm:text-xl',
+                          c.highlight ? 'text-primary' : 'text-foreground',
+                        )}
+                      >
+                        {c.value}
+                      </p>
+                      <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">
+                        {c.label}
+                        {c.unit && <span className="ml-0.5 opacity-70">{c.unit}</span>}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-                <div className="rounded-md border border-border bg-muted/40 p-1.5 text-center sm:p-2.5">
-                  <p className="font-display text-base font-bold leading-none text-foreground sm:text-xl">~{kcal(30)}</p>
-                  <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">维持</p>
-                </div>
-                <div className="rounded-md border border-border bg-muted/40 p-1.5 text-center sm:p-2.5">
-                  <p className="font-display text-base font-bold leading-none text-foreground sm:text-xl">~{kcal(25)}</p>
-                  <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">减脂</p>
-                </div>
+                {targets.kcalMax > targets.kcalMin && (
+                  <p className="text-[11px] leading-relaxed text-muted-foreground">
+                    热量目标区间{' '}
+                    <span className="font-semibold text-foreground">
+                      {targets.kcalRangeText} kcal
+                    </span>
+                    ，基数：含 TEF 的 TDEE {targets.tdeeWithTef} kcal；蛋白质 / 脂肪 / 碳水按区间下限{' '}
+                    {targets.kcal} kcal 计算。
+                  </p>
+                )}
+                <p className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[11px] leading-relaxed text-muted-foreground">
+                  <Info
+                    className={cn(
+                      'h-3.5 w-3.5 shrink-0',
+                      targets.source === 'fallback' ? 'text-warning' : 'text-primary',
+                    )}
+                  />
+                  <span>{targets.basis}</span>
+                  <Link
+                    to="/body"
+                    className="inline-flex items-center gap-0.5 font-medium text-primary hover:underline"
+                  >
+                    去身体数据页
+                    <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </p>
               </div>
             ) : (
               <p className="text-sm leading-relaxed text-muted-foreground">
-                返回首页填写当前体重后，这里会自动给出按你体重的热量参考。
+                还没有身体数据。先填写体重与体脂率，这里会自动给出你的每日目标。
+                <Link
+                  to="/body"
+                  className="ml-1 inline-flex items-center gap-0.5 font-medium text-primary hover:underline"
+                >
+                  去填写
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
               </p>
             )}
           </CardContent>
@@ -207,6 +268,25 @@ export default function DietSection({ diet, weightKg }: DietSectionProps) {
           </p>
         </div>
       </div>
+
+      {/* 讲解层入口：来自公开讲解的原创整理，带该方案过滤；无关联条目时自动隐藏 */}
+      {knowledgeCount > 0 && (
+        <Link
+          to={`/diet-knowledge?diet=${diet.id}`}
+          className="flex items-center justify-between gap-3 rounded-lg border border-border bg-card p-4 transition-colors hover:border-primary/40 hover:bg-accent/40"
+        >
+          <span className="min-w-0">
+            <span className="flex items-center gap-2 text-sm font-semibold text-foreground">
+              <BookOpen className="h-4 w-4 shrink-0 text-primary" />
+              这套方案的边界与常见误区
+            </span>
+            <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+              来自公开讲解与公开文献的原创整理，共 {knowledgeCount} 条，逐条标注证据等级与来源链接。
+            </span>
+          </span>
+          <ArrowRight className="h-4 w-4 shrink-0 text-primary" />
+        </Link>
+      )}
     </section>
   );
 }

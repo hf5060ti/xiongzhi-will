@@ -25,3 +25,6 @@ export const FOODS: IFood[] = [
 
 export type { FoodCategory, IFood } from './types';
 export { FOOD_CATEGORIES } from './types';
+// 常见份量锚点（1 个鸡蛋≈50g、1 碗米饭≈150g 等），用于按生活化份量折算克数
+export type { FoodServing } from './servings';
+export { SERVING_ANCHORS, getServings, fmtServing } from './servings';

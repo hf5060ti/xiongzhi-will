@@ -2,12 +2,13 @@ import { useMemo, useState } from 'react';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { FOODS, FOOD_CATEGORIES, type IFood, type FoodCategory } from '@/data/foods';
+import { FOODS, FOOD_CATEGORIES, getServings, type IFood, type FoodCategory } from '@/data/foods';
 import { cn } from '@/lib/utils';
 
 interface FoodLibraryProps {
   selectedId: string;
-  onSelect: (food: IFood) => void;
+  /** presetGrams：按常见份量（如「1 个 50g」）点选时直接带入克数 */
+  onSelect: (food: IFood, presetGrams?: string) => void;
 }
 
 const CAT_ALL = 'all';
@@ -69,6 +70,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
         <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((food) => {
             const active = selectedId === food.id;
+            const servings = getServings(food);
             return (
               <button
                 key={food.id}
@@ -97,6 +99,23 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                   <span>脂肪 {food.fat}g</span>
                   <span>碳水 {food.carb}g</span>
                 </span>
+                {servings.length > 0 && (
+                  <span className="flex flex-wrap gap-1.5">
+                    {servings.slice(0, 2).map((s) => (
+                      <span
+                        key={s.label}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onSelect(food, String(s.grams));
+                        }}
+                        title={`按「${s.label}」折算 ${s.grams}g 并自动换算营养`}
+                        className="cursor-pointer rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 text-[11px] font-medium text-primary transition-colors hover:bg-primary/15"
+                      >
+                        {s.label} {s.grams}g ≈ {Math.round((food.kcal * s.grams) / 100)} kcal
+                      </span>
+                    ))}
+                  </span>
+                )}
                 {(food.vitFat.length > 0 || food.vitWater.length > 0 || (food.minerals?.length ?? 0) > 0) && (
                   <span className="text-[11px] leading-snug text-muted-foreground">
                     维生素 {[...food.vitFat, ...food.vitWater].join('、') || '—'}
@@ -118,7 +137,8 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
         </div>
       )}
       <p className="text-xs text-muted-foreground">
-        营养值为每 100g 生重 / 可食部参考值，来自常见食物成分数据，实际以包装标注为准。
+        营养值为每 100g 生重 / 可食部参考值，来自公开食物成分数据，实际以包装标注为准；
+        卡片上的「1 个 / 1 碗」标签为常见份量锚点，点它即可按份量折算克数并直接算出营养。
       </p>
     </section>
   );

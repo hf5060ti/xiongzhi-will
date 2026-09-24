@@ -1,8 +1,9 @@
 // EXPORTS: SearchEntry, SEARCH_INDEX
-// 全局通用搜索：合并动作 / 食物 / 公式三类条目，导航栏搜索框直接用
+// 全局通用搜索：合并动作 / 食物 / 公式 / 饮食讲解四类条目，导航栏搜索框直接用
 import { GOALS } from '@/data/goals';
 import { FOODS } from '@/data/foods';
 import { BODYWEIGHT_ITEMS } from '@/data/bodyweight';
+import { DIET_KNOWLEDGE } from '@/data/diet-knowledge';
 
 export type SearchTarget =
   | { route: '/plan'; goalId?: string }
@@ -10,10 +11,11 @@ export type SearchTarget =
   | { route: '/body' }
   | { route: '/cardio'; itemId?: string }
   | { route: '/bodyweight'; itemId?: string }
-  | { route: '/stomach' };
+  | { route: '/stomach' }
+  | { route: '/diet-knowledge'; entryId?: string };
 
 export interface SearchEntry {
-  type: 'movement' | 'food' | 'formula';
+  type: 'movement' | 'food' | 'formula' | 'knowledge';
   label: string;
   sublabel: string;
   target: SearchTarget;
@@ -68,7 +70,15 @@ const STOMACH_ENTRIES: SearchEntry[] = [
   { type: 'formula', label: '腹胀', sublabel: '胃部 · 高 FODMAP 与「干净饮食」悖论', target: { route: '/stomach' } },
 ];
 
-export const SEARCH_INDEX: SearchEntry[] = [...MOVEMENTS, ...FOOD_ENTRIES, ...BODYWEIGHT_ENTRIES, ...FORMULAS, ...STOMACH_ENTRIES];
+/** 饮食讲解：搜索直达对应讲解条目（关键词走条目标题） */
+const KNOWLEDGE_ENTRIES: SearchEntry[] = DIET_KNOWLEDGE.map((k) => ({
+  type: 'knowledge' as const,
+  label: k.title,
+  sublabel: `饮食讲解 · ${k.author} · ${k.topic}`,
+  target: { route: '/diet-knowledge', entryId: k.id },
+}));
+
+export const SEARCH_INDEX: SearchEntry[] = [...MOVEMENTS, ...FOOD_ENTRIES, ...BODYWEIGHT_ENTRIES, ...FORMULAS, ...STOMACH_ENTRIES, ...KNOWLEDGE_ENTRIES];
 
 export function searchEntries(query: string, limit = 8): SearchEntry[] {
   const q = query.trim().toLowerCase();

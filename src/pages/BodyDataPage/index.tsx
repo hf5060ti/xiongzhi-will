@@ -9,6 +9,7 @@ import InputPanel from './sections/InputPanel';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
 import { loadBodyProfile, saveBodyProfile, loadGoalId, loadDietId, type BodyProfile } from '@/lib/store';
+import { getDailyTargets } from '@/lib/nutrition-targets';
 import {
   ACTIVITY_FACTORS,
   GOAL_PROTEIN,
@@ -100,6 +101,21 @@ export default function BodyDataPage() {
 
     const gain = hasCore ? aragonGain(weight, level) : null;
 
+    // 热量目标：与营养页「今日饮食记录」共用同一计算源（含 TEF 的 TDEE 为基数，增肌 +300~500 / 减脂 −500~−300）
+    const targets = getDailyTargets();
+    const useTargets = targets.source === 'profile';
+    const kcalAnchor = useTargets ? targets.tdeeWithTef : Math.round(tdeeWithTef);
+    const kcalMin = useTargets
+      ? targets.kcalMin
+      : phase === 'maintain'
+        ? Math.round(tdeeWithTef)
+        : Math.round(tdeeWithTef) + (phase === 'bulk' ? 300 : -500);
+    const kcalMax = useTargets
+      ? targets.kcalMax
+      : phase === 'maintain'
+        ? Math.round(tdeeWithTef)
+        : Math.round(tdeeWithTef) + (phase === 'bulk' ? 500 : -300);
+
     return {
       weight,
       height,
@@ -120,6 +136,10 @@ export default function BodyDataPage() {
       tdeeVal,
       tefVal,
       tdeeWithTef,
+      kcalAnchor,
+      kcalMin,
+      kcalMax,
+      kcalIsRange: kcalMax > kcalMin,
       activityLabel: ACTIVITY_FACTORS.find((a) => a.id === profile.activity)?.label ?? '',
       activityFactor: activity,
       gain,
@@ -226,17 +246,19 @@ export default function BodyDataPage() {
           {d.bmr ? (
             <>
               <p className="mt-2 font-display text-3xl font-extrabold tracking-wide text-primary">
-                {d.phase === 'maintain'
-                  ? round0(d.tdeeVal)
-                  : d.phase === 'bulk'
-                    ? `${round0(d.tdeeVal + 300)}–${round0(d.tdeeVal + 500)}`
-                    : `${round0(d.tdeeVal - 500)}–${round0(d.tdeeVal - 300)}`}
+                {d.kcalIsRange ? `${round0(d.kcalMin)}–${round0(d.kcalMax)}` : `${round0(d.kcalMin)}`}
                 <span className="ml-2 text-base font-bold text-muted-foreground">kcal / 天</span>
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                {d.phase === 'bulk' && '增肌：TDEE +300~500 kcal，配合蛋白质基准。'}
-                {d.phase === 'cut' && '减脂：TDEE −300~500 kcal，蛋白质不减反升（瘦体重 × 2.3）。'}
-                {d.phase === 'maintain' && '维持：吃回 TDEE，蛋白质按维持基准。'}
+                {d.phase === 'bulk' &&
+                  `增肌：含 TEF 的 TDEE（${round0(d.kcalAnchor)} kcal）+300~500 kcal，配合蛋白质基准。`}
+                {d.phase === 'cut' &&
+                  `减脂：含 TEF 的 TDEE（${round0(d.kcalAnchor)} kcal）−500~−300 kcal，蛋白质不减反升（瘦体重 × 2.3）。`}
+                {d.phase === 'maintain' &&
+                  `维持：吃回含 TEF 的 TDEE（${round0(d.kcalAnchor)} kcal），蛋白质按维持基准。`}
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                与「营养页 · 今日饮食记录」同一口径（基数与区间数值完全一致）。
               </p>
             </>
           ) : (
