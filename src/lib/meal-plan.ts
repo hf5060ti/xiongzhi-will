@@ -73,7 +73,7 @@ function pickDiet(id: string) {
 }
 
 /** 每日目标：Katch BMR × 活动系数 × (1+TEF) → 阶段调整热量 → 碳蛋脂分配 */
-export function buildDailyTargets(input: MealPlanInput): DailyTargets {
+export function buildDailyTargets(input: MealPlanInput, macroOverride?: { carb: number; protein: number; fat: number }): DailyTargets {
   const lbm = calcLbm(input.weightKg, input.bodyFatPct);
   const bmr = calcBmr({
     sex: input.sex,
@@ -84,6 +84,7 @@ export function buildDailyTargets(input: MealPlanInput): DailyTargets {
   });
   const factor = ACTIVITY_FACTORS.find((a) => a.id === input.activity)?.value ?? 1.55;
   const diet = pickDiet(input.dietId);
+  const macro = macroOverride ?? diet.macro;
   const baseTdee = tdee(bmr.katch, factor) * (1 + tefPct(diet.macro) / 100);
 
   let adjust = 0;
@@ -94,7 +95,7 @@ export function buildDailyTargets(input: MealPlanInput): DailyTargets {
   const proteinG = Math.round(calcProtein(lbm, input.phase).target);
 
   const restKcal = calories - proteinG * 4;
-  const carbKcal = (restKcal * diet.macro.carb) / (diet.macro.carb + diet.macro.fat);
+  const carbKcal = (restKcal * macro.carb) / (macro.carb + macro.fat);
   const fatKcal = restKcal - carbKcal;
   return {
     calories,
@@ -189,12 +190,12 @@ function snackKcal(items: MealOptionItem[]): number {
   return Math.round(items.reduce((s, i) => s + (kcalOf[i.name] ?? 100) * (i.grams / 100), 0));
 }
 
-/** 四餐分配 + 每餐 2 个可选方案 */
-export function buildMealPlan(input: MealPlanInput): MealPlanResult {
-  const daily = buildDailyTargets(input);
+/** 四餐分配 + 每餐 2 个可选方案；macroOverride 用于碳循环休息日（低碳口径） */
+export function buildMealPlan(input: MealPlanInput, macroOverride?: { carb: number; protein: number; fat: number }): MealPlanResult {
+  const daily = buildDailyTargets(input, macroOverride);
   const diet = pickDiet(input.dietId);
   const keto = diet.id === 'keto';
-  const lowCarb = diet.id === 'carb-cycle';
+  const lowCarb = diet.id === 'carb-cycle' || !!macroOverride;
   const isCut = input.phase === 'cut';
 
   const meals: PlannedMeal[] = MEAL_SPLIT.map(({ slot, pct }) => {
@@ -304,4 +305,44 @@ export function buildMealPlan(input: MealPlanInput): MealPlanResult {
 // 供 UI 引用的方案说明（吸收率提示，沿用 diets.ts absorbNote）
 export function dietAbsorbNote(dietId: string): string {
   return pickDiet(dietId).absorbNote;
+}
+
+// ---- 一周菜单 ----
+// 按分化推演 7 天训练日 / 休息日（周一~周日，true = 训练日）
+export const ROUTINE_PATTERNS: Record<string, boolean[]> = {
+  'full-body': [true, true, false, true, true, false, false], // 二分化：练2休1
+  'push-pull-legs': [true, true, true, false, true, true, false], // 三分化：练3休1
+  'ppl-upper-lower': [true, true, false, true, true, false, true], // 四分化
+  'upper-lower': [true, true, false, true, true, false, true], // 四分化
+  'bro-split': [true, true, true, true, true, false, false], // 五分化：练5休2
+};
+
+export interface WeekDayPlan {
+  label: string; // 周一
+  isTrainDay: boolean;
+  dietName: string; // 该日实际饮食方案名
+  plan: MealPlanResult;
+}
+
+export const WEEK_DAY_LABELS = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+
+/** 碳循环休息日：碳水压到 25% 左右（用户口径），蛋白质克数恒定不降 */
+export const REST_DAY_MACRO = { carb: 25, protein: 35, fat: 40 };
+
+/** 一周菜单：每天复用 buildMealPlan；碳循环的休息日自动切「低碳日」口径 */
+export function buildWeekPlan(input: MealPlanInput, splitId?: string): WeekDayPlan[] {
+  const pattern = ROUTINE_PATTERNS[splitId ?? 'push-pull-legs'] ?? ROUTINE_PATTERNS['push-pull-legs'];
+  return WEEK_DAY_LABELS.map((label, i) => {
+    const isTrainDay = pattern[i] ?? true;
+    let dietId = input.dietId;
+    let dietName = pickDiet(dietId).name;
+    let macro: typeof REST_DAY_MACRO | undefined;
+    if (input.dietId === 'carb-cycle' && !isTrainDay) {
+      dietId = 'moderate';
+      dietName = '低碳日（碳水≈25%，蛋白不降）';
+      macro = REST_DAY_MACRO;
+    }
+    const plan = buildMealPlan({ ...input, dietId }, macro);
+    return { label, isTrainDay, dietName, plan };
+  });
 }
