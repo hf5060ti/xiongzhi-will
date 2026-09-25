@@ -44,4 +44,9 @@ export const DAIRY: IFood[] = [
   { id: 'egg-fried', name: '煎蛋', cat: 'dairy', kcal: 200, protein: 13.5, fat: 15, carb: 0.8, fiber: 0, sodium: 210, vitFat: ['A', 'D', 'E'], vitWater: ['B2', 'B12'], minerals: ['硒'], note: '含额外用油' },
   { id: 'egg-scrambled', name: '炒蛋', cat: 'dairy', kcal: 210, protein: 13.8, fat: 16.4, carb: 1.5, fiber: 0, sodium: 220, vitFat: ['A', 'D', 'E'], vitWater: ['B2', 'B12'], minerals: ['硒'], note: '含额外用油' },
   { id: 'egg-salted', name: '咸鸭蛋', cat: 'dairy', kcal: 190, protein: 12.7, fat: 12.7, carb: 6.3, fiber: 0, sodium: 2706, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙', '硒'], note: '高钠' },
+  // ---- 少数民族特色奶制品 ----
+  { id: 'milk-buffalo', name: '水牛奶', cat: 'dairy', kcal: 95, protein: 3.8, fat: 7.5, carb: 5, fiber: 0, sodium: 55, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'], note: '脂肪与蛋白比牛奶高，口感更浓，钙约 118mg/100g' },
+  { id: 'milk-yak', name: '牦牛奶', cat: 'dairy', kcal: 92, protein: 3.6, fat: 6.8, carb: 4.6, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '高海拔牦牛产，脂肪与蛋白高于荷斯坦牛' },
+  { id: 'butter-yak', name: '酥油（牦牛黄油）', cat: 'dairy', kcal: 780, protein: 0.8, fat: 86, carb: 1.5, fiber: 0, sodium: 12, vitFat: ['A', 'D', 'E', 'K'], vitWater: [], minerals: [], note: '牦牛奶提炼的黄油，纯脂肪，1g 约 7.8kcal，高海拔主食热量来源' },
+  { id: 'ghee', name: '澄清黄油（酥油）', cat: 'dairy', kcal: 900, protein: 0.3, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['A', 'E', 'K'], vitWater: [], minerals: [], note: '去除乳蛋白与水分的纯脂肪，耐高温，1g 约 9kcal' },
 ];

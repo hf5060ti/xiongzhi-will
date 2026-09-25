@@ -72,4 +72,10 @@ export const MEATS: IFood[] = [
   { id: 'oxtail', name: '牛尾', cat: 'meat', kcal: 250, protein: 19, fat: 19, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'] },
   { id: 'rabbit', name: '兔肉', cat: 'meat', kcal: 102, protein: 19.7, fat: 2.2, carb: 0.9, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '高蛋白低脂' },
   { id: 'venison', name: '鹿肉', cat: 'meat', kcal: 120, protein: 22, fat: 3, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'] },
+  // ---- 细分牛肉（草饲 / 谷饲 / 和牛）与少数民族特色 ----
+  { id: 'beef-grass-fed', name: '草饲牛肉（生）', cat: 'meat', kcal: 130, protein: 22, fat: 4, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌'], note: '草饲脂肪更低，Omega-3 略高，肉质更紧' },
+  { id: 'beef-grain-fed', name: '谷饲牛肉（生）', cat: 'meat', kcal: 198, protein: 19, fat: 13, carb: 0, fiber: 0, sodium: 58, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌'], note: '谷饲大理石花纹多，脂肪更高更嫩' },
+  { id: 'beef-wagyu', name: '和牛（生）', cat: 'meat', kcal: 480, protein: 12, fat: 48, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '高脂肪雪花肉，偶尔吃，份量控制' },
+  { id: 'yak-beef', name: '牦牛肉（生）', cat: 'meat', kcal: 121, protein: 21, fat: 3.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌'], note: '高海拔放养，高蛋白低脂，肉质偏紧实' },
+  { id: 'yak-jerky', name: '牦牛肉干', cat: 'meat', kcal: 420, protein: 48, fat: 18, carb: 8, fiber: 0, sodium: 1500, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '风干制品，高钠，注意控盐' },
 ];
