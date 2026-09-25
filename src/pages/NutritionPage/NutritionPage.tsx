@@ -7,7 +7,8 @@ import DailyLog from './sections/DailyLog';
 import { FOODS, type IFood } from '@/data/foods';
 import { CHEN_SHI } from '@/data/coach-videos';
 import { Badge } from '@/components/ui/badge';
-import { PlayCircle } from 'lucide-react';
+import { PlayCircle, UtensilsCrossed } from 'lucide-react';
+import { ABSORPTION_GUIDE, TEF_RULE } from '@/lib/absorption';
 
 export default function NutritionPage() {
   const [searchParams] = useSearchParams();
@@ -66,6 +67,44 @@ export default function NutritionPage() {
             onLogged={handleLogged}
           />
         </div>
+      </div>
+
+      {/* 营养素吸收率指南 */}
+      <div className="rounded-xl border border-border bg-card p-5 sm:p-6">
+        <div className="mb-1 flex flex-wrap items-center gap-2">
+          <h2 className="font-display text-xl font-extrabold text-foreground">营养素吸收率指南</h2>
+          <Badge variant="outline" className="px-2 py-0.5 text-[11px]">吃进去 ≠ 吸收进去</Badge>
+        </div>
+        <p className="mb-1 text-xs leading-relaxed text-muted-foreground">
+          同样一份食物，会吃的人吸收率高一截。掌握这些搭配原则，营养利用率立竿见影。
+        </p>
+        <p className="mb-4 rounded-md border border-primary/30 bg-primary/5 px-3 py-2 text-xs leading-relaxed text-primary/90">
+          🔥 食物热效应：脂肪 {TEF_RULE.fat} · 碳水 {TEF_RULE.carb} · 蛋白质 {TEF_RULE.protein}（{TEF_RULE.default}
+          兜底）。{TEF_RULE.note}
+        </p>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {ABSORPTION_GUIDE.map((g) => (
+            <div key={g.title} className="rounded-lg border border-border bg-muted/30 p-4">
+              <div className="mb-1 flex flex-wrap items-center gap-2">
+                <UtensilsCrossed className="h-4 w-4 text-primary" />
+                <span className="font-display text-base font-bold text-foreground">{g.title}</span>
+                <Badge variant="outline" className="px-1.5 py-0 text-[10px]">{g.badge}</Badge>
+              </div>
+              <p className="text-xs leading-relaxed text-muted-foreground">{g.body}</p>
+              <ul className="mt-2 space-y-1">
+                {g.tips.map((t) => (
+                  <li key={t} className="flex items-start gap-1.5 text-[11px] leading-snug text-foreground/80">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/70" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
+          吸收率因人而异（消化系统、年龄、疾病都会影响）；孕妇、老年人、大病初愈者、糖尿病及相关疾病人群，优先遵从医嘱。
+        </p>
       </div>
 
       {/* 陈石营养讲解课堂 */}

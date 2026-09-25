@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react';
-import { Search } from 'lucide-react';
+import { Search, Sparkles } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { FOODS, FOOD_CATEGORIES, getServings, type IFood, type FoodCategory } from '@/data/foods';
 import { smartMatch } from '@/lib/smart-search';
+import { getAbsorptionTips } from '@/lib/absorption';
 import { cn } from '@/lib/utils';
 
 interface FoodLibraryProps {
@@ -141,6 +142,15 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                     {food.phytochem.length > 1 && ` 等 ${food.phytochem.length} 种活性成分`}
                   </span>
                 )}
+                {getAbsorptionTips(food).slice(0, 2).map((t) => (
+                  <span
+                    key={t}
+                    className="flex items-start gap-1 text-[11px] leading-snug text-emerald-600/90 dark:text-emerald-400/90"
+                  >
+                    <Sparkles className="mt-0.5 h-3 w-3 shrink-0" />
+                    {t}
+                  </span>
+                ))}
               </button>
             );
           })}
