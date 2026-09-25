@@ -22,9 +22,15 @@ import {
   fetchProviders,
   getApiBase,
   hasCustomApiBase,
+  hasSiliconflowKey,
   LOCAL_BACKEND_HINT,
   resetApiBase,
   setApiBase,
+  getSiliconflowKey,
+  setSiliconflowKey,
+  getSiliconflowModel,
+  setSiliconflowModel,
+  SILICONFLOW_MODELS,
   type ChatMessage,
   type ProviderInfo,
 } from '@/lib/ai';
@@ -382,6 +388,9 @@ function AIChatPanel() {
   const abortRef = useRef<AbortController | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
   const aliveRef = useRef(true);
+  const [keyInput, setKeyInput] = useState(() => getSiliconflowKey());
+  const [modelInput, setModelInput] = useState(() => getSiliconflowModel());
+  const [showKeyForm, setShowKeyForm] = useState(() => !hasSiliconflowKey());
 
   /** 拉取成功：应用模型列表 */
   const applyProviders = useCallback((list: ProviderInfo[]) => {
@@ -556,6 +565,57 @@ function AIChatPanel() {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
+{showKeyForm && (
+                <div className="space-y-2.5 rounded-lg border border-primary/30 bg-primary/5 p-3.5">
+          <p className="flex items-center gap-2 text-sm font-semibold text-primary">
+            <Bot className="h-4 w-4 shrink-0" />
+            AI 对话需要一个 Key（免费，2 分钟搞定）
+          </p>
+          <div className="space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+            <p>
+              这个功能直连<strong className="text-foreground">硅基流动 SiliconFlow</strong>，
+              新用户注册就送 14 元额度（够聊几千条），不用绑信用卡。
+              Key 只存在你自己的浏览器里，不上传任何服务器。
+            </p>
+            <ol className="list-decimal space-y-0.5 pl-4">
+              <li>打开 <a href="https://cloud.siliconflow.cn/me/account/ak" target="_blank" rel="noreferrer" className="underline text-primary">硅基流动 API 密钥页</a>，注册后点「新建 API 密钥」</li>
+              <li>复制那串 <code className="rounded bg-muted px-1">sk-...</code> 粘到下面</li>
+              <li>选个模型（推荐 Qwen2.5-7B，快且免费额度多），点「保存并启用」</li>
+            </ol>
+          </div>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <Input
+              type="password"
+              value={keyInput}
+              onChange={(e) => setKeyInput(e.target.value)}
+              placeholder="粘贴 sk- 开头的 Key"
+              className="h-9 flex-1 font-mono text-xs"
+            />
+            <NativeSelect value={modelInput} onChange={(e) => setModelInput(e.target.value)} className="h-9 sm:w-56">
+              {SILICONFLOW_MODELS.map((m) => (
+                <NativeSelectOption key={m.id} value={m.id}>{m.label}</NativeSelectOption>
+              ))}
+            </NativeSelect>
+            <Button
+              type="button"
+              size="sm"
+              onClick={() => {
+                setSiliconflowKey(keyInput);
+                setSiliconflowModel(modelInput);
+                setShowKeyForm(false);
+                reconnect();
+              }}
+              disabled={!keyInput.trim()}
+            >
+              保存并启用
+            </Button>
+          </div>
+          <p className="text-[11px] text-muted-foreground/80">
+            已有 Key？直接粘进来就行。想换模型或清除 Key，点下面的「修改 Key」。
+          </p>
+        </div>
+        )}
+
         {backend === 'offline' && (
           <div className="space-y-3 rounded-lg border border-warning/40 bg-warning/5 p-3.5">
             <p className="flex items-center gap-2 text-sm font-semibold text-warning">

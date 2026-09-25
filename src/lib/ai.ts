@@ -1,9 +1,11 @@
 // EXPORTS: ProviderInfo, ChatMessage, fetchProviders, chatStream, pingBackend,
 //          BackendOfflineError, getApiBase, getDefaultApiBase, setApiBase,
-//          resetApiBase, LOCAL_BACKEND_HINT
-// 前端侧调用本地 AI 后台（server/server.js）的唯一入口。
-// dev 环境走 vite proxy（/api → 127.0.0.1:8787）；如需直连可设 VITE_API_BASE，
-// 或让用户在页面上填写自定义后台地址（存 localStorage，刷新后仍生效）。
+//          resetApiBase, LOCAL_BACKEND_HINT,
+//          getSiliconflowKey, setSiliconflowKey, hasSiliconflowKey,
+//          SILICONFLOW_MODELS, getSiliconflowModel, setSiliconflowModel
+// AI 调用两条路：
+//   ① 直连：用户自己填硅基流动 Key，浏览器直接调 api.siliconflow.cn（不需要本机后台）
+//   ② 本机后台：server/server.js 转发豆包 / Marvis / Ollama（Key 只在本机）
 
 export interface ProviderInfo {
   id: string;
@@ -15,6 +17,121 @@ export interface ProviderInfo {
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant';
   content: string;
+}
+
+// ── 硅基流动直连（用户自己的 Key，存自己浏览器）─────────────────
+const SILICONFLOW_KEY_STORAGE = 'xiongzhi-will:siliconflow-key';
+const SILICONFLOW_MODEL_STORAGE = 'xiongzhi-will:siliconflow-model';
+export const SILICONFLOW_API = 'https://api.siliconflow.cn/v1/chat/completions';
+
+export const SILICONFLOW_MODELS = [
+  { id: 'Qwen/Qwen2.5-7B-Instruct', label: 'Qwen2.5-7B（快，免费额度）' },
+  { id: 'Qwen/Qwen2.5-72B-Instruct', label: 'Qwen2.5-72B（更强，消耗额度快）' },
+  { id: 'deepseek-ai/DeepSeek-V2.5', label: 'DeepSeek-V2.5（推理强）' },
+  { id: 'THUDM/glm-4-9b-chat', label: 'GLM-4-9B（轻量）' },
+];
+
+export function getSiliconflowKey(): string {
+  try {
+    return (localStorage.getItem(SILICONFLOW_KEY_STORAGE) || '').trim();
+  } catch {
+    return '';
+  }
+}
+
+export function setSiliconflowKey(key: string): void {
+  try {
+    if (key.trim()) localStorage.setItem(SILICONFLOW_KEY_STORAGE, key.trim());
+    else localStorage.removeItem(SILICONFLOW_KEY_STORAGE);
+  } catch {
+    /* 隐私模式 */
+  }
+}
+
+export function hasSiliconflowKey(): boolean {
+  return Boolean(getSiliconflowKey());
+}
+
+export function getSiliconflowModel(): string {
+  try {
+    return localStorage.getItem(SILICONFLOW_MODEL_STORAGE) || SILICONFLOW_MODELS[0].id;
+  } catch {
+    return SILICONFLOW_MODELS[0].id;
+  }
+}
+
+export function setSiliconflowModel(model: string): void {
+  try {
+    localStorage.setItem(SILICONFLOW_MODEL_STORAGE, model);
+  } catch {
+    /* ignore */
+  }
+}
+
+/** 直连硅基流动：流式对话 */
+async function chatStreamSiliconflow(
+  messages: ChatMessage[],
+  signal: AbortSignal | undefined,
+  onDelta: (text: string) => void,
+): Promise<void> {
+  const key = getSiliconflowKey();
+  if (!key) throw new Error('还没填硅基流动 API Key');
+
+  const res = await fetch(SILICONFLOW_API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${key}`,
+    },
+    body: JSON.stringify({
+      model: getSiliconflowModel(),
+      messages,
+      stream: true,
+    }),
+    signal,
+  });
+
+  if (!res.ok) {
+    let msg = `硅基流动返回 HTTP ${res.status}`;
+    try {
+      const data = await res.json();
+      if (data?.error?.message) msg = String(data.error.message);
+    } catch {
+      /* ignore */
+    }
+    throw new Error(msg);
+  }
+
+  if (!res.body) throw new Error('当前浏览器不支持流式响应');
+
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+
+    const blocks = buffer.split('\n\n');
+    buffer = blocks.pop() ?? '';
+
+    for (const block of blocks) {
+      for (const line of block.split('\n')) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith('data:')) continue;
+        const payload = trimmed.slice(5).trim();
+        if (!payload || payload === '[DONE]') continue;
+        try {
+          const json = JSON.parse(payload);
+          const delta = json?.choices?.[0]?.delta?.content;
+          if (typeof delta === 'string' && delta) onDelta(delta);
+        } catch {
+          /* 忽略跨包截断 */
+        }
+      }
+    }
+  }
 }
 
 /** 构建期注入的默认后台地址（留空＝同源 /api，dev 走 vite proxy） */
@@ -132,18 +249,39 @@ async function readJson(res: Response): Promise<Record<string, unknown> | null> 
   }
 }
 
-/** 读取后端已配置的模型列表；后台不可达时抛 BackendOfflineError */
+/** 读取模型列表：优先返回用户自己的硅基流动直连，再尝试本机后台 */
 export async function fetchProviders(): Promise<ProviderInfo[]> {
-  const res = await requestRaw('/api/providers');
-  if (OFFLINE_STATUS.has(res.status)) {
-    throw new BackendOfflineError('unreachable', getApiBase(), `HTTP ${res.status}`);
+  const list: ProviderInfo[] = [];
+
+  // ① 用户自己填了硅基流动 Key → 直连，不需要后台
+  if (hasSiliconflowKey()) {
+    list.push({
+      id: 'siliconflow-direct',
+      label: '硅基流动（我的Key）',
+      model: getSiliconflowModel(),
+      configured: true,
+    });
   }
-  const data = await readJson(res);
-  if (!res.ok) {
-    const err = data?.error;
-    throw new Error(err ? String(err) : `读取模型列表失败：HTTP ${res.status}`);
+
+  // ② 本机后台（可选，失败不影响直连）
+  try {
+    const res = await requestRaw('/api/providers');
+    if (!OFFLINE_STATUS.has(res.status)) {
+      const data = await readJson(res);
+      if (res.ok && Array.isArray(data?.providers)) {
+        for (const p of data.providers as ProviderInfo[]) {
+          list.push(p);
+        }
+      }
+    }
+  } catch {
+    /* 后台连不上就算了，不影响直连 */
   }
-  return Array.isArray(data?.providers) ? (data.providers as ProviderInfo[]) : [];
+
+  if (list.length === 0) {
+    throw new BackendOfflineError('unreachable', getApiBase(), '还没配置任何 AI：填一个硅基流动 Key 就能用');
+  }
+  return list;
 }
 
 /** 探测后台是否在线（/api/health），只用于状态判断，不抛错 */
@@ -167,6 +305,12 @@ export interface StreamOptions {
 
 /** 流式对话：逐段回调增量文本 */
 export async function chatStream({ provider, messages, signal, onDelta }: StreamOptions): Promise<void> {
+  // ① 直连硅基流动（用户自己的 Key）
+  if (provider === 'siliconflow-direct') {
+    return chatStreamSiliconflow(messages, signal, onDelta);
+  }
+
+  // ② 本机后台转发
   const res = await requestRaw('/api/chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
