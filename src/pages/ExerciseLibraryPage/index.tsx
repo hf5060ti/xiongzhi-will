@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import exercisesData from '@/data/exercises-db.json';
 import extData from '@/data/exercises-ext.json';
 import { EXERCISE_MEDIA } from '@/data/exercise-media';
+import { TAN_CHENGYI, type CoachVideo } from '@/data/coach-videos';
 
 // 图片 CDN 前缀
 const IMG_BASE = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';
@@ -493,6 +494,45 @@ export default function ExerciseLibraryPage() {
               <div className="rounded-md border border-primary/20 bg-primary/5 p-3 text-xs text-primary">
                 <b>安全提示：</b>在安全的范围内去运动。糖尿病、孕妇、老年人、大病初愈者优先遵从医嘱。出现头晕、关节刺痛、异常气短时立即停止。
               </div>
+
+              {(() => {
+                const vids = matchTanVideos(selected);
+                if (!vids.length) return null;
+                return (
+                  <div className="rounded-lg border border-border bg-card p-3.5">
+                    <h3 className="mb-2 flex items-center gap-2 font-display text-base font-bold text-foreground">
+                      <PlayCircle className="h-4 w-4 text-primary" />
+                      名师教学视频 · 谭成义
+                      <span className="text-[10px] font-normal text-muted-foreground">（跳转原平台观看）</span>
+                    </h3>
+                    <div className="space-y-1.5">
+                      {vids.map((v, vi) => (
+                        <a
+                          key={vi}
+                          href={v.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group flex items-start gap-2 rounded-md border border-border bg-muted/30 p-2.5 transition-colors hover:border-primary/50"
+                        >
+                          <PlayCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                          <span className="min-w-0 flex-1">
+                            <span className="block truncate text-sm font-medium text-foreground group-hover:text-primary">
+                              {v.title}
+                            </span>
+                            {v.note && (
+                              <span className="block text-[11px] text-muted-foreground">{v.note}</span>
+                            )}
+                          </span>
+                          <Badge variant="outline" className="shrink-0">{v.platform}</Badge>
+                        </a>
+                      ))}
+                    </div>
+                    <p className="mt-2 text-[10px] leading-relaxed text-muted-foreground">
+                      视频版权归原作者谭成义所有，仅作学习参考。
+                    </p>
+                  </div>
+                );
+              })()}
 
               <div className="flex flex-wrap gap-2">
                 {!selected.gif && (
