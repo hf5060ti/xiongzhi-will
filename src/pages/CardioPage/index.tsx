@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Activity, Check, Flame, HeartPulse, Info, Timer, Users, X } from 'lucide-react';
+import { Activity, Check, Flame, HeartPulse, Info, Search, Timer, Users, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -20,6 +20,7 @@ import {
 import { round0, round1 } from '@/lib/body-math';
 import { loadBodyProfile, loadWeightKg } from '@/lib/store';
 import { cn } from '@/lib/utils';
+import { smartMatch } from '@/lib/smart-search';
 
 /** 分钟 → 小时文本，去掉多余的 0（90 → 1.5） */
 function hoursText(minutes: number): string {
@@ -92,6 +93,15 @@ export default function CardioPage() {
     return stored > 0 ? String(stored) : '';
   });
   const [minutes, setMinutes] = useState('30');
+  const [query, setQuery] = useState('');
+
+  const filteredItems = (() => {
+    const q = query.trim();
+    if (!q) return CARDIO_ITEMS;
+    return CARDIO_ITEMS.filter((it) =>
+      smartMatch(q, [it.name, it.en, it.tagline, it.desc, it.suitable, ...it.pros, ...it.cons, ...it.cautions]),
+    );
+  })();
 
   const item = CARDIO_ITEMS.find((i) => i.id === itemId) ?? CARDIO_ITEMS[0];
   const metRow = item.metRows.find((m) => m.id === metId) ?? item.metRows[0];
@@ -135,9 +145,19 @@ export default function CardioPage() {
           <p className="mt-1 text-xs text-muted-foreground">
             点进去即显示该项目的消耗公式与计算器。
           </p>
+          <div className="relative mt-3 w-full sm:max-w-xs">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="搜索有氧项目，如「足球」「剑道」「跳绳」"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="pl-9"
+            />
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {CARDIO_ITEMS.map((it) => {
+          {filteredItems.map((it) => {
             const Icon = it.icon;
             const active = it.id === item.id;
             return (
