@@ -9,7 +9,8 @@ export type FoodCategory =
   | 'veg'
   | 'fruit'
   | 'nuts'
-  | 'snack';
+  | 'snack'
+  | 'cooked'; // 家常菜 / 熟食
 
 export interface IFood {
   id: string;
@@ -38,4 +39,5 @@ export const FOOD_CATEGORIES: { id: FoodCategory; label: string }[] = [
   { id: 'fruit', label: '水果' },
   { id: 'nuts', label: '坚果油脂' },
   { id: 'snack', label: '零食加工' },
+  { id: 'cooked', label: '家常菜熟食' },
 ];

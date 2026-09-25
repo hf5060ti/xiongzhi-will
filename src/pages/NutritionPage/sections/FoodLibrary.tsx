@@ -3,6 +3,7 @@ import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { FOODS, FOOD_CATEGORIES, getServings, type IFood, type FoodCategory } from '@/data/foods';
+import { smartMatch } from '@/lib/smart-search';
 import { cn } from '@/lib/utils';
 
 interface FoodLibraryProps {
@@ -23,7 +24,16 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
     const q = query.trim().toLowerCase();
     return FOODS.filter((f) => {
       const hitCat = cat === 'all' || f.cat === cat;
-      const hitQuery = q === '' || f.name.toLowerCase().includes(q);
+            const hitQuery =
+        q === '' ||
+        smartMatch(q, [
+          f.name,
+          f.note ?? '',
+          ...f.vitFat,
+          ...f.vitWater,
+          ...(f.minerals ?? []),
+          ...(f.phytochem ?? []),
+        ]);
       return hitCat && hitQuery;
     });
   }, [query, cat]);
@@ -137,7 +147,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
         </div>
       )}
       <p className="text-xs text-muted-foreground">
-        营养值为每 100g 生重 / 可食部参考值，来自公开食物成分数据，实际以包装标注为准；
+        营养值为每 100g 参考值：生鲜食材为生重 / 可食部，「家常菜熟食」为常见做法熟重估算（随做法、调料浮动），实际以包装标注为准；
         卡片上的「1 个 / 1 碗」标签为常见份量锚点，点它即可按份量折算克数并直接算出营养。
       </p>
     </section>

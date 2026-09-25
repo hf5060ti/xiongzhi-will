@@ -10,6 +10,7 @@ import { VEGETABLES } from './vegetables';
 import { FRUITS } from './fruits';
 import { NUTS } from './nuts';
 import { SNACKS } from './snacks';
+import { COOKED } from './cooked';
 
 export const FOODS: IFood[] = [
   ...MEATS,
@@ -21,6 +22,7 @@ export const FOODS: IFood[] = [
   ...FRUITS,
   ...NUTS,
   ...SNACKS,
+  ...COOKED,
 ];
 
 export type { FoodCategory, IFood } from './types';
