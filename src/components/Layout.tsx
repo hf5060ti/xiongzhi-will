@@ -304,7 +304,8 @@ export const Layout = () => {
 
       {/* 主内容区 */}
       <main className="relative z-10 flex-1 lg:ml-20">
-        {/* 全局搜索（桌面端在内容区顶部） */}
+        {/* 全局搜索（桌面端在内容区顶部）；动作百科页隐藏——该页自带搜索+部位/器械筛选，避免两个搜索框混淆 */}
+        {pathname !== '/library' && (
         <div className="mx-auto w-full max-w-7xl px-3 pt-3 sm:px-4 sm:pt-4 lg:px-8">
           <div ref={rootRef} className="relative hidden lg:block">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
@@ -329,6 +330,7 @@ export const Layout = () => {
           </div>
         </div>
 
+        )}
         <div className="mx-auto w-full max-w-7xl px-3 py-5 sm:px-4 sm:py-6 lg:px-8 lg:py-8">
           <Outlet />
         </div>
