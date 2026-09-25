@@ -192,6 +192,33 @@ function biliSearchUrl(ex: ExerciseView): string {
   return `https://search.bilibili.com/all?keyword=${encodeURIComponent(kw)}`;
 }
 
+// 根据动作肌群匹配谭成义教学视频（按动作所属部位取最相关的）
+function matchTanVideos(ex: ExerciseView): CoachVideo[] {
+  const muscles = new Set([...ex.primaryMuscles, ...ex.secondaryMuscles]);
+  const hit = TAN_CHENGYI.filter((v) => {
+    const topic = v.topic;
+    if (topic.includes('/')) {
+      return topic.split('/').some((t) => {
+        if (t === '胸部' && (muscles.has('chest') || muscles.has('shoulders'))) return true;
+        if (t === '肩部' && muscles.has('shoulders')) return true;
+        if (t === '背部' && (muscles.has('lats') || muscles.has('middle back') || muscles.has('lower back'))) return true;
+        if (t === '腿部' && (muscles.has('quadriceps') || muscles.has('hamstrings') || muscles.has('glutes') || muscles.has('calves'))) return true;
+        if (t === '三头' && muscles.has('triceps')) return true;
+        return false;
+      });
+    }
+    // 单一主题
+    if (topic === '胸部' && (muscles.has('chest') || muscles.has('shoulders'))) return true;
+    if (topic === '肩部' && muscles.has('shoulders')) return true;
+    if (topic === '背部' && (muscles.has('lats') || muscles.has('middle back') || muscles.has('lower back'))) return true;
+    if (topic === '腿部' && (muscles.has('quadriceps') || muscles.has('hamstrings') || muscles.has('glutes') || muscles.has('calves'))) return true;
+    if (topic === '三头' && muscles.has('triceps')) return true;
+    return false;
+  });
+  // 训练计划类视频不按肌群匹配，不在这里展示
+  return hit.slice(0, 3);
+}
+
 export default function ExerciseLibraryPage() {
   // 支持从计划页带 ?q=动作名 跳转过来时自动搜索
   const [params] = useSearchParams();
