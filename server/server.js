@@ -58,6 +58,13 @@ const PROVIDERS = {
     apiKey: env.MARVIS_API_KEY || '',
     model: env.MARVIS_MODEL || '',
   },
+  ollama: {
+    id: 'ollama',
+    label: 'Ollama（本机）',
+    baseUrl: (env.OLLAMA_BASE_URL || 'http://127.0.0.1:11434/v1').replace(/\/+$/, ''),
+    apiKey: env.OLLAMA_API_KEY || 'ollama',
+    model: env.OLLAMA_MODEL || 'qwen2.5:7b',
+  },
 };
 
 const isReady = (p) => Boolean(p.baseUrl && p.apiKey && p.model);

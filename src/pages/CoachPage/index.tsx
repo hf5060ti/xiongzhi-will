@@ -482,7 +482,15 @@ function AIChatPanel() {
     }
 
     setError('');
-    const history: ChatMessage[] = [...messages, { role: 'user', content: text }];
+    const system: ChatMessage = {
+      role: 'system',
+      content:
+        '你是一位专业、务实的自然健身教练，服务「雄性意志」网站的健身者。回答用简体中文，简洁、直接、有行动可执行。' +
+        '核心原则：① 强调自然训练、无药物，不推荐任何极端方法；② 发烧、大病初愈、明显疼痛时明确建议停训、遵医嘱；' +
+        '③ 涉及疾病、服药、孕期、老人、慢性病时，提示以医生意见为准；④ 训练建议要落在具体数字（组数、次数、重量百分比、休息时间）；' +
+        '⑤ 用户可能提到 肌肥大/斗腕/大力士/综合体能/街头健身 等目标，按目标给出对应侧重。',
+    };
+    const history: ChatMessage[] = [system, ...messages, { role: 'user', content: text }];
     setMessages([...history, { role: 'assistant', content: '' }]);
     setInput('');
     setSending(true);

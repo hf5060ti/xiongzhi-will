@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'sonner';
 import { Trash2, Plus, Flame, Beef, Drumstick, Wheat, Info, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -35,6 +36,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
   const [q, setQ] = useState('');
   const [grams, setGrams] = useState('100');
   const [meal, setMeal] = useState(defaultMeal);
+  const [confirmClear, setConfirmClear] = useState(false);
 
   useEffect(() => {
     setEntries(loadDailyLog());
@@ -101,8 +103,10 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
   };
 
   const clearAll = () => {
+    setConfirmClear(false);
     setEntries([]);
     saveDailyLog([]);
+    toast.success('已清空今日饮食记录');
   };
 
   return (
@@ -120,12 +124,29 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
               添加
             </Button>
             {entries.length > 0 && (
-              <Button size="sm" variant="ghost" onClick={clearAll} className="text-muted-foreground">
+              <Button size="sm" variant="ghost" onClick={() => setConfirmClear(true)} className="text-muted-foreground">
                 清空
               </Button>
             )}
           </div>
         </div>
+
+        {/* 清空二次确认 */}
+        {confirmClear && (
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-md border border-destructive/50 bg-destructive/5 px-3 py-2 text-xs">
+            <span className="text-foreground">
+              将清空今日全部 {entries.length} 条饮食记录，清空后不可恢复。
+            </span>
+            <span className="flex items-center gap-2">
+              <Button variant="destructive" size="sm" className="h-7 px-2 text-xs" onClick={clearAll}>
+                确认清空
+              </Button>
+              <Button variant="outline" size="sm" className="h-7 px-2 text-xs" onClick={() => setConfirmClear(false)}>
+                取消
+              </Button>
+            </span>
+          </div>
+        )}
 
         {/* 统计概览 */}
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">

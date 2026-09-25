@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import HeroSection from './sections/HeroSection';
 import GoalPicker from './sections/GoalPicker';
 import DietPicker from './sections/DietPicker';
+import TodayPanel from './sections/TodayPanel';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
 import {
@@ -17,6 +18,8 @@ import {
   saveGoalId,
   saveDietId,
   saveWeightKg,
+  loadLastBackupAt,
+  saveLastBackupAt,
   exportAllData,
   importAllData,
 } from '@/lib/store';
@@ -40,6 +43,7 @@ export default function HomePage() {
     a.download = `雄性意志-备份-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
+    saveLastBackupAt(Date.now());
     toast.success('数据已导出');
   };
 
@@ -63,6 +67,11 @@ export default function HomePage() {
   const savedDiet = DIETS.find((d) => d.id === dietId);
   const hasSaved = Boolean(savedGoal && savedDiet);
 
+  // 备份提醒：距上次导出备份的天数（清缓存即丢数据，超 7 天给醒目提示）
+  const lastBackupAt = loadLastBackupAt();
+  const backupDays = lastBackupAt ? Math.floor((Date.now() - lastBackupAt) / 86400000) : null;
+  const backupStale = backupDays == null || backupDays >= 7;
+
   const handleGenerate = () => {
     if (!goalId || !dietId) {
       toast.error('请先选择训练目标和饮食方案');
@@ -78,6 +87,9 @@ export default function HomePage() {
   return (
     <div className="space-y-6 sm:space-y-10">
       <HeroSection />
+
+      {/* 今日驾驶舱：今天吃了多少、练没练、打卡没、最近体重 */}
+      <TodayPanel />
 
       {hasSaved && (
         <Card className="border-primary/30 bg-primary/5">
@@ -215,6 +227,17 @@ export default function HomePage() {
               <p className="mt-1 text-xs text-muted-foreground">
                 所有数据存在你自己的浏览器里。换浏览器或清理缓存前，先导出备份。
               </p>
+              {backupStale ? (
+                <p className="mt-2 rounded-md border border-warning/50 bg-warning/5 px-2.5 py-1.5 text-[11px] leading-relaxed text-warning">
+                  {backupDays == null
+                    ? '还没导出过备份：清一次浏览器缓存数据就全没了，建议现在就导出一份。'
+                    : `距上次备份已 ${backupDays} 天：数据越攒越多，建议尽快再导出一份。`}
+                </p>
+              ) : (
+                <p className="mt-2 text-[11px] text-muted-foreground">
+                  {backupDays === 0 ? '今天已备份过，数据是新的。' : `距上次备份 ${backupDays} 天。`}
+                </p>
+              )}
               <div className="mt-3 flex gap-2">
                 <Button variant="outline" size="sm" onClick={handleExport}>
                   <Download className="mr-1.5 h-3.5 w-3.5" />

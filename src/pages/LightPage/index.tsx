@@ -37,6 +37,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import {
+  hasTrainingOn,
   loadBodyProfile,
   loadLightCheckins,
   loadLightEntries,
@@ -61,6 +62,14 @@ function todayStr(): string {
 
 function fmtDate(iso: string): string {
   return `${Number(iso.slice(5, 7))}/${Number(iso.slice(8, 10))}`;
+}
+
+/** 训练记录覆盖层：当日有训练记录时，把训练项视为已完成（仅用于展示 / 统计，不改写打卡存储） */
+function withTrainingAuto(checkins: ReturnType<typeof loadLightCheckins>) {
+  const today = todayStr();
+  const cur = checkins[today];
+  if (cur?.training || !hasTrainingOn(today)) return checkins;
+  return { ...checkins, [today]: { ...(cur ?? {}), training: true } };
 }
 
 /** 最近连续「三项全部完成」的天数（今天没打完则从昨天往前算） */
@@ -148,6 +157,8 @@ export default function LightPage() {
   const [target, setTarget] = useState(loadLightTarget);
   const [entries, setEntries] = useState(loadLightEntries);
   const [checkins, setCheckins] = useState(loadLightCheckins);
+  // 当日有训练记录 → 训练项自动视为已练（只影响展示与统计，不改写打卡存储）
+  const mergedCheckins = useMemo(() => withTrainingAuto(checkins), [checkins]);
 
   // 目标设置表单
   const body = useMemo(loadBodyProfile, []);
@@ -189,8 +200,8 @@ export default function LightPage() {
     return { done, left, pct, etaText };
   }, [target, current, entries]);
 
-  const streak = useMemo(() => calcStreak(checkins), [checkins]);
-  const todayChecks = checkins[todayStr()] ?? {};
+  const streak = useMemo(() => calcStreak(mergedCheckins), [mergedCheckins]);
+  const todayChecks = mergedCheckins[todayStr()] ?? {};
 
   const chartData = useMemo(() => withMovingAverage(entries), [entries]);
   const weekly = useMemo(() => weeklyReport(entries), [entries]);
@@ -198,7 +209,7 @@ export default function LightPage() {
     () => (target ? milestoneOf(target.startWeight, target.targetWeight, current) : null),
     [target, current],
   );
-  const heatDays = useMemo(() => last14Days(checkins), [checkins]);
+  const heatDays = useMemo(() => last14Days(mergedCheckins), [mergedCheckins]);
   const achieved = Boolean(stats && stats.pct >= 100);
 
   const heightM = Number(body.heightCm) / 100;
@@ -496,10 +507,14 @@ export default function LightPage() {
               {CHECKIN_ITEMS.map((item) => {
                 const Icon = item.icon;
                 const active = Boolean(todayChecks[item.key]);
+                // 由训练记录自动打勾的训练项：按钮置灰，避免手动取消造成「记录在但没打勾」的矛盾
+                const autoTraining = item.key === 'training' && active && !checkins[todayStr()]?.training;
                 return (
                   <button
                     key={item.key}
                     type="button"
+                    disabled={autoTraining}
+                    title={autoTraining ? '当日已有训练记录，自动记为已完成；要改动请到「训练记录」页' : undefined}
                     onClick={() => handleCheckin(item.key)}
                     className={cn(
                       'flex flex-col items-center gap-1.5 rounded-lg border p-3 text-center transition-colors',
@@ -515,7 +530,7 @@ export default function LightPage() {
               })}
             </div>
             <p className="text-[11px] leading-relaxed text-muted-foreground">
-              三项全绿 = 完美一天，连续完美天数计入上方。{CHECKIN_ITEMS.map((i) => i.hint).join('；')}。
+              三项全绿 = 完美一天，连续完美天数计入上方。{CHECKIN_ITEMS.map((i) => i.hint).join('；')}。当日已有训练记录时，「完成训练」会自动打勾（无需重复点击），改训练内容请到「训练记录」页。
             </p>
             <div>
               <p className="text-[11px] text-muted-foreground">近 14 天</p>

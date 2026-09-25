@@ -158,11 +158,12 @@ export const REP_PCT: Record<number, number> = {
   12: 0.7,
 };
 
-// 用「完成 n 次的重量」估算 1RM：1RM = 重量 / 对应百分比
+// 用「完成 n 次的重量」估算 1RM。
+// 口径统一：与能力追踪判级 / 训练记录一致，采用 Epley 公式（1RM = 重量 ×（1 + 次数 ÷ 30）），
+// 不再与百分比表并存两算；下方 REP_PCT 表仅用于列出「各次数的建议重量」作参考。
 export function estimateOneRm(weightKg: number, reps: number): number {
-  const pct = REP_PCT[reps];
-  if (!pct) return 0;
-  return weightKg / pct;
+  const r = Math.max(1, Math.round(reps));
+  return Math.round(weightKg * (1 + r / 30) * 10) / 10;
 }
 
 // 已知 1RM，反推各次数对应的建议重量

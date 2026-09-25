@@ -10,6 +10,7 @@ import BodyweightPage from '@/pages/BodyweightPage';
 import PhysiquePage from '@/pages/PhysiquePage';
 import CoachPage from '@/pages/CoachPage';
 import ExerciseLibraryPage from '@/pages/ExerciseLibraryPage';
+import TrainingLogPage from '@/pages/TrainingLogPage';
 import MindPage from '@/pages/MindPage';
 import CareerPage from '@/pages/CareerPage';
 import WealthPage from '@/pages/WealthPage';
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="wild" element={<WildPage />} />
           <Route path="stomach" element={<StomachPage />} />
           <Route path="diet-knowledge" element={<DietKnowledgePage />} />
+          <Route path="training-logs" element={<TrainingLogPage />} />
           <Route path="light" element={<LightPage />} />
           <Route path="privacy" element={<PrivacyPage />} />
           <Route path="*" element={<NotFoundPage />} />

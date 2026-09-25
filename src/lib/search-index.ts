@@ -12,6 +12,7 @@ export type SearchTarget =
   | { route: '/cardio'; itemId?: string }
   | { route: '/bodyweight'; itemId?: string }
   | { route: '/stomach' }
+  | { route: '/training-logs'; logId?: string }
   | { route: '/diet-knowledge'; entryId?: string };
 
 export interface SearchEntry {
@@ -43,7 +44,8 @@ const FORMULAS: SearchEntry[] = [
   { type: 'formula', label: 'BMR 基础代谢', sublabel: '身体数据 · 6 个公式对照', target: { route: '/body' } },
   { type: 'formula', label: 'TDEE 每日总消耗', sublabel: '身体数据 · BMR × 活动系数', target: { route: '/body' } },
   { type: 'formula', label: 'TEF 食物热效应', sublabel: '身体数据 · 宏量加权约 10%', target: { route: '/body' } },
-  { type: 'formula', label: '1RM 最大筋力换算', sublabel: '身体数据 · 次数法反推', target: { route: '/body' } },
+  { type: 'formula', label: '1RM 最大筋力换算', sublabel: '身体数据 · 次数法反推（Epley 口径）', target: { route: '/body' } },
+  { type: 'movement', label: '能力追踪 · 力量 / 耐力 / 运动能力', sublabel: '身体数据 · 判级 / 档内进度 / 体重倍数', target: { route: '/body' } },
   { type: 'formula', label: 'FFMI / 肌肉量上限', sublabel: '身体数据 · 4 个公式对照', target: { route: '/body' } },
   { type: 'formula', label: 'Aragon 增肌速率', sublabel: '身体数据 · 初/中/高级月增重', target: { route: '/body' } },
   { type: 'formula', label: '有氧运动消耗', sublabel: '有氧运动 · MET × 体重 × 时长', target: { route: '/cardio' } },
@@ -78,7 +80,17 @@ const KNOWLEDGE_ENTRIES: SearchEntry[] = DIET_KNOWLEDGE.map((k) => ({
   target: { route: '/diet-knowledge', entryId: k.id },
 }));
 
-export const SEARCH_INDEX: SearchEntry[] = [...MOVEMENTS, ...FOOD_ENTRIES, ...BODYWEIGHT_ENTRIES, ...FORMULAS, ...STOMACH_ENTRIES, ...KNOWLEDGE_ENTRIES];
+/** 训练记录（训练闭环）：固定入口条目；用户实际的训练条目存本地，不在此静态索引内 */
+const TRAINING_ENTRIES: SearchEntry[] = [
+  { type: 'movement', label: '训练记录', sublabel: '训练闭环 · 逐组「重量 × 次数」录入与历史编辑', target: { route: '/training-logs' } },
+  { type: 'movement', label: '近 7 天训练频次', sublabel: '训练记录 · 本周练了几次', target: { route: '/training-logs' } },
+  { type: 'movement', label: '周训练容量', sublabel: '训练记录 · 本周总容量（重量 × 次数）', target: { route: '/training-logs' } },
+  { type: 'formula', label: '训练 1RM 写入能力追踪', sublabel: '训练记录 · 力量五动作 Epley 估算并一键写入', target: { route: '/training-logs' } },
+  { type: 'formula', label: '训练日志导入能力追踪', sublabel: '训练记录 · 以体重倍数记录，可撤销', target: { route: '/training-logs' } },
+  { type: 'movement', label: '推 / 拉 / 腿训练日', sublabel: '训练记录 · 给每次训练打上训练日标签', target: { route: '/training-logs' } },
+];
+
+export const SEARCH_INDEX: SearchEntry[] = [...MOVEMENTS, ...FOOD_ENTRIES, ...BODYWEIGHT_ENTRIES, ...TRAINING_ENTRIES, ...FORMULAS, ...STOMACH_ENTRIES, ...KNOWLEDGE_ENTRIES];
 
 export function searchEntries(query: string, limit = 8): SearchEntry[] {
   const q = query.trim().toLowerCase();

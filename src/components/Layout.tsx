@@ -1,6 +1,6 @@
 ﻿import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
@@ -9,6 +9,7 @@ import VideoBackground from '@/components/VideoBackground';
 
 const NAV_ITEMS = [
   { path: '/', label: '身体', icon: Dumbbell, end: true },
+  { path: '/training-logs', label: '训练', icon: ClipboardList, end: false },
   { path: '/light', label: '轻盈', icon: TrendingDown, end: false },
   { path: '/stomach', label: '胃部', icon: Soup, end: false },
   { path: '/diet-knowledge', label: '饮食', icon: BookOpen, end: false },

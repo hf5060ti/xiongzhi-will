@@ -11,6 +11,11 @@ import tailwindcss from '@tailwindcss/vite';
 const basePath = process.env.MIAODA_CLIENT_BASE_PATH || './';
 const cdnPrefix = process.env.MIAODA_RESOURCE_CDN_PREFIX;
 
+// 路由 basename 与资源前缀解耦：资源前缀缺省 './' 可相对解析，
+// 但 basename 缺省必须是 '/'——'./' 会被 react-router 归一化为 '/./'，
+// stripBasename 判定 URL 不匹配 → Router 渲染为空（整站白屏）
+const routerBasePath = process.env.MIAODA_CLIENT_BASE_PATH || '/';
+
 // 产物分层：vite 原生产物（dist/client，中间产物，整理后删除）→ 妙搭托管产物结构：
 //   dist/output/           index.html + public 同源资源 + routes.json（走应用权限校验）
 //   dist/output_resource/  assets JS/CSS（推 CDN，公开）
@@ -104,9 +109,9 @@ export default defineConfig(({ command }) => ({
   // 生产构建：JS/CSS 引用带 CDN 前缀（无 CDN 时退回 base path）；dev 恒为 /
   base: command === 'build' ? cdnPrefix || basePath : '/',
   define: {
-    // 路由 basename 与资源前缀解耦，单独注入；
-    // dev 下必须为 '/'，否则 basename='./' 会让 React Router 无法匹配任何路由（整站白屏）
-    'import.meta.env.MIAODA_CLIENT_BASE_PATH': JSON.stringify(command === 'serve' ? '/' : basePath),
+    // 路由 basename 单独注入，缺省 '/'（不再回落 './'）；
+    // 缺省 './' 会让 React Router 无法匹配任何路由（整站白屏）
+    'import.meta.env.MIAODA_CLIENT_BASE_PATH': JSON.stringify(command === 'serve' ? '/' : routerBasePath),
   },
   resolve: {
     alias: {

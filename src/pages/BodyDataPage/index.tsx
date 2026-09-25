@@ -6,6 +6,8 @@ import { Label } from '@/components/ui/label';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import InputPanel from './sections/InputPanel';
+import PerformanceTracker from './sections/PerformanceTracker';
+import MeasurementTracker from './sections/MeasurementTracker';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
 import { loadBodyProfile, saveBodyProfile, loadGoalId, loadDietId, type BodyProfile } from '@/lib/store';
@@ -155,6 +157,8 @@ export default function BodyDataPage() {
       <div className="space-y-5">
         <Header />
         <InputPanel profile={profile} onChange={patch} />
+        <PerformanceTracker profile={profile} onSexChange={(s) => patch({ sex: s })} />
+        <MeasurementTracker />
         <div className="flex flex-col items-center gap-3 rounded-lg border border-border bg-card p-10 text-center">
           <Scale className="h-8 w-8 text-primary/70" />
           <p className="text-sm text-muted-foreground">
@@ -289,6 +293,12 @@ export default function BodyDataPage() {
           )}
         </div>
       </section>
+
+      {/* 运动能力追踪：力量 / 耐力 / 运动能力三板块，力量按记录时体重快照判级 + 判级性别口径可选 */}
+      <PerformanceTracker profile={profile} onSexChange={(s) => patch({ sex: s })} />
+
+      {/* 围度追踪：五部位围度记录与趋势，腰围对照 */}
+      <MeasurementTracker />
 
       {/* 双栏：左 = 代谢与上限，右 = 训练工具（宽屏 xl 起并排） */}
       <div className="grid gap-5 xl:grid-cols-2">
@@ -491,7 +501,7 @@ export default function BodyDataPage() {
             1RM 最大筋力换算
           </p>
           <p className="mt-1 text-xs text-muted-foreground">
-            输入你能标准做完某重量的次数与重量，反推最大单次重量；再列出各次数的建议训练重量。
+            输入你能标准做完某重量的次数与重量，反推最大单次重量；再列出各次数的建议训练重量。估算统一采用 Epley 公式（重量 ×（1 + 次数 ÷ 30）），与「训练记录 / 能力追踪」同一口径；下表「占 1RM」列为经典百分比表参考值。
           </p>
         </div>
         <div className="grid grid-cols-2 gap-3">
@@ -640,7 +650,7 @@ function Header() {
       <p className="font-display text-sm font-bold uppercase tracking-[0.3em] text-primary">Body Data</p>
       <h1 className="font-display text-3xl font-extrabold tracking-wide text-foreground">身体数据公式库</h1>
       <p className="mt-1 text-sm text-muted-foreground">
-        填入身体数据，自动计算瘦体重、每日蛋白质、肌肉量上限、基础代谢与热量目标。
+        填入身体数据，自动计算瘦体重、每日蛋白质、肌肉量上限、基础代谢与热量目标；下方可追踪力量 / 耐力 / 运动能力，看档位与曲线。
       </p>
     </header>
   );
