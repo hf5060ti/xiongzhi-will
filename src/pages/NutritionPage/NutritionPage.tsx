@@ -5,6 +5,7 @@ import NutritionCalculator from './sections/NutritionCalculator';
 import ProteinGuide from './sections/ProteinGuide';
 import DailyLog from './sections/DailyLog';
 import AiFoodEstimator from './sections/AiFoodEstimator';
+import MealPlanGenerator from './sections/MealPlanGenerator';
 import { FOODS, type IFood } from '@/data/foods';
 import { CHEN_SHI } from '@/data/coach-videos';
 import { Badge } from '@/components/ui/badge';
@@ -60,6 +61,9 @@ export default function NutritionPage() {
 
       {/* AI 热量估算 */}
       <AiFoodEstimator />
+
+      {/* 一日三餐方案 */}
+      <MealPlanGenerator />
 
       <div className="grid gap-8 lg:grid-cols-2">
         <FoodLibrary selectedId={selectedFood?.id ?? ''} onSelect={handleSelect} />
