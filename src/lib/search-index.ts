@@ -4,6 +4,7 @@ import { GOALS } from '@/data/goals';
 import { FOODS } from '@/data/foods';
 import { BODYWEIGHT_ITEMS } from '@/data/bodyweight';
 import { DIET_KNOWLEDGE } from '@/data/diet-knowledge';
+import { smartMatch } from '@/lib/smart-search';
 
 export type SearchTarget =
   | { route: '/plan'; goalId?: string }
@@ -98,11 +99,15 @@ export function searchEntries(query: string, limit = 8): SearchEntry[] {
   const scored = SEARCH_INDEX.map((e) => {
     const label = e.label.toLowerCase();
     const sub = e.sublabel.toLowerCase();
+    // 智能匹配：标签 + 副标签（含同义词 / 拼音缩写 / 多词 AND）
+    const matched = smartMatch(query, [e.label, e.sublabel]);
+    if (!matched) return { e, score: 0 };
     let score = 0;
     if (label === q) score = 100;
     else if (label.startsWith(q)) score = 80;
     else if (label.includes(q)) score = 60;
     else if (sub.includes(q)) score = 30;
+    else score = 20; // 命中同义词 / 拼音 / 模糊，给保底分
     return { e, score };
   })
     .filter((x) => x.score > 0)

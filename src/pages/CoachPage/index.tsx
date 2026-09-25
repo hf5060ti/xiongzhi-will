@@ -41,6 +41,15 @@ import { Label } from '@/components/ui/label';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import {
+  loadBodyProfile,
+  loadGoalId,
+  loadDietId,
+  loadWeightKg,
+  loadTrainingLogs,
+} from '@/lib/store';
+import { GOALS } from '@/data/goals';
+import { DIETS } from '@/data/diets';
 
 type Sickness = 'none' | 'cold' | 'fever' | 'recovering' | 'injury' | 'other';
 type Energy = 'great' | 'good' | 'tired' | 'exhausted';
@@ -472,6 +481,56 @@ function AIChatPanel() {
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages, sending]);
 
+  /** 构建用户画像：把本地存档的目标 / 饮食 / 体重 / 身体数据 / 近期训练注入提示词 */
+  const buildUserContext = (): string => {
+    try {
+      const goalId = loadGoalId();
+      const dietId = loadDietId();
+      const weightKg = loadWeightKg();
+      const body = loadBodyProfile();
+      const logs = loadTrainingLogs();
+      const parts: string[] = [];
+      if (goalId) {
+        const goal = GOALS.find((g) => g.id === goalId);
+        if (goal) parts.push(`用户目标：${goal.name}（${goal.tagline}）`);
+      }
+      if (dietId) {
+        const diet = DIETS.find((d) => d.id === dietId);
+        if (diet) parts.push(`用户饮食方案：${diet.name}（${diet.tagline}）`);
+      }
+      const profileBits: string[] = [];
+      if (body && body.weightKg) profileBits.push(`体重 ${body.weightKg} kg`);
+      if (body && body.heightCm) profileBits.push(`身高 ${body.heightCm} cm`);
+      if (body && body.age) profileBits.push(`年龄 ${body.age} 岁`);
+      if (body && body.bodyFatPct) profileBits.push(`体脂率 ${body.bodyFatPct}%`);
+      if (body && body.level) {
+        const levelCn = body.level === 'beginner' ? '初级' : body.level === 'intermediate' ? '中级' : '高级';
+        profileBits.push(`训练水平：${levelCn}`);
+      }
+      if (body && body.phase) {
+        const phaseCn = body.phase === 'bulk' ? '增肌期' : body.phase === 'cut' ? '减脂期' : body.phase === 'recomp' ? '重组期' : body.phase;
+        profileBits.push(`当前阶段：${phaseCn}`);
+      }
+      if (weightKg > 0 && profileBits.length === 0) profileBits.push(`体重 ${weightKg} kg`);
+      if (profileBits.length > 0) parts.push(`用户身体档案：${profileBits.join('，')}`);
+      if (logs.length > 0) {
+        const recent = logs.slice(-5).reverse();
+        const brief = recent.map((l) => {
+          const moves = l.exercises.map((ex) => {
+            const sets = ex.sets.map((s) => `${s.reps}次${s.weightKg ? '×' + s.weightKg + 'kg' : ''}`).join('/');
+            return `${ex.name}[${sets}]`;
+          }).join('，');
+          return `${l.date}：${moves}`;
+        }).join('；');
+        parts.push(`用户最近训练记录：${brief}`);
+      }
+      if (parts.length === 0) return '（用户尚未填写目标与身体数据，按通用新手建议回答）';
+      return parts.join('。') + '。';
+    } catch {
+      return '（用户数据读取失败，按通用建议回答）';
+    }
+  };
+
   const current = providers.find((p) => p.id === providerId);
 
   const handleSend = async () => {
@@ -494,7 +553,7 @@ function AIChatPanel() {
     const system: ChatMessage = {
       role: 'system',
       content:
-        '你是一位专业、务实的自然健身教练，服务「雄性意志」网站的健身者。回答用简体中文，简洁、直接、有行动可执行。' +
+        '你是一位专业、务实的自然健身教练，服务「雄性意志」网站的健身者。回答用简体中文，简洁、直接、有行动可执行。\n\n【以下是该用户在你的网站上填写的档案，回答时必须结合它做个性化建议】' + buildUserContext() + '\n\n' +
         '核心原则：① 强调自然训练、无药物，不推荐任何极端方法；② 发烧、大病初愈、明显疼痛时明确建议停训、遵医嘱；' +
         '③ 涉及疾病、服药、孕期、老人、慢性病时，提示以医生意见为准；④ 训练建议要落在具体数字（组数、次数、重量百分比、休息时间）；' +
         '⑤ 用户可能提到 肌肥大/斗腕/大力士/综合体能/街头健身 等目标，按目标给出对应侧重。',

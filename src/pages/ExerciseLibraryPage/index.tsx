@@ -8,6 +8,7 @@ import exercisesData from '@/data/exercises-db.json';
 import extData from '@/data/exercises-ext.json';
 import { EXERCISE_MEDIA } from '@/data/exercise-media';
 import { TAN_CHENGYI, type CoachVideo } from '@/data/coach-videos';
+import { smartMatch, buildMuscleAliases } from '@/lib/smart-search';
 
 // 图片 CDN 前缀
 const IMG_BASE = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';
@@ -240,19 +241,18 @@ export default function ExerciseLibraryPage() {
       if (muscle !== 'all' && !e.primaryMuscles.includes(muscle)) return false;
       if (equip !== 'all' && e.equipment !== equip) return false;
       if (query) {
-        const q = query.toLowerCase().trim();
-        const enName = e.name.toLowerCase();
-        const cnName = getCnName(e).toLowerCase();
-        // 搜索英文名、中文名、肌群中文名
-        const musclesCn = e.primaryMuscles.map((m) => (MUSCLE_CN[m] || m).toLowerCase()).join(' ');
-        const equipCn = (EQUIP_CN[e.equipment] || '').toLowerCase();
-        if (
-          !enName.includes(q) &&
-          !cnName.includes(q) &&
-          !musclesCn.includes(q) &&
-          !equipCn.includes(q)
-        )
-          return false;
+        // 智能匹配：英文名 / 中文名 / 肌群中英别名 / 器械中英别名 / 同义词 / 拼音缩写
+        const texts = [
+          e.name,
+          getCnName(e),
+          e.searchName || '',
+          ...e.primaryMuscles,
+          ...e.secondaryMuscles,
+          ...buildMuscleAliases(e.primaryMuscles, e.secondaryMuscles),
+          EQUIP_CN[e.equipment] || e.equipment,
+          e.equipment,
+        ];
+        if (!smartMatch(query, texts)) return false;
       }
       return true;
     });

@@ -85,3 +85,6 @@ docs/images/.GamingRoot
 docs/images/{5F76ACFE-F22D-4A75-8F77-2A23B7170209}
 桌面版/images/.GamingRoot
 桌面版/images/{5F76ACFE-F22D-4A75-8F77-2A23B7170209}
+
+# 本地修改辅助脚本
+scripts/
