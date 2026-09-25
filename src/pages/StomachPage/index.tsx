@@ -16,6 +16,7 @@ import {
   ClipboardList,
   Timer,
   Info,
+  Droplets,
 } from 'lucide-react';
 import {
   GUT_BARRIER_MECHANISMS,
@@ -29,6 +30,7 @@ import {
   FODMAP_MYTHS,
   GUT_ACTION_LIST,
   GUT_DISCLAIMER,
+  STOOL_TYPES,
   type PointCard,
 } from '@/data/stomach';
 
@@ -195,6 +197,20 @@ export default function StomachPage() {
         />
         <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
           {FODMAP_MYTHS.map((c) => (
+            <PointCardView key={c.title} card={c} />
+          ))}
+        </div>
+      </section>
+
+      {/* 排泄观察 */}
+      <section className="space-y-3">
+        <SectionTitle
+          icon={<Droplets className="h-4 w-4" />}
+          title="排泄观察：消化道健康的晴雨表"
+          desc="不同形态对应不同信号，文明表述供自我观察参考，持续异常请就医"
+        />
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
+          {STOOL_TYPES.map((c) => (
             <PointCardView key={c.title} card={c} />
           ))}
         </div>
