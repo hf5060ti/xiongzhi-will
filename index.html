@@ -13,9 +13,58 @@
     <link rel="icon" type="image/png" href="/images/spartan.png" />
     <link rel="apple-touch-icon" href="/images/spartan.png" />
     <title>雄性意志 - 自然健身系统</title>
+    <style>
+      /* 首屏骨架屏：JS 加载完成前显示，避免白屏 */
+      @keyframes xy-spin { to { transform: rotate(360deg); } }
+      @keyframes xy-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+      #xy-splash {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        padding: 24px;
+        text-align: center;
+        background: #0F1110;
+        color: #F5F7F5;
+        font-family: system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      }
+      #xy-splash .spinner {
+        width: 42px; height: 42px;
+        border-radius: 50%;
+        border: 3px solid rgba(250, 204, 21, 0.22);
+        border-top-color: #FACC15;
+        animation: xy-spin 0.9s linear infinite;
+      }
+      #xy-splash .brand {
+        font-size: 24px; font-weight: 800; letter-spacing: 6px;
+      }
+      #xy-splash .motto {
+        font-size: 12px; color: #9CA3AF; max-width: 440px; line-height: 1.9;
+        animation: xy-pulse 2.2s ease-in-out infinite;
+      }
+      #xy-splash .bar {
+        width: min(320px, 70vw); height: 4px; border-radius: 2px; overflow: hidden;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      #xy-splash .bar::after {
+        content: ''; display: block; width: 40%; height: 100%;
+        border-radius: 2px; background: #FACC15;
+        animation: xy-load 1.2s ease-in-out infinite;
+      }
+      @keyframes xy-load { 0% { margin-left: -40%; } 100% { margin-left: 100%; } }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="xy-splash">
+        <div class="spinner"></div>
+        <div class="brand">雄性意志</div>
+        <div class="bar"></div>
+        <div class="motto">本网站只提供健康自然的健身方式，不提供任何极端和药物，请遵守当地法律法规</div>
+      </div>
+    </div>
     <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>
