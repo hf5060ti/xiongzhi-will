@@ -637,18 +637,25 @@ export function exportAllData(): string {
   return JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), data }, null, 2);
 }
 
-export function importAllData(json: string): { success: boolean; count: number; error?: string } {
+export function importAllData(json: string): { success: boolean; count: number; error?: string; warning?: string } {
   try {
     const parsed = JSON.parse(json);
     if (!parsed.data || typeof parsed.data !== 'object') {
-      return { success: false, count: 0, error: '文件格式不正确' };
+      return { success: false, count: 0, error: '文件格式不正确：缺少 data 字段' };
+    }
+    const version = typeof parsed.version === 'number' ? parsed.version : 0;
+    let warning: string | undefined;
+    if (version === 0) {
+      warning = '这是早期版本的备份文件（无版本号），已按兼容模式导入。';
+    } else if (version > 1) {
+      warning = `这是 v${version} 版备份，当前网站为 v1 数据结构。已尽力导入，但个别较新字段可能无法识别，建议升级到最新版网站后再导出。`;
     }
     let count = 0;
     for (const [key, value] of Object.entries(parsed.data)) {
       localStorage.setItem(`${NS}:${key}`, JSON.stringify(value));
       count++;
     }
-    return { success: true, count };
+    return { success: true, count, warning };
   } catch {
     return { success: false, count: 0, error: 'JSON 解析失败' };
   }

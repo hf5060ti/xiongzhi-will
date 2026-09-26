@@ -55,6 +55,7 @@ export default function HomePage() {
       const result = importAllData(reader.result as string);
       if (result.success) {
         toast.success(`导入成功，共 ${result.count} 项数据`);
+        if (result.warning) toast.warning(result.warning);
         setTimeout(() => window.location.reload(), 1000);
       } else {
         toast.error(result.error || '导入失败');
