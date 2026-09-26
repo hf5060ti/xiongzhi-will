@@ -248,10 +248,10 @@ export default function CoachPage() {
         <ul className="mt-1.5 list-disc space-y-1 pl-4">
           <li><b className="text-foreground">NASM-CPT / ACSM-CPT</b> — 基础私人教练认证，适合<b className="text-foreground">纠正动作模式、解决肩腰膝旧伤不适、制定入门周期计划</b>；</li>
           <li><b className="text-foreground">CSCS / NSCA-CPT</b> — 运动表现方向，适合<b className="text-foreground">备赛、力量举/斗腕等专项技术突破</b>；</li>
-          <li><b className="text-foreground">RD（注册营养师）</b> — 有慢性病、食物过敏、或需要精确计算摄入时，比任何 AI 都可靠。</li>
+          <li><b className="text-foreground">营养问题不用找真人</b> — 吃什么、吃多少、怎么搭配、热量计算，直接在下方「AI 教练对话」里问，它连你的身体数据和目标一起算。</li>
         </ul>
         <p className="mt-1.5">
-          一句话：AI 帮你每天做对 80% 的普通事；剩下 20% 的伤病、瓶颈、个性化诊断，交给持证真人。
+          一句话：饮食营养直接问 AI；只有动作纠正、旧伤、备赛技术这 20% 的硬事，才需要找持证真人一对一。
         </p>
       </div>
 
