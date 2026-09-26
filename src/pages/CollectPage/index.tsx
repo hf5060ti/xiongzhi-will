@@ -59,6 +59,35 @@ function classify(text: string): string {
   return 'other';
 }
 
+/** 健身相关关键词：只有命中这些的内容才是健身视频，其余自动过滤 */
+const FITNESS_KEYWORDS = [
+  // 训练动作
+  '卧推', '深蹲', '硬拉', '引体', '划船', '推举', '弯举', '臂屈伸', '侧平举', '前平举',
+  '飞鸟', '夹胸', '俯卧撑', '双杠', '卷腹', '举腿', '平板支撑', '箭步', '提踵',
+  '农夫走', '泽奇', '土耳其起立', '悬垂', '耸肩', '面拉', '对握', '正手', '反手',
+  // 训练概念
+  '增肌', '减脂', '肌肉', '力量', '训练', '组', '次', '容量', '力竭', 'PR',
+  '重量', '杠铃', '哑铃', '龙门架', '史密斯', '壶铃', '战绳', '弹力带', '自重',
+  '胸', '背', '肩', '臂', '腿', '臀', '腹', '核心', '腘绳', '股四头', '二头', '三头',
+  '分化', '周期化', '减载', '空腹训练', '练一休一', '轻断食', '金字塔',
+  // 有氧与冷兵器
+  '跑步', '跳绳', '拳击', '游泳', '骑行', '有氧', '体能', '爬楼', '马拉松',
+  '剑道', '唐刀', '武士刀', '苗刀', '长枪', '斧头', '刀具', '冷兵器',
+  // 饮食营养
+  '蛋白', '碳水', '脂肪', '食谱', '食物', '营养', '维生素', '补剂', '热量',
+  '生酮', '碳循环', '肌酸', '蛋白粉', '增肌粉', '减脂餐', '健康餐', '吃', '餐',
+  '牛里脊', '鸡胸', '鸡蛋', '牛奶', '三文鱼', '牛肉', '酱牛肉', '卤鸡腿',
+  // 身体数据
+  '体重', '体脂', 'FFMI', 'BMR', 'TDEE', '围度', '体态', '瘦体重',
+  // 健身账号常见词
+  '健身', '教练', '自然健身', '雄性意志',
+];
+
+function isFitnessRelevant(text: string): boolean {
+  const t = text.toLowerCase();
+  return FITNESS_KEYWORDS.some((k) => t.includes(k.toLowerCase()));
+}
+
 /** 解析一行抖音分享文本：提取标题 / 作者 / 链接 */
 function parseShareLine(line: string): { title: string; author: string; url: string } {
   const urlMatch = line.match(
@@ -135,6 +164,7 @@ export default function CollectPage() {
   const [text, setText] = useState('');
   const [items, setItems] = useState<CollectItem[]>([]);
   const [notice, setNotice] = useState('');
+  const [onlyFitness, setOnlyFitness] = useState(true); // 默认只收健身相关
 
   useEffect(() => {
     setItems(loadItems());
@@ -145,25 +175,34 @@ export default function CollectPage() {
     saveItems(next);
   };
 
-  /** 批量导入：按行切分，解析 + 分类 */
+  /** 批量导入：按行切分，解析 + 分类 + 健身相关过滤 */
   const importText = () => {
     const lines = text.split(/\n+/).map((s) => s.trim()).filter(Boolean);
     if (lines.length === 0) return;
     const now = new Date().toISOString();
-    const added: CollectItem[] = lines.map((line) => {
+    const added: CollectItem[] = [];
+    let filtered = 0;
+    for (const line of lines) {
       const { title, author, url } = parseShareLine(line);
-      return {
+      const full = `${title} ${author} ${line}`;
+      // 过滤：只保留健身相关内容
+      if (onlyFitness && !isFitnessRelevant(full)) {
+        filtered++;
+        continue;
+      }
+      added.push({
         id: makeId(),
         raw: line.slice(0, 200),
         title,
         author,
         url,
-        category: classify(title + ' ' + author + ' ' + line),
+        category: classify(full),
         createdAt: now,
-      };
-    });
+      });
+    }
     persist([...added, ...items]);
-    setNotice(`已导入 ${added.length} 条收藏（重复内容请自行检查，本站不去重）`);
+    const filterMsg = filtered > 0 ? `，已自动过滤 ${filtered} 条非健身内容` : '';
+    setNotice(`已导入 ${added.length} 条健身相关收藏${filterMsg}（重复内容请自行检查，本站不去重）`);
     setText('');
   };
 
@@ -248,6 +287,20 @@ export default function CollectPage() {
             rows={6}
             className="font-mono text-xs leading-relaxed"
           />
+          <label className="flex cursor-pointer items-start gap-2 text-xs text-muted-foreground">
+            <input
+              type="checkbox"
+              checked={onlyFitness}
+              onChange={(e) => setOnlyFitness(e.target.checked)}
+              className="mt-0.5 accent-[#FACC15]"
+            />
+            <span>
+              <strong className="text-foreground">仅导入健身相关内容</strong>（默认开启）：
+              只保留训练动作、饮食营养、有氧、冷兵器、补剂、身体数据等健身视频；
+              娱乐、搞笑、新闻、生活等无关内容会自动过滤掉。
+              如果想全收，可以取消勾选。
+            </span>
+          </label>
           <div className="flex flex-wrap items-center gap-2">
             <Button onClick={importText} className="gap-1.5">
               <Sparkles className="h-4 w-4" /> 解析并导入
