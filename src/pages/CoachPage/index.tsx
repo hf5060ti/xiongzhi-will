@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Activity,
@@ -248,7 +249,13 @@ export default function CoachPage() {
         <ul className="mt-1.5 list-disc space-y-1 pl-4">
           <li><b className="text-foreground">NASM-CPT / ACSM-CPT</b> — 基础私人教练认证，适合<b className="text-foreground">纠正动作模式、解决肩腰膝旧伤不适、制定入门周期计划</b>；</li>
           <li><b className="text-foreground">CSCS / NSCA-CPT</b> — 运动表现方向，适合<b className="text-foreground">备赛、力量举/斗腕等专项技术突破</b>；</li>
-          <li><b className="text-foreground">营养问题不用找真人</b> — 吃什么、吃多少、怎么搭配、热量计算，直接在下方「AI 教练对话」里问，它连你的身体数据和目标一起算。</li>
+          <li>
+            <b className="text-foreground">营养问题两个入口配合用</b> —
+            拿不准的具体问题（这个能吃吗、今天吃多少）先在下方「AI 教练对话」快速问；
+            想系统学饮食方法，去看
+            <Link to="/diet-knowledge" className="underline text-primary hover:text-primary/80">饮食讲解视频（博主整理 · 含来源标注）</Link>，
+            从原理到搭配一遍过。
+          </li>
         </ul>
         <p className="mt-1.5">
           一句话：饮食营养直接问 AI；只有动作纠正、旧伤、备赛技术这 20% 的硬事，才需要找持证真人一对一。
