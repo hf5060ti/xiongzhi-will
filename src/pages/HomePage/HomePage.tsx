@@ -1,4 +1,4 @@
-﻿import { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { ArrowRight, Download, Dumbbell, Footprints, Soup, TrendingDown, Upload } from 'lucide-react';
@@ -9,6 +9,7 @@ import HeroSection from './sections/HeroSection';
 import GoalPicker from './sections/GoalPicker';
 import DietPicker from './sections/DietPicker';
 import TodayPanel from './sections/TodayPanel';
+import OverviewPanel from './sections/OverviewPanel';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
 import {
@@ -91,6 +92,9 @@ export default function HomePage() {
 
       {/* 今日驾驶舱：今天吃了多少、练没练、打卡没、最近体重 */}
       <TodayPanel />
+
+      {/* 总体数据：本周训练 / 每日消耗估算 / 当前体重 / 围度趋势 */}
+      <OverviewPanel />
 
       {hasSaved && (
         <Card className="border-primary/30 bg-primary/5">
