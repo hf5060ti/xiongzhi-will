@@ -17,6 +17,7 @@ import {
   Timer,
   Info,
   Droplets,
+  Carrot,
 } from 'lucide-react';
 import {
   GUT_BARRIER_MECHANISMS,
@@ -27,6 +28,7 @@ import {
   FODMAP_MECHANISMS,
   LOW_FODMAP_PHASES,
   LOW_FODMAP_POSITION,
+  FODMAP_FOOD_TABLE,
   FODMAP_MYTHS,
   GUT_ACTION_LIST,
   GUT_DISCLAIMER,
@@ -186,6 +188,60 @@ export default function StomachPage() {
             </Card>
           ))}
         </div>
+      </section>
+
+      {/* 食物对照表：第一阶段可直接照此买菜 */}
+      <section className="space-y-3">
+        <SectionTitle
+          icon={<Carrot className="h-4 w-4" />}
+          title="能吃 vs 先别碰：低 FODMAP 食物对照表"
+          desc="第一阶段（全面排除期）按此采买与备餐；高列先暂停 2–6 周，第二阶段再逐个单组重新引入"
+        />
+        <div className="space-y-2.5">
+          {FODMAP_FOOD_TABLE.map((row) => (
+            <Card key={row.category} className="border-border/50 bg-card/60 backdrop-blur-xl">
+              <CardContent className="p-3 sm:p-4">
+                <div className="flex flex-wrap items-baseline justify-between gap-1">
+                  <h3 className="font-display text-sm font-bold text-foreground">{row.category}</h3>
+                  {row.note && (
+                    <p className="text-[11px] leading-snug text-muted-foreground">{row.note}</p>
+                  )}
+                </div>
+                <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                  <div className="rounded-md border border-emerald-500/20 bg-emerald-500/5 p-2.5">
+                    <p className="text-[11px] font-medium text-emerald-600">优先吃（低 FODMAP）</p>
+                    <div className="mt-1 flex flex-wrap gap-1">
+                      {row.low.map((f) => (
+                        <span
+                          key={f}
+                          className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[11px] text-emerald-700"
+                        >
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="rounded-md border border-destructive/20 bg-destructive/5 p-2.5">
+                    <p className="text-[11px] font-medium text-destructive">先别碰（高 FODMAP）</p>
+                    <div className="mt-1 flex flex-wrap gap-1">
+                      {row.high.map((f) => (
+                        <span
+                          key={f}
+                          className="rounded bg-destructive/10 px-1.5 py-0.5 text-[11px] text-foreground/80"
+                        >
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+        <p className="rounded-md border border-border bg-muted/30 px-3 py-2 text-[11px] leading-snug text-muted-foreground">
+          注意「剂量累积」：低列食物大量同餐叠加也可能跨过耐受阈值；个体差异大，第二阶段务必一次只测一组。
+        </p>
       </section>
 
       {/* 认知误区 */}

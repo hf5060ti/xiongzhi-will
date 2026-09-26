@@ -21,6 +21,27 @@ interface InputPanelProps {
 const LEVELS: TrainLevel[] = ['beginner', 'intermediate', 'advanced'];
 const PHASES: Phase[] = ['bulk', 'cut', 'maintain'];
 
+/** 每个数值字段的合理范围（超出即提示，防止身高 300cm / 体脂 120% 这类误输入） */
+const RANGES: Record<string, { min: number; max: number; error: string; emptyOk?: boolean }> = {
+  age: { min: 5, max: 120, error: '年龄请在 5–120 岁之间' },
+  heightCm: { min: 100, max: 250, error: '身高请在 100–250 cm 之间' },
+  weightKg: { min: 20, max: 300, error: '体重请在 20–300 kg 之间' },
+  bodyFatPct: { min: 3, max: 70, error: '体脂率请在 3–70% 之间（估算值也行）' },
+  wristCm: { min: 10, max: 35, error: '手腕围请在 10–35 cm 之间', emptyOk: true },
+  ankleCm: { min: 10, max: 45, error: '脚踝围请在 10–45 cm 之间', emptyOk: true },
+};
+
+function rangeError(key: string, raw: string): string | null {
+  const r = RANGES[key];
+  if (!r) return null;
+  const trimmed = raw.trim();
+  if (trimmed === '') return r.emptyOk ? null : '请填写该数值';
+  const v = Number(trimmed);
+  if (!Number.isFinite(v)) return '请输入有效数字';
+  if (v < r.min || v > r.max) return r.error;
+  return null;
+}
+
 function NumberField({
   id,
   label,
@@ -28,6 +49,7 @@ function NumberField({
   placeholder,
   unit,
   hint,
+  rangeKey,
   onChange,
 }: {
   id: string;
@@ -36,8 +58,10 @@ function NumberField({
   placeholder: string;
   unit: string;
   hint?: string;
+  rangeKey: string;
   onChange: (v: string) => void;
 }) {
+  const error = rangeError(rangeKey, value);
   return (
     <div>
       <Label htmlFor={id} className="text-sm">
@@ -52,13 +76,18 @@ function NumberField({
           placeholder={placeholder}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="pr-12"
+          aria-invalid={error ? true : undefined}
+          className={cn('pr-12', error && 'border-destructive focus-visible:ring-destructive/40')}
         />
         <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground">
           {unit}
         </span>
       </div>
-      {hint && <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{hint}</p>}
+      {error ? (
+        <p className="mt-1 text-[11px] leading-snug text-destructive">{error}</p>
+      ) : (
+        hint && <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{hint}</p>
+      )}
     </div>
   );
 }
@@ -93,6 +122,7 @@ export default function InputPanel({ profile, onChange }: InputPanelProps) {
           value={profile.age}
           placeholder="如 25"
           unit="岁"
+          rangeKey="age"
           onChange={(v) => onChange({ age: v })}
         />
         <NumberField
@@ -101,6 +131,7 @@ export default function InputPanel({ profile, onChange }: InputPanelProps) {
           value={profile.heightCm}
           placeholder="如 180"
           unit="cm"
+          rangeKey="heightCm"
           onChange={(v) => onChange({ heightCm: v })}
         />
         <NumberField
@@ -109,6 +140,7 @@ export default function InputPanel({ profile, onChange }: InputPanelProps) {
           value={profile.weightKg}
           placeholder="如 80"
           unit="kg"
+          rangeKey="weightKg"
           onChange={(v) => onChange({ weightKg: v })}
         />
         <NumberField
@@ -118,6 +150,7 @@ export default function InputPanel({ profile, onChange }: InputPanelProps) {
           placeholder="如 25"
           unit="%"
           hint="估算值也行，公式误差本就 ±10–15%。"
+          rangeKey="bodyFatPct"
           onChange={(v) => onChange({ bodyFatPct: v })}
         />
         <NumberField
@@ -127,6 +160,7 @@ export default function InputPanel({ profile, onChange }: InputPanelProps) {
           placeholder="选填"
           unit="cm"
           hint="骨架上限公式（Casey Butt）用。"
+          rangeKey="wristCm"
           onChange={(v) => onChange({ wristCm: v })}
         />
         <NumberField
@@ -136,6 +170,7 @@ export default function InputPanel({ profile, onChange }: InputPanelProps) {
           placeholder="选填"
           unit="cm"
           hint="同上，两个都填才计算。"
+          rangeKey="ankleCm"
           onChange={(v) => onChange({ ankleCm: v })}
         />
       </div>

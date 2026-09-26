@@ -22,6 +22,7 @@ import DietKnowledgePage from '@/pages/DietKnowledgePage';
 import LightPage from '@/pages/LightPage';
 import PrivacyPage from '@/pages/PrivacyPage';
 import SourcesPage from '@/pages/SourcesPage';
+import FaqPage from '@/pages/FaqPage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
 export default function App() {
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="light" element={<LightPage />} />
           <Route path="privacy" element={<PrivacyPage />} />
           <Route path="sources" element={<SourcesPage />} />
+          <Route path="faq" element={<FaqPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

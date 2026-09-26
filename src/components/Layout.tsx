@@ -43,6 +43,7 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/diet-knowledge': { title: '饮食讲解 - 雄性意志', desc: '公开健身博主讲解整理：每条注明证据等级与来源链接，非医疗建议。' },
   '/training-logs': { title: '训练日志 - 雄性意志', desc: '近 7 天训练频次、周容量、力量与耐力追踪。' },
   '/sources': { title: '内容来源与循证 - 雄性意志', desc: '本站每个模块的内容来源、证据等级与免责边界。' },
+  '/faq': { title: '关于与常见问题 - 雄性意志', desc: '项目初衷、公式方法论（BMR / TDEE / MET）、隐私与免责、免费开源说明。' },
   '/privacy': { title: '隐私政策 - 雄性意志', desc: '数据只存本地浏览器，不上传、不追踪、无账号。' },
 };
 
@@ -351,6 +352,7 @@ export const Layout = () => {
               <a href="https://github.com/hf5060ti/xiongzhi-will" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">GitHub 仓库</a>
               <Link to="/privacy" className="underline hover:text-foreground">隐私政策</Link>
               <Link to="/sources" className="underline hover:text-foreground">内容来源与循证</Link>
+              <Link to="/faq" className="underline hover:text-foreground">关于 / FAQ</Link>
             </p>
           </div>
         </footer>
