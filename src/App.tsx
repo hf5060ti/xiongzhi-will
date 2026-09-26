@@ -23,6 +23,7 @@ import LightPage from '@/pages/LightPage';
 import PrivacyPage from '@/pages/PrivacyPage';
 import SourcesPage from '@/pages/SourcesPage';
 import FaqPage from '@/pages/FaqPage';
+import CollectPage from '@/pages/CollectPage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
 export default function App() {
@@ -52,6 +53,7 @@ export default function App() {
           <Route path="privacy" element={<PrivacyPage />} />
           <Route path="sources" element={<SourcesPage />} />
           <Route path="faq" element={<FaqPage />} />
+          <Route path="collect" element={<CollectPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

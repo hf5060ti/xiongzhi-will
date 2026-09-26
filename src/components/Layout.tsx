@@ -1,6 +1,6 @@
 ﻿import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
@@ -19,6 +19,7 @@ const NAV_ITEMS = [
   { path: '/relation', label: '关系', icon: Heart, end: false },
   { path: '/skills', label: '技能', icon: Wrench, end: false },
   { path: '/wild', label: '荒野', icon: Mountain, end: false },
+  { path: '/collect', label: '收藏', icon: Bookmark, end: false },
 
 ];
 
@@ -45,6 +46,7 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/sources': { title: '内容来源与循证 - 雄性意志', desc: '本站每个模块的内容来源、证据等级与免责边界。' },
   '/faq': { title: '关于与常见问题 - 雄性意志', desc: '项目初衷、公式方法论（BMR / TDEE / MET）、隐私与免责、免费开源说明。' },
   '/privacy': { title: '隐私政策 - 雄性意志', desc: '数据只存本地浏览器，不上传、不追踪、无账号。' },
+  '/collect': { title: '收藏导入 - 雄性意志', desc: '粘贴抖音收藏的分享文本，自动解析标题/作者/链接，按训练、饮食、心智等维度分类并生成周总结。数据只存本地。' },
 };
 
 const TYPE_ICON = {
