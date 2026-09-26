@@ -320,11 +320,9 @@ export default function ExerciseLibraryPage() {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {shown.map((ex) => {
           const cnName = getCnName(ex);
-          // 有演示动图的动作：悬停播放动图；其余用静态图（悬停切第二张）
-          const animating = hovered === ex.id && !!ex.gif;
-          const src = animating
-            ? (ex.gif as string)
-            : ex.images[0] || ex.gif || '';
+          // 有动图的动作：进入视口即自动循环播放（loading=lazy 自动懒加载），不靠 hover；
+          // 手机端也能直接看到演示，鼠标 hover 只做微放大，不切图避免闪烁
+          const src = ex.gif || ex.images[0] || '';
           return (
             <div
               key={ex.id}
@@ -343,7 +341,7 @@ export default function ExerciseLibraryPage() {
                   src={src}
                   alt={cnName || ex.name}
                   loading="lazy"
-                  className="h-full w-full object-contain transition-opacity duration-200"
+                  className="h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105"
                 />
                 {ex.gif && (
                   <span className="absolute right-1 top-1 inline-flex items-center gap-0.5 rounded bg-black/60 px-1 py-0.5 text-[9px] font-medium text-white">
@@ -377,7 +375,7 @@ export default function ExerciseLibraryPage() {
                 {ex.gif ? (
                   <span className="mt-1 inline-flex items-center gap-0.5 text-[10px] font-medium text-primary">
                     <PlayCircle className="h-3 w-3" />
-                    {ex.approx ? '近似演示·悬停播放' : '悬停看演示'}
+                    {ex.approx ? '近似演示·自动播放' : '演示自动播放'}
                   </span>
                 ) : (
                   <div className="mt-1 space-y-0.5">
@@ -443,7 +441,7 @@ export default function ExerciseLibraryPage() {
                       <img
                         src={selected.gif}
                         alt={`${getCnName(selected) || selected.name}${selected.approx ? '（近似演示）' : ''} 演示动图`}
-                        className="h-40 w-40 rounded-lg border border-border bg-muted/30 object-contain"
+                        className="h-40 w-40 animate-[fadeIn_.3s_ease-out] rounded-lg border border-border bg-muted/30 object-contain"
                       />
                       <span
                         className={

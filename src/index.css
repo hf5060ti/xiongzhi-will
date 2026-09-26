@@ -73,3 +73,8 @@
 .animate-hero-rise {
   animation: hero-rise 0.9s ease-out both;
 }
+/* 通用淡入（动图/弹窗图片） */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
