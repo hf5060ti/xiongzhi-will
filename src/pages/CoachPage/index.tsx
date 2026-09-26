@@ -236,6 +236,25 @@ export default function CoachPage() {
         </p>
       </div>
 
+      {/* 专业边界说明：AI 不是真人认证教练，什么情况该找真人 */}
+      <div className="rounded-lg border border-border/60 bg-card/60 p-3 text-xs leading-relaxed text-muted-foreground backdrop-blur-xl">
+        <p className="flex items-center gap-1.5 font-medium text-foreground">
+          <Stethoscope className="h-4 w-4 text-primary" />
+          这个「教练」的边界：什么时候该找真人
+        </p>
+        <p className="mt-1.5">
+          本站 AI 是规则判断，<b className="text-foreground">不是持证教练，也不能替代线下评估</b>。它擅长的是把「生病停训、循序渐进、吃够蛋白睡够觉」这些通用原则执行到位；下面这些情况，建议找有对应资质的真人一对一：
+        </p>
+        <ul className="mt-1.5 list-disc space-y-1 pl-4">
+          <li><b className="text-foreground">NASM-CPT / ACSM-CPT</b> — 基础私人教练认证，适合<b className="text-foreground">纠正动作模式、解决肩腰膝旧伤不适、制定入门周期计划</b>；</li>
+          <li><b className="text-foreground">CSCS / NSCA-CPT</b> — 运动表现方向，适合<b className="text-foreground">备赛、力量举/斗腕等专项技术突破</b>；</li>
+          <li><b className="text-foreground">RD（注册营养师）</b> — 有慢性病、食物过敏、或需要精确计算摄入时，比任何 AI 都可靠。</li>
+        </ul>
+        <p className="mt-1.5">
+          一句话：AI 帮你每天做对 80% 的普通事；剩下 20% 的伤病、瓶颈、个性化诊断，交给持证真人。
+        </p>
+      </div>
+
       <div className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-2">
         <Card>
           <CardHeader className="pb-2">

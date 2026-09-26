@@ -7,7 +7,7 @@
  */
 import { useMemo, useState } from 'react';
 import { toast } from 'sonner';
-import { Ruler, Save, Trash2, TrendingDown } from 'lucide-react';
+import { Ruler, Save, Trash2, TrendingDown, AlarmClock, RefreshCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -110,6 +110,28 @@ export default function MeasurementTracker() {
 
   const history = [...entries].reverse();
 
+  // 按日期排序后的记录，用于「距今天数」与全部位首次 vs 最新对比
+  const sorted = useMemo(() => [...entries].sort((a, b) => a.date.localeCompare(b.date)), [entries]);
+  const daysSinceLast = useMemo(() => {
+    if (sorted.length === 0) return null;
+    const today = new Date(`${todayStr()}T00:00:00`);
+    const last = new Date(`${sorted[sorted.length - 1].date}T00:00:00`);
+    return Math.round((today.getTime() - last.getTime()) / 86400000);
+  }, [sorted]);
+
+  /** 每个有数据的部位：首次值 → 最新值 → 变化（cm，负=缩小） */
+  const progress = useMemo(() => {
+    const out: { key: MeasureKey; first: number; latest: number; delta: number }[] = [];
+    for (const k of MEASURE_KEYS) {
+      const first = sorted.find((e) => e.values[k] != null)?.values[k];
+      const latest = [...sorted].reverse().find((e) => e.values[k] != null)?.values[k];
+      if (first != null && latest != null && first !== latest) {
+        out.push({ key: k, first, latest, delta: Math.round((latest - first) * 10) / 10 });
+      }
+    }
+    return out;
+  }, [sorted]);
+
   return (
     <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
       <CardContent className="space-y-4 p-4 sm:p-5">
@@ -172,6 +194,17 @@ export default function MeasurementTracker() {
 
         {/* 趋势 + 腰围对照 */}
         {entries.length > 0 && (
+          <div className="space-y-3">
+          {/* 30 天复查提醒 */}
+          {daysSinceLast != null && daysSinceLast >= 30 && (
+            <div className="flex items-start gap-2 rounded-md border border-amber-500/30 bg-amber-500/10 px-3 py-2">
+              <AlarmClock className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+              <p className="text-xs leading-snug text-foreground/90">
+                距上次体测已 <b>{daysSinceLast} 天</b>（建议每 30 天复查一次）。
+                同口径早晨空腹复测一次，和历史曲线对比才能看出真实进展——体重会骗人，围度和照片不会。
+              </p>
+            </div>
+          )}
           <div className="grid gap-3 lg:grid-cols-[1.6fr_1fr]">
             <div className="rounded-lg border border-border bg-background/30 p-3">
               <p className="text-xs font-medium text-muted-foreground">围度趋势（cm）</p>
@@ -245,6 +278,38 @@ export default function MeasurementTracker() {
                 <p className="mt-2 text-xs text-muted-foreground">还没有腰围记录。</p>
               )}
             </div>
+          </div>
+
+          {/* 首次 vs 最新：全部位进度对比 */}
+          {progress.length > 0 && (
+            <div className="rounded-lg border border-border bg-background/30 p-3">
+              <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                <RefreshCcw className="h-3.5 w-3.5 text-primary" />
+                首次 vs 最新 · 进度报告
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {progress.map((p) => (
+                  <span
+                    key={p.key}
+                    className="rounded-md border border-border/60 bg-card/60 px-2 py-1 text-[11px] text-muted-foreground"
+                  >
+                    {MEASURE_META[p.key].label}
+                    <b className="ml-1 text-foreground">{p.first}→{p.latest}cm</b>
+                    <b
+                      className={`ml-1.5 ${
+                        p.delta < 0 ? 'text-primary' : p.delta > 0 ? 'text-foreground' : 'text-muted-foreground'
+                      }`}
+                    >
+                      {p.delta > 0 ? `+${p.delta}` : p.delta}
+                    </b>
+                  </span>
+                ))}
+              </div>
+              <p className="mt-1.5 text-[11px] leading-snug text-muted-foreground">
+                腰 / 大腿缩小、胸 / 臂增大是增肌减脂同时发生的理想形态；同向变大要警惕脂肪增长。
+              </p>
+            </div>
+          )}
           </div>
         )}
 
