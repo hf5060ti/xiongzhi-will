@@ -159,9 +159,31 @@ const LEVEL_NOTES: Record<TrainLevel, string> = {
     '高级：每个动作 4–5 组，主项可用 1–2 组力竭 / 强制次数突破平台，其余组仍保留余量；总训练量达到上限时优先减辅助组。',
 };
 
+/**
+ * 组间休息建议：按动作是「复合（多关节大重量）」还是「孤立（单关节小重量）」给区间。
+ * - 复合动作 3–5 分钟：自然训练者磷酸原恢复慢，短休息会让下一组在疲劳状态下开始，重量与技术双双打折
+ * - 孤立动作 2–3 分钟：目标肌群局部恢复即可，太长反而冷身
+ */
+export type RestKind = 'compound' | 'isolation';
+export interface RestAdvice {
+  kind: RestKind;
+  range: string;
+  label: string;
+}
+
+export function restFor(name: string): RestAdvice {
+  const n = name;
+  const isCompound =
+    /卧推|实力推|推举|划船|下拉|引体|悬垂|深蹲|硬拉|腿举|弓步|分腿蹲|臂屈伸|农夫|双杠|伐木|劈柴|臀桥|行军|轮胎|悬垂举腿|举腿/.test(n) &&
+    !(/下压|飞鸟|侧平举|前平举|弯举|提踵|腕弯举|耸肩|卷腹|夹胸|锤式/.test(n));
+  if (isCompound) {
+    return { kind: 'compound', range: '3–5 分钟', label: '复合动作' };
+  }
+  return { kind: 'isolation', range: '2–3 分钟', label: '孤立动作' };
+}
+
 /** 生成 7 天训练计划 */
-export function buildWeekTraining(goal: IGoal, splitId: SplitType, pyramid: PyramidType, level: TrainLevel): WeekTraining {
-  const pattern = ROUTINE_PATTERNS[splitId] ?? ROUTINE_PATTERNS['push-pull-legs'];
+export function buildWeekTraining(goal: IGoal, splitId: SplitType, pyramid: PyramidType, level: TrainLevel): WeekTraining {  const pattern = ROUTINE_PATTERNS[splitId] ?? ROUTINE_PATTERNS['push-pull-legs'];
   const templates = SPLIT_DAY_MUSCLES[splitId] ?? SPLIT_DAY_MUSCLES['push-pull-legs'];
   const days: DayTraining[] = WEEK_DAY_LABELS.map((label, i) => {
     const isTrainDay = pattern[i] ?? true;

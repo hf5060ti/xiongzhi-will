@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
-import { CalendarRange, Dumbbell, Info, PlayCircle, ShieldAlert, TrendingUp } from 'lucide-react';
+import { CalendarRange, ChevronDown, Coffee, Dumbbell, Info, PlayCircle, ShieldAlert, TrendingUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { GOALS } from '@/data/goals';
-import { buildWeekTraining, type DayTraining } from '@/lib/training-plan';
+import { buildWeekTraining, restFor, type DayTraining } from '@/lib/training-plan';
 import { loadGoalId, loadSplit, loadPyramid, type SplitType, type PyramidType } from '@/lib/store';
 import { LEVEL_LABEL } from '@/lib/body-math';
 import { cn } from '@/lib/utils';
@@ -27,6 +27,7 @@ export default function WeekTrainingGenerator() {
   const [split, setSplit] = useState<SplitType>(loadSplit());
   const [pyramid, setPyramid] = useState<PyramidType>(loadPyramid());
   const [day, setDay] = useState(0);
+  const [restOpen, setRestOpen] = useState(false);
 
   const goal = useMemo(() => {
     const id = loadGoalId();
@@ -153,7 +154,26 @@ export default function WeekTrainingGenerator() {
                       </a>
                     )}
                   </div>
-                  <p className="mb-1 text-[11px] font-medium text-primary/90">{m.set}</p>
+                  <div className="mb-1 flex flex-wrap items-center gap-1.5">
+                    <p className="text-[11px] font-medium text-primary/90">{m.set.replace(/[，,]?\s*组间歇\s*\d+\s*s/g, '')}</p>
+                    {(() => {
+                      const r = restFor(m.name);
+                      return (
+                        <span
+                          className={cn(
+                            'inline-flex items-center gap-1 rounded-full border px-1.5 py-0.5 text-[10px] font-medium',
+                            r.kind === 'compound'
+                              ? 'border-primary/40 bg-primary/10 text-primary'
+                              : 'border-border bg-muted/40 text-muted-foreground',
+                          )}
+                          title="自然训练者需充分恢复磷酸原系统，避免下一组在疲劳状态下开始"
+                        >
+                          <Coffee className="h-3 w-3" />
+                          休息 {r.range}
+                        </span>
+                      );
+                    })()}
+                  </div>
                   {m.tip && <p className="text-[11px] leading-relaxed text-muted-foreground">{m.tip}</p>}
                 </div>
               ))}
@@ -175,6 +195,37 @@ export default function WeekTrainingGenerator() {
                 {week.levelNote}
               </span>
             </p>
+
+            {/* 为什么复合动作要休 3–5 分钟：可展开说明 */}
+            <div className="rounded-md border border-border bg-muted/20">
+              <button
+                type="button"
+                onClick={() => setRestOpen((v) => !v)}
+                className="flex w-full items-center justify-between gap-2 p-2.5 text-left text-[11px] font-medium text-foreground"
+              >
+                <span className="flex items-center gap-1.5">
+                  <Coffee className="h-3.5 w-3.5 text-primary" />
+                  为什么复合动作要休 3–5 分钟，而不是 60 秒？
+                </span>
+                <ChevronDown className={cn('h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform', restOpen && 'rotate-180')} />
+              </button>
+              {restOpen && (
+                <div className="space-y-1.5 border-t border-border px-2.5 py-2 text-[11px] leading-relaxed text-muted-foreground">
+                  <p>
+                    <b className="text-foreground">这不是"为休息而休息"。</b>自然训练者（无药物）恢复磷酸原系统、清除组间乳酸、让中枢神经回稳，
+                    在大重量复合动作上普遍需要 3–5 分钟；少于这个时间，下一组往往是"带着疲劳硬做"——重量掉、动作变形、力还没发够就做完了，
+                    神经和肌肉都没受到该有的刺激。
+                  </p>
+                  <p>
+                    <b className="text-foreground">短休息（60 秒）</b>更适合孤立小动作和泵感训练，用代谢压力刺激局部；
+                    但用在卧推、深蹲、硬拉这种神经负荷大的动作上，等于自废重量。
+                  </p>
+                  <p>
+                    标准是：<b className="text-foreground">下一组要在接近上一组的力量状态下开始</b>，而不是"按表到点就练"。喘匀了、心率回落、神经不紧了，再开始下一组——通常就是 3–5 分钟。
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
 
           <p className="flex items-start gap-1.5 rounded-md border border-amber-500/25 bg-amber-500/10 p-2.5 text-[11px] leading-relaxed text-amber-700 dark:text-amber-300">
