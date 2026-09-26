@@ -1,14 +1,13 @@
 import { BASE } from '@/lib/base';
 
 // 站点级全屏动态视频背景
-// - 桌面端：1080p / 移动端：720p，由 <source media> 自动选择，避免小屏拉大文件
-// - 无音频、muted + playsInline，保证移动端可自动播放
+// - 横屏宽幅素材（1280x680），桌面/平板/横屏手机共用，object-cover 自动适配
+// - 无水印、无音频、muted + playsInline，保证移动端可自动播放
 // - poster 作为首屏兜底：视频未就绪 / 系统省电模式禁用自动播放 / 用户开启"减少动态效果"时也好看
 // - 叠三层遮罩（压暗 + 上下渐变 + 暗角），保证玻璃卡片上的文字对比度
 
-const POSTER = `${BASE}images/knight-bg-poster.jpg`;
-const VIDEO_DESKTOP = `${BASE}images/guts-bg-final.mp4`;
-const VIDEO_MOBILE = `${BASE}images/knight-bg-mobile.mp4`;
+const POSTER = `${BASE}images/bg-main-poster.jpg`;
+const VIDEO = `${BASE}images/bg-main.mp4`;
 
 export default function VideoBackground() {
   return (
@@ -33,8 +32,7 @@ export default function VideoBackground() {
         poster={POSTER}
         className="bg-drift bg-video-motion absolute inset-0 h-full w-full object-cover object-center opacity-80"
       >
-        <source src={VIDEO_MOBILE} media="(max-width: 767px)" type="video/mp4" />
-        <source src={VIDEO_DESKTOP} type="video/mp4" />
+        <source src={VIDEO} type="video/mp4" />
       </video>
 
       {/* 遮罩 1：整体压暗，保证前景文字可读 */}
