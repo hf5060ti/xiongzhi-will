@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import TrainingSection from './sections/TrainingSection';
 import TrainingArchitecture from './sections/TrainingArchitecture';
+import WeekTrainingGenerator from './sections/WeekTrainingGenerator';
 import TrainingRules from './sections/TrainingRules';
 import SpecialNeedsGuide from './sections/SpecialNeedsGuide';
 import DietSection from './sections/DietSection';
@@ -60,6 +61,7 @@ export default function PlanPage() {
       <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_400px]">
         <div className="space-y-8 sm:space-y-12">
           <TrainingArchitecture />
+          <WeekTrainingGenerator />
           <TrainingSection goal={goal} />
           <DietSection diet={diet} weightKg={weightKg} />
         </div>
