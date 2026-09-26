@@ -238,9 +238,27 @@ export default function ExerciseLibraryPage() {
   );
   const equips = useMemo(() => ['all', ...new Set(ALL_EXERCISES.map((e) => e.equipment))], []);
 
+  // 肌群快捷分组（对应标签按钮）
+  const MUSCLE_GROUPS: Record<string, string[]> = {
+    chest: ['chest'],
+    back: ['lats', 'middle back', 'lower back'],
+    shoulders: ['shoulders'],
+    arms: ['biceps', 'triceps', 'forearms'],
+    legs: ['quadriceps', 'hamstrings', 'glutes', 'calves', 'adductors', 'abductors'],
+    abs: ['abdominals'],
+  };
+
   const filtered = useMemo(() => {
     return ALL_EXERCISES.filter((e) => {
-      if (muscle !== 'all' && !e.primaryMuscles.includes(muscle)) return false;
+      if (muscle !== 'all') {
+        const group = MUSCLE_GROUPS[muscle];
+        if (group) {
+          const hit = group.some((m) => e.primaryMuscles.includes(m));
+          if (!hit) return false;
+        } else if (!e.primaryMuscles.includes(muscle)) {
+          return false;
+        }
+      }
       if (equip !== 'all' && e.equipment !== equip) return false;
       if (query) {
         // 智能匹配：英文名 / 中文名 / 肌群中英别名 / 器械中英别名 / 同义词 / 拼音缩写
@@ -291,16 +309,29 @@ export default function ExerciseLibraryPage() {
             className="pl-9"
           />
         </div>
-        <select
-          value={muscle}
-          onChange={(e) => setMuscle(e.target.value)}
-          className="h-10 rounded-md border border-border bg-background px-3 text-sm text-foreground"
-        >
-          <option value="all">全部肌群</option>
-          {muscles.filter((m) => m !== 'all').map((m) => (
-            <option key={m} value={m}>{MUSCLE_CN[m] || m}</option>
+        <div className="flex flex-wrap gap-1.5">
+          {[
+            { label: '全部', value: 'all' },
+            { label: '胸', value: 'chest' },
+            { label: '背', value: 'back' },
+            { label: '肩', value: 'shoulders' },
+            { label: '臂', value: 'arms' },
+            { label: '腿', value: 'legs' },
+            { label: '腹', value: 'abs' },
+          ].map((t) => (
+            <button
+              key={t.value}
+              onClick={() => setMuscle(t.value)}
+              className={`h-10 rounded-md px-3 text-sm font-medium transition-colors ${
+                muscle === t.value
+                  ? 'bg-primary text-primary-foreground'
+                  : 'border border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground'
+              }`}
+            >
+              {t.label}
+            </button>
           ))}
-        </select>
+        </div>
         <select
           value={equip}
           onChange={(e) => setEquip(e.target.value)}

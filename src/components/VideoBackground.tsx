@@ -7,7 +7,7 @@ import { BASE } from '@/lib/base';
 // - 叠三层遮罩（压暗 + 上下渐变 + 暗角），保证玻璃卡片上的文字对比度
 
 const POSTER = `${BASE}images/knight-bg-poster.jpg`;
-const VIDEO_DESKTOP = `${BASE}images/knight-bg.mp4`;
+const VIDEO_DESKTOP = `${BASE}images/guts-bg-final.mp4`;
 const VIDEO_MOBILE = `${BASE}images/knight-bg-mobile.mp4`;
 
 export default function VideoBackground() {
