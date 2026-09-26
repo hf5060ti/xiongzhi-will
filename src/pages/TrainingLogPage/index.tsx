@@ -202,6 +202,38 @@ export default function TrainingLogPage() {
   }, [logs]);
 
   const weekSessions = week.filter((d) => d.count > 0).length;
+
+  /** 同名动作判定：互相包含即视为同动作（"卧推" ≈ "杠铃卧推"） */
+  const sameEx = (a: string, b: string) => {
+    const x = a.trim().toLowerCase();
+    const y = b.trim().toLowerCase();
+    return x && y && (x.includes(y) || y.includes(x));
+  };
+
+  /** 查某动作历史：最近一次记录 + 历史最佳 PR */
+  const historyOf = (name: string) => {
+    if (!name.trim()) return null;
+    let prev: { date: string; weightKg: number; reps: number; oneRm: number } | null = null;
+    let pr: { weightKg: number; reps: number; oneRm: number; date: string } | null = null;
+    for (const l of logs) {
+      for (const ex of l.exercises) {
+        if (!sameEx(ex.name, name)) continue;
+        for (const set of ex.sets) {
+          if (set.weightKg == null || set.reps == null) continue;
+          const oneRm = estimate1RM(set.weightKg, set.reps);
+          if (!prev || l.date > prev.date) prev = { date: l.date, weightKg: set.weightKg, reps: set.reps, oneRm };
+          if (!pr || oneRm > pr.oneRm) pr = { weightKg: set.weightKg, reps: set.reps, oneRm, date: l.date };
+        }
+      }
+    }
+    return { prev, pr };
+  };
+
+  /** 距今天数差 */
+  const daysAgo = (iso: string) => {
+    const d = Math.round((Date.now() - new Date(iso + 'T00:00:00').getTime()) / 86400000);
+    return d <= 0 ? '今天' : d === 1 ? '昨天' : `${d} 天前`;
+  };
   const weekVolume = week.reduce((sum, d) => sum + d.volume, 0);
   const weekSets = useMemo(
     () =>
@@ -546,6 +578,32 @@ export default function TrainingLogPage() {
                       删除动作
                     </Button>
                   </div>
+                  {(() => {
+                    const h = historyOf(ex.name);
+                    if (!h || (!h.prev && !h.pr)) return null;
+                    const sameAsPrev = h.prev && best
+                      && Math.abs(best.weightKg - h.prev.weightKg) < 0.01
+                      && best.reps >= h.prev.reps;
+                    return (
+                      <div className="rounded-md border border-primary/20 bg-primary/5 px-2.5 py-1.5 text-[11px] text-primary">
+                        {h.prev && (
+                          <span>
+                            上次：<b>{h.prev.weightKg}kg × {h.prev.reps} 次</b>（{daysAgo(h.prev.date)}）
+                          </span>
+                        )}
+                        {h.pr && (
+                          <span className="ml-2 text-amber-600 dark:text-amber-400">
+                            PR：{h.pr.weightKg}kg × {h.pr.reps} 次（{daysAgo(h.pr.date)}）
+                          </span>
+                        )}
+                        {sameAsPrev && (
+                          <p className="mt-0.5 text-[11px] text-muted-foreground">
+                            已追平上次表现 → 下次可试着 +2.5kg，或同重量多做 1–2 次（渐进超负荷）
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })()}
 
                   <div className="space-y-1.5">
                     {ex.sets.map((set, setIdx) => (

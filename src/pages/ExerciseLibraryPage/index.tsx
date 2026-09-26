@@ -8,6 +8,8 @@ import exercisesData from '@/data/exercises-db.json';
 import extData from '@/data/exercises-ext.json';
 import { EXERCISE_MEDIA } from '@/data/exercise-media';
 import { TAN_CHENGYI, type CoachVideo } from '@/data/coach-videos';
+import { findGuidance } from '@/data/exercise-guidance';
+import { restFor } from '@/lib/training-plan';
 import { smartMatch, buildMuscleAliases } from '@/lib/smart-search';
 
 // 图片 CDN 前缀
@@ -491,6 +493,49 @@ export default function ExerciseLibraryPage() {
                       {selected.secondaryMuscles.map((m) => MUSCLE_CN[m] || m).join('、')}
                     </div>
                   )}
+                  {(() => {
+                    const rest = restFor(selected.name);
+                    return (
+                      <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                        <Badge className="bg-primary/15 text-primary hover:bg-primary/15">
+                          组间休息：{rest.range}
+                        </Badge>
+                        <span className="text-[10px] text-muted-foreground">{rest.label}：自然训练者需充分恢复磷酸原系统</span>
+                      </div>
+                    );
+                  })()}
+                  {(() => {
+                    const g = findGuidance(getCnName(selected) || '', selected.name);
+                    if (!g) return null;
+                    return (
+                      <div className="mt-3 space-y-2.5 rounded-lg border border-border bg-muted/30 p-3 text-xs">
+                        <div>
+                          <b className="text-foreground">动作要点：</b>
+                          <ul className="mt-1 list-disc space-y-0.5 pl-4 text-muted-foreground">
+                            {g.cues.map((c, i) => <li key={i}>{c}</li>)}
+                          </ul>
+                        </div>
+                        <div>
+                          <b className="text-foreground">常见错误：</b>
+                          <ul className="mt-1 list-disc space-y-0.5 pl-4">
+                            {g.mistakes.map((m, i) => (
+                              <li key={i}>
+                                <span className="text-amber-600 dark:text-amber-400">{m.mistake}</span>
+                                <span className="text-muted-foreground">——{m.consequence}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+                          <p className="text-muted-foreground"><b className="text-foreground">退阶：</b>{g.regress}</p>
+                          <p className="text-muted-foreground"><b className="text-foreground">进阶：</b>{g.progress}</p>
+                        </div>
+                        {g.volumeNote && (
+                          <p className="text-[11px] text-muted-foreground"><b className="text-foreground">容量提示：</b>{g.volumeNote}</p>
+                        )}
+                      </div>
+                    );
+                  })()}
                   {selected.source && (
                     <p className="mt-2 text-[11px] text-muted-foreground">
                       演示动图来源：{selected.source}
