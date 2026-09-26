@@ -32,7 +32,7 @@
   --accent-foreground: hsl(48 96% 60%);
   --info: hsl(210 70% 60%);
   --info-foreground: hsl(0 0% 98%);
-  --destructive: hsl(0 84% 63%);
+  --destructive: hsl(0 75% 50%);
   --destructive-foreground: hsl(0 0% 100%);
   --success: hsl(142 71% 45%);
   --success-foreground: hsl(140 40% 98%);
@@ -58,7 +58,7 @@
   /* Computed borders using hsl relative color syntax */
   --primary-border: hsl(from hsl(48 96% 53%) h s calc(l + var(--opaque-button-border-intensity)));
   --secondary-border: hsl(from hsl(220 10% 13%) h s calc(l + var(--opaque-button-border-intensity)));
-  --destructive-border: hsl(from hsl(2 84% 60%) h s calc(l + var(--opaque-button-border-intensity)));
+  --destructive-border: hsl(from hsl(0 75% 50%) h s calc(l + var(--opaque-button-border-intensity)));
   --accent-border: hsl(from hsl(220 10% 14%) h s calc(l + var(--opaque-button-border-intensity)));
   --muted-border: hsl(from hsl(220 10% 12%) h s calc(l + var(--opaque-button-border-intensity)));
   --font-sans:
