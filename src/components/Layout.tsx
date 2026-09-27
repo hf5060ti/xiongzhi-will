@@ -356,6 +356,9 @@ export const Layout = () => {
               <Link to="/sources" className="underline hover:text-foreground">内容来源与循证</Link>
               <Link to="/faq" className="underline hover:text-foreground">关于 / FAQ</Link>
             </p>
+            <p className="mt-2 border-t border-border/30 pt-2">
+              请遵守当地的法律法规；本站不支持偷抓偷猎等各种违法活动。
+            </p>
           </div>
         </footer>
       </main>
