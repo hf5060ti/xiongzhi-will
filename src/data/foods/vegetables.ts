@@ -105,6 +105,7 @@ export const VEGETABLES: IFood[] = [
   { id: 'toon-sprout', name: '香椿', cat: 'veg', kcal: 47, protein: 1.7, fat: 0.4, carb: 10.9, fiber: 1.8, sodium: 4.6, vitFat: ['A', 'K'], vitWater: ['C'], minerals: ['钾'], note: '亚硝酸盐较高，建议焯水后食用' },
   { id: 'pickled-mustard', name: '榨菜', cat: 'veg', kcal: 29, protein: 2.2, fat: 0.3, carb: 6.5, fiber: 2.1, sodium: 4252, vitFat: [], vitWater: [], minerals: ['钾'], note: '高钠，控盐人群慎用' },
   { id: 'radish-heart', name: '心里美萝卜', cat: 'veg', kcal: 26, protein: 0.9, fat: 0.1, carb: 5.5, fiber: 1, sodium: 50, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
+  { id: 'radish-purple', name: '紫萝卜（紫皮/紫肉）', cat: 'veg', kcal: 22, protein: 0.8, fat: 0.1, carb: 4.8, fiber: 1.5, sodium: 45, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['花青素：抗氧化、抗炎'], note: '与心里美萝卜相近但果肉为紫红色，可生食/凉拌' },
   { id: 'radish-green', name: '青萝卜', cat: 'veg', kcal: 29, protein: 1.3, fat: 0.2, carb: 6.6, fiber: 1.2, sodium: 60, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
   { id: 'radish-cherry', name: '樱桃萝卜', cat: 'veg', kcal: 20, protein: 0.9, fat: 0.1, carb: 4, fiber: 1, sodium: 40, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
   { id: 'bell-pepper-yellow', name: '彩椒（黄）', cat: 'veg', kcal: 26, protein: 1, fat: 0.2, carb: 6, fiber: 1.7, sodium: 5, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'] },

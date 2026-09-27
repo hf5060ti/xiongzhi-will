@@ -105,4 +105,8 @@ export const STAPLES: IFood[] = [
   { id: 'euryale-seed', name: '芡实（鸡头米，干）', cat: 'staple', kcal: 353, protein: 8.7, fat: 0.3, carb: 78, fiber: 0.9, sodium: 5, vitFat: [], vitWater: ['B1'], minerals: ['钾', '镁'], note: '淀粉颗粒小，健脾粥料；鲜品鸡头米口感糯' },
   { id: 'kudzu-root', name: '葛根（粉）', cat: 'staple', kcal: 335, protein: 1.5, fat: 0.2, carb: 84, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['异黄酮（葛根素）：植物雌激素样作用'], note: '冲泡成糊，胃寒者少食；不替代药物，孕期/乳腺疾病遵医嘱' },
   { id: 'konjac', name: '魔芋（豆腐/结）', cat: 'staple', kcal: 12, protein: 0.1, fat: 0, carb: 3, fiber: 2.6, sodium: 10, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['葡甘聚糖：可溶性膳食纤维，吸水膨胀、延缓血糖上升'], note: '超低热量主食替代，需搭配酱汁否则无味；肠胃敏感者勿过量' },
+
+  // ---- 薯类细分（用户点名） ----
+  { id: 'potato-purple', name: '紫土豆（紫皮/紫肉马铃薯）', cat: 'staple', kcal: 76, protein: 2.1, fat: 0.1, carb: 16.5, fiber: 2.5, sodium: 5, vitFat: ['E'], vitWater: ['B6', 'C'], minerals: ['钾'], phytochem: ['花青素（紫皮紫肉）：抗氧化、抗炎'], note: '与紫薯不同，属马铃薯品种，淀粉口感粉糯' },
+  { id: 'sweet-potato-mini', name: '迷你薯（小香薯）', cat: 'staple', kcal: 95, protein: 1.5, fat: 0.2, carb: 22, fiber: 3, sodium: 30, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], note: '小体型红薯品种，皮薄味甜，当主食或加餐' },
 ];

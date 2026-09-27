@@ -26,7 +26,7 @@ export const SEAFOODS: IFood[] = [
   { id: 'clam', name: '蛤蜊', cat: 'seafood', kcal: 74, protein: 13, fat: 1, carb: 2.6, fiber: 0, sodium: 120, vitFat: [], vitWater: ['B12'], minerals: ['铁', '硒'], note: '嘌呤较高' },
   { id: 'squid', name: '鱿鱼', cat: 'seafood', kcal: 92, protein: 16, fat: 1.4, carb: 3, fiber: 0, sodium: 200, vitFat: [], vitWater: ['B12'], minerals: ['硒', '磷'], note: '嘌呤较高，胆固醇高' },
   { id: 'octopus', name: '章鱼', cat: 'seafood', kcal: 82, protein: 15, fat: 1, carb: 2, fiber: 0, sodium: 230, vitFat: [], vitWater: ['B12'], minerals: ['铁', '硒'] },
-  { id: 'sea-cucumber', name: '海参（水发）', cat: 'seafood', kcal: 78, protein: 16, fat: 0.5, carb: 2.5, fiber: 0, sodium: 500, vitFat: [], vitWater: [], minerals: ['钙'], note: '嘌呤低，低脂高蛋白' },
+  { id: 'sea-cucumber', name: '海参（水发）', cat: 'seafood', kcal: 78, protein: 16, fat: 0.5, carb: 2.5, fiber: 0, sodium: 500, vitFat: [], vitWater: [], minerals: ['钙'], note: '蛋白质以胶原蛋白等非必需氨基酸为主，并非优质必需氨基酸蛋白；另有海参皂苷/黏多糖，嘌呤低' },
   { id: 'kelp', name: '海带（鲜）', cat: 'seafood', kcal: 43, protein: 1.7, fat: 0.6, carb: 9.6, fiber: 3, sodium: 107, vitFat: ['K'], vitWater: ['叶酸'], minerals: ['碘', '钙'], note: '碘含量高，甲亢者控制' },
 
   // ---- 公开食物成分数据扩充（30 条）：每 100g 参考值 ----

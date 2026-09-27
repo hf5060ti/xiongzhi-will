@@ -9,6 +9,8 @@ export const DAIRY: IFood[] = [
   { id: 'egg-yolk', name: '蛋黄', cat: 'dairy', kcal: 322, protein: 16, fat: 27, carb: 3.6, fiber: 0, sodium: 48, vitFat: ['A', 'D', 'E', 'K'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '磷'], note: '胆固醇高，每天1-2个没问题' },
   { id: 'quail-egg', name: '鹌鹑蛋', cat: 'dairy', kcal: 158, protein: 13, fat: 11, carb: 0.4, fiber: 0, sodium: 106, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['硒'] },
   { id: 'duck-egg', name: '鸭蛋', cat: 'dairy', kcal: 185, protein: 13, fat: 14, carb: 0.3, fiber: 0, sodium: 106, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['硒'] },
+  { id: 'goose-egg', name: '鹅蛋', cat: 'dairy', kcal: 196, protein: 13.6, fat: 14.8, carb: 1.4, fiber: 0, sodium: 130, vitFat: ['A', 'D', 'E'], vitWater: ['B2', 'B12'], minerals: ['硒', '磷'], note: '个头大（约150g/个），脂肪略高于鸡蛋，蛋白质相近' },
+  { id: 'ostrich-egg', name: '鸵鸟蛋', cat: 'dairy', kcal: 145, protein: 13, fat: 10, carb: 0.7, fiber: 0, sodium: 120, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['硒', '磷'], note: '一个约1.4kg≈20多个鸡蛋；脂肪低于鸭蛋，胆固醇低于鸡蛋' },
 
   // ---- 奶类 ----
   { id: 'milk-whole', name: '牛奶（全脂）', cat: 'dairy', kcal: 66, protein: 3.2, fat: 3.6, carb: 4.9, fiber: 0, sodium: 37, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'] },
@@ -32,6 +34,8 @@ export const DAIRY: IFood[] = [
   { id: 'yogurt-skyr', name: '冰岛酸奶（脱脂）', cat: 'dairy', kcal: 60, protein: 11, fat: 0.2, carb: 4, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙'] },
   { id: 'kefir', name: '开菲尔', cat: 'dairy', kcal: 55, protein: 3.3, fat: 3, carb: 4, fiber: 0, sodium: 40, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'] },
   { id: 'milk-goat', name: '山羊奶', cat: 'dairy', kcal: 71, protein: 3.6, fat: 4.1, carb: 4.5, fiber: 0, sodium: 50, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'] },
+  { id: 'milk-goat-skim', name: '脱脂羊奶', cat: 'dairy', kcal: 38, protein: 3.6, fat: 0.2, carb: 4.6, fiber: 0, sodium: 48, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'], note: '脂肪近乎为零，乳糖仍在，乳糖不耐者留意' },
+  { id: 'milk-powder-goat-skim', name: '脱脂羊奶粉', cat: 'dairy', kcal: 355, protein: 36, fat: 1, carb: 52, fiber: 0, sodium: 380, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'], note: '冲泡按包装比例；蛋白密度高，适合增肌加餐' },
   { id: 'cream-heavy', name: '淡奶油', cat: 'dairy', kcal: 340, protein: 2.1, fat: 36.1, carb: 2.8, fiber: 0, sodium: 38, vitFat: ['A', 'D'], vitWater: ['B2'], minerals: ['钙'] },
   { id: 'sour-cream', name: '酸奶油', cat: 'dairy', kcal: 198, protein: 2.4, fat: 19.4, carb: 4.6, fiber: 0, sodium: 50, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'] },
   { id: 'cheese-swiss', name: '瑞士奶酪', cat: 'dairy', kcal: 393, protein: 27, fat: 31, carb: 1.5, fiber: 0, sodium: 190, vitFat: ['A', 'D'], vitWater: ['B12', 'B2'], minerals: ['钙', '磷'], note: '高钙' },
@@ -39,6 +43,8 @@ export const DAIRY: IFood[] = [
   { id: 'cheese-ricotta', name: '里科塔奶酪', cat: 'dairy', kcal: 174, protein: 11.3, fat: 13, carb: 3, fiber: 0, sodium: 84, vitFat: ['A', 'D'], vitWater: ['B12', 'B2'], minerals: ['钙'] },
   { id: 'cheese-cottage', name: '农家干酪', cat: 'dairy', kcal: 98, protein: 11.1, fat: 4.3, carb: 3.4, fiber: 0, sodium: 364, vitFat: ['A', 'D'], vitWater: ['B12', 'B2'], minerals: ['钙'] },
   { id: 'cheese-blue', name: '蓝纹奶酪', cat: 'dairy', kcal: 353, protein: 21.4, fat: 28.7, carb: 2.3, fiber: 0, sodium: 1146, vitFat: ['A', 'D'], vitWater: ['B12', 'B2'], minerals: ['钙'], note: '高钠' },
+  { id: 'cheese-goat', name: '羊奶酪（山羊奶酪）', cat: 'dairy', kcal: 364, protein: 21.6, fat: 30, carb: 2.5, fiber: 0, sodium: 700, vitFat: ['A', 'D'], vitWater: ['B12', 'B2'], minerals: ['钙', '磷'], note: '羊奶凝乳，蛋白更易消化，中链脂肪稍高；高钠适量' },
+  { id: 'cheese-horse', name: '马奶酪（马奶干酪）', cat: 'dairy', kcal: 300, protein: 18, fat: 24, carb: 3, fiber: 0, sodium: 400, vitFat: ['A'], vitWater: ['B12', 'C'], minerals: ['钙'], note: '马奶蛋白含量低、难凝乳，市售极少见；常见的是发酵马奶制品（如马奶酒），此条目为工艺近似参考' },
   { id: 'cheese-mascarpone', name: '马斯卡彭奶酪', cat: 'dairy', kcal: 429, protein: 4, fat: 44, carb: 3, fiber: 0, sodium: 100, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'] },
   { id: 'egg-boiled', name: '水煮蛋', cat: 'dairy', kcal: 155, protein: 12.6, fat: 10.6, carb: 1.1, fiber: 0, sodium: 124, vitFat: ['A', 'D', 'E'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['硒', '磷'], note: '蛋白质吸收率最高的做法' },
   { id: 'egg-fried', name: '煎蛋', cat: 'dairy', kcal: 200, protein: 13.5, fat: 15, carb: 0.8, fiber: 0, sodium: 210, vitFat: ['A', 'D', 'E'], vitWater: ['B2', 'B12'], minerals: ['硒'], note: '含额外用油' },
