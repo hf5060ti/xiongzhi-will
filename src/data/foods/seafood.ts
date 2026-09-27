@@ -66,4 +66,13 @@ export const SEAFOODS: IFood[] = [
   { id: 'ark-shell', name: '北极贝', cat: 'seafood', kcal: 77, protein: 14, fat: 1.5, carb: 2, fiber: 0, sodium: 350, vitFat: [], vitWater: ['B12'], minerals: ['铁', '硒'], note: '刺身常见，嘌呤中等；务必选正规冷链' },
   { id: 'crab-roe', name: '蟹黄（蟹膏）', cat: 'seafood', kcal: 240, protein: 12, fat: 18, carb: 5, fiber: 0, sodium: 500, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['锌', '硒'], note: '高胆固醇高嘌呤，痛风急性期禁食；尝鲜即可' },
   { id: 'sturgeon-farmed', name: '鲟鱼（合法养殖）', cat: 'seafood', kcal: 120, protein: 18, fat: 5, carb: 0, fiber: 0, sodium: 60, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '磷'], note: '⚠ 仅采用合法养殖渠道；野生鲟鱼为国家重点保护动物，严禁捕捞、交易、食用' },
+
+  // ---- 鱼类扩充（点名品种 + 金枪鱼分种分部位） ----
+  { id: 'grouper', name: '石斑鱼', cat: 'seafood', kcal: 92, protein: 19, fat: 1.3, carb: 0, fiber: 0, sodium: 55, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '低脂高蛋白，肉质细嫩少刺，清蒸/煲汤经典；市售以养殖为主' },
+  { id: 'chum-salmon', name: '大马哈鱼（秋鲑）', cat: 'seafood', kcal: 120, protein: 20, fat: 5, carb: 0, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '钾'], note: '太平洋鲑（东北称大马哈鱼），肉色淡橙、比三文鱼瘦；洄游产卵期肉质变差，市售多为冷冻分割' },
+  { id: 'tuna-yellowfin', name: '黄鳍金枪鱼（生）', cat: 'seafood', kcal: 110, protein: 24, fat: 1.5, carb: 0, fiber: 0, sodium: 40, vitFat: ['D'], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒'], note: '全球产量最大的金枪鱼，赤身肉瘦红润，刺身/罐头主力；部分渔场存在兼捕争议，选可持续认证渠道更稳妥' },
+  { id: 'tuna-bluefin', name: '蓝鳍金枪鱼（生，整体均值）', cat: 'seafood', kcal: 150, protein: 22, fat: 7, carb: 0, fiber: 0, sodium: 45, vitFat: ['D'], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒'], note: '最肥美金枪鱼（大腹呈雪花纹），顶级刺身食材；⚠ 部分种群因过度捕捞受国际保护/配额限制，务必选择合法合规渠道，遵守当地法规' },
+  { id: 'tuna-akami', name: '金枪鱼赤身（瘦部）', cat: 'seafood', kcal: 105, protein: 25, fat: 1.2, carb: 0, fiber: 0, sodium: 40, vitFat: ['D'], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒'], note: '金枪鱼背脊瘦肉部位，低脂高蛋白，肉色深红、风味浓郁' },
+  { id: 'tuna-chutoro', name: '金枪鱼中腹', cat: 'seafood', kcal: 170, protein: 21, fat: 10, carb: 0, fiber: 0, sodium: 45, vitFat: ['D'], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒'], note: '腹肉中层，脂肪适中、口感与风味平衡，性价比高的刺身部位' },
+  { id: 'tuna-otoro', name: '金枪鱼大腹（Toro）', cat: 'seafood', kcal: 290, protein: 17, fat: 25, carb: 0, fiber: 0, sodium: 45, vitFat: ['D'], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒'], note: '腹肉最肥部位（蓝鳍大腹最名贵）；饱和脂肪、胆固醇与嘌呤均高，痛风急性期/高血脂者注意' },
 ];
