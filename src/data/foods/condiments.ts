@@ -82,4 +82,7 @@ export const CONDIMENTS: IFood[] = [
   { id: 'chive-flower-paste', name: '腌韭菜花（草原）', cat: 'condiment', kcal: 60, protein: 3, fat: 1, carb: 10, fiber: 4, sodium: 2600, vitFat: [], vitWater: ['C', 'K'], minerals: ['钾', '铁'], note: '草原蘸羊肉的经典佐料，极高钠，少量' },
   { id: 'hotpot-base', name: '火锅底料（牛油）', cat: 'condiment', kcal: 620, protein: 3, fat: 62, carb: 12, fiber: 2, sodium: 3900, vitFat: ['A', 'E', 'K'], vitWater: [], minerals: ['钾'], phytochem: ['辣椒素', '花椒麻素'], note: '牛油+香料，高脂极高钠，一包底料超标家常便饭' },
   { id: 'osmanthus-sauce', name: '桂花酱', cat: 'condiment', kcal: 280, protein: 0.5, fat: 0.2, carb: 68, fiber: 1, sodium: 20, vitFat: [], vitWater: [], minerals: ['钾'], note: '桂花+糖渍，甜品/山药蘸酱，高糖' },
+
+  // ---- 中式复合香辛料（用户点名） ----
+  { id: 'thirteen-spices', name: '十三香', cat: 'condiment', kcal: 300, protein: 10, fat: 8, carb: 52, fiber: 20, sodium: 30, vitFat: ['E', 'K'], vitWater: ['B1', 'B3'], minerals: ['铁', '钙', '镁'], phytochem: ['花椒麻素', '茴香脑', '肉桂醛'], note: '花椒/八角/桂皮/丁香/小茴香等混合磨粉；用量少提香去腥，钠不高但风味浓，控盐人群友好' },
 ];

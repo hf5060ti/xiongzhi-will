@@ -141,4 +141,7 @@ export const VEGETABLES: IFood[] = [
   { id: 'pao-cai', name: '泡菜（四川泡菜/韩式泡菜）', cat: 'veg', kcal: 25, protein: 1.5, fat: 0.3, carb: 5, fiber: 1.5, sodium: 900, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['乳酸菌代谢物：发酵益生，促进肠道菌群'], note: '发酵菜，钠偏高；含益生菌但腌制期亚硝酸盐先升后降，泡透再食更稳妥' },
   { id: 'meigan-cai', name: '梅干菜（霉干菜）', cat: 'veg', kcal: 250, protein: 18, fat: 1.5, carb: 40, fiber: 20, sodium: 3500, vitFat: [], vitWater: [], minerals: ['钾', '铁'], note: '芥菜/雪里蕻腌晒而成，干品高纤维高钠，用前泡水去盐；梅菜扣肉经典' },
   { id: 'kelp-sprout', name: '海带苗（嫩海带/裙带苗）', cat: 'veg', kcal: 45, protein: 1.8, fat: 0.3, carb: 8, fiber: 3.5, sodium: 700, vitFat: ['K'], vitWater: ['B2'], minerals: ['碘', '钙', '镁'], note: '比老海带更嫩滑，凉拌/煮汤；碘高，甲状腺疾病遵医嘱；市售多为盐渍，用前漂洗去盐' },
+
+  // ---- 豆荚类蔬菜（用户点名） ----
+  { id: 'hyacinth-bean-pod', name: '扁豆荚（鲜嫩荚）', cat: 'veg', kcal: 37, protein: 2.8, fat: 0.4, carb: 6.5, fiber: 2.2, sodium: 5, vitFat: ['A', 'K'], vitWater: ['C', '叶酸'], minerals: ['钾', '镁'], note: '嫩扁豆荚当蔬菜，干扁豆粒另列（豆类分类）；⚠ 生荚含凝集素/皂苷，必须彻底烧熟煮透后食用' },
 ];

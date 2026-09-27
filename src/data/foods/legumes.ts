@@ -46,4 +46,7 @@ export const LEGUMES: IFood[] = [
   { id: 'bean-skin-dry', name: '干豆皮（干豆腐皮）', cat: 'legume', kcal: 440, protein: 44, fat: 22, carb: 12, fiber: 1, sodium: 25, vitFat: ['E', 'K'], vitWater: ['B1', '叶酸'], minerals: ['钙', '铁'], note: '湿豆皮晒干，泡发后热量约 1/2；蛋白质密度极高' },
   { id: 'soy-veggie-meat', name: '大豆蛋白素肉（人造肉）', cat: 'legume', kcal: 320, protein: 52, fat: 5, carb: 25, fiber: 8, sodium: 120, vitFat: ['E'], vitWater: ['B1', 'B2'], minerals: ['铁', '钙', '锌'], note: '组织化大豆蛋白，泡发后仿肉口感；配料表注意钠与植物油' },
   { id: 'tofu-puffed', name: '油豆腐（豆腐泡）', cat: 'legume', kcal: 244, protein: 17, fat: 16, carb: 5, fiber: 0.5, sodium: 20, vitFat: ['E'], vitWater: ['叶酸'], minerals: ['钙'], note:'油炸制品，吸油，炖煮时热量翻倍' },
+
+  // ---- 带壳鲜豆（用户点名） ----
+  { id: 'edamame-pod', name: '毛豆荚（带壳鲜）', cat: 'legume', kcal: 60, protein: 5.5, fat: 2.3, carb: 5, fiber: 2.5, sodium: 4, vitFat: ['K', 'E'], vitWater: ['叶酸', 'C'], minerals: ['镁', '钾'], note: '带壳称重口径，可食部分约 45%（去壳后按毛豆鲜 131kcal/100g 计）；水煮撒盐经典，嘌呤中高' },
 ];
