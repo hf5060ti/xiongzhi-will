@@ -61,4 +61,16 @@ export const FRUITS: IFood[] = [
   { id: 'guava', name: '番石榴', cat: 'fruit', kcal: 51, protein: 1.1, fat: 0.4, carb: 14.2, fiber: 5.9, sodium: 3, vitFat: ['A'], vitWater: ['C', '叶酸'], minerals: ['钾'] },
   { id: 'raisin', name: '葡萄干', cat: 'fruit', kcal: 344, protein: 2.5, fat: 0.4, carb: 83.4, fiber: 2.5, sodium: 19, vitFat: ['K'], vitWater: ['B1'], minerals: ['钾', '铁'], note: '高糖，注意份量' },
   { id: 'dried-apricot', name: '杏干', cat: 'fruit', kcal: 320, protein: 3.5, fat: 0.4, carb: 75, fiber: 7, sodium: 15, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], note: '高糖' },
+
+  // ---- 水果扩充（更多品种） ----
+  { id: 'wax-apple', name: '莲雾', cat: 'fruit', kcal: 34, protein: 0.6, fat: 0.2, carb: 8.4, fiber: 1.2, sodium: 20, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '水分高、低热量，清热解渴' },
+  { id: 'soursop', name: '释迦（番荔枝）', cat: 'fruit', kcal: 105, protein: 1.6, fat: 0.3, carb: 26, fiber: 3.3, sodium: 4, vitFat: ['C'], vitWater: ['B6', 'C'], minerals: ['钾', '镁'], note: '甜度高，血糖高者适量' },
+  { id: 'yellow-peach', name: '黄桃', cat: 'fruit', kcal: 45, protein: 0.8, fat: 0.2, carb: 11, fiber: 1.2, sodium: 5, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], note: '罐头黄桃含糖浆，鲜食更佳' },
+  { id: 'waxberry', name: '杨梅', cat: 'fruit', kcal: 30, protein: 0.8, fat: 0.2, carb: 6.7, fiber: 1, sodium: 2, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['花青素'], note: '花青素抗炎；核可食部分少' },
+  { id: 'hawthorn', name: '山楂', cat: 'fruit', kcal: 95, protein: 0.7, fat: 0.2, carb: 22, fiber: 2, sodium: 10, vitFat: ['A'], vitWater: ['C'], minerals: ['钾', '铁'], note: '有机酸促消化；孕妇及胃酸多者慎食' },
+  { id: 'bayberry-dry', name: '杨梅干', cat: 'fruit', kcal: 300, protein: 2, fat: 0.3, carb: 72, fiber: 3, sodium: 40, vitFat: [], vitWater: [], minerals: ['钾'], note: '加糖腌制，高糖' },
+  { id: 'red-jujube-fresh', name: '冬枣', cat: 'fruit', kcal: 105, protein: 1, fat: 0.2, carb: 27, fiber: 2, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '维C含量极高，鲜枣中之王' },
+  { id: 'plum-green', name: '青梅', cat: 'fruit', kcal: 30, protein: 0.5, fat: 0.1, carb: 7, fiber: 1.5, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '酸度高，多用于腌渍' },
+  { id: 'olive-fruit', name: '橄榄（青果）', cat: 'fruit', kcal: 115, protein: 1.1, fat: 11, carb: 7, fiber: 3, sodium: 10, vitFat: ['E', 'K'], vitWater: ['C'], minerals: ['钙', '铁'], note: '钙含量高，初嚼苦涩回甘' },
+  { id: 'ginkgo', name: '白果（银杏果）', cat: 'fruit', kcal: 180, protein: 4, fat: 1.3, carb: 38, fiber: 1.5, sodium: 2, vitFat: [], vitWater: ['B1', 'B2'], minerals: ['钾', '磷'], note: '含银杏酸，成人每日不超过 5-10 颗，不可生食' },
 ];

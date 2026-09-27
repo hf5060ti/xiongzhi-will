@@ -115,4 +115,21 @@ export const VEGETABLES: IFood[] = [
   { id: 'spinach-cooked', name: '菠菜（熟）', cat: 'veg', kcal: 23, protein: 3, fat: 0.3, carb: 3.6, fiber: 2.2, sodium: 70, vitFat: ['A', 'K'], vitWater: ['C', '叶酸'], minerals: ['镁', '铁', '钾'] },
   { id: 'carrot-cooked', name: '胡萝卜（熟）', cat: 'veg', kcal: 35, protein: 0.8, fat: 0.2, carb: 8.2, fiber: 2.8, sodium: 60, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'] },
   { id: 'pickled-cabbage', name: '酸白菜', cat: 'veg', kcal: 21, protein: 1, fat: 0.2, carb: 4, fiber: 1.2, sodium: 750, vitFat: [], vitWater: ['C'], minerals: [], note: '高钠，注意控盐' },
+
+  // ---- 蔬菜扩充（稀有/特色叶菜） ----
+  { id: 'ice-plant', name: '冰菜', cat: 'veg', kcal: 15, protein: 1, fat: 0.2, carb: 2.5, fiber: 1, sodium: 60, vitFat: ['A', 'K'], vitWater: ['C'], minerals: ['钾'], note: '表面盐囊泡自带咸味，凉拌口感脆' },
+  { id: 'perilla', name: '紫苏叶', cat: 'veg', kcal: 30, protein: 3, fat: 0.5, carb: 5, fiber: 2, sodium: 3, vitFat: ['A', 'K'], vitWater: ['C', 'B2'], minerals: ['钙', '铁'], phytochem: ['紫苏醛', '花青素'], note: '生鱼片伴侣；紫苏醛抑菌，花青素抗炎' },
+  { id: 'fish-mint', name: '鱼腥草（折耳根）', cat: 'veg', kcal: 20, protein: 2, fat: 0.3, carb: 3, fiber: 1.5, sodium: 40, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['鱼腥草素'], note: '云贵特色；鱼腥草素有抑菌作用，性寒' },
+  { id: 'wolfberry-leaf', name: '枸杞叶', cat: 'veg', kcal: 35, protein: 4, fat: 0.5, carb: 5, fiber: 1.5, sodium: 30, vitFat: ['A'], vitWater: ['C', 'B2'], minerals: ['钙', '铁'], note: '枸杞叶猪肝汤经典；叶酸丰富' },
+  { id: 'celtuce-leaf', name: '莴笋叶', cat: 'veg', kcal: 22, protein: 1.5, fat: 0.2, carb: 4, fiber: 1.5, sodium: 40, vitFat: ['A', 'K'], vitWater: ['C'], minerals: ['钾', '钙'], note: '莴笋叶比茎营养更高，别扔' },
+  { id: 'chinese-leek-flower', name: '韭花', cat: 'veg', kcal: 35, protein: 2.5, fat: 0.4, carb: 6, fiber: 2, sodium: 20, vitFat: ['A', 'K'], vitWater: ['C'], minerals: ['钾'], note: '韭花酱佐餐经典' },
+  { id: 'baby-corn', name: '玉米笋', cat: 'veg', kcal: 26, protein: 1.9, fat: 0.2, carb: 5.8, fiber: 1.6, sodium: 5, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], note: '嫩玉米幼穗，低卡脆甜' },
+  { id: 'taro-stem', name: '芋荷（芋梗）', cat: 'veg', kcal: 30, protein: 1, fat: 0.2, carb: 6, fiber: 1.2, sodium: 20, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '客家酸芋荷开胃' },
+
+  // ---- 蔬菜扩充二（功能标注 / 更多品种） ----
+  { id: 'beetroot-powder', name: '甜菜根粉', cat: 'veg', kcal: 350, protein: 12, fat: 0.5, carb: 75, fiber: 20, sodium: 280, vitFat: [], vitWater: ['C', '叶酸'], minerals: ['钾', '铁'], phytochem: ['硝酸盐：体内转一氧化氮，扩张血管、提升血流与运动耐力', '甜菜红素：抗氧化'], note: '浓缩硝酸盐粉，训练前 30-60 分钟 5-10g 冲水，提升泵感与耐力' },
+  { id: 'rapeseed-bud', name: '红菜苔', cat: 'veg', kcal: 32, protein: 2, fat: 0.4, carb: 5, fiber: 1.6, sodium: 30, vitFat: ['A', 'K'], vitWater: ['C'], minerals: ['钙', '铁'], note: '湖北冬令菜，腊肉同炒经典' },
+  { id: 'mustard-tuber', name: '芥菜头（芥菜疙瘩）', cat: 'veg', kcal: 27, protein: 1.5, fat: 0.2, carb: 5, fiber: 1.5, sodium: 40, vitFat: ['A', 'K'], vitWater: ['C'], minerals: ['钾'], note: '常腌制成咸菜，鲜食脆爽' },
+  { id: 'nori-seaweed', name: '紫菜（干）', cat: 'veg', kcal: 250, protein: 26, fat: 1.1, carb: 44, fiber: 21, sodium: 360, vitFat: ['A', 'K'], vitWater: ['B12（争议）', 'C'], minerals: ['碘', '铁', '钙'], note: '碘极高，甲亢/桥本患者遵医嘱；含天然谷氨酸提鲜' },
+  { id: 'kelp', name: '海带（鲜）', cat: 'veg', kcal: 43, protein: 1.8, fat: 0.2, carb: 9, fiber: 2.7, sodium: 100, vitFat: ['K'], vitWater: ['B2'], minerals: ['碘', '钙', '镁'], note: '碘与褐藻胶丰富，甲状腺疾病遵医嘱' },
 ];

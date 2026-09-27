@@ -63,4 +63,23 @@ export const CONDIMENTS: IFood[] = [
   { id: 'honey', name: '蜂蜜', cat: 'condiment', kcal: 321, protein: 0.4, fat: 0, carb: 80, fiber: 0.2, sodium: 4, vitFat: [], vitWater: ['B2', 'B3', 'C'], minerals: ['钾'], phytochem: ['多酚类'], note: '天然糖，训练前后补糖原可用，量控制' },
   { id: 'chili-oil', name: '辣椒油', cat: 'condiment', kcal: 900, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 300, vitFat: ['E', 'K'], vitWater: [], minerals: [], phytochem: ['辣椒素'], note: '纯脂肪，1 汤匙约 130kcal，拌菜滴几滴' },
   { id: 'sichuan-oil', name: '花椒油', cat: 'condiment', kcal: 900, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 50, vitFat: ['E', 'K'], vitWater: [], minerals: [], phytochem: ['花椒麻素'], note: '纯脂肪，提麻不增辣，少量' },
+
+  // ---- 酱料扩充（避开 nuts.ts 已收录的花生酱/芝麻酱/各类植物油） ----
+  { id: 'korean-chili-paste', name: '韩式辣酱', cat: 'condiment', kcal: 215, protein: 6.5, fat: 2, carb: 45, fiber: 3, sodium: 2600, vitFat: ['A'], vitWater: ['B2', 'C'], minerals: ['钾'], phytochem: ['辣椒素'], note: '辣椒发酵酱，甜辣口；高钠高糖，适量' },
+  { id: 'bbq-sauce', name: '烧烤酱', cat: 'condiment', kcal: 175, protein: 1.2, fat: 0.5, carb: 41, fiber: 0.5, sodium: 1800, vitFat: [], vitWater: [], minerals: ['钾'], note: '糖+番茄+醋+香料，含糖高，刷肉提味' },
+  { id: 'sweet-chili-sauce', name: '甜辣酱', cat: 'condiment', kcal: 200, protein: 1, fat: 0.5, carb: 48, fiber: 0.5, sodium: 1400, vitFat: [], vitWater: [], minerals: ['钾'], note: '泰式甜辣，蘸鸡翅/炸物，糖高' },
+  { id: 'plum-sauce', name: '酸梅酱', cat: 'condiment', kcal: 230, protein: 1, fat: 0.3, carb: 57, fiber: 1, sodium: 800, vitFat: [], vitWater: [], minerals: ['钾'], note: '梅子发酵，酸甜解腻，烤鸭蘸酱' },
+  { id: 'tabasco', name: '塔巴斯科辣酱', cat: 'condiment', kcal: 12, protein: 0.5, fat: 0.1, carb: 1.2, fiber: 0.3, sodium: 1300, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['辣椒素'], note: '近零热量，辣度清晰；高钠但用量少' },
+  { id: 'worcestershire', name: '伍斯特酱', cat: 'condiment', kcal: 90, protein: 1.5, fat: 0.1, carb: 20, fiber: 0.3, sodium: 950, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '发酵调味汁，牛排/罗宋汤提鲜，含糖' },
+  { id: 'curry-paste', name: '咖喱酱（湿）', cat: 'condiment', kcal: 260, protein: 6, fat: 16, carb: 25, fiber: 4, sodium: 2100, vitFat: ['A', 'K'], vitWater: ['B3', 'B6'], minerals: ['铁', '镁'], phytochem: ['姜黄素', '香茅醛'], note: '泰式咖喱底料，油脂+香辛料，辣度可选' },
+  { id: 'satay-sauce', name: '沙嗲酱', cat: 'condiment', kcal: 450, protein: 14, fat: 35, carb: 22, fiber: 3, sodium: 1600, vitFat: ['E'], vitWater: ['B3'], minerals: ['锌'], note: '花生+椰浆+香料，高脂高钠，蘸串烧' },
+  { id: 'olive-oil', name: '橄榄油', cat: 'condiment', kcal: 884, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['E', 'K'], vitWater: [], minerals: [], phytochem: ['橄榄多酚'], note: '单不饱和脂肪为主，抗炎；烟点低，凉拌/低温烹饪佳' },
+  { id: 'duck-fat', name: '鸭油', cat: 'condiment', kcal: 900, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 5, vitFat: ['D'], vitWater: [], minerals: [], note: '烤鸭油，饱和脂肪高；偶尔煎土豆香气足' },
+
+  // ---- 酱料扩充二（其他地域/风味） ----
+  { id: 'shrimp-paste', name: '虾酱', cat: 'condiment', kcal: 95, protein: 15, fat: 2, carb: 3, fiber: 0, sodium: 5800, vitFat: [], vitWater: ['B12'], minerals: ['钙', '铁'], note: '虾发酵酱，极高钠，嘌呤高，痛风慎用；蘸黄瓜/蒸蛋' },
+  { id: 'sour-chili', name: '糟辣椒（贵州）', cat: 'condiment', kcal: 80, protein: 2, fat: 2, carb: 14, fiber: 3, sodium: 1800, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['辣椒素'], note: '鲜辣椒发酵，酸辣开胃，炒菜下饭' },
+  { id: 'chive-flower-paste', name: '腌韭菜花（草原）', cat: 'condiment', kcal: 60, protein: 3, fat: 1, carb: 10, fiber: 4, sodium: 2600, vitFat: [], vitWater: ['C', 'K'], minerals: ['钾', '铁'], note: '草原蘸羊肉的经典佐料，极高钠，少量' },
+  { id: 'hotpot-base', name: '火锅底料（牛油）', cat: 'condiment', kcal: 620, protein: 3, fat: 62, carb: 12, fiber: 2, sodium: 3900, vitFat: ['A', 'E', 'K'], vitWater: [], minerals: ['钾'], phytochem: ['辣椒素', '花椒麻素'], note: '牛油+香料，高脂极高钠，一包底料超标家常便饭' },
+  { id: 'osmanthus-sauce', name: '桂花酱', cat: 'condiment', kcal: 280, protein: 0.5, fat: 0.2, carb: 68, fiber: 1, sodium: 20, vitFat: [], vitWater: [], minerals: ['钾'], note: '桂花+糖渍，甜品/山药蘸酱，高糖' },
 ];

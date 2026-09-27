@@ -78,4 +78,14 @@ export const MEATS: IFood[] = [
   { id: 'beef-wagyu', name: '和牛（生）', cat: 'meat', kcal: 480, protein: 12, fat: 48, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '高脂肪雪花肉，偶尔吃，份量控制' },
   { id: 'yak-beef', name: '牦牛肉（生）', cat: 'meat', kcal: 121, protein: 21, fat: 3.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌'], note: '高海拔放养，高蛋白低脂，肉质偏紧实' },
   { id: 'yak-jerky', name: '牦牛肉干', cat: 'meat', kcal: 420, protein: 48, fat: 18, carb: 8, fiber: 0, sodium: 1500, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '风干制品，高钠，注意控盐' },
+
+  // ---- 肉类扩充（特殊/民族肉） ----
+  { id: 'horse-meat', name: '马肉', cat: 'meat', kcal: 133, protein: 21, fat: 4.6, carb: 0.5, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '高蛋白低脂，草原/中亚特色' },
+  { id: 'donkey-meat', name: '驴肉', cat: 'meat', kcal: 113, protein: 21, fat: 3, carb: 0.4, fiber: 0, sodium: 46, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '高蛋白低脂低胆固醇，驴肉火烧经典' },
+  { id: 'camel-meat', name: '骆驼肉', cat: 'meat', kcal: 128, protein: 21, fat: 4.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '沙漠地区高蛋白肉，肉质类似牛肉' },
+  { id: 'ostrich-meat', name: '鸵鸟肉', cat: 'meat', kcal: 110, protein: 22, fat: 1.8, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '极低脂高蛋白，红肉外观白肉性质' },
+  { id: 'wild-boar', name: '野猪肉', cat: 'meat', kcal: 143, protein: 20, fat: 6, carb: 0, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B1', 'B12'], minerals: ['锌'], note: '瘦肉比例高，肉质紧实' },
+  { id: 'frog-meat', name: '牛蛙', cat: 'meat', kcal: 78, protein: 18, fat: 0.9, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12'], minerals: ['锌', '钾'], note: '高蛋白低脂，蛙腿肉细嫩，嘌呤中等' },
+  { id: 'silk-worm', name: '蚕蛹', cat: 'meat', kcal: 230, protein: 18, fat: 15, carb: 6, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒'], note: '昆虫蛋白，蛋白质量高，嘌呤高，过敏者慎食' },
+  { id: 'duck-blood', name: '鸭血', cat: 'meat', kcal: 55, protein: 13, fat: 0.4, carb: 0.2, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '补铁冠军，铁含量高且易吸收' },
 ];

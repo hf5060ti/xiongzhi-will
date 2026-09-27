@@ -49,4 +49,14 @@ export const DAIRY: IFood[] = [
   { id: 'milk-yak', name: '牦牛奶', cat: 'dairy', kcal: 92, protein: 3.6, fat: 6.8, carb: 4.6, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '高海拔牦牛产，脂肪与蛋白高于荷斯坦牛' },
   { id: 'butter-yak', name: '酥油（牦牛黄油）', cat: 'dairy', kcal: 780, protein: 0.8, fat: 86, carb: 1.5, fiber: 0, sodium: 12, vitFat: ['A', 'D', 'E', 'K'], vitWater: [], minerals: [], note: '牦牛奶提炼的黄油，纯脂肪，1g 约 7.8kcal，高海拔主食热量来源' },
   { id: 'ghee', name: '澄清黄油（酥油）', cat: 'dairy', kcal: 900, protein: 0.3, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['A', 'E', 'K'], vitWater: [], minerals: [], note: '去除乳蛋白与水分的纯脂肪，耐高温，1g 约 9kcal' },
+
+  // ---- 乳制品扩充（民族特色） ----
+  { id: 'milk-horse', name: '马奶', cat: 'dairy', kcal: 50, protein: 2.1, fat: 1.9, carb: 6.3, fiber: 0, sodium: 40, vitFat: ['A'], vitWater: ['B2', 'B12', 'C'], minerals: ['钙', '磷'], note: '蒙古草原特色，乳糖较高' },
+  { id: 'koumiss', name: '马奶酒（酸马奶）', cat: 'dairy', kcal: 45, protein: 2, fat: 1.5, carb: 5, fiber: 0, sodium: 30, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '发酵马奶微含酒精，草原待客饮' },
+  { id: 'milk-camel', name: '骆驼奶', cat: 'dairy', kcal: 70, protein: 3.5, fat: 3.2, carb: 4.9, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2', 'C'], minerals: ['钙'], note: '蛋白结构与牛奶不同，更接近母乳' },
+  { id: 'milk-sheep', name: '绵羊奶', cat: 'dairy', kcal: 100, protein: 5.6, fat: 7, carb: 5.4, fiber: 0, sodium: 50, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '脂肪蛋白双高，奶酪原料' },
+  { id: 'milk-powder-goat', name: '山羊奶粉', cat: 'dairy', kcal: 490, protein: 23, fat: 25, carb: 48, fiber: 0, sodium: 380, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '易消化，乳糖不耐者尝试' },
+  { id: 'cream-dry', name: '奶皮子', cat: 'dairy', kcal: 620, protein: 8, fat: 55, carb: 20, fiber: 0, sodium: 60, vitFat: ['A', 'D', 'E', 'K'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '蒙古奶皮，奶油浓缩，热量密度高' },
+  { id: 'milk-curd-dry', name: '奶豆腐（干）', cat: 'dairy', kcal: 330, protein: 25, fat: 20, carb: 12, fiber: 0, sodium: 120, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'], note: '蒙古奶酪凝块，高蛋白高钙，偏咸' },
+  { id: 'milk-sour-dry', name: '酸奶疙瘩', cat: 'dairy', kcal: 350, protein: 28, fat: 22, carb: 8, fiber: 0, sodium: 300, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '新疆发酵奶疙瘩，浓缩蛋白，极咸' },
 ];

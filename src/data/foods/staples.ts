@@ -88,4 +88,14 @@ export const STAPLES: IFood[] = [
   { id: 'nang', name: '馕', cat: 'staple', kcal: 260, protein: 8, fat: 4, carb: 48, fiber: 2, sodium: 450, vitFat: [], vitWater: ['B1'], minerals: ['镁'], note: '新疆主食，烤制' },
   { id: 'naan-butter', name: '黄油馕', cat: 'staple', kcal: 310, protein: 8.5, fat: 9, carb: 48, fiber: 2, sodium: 480, vitFat: ['A', 'D'], vitWater: ['B1'], minerals: ['镁'], note: '刷黄油烤制，脂肪更高' },
   { id: 'big-plate-chicken', name: '大盘鸡（配面）', cat: 'staple', kcal: 150, protein: 10, fat: 8, carb: 12, fiber: 1, sodium: 480, vitFat: ['A'], vitWater: ['B6'], minerals: ['钾'], note: '新疆特色，肉面同食，钠偏高' },
+
+  // ---- 主食扩充（地域/民族特色） ----
+  { id: 'polo-rice', name: '手抓饭（新疆抓饭）', cat: 'staple', kcal: 190, protein: 6, fat: 6, carb: 28, fiber: 1.5, sodium: 300, vitFat: [], vitWater: ['B1', 'B3'], minerals: ['钾'], note: '羊肉+胡萝卜+米饭焖制，油脂偏高' },
+  { id: 'pilaf', name: '羊肉抓饭（维吾尔）', cat: 'staple', kcal: 210, protein: 7, fat: 8, carb: 28, fiber: 1, sodium: 350, vitFat: [], vitWater: ['B1', 'B3'], minerals: ['钾'], note: '黄萝卜+羊肉焖饭，热量高于白饭' },
+  { id: 'naan-meat', name: '烤包子（馕坑）', cat: 'staple', kcal: 280, protein: 12, fat: 10, carb: 36, fiber: 1.5, sodium: 500, vitFat: [], vitWater: ['B1'], minerals: ['锌'], note: '羊肉皮牙子馅，贴馕坑烤制，钠偏高' },
+  { id: 'chopsticks-noodle', name: '拉条子（拌面）', cat: 'staple', kcal: 145, protein: 5, fat: 2, carb: 28, fiber: 1, sodium: 200, vitFat: [], vitWater: ['B1'], minerals: ['镁'], note: '新疆拌面，过油肉拌面油脂更高' },
+  { id: 'samsa', name: '萨木萨（烤包子）', cat: 'staple', kcal: 275, protein: 11, fat: 9, carb: 36, fiber: 1.5, sodium: 480, vitFat: [], vitWater: ['B1'], minerals: ['锌'], note: '与烤包子同类，馅料可换素馅' },
+  { id: 'milk-tea-mongolian', name: '蒙古奶茶（咸）', cat: 'staple', kcal: 60, protein: 2.5, fat: 3, carb: 6, fiber: 0, sodium: 350, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '砖茶+奶+盐，草原日常，钠偏高' },
+  { id: 'kuidao', name: '馓子', cat: 'staple', kcal: 520, protein: 7, fat: 30, carb: 55, fiber: 1, sodium: 120, vitFat: [], vitWater: ['B1'], minerals: [], note: '油炸面食，回族节庆食品，高脂高热量' },
+  { id: 'sanzi', name: '油香', cat: 'staple', kcal: 380, protein: 6, fat: 18, carb: 48, fiber: 1.5, sodium: 200, vitFat: [], vitWater: ['B1'], minerals: [], note: '回族油炸面饼，油脂偏高' },
 ];
