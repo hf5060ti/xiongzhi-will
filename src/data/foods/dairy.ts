@@ -17,7 +17,8 @@ export const DAIRY: IFood[] = [
   { id: 'milk-lowfat', name: '牛奶（低脂）', cat: 'dairy', kcal: 46, protein: 3.4, fat: 1.5, carb: 4.8, fiber: 0, sodium: 44, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['钙'] },
   { id: 'milk-skim', name: '脱脂牛奶', cat: 'dairy', kcal: 34, protein: 3.4, fat: 0.1, carb: 5, fiber: 0, sodium: 42, vitFat: [], vitWater: ['B2', 'B12'], minerals: ['钙'] },
   { id: 'yogurt-plain', name: '酸奶（无糖）', cat: 'dairy', kcal: 70, protein: 4.5, fat: 3, carb: 5, fiber: 0, sodium: 45, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['钙'] },
-  { id: 'greek-yogurt', name: '希腊酸奶（无糖）', cat: 'dairy', kcal: 97, protein: 9, fat: 5, carb: 4, fiber: 0, sodium: 36, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['钙'] },
+  { id: 'greek-yogurt', name: '希腊酸奶（无糖）', cat: 'dairy', kcal: 97, protein: 9, fat: 5, carb: 4, fiber: 0, sodium: 36, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '过滤浓缩，蛋白密度约为普通酸奶 2 倍，饱腹感强；⚠ 不同品牌浓度/脂肪差异大，以包装营养表为准' },
+  { id: 'yogurt-skim', name: '脱脂酸奶（无糖）', cat: 'dairy', kcal: 56, protein: 5.2, fat: 0.2, carb: 5.4, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '零脂肪高钙，蛋白接近普通全脂酸奶而热量减半；部分品牌会加糖，选购看配料表，乳糖不耐者留意' },
 
   // ---- 奶酪 / 黄油 ----
   { id: 'cheese-cheddar', name: '奶酪（切达）', cat: 'dairy', kcal: 400, protein: 25, fat: 33, carb: 1.3, fiber: 0, sodium: 621, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '高钠高脂，适量' },

@@ -140,4 +140,10 @@ export const MEATS: IFood[] = [
   // ---- 火鸡部位 ----
   { id: 'turkey-wing', name: '火鸡翅', cat: 'meat', kcal: 180, protein: 20, fat: 10, carb: 0, fiber: 0, sodium: 75, vitFat: [], vitWater: ['B6', 'B12'], minerals: ['锌', '硒'], note: '感恩节烤火鸡翅经典，带皮脂肪偏高' },
   { id: 'turkey-liver', name: '火鸡肝（熟）', cat: 'meat', kcal: 130, protein: 18, fat: 4.5, carb: 3, fiber: 0, sodium: 85, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜', '硒'], note: '超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次、单次≤40g（熟重），孕妇遵医嘱；嘌呤偏高' },
+
+  // ---- 袋鼠部位（合法性声明） ----
+  { id: 'kangaroo-meat', name: '袋鼠肉（瘦肉，生）', cat: 'meat', kcal: 100, protein: 22, fat: 2, carb: 0, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌', '硒'], note: '⚠ 食用合法性因国家/地区而异，进口/出口各国有不同规定，务必遵守当地法律法规；本站仅标注营养含量，不代表任何立场。极低脂高蛋白，肉质偏瘦，久煮易柴，适合快煎' },
+  { id: 'kangaroo-tenderloin', name: '袋鼠里脊/菲力（生）', cat: 'meat', kcal: 105, protein: 23, fat: 1.8, carb: 0, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '⚠ 合法性因国家/地区而异，遵守当地法律法规；本站仅标注营养含量。最嫩部位，低温慢煎或火锅片' },
+  { id: 'kangaroo-tail', name: '袋鼠尾（带骨）', cat: 'meat', kcal: 140, protein: 20, fat: 6, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '⚠ 合法性因国家/地区而异，遵守当地法律法规；本站仅标注营养含量。炖汤/慢煮出胶质，骨肉同食' },
+  { id: 'kangaroo-liver', name: '袋鼠肝（熟）', cat: 'meat', kcal: 128, protein: 19, fat: 4, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '⚠ 合法性因国家/地区而异，遵守当地法律法规；本站仅标注营养含量。超级食物：维生素A/B族/铁含量极高，但维生素A易超标，建议每周1~2次、单次≤40g（熟重），孕妇遵医嘱；嘌呤偏高' },
 ];
