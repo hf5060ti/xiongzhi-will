@@ -73,4 +73,5 @@ export const FRUITS: IFood[] = [
   { id: 'plum-green', name: '青梅', cat: 'fruit', kcal: 30, protein: 0.5, fat: 0.1, carb: 7, fiber: 1.5, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '酸度高，多用于腌渍' },
   { id: 'olive-fruit', name: '橄榄（青果）', cat: 'fruit', kcal: 115, protein: 1.1, fat: 11, carb: 7, fiber: 3, sodium: 10, vitFat: ['E', 'K'], vitWater: ['C'], minerals: ['钙', '铁'], note: '钙含量高，初嚼苦涩回甘' },
   { id: 'ginkgo', name: '白果（银杏果）', cat: 'fruit', kcal: 180, protein: 4, fat: 1.3, carb: 38, fiber: 1.5, sodium: 2, vitFat: [], vitWater: ['B1', 'B2'], minerals: ['钾', '磷'], note: '含银杏酸，成人每日不超过 5-10 颗，不可生食' },
+  { id: 'acai-powder', name: '巴西莓粉', cat: 'fruit', kcal: 530, protein: 10, fat: 33, carb: 60, fiber: 35, sodium: 10, vitFat: ['E'], vitWater: [], minerals: ['钾'], phytochem: ['花青素（飞燕草素）：抗氧化', '植物甾醇'], note: '冷冻干燥粉，每日 5-10g 拌碗/冲水；碳水多为纤维，市售加糖款需看配料表' },
 ];

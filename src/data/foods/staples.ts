@@ -98,4 +98,11 @@ export const STAPLES: IFood[] = [
   { id: 'milk-tea-mongolian', name: '蒙古奶茶（咸）', cat: 'staple', kcal: 60, protein: 2.5, fat: 3, carb: 6, fiber: 0, sodium: 350, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '砖茶+奶+盐，草原日常，钠偏高' },
   { id: 'kuidao', name: '馓子', cat: 'staple', kcal: 520, protein: 7, fat: 30, carb: 55, fiber: 1, sodium: 120, vitFat: [], vitWater: ['B1'], minerals: [], note: '油炸面食，回族节庆食品，高脂高热量' },
   { id: 'sanzi', name: '油香', cat: 'staple', kcal: 380, protein: 6, fat: 18, carb: 48, fiber: 1.5, sodium: 200, vitFat: [], vitWater: ['B1'], minerals: [], note: '回族油炸面饼，油脂偏高' },
+
+  // ---- 药食同源（用户点名） ----
+  { id: 'lotus-seed', name: '莲子（干）', cat: 'staple', kcal: 350, protein: 17, fat: 2, carb: 67, fiber: 3, sodium: 5, vitFat: [], vitWater: ['B1', '叶酸'], minerals: ['钾', '镁', '磷'], phytochem: ['莲子碱：传统认为养心安神'], note: '去芯后微甜，银耳莲子羹经典；淀粉为主' },
+  { id: 'poria', name: '茯苓（干）', cat: 'staple', kcal: 200, protein: 3, fat: 1, carb: 80, fiber: 80, sodium: 1, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['茯苓多糖：传统利水渗湿，现代研究关注免疫调节'], note: '多打粉冲服或入粥，本身几乎无味；不替代药物' },
+  { id: 'euryale-seed', name: '芡实（鸡头米，干）', cat: 'staple', kcal: 353, protein: 8.7, fat: 0.3, carb: 78, fiber: 0.9, sodium: 5, vitFat: [], vitWater: ['B1'], minerals: ['钾', '镁'], note: '淀粉颗粒小，健脾粥料；鲜品鸡头米口感糯' },
+  { id: 'kudzu-root', name: '葛根（粉）', cat: 'staple', kcal: 335, protein: 1.5, fat: 0.2, carb: 84, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['异黄酮（葛根素）：植物雌激素样作用'], note: '冲泡成糊，胃寒者少食；不替代药物，孕期/乳腺疾病遵医嘱' },
+  { id: 'konjac', name: '魔芋（豆腐/结）', cat: 'staple', kcal: 12, protein: 0.1, fat: 0, carb: 3, fiber: 2.6, sodium: 10, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['葡甘聚糖：可溶性膳食纤维，吸水膨胀、延缓血糖上升'], note: '超低热量主食替代，需搭配酱汁否则无味；肠胃敏感者勿过量' },
 ];

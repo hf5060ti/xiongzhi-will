@@ -60,4 +60,10 @@ export const SEAFOODS: IFood[] = [
   { id: 'sea-urchin', name: '海胆', cat: 'seafood', kcal: 120, protein: 13, fat: 7, carb: 2, fiber: 0, sodium: 200, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
   { id: 'fish-ball', name: '鱼丸', cat: 'seafood', kcal: 100, protein: 10, fat: 3, carb: 8, fiber: 0, sodium: 500, vitFat: [], vitWater: [], minerals: ['硒'], note: '加工制品，含淀粉与钠' },
   { id: 'anchovy', name: '凤尾鱼（罐头）', cat: 'seafood', kcal: 210, protein: 20, fat: 10, carb: 0, fiber: 0, sodium: 3000, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '高钠' },
+
+  // ---- 用户点名扩充 ----
+  { id: 'saury', name: '秋刀鱼', cat: 'seafood', kcal: 258, protein: 21, fat: 17, carb: 0, fiber: 0, sodium: 150, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '钾'], phytochem: ['ω-3（EPA/DHA）：脂肪含量较高，护心血管'], note: '烤秋刀鱼经典；脂肪较高，减脂期控量' },
+  { id: 'ark-shell', name: '北极贝', cat: 'seafood', kcal: 77, protein: 14, fat: 1.5, carb: 2, fiber: 0, sodium: 350, vitFat: [], vitWater: ['B12'], minerals: ['铁', '硒'], note: '刺身常见，嘌呤中等；务必选正规冷链' },
+  { id: 'crab-roe', name: '蟹黄（蟹膏）', cat: 'seafood', kcal: 240, protein: 12, fat: 18, carb: 5, fiber: 0, sodium: 500, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['锌', '硒'], note: '高胆固醇高嘌呤，痛风急性期禁食；尝鲜即可' },
+  { id: 'sturgeon-farmed', name: '鲟鱼（合法养殖）', cat: 'seafood', kcal: 120, protein: 18, fat: 5, carb: 0, fiber: 0, sodium: 60, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '磷'], note: '⚠ 仅采用合法养殖渠道；野生鲟鱼为国家重点保护动物，严禁捕捞、交易、食用' },
 ];

@@ -39,4 +39,9 @@ export const LEGUMES: IFood[] = [
   { id: 'lentil-cooked', name: '扁豆（熟）', cat: 'legume', kcal: 116, protein: 9, fat: 0.4, carb: 20.1, fiber: 7.9, sodium: 2, vitFat: [], vitWater: ['B1', '叶酸'], minerals: ['铁', '钾'] },
   { id: 'falafel', name: '炸鹰嘴豆丸', cat: 'legume', kcal: 333, protein: 13.3, fat: 17.8, carb: 31.8, fiber: 4.9, sodium: 294, vitFat: ['K'], vitWater: ['B1', '叶酸'], minerals: ['铁', '镁'], note: '油炸制品' },
   { id: 'bean-curd-frozen', name: '冻豆腐', cat: 'legume', kcal: 68, protein: 8.6, fat: 3.4, carb: 2, fiber: 1, sodium: 7, vitFat: [], vitWater: [], minerals: ['钙', '镁'] },
+
+  // ---- 用户点名豆制品 ----
+  { id: 'tofu-skin', name: '千张（百叶/干豆腐）', cat: 'legume', kcal: 262, protein: 24.5, fat: 16, carb: 5.5, fiber: 0.2, sodium: 15, vitFat: ['E'], vitWater: ['B1', '叶酸'], minerals: ['钙', '铁'], note: '蛋白质密度高，卷菜/凉拌皆可' },
+  { id: 'soy-veggie-meat', name: '大豆蛋白素肉（人造肉）', cat: 'legume', kcal: 320, protein: 52, fat: 5, carb: 25, fiber: 8, sodium: 120, vitFat: ['E'], vitWater: ['B1', 'B2'], minerals: ['铁', '钙', '锌'], note: '组织化大豆蛋白，泡发后仿肉口感；配料表注意钠与植物油' },
+  { id: 'tofu-puffed', name: '油豆腐（豆腐泡）', cat: 'legume', kcal: 244, protein: 17, fat: 16, carb: 5, fiber: 0.5, sodium: 20, vitFat: ['E'], vitWater: ['叶酸'], minerals: ['钙'], note:'油炸制品，吸油，炖煮时热量翻倍' },
 ];

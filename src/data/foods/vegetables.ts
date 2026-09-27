@@ -132,4 +132,5 @@ export const VEGETABLES: IFood[] = [
   { id: 'mustard-tuber', name: '芥菜头（芥菜疙瘩）', cat: 'veg', kcal: 27, protein: 1.5, fat: 0.2, carb: 5, fiber: 1.5, sodium: 40, vitFat: ['A', 'K'], vitWater: ['C'], minerals: ['钾'], note: '常腌制成咸菜，鲜食脆爽' },
   { id: 'nori-seaweed', name: '紫菜（干）', cat: 'veg', kcal: 250, protein: 26, fat: 1.1, carb: 44, fiber: 21, sodium: 360, vitFat: ['A', 'K'], vitWater: ['B12（争议）', 'C'], minerals: ['碘', '铁', '钙'], note: '碘极高，甲亢/桥本患者遵医嘱；含天然谷氨酸提鲜' },
   { id: 'kelp', name: '海带（鲜）', cat: 'veg', kcal: 43, protein: 1.8, fat: 0.2, carb: 9, fiber: 2.7, sodium: 100, vitFat: ['K'], vitWater: ['B2'], minerals: ['碘', '钙', '镁'], note: '碘与褐藻胶丰富，甲状腺疾病遵医嘱' },
+  { id: 'kale-powder', name: '羽衣甘蓝粉', cat: 'veg', kcal: 350, protein: 28, fat: 4, carb: 50, fiber: 25, sodium: 200, vitFat: ['A', 'K'], vitWater: ['C', '叶酸'], minerals: ['钙', '铁'], phytochem: ['硫代葡萄糖苷：十字花科抗氧化与护肝成分'], note: '浓缩蔬菜粉，每日 5-10g 冲水/拌酸奶补绿叶菜；不能替代新鲜蔬菜' },
 ];
