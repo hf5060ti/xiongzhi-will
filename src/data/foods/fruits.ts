@@ -11,7 +11,7 @@ export const FRUITS: IFood[] = [
   { id: 'strawberry', name: '草莓', cat: 'fruit', kcal: 32, protein: 0.7, fat: 0.3, carb: 7.7, fiber: 2, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['锰'] },
   { id: 'blueberry', name: '蓝莓', cat: 'fruit', kcal: 57, protein: 0.7, fat: 0.3, carb: 14.5, fiber: 2.4, sodium: 1, vitFat: ['K'], vitWater: ['C'], minerals: ['锰'], phytochem: ['花青素（花色苷）：强抗氧化、改善血管内皮、研究提示有助于认知功能', '紫檀芪：白藜芦醇类似物'], note: '花青素丰富，抗氧化' },
   { id: 'grape', name: '葡萄', cat: 'fruit', kcal: 69, protein: 0.7, fat: 0.2, carb: 18, fiber: 0.9, sodium: 2, vitFat: ['K'], vitWater: ['C'], minerals: ['钾'], phytochem: ['白藜芦醇（红葡萄皮）：抗氧化、保护心血管', '原花青素：抗氧化'] },
-  { id: 'watermelon', name: '西瓜', cat: 'fruit', kcal: 30, protein: 0.6, fat: 0.2, carb: 7.6, fiber: 0.4, sodium: 1, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'] },
+  { id: 'watermelon', name: '西瓜', cat: 'fruit', kcal: 30, protein: 0.6, fat: 0.2, carb: 7.6, fiber: 0.4, sodium: 1, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['瓜氨酸（果肉含量突出）：可在体内转化为精氨酸，促进一氧化氮合成、改善血管血流', '精氨酸（瓜子中含量高）：条件必需氨基酸，对男性生殖健康友好'], note: '低热量高水分，训练后补水补碳；瓜氨酸/精氨酸组合被研究提示对男性血管与生殖功能友好；血糖高者注意份量' },
   { id: 'pear', name: '梨', cat: 'fruit', kcal: 57, protein: 0.4, fat: 0.1, carb: 15, fiber: 3.1, sodium: 1, vitFat: ['K'], vitWater: ['C'], minerals: ['钾'] },
   { id: 'peach', name: '桃', cat: 'fruit', kcal: 39, protein: 0.9, fat: 0.3, carb: 9.5, fiber: 1.5, sodium: 0, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'] },
   { id: 'mango', name: '芒果', cat: 'fruit', kcal: 60, protein: 0.8, fat: 0.4, carb: 15, fiber: 1.6, sodium: 1, vitFat: ['A'], vitWater: ['C', '叶酸'], minerals: ['钾'] },
@@ -30,9 +30,12 @@ export const FRUITS: IFood[] = [
   { id: 'acai-pulp', name: '巴西莓（果泥）', cat: 'fruit', kcal: 70, protein: 0.7, fat: 4.5, carb: 6.7, fiber: 3, sodium: 8, vitFat: ['E'], vitWater: [], minerals: ['钾'], phytochem: ['花青素（飞燕草素）：抗氧化能力在浆果中名列前茅', '植物甾醇：辅助降胆固醇'], note: '花青素抗氧化极强，冷冻果泥常见' },
   { id: 'sea-buckthorn', name: '沙棘果', cat: 'fruit', kcal: 82, protein: 1.4, fat: 5.4, carb: 8, fiber: 4, sodium: 2, vitFat: ['A', 'E', 'K'], vitWater: ['C'], minerals: ['钾', '钙'], phytochem: ['维C：含量约为橙子 10 倍', '沙棘黄酮：抗炎、保护血管', 'ω-7（棕榈油酸）：皮肤黏膜修复'], note: '维C含量约为橙子10倍，类黄酮丰富' },
   { id: 'prune-dry', name: '西梅（干）', cat: 'fruit', kcal: 240, protein: 2.2, fat: 0.4, carb: 64, fiber: 7, sodium: 2, vitFat: ['K', 'A'], vitWater: ['B6'], minerals: ['钾'], note: '干品高糖，润肠通便' },
-  { id: 'fig', name: '无花果（鲜）', cat: 'fruit', kcal: 74, protein: 0.8, fat: 0.3, carb: 19, fiber: 2.9, sodium: 1, vitFat: ['K'], vitWater: ['B6'], minerals: ['钾', '钙'] },
+  { id: 'fig', name: '无花果（鲜）', cat: 'fruit', kcal: 74, protein: 0.8, fat: 0.3, carb: 19, fiber: 2.9, sodium: 1, vitFat: ['K'], vitWater: ['B6'], minerals: ['钾', '钙', '镁'], note: '可溶性纤维丰富、助肠道，钾钙镁均衡；果糖与天然糖偏高，控量' },
+  { id: 'fig-dry', name: '无花果（干）', cat: 'fruit', kcal: 249, protein: 3.3, fat: 0.9, carb: 63.9, fiber: 9.8, sodium: 10, vitFat: ['K'], vitWater: ['B6'], minerals: ['钾', '钙', '镁', '铁'], note: '干品糖与纤维双高，当零食或代糖，注意份量' },
   { id: 'lychee', name: '荔枝', cat: 'fruit', kcal: 66, protein: 0.8, fat: 0.4, carb: 16.5, fiber: 1.3, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '高糖，控制份量' },
   { id: 'coconut-meat', name: '椰肉', cat: 'fruit', kcal: 354, protein: 3.3, fat: 33, carb: 15, fiber: 9, sodium: 20, vitFat: ['E'], vitWater: ['B6'], minerals: ['钾'], note: '高脂高热量，少量' },
+  { id: 'coconut-oil', name: '椰子油', cat: 'fruit', kcal: 862, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['E', 'K'], vitWater: [], minerals: [], note: '纯脂肪（1g≈9kcal），中链甘油三酯（MCT）占比高，生酮/高脂饮食可选；但饱和脂肪为主，心血管敏感者适量' },
+  { id: 'monk-fruit', name: '罗汉果（干果）', cat: 'fruit', kcal: 60, protein: 0.8, fat: 0.3, carb: 15, fiber: 2.5, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['罗汉果甜苷：天然甜味剂（甜度约为蔗糖 200-300 倍，几乎不被吸收、零热量），强抗氧化、护喉润肺'], note: '泡水天然代糖，健身控糖人群友好；市售罗汉果代糖饮品注意配料是否掺其他糖；脾胃虚寒者少量' },
 
   // ---- 公开食物成分数据扩充（26 条）：每 100g 参考值 ----
   { id: 'grapefruit', name: '西柚', cat: 'fruit', kcal: 33, protein: 0.8, fat: 0.1, carb: 8.4, fiber: 1.1, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
