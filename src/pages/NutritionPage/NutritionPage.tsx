@@ -56,6 +56,18 @@ export default function NutritionPage() {
         </p>
       </header>
 
+      {/* 烟酒警示横幅 */}
+      <div className="rounded-xl border border-red-500/40 bg-red-500/5 p-4 sm:p-5">
+        <div className="flex flex-wrap items-start gap-2">
+          <span className="rounded-md bg-red-500/15 px-2 py-0.5 text-[11px] font-bold text-red-300">⚠ 烟酒警示</span>
+          <p className="min-w-0 flex-1 text-xs leading-relaxed text-red-200/90">
+            吸烟有害健康，可致肺癌等多种癌症与心脑血管疾病，本站不提供任何烟草数据、也不鼓励吸烟。
+            酒精是「空热量」——1g 乙醇约 7kcal，过量饮酒伤肝（脂肪肝/肝硬化）、升高血压与尿酸、抑制肌肉蛋白合成与深睡眠，
+            是健身与恢复的大敌。未成年人、孕妇绝对禁烟禁酒；服药期间、驾驶前请勿饮酒。
+          </p>
+        </div>
+      </div>
+
       {/* 今日饮食记录 */}
       <DailyLog refreshKey={refreshLog} />
 

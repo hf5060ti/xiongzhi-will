@@ -80,9 +80,21 @@ export const SNACKS: IFood[] = [
   { id: 'maltodextrin', name: '麦芽糊精', cat: 'snack', kcal: 400, protein: 0, fat: 0, carb: 95, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '快速碳水，血糖指数高；增肌粉/运动饮料常用成分，练后补糖原可用' },
   { id: 'matcha-powder', name: '抹茶粉', cat: 'snack', kcal: 300, protein: 25, fat: 5, carb: 40, fiber: 25, sodium: 10, vitFat: ['K'], vitWater: ['B2'], minerals: ['钾', '镁'], phytochem: ['儿茶素（EGCG）：强抗氧化、辅助燃脂', '咖啡因：提神'], note: '咖啡因+EGCG组合，训练前1-2g冲水/拌酸奶；选纯抹茶粉，勿买加糖奶茶款' },
   { id: 'green-tea', name: '绿茶（冲泡液）', cat: 'snack', kcal: 1, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 2, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['儿茶素（EGCG）：抗氧化', '咖啡因：少量提神'], note: '每100ml冲泡液，几乎零热量；日常代替含糖饮料' },
-  { id: 'cocoa-powder', name: '可可粉（无糖）', cat: 'snack', kcal: 350, protein: 20, fat: 13, carb: 45, fiber: 30, sodium: 20, vitFat: ['E'], vitWater: [], minerals: ['镁', '铁'], phytochem: ['黄烷醇：护血管、改善血流'], note: '选无糖纯可可粉，与香蕉/蛋白粉拌食；天然苦味，勿混入植脂末' },
+  { id: 'cocoa-powder', name: '生可可粉（Cacao，无糖）', cat: 'snack', kcal: 350, protein: 20, fat: 13, carb: 45, fiber: 30, sodium: 20, vitFat: ['E'], vitWater: [], minerals: ['镁', '铁'], phytochem: ['黄烷醇：护血管、改善血流'], note: '选无糖纯可可粉，与香蕉/蛋白粉拌食；天然苦味，勿混入植脂末' },
   { id: 'spirulina', name: '螺旋藻（粉）', cat: 'snack', kcal: 290, protein: 57, fat: 3, carb: 24, fiber: 4, sodium: 600, vitFat: ['A', 'E'], vitWater: ['B1', 'B2', 'B12'], minerals: ['铁', '碘'], phytochem: ['藻蓝蛋白：强抗氧化、抗炎'], note: '植物性高蛋白+微量营养素密集；植物性B12人体利用率有限，不能替代动物源；碘高，甲亢者注意' },
   { id: 'chlorella', name: '小球藻（片）', cat: 'snack', kcal: 350, protein: 50, fat: 5, carb: 20, fiber: 10, sodium: 90, vitFat: ['A', 'E'], vitWater: ['B1', 'B2', '叶酸'], minerals: ['铁', '镁', '锌'], phytochem: ['叶绿素：帮助排毒代谢（传统认知）', 'CGF（小球藻生长因子）'], note: '细胞壁较硬，选破壁产品利于吸收；每日5-10g，随餐服用' },
   { id: 'glutamine-powder', name: '谷氨酰胺粉（每5g）', cat: 'snack', kcal: 20, protein: 4.9, fat: 0, carb: 0, fiber: 0, sodium: 2, vitFat: [], vitWater: [], minerals: [], note: '数据为每 5g 份：能量 83kJ、蛋白质等同物 4.9g、谷氨酰胺 3.9g、肽类 1g；常练后或睡前 5g 温水冲服；⚠ 各品牌配方不同，此为参考值，以产品包装营养表为准' },
   { id: 'energy-gummy', name: '能量软糖', cat: 'snack', kcal: 320, protein: 0, fat: 0, carb: 80, fiber: 0, sodium: 50, vitFat: [], vitWater: [], minerals: ['钠'], note: '耐力运动途中快速补糖，含游离糖，按需食用' },
+
+  // ---- 酒精类（危害+热量标注，用户点名） ----
+  { id: 'alcohol-pure', name: '酒精（纯乙醇）', cat: 'snack', kcal: 710, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 0, vitFat: [], vitWater: [], minerals: [], note: '1g 乙醇约 7kcal（每 100g≈127ml）；纯空热量几乎无营养。⚠ 过量饮酒伤肝（脂肪肝/肝硬化）、升血压与尿酸、抑制肌肉蛋白合成与深睡眠，健身大忌；驾车、服药期间绝对禁酒' },
+  { id: 'beer', name: '啤酒（4%vol，100ml）', cat: 'snack', kcal: 43, protein: 0.4, fat: 0, carb: 3.5, fiber: 0, sodium: 5, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '低酒精度也有空热量，一瓶 500ml≈215kcal；⚠ 过量饮酒危害：伤肝、升尿酸（啤酒嘌呤+酒精双重）、干扰睡眠与睾酮，痛风者尤其注意' },
+  { id: 'baijiu', name: '白酒（52度，100ml）', cat: 'snack', kcal: 290, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 0, vitFat: [], vitWater: [], minerals: [], note: '按酒精度估算（52%vol），一两（50ml）≈145kcal；高度酒热量密度极高。⚠ 烈性酒伤胃黏膜与肝脏，空腹勿饮，饮酒后禁驾驶' },
+  { id: 'red-wine', name: '红酒（12%vol，100ml）', cat: 'snack', kcal: 80, protein: 0.1, fat: 0, carb: 2.5, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['白藜芦醇：抗氧化（含量极微）'], note: '含微量白藜芦醇，但酒精危害远超微量益处，勿以此为由饮酒；孕期绝对禁酒' },
+  { id: 'huangjiu', name: '黄酒（15%vol，100ml）', cat: 'snack', kcal: 95, protein: 1.5, fat: 0, carb: 5, fiber: 0, sodium: 5, vitFat: [], vitWater: ['B1', 'B2'], minerals: ['钾'], note: '含糖与氨基酸，热量高于红酒；⚠ 药膳/料酒用途外，作饮品过量同样伤肝' },
+  { id: 'jingjiu', name: '中国劲酒（经典瓶 125ml）', cat: 'snack', kcal: 240, protein: 0, fat: 0, carb: 12, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: [], note: '35%vol，含糖与中药浸出物；一瓶（125ml）约 240kcal，258ml/520ml 规格按比例估算。⚠ 药酒也是酒，不含治病功效，过量同样伤肝；服药期间、驾车前禁饮' },
+
+  // ---- 常见饮品热量（参考蜜雪冰城，用户点名） ----
+  { id: 'milk-tea-bubble', name: '珍珠奶茶（蜜雪冰城中杯 500ml）', cat: 'snack', kcal: 350, protein: 3, fat: 10, carb: 60, fiber: 0.5, sodium: 80, vitFat: [], vitWater: [], minerals: ['钙'], note: '参考蜜雪冰城常见杯型+默认全糖；实际随甜度/加料大幅浮动（少糖-30%、换椰果/无珍珠更低）。一杯≈一碗米饭热量，主要为游离糖，健身减脂期慎选' },
+  { id: 'lemonade', name: '柠檬水（蜜雪冰城中杯 500ml）', cat: 'snack', kcal: 140, protein: 0, fat: 0, carb: 34, fiber: 0, sodium: 30, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '参考蜜雪冰城默认糖度；选少糖/无糖版本更低，含游离糖仍计入碳水，训练后补糖可选' },
 ];
