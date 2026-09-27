@@ -113,4 +113,8 @@ export const STAPLES: IFood[] = [
 
   // ---- 淀粉类快碳（用户点名） ----
   { id: 'lotus-root-powder', name: '藕粉', cat: 'staple', kcal: 340, protein: 0.2, fat: 0.1, carb: 84, fiber: 0.5, sodium: 5, vitFat: [], vitWater: ['B1'], minerals: ['钾'], note: '冲泡成糊，升糖快的快碳；训练前后快速补糖可用；市售常加糖/桂花，注意配料表选纯藕粉' },
+
+  // ---- 淀粉粉丝细分（用户点名） ----
+  { id: 'sweet-potato-vermicelli', name: '红薯粉丝', cat: 'staple', kcal: 330, protein: 0.5, fat: 0.2, carb: 82, fiber: 0.5, sodium: 10, vitFat: [], vitWater: [], minerals: ['钾'], note: '红薯淀粉制粉条，与绿豆粉丝热量相近、纯淀粉升糖较快；久煮不烂偏Q，宜配菜少油' },
+  { id: 'tapioca-vermicelli', name: '木薯粉丝（水晶粉）', cat: 'staple', kcal: 340, protein: 0.3, fat: 0.1, carb: 84, fiber: 0.3, sodium: 8, vitFat: [], vitWater: [], minerals: ['钾'], note: '木薯淀粉制，透明Q弹；珍珠奶茶的珍珠即木薯粉制品；纯淀粉快碳，控糖/减脂人群注意份量' },
 ];

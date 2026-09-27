@@ -78,4 +78,8 @@ export const SEAFOODS: IFood[] = [
 
   // ---- 鱼糜制品（用户点名） ----
   { id: 'crab-stick', name: '蟹柳（仿蟹肉棒）', cat: 'seafood', kcal: 110, protein: 9, fat: 2.5, carb: 12, fiber: 0.5, sodium: 600, vitFat: [], vitWater: ['B12'], minerals: ['钠', '磷'], note: '鱼糜+淀粉+蟹味调味制成，非真蟹肉；蛋白中等、钠偏高，火锅/沙拉配料可以，别当海鲜蛋白主力；选淀粉含量低、纯鱼糜比例高的款' },
+
+  // ---- 小众水产（用户点名） ----
+  { id: 'sea-star', name: '海星（食用生殖腺）', cat: 'seafood', kcal: 110, protein: 10, fat: 6, carb: 3, fiber: 0, sodium: 300, vitFat: ['D'], vitWater: ['B12'], minerals: ['锌', '硒'], note: '可食部分为生殖腺（海星黄），口感似海胆；嘌呤较高，蟹黄类高胆固醇；务必正规来源并彻底熟制，赤潮期/来源不明禁食' },
+  { id: 'swimming-crab', name: '梭子蟹', cat: 'seafood', kcal: 95, protein: 18, fat: 2, carb: 0.5, fiber: 0, sodium: 300, vitFat: ['D'], vitWater: ['B12'], minerals: ['锌', '硒'], note: '我国沿海经济蟹类（三疣梭子蟹），清蒸/葱姜炒经典；蟹肉低脂高蛋白，蟹黄胆固醇高；嘌呤较高，痛风者少食；死蟹易产生组胺，务必鲜活烹饪' },
 ];
