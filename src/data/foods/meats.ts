@@ -153,4 +153,9 @@ export const MEATS: IFood[] = [
   { id: 'crocodile-tail', name: '鳄鱼尾（养殖，生）', cat: 'meat', kcal: 120, protein: 20, fat: 4.5, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '⚠ 必须为人工养殖；野生鳄鱼严禁捕杀食用；遵守当地法律法规，本站不支持偷抓偷猎等违法活动。尾部胶质与瘦肉兼具，炖汤/焖烧' },
   { id: 'crocodile-paw', name: '鳄鱼掌（养殖，熟）', cat: 'meat', kcal: 180, protein: 22, fat: 8, carb: 1, fiber: 0, sodium: 90, vitFat: [], vitWater: ['B12'], minerals: ['锌', '钙'], note: '⚠ 必须为人工养殖；野生鳄鱼严禁捕杀食用；遵守当地法律法规，本站不支持偷抓偷猎等违法活动。胶质丰富类似禽掌，炖汤滋补口感' },
   { id: 'crocodile-liver', name: '鳄鱼肝（养殖，熟）', cat: 'meat', kcal: 130, protein: 19, fat: 4.5, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '⚠ 必须为人工养殖；野生鳄鱼严禁捕杀食用；遵守当地法律法规，本站不支持偷抓偷猎等违法活动。超级食物：维生素A/B族/铁含量极高，但维生素A易超标，建议每周1~2次、单次≤40g（熟重），孕妇遵医嘱；嘌呤偏高' },
+
+  // ---- 牛排部位（健身人常吃，脂肪差异大） ----
+  { id: 'beef-sirloin', name: '西冷牛排（生）', cat: 'meat', kcal: 206, protein: 23, fat: 12, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌', '硒'], note: '牛外脊带边脂肪，性价比高；煎烤配西兰花/芦笋经典，边油可剪掉降脂' },
+  { id: 'beef-filet', name: '菲力牛排（生）', cat: 'meat', kcal: 155, protein: 24, fat: 6, carb: 0, fiber: 0, sodium: 52, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌', '硒'], note: '牛里脊最嫩部位、脂肪最低，减脂期牛排首选；价格最高，口感软嫩' },
+  { id: 'beef-ribeye', name: '眼肉牛排（生）', cat: 'meat', kcal: 270, protein: 22, fat: 20, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌'], note: '肋眼雪花脂肪最高、风味最足，热量炸弹级别；增肌期可吃，减脂期少选' },
 ];

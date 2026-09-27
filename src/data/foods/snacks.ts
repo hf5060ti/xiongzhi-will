@@ -97,4 +97,10 @@ export const SNACKS: IFood[] = [
   // ---- 常见饮品热量（参考蜜雪冰城，用户点名） ----
   { id: 'milk-tea-bubble', name: '珍珠奶茶（蜜雪冰城中杯 500ml）', cat: 'snack', kcal: 350, protein: 3, fat: 10, carb: 60, fiber: 0.5, sodium: 80, vitFat: [], vitWater: [], minerals: ['钙'], note: '参考蜜雪冰城常见杯型+默认全糖；实际随甜度/加料大幅浮动（少糖-30%、换椰果/无珍珠更低）。一杯≈一碗米饭热量，主要为游离糖，健身减脂期慎选' },
   { id: 'lemonade', name: '柠檬水（蜜雪冰城中杯 500ml）', cat: 'snack', kcal: 140, protein: 0, fat: 0, carb: 34, fiber: 0, sodium: 30, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '参考蜜雪冰城默认糖度；选少糖/无糖版本更低，含游离糖仍计入碳水，训练后补糖可选' },
+
+  // ---- 健身补剂补档（鱼油/维D3/瓜氨酸） + 便携蛋白 ----
+  { id: 'fish-oil', name: '鱼油（Omega-3）', cat: 'snack', kcal: 900, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['A', 'D'], vitWater: [], minerals: ['硒'], note: '典型胶囊每粒1g含EPA约180mg/DHA约120mg、约9kcal；抗炎、护关节心血管、辅助睡眠与情绪。⚠ 各品牌浓度差异大，以包装为准；高剂量服前咨询（抗凝药物者尤其）' },
+  { id: 'vitamin-d3', name: '维生素D3（补剂）', cat: 'snack', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 0, vitFat: ['D'], vitWater: [], minerals: ['钙'], note: '每粒典型1000-2000IU（25-50μg），脂溶性维生素本身无热量（软胶囊油载体约1-2kcal/粒）；晒不到太阳的健身者普遍建议补充，与钙同补助骨健康。⚠ 脂溶性不可过量，长期超量有中毒风险，各品牌以包装为准' },
+  { id: 'citrulline-powder', name: '瓜氨酸粉（L-瓜氨酸）', cat: 'snack', kcal: 250, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 0, vitFat: [], vitWater: [], minerals: [], note: '游离氨基酸粉（不计入蛋白质），训练前30-60分钟3-6g冲水；体内转精氨酸促一氧化氮、提升泵感与耐力，与甜菜根粉（硝酸盐）作用协同。⚠ 各品牌纯度不同，以产品包装营养表为准' },
+  { id: 'beef-jerky', name: '牛肉干（普通）', cat: 'snack', kcal: 410, protein: 45, fat: 10, carb: 12, fiber: 1, sodium: 1500, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '高蛋白便携零食，钠极高（选低盐款）；训练后/出差加餐，一次一小把约30g' },
 ];
