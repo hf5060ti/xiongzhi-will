@@ -8,7 +8,8 @@
  */
 import { useMemo, useState } from 'react';
 import { toast } from 'sonner';
-import { CalendarDays, Dumbbell, Eraser, Flame, Pencil, Plus, Save, Trash2, Undo2, X } from 'lucide-react';
+import { BarChart3, CalendarDays, Dumbbell, Eraser, Flame, Pencil, Plus, Save, Trash2, Undo2, X } from 'lucide-react';
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -152,6 +153,49 @@ function logVolume(log: TrainingLog): number {
   );
 }
 
+/** 所在周的周一 0 点（周一到周日为一周） */
+function weekStartOf(date: Date): Date {
+  const d = new Date(date);
+  const dow = (d.getDay() + 6) % 7; // 周一 = 0
+  d.setDate(d.getDate() - dow);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+/** 该动作在指定日期之前最近一次记录的最佳表现（用于历史列表「vs 上次」对比） */
+function prevBestBefore(
+  logs: TrainingLog[],
+  date: string,
+  name: string,
+  sameEx: (a: string, b: string) => boolean,
+): { date: string; weightKg: number; reps: number } | null {
+  let best: { date: string; weightKg: number; reps: number } | null = null;
+  for (const l of logs) {
+    if (l.date >= date) continue;
+    for (const ex of l.exercises) {
+      if (!sameEx(ex.name, name)) continue;
+      const b = bestSetOf(ex);
+      if (!b) continue;
+      if (!best || l.date > best.date) best = { date: l.date, weightKg: b.weightKg, reps: b.reps };
+    }
+  }
+  return best;
+}
+
+/** 某动作全部历史中的「最佳表现」，按日期降序（含本次所在记录，用于连续两次追平检测） */
+function rankedBests(logs: TrainingLog[], name: string, sameEx: (a: string, b: string) => boolean) {
+  const hits: { date: string; weightKg: number; reps: number }[] = [];
+  for (const l of logs) {
+    for (const ex of l.exercises) {
+      if (!sameEx(ex.name, name)) continue;
+      const b = bestSetOf(ex);
+      if (b) hits.push({ date: l.date, weightKg: b.weightKg, reps: b.reps });
+    }
+  }
+  hits.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+  return hits;
+}
+
 function formatSet(set: TrainingSet): string {
   const reps = set.reps != null ? `${set.reps} 次` : '—';
   return set.weightKg != null ? `${set.weightKg} kg × ${reps}` : `自重 × ${reps}`;
@@ -202,6 +246,28 @@ export default function TrainingLogPage() {
   }, [logs]);
 
   const weekSessions = week.filter((d) => d.count > 0).length;
+
+  /** 近 8 周（周一到周日）每周训练容量与训练天数，供容量趋势图 */
+  const volumeTrend = useMemo(() => {
+    const now = new Date();
+    const thisMonday = weekStartOf(now);
+    const out: { label: string; volume: number; sessions: number }[] = [];
+    for (let i = 7; i >= 0; i--) {
+      const start = new Date(thisMonday);
+      start.setDate(thisMonday.getDate() - i * 7);
+      const end = new Date(start);
+      end.setDate(start.getDate() + 6);
+      const startIso = isoOf(start);
+      const endIso = isoOf(end);
+      const inWeek = logs.filter((l) => l.date >= startIso && l.date <= endIso);
+      out.push({
+        label: `${start.getMonth() + 1}/${start.getDate()}`,
+        volume: Math.round(inWeek.reduce((s, l) => s + logVolume(l), 0)),
+        sessions: inWeek.length,
+      });
+    }
+    return out;
+  }, [logs]);
 
   /** 同名动作判定：互相包含即视为同动作（"卧推" ≈ "杠铃卧推"） */
   const sameEx = (a: string, b: string) => {
@@ -468,6 +534,68 @@ export default function TrainingLogPage() {
         </Card>
       </div>
 
+      {/* 训练容量趋势（近 8 周） */}
+      <Card>
+        <CardContent className="p-4 sm:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-1">
+            <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <BarChart3 className="h-3.5 w-3.5 text-primary" />
+              训练容量趋势（近 8 周）
+            </p>
+            {weekVolume > 0 && (
+              <span className="text-[11px] text-muted-foreground">
+                本周 {weekVolume.toLocaleString()} kg · {weekSessions} 天
+              </span>
+            )}
+          </div>
+          {logs.some((l) => logVolume(l) > 0) ? (
+            <>
+              <div className="mt-3 h-44 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={volumeTrend} margin={{ top: 4, right: 8, bottom: 0, left: -22 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+                    <XAxis
+                      dataKey="label"
+                      tick={{ fill: 'var(--muted-foreground)', fontSize: 10 }}
+                      tickLine={false}
+                      axisLine={{ stroke: 'var(--border)' }}
+                    />
+                    <YAxis
+                      tick={{ fill: 'var(--muted-foreground)', fontSize: 10 }}
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        background: 'var(--popover)',
+                        border: '1px solid var(--border)',
+                        borderRadius: 8,
+                        fontSize: 12,
+                        color: 'var(--popover-foreground)',
+                      }}
+                      formatter={(value: number, name: string) =>
+                        name === 'volume' ? [`${Number(value).toLocaleString()} kg`, '周容量'] : [`${value} 天`, '训练天数']
+                      }
+                      labelFormatter={(label: string) => `周起始 ${label}（周一）`}
+                      cursor={{ fill: 'var(--primary)', fillOpacity: 0.06 }}
+                    />
+                    <Bar dataKey="volume" fill="var(--chart-1)" radius={[3, 3, 0, 0]} maxBarSize={36} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+              <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+                容量 = 重量 × 次数 求和（自重动作不计入）。逐周对比能看出训练量是否在「渐进上升」；若连续 2–3
+                周下滑且伴疲劳，可能训练过度，考虑减载一周。
+              </p>
+            </>
+          ) : (
+            <p className="mt-3 text-sm text-muted-foreground">
+              还没有带重量的记录，录入第一条后这里会自动生成每周容量曲线。
+            </p>
+          )}
+        </CardContent>
+      </Card>
+
       {/* 录入 / 编辑 */}
       <Card>
         <CardContent className="space-y-4 p-4 sm:p-5">
@@ -584,22 +712,44 @@ export default function TrainingLogPage() {
                     const sameAsPrev = h.prev && best
                       && Math.abs(best.weightKg - h.prev.weightKg) < 0.01
                       && best.reps >= h.prev.reps;
+                    const progressed = h.prev && best
+                      && (best.weightKg > h.prev.weightKg + 0.01
+                        || (Math.abs(best.weightKg - h.prev.weightKg) <= 0.01 && best.reps > h.prev.reps));
+                    // 已保存记录里最近两次是否停在完全相同的一组（身体可能已适应）
+                    const ranks = rankedBests(logs, ex.name, sameEx);
+                    const prevTwoSame = ranks.length >= 2
+                      && Math.abs(ranks[0].weightKg - ranks[1].weightKg) < 0.01
+                      && ranks[0].reps === ranks[1].reps;
+                    const tip = progressed
+                      ? '已超过上次表现，渐进超负荷完成 —— 下次可维持或再小幅加重'
+                      : sameAsPrev && prevTwoSame
+                        ? `上次与上上次都停在 ${ranks[0].weightKg}kg × ${ranks[0].reps} 次，这次又追平，身体已适应 → 下次务必 +2.5kg 或同重量多做 1–2 次`
+                        : sameAsPrev
+                          ? '已追平上次表现 → 下次可试着 +2.5kg，或同重量多做 1–2 次（渐进超负荷）'
+                          : null;
                     return (
-                      <div className="rounded-md border border-primary/20 bg-primary/5 px-2.5 py-1.5 text-[11px] text-primary">
+                      <div
+                        className={cn(
+                          'rounded-md border px-2.5 py-1.5 text-[11px]',
+                          progressed
+                            ? 'border-primary/30 bg-primary/10 text-primary'
+                            : sameAsPrev && prevTwoSame
+                              ? 'border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400'
+                              : 'border-primary/20 bg-primary/5 text-primary',
+                        )}
+                      >
                         {h.prev && (
                           <span>
                             上次：<b>{h.prev.weightKg}kg × {h.prev.reps} 次</b>（{daysAgo(h.prev.date)}）
                           </span>
                         )}
                         {h.pr && (
-                          <span className="ml-2 text-amber-600 dark:text-amber-400">
+                          <span className={cn('ml-2', progressed ? 'text-amber-600 dark:text-amber-400' : '')}>
                             PR：{h.pr.weightKg}kg × {h.pr.reps} 次（{daysAgo(h.pr.date)}）
                           </span>
                         )}
-                        {sameAsPrev && (
-                          <p className="mt-0.5 text-[11px] text-muted-foreground">
-                            已追平上次表现 → 下次可试着 +2.5kg，或同重量多做 1–2 次（渐进超负荷）
-                          </p>
+                        {tip && (
+                          <p className="mt-0.5 text-[11px] text-muted-foreground">{tip}</p>
                         )}
                       </div>
                     );
@@ -752,8 +902,17 @@ export default function TrainingLogPage() {
                     <div className="mt-2 space-y-1.5">
                       {log.exercises.map((ex, exIdx) => {
                         const lift = matchLift(ex.name);
-                        const best = lift ? bestSetOf(ex) : null;
+                        const best = bestSetOf(ex);
                         const importedId = lift && log.id ? importedIds.get(`${log.id}|${lift.key}`) : undefined;
+                        const prev = best ? prevBestBefore(logs, log.date, ex.name, sameEx) : null;
+                        const vsPrev =
+                          prev && best
+                            ? best.weightKg > prev.weightKg + 0.01
+                              ? { tone: 'good' as const, text: '↑ 超上次 · 渐进完成' }
+                              : Math.abs(best.weightKg - prev.weightKg) <= 0.01 && best.reps >= prev.reps
+                                ? { tone: 'flat' as const, text: '追平上次 → 下次 +2.5kg' }
+                                : { tone: 'down' as const, text: `未到上次（差 ${(prev.weightKg - best.weightKg).toFixed(1)}kg）` }
+                            : null;
                         return (
                           <div
                             key={exIdx}
@@ -762,6 +921,27 @@ export default function TrainingLogPage() {
                             <div className="flex flex-wrap items-center gap-2 text-xs">
                               <span className="text-foreground">{ex.name}</span>
                               <span className="text-muted-foreground">{ex.sets.map(formatSet).join(' / ')}</span>
+                              {vsPrev && (
+                                <span
+                                  className={cn(
+                                    'rounded-md border px-1.5 py-0.5 text-[10px]',
+                                    vsPrev.tone === 'good'
+                                      ? 'border-primary/50 bg-primary/10 text-primary'
+                                      : vsPrev.tone === 'flat'
+                                        ? 'border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400'
+                                        : 'border-border text-muted-foreground',
+                                  )}
+                                  title={
+                                    vsPrev.tone === 'flat'
+                                      ? '与上次同样重量 × 次数 → 下次务必加 2.5kg 或同重量多做 1–2 次'
+                                      : vsPrev.tone === 'good'
+                                        ? `上次 ${prev.weightKg}kg × ${prev.reps} 次（${fmtDate(prev.date)}）`
+                                        : `上次 ${prev.weightKg}kg × ${prev.reps} 次（${fmtDate(prev.date)}）`
+                                  }
+                                >
+                                  {vsPrev.text}
+                                </span>
+                              )}
                             </div>
                             {lift && best && (
                               <div className="flex flex-wrap items-center gap-2 text-[11px]">
