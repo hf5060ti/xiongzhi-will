@@ -5,7 +5,7 @@ import type { IFood } from './types';
 export const VEGETABLES: IFood[] = [
   // ---- 叶菜 ----
   { id: 'spinach', name: '菠菜（生）', cat: 'veg', kcal: 23, protein: 2.9, fat: 0.4, carb: 3.6, fiber: 2.2, sodium: 79, vitFat: ['A', 'K'], vitWater: ['C', '叶酸'], minerals: ['铁', '镁'], phytochem: ['叶黄素 / 玉米黄质：过滤蓝光、保护视网膜', '硝酸盐：辅助血管舒张'], note: '草酸高，焯水后吃' },
-  { id: 'bok-choy', name: '小白菜', cat: 'veg', kcal: 15, protein: 1.5, fat: 0.3, carb: 2.4, fiber: 1.2, sodium: 42, vitFat: ['A', 'K'], vitWater: ['C', '叶酸'], minerals: ['钙'] },
+  { id: 'bok-choy', name: '上海青（小白菜/青江菜）', cat: 'veg', kcal: 15, protein: 1.5, fat: 0.3, carb: 2.4, fiber: 1.2, sodium: 42, vitFat: ['A', 'K'], vitWater: ['C', '叶酸'], minerals: ['钙'], note: '即青梗小白菜，焯水快炒皆可；维生素A/K 脂溶性，同餐配少量油吸收更好' },
   { id: 'lettuce', name: '生菜', cat: 'veg', kcal: 15, protein: 1.4, fat: 0.2, carb: 2.9, fiber: 1.3, sodium: 28, vitFat: ['A', 'K'], vitWater: ['叶酸'], minerals: ['钾'] },
   { id: 'leaf-lettuce', name: '油麦菜', cat: 'veg', kcal: 15, protein: 1.4, fat: 0.4, carb: 2.1, fiber: 1.4, sodium: 80, vitFat: ['A', 'K'], vitWater: ['C'], minerals: ['钙'] },
   { id: 'celery', name: '芹菜', cat: 'veg', kcal: 16, protein: 0.7, fat: 0.2, carb: 3, fiber: 1.6, sodium: 80, vitFat: ['K'], vitWater: [], minerals: ['钾'] },

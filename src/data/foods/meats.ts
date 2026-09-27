@@ -88,4 +88,8 @@ export const MEATS: IFood[] = [
   { id: 'frog-meat', name: '牛蛙', cat: 'meat', kcal: 78, protein: 18, fat: 0.9, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12'], minerals: ['锌', '钾'], note: '高蛋白低脂，蛙腿肉细嫩，嘌呤中等' },
   { id: 'silk-worm', name: '蚕蛹', cat: 'meat', kcal: 230, protein: 18, fat: 15, carb: 6, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒'], note: '昆虫蛋白，蛋白质量高，嘌呤高，过敏者慎食' },
   { id: 'duck-blood', name: '鸭血', cat: 'meat', kcal: 55, protein: 13, fat: 0.4, carb: 0.2, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '补铁冠军，铁含量高且易吸收' },
+
+  // ---- 胶质蛋白类（健身人群高频） ----
+  { id: 'pork-skin', name: '猪皮', cat: 'meat', kcal: 340, protein: 27, fat: 24, carb: 0.5, fiber: 0, sodium: 80, vitFat: [], vitWater: [], minerals: ['锌'], note: '胶原蛋白为主，脂肪不低；煮皮冻可去脂' },
+  { id: 'fish-maw', name: '花胶（鱼肚/鱼鳔）', cat: 'meat', kcal: 339, protein: 84, fat: 0.2, carb: 2, fiber: 0, sodium: 55, vitFat: [], vitWater: [], minerals: ['钙', '磷', '铁'], note: '干品蛋白质极高但以胶原蛋白为主；泡发炖汤，痛风者注意嘌呤' },
 ];
