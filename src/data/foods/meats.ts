@@ -92,4 +92,28 @@ export const MEATS: IFood[] = [
   // ---- 胶质蛋白类（健身人群高频） ----
   { id: 'pork-skin', name: '猪皮', cat: 'meat', kcal: 340, protein: 27, fat: 24, carb: 0.5, fiber: 0, sodium: 80, vitFat: [], vitWater: [], minerals: ['锌'], note: '胶原蛋白为主，脂肪不低；煮皮冻可去脂' },
   { id: 'fish-maw', name: '花胶（鱼肚/鱼鳔）', cat: 'meat', kcal: 339, protein: 84, fat: 0.2, carb: 2, fiber: 0, sodium: 55, vitFat: [], vitWater: [], minerals: ['钙', '磷', '铁'], note: '干品蛋白质极高但以胶原蛋白为主；泡发炖汤，痛风者注意嘌呤' },
+
+  // ---- 牛部位细分（内脏/骨髓） ----
+  { id: 'beef-lung', name: '牛肺（熟）', cat: 'meat', kcal: 95, protein: 16, fat: 3, carb: 1, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['铁', '锌'], note: '口感绵软，焯水去腥；嘌呤中高，清洗须充分' },
+  { id: 'beef-kidney', name: '牛肾（牛腰，熟）', cat: 'meat', kcal: 99, protein: 15.5, fat: 3, carb: 1.2, fiber: 0, sodium: 130, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['铁', '锌', '硒'], note: '臊味重需反复浸泡去味；嘌呤高，痛风者少食' },
+  { id: 'beef-brain', name: '牛脑', cat: 'meat', kcal: 147, protein: 10.5, fat: 11, carb: 1, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B12'], minerals: ['锌', '磷'], note: '胆固醇极高，高血脂/心脑血管问题者不宜；嘌呤极高，偶尔尝鲜' },
+  { id: 'beef-bone-marrow', name: '牛骨髓', cat: 'meat', kcal: 400, protein: 7, fat: 41, carb: 0, fiber: 0, sodium: 90, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '几乎全为脂肪，烤骨髓/炖汤增香可以，热量高别当蛋白质来源' },
+
+  // ---- 牦牛部位 ----
+  { id: 'yak-liver', name: '牦牛肝（熟）', cat: 'meat', kcal: 132, protein: 20, fat: 4, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '高原特色超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次，单次不超过40g（熟重），孕妇遵医嘱；嘌呤偏高' },
+
+  // ---- 马部位细分 ----
+  { id: 'horse-liver', name: '马肝（熟）', cat: 'meat', kcal: 125, protein: 19, fat: 4, carb: 4, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次，单次不超过40g（熟重），孕妇遵医嘱；嘌呤偏高' },
+  { id: 'horse-heart', name: '马心（熟）', cat: 'meat', kcal: 110, protein: 17, fat: 3.8, carb: 1, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12', 'B2'], minerals: ['铁', '锌'], note: '高蛋白低脂内脏，口感紧实；充分烹熟' },
+  { id: 'horse-lung', name: '马肺（熟）', cat: 'meat', kcal: 92, protein: 16, fat: 2.8, carb: 1, fiber: 0, sodium: 80, vitFat: [], vitWater: ['B2', 'B12'], minerals: ['铁'], note: '类似牛肺口感；嘌呤中高，清洗须充分' },
+  { id: 'horse-kidney', name: '马肾（熟）', cat: 'meat', kcal: 97, protein: 15, fat: 3.2, carb: 1, fiber: 0, sodium: 120, vitFat: ['A'], vitWater: ['B12'], minerals: ['铁', '锌', '硒'], note: '臊味重需反复浸泡去味；嘌呤高，痛风者少食' },
+
+  // ---- 鹿部位 ----
+  { id: 'venison-liver', name: '鹿肝（熟）', cat: 'meat', kcal: 130, protein: 19, fat: 4, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次，单次不超过40g（熟重），孕妇遵医嘱；嘌呤偏高' },
+  { id: 'venison-heart', name: '鹿心（熟）', cat: 'meat', kcal: 108, protein: 17, fat: 3.5, carb: 1, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '高蛋白低脂，肉质细嫩；充分烹熟' },
+
+  // ---- 驴部位细分（含驴皮/阿胶原料） ----
+  { id: 'donkey-hide', name: '驴皮（干品/阿胶原料）', cat: 'meat', kcal: 360, protein: 85, fat: 0.5, carb: 2, fiber: 0, sodium: 90, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '胶原蛋白为主（非优质必需氨基酸蛋白），是传统阿胶的原料；打成胶质后蛋白利用率一般，别当高蛋白食物' },
+  { id: 'donkey-liver', name: '驴肝（熟）', cat: 'meat', kcal: 128, protein: 19, fat: 4, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次，单次不超过40g（熟重），孕妇遵医嘱；嘌呤偏高' },
+  { id: 'donkey-heart', name: '驴心（熟）', cat: 'meat', kcal: 105, protein: 16.5, fat: 3.6, carb: 1, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '高蛋白低脂，口感紧实有嚼劲；充分烹熟' },
 ];
