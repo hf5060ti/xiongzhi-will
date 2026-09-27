@@ -111,7 +111,16 @@ export default defineConfig(({ command }) => ({
   define: {
     // 路由 basename 单独注入，缺省 '/'（不再回落 './'）；
     // 缺省 './' 会让 React Router 无法匹配任何路由（整站白屏）
-    'import.meta.env.MIAODA_CLIENT_BASE_PATH': JSON.stringify(command === 'serve' ? '/' : routerBasePath),
+    // 桌面离线版（DESKTOP_BUILD）：BASE 用于拼接本地资源（视频/图片），
+    // 必须为 './' 才能在 file:// 协议下相对解析到同目录资源；路由走 HashRouter，
+    // 不依赖 BASE，因此桌面版单独用 './' 是安全的。
+    'import.meta.env.MIAODA_CLIENT_BASE_PATH': JSON.stringify(
+      command === 'serve'
+        ? '/'
+        : process.env.DESKTOP_BUILD === '1'
+          ? './'
+          : routerBasePath,
+    ),
   },
   resolve: {
     alias: {
@@ -134,9 +143,17 @@ export default defineConfig(({ command }) => ({
     // 浏览器在 file:// 协议下禁止动态 import()（CORS 安全限制），
     // 双击本地 index.html 时 React.lazy 的页面 chunk 会永远加载失败、卡在转圈。
     // 单 bundle 后双击直接可用；线上 GitHub Pages 走 HTTP，保持代码分割不影响。
+    // 产物格式用 IIFE：桌面版以经典 <script src> 外部引用加载（file:// 下不受
+    // module script 的 CORS 限制），且外部 JS 不会被 HTML 解析器扫描，
+    // 彻底规避内联 module script 中 "</script" 字面量提前截断脚本的问题。
     ...(process.env.DESKTOP_BUILD === '1'
       ? {
-          rollupOptions: { output: { inlineDynamicImports: true } },
+          rollupOptions: {
+            output: {
+              inlineDynamicImports: true,
+              format: 'iife',
+            },
+          },
           chunkSizeWarningLimit: 6000,
         }
       : {}),
