@@ -109,4 +109,5 @@ export const STAPLES: IFood[] = [
   // ---- 薯类细分（用户点名） ----
   { id: 'potato-purple', name: '紫土豆（紫皮/紫肉马铃薯）', cat: 'staple', kcal: 76, protein: 2.1, fat: 0.1, carb: 16.5, fiber: 2.5, sodium: 5, vitFat: ['E'], vitWater: ['B6', 'C'], minerals: ['钾'], phytochem: ['花青素（紫皮紫肉）：抗氧化、抗炎'], note: '与紫薯不同，属马铃薯品种，淀粉口感粉糯' },
   { id: 'sweet-potato-mini', name: '迷你薯（小香薯）', cat: 'staple', kcal: 95, protein: 1.5, fat: 0.2, carb: 22, fiber: 3, sodium: 30, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], note: '小体型红薯品种，皮薄味甜，当主食或加餐' },
+  { id: 'konjac-powder', name: '魔芋粉（精粉）', cat: 'staple', kcal: 30, protein: 0.1, fat: 0, carb: 5, fiber: 80, sodium: 20, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['葡甘聚糖：极高可溶性膳食纤维，吸水膨胀数十倍、强饱腹感、延缓血糖'], note: '干粉热量极低但吸水极强，冲调需大量水并少量起始，过量易腹胀；多用于自制魔芋制品' },
 ];

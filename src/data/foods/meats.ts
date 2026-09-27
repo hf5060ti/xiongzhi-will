@@ -116,4 +116,28 @@ export const MEATS: IFood[] = [
   { id: 'donkey-hide', name: '驴皮（干品/阿胶原料）', cat: 'meat', kcal: 360, protein: 85, fat: 0.5, carb: 2, fiber: 0, sodium: 90, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '胶原蛋白为主（非优质必需氨基酸蛋白），是传统阿胶的原料；打成胶质后蛋白利用率一般，别当高蛋白食物' },
   { id: 'donkey-liver', name: '驴肝（熟）', cat: 'meat', kcal: 128, protein: 19, fat: 4, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次，单次不超过40g（熟重），孕妇遵医嘱；嘌呤偏高' },
   { id: 'donkey-heart', name: '驴心（熟）', cat: 'meat', kcal: 105, protein: 16.5, fat: 3.6, carb: 1, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '高蛋白低脂，口感紧实有嚼劲；充分烹熟' },
+
+  // ---- 猪部位细分（补全内脏/杂碎） ----
+  { id: 'pork-stomach', name: '猪肚（熟）', cat: 'meat', kcal: 110, protein: 17, fat: 4.2, carb: 1, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌', '硒'], note: '高蛋白低脂内脏，白切/爆炒经典；胆固醇中等，清洗须充分' },
+  { id: 'pork-intestine', name: '猪大肠（肥肠，熟）', cat: 'meat', kcal: 196, protein: 10, fat: 16, carb: 1, fiber: 0, sodium: 110, vitFat: [], vitWater: ['B12'], minerals: ['锌'], note: '高脂高胆固醇，卤煮/干煸肥肠香但热量高，减脂期少食' },
+  { id: 'pork-brain', name: '猪脑', cat: 'meat', kcal: 131, protein: 10.5, fat: 9.3, carb: 1, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B12'], minerals: ['磷', '锌'], note: '胆固醇极高，高血脂/心脑血管问题者不宜；嘌呤极高，偶尔尝鲜' },
+  { id: 'pork-lung', name: '猪肺（熟）', cat: 'meat', kcal: 85, protein: 12, fat: 3.5, carb: 1, fiber: 0, sodium: 75, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['铁'], note: '口感绵软，需彻底清洗烹透；嘌呤中高' },
+
+  // ---- 野猪部位（仅合法养殖渠道） ----
+  { id: 'wild-boar-leg', name: '野猪后腿/里脊（养殖，生）', cat: 'meat', kcal: 120, protein: 21, fat: 3.5, carb: 0, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B1', 'B12'], minerals: ['锌', '铁'], note: '⚠ 仅采用合法养殖渠道；比家猪更瘦、肉味更重，炖煮或腌制后更嫩' },
+  { id: 'wild-boar-liver', name: '野猪肝（养殖，熟）', cat: 'meat', kcal: 130, protein: 19, fat: 4.5, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '⚠ 仅采用合法养殖渠道；超级食物：维生素A/B族/铁含量极高，但维生素A易超标，建议每周1~2次、单次≤40g（熟重），孕妇遵医嘱；嘌呤偏高' },
+
+  // ---- 鹅部位细分 ----
+  { id: 'goose-breast', name: '鹅胸肉（去皮）', cat: 'meat', kcal: 118, protein: 23, fat: 2.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '高蛋白低脂，肉质紧实，低温慢煮更嫩' },
+  { id: 'goose-leg', name: '鹅腿（带皮）', cat: 'meat', kcal: 210, protein: 20, fat: 14, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '带皮脂肪高，烤鹅腿经典；去皮食用热量大减' },
+  { id: 'goose-liver', name: '鹅肝（普通，熟）', cat: 'meat', kcal: 133, protein: 16, fat: 5, carb: 3, fiber: 0, sodium: 90, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜', '硒'], note: '普通鹅肝非填饲肥肝（肥肝 foie gras 脂肪超 40% 另计）；维A/铁极高，建议每周1~2次、单次≤40g（熟重），孕妇遵医嘱；嘌呤偏高' },
+  { id: 'goose-wing', name: '鹅翅', cat: 'meat', kcal: 230, protein: 18, fat: 17, carb: 0.5, fiber: 0, sodium: 80, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['锌'], note: '皮多脂肪高，卤鹅翅佐餐佳；热量不低' },
+
+  // ---- 鸽子部位 ----
+  { id: 'pigeon-breast', name: '鸽胸肉（去皮）', cat: 'meat', kcal: 115, protein: 24, fat: 2, carb: 0, fiber: 0, sodium: 65, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '高蛋白低脂，鸽肉纤维细嫩易消化，炖汤/清蒸' },
+  { id: 'pigeon-liver', name: '鸽肝（熟）', cat: 'meat', kcal: 130, protein: 17, fat: 4.5, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次、单次≤40g（熟重），孕妇遵医嘱；嘌呤偏高' },
+
+  // ---- 火鸡部位 ----
+  { id: 'turkey-wing', name: '火鸡翅', cat: 'meat', kcal: 180, protein: 20, fat: 10, carb: 0, fiber: 0, sodium: 75, vitFat: [], vitWater: ['B6', 'B12'], minerals: ['锌', '硒'], note: '感恩节烤火鸡翅经典，带皮脂肪偏高' },
+  { id: 'turkey-liver', name: '火鸡肝（熟）', cat: 'meat', kcal: 130, protein: 18, fat: 4.5, carb: 3, fiber: 0, sodium: 85, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜', '硒'], note: '超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次、单次≤40g（熟重），孕妇遵医嘱；嘌呤偏高' },
 ];

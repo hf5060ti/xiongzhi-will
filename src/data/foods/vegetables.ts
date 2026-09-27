@@ -134,4 +134,11 @@ export const VEGETABLES: IFood[] = [
   { id: 'nori-seaweed', name: '紫菜（干）', cat: 'veg', kcal: 250, protein: 26, fat: 1.1, carb: 44, fiber: 21, sodium: 360, vitFat: ['A', 'K'], vitWater: ['B12（争议）', 'C'], minerals: ['碘', '铁', '钙'], note: '碘极高，甲亢/桥本患者遵医嘱；含天然谷氨酸提鲜' },
   { id: 'kelp', name: '海带（鲜）', cat: 'veg', kcal: 43, protein: 1.8, fat: 0.2, carb: 9, fiber: 2.7, sodium: 100, vitFat: ['K'], vitWater: ['B2'], minerals: ['碘', '钙', '镁'], note: '碘与褐藻胶丰富，甲状腺疾病遵医嘱' },
   { id: 'kale-powder', name: '羽衣甘蓝粉', cat: 'veg', kcal: 350, protein: 28, fat: 4, carb: 50, fiber: 25, sodium: 200, vitFat: ['A', 'K'], vitWater: ['C', '叶酸'], minerals: ['钙', '铁'], phytochem: ['硫代葡萄糖苷：十字花科抗氧化与护肝成分'], note: '浓缩蔬菜粉，每日 5-10g 冲水/拌酸奶补绿叶菜；不能替代新鲜蔬菜' },
+
+  // ---- 腌菜/咸菜/藻类苗（用户点名，数据均可查证） ----
+  { id: 'salted-vegetable', name: '咸菜（腌雪里蕻/盐渍菜）', cat: 'veg', kcal: 25, protein: 2, fat: 0.3, carb: 4.5, fiber: 1.5, sodium: 4300, vitFat: [], vitWater: [], minerals: ['钾'], note: '高钠！腌渍菜，维生素损失大，当调味佐餐少量用；控盐/高血压者慎食' },
+  { id: 'suan-cai', name: '酸菜（渍白菜）', cat: 'veg', kcal: 15, protein: 1.2, fat: 0.2, carb: 2.8, fiber: 1.2, sodium: 700, vitFat: [], vitWater: ['C（部分流失）'], minerals: ['钾'], note: '乳酸发酵菜，钠偏高；东北酸菜炖菜经典；亚硝酸盐在腌制初期偏高，腌透后再食' },
+  { id: 'pao-cai', name: '泡菜（四川泡菜/韩式泡菜）', cat: 'veg', kcal: 25, protein: 1.5, fat: 0.3, carb: 5, fiber: 1.5, sodium: 900, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['乳酸菌代谢物：发酵益生，促进肠道菌群'], note: '发酵菜，钠偏高；含益生菌但腌制期亚硝酸盐先升后降，泡透再食更稳妥' },
+  { id: 'meigan-cai', name: '梅干菜（霉干菜）', cat: 'veg', kcal: 250, protein: 18, fat: 1.5, carb: 40, fiber: 20, sodium: 3500, vitFat: [], vitWater: [], minerals: ['钾', '铁'], note: '芥菜/雪里蕻腌晒而成，干品高纤维高钠，用前泡水去盐；梅菜扣肉经典' },
+  { id: 'kelp-sprout', name: '海带苗（嫩海带/裙带苗）', cat: 'veg', kcal: 45, protein: 1.8, fat: 0.3, carb: 8, fiber: 3.5, sodium: 700, vitFat: ['K'], vitWater: ['B2'], minerals: ['碘', '钙', '镁'], note: '比老海带更嫩滑，凉拌/煮汤；碘高，甲状腺疾病遵医嘱；市售多为盐渍，用前漂洗去盐' },
 ];
