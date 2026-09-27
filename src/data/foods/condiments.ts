@@ -85,4 +85,10 @@ export const CONDIMENTS: IFood[] = [
 
   // ---- 中式复合香辛料（用户点名） ----
   { id: 'thirteen-spices', name: '十三香', cat: 'condiment', kcal: 300, protein: 10, fat: 8, carb: 52, fiber: 20, sodium: 30, vitFat: ['E', 'K'], vitWater: ['B1', 'B3'], minerals: ['铁', '钙', '镁'], phytochem: ['花椒麻素', '茴香脑', '肉桂醛'], note: '花椒/八角/桂皮/丁香/小茴香等混合磨粉；用量少提香去腥，钠不高但风味浓，控盐人群友好' },
+
+  // ---- 无糖版酱料 + 提鲜类（用户点名） ----
+  { id: 'mayo-sugar-free', name: '蛋黄酱（无糖/低糖版）', cat: 'condiment', kcal: 620, protein: 1.2, fat: 66, carb: 3, fiber: 0, sodium: 820, vitFat: ['E', 'K'], vitWater: [], minerals: ['钠'], note: '无添加糖蛋黄酱（代糖调味），热量仍以脂肪为主，1 汤匙约 90kcal；减脂期也需控量，选配料表无蔗糖款' },
+  { id: 'ketchup-sugar-free', name: '番茄酱（无糖版）', cat: 'condiment', kcal: 40, protein: 1.5, fat: 0.2, carb: 8, fiber: 1, sodium: 850, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['番茄红素：抗氧化、护前列腺'], note: '无添加糖，甜味来自番茄天然糖；与有糖版（约81kcal）相比碳水减半，仍是高钠，蘸食适量' },
+  { id: 'pesto', name: '青酱（罗勒青酱）', cat: 'condiment', kcal: 480, protein: 7, fat: 48, carb: 8, fiber: 2, sodium: 700, vitFat: ['A', 'E', 'K'], vitWater: ['B2', '叶酸'], minerals: ['钙', '镁'], phytochem: ['罗勒芳香精油', '橄榄多酚'], note: '罗勒+松子+帕玛森芝士+橄榄油+蒜，单不饱和脂肪优质但热量高，1 汤匙约 70kcal；配意面/鸡肉用少量' },
+  { id: 'katsuobushi', name: '木鱼花（柴鱼片）', cat: 'condiment', kcal: 340, protein: 66, fat: 3, carb: 0, fiber: 0, sodium: 300, vitFat: ['D'], vitWater: ['B3', 'B12'], minerals: ['钾', '硒'], note: '鲣鱼烟熏干制后刨成薄片，日式高汤/章鱼烧/冷奴豆腐提鲜；干鱼制品嘌呤很高，痛风者慎用' },
 ];

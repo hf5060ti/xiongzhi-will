@@ -75,4 +75,7 @@ export const SEAFOODS: IFood[] = [
   { id: 'tuna-akami', name: '金枪鱼赤身（瘦部）', cat: 'seafood', kcal: 105, protein: 25, fat: 1.2, carb: 0, fiber: 0, sodium: 40, vitFat: ['D'], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒'], note: '金枪鱼背脊瘦肉部位，低脂高蛋白，肉色深红、风味浓郁' },
   { id: 'tuna-chutoro', name: '金枪鱼中腹', cat: 'seafood', kcal: 170, protein: 21, fat: 10, carb: 0, fiber: 0, sodium: 45, vitFat: ['D'], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒'], note: '腹肉中层，脂肪适中、口感与风味平衡，性价比高的刺身部位' },
   { id: 'tuna-otoro', name: '金枪鱼大腹（Toro）', cat: 'seafood', kcal: 290, protein: 17, fat: 25, carb: 0, fiber: 0, sodium: 45, vitFat: ['D'], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒'], note: '腹肉最肥部位（蓝鳍大腹最名贵）；饱和脂肪、胆固醇与嘌呤均高，痛风急性期/高血脂者注意' },
+
+  // ---- 鱼糜制品（用户点名） ----
+  { id: 'crab-stick', name: '蟹柳（仿蟹肉棒）', cat: 'seafood', kcal: 110, protein: 9, fat: 2.5, carb: 12, fiber: 0.5, sodium: 600, vitFat: [], vitWater: ['B12'], minerals: ['钠', '磷'], note: '鱼糜+淀粉+蟹味调味制成，非真蟹肉；蛋白中等、钠偏高，火锅/沙拉配料可以，别当海鲜蛋白主力；选淀粉含量低、纯鱼糜比例高的款' },
 ];
