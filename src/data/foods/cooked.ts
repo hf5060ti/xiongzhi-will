@@ -119,4 +119,42 @@ export const COOKED: IFood[] = [
   { id: 'dish-chicken-colafish', name: '可乐鸡翅', cat: 'cooked', kcal: 190, protein: 14, fat: 10, carb: 10, fiber: 0, sodium: 350, vitFat: ['A'], vitWater: ['B6'], minerals: ['锌'], note: '可乐含糖，糖+鸡皮热量高' },
   { id: 'dish-duck-beer', name: '啤酒鸭', cat: 'cooked', kcal: 160, protein: 14, fat: 10, carb: 4, fiber: 0.3, sodium: 420, vitFat: ['A'], vitWater: ['B12'], minerals: ['铁'], note: '鸭肉含铁，啤酒炖煮酒精多挥发' },
   { id: 'dish-pork-jiajiang', name: '酱骨架', cat: 'cooked', kcal: 230, protein: 18, fat: 16, carb: 3, fiber: 0, sodium: 500, vitFat: ['A'], vitWater: ['B1', 'B12'], minerals: ['锌'], note: '东北酱骨，啃骨肉蛋白质尚可' },
+
+  // ================= 快餐连锁（用户点名） =================
+  // 麦当劳：官网营养信息口径；肯德基/塔斯汀：品牌未公开官方营养数据，为第三方测评参考值，不同配方/门店有波动。
+
+  // ---- 麦当劳单品 ----
+  { id: 'mcd-mcspicy', name: '麦辣鸡腿汉堡（麦当劳）', cat: 'cooked', kcal: 485, protein: 24, fat: 24, carb: 42, fiber: 1.5, sodium: 1208, vitFat: [], vitWater: ['B3'], minerals: ['钾', '钙'], note: '麦当劳官网总热量 485 大卡；炸鸡排+沙拉酱，减脂可选去酱/去皮' },
+  { id: 'mcd-bigmac', name: '巨无霸（麦当劳）', cat: 'cooked', kcal: 491, protein: 26, fat: 25, carb: 42, fiber: 2, sodium: 900, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['钙', '铁'], note: '麦当劳官网总热量 491 大卡；三层面包+双层牛肉，宏量为估算' },
+  { id: 'mcd-grilled-chicken', name: '板烧鸡腿堡（麦当劳）', cat: 'cooked', kcal: 391, protein: 24, fat: 17, carb: 38, fiber: 2, sodium: 800, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '官网营养计算器口径约 391 大卡；非油炸鸡腿排，去掉酱更低，减脂期相对友好的堡' },
+  { id: 'mcd-double-cheese', name: '双层吉士汉堡（麦当劳）', cat: 'cooked', kcal: 657, protein: 32, fat: 38, carb: 45, fiber: 1.5, sodium: 1200, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['钙', '铁'], note: '双层牛肉+双层芝士，热量炸弹级别；宏量为估算' },
+  { id: 'mcd-nuggets4', name: '麦乐鸡（4块，麦当劳）', cat: 'cooked', kcal: 170, protein: 10, fat: 10, carb: 10, fiber: 0, sodium: 400, vitFat: [], vitWater: [], minerals: ['磷'], note: '约 170 大卡/4 块；蘸酱另计，甜酸酱/蒜蓉辣酱约 40-60 大卡' },
+  { id: 'mcd-fries-m', name: '薯条（中份，麦当劳）', cat: 'cooked', kcal: 376, protein: 5.8, fat: 18, carb: 48, fiber: 3, sodium: 300, vitFat: [], vitWater: [], minerals: ['钾'], note: '约 376 大卡；油炸碳水，蘸酱另计，减脂选小份或去掉' },
+  { id: 'mcd-coke-m', name: '可乐（中杯，含糖）', cat: 'cooked', kcal: 200, protein: 0, fat: 0, carb: 52, fiber: 0, sodium: 30, vitFat: [], vitWater: [], minerals: [], note: '中杯约 500ml，含糖约 52g 纯空热量；无糖可乐 0 大卡' },
+  { id: 'mcd-coke-zero', name: '无糖可乐（中杯）', cat: 'cooked', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 40, vitFat: [], vitWater: [], minerals: [], note: '0 大卡，甜味剂代糖；个别研究提示代糖可能影响食欲调节，适量' },
+
+  // ---- 麦当劳套餐（堡+中薯+中杯可乐，约） ----
+  { id: 'mcd-set-mcspicy', name: '麦辣鸡腿堡套餐（麦当劳）', cat: 'cooked', kcal: 1061, protein: 30, fat: 42, carb: 142, fiber: 4.5, sodium: 1538, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '三件套约 1061 大卡（485+376+200）；换无糖可乐省 200，薯条换玉米杯再省约 250' },
+  { id: 'mcd-set-bigmac', name: '巨无霸套餐（麦当劳）', cat: 'cooked', kcal: 1067, protein: 32, fat: 43, carb: 142, fiber: 5, sodium: 1230, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['钙'], note: '三件套约 1067 大卡（491+376+200）' },
+  { id: 'mcd-set-grilled', name: '板烧鸡腿堡套餐（麦当劳）', cat: 'cooked', kcal: 967, protein: 30, fat: 35, carb: 138, fiber: 5, sodium: 1130, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '三件套约 967 大卡（391+376+200），麦当劳主推套餐中相对低卡的选择' },
+
+  // ---- 肯德基（官方未公开营养表，第三方测评参考值） ----
+  { id: 'kfc-zinger', name: '香辣鸡腿堡（肯德基）', cat: 'cooked', kcal: 513, protein: 26, fat: 24, carb: 48, fiber: 1.5, sodium: 1100, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 513 大卡（各渠道 500-580）；炸鸡排+沙拉酱，减脂去酱热量明显下降' },
+  { id: 'kfc-crispy', name: '劲脆鸡腿堡（肯德基）', cat: 'cooked', kcal: 590, protein: 30, fat: 30, carb: 50, fiber: 1.5, sodium: 1200, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 590 大卡；比香辣堡更大更油，宏量为估算' },
+  { id: 'kfc-orleans', name: '新奥尔良烤鸡腿堡（肯德基）', cat: 'cooked', kcal: 440, protein: 24, fat: 18, carb: 45, fiber: 1.5, sodium: 1000, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 440 大卡；非油炸烤鸡腿排，酱汁含糖，肯德基相对友好的堡' },
+  { id: 'kfc-original', name: '吮指原味鸡（1块，肯德基）', cat: 'cooked', kcal: 364, protein: 27, fat: 24, carb: 12, fiber: 0, sodium: 800, vitFat: [], vitWater: ['B3'], minerals: ['磷'], note: '第三方测评约 364 大卡/块（带皮炸鸡）；去皮后明显降低' },
+  { id: 'kfc-fries-m', name: '薯条（中份，肯德基）', cat: 'cooked', kcal: 328, protein: 4, fat: 16, carb: 43, fiber: 3, sodium: 300, vitFat: [], vitWater: [], minerals: ['钾'], note: '第三方测评约 328 大卡；油炸碳水' },
+  { id: 'kfc-egg-tart', name: '葡式蛋挞（肯德基）', cat: 'cooked', kcal: 196, protein: 3.5, fat: 11, carb: 21, fiber: 0.3, sodium: 120, vitFat: [], vitWater: ['A', 'B2'], minerals: ['钙'], note: '约 196 大卡/个；酥皮+蛋奶馅，糖油混合物，下午茶控量' },
+  { id: 'kfc-chicken-nuggets-m', name: '鸡米花（中份，肯德基）', cat: 'cooked', kcal: 355, protein: 18, fat: 20, carb: 25, fiber: 0.5, sodium: 900, vitFat: [], vitWater: ['B3'], minerals: ['磷'], note: '第三方测评约 355 大卡；炸鸡块，蘸酱另计' },
+  { id: 'kfc-roll', name: '老北京鸡肉卷（肯德基）', cat: 'cooked', kcal: 415, protein: 22, fat: 14, carb: 52, fiber: 2, sodium: 1000, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 415 大卡；甜面酱+黄瓜+京葱，宏量为估算' },
+  { id: 'kfc-set-zinger', name: '香辣鸡腿堡套餐（肯德基）', cat: 'cooked', kcal: 1041, protein: 30, fat: 40, carb: 143, fiber: 4.5, sodium: 1400, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '堡+中薯+中杯可乐约 1041 大卡（513+328+200），换无糖可乐/玉米沙拉可显著降低' },
+  { id: 'kfc-set-orleans', name: '新奥尔良鸡腿堡套餐（肯德基）', cat: 'cooked', kcal: 968, protein: 28, fat: 34, carb: 138, fiber: 4.5, sodium: 1300, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '堡+中薯+中杯可乐约 968 大卡（440+328+200）' },
+
+  // ---- 塔斯汀中国汉堡（品牌未公开官方营养数据，第三方测评参考，波动大） ----
+  { id: 'tasti-spicy', name: '香辣鸡腿堡（塔斯汀）', cat: 'cooked', kcal: 411, protein: 22, fat: 20, carb: 42, fiber: 1.5, sodium: 900, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 411 大卡（各渠道 410-510，配方/门店有差异）；手擀现烤饼皮是招牌，比普通面包胚略清爽' },
+  { id: 'tasti-pineapple', name: '板烧凤梨堡（塔斯汀）', cat: 'cooked', kcal: 425, protein: 22, fat: 18, carb: 45, fiber: 1.5, sodium: 850, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '第三方测评约 425 大卡（425-540）；非油炸板烧鸡排+凤梨，多汁但凤梨多为罐头糖分高' },
+  { id: 'tasti-beef', name: '多汁牛肉堡（塔斯汀）', cat: 'cooked', kcal: 491, protein: 25, fat: 24, carb: 48, fiber: 1.5, sodium: 950, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁'], note: '第三方测评约 491 大卡（470-585）；牛肉饼，宏量为估算' },
+  { id: 'tasti-bacon-egg', name: '培根煎蛋堡（塔斯汀）', cat: 'cooked', kcal: 410, protein: 24, fat: 20, carb: 40, fiber: 1.5, sodium: 1000, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 410 大卡（410-590）；培根+煎蛋，钠偏高' },
+  { id: 'tasti-pepper', name: '藤椒鸡腿堡（塔斯汀）', cat: 'cooked', kcal: 418, protein: 22, fat: 19, carb: 44, fiber: 1.5, sodium: 880, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 418 大卡（418-525）；藤椒风味，宏量为估算' },
+  { id: 'tasti-duck', name: '北京烤鸭堡（塔斯汀）', cat: 'cooked', kcal: 460, protein: 20, fat: 18, carb: 52, fiber: 1.5, sodium: 950, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 460 大卡（420-550）；甜面酱+烤鸭片，碳水偏高' },
 ];
