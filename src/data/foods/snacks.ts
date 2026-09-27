@@ -72,4 +72,17 @@ export const SNACKS: IFood[] = [
   { id: 'oat-milk', name: '燕麦奶', cat: 'snack', kcal: 45, protein: 1, fat: 1.5, carb: 7, fiber: 0.6, sodium: 50, vitFat: [], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '常见强化钙与 B12，每 100ml' },
   { id: 'almond-milk', name: '杏仁奶', cat: 'snack', kcal: 25, protein: 0.6, fat: 1.1, carb: 3, fiber: 0.3, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['钙'], note: '每 100ml' },
   { id: 'soy-drink-sweet', name: '甜豆奶', cat: 'snack', kcal: 45, protein: 2.6, fat: 1.6, carb: 4.2, fiber: 0.4, sodium: 40, vitFat: [], vitWater: ['B1'], minerals: ['钙'], note: '每 100ml' },
+
+  // ---- 训练补给类（用户点名扩充） ----
+  { id: 'salt-tab', name: '电解质盐丸', cat: 'snack', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 210, vitFat: [], vitWater: [], minerals: ['钠', '钾', '镁'], note: '每粒约钠90-120mg+钾镁；耐力运动每小时1粒随水吞服；⚠ 各品牌含量不同，以包装为准' },
+  { id: 'electrolyte-powder', name: '电解质粉（无糖）', cat: 'snack', kcal: 5, protein: 0, fat: 0, carb: 1, fiber: 0, sodium: 200, vitFat: [], vitWater: [], minerals: ['钠', '钾', '镁'], note: '无糖电解质冲剂，兑约500ml水；高强度训练、桑拿、大量出汗时防抽筋；各品牌配比不同以包装为准' },
+  { id: 'glucose', name: '葡萄糖', cat: 'snack', kcal: 400, protein: 0, fat: 0, carb: 100, fiber: 0, sodium: 0, vitFat: [], vitWater: [], minerals: [], note: '单糖，吸收最快；练后/低血糖时快速补糖，属游离糖，日常控量' },
+  { id: 'maltodextrin', name: '麦芽糊精', cat: 'snack', kcal: 400, protein: 0, fat: 0, carb: 95, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '快速碳水，血糖指数高；增肌粉/运动饮料常用成分，练后补糖原可用' },
+  { id: 'matcha-powder', name: '抹茶粉', cat: 'snack', kcal: 300, protein: 25, fat: 5, carb: 40, fiber: 25, sodium: 10, vitFat: ['K'], vitWater: ['B2'], minerals: ['钾', '镁'], phytochem: ['儿茶素（EGCG）：强抗氧化、辅助燃脂', '咖啡因：提神'], note: '咖啡因+EGCG组合，训练前1-2g冲水/拌酸奶；选纯抹茶粉，勿买加糖奶茶款' },
+  { id: 'green-tea', name: '绿茶（冲泡液）', cat: 'snack', kcal: 1, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 2, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['儿茶素（EGCG）：抗氧化', '咖啡因：少量提神'], note: '每100ml冲泡液，几乎零热量；日常代替含糖饮料' },
+  { id: 'cocoa-powder', name: '可可粉（无糖）', cat: 'snack', kcal: 350, protein: 20, fat: 13, carb: 45, fiber: 30, sodium: 20, vitFat: ['E'], vitWater: [], minerals: ['镁', '铁'], phytochem: ['黄烷醇：护血管、改善血流'], note: '选无糖纯可可粉，与香蕉/蛋白粉拌食；天然苦味，勿混入植脂末' },
+  { id: 'spirulina', name: '螺旋藻（粉）', cat: 'snack', kcal: 290, protein: 57, fat: 3, carb: 24, fiber: 4, sodium: 600, vitFat: ['A', 'E'], vitWater: ['B1', 'B2', 'B12'], minerals: ['铁', '碘'], phytochem: ['藻蓝蛋白：强抗氧化、抗炎'], note: '植物性高蛋白+微量营养素密集；植物性B12人体利用率有限，不能替代动物源；碘高，甲亢者注意' },
+  { id: 'chlorella', name: '小球藻（片）', cat: 'snack', kcal: 350, protein: 50, fat: 5, carb: 20, fiber: 10, sodium: 90, vitFat: ['A', 'E'], vitWater: ['B1', 'B2', '叶酸'], minerals: ['铁', '镁', '锌'], phytochem: ['叶绿素：帮助排毒代谢（传统认知）', 'CGF（小球藻生长因子）'], note: '细胞壁较硬，选破壁产品利于吸收；每日5-10g，随餐服用' },
+  { id: 'glutamine-powder', name: '谷氨酰胺粉（每5g）', cat: 'snack', kcal: 20, protein: 4.9, fat: 0, carb: 0, fiber: 0, sodium: 2, vitFat: [], vitWater: [], minerals: [], note: '数据为每 5g 份：能量 83kJ、蛋白质等同物 4.9g、谷氨酰胺 3.9g、肽类 1g；常练后或睡前 5g 温水冲服；⚠ 各品牌配方不同，此为参考值，以产品包装营养表为准' },
+  { id: 'energy-gummy', name: '能量软糖', cat: 'snack', kcal: 320, protein: 0, fat: 0, carb: 80, fiber: 0, sodium: 50, vitFat: [], vitWater: [], minerals: ['钠'], note: '耐力运动途中快速补糖，含游离糖，按需食用' },
 ];

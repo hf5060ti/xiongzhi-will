@@ -66,4 +66,8 @@ export const DAIRY: IFood[] = [
   { id: 'cream-dry', name: '奶皮子', cat: 'dairy', kcal: 620, protein: 8, fat: 55, carb: 20, fiber: 0, sodium: 60, vitFat: ['A', 'D', 'E', 'K'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '蒙古奶皮，奶油浓缩，热量密度高' },
   { id: 'milk-curd-dry', name: '奶豆腐（干）', cat: 'dairy', kcal: 330, protein: 25, fat: 20, carb: 12, fiber: 0, sodium: 120, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'], note: '蒙古奶酪凝块，高蛋白高钙，偏咸' },
   { id: 'milk-sour-dry', name: '酸奶疙瘩', cat: 'dairy', kcal: 350, protein: 28, fat: 22, carb: 8, fiber: 0, sodium: 300, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '新疆发酵奶疙瘩，浓缩蛋白，极咸' },
+
+  // ---- 乳糖不耐友好（用户点名） ----
+  { id: 'milk-lactose-free', name: '无乳糖牛奶', cat: 'dairy', kcal: 47, protein: 3.3, fat: 1.6, carb: 4.8, fiber: 0, sodium: 45, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '乳糖已酶解为葡萄糖+半乳糖，乳糖不耐者补钙补蛋白的友好选择；与原奶热量接近' },
+  { id: 'yogurt-plant', name: '植物酸奶', cat: 'dairy', kcal: 45, protein: 2, fat: 1.5, carb: 6, fiber: 0.5, sodium: 40, vitFat: [], vitWater: ['B2'], minerals: ['钙'], note: '豆/椰/燕麦基发酵，蛋白低于动物酸奶；选高蛋白、低糖、强化钙款更佳' },
 ];
