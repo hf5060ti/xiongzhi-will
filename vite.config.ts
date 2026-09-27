@@ -130,5 +130,15 @@ export default defineConfig(({ command }) => ({
   },
   build: {
     outDir: 'dist/client',
+    // 桌面离线版（DESKTOP_BUILD=1）：把所有懒加载页面内联进主 bundle。
+    // 浏览器在 file:// 协议下禁止动态 import()（CORS 安全限制），
+    // 双击本地 index.html 时 React.lazy 的页面 chunk 会永远加载失败、卡在转圈。
+    // 单 bundle 后双击直接可用；线上 GitHub Pages 走 HTTP，保持代码分割不影响。
+    ...(process.env.DESKTOP_BUILD === '1'
+      ? {
+          rollupOptions: { output: { inlineDynamicImports: true } },
+          chunkSizeWarningLimit: 6000,
+        }
+      : {}),
   },
 }));
