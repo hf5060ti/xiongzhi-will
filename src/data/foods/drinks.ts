@@ -89,4 +89,8 @@ export const DRINKS: IFood[] = [
   // ---- 用户点名补充 ----
   { id: 'lao-zao', name: '醪糟（酒酿/甜米酒）', cat: 'drink', kcal: 91, protein: 3, fat: 0.1, carb: 18, fiber: 0.2, sodium: 10, vitFat: [], vitWater: ['B族'], minerals: [], phytochem: ['根霉糖化酶'], note: '糯米+酒曲发酵，含微量酒精（约1-2%），煮开后大部分挥发；产妇/经期常食但别大量；开车/服药者慎饮；一碗约200g=182kcal' },
   { id: 'chidou-niangzao', name: '赤豆酒酿', cat: 'drink', kcal: 90, protein: 3.5, fat: 0.2, carb: 18, fiber: 1.5, sodium: 15, vitFat: [], vitWater: ['B族'], minerals: ['铁'], note: '醪糟+红豆沙，比纯醪糟多一点铁与纤维；糖与钠看店家配方；夏天冷饮常见，一碗约300g=270kcal' },
+
+  // ---- 用户点名补充：散装茶叶（冲泡后每100ml） ----
+  { id: 'tea-puer', name: '普洱茶（熟普，冲泡）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['茶多酚', '茶褐素', '儿茶素'], note: '熟普渥堆发酵，茶汤醇厚；零热量；常被宣传刮油减脂，证据有限，不能替代饮食控制；空腹/失眠/贫血/孕期少饮；服药前后1小时别喝（鞣酸影响铁吸收）' },
+  { id: 'tea-dahongpao', name: '大红袍（武夷岩茶，冲泡）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['茶多酚', '岩茶香气物质', '咖啡因'], note: '半发酵乌龙，焙火香；零热量；咖啡因中等，下午4点后喝易失眠；胃寒者岩茶比绿茶友好；别配大量肉鱼一次暴饮，鞣酸影响消化' },
 ];

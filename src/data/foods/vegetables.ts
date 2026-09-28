@@ -162,4 +162,9 @@ export const VEGETABLES: IFood[] = [
   { id: 'matsutake-jps', name: '姬松茸（巴西蘑菇，鲜）', cat: 'veg', kcal: 30, protein: 3.5, fat: 0.4, carb: 4.5, fiber: 2.5, sodium: 5, vitFat: [], vitWater: ['B族'], minerals: ['钾', '硒'], phytochem: ['姬松茸多糖（beta-葡聚糖）'], note: '常被宣传"抗癌/提高免疫"，主要证据来自动物实验与体外研究，不能替代药物；炖汤/煲汤；干品浓缩约10倍热量' },
   { id: 'morel', name: '羊肚菌（鲜）', cat: 'veg', kcal: 30, protein: 3.1, fat: 0.4, carb: 5, fiber: 2.8, sodium: 20, vitFat: ['D'], vitWater: ['B2', 'B3'], minerals: ['铁', '铜', '锌'], phytochem: [], note: '珍贵野生/半人工食用菌，香气浓；必须彻底煮熟（生食含微量溶血物质）；干品约290kcal/100g；野生采集需专业辨认，误食有毒蘑菇风险极高' },
   { id: 'bitter-melon', name: '苦瓜', cat: 'veg', kcal: 19, protein: 1, fat: 0.2, carb: 4, fiber: 1.4, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['苦瓜苷', '胰岛素样肽'], note: '极低卡，苦瓜苷在研究中有辅助降糖作用，但不能替代降糖药；脾胃虚寒者少食；清炒/炒蛋/酿肉；孕期大量食用可能刺激子宫' },
+
+  // ---- 用户点名补充 ----
+  { id: 'eggplant-purple', name: '紫皮茄子', cat: 'veg', kcal: 25, protein: 1, fat: 0.2, carb: 5.5, fiber: 1.3, sodium: 4, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['花青素（紫皮）', '茄碱（微量，集中在籽和老皮）'], note: '茄子像海绵特别吸油，红烧/油焖一份脂肪可达15-20g；清蒸/烤/少油拌最友好；老茄子/籽发褐茄碱略多，一次别吃大量生茄子；带皮吃花青素' },
+  { id: 'eggplant-green', name: '青茄子（绿皮）', cat: 'veg', kcal: 23, protein: 1.1, fat: 0.2, carb: 5, fiber: 1.2, sodium: 4, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: [], note: '东北/华北常见，肉质比紫茄更松软、籽少；同样吸油；凉拌/清蒸/茄盒；热量与紫茄接近' },
+  { id: 'dandelion-root', name: '蒲公英根（干，泡茶）', cat: 'veg', kcal: 378, protein: 5, fat: 2, carb: 80, fiber: 30, sodium: 100, vitFat: [], vitWater: ['B族'], minerals: ['钾'], phytochem: ['蒲公英苦素', '菊粉（inulin，益生元）'], note: '干根每次5-10g冲泡，茶汤几乎0kcal；传统认为利尿助消化，但人体证据有限；菊粉可能胀气/腹泻，第一次从少量开始；胃食管反流/低血压/服用利尿剂者慎饮；孕妇忌' },
 ];

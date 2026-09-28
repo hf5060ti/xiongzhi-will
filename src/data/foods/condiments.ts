@@ -99,4 +99,8 @@ export const CONDIMENTS: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'clove', name: '丁香（干花蕾）', cat: 'condiment', kcal: 274, protein: 6, fat: 13, carb: 27, fiber: 17.7, sodium: 270, vitFat: [], vitWater: ['C'], minerals: ['锰', '钾'], phytochem: ['丁香油酚（eugenol）'], note: '每次仅用1-2粒（<1g），热量可忽略；丁香油酚有抗菌麻醉作用；炖肉/卤味/圣诞热红酒；丁香油外用可止牙痛但不可吞服；孕妇大量摄入可能刺激子宫' },
+
+  // ---- 用户点名补充：糖类 ----
+  { id: 'bingtang-white', name: '冰糖（单晶白冰糖）', cat: 'condiment', kcal: 397, protein: 0, fat: 0, carb: 99.9, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], phytochem: [], note: '纯度接近白砂糖，本质就是结晶糖；一颗约5g=20kcal；炖雪梨/银耳/红烧肉放几颗；不存在"降火/润肺"功效，只是糖' },
+  { id: 'bingtang-yellow', name: '黄冰糖（多晶老冰糖）', cat: 'condiment', kcal: 390, protein: 0, fat: 0, carb: 97, fiber: 0, sodium: 15, vitFat: [], vitWater: [], minerals: ['微量钙/铁'], phytochem: [], note: '未完全脱色，含少量矿物质和焦糖风味；比白冰糖颜色深、风味厚；热量与白砂糖几乎一样，"更健康"是误区；一颗约10g=39kcal；控糖者等量替换白糖，别因为黄就多放' },
 ];
