@@ -4,6 +4,12 @@
 
 **在线体验：** https://hf5060ti.github.io/xiongzhi-will/（GitHub Pages，手机/电脑直接打开，开源免费，无需登录）
 
+![雄性意志首页](docs/images/home.png)
+
+![动作百科：1541 个动作演示动图](docs/images/library.png)
+
+![营养库：食物热量与今日记录](docs/images/nutrition.png)
+
 **本站只提供健康自然的健身方式，不提供任何极端训练或药物方案；请遵守你所在国家/地区的法律法规。**
 
 ---
