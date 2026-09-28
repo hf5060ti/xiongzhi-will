@@ -133,6 +133,36 @@ const MECHANIC_CN: Record<string, string> = {
   compound: '复合动作', isolation: '孤立动作',
 };
 
+// 肌群 key 归一化：补充动作库用了很多和标准 free-exercise-db 不一致的命名，
+// 这里统一映射到标准 key，否则筛"背"会漏掉菱形肌/背阔肌全称等，筛"肩"漏掉后束三角肌等。
+const MUSCLE_NORMALIZE: Record<string, string> = {
+  'latissimus dorsi': 'lats',
+  rhomboids: 'middle back',
+  back: 'lats',
+  trapezius: 'traps',
+  deltoids: 'shoulders',
+  'rear deltoids': 'shoulders',
+  'upper chest': 'chest',
+  brachialis: 'forearms',
+  'wrist flexors': 'forearms',
+  'wrist extensors': 'forearms',
+  wrists: 'forearms',
+  'rotator cuff': 'shoulders',
+  'serratus anterior': 'chest',
+  soleus: 'calves',
+  shins: 'calves',
+  ankles: 'calves',
+  feet: 'calves',
+  groin: 'adductors',
+  'inner thighs': 'adductors',
+  neck: 'neck',
+  cardio: 'cardio',
+};
+
+function normMuscles(arr: string[]): string[] {
+  return [...new Set(arr.map((m) => MUSCLE_NORMALIZE[m] || m))];
+}
+
 // 全量动作：本地动作库（exercises-db）+ 动作百科补充动作（exercises-ext，已排除与本地库重复的条目）
 const ALL_EXERCISES: ExerciseView[] = [
   ...(exercisesData as RawExercise[]).map((e) => {
@@ -142,8 +172,8 @@ const ALL_EXERCISES: ExerciseView[] = [
       name: e.name,
       nameZh: NAME_CN[e.name] || (media && !media.none ? media.zh : '') || '',
       equipment: e.equipment,
-      primaryMuscles: e.primaryMuscles,
-      secondaryMuscles: e.secondaryMuscles,
+      primaryMuscles: normMuscles(e.primaryMuscles),
+      secondaryMuscles: normMuscles(e.secondaryMuscles),
       instructions: e.instructions,
       level: e.level,
       mechanic: e.mechanic,
@@ -163,8 +193,8 @@ const ALL_EXERCISES: ExerciseView[] = [
     name: e.name,
     nameZh: e.nameZh,
     equipment: e.equipment,
-    primaryMuscles: e.primaryMuscles,
-    secondaryMuscles: e.secondaryMuscles,
+    primaryMuscles: normMuscles(e.primaryMuscles || []),
+    secondaryMuscles: normMuscles(e.secondaryMuscles || []),
     instructions: e.instructions,
     level: '',
     mechanic: '',
@@ -255,10 +285,13 @@ export default function ExerciseLibraryPage() {
       if (muscle !== 'all') {
         const group = MUSCLE_GROUPS[muscle];
         if (group) {
-          const hit = group.some((m) => e.primaryMuscles.includes(m));
+          // primary 或 secondary 命中都算（硬拉 primary 是腿，secondary 有下背，也应在"背"里出现）
+          const allMuscles = [...e.primaryMuscles, ...e.secondaryMuscles];
+          const hit = group.some((m) => allMuscles.includes(m));
           if (!hit) return false;
-        } else if (!e.primaryMuscles.includes(muscle)) {
-          return false;
+        } else {
+          const allMuscles = [...e.primaryMuscles, ...e.secondaryMuscles];
+          if (!allMuscles.includes(muscle)) return false;
         }
       }
       if (equip !== 'all' && e.equipment !== equip) return false;
