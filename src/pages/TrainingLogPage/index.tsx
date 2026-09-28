@@ -10,7 +10,7 @@
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
-import { BarChart3, CalendarDays, Check, Clock, Dumbbell, Eraser, Flame, Medal, Pencil, Play, Plus, Save, SkipForward, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
+import { BarChart3, CalendarDays, Check, Clock, Dumbbell, Eraser, Flame, HeartPulse, Medal, Moon, Pencil, Play, Plus, Save, SkipForward, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -38,6 +38,14 @@ import exercisesData from '@/data/exercises-db.json';
 import extData from '@/data/exercises-ext.json';
 import { LIFTS, estimate1RM } from '@/lib/performance-standards';
 import { cn } from '@/lib/utils';
+import {
+  assessRecovery,
+  loadRecoveryLog,
+  shouldDeload,
+  todayIso,
+  upsertRecovery,
+  type RecoveryEntry,
+} from '@/lib/recovery';
 
 interface DraftSet {
   weight: string;
@@ -218,6 +226,10 @@ const emptyExercise = (): DraftExercise => ({ name: '', sets: [{ weight: '', rep
 
 export default function TrainingLogPage() {
   const [logs, setLogs] = useState<TrainingLog[]>(loadTrainingLogs);
+  const [recoveryLog, setRecoveryLog] = useState<RecoveryEntry[]>(() => loadRecoveryLog());
+  const [recSleep, setRecSleep] = useState<string>('');
+  const [recSoreness, setRecSoreness] = useState<string>('');
+  const [recStress, setRecStress] = useState<string>('');
   const [perf, setPerf] = useState<PerformanceLogs>(loadPerformanceLogs);
 
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -781,6 +793,123 @@ export default function TrainingLogPage() {
               还没有带重量的记录，录入第一条后这里会自动生成每周容量曲线。
             </p>
           )}
+        </CardContent>
+      </Card>
+
+      {/* 减载周自动判断 */}
+      {(() => {
+        const dl = shouldDeload(volumeTrend);
+        if (!dl) return null;
+        return (
+          <Card className="border-yellow-500/40">
+            <CardContent className="p-4 sm:p-5">
+              <div className="flex items-start gap-2">
+                <Moon className="mt-0.5 h-4 w-4 shrink-0 text-yellow-400" />
+                <div>
+                  <p className="text-sm font-medium text-yellow-300">
+                    建议下周安排减载周
+                  </p>
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                    {dl.reason}
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        );
+      })()}
+
+      {/* 今日恢复状态 */}
+      <Card>
+        <CardContent className="p-4 sm:p-5 space-y-3">
+          <div className="flex items-center justify-between gap-2">
+            <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <HeartPulse className="h-3.5 w-3.5 text-primary" />
+              恢复状态（睡眠 / 酸痛 / 压力）· 仅本地保存
+            </p>
+          </div>
+          {(() => {
+            const v = assessRecovery(recoveryLog);
+            if (v) {
+              const color =
+                v.level === 'bad'
+                  ? 'border-red-500/40 text-red-300'
+                  : v.level === 'warn'
+                  ? 'border-yellow-500/40 text-yellow-300'
+                  : 'border-green-500/40 text-green-300';
+              return (
+                <div className={cn('rounded-md border p-3 text-xs leading-relaxed', color)}>
+                  <p className="font-medium">{v.title}</p>
+                  <p className="mt-1 text-muted-foreground">{v.detail}</p>
+                </div>
+              );
+            }
+            return null;
+          })()}
+          <div className="grid grid-cols-3 gap-2">
+            <div>
+              <Label className="text-[11px] text-muted-foreground">昨晚睡眠(h)</Label>
+              <Input
+                inputMode="decimal"
+                placeholder="7.5"
+                value={recSleep}
+                onChange={(e) => setRecSleep(e.target.value)}
+                className="mt-1 h-8"
+              />
+            </div>
+            <div>
+              <Label className="text-[11px] text-muted-foreground">酸痛(1-5)</Label>
+              <Input
+                inputMode="numeric"
+                placeholder="2"
+                value={recSoreness}
+                onChange={(e) => setRecSoreness(e.target.value)}
+                className="mt-1 h-8"
+              />
+            </div>
+            <div>
+              <Label className="text-[11px] text-muted-foreground">压力(1-5)</Label>
+              <Input
+                inputMode="numeric"
+                placeholder="2"
+                value={recStress}
+                onChange={(e) => setRecStress(e.target.value)}
+                className="mt-1 h-8"
+              />
+            </div>
+          </div>
+          <Button
+            type="button"
+            variant="secondary"
+            size="sm"
+            onClick={() => {
+              const sleep = parseFloat(recSleep);
+              const soreness = parseInt(recSoreness, 10);
+              const stress = parseInt(recStress, 10);
+              if (
+                (recSleep && (isNaN(sleep) || sleep < 0 || sleep > 14)) ||
+                (recSoreness && (isNaN(soreness) || soreness < 1 || soreness > 5)) ||
+                (recStress && (isNaN(stress) || stress < 1 || stress > 5))
+              ) {
+                toast.error('数值范围：睡眠 0-14h，酸痛/压力 1-5');
+                return;
+              }
+              const next = upsertRecovery({
+                date: todayIso(),
+                sleepHrs: recSleep ? sleep : undefined,
+                soreness: recSoreness ? soreness : undefined,
+                stress: recStress ? stress : undefined,
+              });
+              setRecoveryLog(next);
+              toast.success('恢复状态已记录');
+            }}
+          >
+            <Save className="mr-1 h-3.5 w-3.5" />
+            记录今天
+          </Button>
+          <p className="text-[11px] leading-relaxed text-muted-foreground">
+            恢复状态只存你浏览器本地。连续 3 天睡眠 &lt; 6h 或压力 ≥ 4 时，这里会主动提示你今天减量或休息——硬冲 PR 的代价往往是下周躺平一周。
+          </p>
         </CardContent>
       </Card>
 
