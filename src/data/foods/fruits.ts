@@ -90,4 +90,9 @@ export const FRUITS: IFood[] = [
   { id: 'raspberry', name: '树莓/覆盆子', cat: 'fruit', kcal: 53, protein: 1.2, fat: 0.7, carb: 11.9, fiber: 6.5, sodium: 1, vitFat: [], vitWater: ['C', 'K'], minerals: ['锰'], phytochem: ['花青素', '鞣花单宁', '覆盆子酮'], note: '纤维密度在常见水果里最高（约6.5g/100g），净碳水仅约5g；抗氧化密度高；新鲜易烂，冷冻款营养保留好；"覆盆子酮燃脂"证据极弱，别信减肥广告' },
   { id: 'bergamot', name: '佛手柑', cat: 'fruit', kcal: 49, protein: 1.3, fat: 0.4, carb: 13, fiber: 5, sodium: 6, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['佛手柑素（bergamottin）', '呋喃香豆素'], note: '【重要药物相互作用】佛手柑素与西柚呋喃香豆素类似，会抑制肝脏CYP3A4酶，与他汀类（阿托伐他汀等）、降压药、抗组胺药、部分抗抑郁药、抗凝药发生相互作用，可能导致血药浓度升高与副作用。服药期间慎饮伯爵茶/佛手柑茶；孕妇/哺乳期适量。' },
   { id: 'dangshan-pear', name: '砀山酥梨（安徽特产）', cat: 'fruit', kcal: 50, protein: 0.3, fat: 0.2, carb: 13, fiber: 3.1, sodium: 2, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['梨多酚'], note: '安徽砀山特产，皮薄汁多味甜；一个中等约250g可食部=125kcal；秋燥润肺常用，冰糖炖梨；果糖含量约7-8%，糖尿病人一次半个；梨籽含微量氰苷，别嚼碎吃' },
+
+  // ---- 用户点名补充 ----
+  { id: 'juzi', name: '橘子/蜜橘', cat: 'fruit', kcal: 53, protein: 0.8, fat: 0.2, carb: 13, fiber: 2.4, sodium: 1, vitFat: [], vitWater: ['C', 'B1'], minerals: ['钾'], phytochem: ['橙皮苷（hesperidin）', 'β-隐黄质'], note: '一个约100g=53kcal；橙皮苷有助血管健康；橘络（白色筋）别全撕，含黄酮；吃多皮肤发黄（胡萝卜素血症）停几天即退；空腹胃酸多者少食' },
+  { id: 'chengzi', name: '橙子', cat: 'fruit', kcal: 47, protein: 0.9, fat: 0.1, carb: 12, fiber: 2.4, sodium: 0, vitFat: [], vitWater: ['C（约53mg/100g）', 'B9'], minerals: ['钾'], phytochem: ['橙皮苷', '叶酸'], note: '一个中等约150g可食部=70kcal；整吃比榨汁好，榨汁丢失纤维且血糖反应快；服药期间与西柚不同，橙子对CYP3A4影响很小；术后/感冒补维C常用' },
+  { id: 'putao-qing', name: '提子/青葡萄（无核白）', cat: 'fruit', kcal: 69, protein: 0.7, fat: 0.2, carb: 18, fiber: 0.9, sodium: 2, vitFat: [], vitWater: ['C', 'K'], minerals: ['钾'], phytochem: ['白藜芦醇（主要在皮和籽）', '花青素（红皮）'], note: '一串约200g可食部=138kcal；含糖约16-18%，比橙子橘子高，一次别超一小碗（约150g）；白藜芦醇主要在皮，连皮吃；葡萄籽含多酚但整粒不消化，嚼碎才吸收；葡萄皮上白霜是天然酵母，正常现象' },
 ];
