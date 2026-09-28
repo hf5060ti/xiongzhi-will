@@ -184,4 +184,10 @@ export const MEATS: IFood[] = [
 
   // ---- 用户点名补充：争议食材 ----
   { id: 'lizard', name: '蜥蜴肉（参考值，仅作营养参考）', cat: 'meat', kcal: 120, protein: 20, fat: 3, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], phytochem: [], note: '【重要声明】本网站不支持任何违法乱纪、捕食野生保护动物或食用野味的行为。蜥蜴在世界部分地区（如部分东南亚、拉美）有合法食用传统，但我国野生蜥蜴多属"三有"保护动物，私自捕捉/食用涉嫌违法。以下数据仅为营养学参考：人工养殖、合法渠道、彻底煮熟后蛋白质约20g/100g、脂肪极低。任何情况下请遵守当地法律法规，尊重生态保护。' },
+
+  // ---- 用户点名补充：火锅/卤味杂碎 ----
+  { id: 'niuxue-xiangchang', name: '牛血香肠（东北/贵州风味）', cat: 'meat', kcal: 180, protein: 15, fat: 12, carb: 3, fiber: 0, sodium: 900, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '牛血+肉+淀粉灌制，高铁高蛋白；但钠与脂肪不低；切片煎/涮火锅；一根约80g=144kcal；高血脂/高血压者适量' },
+  { id: 'ya-chang', name: '鸭肠（熟，火锅）', cat: 'meat', kcal: 129, protein: 14, fat: 7, carb: 1, fiber: 0, sodium: 200, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '火锅经典，"七上八下"涮15秒；脆嫩；胆固醇偏高；一份约100g；蘸料别太多油碟' },
+  { id: 'ji-chang', name: '鸡肠（熟）', cat: 'meat', kcal: 96, protein: 14, fat: 4, carb: 1, fiber: 0, sodium: 150, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '卤味/干锅/冒菜常见；脂肪比鸭肠低；清洗要彻底；胆固醇偏高，一次50-80g' },
+  { id: 'ya-xue', name: '鸭血（熟）', cat: 'meat', kcal: 55, protein: 12, fat: 0.4, carb: 1, fiber: 0, sodium: 180, vitFat: [], vitWater: ['B12'], minerals: ['铁（血红素铁）', '硒'], note: '毛血旺/鸭血粉丝汤/火锅主角；高铁低脂，吸收率高，补铁优选；一盒约300g；痛风/高尿酸者适量（嘌呤中高）；必须彻底煮熟' },
 ];

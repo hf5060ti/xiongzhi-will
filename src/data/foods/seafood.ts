@@ -94,4 +94,14 @@ export const SEAFOODS: IFood[] = [
   { id: 'yuwan', name: '鱼丸（熟）', cat: 'seafood', kcal: 100, protein: 10, fat: 3, carb: 8, fiber: 0, sodium: 700, vitFat: [], vitWater: ['B12'], minerals: ['硒'], note: '火锅/汤粉常见；选配料表前几位是鱼糜而非鱼糜制品+淀粉；不建议当纯海鲜蛋白，淀粉占比高' },
   { id: 'niuwa', name: '牛蛙肉（去头去皮熟）', cat: 'seafood', kcal: 81, protein: 16, fat: 0.3, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒'], phytochem: [], note: '极低脂高蛋白，比鸡胸还瘦；但泡椒/干锅/水煮做法脂肪飙升；1只可食部约100g；必须彻底煮熟（寄生虫风险）' },
   { id: 'xiaolongxia', name: '小龙虾（熟去壳净肉）', cat: 'seafood', kcal: 90, protein: 18, fat: 1, carb: 1, fiber: 0, sodium: 200, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒', '铜'], note: '净肉极低脂高蛋白；但麻辣/十三香汤汁钠油极高，热量主要来自汤汁配面条；一餐剥1斤虾约200g净肉=180kcal；尿酸高者适量（嘌呤中高）；务必煮熟煮透' },
+
+  // ---- 用户点名补充：淡水鱼 / 贝类 / 泥鳅 ----
+  { id: 'catfish', name: '鲶鱼（淡水，熟）', cat: 'seafood', kcal: 146, protein: 17, fat: 8, carb: 0, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '磷'], note: '无鳞刺少，肉质细嫩；脂肪比一般淡水鱼高，适合红烧/蒜焖；鱼油以饱和脂肪为主，减脂期别多吃' },
+  { id: 'carp', name: '鲤鱼（淡水，熟）', cat: 'seafood', kcal: 109, protein: 18, fat: 4, carb: 0, fiber: 0, sodium: 53, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '淡水鱼代表，刺多；红烧/糖醋/鲤鱼焙面；鲤鱼卵（鱼籽）胆固醇高；孕妇/术后少量' },
+  { id: 'snakehead', name: '黑鱼/乌鳢（淡水，熟）', cat: 'seafood', kcal: 85, protein: 18, fat: 1.2, carb: 0, fiber: 0, sodium: 52, vitFat: [], vitWater: ['B12'], minerals: ['硒', '铁'], note: '低脂高蛋白，肉紧实刺少；术后/产妇常用黑鱼汤促进恢复；清炖/酸菜鱼片；一条约1kg出肉约600g' },
+  { id: 'silver-carp', name: '白鲢（淡水，熟）', cat: 'seafood', kcal: 104, protein: 17, fat: 3, carb: 0, fiber: 0, sodium: 60, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '滤食性淡水鱼，小刺极多；价格便宜；适合红烧/鱼丸/鱼头汤；土腥味重，需用料酒/姜/紫苏去腥' },
+  { id: 'bighead-carp', name: '鳙鱼/花鲢/胖头鱼（淡水）', cat: 'seafood', kcal: 100, protein: 15, fat: 3, carb: 0, fiber: 0, sodium: 61, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '剁椒鱼头/鱼头泡饼的主角，鱼头大而肉厚；鱼脸胶质多；鱼头约占体重1/3；土腥味比白鲢轻' },
+  { id: 'huajia', name: '花甲/花蛤（熟去壳）', cat: 'seafood', kcal: 45, protein: 7, fat: 0.8, carb: 2, fiber: 0, sodium: 300, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌', '硒'], note: '极低卡高蛋白高锌；夜市辣炒/蒜蓉粉丝蒸；吐沙需盐水养2小时；痛风急性期少吃（嘌呤中高）' },
+  { id: 'black-clam', name: '黑口贝/紫石房蛤（熟）', cat: 'seafood', kcal: 60, protein: 10, fat: 1, carb: 2, fiber: 0, sodium: 280, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌', '硒'], note: '北方沿海常见，肉质紧实；碳烤/蒜蓉蒸；与花蛤类似但个大肉厚；必须鲜活，死贝不可食用' },
+  { id: 'loach', name: '泥鳅（熟）', cat: 'seafood', kcal: 96, protein: 18, fat: 2, carb: 0, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B12'], minerals: ['钙', '铁', '磷'], phytochem: [], note: '小型淡水鱼，钙铁含量在鱼类里偏高；北方"泥鳅钻豆腐"/干炸；必须彻底煮熟（棘颚口线虫风险）；儿童补钙可适量' },
 ];

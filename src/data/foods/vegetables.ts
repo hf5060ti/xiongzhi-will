@@ -153,4 +153,7 @@ export const VEGETABLES: IFood[] = [
   // ---- 用户点名补充 ----
   { id: 'garlic', name: '大蒜（生）', cat: 'veg', kcal: 149, protein: 6.4, fat: 0.5, carb: 33, fiber: 2.1, sodium: 17, vitFat: [], vitWater: ['C', 'B6'], minerals: ['锰', '硒'], phytochem: ['大蒜素（allicin）', '硫化物'], note: '大蒜素切碎放置10分钟后活性最高，高温久煮损失；日常2-3瓣约10g即可；空腹生食刺激胃，胃炎者熟吃' },
   { id: 'bamboo-shoot', name: '春笋/冬笋（鲜）', cat: 'veg', kcal: 27, protein: 2.6, fat: 0.2, carb: 4, fiber: 1.8, sodium: 1, vitFat: [], vitWater: ['C', 'B6'], minerals: ['钾'], phytochem: ['酪氨酸'], note: '极低卡高纤维，减脂友好；含草酸与氰苷，必须焯水5-10分钟去涩去毒；冬笋脂肪略高于春笋；痛风者少食（嘌呤中高）' },
+
+  // ---- 用户点名补充 ----
+  { id: 'yuxingcao', name: '鱼腥草/折耳根（嫩茎叶）', cat: 'veg', kcal: 37, protein: 2, fat: 0.4, carb: 6, fiber: 1.2, sodium: 9, vitFat: [], vitWater: ['C', 'B2'], minerals: ['钾', '钙'], phytochem: ['鱼腥草素（癸酰乙醛）', '槲皮素'], note: '西南地区特色，味道两极分化；鱼腥草素有抗菌抗炎作用，但对光热不稳定；凉拌/蘸水/炒腊肉；体虚/孕妇少食；口服注射液有过敏史者慎食' },
 ];
