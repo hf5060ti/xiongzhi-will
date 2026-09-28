@@ -45,6 +45,156 @@ const RPE_ROWS = [
   { rpe: 6, label: 'RPE 6', note: '还能再做 4 次（技术练习 / 减载）' },
 ];
 
+/** 主项热身组：输入今日正式组重量，自动算递增组 */
+function WarmupCalculator() {
+  const [workWeight, setWorkWeight] = useState<string>('100');
+  const ww = parseFloat(workWeight) || 0;
+
+  const rows = [
+    { pct: 0, reps: '10-15', label: '空杆', rest: '60 秒', note: '找动作节奏，不喘气' },
+    { pct: 40, reps: '8-10', label: '40%', rest: '90 秒', note: '血液循环，激活目标肌' },
+    { pct: 60, reps: '5', label: '60%', rest: '2 分钟', note: '神经募集，开始加速' },
+    { pct: 80, reps: '2-3', label: '80%', rest: '2-3 分钟', note: '接近正式组，保持速度' },
+    { pct: 90, reps: '1', label: '90%（可选）', rest: '3-4 分钟', note: '只有正式组 ≥85% 时才做' },
+  ];
+
+  return (
+    <Card className="border-white/10 bg-card/60 backdrop-blur-xl">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2 text-lg">
+          <TrendingUp className="h-5 w-5 text-primary" />
+          主项热身组计算器
+        </CardTitle>
+        <CardDescription>
+          输入今日第一组正式组重量（kg），自动算递增组。方法参考谭成义力量举热身法：空杆起步，大重量前小步递增。
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="max-w-xs">
+          <label className="mb-1.5 block text-xs font-medium text-muted-foreground">
+            今日正式组重量（kg）
+          </label>
+          <Input
+            type="number"
+            inputMode="decimal"
+            value={workWeight}
+            onChange={(e) => setWorkWeight(e.target.value)}
+            placeholder="例如 100"
+            className="border-white/12 bg-white/[0.06] text-lg"
+          />
+        </div>
+        {ww > 0 && (
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+            {rows.map((row) => {
+              const kg = row.pct === 0 ? 20 : Math.round(ww * row.pct / 100);
+              return (
+                <div key={row.pct} className="rounded-xl border border-border/40 bg-accent/20 p-3">
+                  <div className="flex items-baseline justify-between">
+                    <p className="text-[11px] text-muted-foreground">{row.label}</p>
+                    <p className="font-mono text-lg font-bold text-foreground">{kg} kg</p>
+                  </div>
+                  <p className="mt-1 text-[11px] text-muted-foreground">{row.reps} 次 · 休 {row.rest}</p>
+                  <p className="mt-1 text-[10px] leading-snug text-muted-foreground/80">{row.note}</p>
+                </div>
+              );
+            })}
+          </div>
+        )}
+        <p className="flex items-start gap-2 text-[11px] leading-relaxed text-muted-foreground">
+          <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+          重量跳法：早期跳大一点（空杆→40%→60%），越接近正式组跳越小（60%→80%→90%）。
+          孤立动作（弯举、侧平举）不需要这么完整的热身链，2 组轻重量过渡即可。
+          深蹲/硬拉的热身组要比卧推多 1-2 组，因为下半身神经募集更慢。
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
+/** 谭成义+凯圣王三分化热身清单 */
+function WarmupRoutineGuide() {
+  const [tab, setTab] = useState<'push' | 'pull' | 'legs'>('push');
+  const tabs = [
+    { key: 'push' as const, label: '推日（胸/肩/三头）' },
+    { key: 'pull' as const, label: '拉日（背/后束/二头）' },
+    { key: 'legs' as const, label: '腿日（臀/腿）' },
+  ];
+  const content = {
+    push: [
+      { t: '胸椎灵活', d: '泡沫轴垫在肩胛骨之间，双手抱头做胸椎后伸 10 次，打开胸腔。' },
+      { t: '放松上背部', d: '泡沫轴从上背到中背缓慢滚动 30 秒，找到酸痛点停住深呼吸。' },
+      { t: '前锯肌激活', d: '小哑铃或弹力带做"俯卧撑PLUS"，肩胛骨前伸后缩 15 次 × 2 组。' },
+      { t: '弹力带绕肩', d: '弹力带从眼前拉到脑后，保持持续张力，20 次 × 2 组。8 字绕肩各 5 次。' },
+      { t: '放松二头', d: '泡沫轴竖放，二头肌压上去滚动 20 秒。推日二头也参与稳定，紧了肘展不开。' },
+      { t: '目标肌激活', d: '小重量哑铃对握夹胸 15 次 × 2-3 组，做到微充血即可。' },
+    ],
+    pull: [
+      { t: '最伟大拉伸', d: '弓步 + 胸椎旋转 + 手够脚，每侧 5 次，全身动态打开。' },
+      { t: '开胸椎', d: '泡沫轴卷腹式胸椎伸展 10 次，让肩胛骨能贴住肋骨。' },
+      { t: '放松大小圆肌', d: '侧卧泡沫轴，腋下到肩胛下缘缓慢滚动 30 秒，找痛点停住。' },
+      { t: '弹力带肩胛激活', d: '弹力带做面拉或外旋，保持张力不借力，15 次 × 2 组。不是划船！' },
+      { t: '绕肩', d: '木棍或弹力带过顶绕肩，窄握距，10 次 × 2 组。' },
+      { t: '激活背阔', d: '直臂下压或弹力带背阔下拉 15 次 × 2 组，找"背阔肌先发力"的感觉。' },
+    ],
+    legs: [
+      { t: '毛毛虫爬行', d: '站立弯腰手贴地，小步走到平板位，再小步走回站立，5 次。全身升温。' },
+      { t: '最伟大拉伸', d: '弓步 + 胸椎旋转，每侧 5 次。腿日尤其要开髋。' },
+      { t: '泡沫轴股四', d: '俯卧泡沫轴压大腿前侧，从髋到膝缓慢滚动 40 秒。痛点停住。' },
+      { t: '腘绳肌松解', d: '坐姿或侧卧泡沫轴压大腿后侧，30 秒。' },
+      { t: '髂胫束放松', d: '侧卧泡沫轴压大腿外侧，20 秒。膝盖外侧痛的多滚一会。' },
+      { t: '动态青蛙趴', d: '跪姿双膝打开，身体后坐找大腿内侧牵拉，主动控制幅度，10 次。不是比柔韧性！' },
+    ],
+  };
+  return (
+    <Card className="border-white/10 bg-card/60 backdrop-blur-xl">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2 text-lg">
+          <TrendingUp className="h-5 w-5 text-primary" />
+          谭成义 + 凯圣王三分化热身清单
+        </CardTitle>
+        <CardDescription>
+          推/拉/腿三天各有侧重，练前 8-12 分钟完成。来源：两人抖音「焚诀」三分化跟练系列整理。
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="mb-4 flex flex-wrap gap-2">
+          {tabs.map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setTab(t.key)}
+              className={
+                'rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ' +
+                (tab === t.key
+                  ? 'bg-primary text-primary-foreground'
+                  : 'border border-border bg-accent/20 text-muted-foreground hover:text-foreground')
+              }
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+        <ol className="space-y-2.5">
+          {content[tab].map((item, i) => (
+            <li key={i} className="flex gap-2.5 rounded-lg border border-border/40 bg-accent/20 p-3">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-[11px] text-primary">
+                {i + 1}
+              </span>
+              <div>
+                <p className="text-sm font-medium text-foreground">{item.t}</p>
+                <p className="mt-0.5 text-[11px] leading-relaxed text-muted-foreground">{item.d}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground">
+          热身不是训练前的"浪费时间"，而是让目标肌在正式组第一组就进入状态。
+          跳过热身直接上重量，要么动作变形，要么第一组还在找感觉——那组就白练了。
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function ToolsPage() {
   const [weight, setWeight] = useState<string>('80');
   const [reps, setReps] = useState<string>('5');
@@ -239,6 +389,12 @@ export default function ToolsPage() {
           </p>
         </CardContent>
       </Card>
+
+      {/* 主项热身组计算器 */}
+      <WarmupCalculator />
+
+      {/* 谭凯三分化热身清单 */}
+      <WarmupRoutineGuide />
 
       {/* 免责 */}
       <p className="rounded-xl border border-border/40 bg-accent/10 p-3 text-[11px] leading-relaxed text-muted-foreground">
