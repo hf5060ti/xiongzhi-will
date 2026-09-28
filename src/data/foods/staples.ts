@@ -117,4 +117,11 @@ export const STAPLES: IFood[] = [
   // ---- 淀粉粉丝细分（用户点名） ----
   { id: 'sweet-potato-vermicelli', name: '红薯粉丝', cat: 'staple', kcal: 330, protein: 0.5, fat: 0.2, carb: 82, fiber: 0.5, sodium: 10, vitFat: [], vitWater: [], minerals: ['钾'], note: '红薯淀粉制粉条，与绿豆粉丝热量相近、纯淀粉升糖较快；久煮不烂偏Q，宜配菜少油' },
   { id: 'tapioca-vermicelli', name: '木薯粉丝（水晶粉）', cat: 'staple', kcal: 340, protein: 0.3, fat: 0.1, carb: 84, fiber: 0.3, sodium: 8, vitFat: [], vitWater: [], minerals: ['钾'], note: '木薯淀粉制，透明Q弹；珍珠奶茶的珍珠即木薯粉制品；纯淀粉快碳，控糖/减脂人群注意份量' },
+
+  // ---- 特种米与谷物麸（用户点名） ----
+  { id: 'indica-rice-dry', name: '籼米（袁隆平杂交水稻，干）', cat: 'staple', kcal: 348, protein: 7.5, fat: 0.8, carb: 78, fiber: 0.7, sodium: 3, vitFat: [], vitWater: ['B1', 'B3'], minerals: ['镁'], note: '以袁隆平团队为代表的杂交水稻（籼稻）推广品种；直链淀粉较高，长粒、出饭多，升糖较糯米平缓；数据为籼米干重参考值' },
+  { id: 'purple-glutinous-dry', name: '紫米（紫糯米，干）', cat: 'staple', kcal: 343, protein: 8.3, fat: 2.3, carb: 70.4, fiber: 1.4, sodium: 4, vitFat: ['E'], vitWater: ['B1', 'B2'], minerals: ['铁', '锌'], phytochem: ['花青素：抗氧化'], note: '带糯性，煮粥/焖饭糯香；与黑米不同，属糯性稻米' },
+  { id: 'oat-grain-dry', name: '燕麦米（整粒去壳，干）', cat: 'staple', kcal: 367, protein: 15, fat: 6.7, carb: 61.4, fiber: 10.6, sodium: 4, vitFat: ['E'], vitWater: ['B1', 'B3'], minerals: ['镁', '锌'], note: '整粒燕麦去芒壳，需提前浸泡久煮；β-葡聚糖与膳食纤维高于燕麦片，升糖更慢' },
+  { id: 'sea-rice-dry', name: '海水稻米（耐盐碱稻米，干）', cat: 'staple', kcal: 348, protein: 7.5, fat: 0.8, carb: 77, fiber: 0.9, sodium: 6, vitFat: [], vitWater: ['B1', 'B3'], minerals: ['钾', '镁'], note: '耐盐碱稻（海水稻）品种参考值，营养接近普通籼米，矿物质略高；数据为市面平均参考，以实际包装为准' },
+  { id: 'rice-bran', name: '米糠（干）', cat: 'staple', kcal: 316, protein: 13.3, fat: 20.9, carb: 49.7, fiber: 21, sodium: 5, vitFat: ['E', 'K'], vitWater: ['B1', 'B3', 'B6'], minerals: ['镁', '锌', '钾'], phytochem: ['γ-谷维素：抗氧化、传统认为稳情绪'], note: '稻米碾磨的皮层，膳食纤维极高；脂肪含量高易氧化，需低温密封保存，少量拌粥/酸奶' },
 ];

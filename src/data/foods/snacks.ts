@@ -103,4 +103,16 @@ export const SNACKS: IFood[] = [
   { id: 'vitamin-d3', name: '维生素D3（补剂）', cat: 'snack', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 0, vitFat: ['D'], vitWater: [], minerals: ['钙'], note: '每粒典型1000-2000IU（25-50μg），脂溶性维生素本身无热量（软胶囊油载体约1-2kcal/粒）；晒不到太阳的健身者普遍建议补充，与钙同补助骨健康。⚠ 脂溶性不可过量，长期超量有中毒风险，各品牌以包装为准' },
   { id: 'citrulline-powder', name: '瓜氨酸粉（L-瓜氨酸）', cat: 'snack', kcal: 250, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 0, vitFat: [], vitWater: [], minerals: [], note: '游离氨基酸粉（不计入蛋白质），训练前30-60分钟3-6g冲水；体内转精氨酸促一氧化氮、提升泵感与耐力，与甜菜根粉（硝酸盐）作用协同。⚠ 各品牌纯度不同，以产品包装营养表为准' },
   { id: 'beef-jerky', name: '牛肉干（普通）', cat: 'snack', kcal: 410, protein: 45, fat: 10, carb: 12, fiber: 1, sodium: 1500, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '高蛋白便携零食，钠极高（选低盐款）；训练后/出差加餐，一次一小把约30g' },
+
+  // ---- 蛋白粉大类（市面平均参考值，用户点名；不标注任何品牌） ----
+  { id: 'yeast-protein', name: '酵母蛋白粉', cat: 'snack', kcal: 380, protein: 70, fat: 2, carb: 15, fiber: 3, sodium: 250, vitFat: [], vitWater: ['B1', 'B2', 'B3', 'B6', '叶酸'], minerals: ['锌', '硒'], note: '酵母提取蛋白质，植物性，B族维生素丰富；⚠ 各品牌配方不同，此为市面平均参考值，以产品包装营养成分表为准' },
+  { id: 'soy-protein', name: '大豆蛋白粉（浓缩）', cat: 'snack', kcal: 375, protein: 70, fat: 6, carb: 15, fiber: 5, sodium: 300, vitFat: [], vitWater: ['叶酸', 'B1'], minerals: ['铁', '钙', '镁'], phytochem: ['大豆异黄酮：植物雌激素样作用（对多数人安全性好，乳腺/前列腺病史者遵医嘱）'], note: '植物蛋白，含全部必需氨基酸（蛋氨酸偏低，可配谷物互补）；⚠ 各品牌配方不同，此为市面平均参考值，以产品包装营养成分表为准' },
+  { id: 'soy-protein-isolate', name: '大豆分离蛋白粉', cat: 'snack', kcal: 370, protein: 85, fat: 1, carb: 5, fiber: 2, sodium: 400, vitFat: [], vitWater: [], minerals: ['铁', '钙'], note: '纯度更高的植物蛋白，碳水/脂肪更低，乳糖不耐者友好；⚠ 各品牌配方不同，此为市面平均参考值，以产品包装营养成分表为准' },
+  { id: 'beef-protein', name: '牛肉蛋白粉', cat: 'snack', kcal: 400, protein: 88, fat: 2, carb: 2, fiber: 0, sodium: 350, vitFat: [], vitWater: ['B12', 'B3', 'B6'], minerals: ['铁', '锌'], note: '动物蛋白，天然含肌酸与BCAA，口感带牛肉味；⚠ 各品牌配方不同，此为市面平均参考值，以产品包装营养成分表为准' },
+  { id: 'hydrolyzed-protein', name: '水解蛋白粉（水解乳清）', cat: 'snack', kcal: 390, protein: 85, fat: 2, carb: 3, fiber: 0, sodium: 400, vitFat: [], vitWater: [], minerals: ['钙'], note: '预水解小分子肽，吸收快、乳糖极低，价格较高；⚠ 各品牌配方不同，此为市面平均参考值，以产品包装营养成分表为准' },
+  { id: 'milk-protein', name: '牛乳蛋白粉（乳清+酪蛋白复合）', cat: 'snack', kcal: 390, protein: 80, fat: 5, carb: 6, fiber: 0, sodium: 250, vitFat: [], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '参考市面牛乳蛋白粉平均数据（不标注任何品牌），乳清+酪蛋白混合、吸收快慢兼备；⚠ 各品牌配方不同，此为典型参考值，以产品包装营养成分表为准' },
+
+  // ---- 枣制品（用户点名；红枣干已在水果库） ----
+  { id: 'candied-jujube', name: '蜜枣（糖渍）', cat: 'snack', kcal: 321, protein: 1.1, fat: 0.2, carb: 79, fiber: 1.6, sodium: 30, vitFat: [], vitWater: ['C'], minerals: ['钾', '铁'], note: '糖渍加工，糖分高，当甜味剂少量食用；控糖人群慎选' },
+  { id: 'jujube-cake', name: '枣糕', cat: 'snack', kcal: 300, protein: 6, fat: 10, carb: 48, fiber: 2, sodium: 250, vitFat: [], vitWater: ['B1'], minerals: ['铁', '钾'], note: '红枣发糕类面点，含糖与油脂，当主食或加餐少量' },
 ];
