@@ -1,5 +1,5 @@
 // EXPORTS: FOODS
-// 食物营养库汇总：9 大分类合并为单一 FOODS 数组
+// 食物营养库汇总：12 大分类合并为单一 FOODS 数组
 import type { IFood } from './types';
 import { MEATS } from './meats';
 import { SEAFOODS } from './seafood';
@@ -12,6 +12,7 @@ import { NUTS } from './nuts';
 import { SNACKS } from './snacks';
 import { COOKED } from './cooked';
 import { CONDIMENTS } from './condiments';
+import { DRINKS } from './drinks';
 
 export const FOODS: IFood[] = [
   ...MEATS,
@@ -25,6 +26,7 @@ export const FOODS: IFood[] = [
   ...SNACKS,
   ...COOKED,
   ...CONDIMENTS,
+  ...DRINKS,
 ];
 
 export type { FoodCategory, IFood } from './types';

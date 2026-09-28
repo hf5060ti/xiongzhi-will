@@ -1,5 +1,5 @@
 // EXPORTS: FoodCategory, IFood, FOOD_CATEGORIES
-// 食物营养库类型定义：9 大分类，营养字段统一为每 100g 生重/可食部参考值
+// 食物营养库类型定义：12 大分类，营养字段统一为每 100g 生重/可食部参考值
 export type FoodCategory =
   | 'meat'
   | 'seafood'
@@ -11,7 +11,8 @@ export type FoodCategory =
   | 'nuts'
   | 'snack'
   | 'cooked' // 家常菜 / 熟食
-  | 'condiment'; // 酱料 / 调味
+  | 'condiment' // 酱料 / 调味
+  | 'drink'; // 饮料（每 100ml 参考值）
 
 export interface IFood {
   id: string;
@@ -42,4 +43,5 @@ export const FOOD_CATEGORIES: { id: FoodCategory; label: string }[] = [
   { id: 'snack', label: '零食加工' },
   { id: 'cooked', label: '家常菜熟食' },
   { id: 'condiment', label: '酱料调味' },
+  { id: 'drink', label: '饮料' },
 ];

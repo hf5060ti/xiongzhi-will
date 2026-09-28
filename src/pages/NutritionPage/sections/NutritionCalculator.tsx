@@ -63,6 +63,15 @@ function foodEmoji(food: IFood): string {
   if (food.cat === 'staple') return '🍚';
   if (food.cat === 'legume') return '🫘';
   if (food.cat === 'nuts') return '🥜';
+  if (food.cat === 'drink') {
+    if (id.includes('coffee') || name.includes('咖啡')) return '☕';
+    if (id.includes('tea') || name.includes('茶') || name.includes('乌龙') || name.includes('茉莉') || name.includes('凉茶') || name.includes('冰红茶')) return '🍵';
+    if (id.includes('cola') || id.includes('pepsi') || id.includes('sprite') || id.includes('fanta') || id.includes('mirinda') || name.includes('可乐') || name.includes('雪碧') || name.includes('芬达') || name.includes('美年达') || name.includes('汽水') || name.includes('七喜')) return '🥤';
+    if (id.includes('monster') || id.includes('redbull') || id.includes('energy') || name.includes('魔爪') || name.includes('红牛') || name.includes('东鹏') || name.includes('乐虎') || name.includes('战马')) return '⚡';
+    if (id.includes('sports') || id.includes('gatorade') || id.includes('pocari') || id.includes('scream') || name.includes('佳得乐') || name.includes('宝矿力') || name.includes('尖叫')) return '🏃';
+    if (name.includes('果汁') || name.includes('橙') || name.includes('椰汁') || name.includes('芒') || name.includes('桃') || name.includes('葡萄') || name.includes('山楂')) return '🧃';
+    return '🥤';
+  }
   return '🍽️';
 }
 
