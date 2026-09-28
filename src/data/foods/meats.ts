@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: MEATS
 // 肉类（牛肉 / 猪肉 / 羊肉 / 禽肉），每 100g 生重参考值
@@ -160,4 +160,14 @@ export const MEATS: IFood[] = [
   { id: 'beef-sirloin', name: '西冷牛排（生）', cat: 'meat', kcal: 206, protein: 23, fat: 12, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌', '硒'], note: '牛外脊带边脂肪，性价比高；煎烤配西兰花/芦笋经典，边油可剪掉降脂' },
   { id: 'beef-filet', name: '菲力牛排（生）', cat: 'meat', kcal: 155, protein: 24, fat: 6, carb: 0, fiber: 0, sodium: 52, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌', '硒'], note: '牛里脊最嫩部位、脂肪最低，减脂期牛排首选；价格最高，口感软嫩' },
   { id: 'beef-ribeye', name: '眼肉牛排（生）', cat: 'meat', kcal: 270, protein: 22, fat: 20, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌'], note: '肋眼雪花脂肪最高、风味最足，热量炸弹级别；增肌期可吃，减脂期少选' },
+
+  // ---- 用户点名补充：禽畜杂件/脆骨 ----
+  { id: 'chicken-frame', name: '鸡架（带骨可食肉）', cat: 'meat', kcal: 200, protein: 18, fat: 14, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B3'], minerals: ['钙', '磷'], note: '沈阳/东北小吃；肉少骨多，主要啃风味；炖汤后弃骨；嘌呤与钠偏高' },
+  { id: 'chicken-cartilage', name: '鸡脆骨（掌中宝）', cat: 'meat', kcal: 150, protein: 15, fat: 9, carb: 1, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B3'], minerals: ['钙'], note: '鸡爪掌间脆骨，椒盐/烧烤常见；口感脆，钙与胶原蛋白丰富；油炸后热量翻倍' },
+  { id: 'chicken-gizzard', name: '鸡胗（鸡胃）', cat: 'meat', kcal: 118, protein: 19, fat: 2.8, carb: 3, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B3'], minerals: ['铁', '锌'], note: '低脂高蛋白，卤味下酒；口感韧，需切花刀熟透；嘌呤中等' },
+  { id: 'chicken-skin', name: '鸡皮（生）', cat: 'meat', kcal: 450, protein: 13, fat: 45, carb: 0.1, fiber: 0, sodium: 50, vitFat: ['A'], vitWater: [], minerals: [], note: '脂肪与饱和脂肪极高，减脂期去皮吃；增肌期偶尔保留皮增风味' },
+  { id: 'chicken-feet', name: '鸡爪（生）', cat: 'meat', kcal: 254, protein: 24, fat: 16, carb: 0.1, fiber: 0, sodium: 70, vitFat: [], vitWater: [], minerals: ['钙'], phytochem: ['胶原蛋白'], note: '胶原蛋白丰富但为不完全蛋白，吃猪蹄/鸡爪补胶原并不能直接补到脸上；卤/泡凤爪钠高' },
+  { id: 'duck-feet', name: '鸭掌（生）', cat: 'meat', kcal: 150, protein: 19, fat: 8, carb: 0.2, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B3'], minerals: ['钙'], note: '皮骨多、肉少，胶原蛋白丰富；泡椒鸭掌钠高；卤味适量' },
+  { id: 'beef-cartilage', name: '牛脆骨（牛软骨）', cat: 'meat', kcal: 200, protein: 20, fat: 13, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['钙'], phytochem: ['硫酸软骨素'], note: '牛胸/关节软骨，烧烤/卤；钙与软骨素丰富，但难嚼；油炸后热量飙升' },
+  { id: 'lamb-cartilage', name: '羊脆骨', cat: 'meat', kcal: 200, protein: 18, fat: 14, carb: 0, fiber: 0, sodium: 65, vitFat: [], vitWater: ['B12'], minerals: ['钙', '锌'], note: '羊胸软骨，烧烤常见；膻味明显；钙丰富但脂肪不低' },
 ];

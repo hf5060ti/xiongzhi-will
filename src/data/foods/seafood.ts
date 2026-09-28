@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: SEAFOODS
 // 水产（鱼类 / 虾蟹贝类 / 藻类），每 100g 生重/可食部参考值
@@ -84,4 +84,7 @@ export const SEAFOODS: IFood[] = [
   // ---- 小众水产（用户点名） ----
   { id: 'sea-star', name: '海星（食用生殖腺）', cat: 'seafood', kcal: 110, protein: 10, fat: 6, carb: 3, fiber: 0, sodium: 300, vitFat: ['D'], vitWater: ['B12'], minerals: ['锌', '硒'], note: '可食部分为生殖腺（海星黄），口感似海胆；嘌呤较高，蟹黄类高胆固醇；务必正规来源并彻底熟制，赤潮期/来源不明禁食' },
   { id: 'swimming-crab', name: '梭子蟹', cat: 'seafood', kcal: 95, protein: 18, fat: 2, carb: 0.5, fiber: 0, sodium: 300, vitFat: ['D'], vitWater: ['B12'], minerals: ['锌', '硒'], note: '我国沿海经济蟹类（三疣梭子蟹），清蒸/葱姜炒经典；蟹肉低脂高蛋白，蟹黄胆固醇高；嘌呤较高，痛风者少食；死蟹易产生组胺，务必鲜活烹饪' },
+
+  // ---- 用户点名补充 ----
+  { id: 'fish-skin-dried', name: '即食烤鱼皮（咸蛋黄/原味）', cat: 'seafood', kcal: 520, protein: 25, fat: 40, carb: 15, fiber: 0, sodium: 800, vitFat: ['D'], vitWater: ['B12'], minerals: ['钙', '磷'], note: '鱼皮经油炸/烘烤，脂肪与钠极高，下酒零食；胶原蛋白丰富但为不完全蛋白；当零食少量，别当高蛋白来源' },
 ];

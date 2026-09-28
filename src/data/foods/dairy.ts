@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: DAIRY
 // 蛋奶（蛋类 / 奶类 / 奶酪 / 黄油），每 100g 参考值
@@ -72,4 +72,8 @@ export const DAIRY: IFood[] = [
   // ---- 乳糖不耐友好（用户点名） ----
   { id: 'milk-lactose-free', name: '无乳糖牛奶', cat: 'dairy', kcal: 47, protein: 3.3, fat: 1.6, carb: 4.8, fiber: 0, sodium: 45, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '乳糖已酶解为葡萄糖+半乳糖，乳糖不耐者补钙补蛋白的友好选择；与原奶热量接近' },
   { id: 'yogurt-plant', name: '植物酸奶', cat: 'dairy', kcal: 45, protein: 2, fat: 1.5, carb: 6, fiber: 0.5, sodium: 40, vitFat: [], vitWater: ['B2'], minerals: ['钙'], note: '豆/椰/燕麦基发酵，蛋白低于动物酸奶；选高蛋白、低糖、强化钙款更佳' },
+
+  // ---- 用户点名补充 ----
+  { id: 'ice-cream', name: '冰淇淋（奶油味）', cat: 'dairy', kcal: 207, protein: 3.5, fat: 11, carb: 24, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2'], minerals: ['钙'], note: '全脂奶油+糖，热量主要来自添加糖与饱和脂肪；减脂期偶尔解馋，一支雪糕约70g=145kcal' },
+  { id: 'mozzarella-shred', name: '马苏里拉芝士碎', cat: 'dairy', kcal: 280, protein: 28, fat: 17, carb: 3.5, fiber: 0, sodium: 620, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '披萨/焗饭用；蛋白高脂肪适中，但钠高；一把20g约56kcal，拉丝效果核心' },
 ];

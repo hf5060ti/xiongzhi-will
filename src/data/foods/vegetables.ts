@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: VEGETABLES
 // 蔬菜（叶菜 / 十字花科 / 根茎 / 菌菇 / 瓜茄 / 葱姜蒜），每 100g 生重参考值
@@ -146,4 +146,7 @@ export const VEGETABLES: IFood[] = [
 
   // ---- 豆荚类蔬菜（用户点名） ----
   { id: 'hyacinth-bean-pod', name: '扁豆荚（鲜嫩荚）', cat: 'veg', kcal: 37, protein: 2.8, fat: 0.4, carb: 6.5, fiber: 2.2, sodium: 5, vitFat: ['A', 'K'], vitWater: ['C', '叶酸'], minerals: ['钾', '镁'], note: '嫩扁豆荚当蔬菜，干扁豆粒另列（豆类分类）；⚠ 生荚含凝集素/皂苷，必须彻底烧熟煮透后食用' },
+
+  // ---- 用户点名补充 ----
+  { id: 'kale', name: '羽衣甘蓝', cat: 'veg', kcal: 49, protein: 4.3, fat: 0.9, carb: 9, fiber: 4.1, sodium: 50, vitFat: ['A', 'K'], vitWater: ['C', 'B2', '叶酸'], minerals: ['钙', '钾', '镁'], phytochem: ['萝卜硫素', '叶黄素', '花青素'], note: '每100g钙约150mg、维C约120mg，密度极高；生食较硬，建议焯水或做沙拉轻揉；超级食物代表' },
 ];

@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: SNACKS
 // 零食加工 / 运动补剂，每 100g 参考值
@@ -117,4 +117,8 @@ export const SNACKS: IFood[] = [
   // ---- 枣制品（用户点名；红枣干已在水果库） ----
   { id: 'candied-jujube', name: '蜜枣（糖渍）', cat: 'snack', kcal: 321, protein: 1.1, fat: 0.2, carb: 79, fiber: 1.6, sodium: 30, vitFat: [], vitWater: ['C'], minerals: ['钾', '铁'], note: '糖渍加工，糖分高，当甜味剂少量食用；控糖人群慎选' },
   { id: 'jujube-cake', name: '枣糕', cat: 'snack', kcal: 300, protein: 6, fat: 10, carb: 48, fiber: 2, sodium: 250, vitFat: [], vitWater: ['B1'], minerals: ['铁', '钾'], note: '红枣发糕类面点，含糖与油脂，当主食或加餐少量' },
+
+  // ---- 用户点名补充：方便面 ----
+  { id: 'instant-fried', name: '方便面（油炸款，干面块）', cat: 'snack', kcal: 472, protein: 9, fat: 21, carb: 60, fiber: 2, sodium: 1200, vitFat: [], vitWater: ['B1'], minerals: ['钠'], note: '面饼经油炸，脂肪约20%；调料包钠约1500-2000mg，建议只放一半料包、加蛋加菜平衡；偶尔应急，不建议当健身主食' },
+  { id: 'instant-nonfried', name: '方便面（非油炸款，干面块）', cat: 'snack', kcal: 380, protein: 9, fat: 6, carb: 75, fiber: 2, sodium: 1000, vitFat: [], vitWater: ['B1'], minerals: ['钠'], note: '热风干燥，脂肪比油炸款低约70%；但钠仍高，依旧少放料包；荞麦面/乌冬干面同类' },
 ];

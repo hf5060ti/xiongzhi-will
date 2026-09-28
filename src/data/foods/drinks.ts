@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: DRINKS
 // 饮料（碳酸/茶饮/果汁/能量运动/乳饮料），每 100ml 参考值
@@ -82,4 +82,7 @@ export const DRINKS: IFood[] = [
   { id: 'six-walnut', name: '六个核桃（核桃乳）', cat: 'drink', kcal: 60, protein: 0.6, fat: 1.8, carb: 10, fiber: 0, sodium: 40, vitFat: ['E'], vitWater: [], minerals: ['钙', '钾'], note: '含糖植物蛋白饮料，每 100ml；核桃含量有限，糖分不低' },
   { id: 'lulu-almond', name: '露露杏仁露', cat: 'drink', kcal: 45, protein: 0.8, fat: 1.5, carb: 6.5, fiber: 0, sodium: 30, vitFat: ['E'], vitWater: [], minerals: ['钙'], note: '含糖植物蛋白饮料，每 100ml；杏仁风味' },
   { id: 'vitasoy-original', name: '维他奶（原味豆奶）', cat: 'drink', kcal: 45, protein: 1.6, fat: 1.1, carb: 6.5, fiber: 0, sodium: 30, vitFat: ['E'], vitWater: ['B2'], minerals: ['钙'], note: '含糖豆奶，每 100ml；植物蛋白饮料里蛋白质算高的' },
+
+  // ---- 用户点名补充 ----
+  { id: 'sea-buckthorn-juice', name: '沙棘果汁（含糖市售）', cat: 'drink', kcal: 50, protein: 0.5, fat: 0.1, carb: 12, fiber: 0.2, sodium: 10, vitFat: ['A', 'E'], vitWater: ['C'], minerals: ['钾'], phytochem: ['沙棘黄酮', 'Omega-7', '类胡萝卜素'], note: '维C与黄酮密度高，但市售款多加糖；选100%原浆/低糖款更佳；原浆极酸，需兑水或蜂蜜' },
 ];

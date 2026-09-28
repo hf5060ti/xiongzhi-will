@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: NUTS
 // 坚果 / 种子 / 油脂，每 100g 参考值
@@ -53,4 +53,14 @@ export const NUTS: IFood[] = [
   { id: 'hemp-oil', name: '火麻油', cat: 'nuts', kcal: 884, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['E', 'K'], vitWater: [], minerals: [], note: 'ω-3/ω-6 比例接近 1:3' },
   { id: 'ghee', name: '酥油', cat: 'nuts', kcal: 900, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 2, vitFat: ['A', 'D', 'E', 'K'], vitWater: [], minerals: [], note: '高脂，含共轭亚油酸' },
   { id: 'lard', name: '猪油', cat: 'nuts', kcal: 897, protein: 0, fat: 99.6, carb: 0.2, fiber: 0, sodium: 10, vitFat: ['D'], vitWater: [], minerals: [], note: '饱和脂肪比例高' },
+
+  // ---- 用户点名补充油脂 / 芝麻制品 ----
+  { id: 'sea-buckthorn-oil', name: '沙棘籽油', cat: 'nuts', kcal: 898, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['E', 'K'], vitWater: [], minerals: [], phytochem: ['Omega-7（棕榈油酸）', '沙棘黄酮', '类胡萝卜素'], note: 'Omega-7 少见来源，日常凉拌/少量直接服用，高温破坏活性' },
+  { id: 'perilla-oil', name: '紫苏油', cat: 'nuts', kcal: 884, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['E'], vitWater: [], minerals: [], phytochem: ['α-亚麻酸（Omega-3）'], note: 'α-亚麻酸含量约60%，Omega-3植物来源；烟点低，只凉拌不爆炒' },
+  { id: 'avocado-oil', name: '牛油果油', cat: 'nuts', kcal: 884, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['E'], vitWater: [], minerals: [], phytochem: ['单不饱和脂肪酸（油酸）', '植物甾醇'], note: '烟点高（约270℃），适合高温烹饪；单不饱和脂肪为主' },
+  { id: 'blacksesame-oil', name: '黑芝麻油', cat: 'nuts', kcal: 884, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['E'], vitWater: [], minerals: ['铁'], phytochem: ['芝麻木脂素（sesamin）'], note: '小磨香油类，凉拌/出锅前滴；高温会损失芝麻香' },
+  { id: 'soybean-oil', name: '大豆油', cat: 'nuts', kcal: 884, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['E', 'K'], vitWater: [], minerals: [], phytochem: ['亚油酸（Omega-6）'], note: '国内最常见烹饪油；Omega-6偏高，建议与橄榄油/紫苏油搭配' },
+  { id: 'blacksesame-paste', name: '黑芝麻酱', cat: 'nuts', kcal: 600, protein: 20, fat: 50, carb: 20, fiber: 14, sodium: 20, vitFat: ['E'], vitWater: ['B1', 'B2'], minerals: ['钙', '铁'], phytochem: ['芝麻木脂素', '花青素（黑芝麻皮）'], note: '钙铁丰富；选无添加糖/盐款；抹面包或拌菜一勺约15g' },
+  { id: 'sesame-paste', name: '芝麻酱（白芝麻酱）', cat: 'nuts', kcal: 630, protein: 20, fat: 53, carb: 22, fiber: 6, sodium: 20, vitFat: ['E'], vitWater: ['B1'], minerals: ['钙', '铁'], phytochem: ['芝麻木脂素'], note: '北方涮肉/热干面核心调料；钙含量高但热量也高，一勺15g约95kcal' },
+  { id: 'butter', name: '黄油（淡味）', cat: 'nuts', kcal: 717, protein: 0.9, fat: 81, carb: 0.1, fiber: 0, sodium: 11, vitFat: ['A', 'D', 'E'], vitWater: [], minerals: [], note: '乳脂肪提炼，饱和脂肪高；烘焙/煎牛排少量；国内常以淡味黄油替代酥油' },
 ];

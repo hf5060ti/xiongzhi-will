@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: COOKED
 // 家常菜 / 熟食营养库：每 100g 熟重参考值（中国食物成分表常见熟菜估算）
@@ -159,4 +159,17 @@ export const COOKED: IFood[] = [
   { id: 'tasti-bacon-egg', name: '培根煎蛋堡（塔斯汀）', cat: 'cooked', kcal: 410, protein: 24, fat: 20, carb: 40, fiber: 1.5, sodium: 1000, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 410 大卡（410-590）；培根+煎蛋，钠偏高' },
   { id: 'tasti-pepper', name: '藤椒鸡腿堡（塔斯汀）', cat: 'cooked', kcal: 418, protein: 22, fat: 19, carb: 44, fiber: 1.5, sodium: 880, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 418 大卡（418-525）；藤椒风味，宏量为估算' },
   { id: 'tasti-duck', name: '北京烤鸭堡（塔斯汀）', cat: 'cooked', kcal: 460, protein: 20, fat: 18, carb: 52, fiber: 1.5, sodium: 950, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '第三方测评约 460 大卡（420-550）；甜面酱+烤鸭片，碳水偏高' },
+
+  // ---- 用户点名补充：中式早餐 / 地方小吃 / 熟食 ----
+  { id: 'youtiao', name: '油条', cat: 'cooked', kcal: 388, protein: 7, fat: 18, carb: 51, fiber: 1, sodium: 600, vitFat: [], vitWater: ['B1'], minerals: ['钠'], note: '油炸面食，脂肪高且常含铝膨松剂；配豆浆当早餐偶尔吃，减脂期不建议' },
+  { id: 'baozi-pork', name: '猪肉包子（1个约80g）', cat: 'cooked', kcal: 230, protein: 8, fat: 10, carb: 28, fiber: 1, sodium: 450, vitFat: [], vitWater: ['B1'], minerals: [], note: '面皮+猪肥瘦肉馅，脂肪主要来自馅；2个约160g=370kcal，配豆浆+鸡蛋平衡' },
+  { id: 'shaomai', name: '猪肉糯米烧麦（1个约60g）', cat: 'cooked', kcal: 236, protein: 7, fat: 8, carb: 35, fiber: 1, sodium: 400, vitFat: [], vitWater: [], minerals: [], note: '糯米+肉丁，碳水为主；4个约240g=566kcal，主食份量' },
+  { id: 'huainan-beef-soup', name: '淮南牛肉汤（每100g汤）', cat: 'cooked', kcal: 60, protein: 5, fat: 2, carb: 4, fiber: 0, sodium: 800, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '安徽淮南名吃；汤本身低卡，但钠极高（一碗约2000mg）；配粉丝/千张后碳水飙升，少喝汤、多吃牛肉' },
+  { id: 'taihe-banmian', name: '太和板面（每100g碗装）', cat: 'cooked', kcal: 150, protein: 5, fat: 4, carb: 24, fiber: 1, sodium: 900, vitFat: [], vitWater: ['B3'], minerals: [], note: '安徽太和牛肉板面；宽面+卤牛肉+辣椒油；一碗约500g=750kcal，油重钠重，少喝辣汤' },
+  { id: 'gela-tiao', name: '格拉条（阜阳面食，每100g）', cat: 'cooked', kcal: 130, protein: 4, fat: 3, carb: 22, fiber: 1, sodium: 600, vitFat: [], vitWater: [], minerals: [], note: '阜阳特色绿豆面/荞麦面粗面条，拌芝麻酱/卤；比精细面稍好但钠不低；一碗约400g=520kcal' },
+  { id: 'menzi', name: '焖子（地瓜淀粉，每100g）', cat: 'cooked', kcal: 100, protein: 0.5, fat: 5, carb: 14, fiber: 0.5, sodium: 400, vitFat: [], vitWater: [], minerals: [], note: '北方/东北地瓜淀粉煎制，煎后拌麻酱蒜汁；几乎纯淀粉，营养密度低，当小吃不当菜' },
+  { id: 'roast-chicken', name: '秘制烤鸡（带皮去骨）', cat: 'cooked', kcal: 220, protein: 26, fat: 12, carb: 2, fiber: 0, sodium: 700, vitFat: ['A'], vitWater: ['B3', 'B6'], minerals: ['锌'], note: '烤鸡带皮蛋白高脂肪适中；市售蜜汁烤鸡含糖，钠高；去皮后约165kcal/100g' },
+  { id: 'roast-duck-skin', name: '秘制烤鸭（带皮）', cat: 'cooked', kcal: 350, protein: 20, fat: 30, carb: 2, fiber: 0, sodium: 700, vitFat: ['A'], vitWater: ['B3'], minerals: ['铁'], note: '北京烤鸭皮脂肪极高，一口皮约30kcal；蛋白在瘦肉部分；薄饼+甜面酱后碳水叠加，2-3片鸭+1饼为宜' },
+  { id: 'steam-noodle', name: '蒸面条（每100g碗装）', cat: 'cooked', kcal: 160, protein: 5, fat: 4, carb: 26, fiber: 1, sodium: 500, vitFat: [], vitWater: ['B1'], minerals: [], note: '河南蒸面条，拌豆角/五花肉蒸制；油肉裹在面上，一碗约400g=640kcal' },
+  { id: 'boiled-fish', name: '水煮鱼（每100g带油汤）', cat: 'cooked', kcal: 120, protein: 12, fat: 7, carb: 3, fiber: 0.5, sodium: 800, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '鱼片本身低脂高蛋白，但表面浮油与辣椒红油极高；撇油后鱼肉约80kcal/100g；钠重，少喝汤' },
 ];
