@@ -96,4 +96,7 @@ export const CONDIMENTS: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'yan-huanggua', name: '腌黄瓜（酱黄瓜）', cat: 'condiment', kcal: 15, protein: 0.5, fat: 0.1, carb: 3, fiber: 0.5, sodium: 800, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '低卡但钠高，100g钠约占成人一日40%；配粥/馒头爽口，一顿30-50g即可；别当蔬菜大碗吃' },
+
+  // ---- 用户点名补充 ----
+  { id: 'clove', name: '丁香（干花蕾）', cat: 'condiment', kcal: 274, protein: 6, fat: 13, carb: 27, fiber: 17.7, sodium: 270, vitFat: [], vitWater: ['C'], minerals: ['锰', '钾'], phytochem: ['丁香油酚（eugenol）'], note: '每次仅用1-2粒（<1g），热量可忽略；丁香油酚有抗菌麻醉作用；炖肉/卤味/圣诞热红酒；丁香油外用可止牙痛但不可吞服；孕妇大量摄入可能刺激子宫' },
 ];

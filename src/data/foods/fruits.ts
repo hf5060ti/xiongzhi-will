@@ -85,4 +85,9 @@ export const FRUITS: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'shanzha', name: '山楂（鲜）', cat: 'fruit', kcal: 102, protein: 0.5, fat: 0.2, carb: 25, fiber: 3, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['山楂酸', '山楂黄酮', '果胶'], note: '鲜山楂维C约53mg/100g，黄酮助消化、辅助降血脂；味极酸，多做糖葫芦/果丹皮/蜜饯，加工后糖飙升；脾胃弱者空腹少食' },
+
+  // ---- 用户点名补充 ----
+  { id: 'raspberry', name: '树莓/覆盆子', cat: 'fruit', kcal: 53, protein: 1.2, fat: 0.7, carb: 11.9, fiber: 6.5, sodium: 1, vitFat: [], vitWater: ['C', 'K'], minerals: ['锰'], phytochem: ['花青素', '鞣花单宁', '覆盆子酮'], note: '纤维密度在常见水果里最高（约6.5g/100g），净碳水仅约5g；抗氧化密度高；新鲜易烂，冷冻款营养保留好；"覆盆子酮燃脂"证据极弱，别信减肥广告' },
+  { id: 'bergamot', name: '佛手柑', cat: 'fruit', kcal: 49, protein: 1.3, fat: 0.4, carb: 13, fiber: 5, sodium: 6, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['佛手柑素（bergamottin）', '呋喃香豆素'], note: '【重要药物相互作用】佛手柑素与西柚呋喃香豆素类似，会抑制肝脏CYP3A4酶，与他汀类（阿托伐他汀等）、降压药、抗组胺药、部分抗抑郁药、抗凝药发生相互作用，可能导致血药浓度升高与副作用。服药期间慎饮伯爵茶/佛手柑茶；孕妇/哺乳期适量。' },
+  { id: 'dangshan-pear', name: '砀山酥梨（安徽特产）', cat: 'fruit', kcal: 50, protein: 0.3, fat: 0.2, carb: 13, fiber: 3.1, sodium: 2, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['梨多酚'], note: '安徽砀山特产，皮薄汁多味甜；一个中等约250g可食部=125kcal；秋燥润肺常用，冰糖炖梨；果糖含量约7-8%，糖尿病人一次半个；梨籽含微量氰苷，别嚼碎吃' },
 ];

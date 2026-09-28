@@ -156,4 +156,10 @@ export const VEGETABLES: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'yuxingcao', name: '鱼腥草/折耳根（嫩茎叶）', cat: 'veg', kcal: 37, protein: 2, fat: 0.4, carb: 6, fiber: 1.2, sodium: 9, vitFat: [], vitWater: ['C', 'B2'], minerals: ['钾', '钙'], phytochem: ['鱼腥草素（癸酰乙醛）', '槲皮素'], note: '西南地区特色，味道两极分化；鱼腥草素有抗菌抗炎作用，但对光热不稳定；凉拌/蘸水/炒腊肉；体虚/孕妇少食；口服注射液有过敏史者慎食' },
+
+  // ---- 用户点名补充：菌菇 / 瓜类 ----
+  { id: 'monkey-head', name: '猴头菇（鲜）', cat: 'veg', kcal: 41, protein: 4, fat: 0.2, carb: 6, fiber: 3, sodium: 5, vitFat: [], vitWater: ['B族'], minerals: ['钾', '锌'], phytochem: ['猴头菇多糖', '猴头菌素（hericenones）'], note: '养胃食养常用，但"治胃病"证据有限；干品泡发后炖汤；猴头菌素在动物实验中促神经生长因子，但人体证据不足；对菌类过敏者慎食' },
+  { id: 'matsutake-jps', name: '姬松茸（巴西蘑菇，鲜）', cat: 'veg', kcal: 30, protein: 3.5, fat: 0.4, carb: 4.5, fiber: 2.5, sodium: 5, vitFat: [], vitWater: ['B族'], minerals: ['钾', '硒'], phytochem: ['姬松茸多糖（beta-葡聚糖）'], note: '常被宣传"抗癌/提高免疫"，主要证据来自动物实验与体外研究，不能替代药物；炖汤/煲汤；干品浓缩约10倍热量' },
+  { id: 'morel', name: '羊肚菌（鲜）', cat: 'veg', kcal: 30, protein: 3.1, fat: 0.4, carb: 5, fiber: 2.8, sodium: 20, vitFat: ['D'], vitWater: ['B2', 'B3'], minerals: ['铁', '铜', '锌'], phytochem: [], note: '珍贵野生/半人工食用菌，香气浓；必须彻底煮熟（生食含微量溶血物质）；干品约290kcal/100g；野生采集需专业辨认，误食有毒蘑菇风险极高' },
+  { id: 'bitter-melon', name: '苦瓜', cat: 'veg', kcal: 19, protein: 1, fat: 0.2, carb: 4, fiber: 1.4, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['苦瓜苷', '胰岛素样肽'], note: '极低卡，苦瓜苷在研究中有辅助降糖作用，但不能替代降糖药；脾胃虚寒者少食；清炒/炒蛋/酿肉；孕期大量食用可能刺激子宫' },
 ];

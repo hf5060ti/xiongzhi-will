@@ -140,4 +140,7 @@ export const STAPLES: IFood[] = [
   { id: 'xiaomi-gao', name: '小米糕', cat: 'staple', kcal: 220, protein: 6, fat: 1.5, carb: 45, fiber: 1.2, sodium: 170, vitFat: [], vitWater: ['B1'], minerals: ['铁'], note: '小米面蒸制，比白米糕多一点B族与铁；脂肪低；老人小孩都好消化' },
   { id: 'tangyuan-huasheng', name: '花生汤圆（熟）', cat: 'staple', kcal: 250, protein: 4, fat: 10, carb: 37, fiber: 1, sodium: 60, vitFat: [], vitWater: [], minerals: ['锌'], note: '糯米皮+花生酱馅，糯米难消化；一碗10个约200g=500kcal，当主食别当甜点；痛风者少喝汤（嘌呤溶于汤）' },
   { id: 'tangyuan-zima', name: '芝麻汤圆（熟）', cat: 'staple', kcal: 260, protein: 4, fat: 12, carb: 36, fiber: 1.5, sodium: 60, vitFat: ['E'], vitWater: [], minerals: ['钙', '铁'], phytochem: ['芝麻木脂素'], note: '黑芝麻猪油馅，脂肪高；10个约200g=520kcal；煮后别喝甜汤（糖在汤里）；胃酸/消化不良者少食糯米' },
+
+  // ---- 用户点名补充 ----
+  { id: 'barley-cooked', name: '大麦（煮熟，含壳/珍珠大麦）', cat: 'staple', kcal: 123, protein: 4.5, fat: 0.4, carb: 28, fiber: 3.8, sodium: 4, vitFat: [], vitWater: ['B1', 'B3'], minerals: ['硒', '锰'], phytochem: ['beta-葡聚糖'], note: 'β-葡聚糖有助降胆固醇与稳血糖；脂肪极低、纤维高；替代部分白米（大麦饭/大麦粥）；嘌呤中高，痛风急性期少食；与小麦同属麸质谷物，乳糜泻者忌' },
 ];
