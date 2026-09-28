@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 import { Link } from 'react-router-dom';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -54,6 +54,7 @@ import {
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
 import { FOODS, type IFood } from '@/data/foods';
+import { TAN_CHENGYI, CHEN_SHI, type CoachVideo } from '@/data/coach-videos';
 
 type Sickness = 'none' | 'cold' | 'fever' | 'recovering' | 'injury' | 'other';
 type Energy = 'great' | 'good' | 'tired' | 'exhausted';
@@ -84,6 +85,53 @@ const ENERGY_LABEL: Record<Energy, string> = {
   exhausted: '非常疲惫',
 };
 
+// 根据 AI 回复文本自动匹配相关教学视频（谭成义动作 / 陈石营养），用于在气泡下方嵌入竖版小窗
+function findRelatedVideos(text: string, max = 2): { video: CoachVideo; cue: string }[] {
+  if (!text) return [];
+  const lower = text;
+  const hits: { video: CoachVideo; cue: string; score: number }[] = [];
+  const consider = (v: CoachVideo, cue: string, keys: string[]) => {
+    let score = 0;
+    for (const k of keys) if (lower.includes(k)) score += 1;
+    if (score > 0) hits.push({ video: v, cue, score });
+  };
+  for (const v of TAN_CHENGYI) {
+    if (/卧推|推胸|练胸|胸肌|平板卧推|上斜/.test(lower)) {
+      if (v.topic.includes('胸')) consider(v, '注意肩胛稳定，落点在中胸', ['卧推','推胸','胸']);
+    }
+    if (/深蹲|腿部|练腿|股四|臀腿|硬拉/.test(lower)) {
+      if (v.topic.includes('腿')) consider(v, '膝盖跟脚尖方向一致，别内扣', ['深蹲','腿','硬拉']);
+    }
+    if (/高位下拉|划船|练背|背阔|引体/.test(lower)) {
+      if (v.topic.includes('背')) consider(v, '先收肩胛再拉肘，别光用手臂', ['下拉','划船','背']);
+    }
+    if (/推举|肩|三角肌/.test(lower)) {
+      if (v.topic.includes('肩')) consider(v, '核心收紧，别过度反弓腰', ['推举','肩']);
+    }
+  }
+  for (const v of CHEN_SHI) {
+    if (/蛋白质|蛋白吃|增肌.*吃|掉肌肉|氮平衡/.test(lower)) {
+      if (v.topic.includes('蛋白')) consider(v, '蛋白质过量也会肝肾负担', ['蛋白']);
+    }
+    if (/碳水|补碳|糖原|低血糖/.test(lower)) {
+      if (v.topic.includes('碳')) consider(v, '吃够碳水才不掉肌肉', ['碳水','碳']);
+    }
+    if (/减脂|热量缺口|瘦/.test(lower)) {
+      if (v.topic.includes('减脂')) consider(v, '减脂核心是热量缺口，不是断碳', ['减脂']);
+    }
+  }
+  // 去重 + 按匹配分排序
+  const seen = new Set<string>();
+  const out: { video: CoachVideo; cue: string }[] = [];
+  hits.sort((a, b) => b.score - a.score);
+  for (const h of hits) {
+    if (seen.has(h.video.url)) continue;
+    seen.add(h.video.url);
+    out.push({ video: h.video, cue: h.cue });
+    if (out.length >= max) break;
+  }
+  return out;
+}
 function evaluate(sleepH: number, sickness: Sickness, energy: Energy, stress: Stress, diet: Diet): Advice {
   // 医疗红线：发烧 / 大病初愈 / 明显疼痛 → 停训
   if (sickness === 'fever') {
@@ -902,6 +950,26 @@ function AIChatPanel() {
                   {m.role === 'user' ? '我' : (current?.label ?? 'AI')}
                 </span>
                 {m.content || (sending ? '…' : '')}
+                {m.role === 'assistant' && findRelatedVideos(m.content).length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {findRelatedVideos(m.content).map(({ video, cue }) => (
+                      <a key={video.url} href={video.url} target="_blank" rel="noopener noreferrer"
+                         className="block w-28 overflow-hidden rounded-md border border-border bg-black transition-transform hover:scale-[1.02] sm:w-36">
+                        <div className="relative aspect-[3/4] bg-gradient-to-b from-neutral-800 to-black">
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/25 backdrop-blur">
+                              <svg viewBox="0 0 24 24" className="h-5 w-5 translate-x-0.5 fill-white"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                          </div>
+                          <div className="absolute bottom-0 left-0 right-0 bg-[#FACC15] px-1.5 py-1 text-[10px] font-medium leading-tight text-black">
+                            {cue}
+                          </div>
+                        </div>
+                        <div className="bg-[#1A1D1B] px-1.5 py-1 text-[9px] leading-tight text-muted-foreground">{video.title}</div>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             ))
           )}
