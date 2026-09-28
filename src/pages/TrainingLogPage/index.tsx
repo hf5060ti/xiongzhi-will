@@ -680,6 +680,75 @@ export default function TrainingLogPage() {
       </div>
 
 
+      {/* PR 墙：力量五动作个人最佳 */}
+      {(() => {
+        const prRows = LIFTS.map((lift) => {
+          let best: { oneRm: number; weightKg: number; reps: number; date: string } | null = null;
+          let prevBest: { oneRm: number; weightKg: number; reps: number; date: string } | null = null;
+          for (const l of logs) {
+            for (const ex of l.exercises) {
+              if (!matchLift(ex.name) || matchLift(ex.name)!.key !== lift.key) continue;
+              for (const set of ex.sets) {
+                if (set.weightKg == null || set.reps == null) continue;
+                const oneRm = estimate1RM(set.weightKg, set.reps);
+                if (!best || oneRm > best.oneRm) {
+                  prevBest = best ? { ...best } : null;
+                  best = { oneRm, weightKg: set.weightKg, reps: set.reps, date: l.date };
+                } else if (
+                  (!prevBest || oneRm > prevBest.oneRm) &&
+                  l.date < (best?.date ?? '')
+                ) {
+                  prevBest = { oneRm, weightKg: set.weightKg, reps: set.reps, date: l.date };
+                }
+              }
+            }
+          }
+          return { lift, best, prevBest };
+        }).filter((r) => r.best);
+        if (prRows.length === 0) return null;
+        return (
+          <Card className="border-primary/20">
+            <CardContent className="p-4 sm:p-5">
+              <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Medal className="h-3.5 w-3.5 text-primary" />
+                个人最佳 PR 墙 · 估算 1RM
+              </p>
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+                {prRows.map(({ lift, best, prevBest }) => {
+                  const diff = prevBest ? best!.oneRm - prevBest.oneRm : null;
+                  return (
+                    <div
+                      key={lift.key}
+                      className="rounded-lg border border-border bg-card p-3 text-center"
+                    >
+                      <p className="text-[11px] text-muted-foreground">{lift.label}</p>
+                      <p className="mt-1 font-display text-2xl font-bold text-primary">
+                        {Math.round(best!.oneRm)}
+                        <span className="ml-0.5 text-xs font-normal text-muted-foreground">kg</span>
+                      </p>
+                      <p className="mt-0.5 text-[10px] text-muted-foreground">
+                        {best!.weightKg}kg × {best!.reps} 次 · {fmtDate(best!.date)}
+                      </p>
+                      {diff != null && diff > 0 ? (
+                        <p className="mt-1 inline-block rounded bg-green-500/15 px-1.5 py-0.5 text-[10px] text-green-400">
+                          +{Math.round(diff)} kg 新 PR
+                        </p>
+                      ) : (
+                        <p className="mt-1 text-[10px] text-muted-foreground">保持中</p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
+                1RM 用 Epley 公式估算（重量 × (1 + 次数/30)），非真实极限试举。
+                PR 墙自动从训练日志里取每个力量动作的最高估算 1RM；想刷新纪录，就在训练里用更重的重量或同重量多做一次。
+              </p>
+            </CardContent>
+          </Card>
+        );
+      })()}
+
       {/* 近 7 天概览 */}
       <div className="grid gap-3 lg:grid-cols-[1fr_1fr_1.4fr]">
         <Card>
