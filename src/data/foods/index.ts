@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: FOODS
 // 食物营养库汇总：12 大分类合并为单一 FOODS 数组
 import type { IFood } from './types';

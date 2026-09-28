@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: CARDIO_FORMULA, CardioMetRow, ICardioItem, CARDIO_ITEMS, cardioKcal
 // 有氧运动数据：每个项目含若干「档位」（配速 / 强度 → MET 值），消耗统一按
 // kcal = MET × 体重(kg) × 时长(h) 估算。

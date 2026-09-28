@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 import { BASE } from '@/lib/base';
 
 // 全屏启动加载动画（刷新 / 首次进入时显示）

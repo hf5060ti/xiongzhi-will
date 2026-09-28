@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: SearchEntry, SEARCH_INDEX
 // 全局通用搜索：合并动作 / 食物 / 公式 / 饮食讲解四类条目，导航栏搜索框直接用
 import { GOALS } from '@/data/goals';

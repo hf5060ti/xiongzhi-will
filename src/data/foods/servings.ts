@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: FoodServing, SERVING_ANCHORS, getServings, fmtServing
 // 常见份量锚点：把「1 个鸡蛋 / 1 碗米饭 / 1 汤匙油」这类生活化份量折算为克数
 // 数据来源：常见食物成分表中常食份量（可食部）参考值，误差 ±10% 左右；克数均为可食部净重

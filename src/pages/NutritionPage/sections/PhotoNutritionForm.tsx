@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 import { useEffect, useState, type ChangeEvent } from 'react';
 import { Camera, ScanText } from 'lucide-react';
 import { createWorker } from 'tesseract.js';

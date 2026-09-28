@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: VEGETABLES
 // 蔬菜（叶菜 / 十字花科 / 根茎 / 菌菇 / 瓜茄 / 葱姜蒜），每 100g 生重参考值
 import type { IFood } from './types';

@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: NUTS
 // 坚果 / 种子 / 油脂，每 100g 参考值
 import type { IFood } from './types';

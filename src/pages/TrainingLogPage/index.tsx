@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 /**
  * 训练记录页（训练闭环）
  * - 逐个动作录入逐组「重量 × 次数」，历史记录可按条编辑 / 删除 / 清空

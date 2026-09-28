@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: SEAFOODS
 // 水产（鱼类 / 虾蟹贝类 / 藻类），每 100g 生重/可食部参考值
 import type { IFood } from './types';

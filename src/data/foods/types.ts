@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: FoodCategory, IFood, FOOD_CATEGORIES
 // 食物营养库类型定义：12 大分类，营养字段统一为每 100g 生重/可食部参考值
 export type FoodCategory =

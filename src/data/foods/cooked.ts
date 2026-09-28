@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: COOKED
 // 家常菜 / 熟食营养库：每 100g 熟重参考值（中国食物成分表常见熟菜估算）
 // 注意：熟食营养受做法、调料、加水多少影响，数值为常见做法估算，仅供参考

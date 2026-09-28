@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 import { CalendarClock, LayoutGrid, ShieldAlert, TrendingUp, Clock, Droplets, Brain, Images, ClipboardList } from 'lucide-react';
 import type { IGoal } from '@/data/goals';
 import { BASE } from '@/lib/base';

@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: CONDIMENTS
 // 酱料 / 调味品 / 香料，每 100g 参考值（品牌差异大，以包装标签为准）
 // 关键提醒：多数酱料钠含量极高（每 100g 数千 mg），健身水煮餐加一大勺酱可能直接钠超标；

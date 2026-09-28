@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: DRINKS
 // 饮料（碳酸/茶饮/果汁/能量运动/乳饮料），每 100ml 参考值
 // ⚠ 数据为市面常见品牌公开营养成分表的平均参考值，不同品牌、批次、杯型差异较大，以产品包装营养成分表为准

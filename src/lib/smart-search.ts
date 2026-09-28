@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: smartMatch, SEARCH_ALIASES, normalizeQuery, buildMuscleAliases
 // 智能化搜索：同义词 / 别名 / 拼音首字母 / 模糊匹配
 // 目标：解决"搜索不准"——用户输入口语化、缩写、中英混排、错别字都能命中

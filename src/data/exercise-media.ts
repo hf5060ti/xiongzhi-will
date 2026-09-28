@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: EXERCISE_MEDIA, type ExerciseMedia
 // 动作演示动图映射：由动作百科（https://fitness.xingshuwen.com）提供，素材版权归 Gym visual 所有
 // key 为 exercises-db 中的动作 id。条目分两类，页面渲染必须区别对待：

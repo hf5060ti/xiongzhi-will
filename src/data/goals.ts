@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: IGoal, GOALS
 // 训练目标数据：5 类目标，每类含训练频率 / 分化 / 每周安排 / 核心动作参数 / 进步法则 / 特别提醒
 import type { LucideIcon } from 'lucide-react';

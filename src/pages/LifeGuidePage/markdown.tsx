@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 import React from 'react';
 
 /** 轻量 Markdown 渲染（覆盖《高性价比人生指南》正文用到的结构：标题/列表/引用/代码/表格/链接/加粗/行内代码） */

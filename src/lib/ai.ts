@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: ProviderInfo, ChatMessage, fetchProviders, chatStream, pingBackend,
 //          BackendOfflineError, getApiBase, getDefaultApiBase, setApiBase,
 //          resetApiBase, LOCAL_BACKEND_HINT,

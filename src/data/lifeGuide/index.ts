@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // 《高性价比人生指南》章节元信息（正文按章独立文件，按需加载）
 export interface LifeChapterMeta { id: number; title: string; file: string }
 export const LIFE_CHAPTERS: LifeChapterMeta[] = [

@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 import { useMemo, useState } from 'react';
 import { Search, Sparkles } from 'lucide-react';
 import { Input } from '@/components/ui/input';

@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 import { Card, CardContent } from '@/components/ui/card';
 import { Coins, PiggyBank, Shield, AlertTriangle } from 'lucide-react';
 

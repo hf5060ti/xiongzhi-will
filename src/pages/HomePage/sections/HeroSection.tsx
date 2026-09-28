@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 export default function HeroSection() {
   return (
     <section className="relative -mx-3 mb-6 overflow-hidden rounded-b-2xl border-b border-border sm:-mx-4 sm:mb-8 lg:-mx-8 lg:mb-10">

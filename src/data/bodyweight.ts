@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: BODYWEIGHT_FORMULA, BODYWEIGHT_TIME_FORMULA, BODYWEIGHT_REF_WEIGHT,
 //          BODYWEIGHT_GROUPS, BODYWEIGHT_NOTE, IBodyweightItem,
 //          BODYWEIGHT_ITEMS, bodyweightMinutes, bodyweightKcal, bodyweightKcalPerRep

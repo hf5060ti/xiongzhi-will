@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: DailyTargets, getDailyTargets
 // 全站唯一饮食目标计算入口：按身体数据实时算出每日热量与三大营养素目标。
 // 复用 body-math.ts 的既有纯函数（LBM / Katch BMR / TDEE / TEF / 蛋白质），

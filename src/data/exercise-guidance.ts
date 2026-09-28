@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 /**
  * 动作教学要点库
  * 按动作名关键词匹配，覆盖高频核心动作；匹配不到时详情页只显示通用安全提示。

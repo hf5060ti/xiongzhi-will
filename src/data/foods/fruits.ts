@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: FRUITS
 // 水果（常见 / 浆果与特色果），每 100g 可食部参考值
 import type { IFood } from './types';

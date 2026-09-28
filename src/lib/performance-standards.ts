@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // 运动能力追踪 · 等级标准与判级函数（力量 / 耐力 / 运动能力）
 // 数据来源：fitnesscalcs.com《How Strong Should You Be?》Bodyweight Ratio Standards（男女五级）、
 //           Strength Level（杠铃弯举倍数）、Speediance《Strength Standards》（俯卧撑/引体/平板）、

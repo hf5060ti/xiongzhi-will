@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: KnowledgeSource, KnowledgeBody, KnowledgeEntry, DIET_KNOWLEDGE, KNOWLEDGE_AUTHORS
 // 饮食讲解内容层：以公开来源的健身博主讲解为素材做的原创简要整理。
 // 约定：

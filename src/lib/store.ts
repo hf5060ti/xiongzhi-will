@@ -1,4 +1,6 @@
-﻿// EXPORTS: loadGoalId, saveGoalId, loadDietId, saveDietId, loadWeightKg, saveWeightKg,
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
+// EXPORTS: loadGoalId, saveGoalId, loadDietId, saveDietId, loadWeightKg, saveWeightKg,
 //          loadLastBackupAt, saveLastBackupAt,
 //          MEASURE_KEYS, MEASURE_META, loadMeasurements, saveMeasurements,
 //          upsertMeasurement, removeMeasurement, latestMeasurement,

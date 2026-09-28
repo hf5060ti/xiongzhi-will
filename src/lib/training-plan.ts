@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: 本周训练计划生成器
 // 输入：目标（IGeal）+ 分化 + 金字塔 + 训练水平 → 7 天训练日排布与每天的具体动作清单
 // 动作池取自 goals.ts 各目标的 movements（含 set / 视频链接 / 要点），按部位关键字分类后按分化分配

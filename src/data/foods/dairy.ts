@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: DAIRY
 // 蛋奶（蛋类 / 奶类 / 奶酪 / 黄油），每 100g 参考值
 import type { IFood } from './types';

@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: IDiet, DIETS
 // 饮食方案数据：4 种饮食，含宏量比例 / 核心原则 / 推荐与避免 / 嘌呤提示 / 适合人群
 export interface IDiet {

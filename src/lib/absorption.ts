@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: getAbsorptionTips, ABSORPTION_GUIDE, TEF_RULE
 // 食物营养素吸收率：根据食物营养字段自动推导「怎么吃吸收更好」
 // 依据：脂溶性维生素需油脂、水溶性需水/避免过度水煮、血红素铁 vs 非血红素铁、

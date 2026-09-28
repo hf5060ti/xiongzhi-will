@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: TAN_CHENGYI, CHEN_SHI, type CoachVideo
 // 名师视频讲解：动作教学挂谭成义（健身教练，抖音/B站），饮食营养挂陈石（3HFIT/SNC 营养讲师）
 // 所有链接均为公开搜索到的视频页链接，点击跳转原平台观看，本站不托管视频文件。

@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 import { Check } from 'lucide-react';
 import { DIETS } from '@/data/diets';
 import { cn } from '@/lib/utils';

@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: PROTEIN_QUALITY（植物蛋白有效系数）、PROTEIN_POWDERS（蛋白粉选购对照）
 // 来自用户提供的两张表：蛋白质质量系数表 + 蛋白粉选购对照表
 // 用于「氨基酸互补法」：植物蛋白系数低，搭配动物蛋白（系数 1）可互补提升有效蛋白摄入。

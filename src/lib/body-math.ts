@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: 身体数据计算函数集（自然健身公式库）
 // 全部按用户给定公式原样实现：瘦体重 / 蛋白质需求 / 肌肉量上限（5 公式）/
 // BMR（6 公式）/ TDEE / 增肌速率（Alan Aragon）

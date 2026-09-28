@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 /**
  * 围度追踪（身体数据页板块）
  * - 按日期录入五部位围度（胸 / 腰 / 臀 / 臂 / 大腿，cm），同日重复录入覆盖旧值

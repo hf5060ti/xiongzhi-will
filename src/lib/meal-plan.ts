@@ -1,3 +1,5 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
 // EXPORTS: 三餐方案生成（饮食方案化）
 // 输入：身体数据 + 阶段 + 饮食方案 → 每日目标 → 一日三餐 + 加餐的碳蛋脂分配 → 每餐食材搭配与克数
 // 口径与 body-math / NutritionPage 完全一致：Katch-McArdle BMR × 活动系数 × (1+TEF)
