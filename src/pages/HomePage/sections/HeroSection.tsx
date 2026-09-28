@@ -1,6 +1,10 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
+import { useNavigate } from 'react-router-dom';
+import { MessageCircle } from 'lucide-react';
+
 export default function HeroSection() {
+  const navigate = useNavigate();
   return (
     <section className="relative -mx-3 mb-6 overflow-hidden rounded-b-2xl border-b border-border sm:-mx-4 sm:mb-8 lg:-mx-8 lg:mb-10">
       {/* 背景层：动态视频由站点级 VideoBackground 提供，这里只叠加压暗与光线特效 */}
@@ -32,6 +36,23 @@ export default function HeroSection() {
           <p className="mt-4 max-w-md rounded-xl border border-primary/40 bg-primary/10 px-3.5 py-2.5 text-xs leading-relaxed text-primary-foreground/95 backdrop-blur-md">
             <b className="font-semibold">本站只提供健康自然的健身方式</b>，不提供任何极端训练或药物方案；请遵守你所在国家 / 地区的法律法规。
           </p>
+
+          {/* AI 健身小助手入口：免责卡下方、核心理念上方，一键进对话 */}
+          <button
+            onClick={() => navigate('/coach')}
+            className="group mt-5 flex w-full max-w-md items-center gap-3.5 rounded-2xl border border-primary/60 bg-primary/15 p-4 text-left backdrop-blur-xl transition-all hover:bg-primary/25 hover:border-primary"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-black shadow-lg shadow-primary/30">
+              <MessageCircle className="h-6 w-6" />
+            </span>
+            <span className="flex-1">
+              <span className="block font-display text-base font-bold text-primary">AI 健身小助手</span>
+              <span className="mt-0.5 block text-xs leading-relaxed text-foreground/75">
+                问任何训练 / 饮食 / 恢复问题，直接对话；支持上传动作照片帮你看动作是否标准。
+              </span>
+            </span>
+            <span className="shrink-0 text-primary transition-transform group-hover:translate-x-1">→</span>
+          </button>
 
           {/* 核心理念 */}
           <div className="glass mt-5 max-w-lg space-y-2.5 rounded-2xl p-4 sm:p-5">
