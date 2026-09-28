@@ -167,4 +167,9 @@ export const VEGETABLES: IFood[] = [
   { id: 'eggplant-purple', name: '紫皮茄子', cat: 'veg', kcal: 25, protein: 1, fat: 0.2, carb: 5.5, fiber: 1.3, sodium: 4, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['花青素（紫皮）', '茄碱（微量，集中在籽和老皮）'], note: '茄子像海绵特别吸油，红烧/油焖一份脂肪可达15-20g；清蒸/烤/少油拌最友好；老茄子/籽发褐茄碱略多，一次别吃大量生茄子；带皮吃花青素' },
   { id: 'eggplant-green', name: '青茄子（绿皮）', cat: 'veg', kcal: 23, protein: 1.1, fat: 0.2, carb: 5, fiber: 1.2, sodium: 4, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: [], note: '东北/华北常见，肉质比紫茄更松软、籽少；同样吸油；凉拌/清蒸/茄盒；热量与紫茄接近' },
   { id: 'dandelion-root', name: '蒲公英根（干，泡茶）', cat: 'veg', kcal: 378, protein: 5, fat: 2, carb: 80, fiber: 30, sodium: 100, vitFat: [], vitWater: ['B族'], minerals: ['钾'], phytochem: ['蒲公英苦素', '菊粉（inulin，益生元）'], note: '干根每次5-10g冲泡，茶汤几乎0kcal；传统认为利尿助消化，但人体证据有限；菊粉可能胀气/腹泻，第一次从少量开始；胃食管反流/低血压/服用利尿剂者慎饮；孕妇忌' },
+
+  // ---- 用户点名补充 ----
+  { id: 'tomato-white', name: '白番茄（白果番茄）', cat: 'veg', kcal: 18, protein: 0.9, fat: 0.2, carb: 3.9, fiber: 1.2, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['白番茄红素（无色类胡萝卜素）', '八氢番茄红素'], note: '白番茄红素呈无色，常被宣传"美白/抗光老化"，证据有限；热量与普通番茄接近；口感偏淡、籽少；别把美白功效神化' },
+  { id: 'cucumber-fruit', name: '水果黄瓜（无刺小黄瓜）', cat: 'veg', kcal: 15, protein: 0.6, fat: 0.1, carb: 3.6, fiber: 0.5, sodium: 2, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['黄瓜酶'], note: '比大黄瓜皮薄、籽少、味淡、可当水果啃；95%是水，几乎可无限量；一次吃多胃寒者易胀气；沙拉/蘸酱/打汁' },
+  { id: 'cucumber', name: '黄瓜（普通大黄瓜）', cat: 'veg', kcal: 15, protein: 0.7, fat: 0.1, carb: 3.6, fiber: 0.5, sodium: 5, vitFat: [], vitWater: ['K', 'C'], minerals: ['钾'], phytochem: ['黄瓜酶', '葫芦素（皮上略苦）'], note: '极低卡，96%水；皮略苦处含葫芦素，有轻微催吐性，发苦严重别硬吃；凉拌/拍黄瓜；维生素K高，服华法林等抗凝药者保持摄入量稳定别一次暴吃' },
 ];

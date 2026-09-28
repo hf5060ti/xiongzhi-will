@@ -143,4 +143,8 @@ export const STAPLES: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'barley-cooked', name: '大麦（煮熟，含壳/珍珠大麦）', cat: 'staple', kcal: 123, protein: 4.5, fat: 0.4, carb: 28, fiber: 3.8, sodium: 4, vitFat: [], vitWater: ['B1', 'B3'], minerals: ['硒', '锰'], phytochem: ['beta-葡聚糖'], note: 'β-葡聚糖有助降胆固醇与稳血糖；脂肪极低、纤维高；替代部分白米（大麦饭/大麦粥）；嘌呤中高，痛风急性期少食；与小麦同属麸质谷物，乳糜泻者忌' },
+
+  // ---- 用户点名补充 ----
+  { id: 'potato-mash', name: '土豆泥（家常，加奶+黄油）', cat: 'staple', kcal: 110, protein: 2, fat: 4, carb: 17, fiber: 1.5, sodium: 280, vitFat: ['A'], vitWater: ['C', 'B6'], minerals: ['钾'], phytochem: [], note: '基础土豆仅77kcal/100g，加奶+黄油后升到110；餐厅/肯德基款可达150-180kcal/100g；钠高（盐+黄油）；健身替代白米饭时选无油版' },
+  { id: 'rice-porridge', name: '米糊（即食米粉冲调，按成品计）', cat: 'staple', kcal: 46, protein: 1, fat: 0.5, carb: 9.5, fiber: 0.3, sodium: 80, vitFat: [], vitWater: ['B1'], minerals: ['钙（强化款）'], phytochem: [], note: '【定位】高碳水、低脂肪、低蛋白，参考市面常见即食米粉平均值；与增肌粉类似，更适合天生瘦、吃不下饭、训练量大的"瘦难长"人群；强烈推荐作为练后快碳——快吸收、低脂、不增加肠胃负担，常添加益生菌辅助吸收；冲调后约46kcal/100ml，一碗300ml≈138kcal；干米粉本身约370kcal/100g；术后/儿童/老人也可；市售"营养米糊"常加糖，看配料表；不适合作为唯一主食，蛋白偏低，要额外配鸡蛋/牛奶/蛋白粉补蛋白' },
 ];

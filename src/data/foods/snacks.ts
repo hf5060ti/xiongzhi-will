@@ -145,4 +145,7 @@ export const SNACKS: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'zhu-roufu', name: '猪肉脯', cat: 'snack', kcal: 380, protein: 30, fat: 10, carb: 35, fiber: 0, sodium: 1500, vitFat: [], vitWater: ['B1'], minerals: ['铁', '锌'], note: '瘦肉经糖腌烘烤，蛋白高但糖与钠双高（约1500mg/100g）；一小包约30g=114kcal；追剧零食建议一次1-2小包，别整袋吃' },
+
+  // ---- 用户点名补充：补剂 ----
+  { id: 'weight-gainer', name: '增肌粉/增重粉（Weight Gainer，参考平均值）', cat: 'snack', kcal: 380, protein: 15, fat: 5, carb: 75, fiber: 2, sodium: 200, vitFat: [], vitWater: ['B族'], minerals: ['钙', '镁', '锌'], phytochem: [], note: '【重要】配方以高碳水（70-80%）+少量蛋白+益生菌为主，每份一勺（约100g干粉）380kcal，冲水后约600ml；更适合天生瘦、吃不下饭、训练量大的"瘦难长"人群；本就体脂偏高者喝了只会长肚子不长肌；参考市面常见产品平均值，具体品牌差异大，别当神药；训练后或加餐时用，别替代正餐' },
 ];

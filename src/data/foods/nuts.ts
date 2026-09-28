@@ -63,4 +63,7 @@ export const NUTS: IFood[] = [
   { id: 'blacksesame-paste', name: '黑芝麻酱', cat: 'nuts', kcal: 600, protein: 20, fat: 50, carb: 20, fiber: 14, sodium: 20, vitFat: ['E'], vitWater: ['B1', 'B2'], minerals: ['钙', '铁'], phytochem: ['芝麻木脂素', '花青素（黑芝麻皮）'], note: '钙铁丰富；选无添加糖/盐款；抹面包或拌菜一勺约15g' },
   { id: 'sesame-paste', name: '芝麻酱（白芝麻酱）', cat: 'nuts', kcal: 630, protein: 20, fat: 53, carb: 22, fiber: 6, sodium: 20, vitFat: ['E'], vitWater: ['B1'], minerals: ['钙', '铁'], phytochem: ['芝麻木脂素'], note: '北方涮肉/热干面核心调料；钙含量高但热量也高，一勺15g约95kcal' },
   { id: 'butter', name: '黄油（淡味）', cat: 'nuts', kcal: 717, protein: 0.9, fat: 81, carb: 0.1, fiber: 0, sodium: 11, vitFat: ['A', 'D', 'E'], vitWater: [], minerals: [], note: '乳脂肪提炼，饱和脂肪高；烘焙/煎牛排少量；国内常以淡味黄油替代酥油' },
+
+  // ---- 用户点名补充 ----
+  { id: 'palm-oil', name: '棕榈油', cat: 'nuts', kcal: 900, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['A（胡萝卜素，红棕榈油）', 'E'], vitWater: [], minerals: [], phytochem: [], note: '热带植物油，饱和脂肪约50%（棕榈酸），常温半固态；便宜、烟点高、保质期长，广泛用于加工食品/方便面/薯片/外卖油炸；营养上不如橄榄油/菜籽油，饱和脂肪过高不利血脂；天然红棕榈油含β-胡萝卜素，但精炼后变黄无味；1汤匙（14g）=126kcal' },
 ];
