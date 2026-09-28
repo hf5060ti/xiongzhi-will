@@ -10,8 +10,8 @@
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
-import { BarChart3, CalendarDays, Check, Clock, Dumbbell, Eraser, Flame, HeartPulse, Medal, Moon, Pencil, Play, Plus, Save, SkipForward, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
-import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { BarChart3, CalendarDays, Check, Clock, Dumbbell, Eraser, Flame, HeartPulse, Medal, Moon, Pencil, Play, Plus, Save, Scale, SkipForward, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
+import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -28,6 +28,7 @@ import {
   removePerformanceLog,
   removeTrainingLog,
   updateTrainingLog,
+  loadLightEntries,
   type PerformanceLogs,
   type SplitType,
   type TrainingExercise,
@@ -862,6 +863,119 @@ export default function TrainingLogPage() {
               还没有带重量的记录，录入第一条后这里会自动生成每周容量曲线。
             </p>
           )}
+        </CardContent>
+      </Card>
+
+      {/* 体重趋势（近 12 周） */}
+      <Card>
+        <CardContent className="p-4 sm:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-1">
+            <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Scale className="h-3.5 w-3.5 text-primary" />
+              体重趋势（近 12 周）
+            </p>
+            {(() => {
+              const entries = loadLightEntries();
+              if (entries.length < 2) return null;
+              const first = entries[0];
+              const last = entries[entries.length - 1];
+              const diff = Math.round((last.weight - first.weight) * 10) / 10;
+              const sign = diff > 0 ? '+' : '';
+              const color = diff > 0.3 ? 'text-red-400' : diff < -0.3 ? 'text-green-400' : 'text-muted-foreground';
+              return (
+                <span className={cn('text-[11px]', color)}>
+                  {first.weight} → {last.weight} kg（{sign}{diff} kg）
+                </span>
+              );
+            })()}
+          </div>
+          {(() => {
+            const entries = loadLightEntries();
+            if (entries.length < 2) {
+              return (
+                <p className="mt-3 text-sm text-muted-foreground">
+                  还没有体重记录。去「身体数据」页或「轻盈计划」每天记一次体重，这里会自动画出曲线。
+                </p>
+              );
+            }
+            // 只取最近 84 天（12 周）
+            const cutoff = new Date();
+            cutoff.setDate(cutoff.getDate() - 84);
+            const cutoffIso = cutoff.toISOString().slice(0, 10);
+            const recent = entries.filter((e) => e.date >= cutoffIso);
+            if (recent.length < 2) {
+              return (
+                <p className="mt-3 text-sm text-muted-foreground">
+                  近 12 周记录不足 2 个点，继续记几天再来看曲线。
+                </p>
+              );
+            }
+            const data = recent.map((e) => ({
+              label: `${Number(e.date.slice(5, 7))}/${Number(e.date.slice(8, 10))}`,
+              weight: e.weight,
+              bodyFat: e.bodyFat ?? undefined,
+            }));
+            return (
+              <>
+                <div className="mt-3 h-40 w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={data} margin={{ top: 4, right: 8, bottom: 0, left: -22 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+                      <XAxis
+                        dataKey="label"
+                        tick={{ fill: 'var(--muted-foreground)', fontSize: 10 }}
+                        tickLine={false}
+                        axisLine={{ stroke: 'var(--border)' }}
+                        interval="preserveStartEnd"
+                      />
+                      <YAxis
+                        domain={['dataMin - 1', 'dataMax + 1']}
+                        tick={{ fill: 'var(--muted-foreground)', fontSize: 10 }}
+                        tickLine={false}
+                        axisLine={false}
+                      />
+                      <Tooltip
+                        contentStyle={{
+                          background: 'var(--popover)',
+                          border: '1px solid var(--border)',
+                          borderRadius: 8,
+                          fontSize: 12,
+                          color: 'var(--popover-foreground)',
+                        }}
+                        formatter={(value: number, name: string) =>
+                          name === 'weight'
+                            ? [`${Number(value).toFixed(1)} kg`, '体重']
+                            : [`${Number(value).toFixed(1)}%`, '体脂']
+                        }
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="weight"
+                        stroke="var(--chart-1)"
+                        strokeWidth={2}
+                        dot={{ r: 2.5 }}
+                        activeDot={{ r: 4 }}
+                      />
+                      {data.some((d) => d.bodyFat != null) && (
+                        <Line
+                          type="monotone"
+                          dataKey="bodyFat"
+                          stroke="#FF5A1F"
+                          strokeWidth={1.5}
+                          strokeDasharray="4 3"
+                          dot={false}
+                        />
+                      )}
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+                <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+                  体重按天看会抖（水分、排便、碳水储存都影响），看周平均趋势才有意义。
+                  增肌期体重缓慢上升 + 容量同步上升 = 有效；如果体重涨了但容量没涨，多半是脂肪。
+                </p>
+              </>
+            );
+          })()}
         </CardContent>
       </Card>
 
