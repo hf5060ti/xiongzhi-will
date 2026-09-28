@@ -393,7 +393,8 @@ export interface TrainingLog {
   date: string;         // YYYY-MM-DD
   dayLabel?: string;    // 训练日（推 / 拉 / 腿 / 自定义）
   exercises: TrainingExercise[];
-  note?: string;
+  note?: string;        // 本次训练感受 / 备注（可选）
+  durationMin?: number; // 本次训练总时长（分钟，可选）
   createdAt?: number;   // 录入时间戳，用于同日多条的稳定排序
 }
 
@@ -442,6 +443,8 @@ function sanitizeTrainingLog(item: unknown, fallbackId: string): TrainingLog | n
   const log: TrainingLog = { id, date: raw.date, exercises };
   if (typeof raw.dayLabel === 'string' && raw.dayLabel.trim()) log.dayLabel = raw.dayLabel.trim();
   if (typeof raw.note === 'string' && raw.note.trim()) log.note = raw.note.trim();
+  const dur = Number(raw.durationMin);
+  if (Number.isFinite(dur) && dur > 0 && dur <= 600) log.durationMin = Math.round(dur);
   const created = Number(raw.createdAt);
   if (Number.isFinite(created) && created > 0) log.createdAt = created;
   return log;

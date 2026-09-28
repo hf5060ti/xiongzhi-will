@@ -8,7 +8,7 @@
  */
 import { useMemo, useState } from 'react';
 import { toast } from 'sonner';
-import { BarChart3, CalendarDays, Dumbbell, Eraser, Flame, Pencil, Plus, Save, Trash2, Undo2, X } from 'lucide-react';
+import { BarChart3, CalendarDays, Clock, Dumbbell, Eraser, Flame, Medal, Pencil, Plus, Save, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -221,6 +221,8 @@ export default function TrainingLogPage() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [date, setDate] = useState(todayStr());
   const [dayLabel, setDayLabel] = useState('');
+  const [durationMin, setDurationMin] = useState('');
+  const [note, setNote] = useState('');
   const [exs, setExs] = useState<DraftExercise[]>([emptyExercise()]);
   const [confirmClear, setConfirmClear] = useState(false);
 
@@ -309,6 +311,47 @@ export default function TrainingLogPage() {
     [logs, week],
   );
 
+  /** 存档统计（游戏存档式面板）：总训练次数 / 累计容量 / 累计组数 / 连续训练 / 最长连续 / 动作 PR 数 */
+  const stats = useMemo(() => {
+    const totalSessions = logs.length;
+    const totalVolume = logs.reduce((s, l) => s + logVolume(l), 0);
+    const totalSets = logs.reduce((s, l) => s + l.exercises.reduce((x, ex) => x + ex.sets.length, 0), 0);
+    const dates = [...new Set(logs.map((l) => l.date))].sort();
+    // 连续训练天数：今天已练从今天起算；今天没练则从最近一个训练日起算（不算断档）
+    let streak = 0;
+    if (dates.length > 0) {
+      const set = new Set(dates);
+      let cur = new Date();
+      if (!set.has(isoOf(cur))) cur.setDate(cur.getDate() - 1);
+      while (set.has(isoOf(cur))) {
+        streak++;
+        cur.setDate(cur.getDate() - 1);
+      }
+    }
+    // 最长连续训练段
+    let longest = 0;
+    let run = 0;
+    let prevDay = -1;
+    for (const d of dates) {
+      const day = Math.round((new Date(d + 'T00:00:00').getTime() - new Date(dates[0] + 'T00:00:00').getTime()) / 86400000);
+      run = prevDay === -1 || day === prevDay + 1 ? run + 1 : 1;
+      if (run > longest) longest = run;
+      prevDay = day;
+    }
+    // 动作 PR 数：每个动作名取历史最佳 1RM，统计共有多少个动作留下了纪录
+    const prMap = new Map<string, number>();
+    for (const l of logs) {
+      for (const ex of l.exercises) {
+        const b = bestSetOf(ex);
+        if (!b) continue;
+        const key = ex.name.trim().toLowerCase();
+        const cur = prMap.get(key);
+        if (cur == null || b.oneRm > cur) prMap.set(key, b.oneRm);
+      }
+    }
+    return { totalSessions, totalVolume, totalSets, streak, longest, prCount: prMap.size };
+  }, [logs]);
+
   /** 已写入能力追踪的训练条目：trainingLogId + 动作键 → 能力追踪记录 id */
   const importedIds = useMemo(() => {
     const map = new Map<string, string>();
@@ -329,6 +372,8 @@ export default function TrainingLogPage() {
     setEditingId(null);
     setDate(todayStr());
     setDayLabel('');
+    setDurationMin('');
+    setNote('');
     setExs([emptyExercise()]);
   };
 
@@ -376,6 +421,9 @@ export default function TrainingLogPage() {
     if (exercises.length === 0) {
       return toast.error('请至少填写一个动作，并给该动作填上「重量 × 次数」');
     }
+    const durNum = Number(durationMin);
+    const durOk = Number.isFinite(durNum) && durNum > 0 && durNum <= 600;
+    const noteTrim = note.trim();
     if (editingId) {
       const prev = logs.find((l) => l.id === editingId);
       setLogs(
@@ -384,13 +432,23 @@ export default function TrainingLogPage() {
           date,
           dayLabel: dayLabel || undefined,
           exercises,
+          note: noteTrim || undefined,
+          durationMin: durOk ? Math.round(durNum) : undefined,
           createdAt: prev?.createdAt, // 保留原录入时间，同日多条的排序不因编辑而跳位
         }),
       );
-      toast.success(`已更新 ${date} 的训练记录（${exercises.length} 个动作）`);
+      toast.success(`已更新并保存到本机：${date} 的训练日志（${exercises.length} 个动作）`);
     } else {
-      setLogs(appendTrainingLog({ date, dayLabel: dayLabel || undefined, exercises }));
-      toast.success(`已记录 ${date} 的训练：${exercises.length} 个动作`);
+      setLogs(
+        appendTrainingLog({
+          date,
+          dayLabel: dayLabel || undefined,
+          exercises,
+          note: noteTrim || undefined,
+          durationMin: durOk ? Math.round(durNum) : undefined,
+        }),
+      );
+      toast.success(`已存档：${date} 的训练日志（${exercises.length} 个动作），数据保存在本机`);
     }
     resetForm();
   };
@@ -399,6 +457,8 @@ export default function TrainingLogPage() {
     setEditingId(log.id ?? null);
     setDate(log.date);
     setDayLabel(log.dayLabel ?? '');
+    setDurationMin(log.durationMin != null ? String(log.durationMin) : '');
+    setNote(log.note ?? '');
     setExs(
       log.exercises.map((ex) => ({
         name: ex.name,
@@ -411,7 +471,7 @@ export default function TrainingLogPage() {
             : [{ weight: '', reps: '' }],
       })),
     );
-    toast.info('已载入该条记录，改完点「保存修改」');
+    toast.info('已载入这条日志，改完点「保存修改」');
   };
 
   const removeLog = (log: TrainingLog) => {
@@ -472,13 +532,79 @@ export default function TrainingLogPage() {
       <div className="space-y-1">
         <h2 className="flex items-center gap-2 font-display text-xl font-bold text-foreground">
           <CalendarDays className="h-5 w-5 text-primary" />
-          训练记录
+          训练日志
         </h2>
         <p className="text-xs leading-relaxed text-muted-foreground">
-          逐组记录「重量 × 次数」，历史可编辑、删除。命中力量五动作（深蹲 / 卧推 / 硬拉 / 站姿推举 / 杠铃弯举）时会用 Epley
-          公式估算 1RM，可一键写入能力追踪：以体重倍数留档并带写入当时的体重快照，写入后可撤销。1RM 口径与能力追踪判级、身体数据页换算器一致。
+          像写日志一样记录每次训练：日期 + 训练日 + 动作逐组「重量 × 次数」+ 时长与感受。命中力量五动作（深蹲 / 卧推 / 硬拉 / 站姿推举 / 杠铃弯举）会用 Epley
+          公式估算 1RM，可一键写入能力追踪。1RM 口径与能力追踪判级、身体数据页换算器一致。
         </p>
       </div>
+
+      {/* 自动保存提示（游戏存档式：数据只存在本机，关页面不丢） */}
+      <div className="flex flex-wrap items-center gap-2 rounded-md border border-primary/25 bg-primary/5 px-3 py-2 text-[11px] text-muted-foreground">
+        <Save className="h-3.5 w-3.5 shrink-0 text-primary" />
+        <span>
+          每条日志保存后自动写入本机浏览器（localStorage），刷新、关页面、重启都不会丢；换设备或清理浏览器前，去首页「数据备份」导出一次即可随身带走。
+        </span>
+      </div>
+      {/* 存档统计面板（游戏存档式：一眼看到总进度） */}
+      <div className="space-y-2">
+        <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <TrendingUp className="h-3.5 w-3.5 text-primary" />
+          我的存档
+          <span className="font-normal text-muted-foreground/70">—— 所有日志合计，自动累计，不用手动维护</span>
+        </p>
+        <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
+          <Card>
+            <CardContent className="p-3">
+              <p className="text-[10px] text-muted-foreground">总训练次数</p>
+              <p className="mt-0.5 font-display text-lg font-bold text-foreground">{stats.totalSessions}</p>
+              <p className="text-[10px] text-muted-foreground">条日志</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <p className="text-[10px] text-muted-foreground">累计容量</p>
+              <p className="mt-0.5 font-display text-lg font-bold text-foreground">
+                {stats.totalVolume > 0 ? Math.round(stats.totalVolume).toLocaleString() : '—'}
+              </p>
+              <p className="text-[10px] text-muted-foreground">kg · 总吨位</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <p className="text-[10px] text-muted-foreground">累计组数</p>
+              <p className="mt-0.5 font-display text-lg font-bold text-foreground">{stats.totalSets}</p>
+              <p className="text-[10px] text-muted-foreground">有效组</p>
+            </CardContent>
+          </Card>
+          <Card className="border-primary/30">
+            <CardContent className="p-3">
+              <p className="text-[10px] text-muted-foreground">连续训练</p>
+              <p className="mt-0.5 font-display text-lg font-bold text-primary">{stats.streak}</p>
+              <p className="text-[10px] text-muted-foreground">天 · 当前连击</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <p className="text-[10px] text-muted-foreground">最长连续</p>
+              <p className="mt-0.5 font-display text-lg font-bold text-foreground">{stats.longest}</p>
+              <p className="text-[10px] text-muted-foreground">天 · 生涯纪录</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <p className="text-[10px] text-muted-foreground">动作 PR</p>
+              <p className="mt-0.5 flex items-center gap-1 font-display text-lg font-bold text-foreground">
+                <Medal className="h-4 w-4 text-primary" />
+                {stats.prCount}
+              </p>
+              <p className="text-[10px] text-muted-foreground">个动作留过最佳 1RM</p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
 
       {/* 近 7 天概览 */}
       <div className="grid gap-3 lg:grid-cols-[1fr_1fr_1.4fr]">
@@ -656,6 +782,31 @@ export default function TrainingLogPage() {
               />
             </div>
           </div>
+          {/* 本次训练：时长 + 感受（可选，让每篇日志更完整） */}
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="space-y-2">
+              <Label className="text-sm">本次训练时长（分钟）</Label>
+              <Input
+                type="number"
+                min={1}
+                max={600}
+                placeholder="如 60（选填；单次力量训练建议 70 分钟内，超时为垃圾容量）"
+                value={durationMin}
+                onChange={(e) => setDurationMin(e.target.value)}
+                className="h-8 text-xs"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label className="text-sm">训练感受 / 备注</Label>
+              <Input
+                placeholder="如：状态不错、最后一组力竭、腰有点紧（选填）"
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                className="h-8 text-xs"
+              />
+            </div>
+          </div>
+
 
           {/* 动作列表 */}
           <div className="space-y-3">
@@ -878,6 +1029,11 @@ export default function TrainingLogPage() {
                           {log.exercises.length} 个动作 · {setCount} 组
                           {volume > 0 ? ` · 容量 ${Math.round(volume).toLocaleString()} kg` : ' · 自重 / 无重量'}
                         </span>
+                        {log.durationMin != null && (
+                          <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                            <Clock className="h-3 w-3" /> {log.durationMin} 分钟
+                          </span>
+                        )}
                       </div>
                       <span className="flex items-center gap-2">
                         <button
@@ -898,6 +1054,10 @@ export default function TrainingLogPage() {
                         </button>
                       </span>
                     </div>
+
+                    {log.note && (
+                      <p className="mt-2 text-[11px] italic leading-relaxed text-muted-foreground">「{log.note}」</p>
+                    )}
 
                     <div className="mt-2 space-y-1.5">
                       {log.exercises.map((ex, exIdx) => {

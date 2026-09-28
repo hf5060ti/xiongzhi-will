@@ -1,6 +1,6 @@
 ﻿import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
@@ -19,6 +19,7 @@ const NAV_ITEMS = [
   { path: '/relation', label: '关系', icon: Heart, end: false },
   { path: '/skills', label: '技能', icon: Wrench, end: false },
   { path: '/wild', label: '荒野', icon: Mountain, end: false },
+  { path: '/life', label: '人生', icon: BookMarked, end: false },
   { path: '/collect', label: '收藏', icon: Bookmark, end: false },
 
 ];
@@ -40,6 +41,7 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/relation': { title: '关系 - 雄性意志', desc: '边界感、表达、沟通、亲密关系——尊重与责任。' },
   '/skills': { title: '技能 - 雄性意志', desc: '急救、料理、修理、户外、生存、防身、旅行。' },
   '/wild': { title: '荒野 - 雄性意志', desc: '生存工具（打火石、生存斧、刀具与钢材特性）、户外技能。' },
+  '/life': { title: '人生 - 雄性意志', desc: '《高性价比人生指南》33 章全收录（MIT 开源）：每一条都回答花掉什么、换回什么，标注成本、说人话、收益、证据等级与来源。' },
   '/stomach': { title: '胃部 - 雄性意志', desc: '饮食与消化：蛋白质摄入量、嘌呤、吸收率、空腹训练建议。' },
   '/diet-knowledge': { title: '饮食讲解 - 雄性意志', desc: '公开健身博主讲解整理：每条注明证据等级与来源链接，非医疗建议。' },
   '/training-logs': { title: '训练日志 - 雄性意志', desc: '近 7 天训练频次、周容量、力量与耐力追踪。' },
