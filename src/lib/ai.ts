@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: ProviderInfo, ChatMessage, fetchProviders, chatStream, pingBackend,
 //          BackendOfflineError, getApiBase, getDefaultApiBase, setApiBase,
@@ -19,6 +19,8 @@ export interface ProviderInfo {
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant';
   content: string;
+  /** 可选：用户上传的图片（dataURL）。视觉模型会按多模态协议发送。 */
+  image?: string;
 }
 
 // ── 硅基流动直连（用户自己的 Key，存自己浏览器）─────────────────
@@ -31,6 +33,7 @@ export const SILICONFLOW_MODELS = [
   { id: 'Qwen/Qwen2.5-72B-Instruct', label: 'Qwen2.5-72B（更强，消耗额度快）' },
   { id: 'deepseek-ai/DeepSeek-V2.5', label: 'DeepSeek-V2.5（推理强）' },
   { id: 'THUDM/glm-4-9b-chat', label: 'GLM-4-9B（轻量）' },
+  { id: 'Qwen/Qwen2.5-VL-72B-Instruct', label: 'Qwen2.5-VL-72B（可看图/动作分析）' },
 ];
 
 export function getSiliconflowKey(): string {
@@ -87,7 +90,17 @@ async function chatStreamSiliconflow(
     },
     body: JSON.stringify({
       model: getSiliconflowModel(),
-      messages,
+      messages: messages.map((m) =>
+        m.image
+          ? {
+              role: m.role,
+              content: [
+                { type: 'text', text: m.content || '请分析这张图里的动作是否标准。' },
+                { type: 'image_url', image_url: { url: m.image } },
+              ],
+            }
+          : { role: m.role, content: m.content }
+      ),
       stream: true,
     }),
     signal,

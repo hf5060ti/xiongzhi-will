@@ -6,6 +6,10 @@ import {
   Activity,
   BedDouble,
   Bot,
+  Camera,
+  ImagePlus,
+  ShieldQuestion,
+  X,
   HeartPulse,
   Loader2,
   Pill,
@@ -552,6 +556,74 @@ function AIChatPanel() {
   const [modelInput, setModelInput] = useState(() => getSiliconflowModel());
   const [showKeyForm, setShowKeyForm] = useState(() => !hasSiliconflowKey());
 
+  // ── 图片/动作照片上传：三档权限 ──
+  type ImagePerm = 'deny' | 'ask' | 'allow';
+  const IMAGE_PERM_KEY = 'xiongzhi-will:coach-image-perm';
+  const readImagePerm = (): ImagePerm | null => {
+    try {
+      const v = localStorage.getItem(IMAGE_PERM_KEY);
+      return v === 'deny' || v === 'ask' || v === 'allow' ? v : null;
+    } catch { return null; }
+  };
+  const writeImagePerm = (v: ImagePerm) => {
+    try { localStorage.setItem(IMAGE_PERM_KEY, v); } catch { /* ignore */ }
+  };
+  const [imagePerm, setImagePerm] = useState<ImagePerm | null>(() => readImagePerm());
+  const [showPermDialog, setShowPermDialog] = useState(false);
+  const [pendingImage, setPendingImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handlePickImage = () => {
+    const perm = readImagePerm();
+    if (perm === 'deny') {
+      setError('图片上传已被你在设置中禁止。如需分析动作照片，请点右上角相机图标切换权限。');
+      return;
+    }
+    if (!perm) {
+      setShowPermDialog(true);
+      return;
+    }
+    if (perm === 'ask') {
+      const ok = window.confirm('即将上传一张动作照片给 AI 教练做动作分析。\n\n照片只会在你本次对话中发送到你配置的模型端点（如硅基流动），不会上传到本站服务器。是否继续？');
+      if (!ok) return;
+    }
+    fileInputRef.current?.click();
+  };
+
+  const onFileChosen = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+    if (!file.type.startsWith('image/')) { setError('请选择图片文件（JPG/PNG）。短视频暂未支持，请截一帧关键动作图。'); return; }
+    // 压缩到最长边 900px，JPEG 0.75，避免 dataURL 过大撑爆请求
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const MAX = 900;
+        const scale = Math.min(1, MAX / Math.max(img.width, img.height));
+        const w = Math.round(img.width * scale);
+        const h = Math.round(img.height * scale);
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) { setPendingImage(String(reader.result)); return; }
+        ctx.drawImage(img, 0, 0, w, h);
+        setPendingImage(canvas.toDataURL('image/jpeg', 0.75));
+      };
+      img.src = String(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const confirmPerm = (v: ImagePerm) => {
+    writeImagePerm(v);
+    setImagePerm(v);
+    setShowPermDialog(false);
+    if (v === 'deny') { setPendingImage(null); return; }
+    if (v === 'allow' || v === 'ask') fileInputRef.current?.click();
+  };
+
   /** 拉取成功：应用模型列表 */
   const applyProviders = useCallback((list: ProviderInfo[]) => {
     setProviders(list);
@@ -694,8 +766,12 @@ function AIChatPanel() {
       const food = matchFood(foodQ.query);
       if (food) {
         setError('');
-        setMessages([...messages, { role: 'user', content: text }, { role: 'assistant', content: buildFoodCalcText(food, foodQ.grams, foodQ.unit) }]);
+        const foodUserMsg: ChatMessage = pendingImage
+          ? { role: 'user', content: text, image: pendingImage }
+          : { role: 'user', content: text };
+        setMessages([...messages, foodUserMsg, { role: 'assistant', content: buildFoodCalcText(food, foodQ.grams, foodQ.unit) + '\n\n（注：本地营养库速算不解析图片；动作类照片请发送文字问题后由 AI 分析。）' }]);
         setInput('');
+        setPendingImage(null);
         return;
       }
       if (backend === 'offline') {
@@ -726,9 +802,13 @@ function AIChatPanel() {
         '③ 涉及疾病、服药、孕期、老人、慢性病时，提示以医生意见为准；④ 训练建议要落在具体数字（组数、次数、重量百分比、休息时间）；' +
         '⑤ 用户可能提到 肌肥大/斗腕/大力士/综合体能/街头健身 等目标，按目标给出对应侧重。',
     };
-    const history: ChatMessage[] = [system, ...messages, { role: 'user', content: text }];
+    const userMsg: ChatMessage = pendingImage
+      ? { role: 'user', content: text, image: pendingImage }
+      : { role: 'user', content: text };
+    const history: ChatMessage[] = [system, ...messages, userMsg];
     setMessages([...history, { role: 'assistant', content: '' }]);
     setInput('');
+    setPendingImage(null);
     setSending(true);
 
     const controller = new AbortController();
@@ -949,6 +1029,9 @@ function AIChatPanel() {
                 <span className="mb-0.5 block text-[10px] uppercase tracking-wide text-muted-foreground">
                   {m.role === 'user' ? '我' : (current?.label ?? 'AI')}
                 </span>
+                {m.image && (
+                  <img src={m.image} alt="用户上传的动作照片" className="mb-2 max-h-56 rounded-md border border-border object-contain bg-black" />
+                )}
                 {m.content || (sending ? '…' : '')}
                 {m.role === 'assistant' && findRelatedVideos(m.content).length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -981,7 +1064,34 @@ function AIChatPanel() {
           </p>
         )}
 
+        {pendingImage && (
+          <div className="flex items-center gap-2 rounded-md border border-border bg-muted/40 p-2">
+            <img src={pendingImage} alt="待发送的动作照片" className="h-14 w-14 rounded border border-border object-cover" />
+            <div className="flex-1 text-xs text-muted-foreground">
+              动作照片已附上。可在下方补一句「这个卧推/深蹲动作标准吗？」再发送。
+              <div className="mt-0.5 text-[10px]">需在模型下拉里选 Qwen2.5-VL-72B 才能真正看图。</div>
+            </div>
+            <Button type="button" variant="outline" size="icon" onClick={() => setPendingImage(null)} title="移除图片">
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+        )}
+
+        <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={onFileChosen} />
+
         <div className="flex gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            title={imagePerm === 'deny' ? '图片上传已被禁止（点此改权限）' : '上传动作照片让 AI 分析'}
+            onClick={() => {
+              if (imagePerm === 'deny') { setShowPermDialog(true); return; }
+              handlePickImage();
+            }}
+            disabled={sending || backend === 'offline'}
+          >
+            <Camera className={cn('h-4 w-4', imagePerm === 'deny' && 'text-muted-foreground line-through')} />
+          </Button>
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -991,7 +1101,7 @@ function AIChatPanel() {
                 void handleSend();
               }
             }}
-            placeholder={backend === 'offline' ? '本地后台未连接，先按上方说明启动后台' : '输入你的问题，回车发送'}
+            placeholder={backend === 'offline' ? '本地后台未连接，先按上方说明启动后台' : '问动作 / 算热量 / 调计划；点相机可发动作照'}
             disabled={sending || backend === 'offline'}
           />
           <Button
@@ -1017,6 +1127,55 @@ function AIChatPanel() {
           )}
         </div>
       </CardContent>
+
+      {showPermDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+          <div className="w-full max-w-md rounded-lg border border-border bg-[#1A1D1B] p-5 shadow-2xl">
+            <div className="mb-2 flex items-center gap-2">
+              <ShieldQuestion className="h-5 w-5 text-[#FACC15]" />
+              <h3 className="text-base font-semibold text-foreground">动作照片上传权限</h3>
+            </div>
+            <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
+              你可以拍一张动作照片发给 AI 教练，让它判断动作是否标准。
+              照片只会在你本次对话中发送到你配置的模型端点（如硅基流动 Qwen2.5-VL），
+              不会上传到本站服务器，也不会被保存。请选择权限：
+            </p>
+            <div className="flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => confirmPerm('allow')}
+                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#FACC15]"
+              >
+                <div className="font-medium">完全访问</div>
+                <div className="mt-0.5 text-xs text-muted-foreground">以后直接上传，不再询问（推荐）</div>
+              </button>
+              <button
+                type="button"
+                onClick={() => confirmPerm('ask')}
+                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#FACC15]"
+              >
+                <div className="font-medium">每次使用都询问</div>
+                <div className="mt-0.5 text-xs text-muted-foreground">每次上传前都会弹确认，可随时取消</div>
+              </button>
+              <button
+                type="button"
+                onClick={() => confirmPerm('deny')}
+                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-destructive"
+              >
+                <div className="font-medium text-destructive">完全禁止</div>
+                <div className="mt-0.5 text-xs text-muted-foreground">禁用相机按钮，只用文字对话</div>
+              </button>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowPermDialog(false)}
+              className="mt-3 w-full rounded-md border border-border px-3 py-2 text-xs text-muted-foreground hover:text-foreground"
+            >
+              稍后再说
+            </button>
+          </div>
+        </div>
+      )}
     </Card>
   );
 }
