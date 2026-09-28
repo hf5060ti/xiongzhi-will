@@ -8,9 +8,9 @@
  *   可一键写入能力追踪：value 存体重倍数、带写入当时的体重快照，写入后可撤销
  * - 1RM 口径与能力追踪判级、身体数据页换算器完全一致（Epley）
  */
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
-import { BarChart3, CalendarDays, Clock, Dumbbell, Eraser, Flame, Medal, Pencil, Plus, Save, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
+import { BarChart3, CalendarDays, Check, Clock, Dumbbell, Eraser, Flame, Medal, Pencil, Play, Plus, Save, SkipForward, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -227,6 +227,7 @@ export default function TrainingLogPage() {
   const [note, setNote] = useState('');
   const [exs, setExs] = useState<DraftExercise[]>([emptyExercise()]);
   const [confirmClear, setConfirmClear] = useState(false);
+  const [runnerOpen, setRunnerOpen] = useState(false);
 
   // 力量判级 / 写入能力追踪所需的体重（与能力追踪页同口径：优先快捷体重，回退身体档案）
   const weightKg = latestWeightKg();
@@ -527,6 +528,65 @@ export default function TrainingLogPage() {
   };
 
   const history = [...logs].reverse();
+
+  /** 执行模式：从当前草稿动作构建逐组序列 */
+  const runnerEntries: RunnerEntry[] = (() => {
+    const out: RunnerEntry[] = [];
+    exs.forEach((ex, exIdx) => {
+      if (!ex.name.trim()) return;
+      const lift = matchLift(ex.name);
+      const compound = Boolean(lift); // 深蹲/卧推/硬拉/推举/弯举等力量动作按复合时长
+      ex.sets.forEach((set, setIdx) => {
+        out.push({
+          exIdx,
+          setIdx,
+          exerciseName: ex.name.trim(),
+          compound,
+          suggestedWeight: set.weight,
+          suggestedReps: set.reps,
+        });
+      });
+    });
+    return out;
+  })();
+
+  /** 执行模式走完：直接用现场填的重量×次数存档（不等 exs state 更新） */
+  const saveFromRunner = (results: RunnerResult[]) => {
+    const byEx = new Map<number, { name: string; exerciseId?: string; sets: TrainingSet[] }>();
+    for (const r of results) {
+      const src = exs[r.exIdx];
+      if (!src || !src.name.trim()) continue;
+      if (!byEx.has(r.exIdx)) {
+        byEx.set(r.exIdx, { name: src.name.trim(), exerciseId: src.exerciseId, sets: [] });
+      }
+      const bucket = byEx.get(r.exIdx)!;
+      const set: TrainingSet = {};
+      const w = Number(r.weight);
+      if (Number.isFinite(w) && w > 0 && w <= 500) set.weightKg = Math.round(w * 10) / 10;
+      const rp = Number(r.reps);
+      if (Number.isFinite(rp) && rp > 0) set.reps = Math.round(rp);
+      if (set.reps != null) bucket.sets.push(set);
+    }
+    const exercises: TrainingExercise[] = [];
+    for (const b of byEx.values()) {
+      if (b.sets.length > 0) exercises.push({ exerciseId: b.exerciseId, name: b.name, sets: b.sets });
+    }
+    setRunnerOpen(false);
+    if (exercises.length === 0) return toast.error('没有填有效的组（每组至少要填次数）');
+    const durNum = Number(durationMin);
+    const durOk = Number.isFinite(durNum) && durNum > 0 && durNum <= 600;
+    setLogs(
+      appendTrainingLog({
+        date,
+        dayLabel: dayLabel || undefined,
+        exercises,
+        note: note.trim() || undefined,
+        durationMin: durOk ? Math.round(durNum) : undefined,
+      }),
+    );
+    resetForm();
+    toast.success(`执行完成，已存档：${date}（${exercises.length} 个动作 · ${exercises.reduce((s, e) => s + e.sets.length, 0)} 组）`);
+  };
 
   return (
     <div className="space-y-5">
@@ -964,6 +1024,16 @@ export default function TrainingLogPage() {
               <Plus className="mr-1 h-3.5 w-3.5" />
               加动作
             </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 border-primary/50 bg-primary/10 px-3 text-xs text-primary hover:bg-primary/20"
+              onClick={() => setRunnerOpen(true)}
+              disabled={!exs.some((e) => e.name.trim())}
+            >
+              <Play className="mr-1 h-3.5 w-3.5" />
+              开始执行模式（健身房跟着走）
+            </Button>
             <Button className="ml-auto" onClick={save}>
               <Save className="mr-1.5 h-4 w-4" />
               {editingId ? '保存修改' : '保存训练记录'}
@@ -1150,6 +1220,14 @@ export default function TrainingLogPage() {
         </CardContent>
       </Card>
 
+      {/* 执行模式全屏 overlay（健身房跟着走） */}
+      {runnerOpen && runnerEntries.length > 0 && (
+        <WorkoutRunner
+          entries={runnerEntries}
+          onFinish={saveFromRunner}
+          onClose={() => setRunnerOpen(false)}
+        />
+      )}
     </div>
   );
 }
@@ -1157,4 +1235,162 @@ export default function TrainingLogPage() {
 /** 删除提示里用的日期格式化（避免与组件内同名变量冲突） */
 function date0(log: TrainingLog): string {
   return log.date;
+}
+
+interface RunnerEntry {
+  exIdx: number;
+  setIdx: number;
+  exerciseName: string;
+  compound: boolean;
+  suggestedWeight: string;
+  suggestedReps: string;
+}
+
+interface RunnerResult {
+  exIdx: number;
+  setIdx: number;
+  weight: string;
+  reps: string;
+}
+
+/** 训练执行器：大字动作名 + 当前组 + 重量/次数大输入 + 完成后红色横幅与休息倒计时 */
+function WorkoutRunner({
+  entries,
+  onFinish,
+  onClose,
+}: {
+  entries: RunnerEntry[];
+  onFinish: (results: RunnerResult[]) => void;
+  onClose: () => void;
+}) {
+  const [idx, setIdx] = useState(0);
+  const [weight, setWeight] = useState(entries[0]?.suggestedWeight ?? '');
+  const [reps, setReps] = useState(entries[0]?.suggestedReps ?? '');
+  const [resting, setResting] = useState(false);
+  const [restLeft, setRestLeft] = useState(0);
+  const resultsRef = useRef<RunnerResult[]>([]);
+  const timerRef = useRef<number | null>(null);
+
+  const current = entries[idx];
+  const restTotal = current.compound ? 180 : 120;
+
+  useEffect(() => {
+    if (!resting) return;
+    timerRef.current = window.setInterval(() => {
+      setRestLeft((s) => {
+        if (s <= 1) {
+          if (timerRef.current) window.clearInterval(timerRef.current);
+          return 0;
+        }
+        return s - 1;
+      });
+    }, 1000);
+    return () => {
+      if (timerRef.current) window.clearInterval(timerRef.current);
+    };
+  }, [resting]);
+
+  const goNext = () => {
+    setResting(false);
+    const ni = idx + 1;
+    if (ni >= entries.length) {
+      onFinish(resultsRef.current);
+      return;
+    }
+    setIdx(ni);
+    setWeight(entries[ni].suggestedWeight);
+    setReps(entries[ni].suggestedReps);
+  };
+
+  // 倒计时到 0 自动进入下一组
+  useEffect(() => {
+    if (resting && restLeft === 0) goNext();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [restLeft, resting]);
+
+  const completeSet = () => {
+    resultsRef.current.push({ exIdx: current.exIdx, setIdx: current.setIdx, weight, reps });
+    if (idx + 1 >= entries.length) {
+      onFinish(resultsRef.current);
+      return;
+    }
+    setRestLeft(restTotal);
+    setResting(true);
+  };
+
+  const mm = String(Math.floor(restLeft / 60)).padStart(2, '0');
+  const ss = String(restLeft % 60).padStart(2, '0');
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0B0D0C]/97 p-4 backdrop-blur-md">
+      <div className="relative w-full max-w-md rounded-2xl border border-border bg-[#1A1D1B] p-6 shadow-2xl">
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 text-muted-foreground transition-colors hover:text-foreground"
+          title="退出执行模式（不保存）"
+        >
+          <X className="h-5 w-5" />
+        </button>
+        {!resting ? (
+          <>
+            <p className="text-center text-xs text-muted-foreground">
+              第 {idx + 1} / {entries.length} 组
+            </p>
+            <h3 className="mt-2 text-center font-display text-2xl font-bold text-foreground">{current.exerciseName}</h3>
+            <p className="mt-1 text-center text-[11px] text-muted-foreground">
+              {current.compound ? '复合动作 · 建议休息约 3 分钟' : '孤立动作 · 建议休息约 2 分钟'}
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              <div>
+                <label className="text-[11px] text-muted-foreground">重量 kg</label>
+                <input
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                  inputMode="decimal"
+                  placeholder="自重留空"
+                  className="mt-1 h-14 w-full rounded-xl border border-border bg-black/30 text-center font-display text-2xl font-bold text-foreground outline-none focus:border-[#FACC15]"
+                />
+              </div>
+              <div>
+                <label className="text-[11px] text-muted-foreground">次数</label>
+                <input
+                  value={reps}
+                  onChange={(e) => setReps(e.target.value)}
+                  inputMode="numeric"
+                  placeholder="如 8"
+                  className="mt-1 h-14 w-full rounded-xl border border-border bg-black/30 text-center font-display text-2xl font-bold text-foreground outline-none focus:border-[#FACC15]"
+                />
+              </div>
+            </div>
+            <button
+              onClick={completeSet}
+              className="mt-6 h-14 w-full rounded-xl bg-[#FACC15] font-display text-lg font-bold text-black transition-transform active:scale-[0.98]"
+            >
+              完成本组
+            </button>
+            <p className="mt-3 text-center text-[10px] text-muted-foreground">
+              自然训练者需充分恢复磷酸原系统，避免下一组在疲劳状态下开始
+            </p>
+          </>
+        ) : (
+          <div className="py-6 text-center">
+            <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-[#EF4444]/15">
+              <Check className="h-10 w-10 text-[#EF4444]" />
+            </div>
+            <h3 className="mt-4 font-display text-3xl font-bold text-[#EF4444]">完成！</h3>
+            <p className="mt-2 text-sm text-muted-foreground">休息一下，准备下一组</p>
+            <p className="mt-4 font-display text-5xl font-bold tabular-nums text-foreground">
+              {mm}:{ss}
+            </p>
+            <button
+              onClick={goNext}
+              className="mt-6 inline-flex items-center gap-1.5 rounded-xl border border-border px-4 py-2.5 text-sm text-foreground transition-colors hover:bg-accent"
+            >
+              <SkipForward className="h-4 w-4" /> 跳过休息，下一组
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
