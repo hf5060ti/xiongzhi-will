@@ -1,7 +1,7 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 import { Card, CardContent } from '@/components/ui/card';
-import { Mountain, Flame, Droplets, Tent, Compass, Sword, TreePine, Wind, Wrench, Axe, Sparkles } from 'lucide-react';
+import { Mountain, Flame, Droplets, Tent, Compass, Sword, TreePine, Wind, Wrench, Axe, Sparkles, HeartPulse, CloudRain, PawPrint, Link2, Radio, Thermometer, Home, Backpack } from 'lucide-react';
 
 export default function WildPage() {
   return (
@@ -176,6 +176,99 @@ export default function WildPage() {
             '引火物：桦树皮、火绒、棉花球——比直接点木头容易 100 倍',
           ]}
         />
+      </div>
+
+      {/* 野外生存技能 */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <HeartPulse className="h-5 w-5 text-primary" />
+          <h2 className="font-display text-2xl font-bold tracking-wide text-foreground">野外生存技能</h2>
+        </div>
+
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
+          <WildCard
+            icon={<HeartPulse className="h-5 w-5" />}
+            title="野外急救"
+            items={[
+              '外伤先止血——直接按压 10 分钟，别频繁掀开看',
+              '骨折别动——找树枝夹板固定，比硬拖回营地安全',
+              '伤口别用嘴吸——嘴里细菌比伤口还多',
+              '带创可贴、纱布、止血带、个人常用药——这就够了',
+            ]}
+          />
+          <WildCard
+            icon={<Thermometer className="h-5 w-5" />}
+            title="失温与中暑"
+            items={[
+              '失温比中暑更常见——出汗 + 风 + 湿衣服就能冻死',
+              '判断：手抖、说胡话、动作不协调——立刻停，换干衣服',
+              '中暑：阴凉处、补水、脱外套——别用冰水直接浇头',
+              '黄金原则：先保住体温，再考虑其他',
+            ]}
+          />
+          <WildCard
+            icon={<CloudRain className="h-5 w-5" />}
+            title="看天识天气"
+            items={[
+              '积云变黑 + 风转向——雷雨 1-2 小时内到',
+              '星星眨眼、地平线模糊——明天有雨',
+              '早晨山谷有浓雾——当天晴；傍晚有雾——可能变天',
+              '进山前看天气预报，进山后看云——两个都要信',
+            ]}
+          />
+          <WildCard
+            icon={<PawPrint className="h-5 w-5" />}
+            title="动物应对"
+            items={[
+              '蛇：穿高帮鞋，走大路，草里先打草惊蛇',
+              '被蛇咬：记住蛇的样子，别动，等救援——别切嘴吸毒',
+              '遇到熊：别跑，别对视，慢慢后退；装死只对灰熊',
+              '虫子：避蚊胺（DEET）比什么艾草都管用',
+            ]}
+          />
+          <WildCard
+            icon={<Link2 className="h-5 w-5" />}
+            title="三个必学绳结"
+            items={[
+              '布林结（bowline）：套人、套树，越拉越紧不松',
+              '双半结（clove hitch）：绑树、固定帐篷杆',
+              '八字结（figure-8）：末端防脱，登山主绳结',
+              '学三个结练 100 次，比学 30 个结都强',
+            ]}
+          />
+          <WildCard
+            icon={<Radio className="h-5 w-5" />}
+            title="求救信号"
+            items={[
+              'SOS：三短三长三短，声音、火光、反光都行',
+              '火堆摆三堆（三角形）——空中一看就懂',
+              '反光镜/手机屏幕反射阳光——5 公里外可见',
+              '用石头在地面摆 SOS 大字，每个字母 3 米见方',
+            ]}
+          />
+          <WildCard
+            icon={<Home className="h-5 w-5" />}
+            title="无帐篷庇护所"
+            items={[
+              '选背风处：岩石下、大树根、山腰凹处',
+              '人字形：一根横木搭两棵树，上面铺松枝/树叶',
+              '地面铺松枝——隔潮比挡风还重要',
+              '入口背风，别对着风向——夜里风会转向',
+            ]}
+          />
+          <WildCard
+            icon={<Backpack className="h-5 w-5" />}
+            title="24 小时生存包"
+            items={[
+              '水：1L 起步 + 净水片',
+              '火：打火机 + 镁棒 + 蜡烛',
+              '光：头灯（带备用电池）',
+              '毯：铝箔保温毯 2 张（轻、救命）',
+              '急救：纱布、创可贴、个人药',
+              '刀：折叠刀就行，不用大砍',
+            ]}
+          />
+        </div>
       </div>
 
       <Card className="border-primary/30 bg-primary/5">
