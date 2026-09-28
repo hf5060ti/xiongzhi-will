@@ -51,6 +51,7 @@ import {
 } from '@/lib/store';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
+import { FOODS, type IFood } from '@/data/foods';
 
 type Sickness = 'none' | 'cold' | 'fever' | 'recovering' | 'injury' | 'other';
 type Energy = 'great' | 'good' | 'tired' | 'exhausted';
@@ -201,6 +202,80 @@ const LEVEL_STYLE: Record<Advice['level'], { label: string; cls: string; icon: t
   normal: { label: '正常', cls: 'bg-primary/15 text-primary border-primary/30', icon: Activity },
   push: { label: '冲一冲', cls: 'bg-emerald-500/15 text-emerald-600 border-emerald-500/30', icon: Zap },
 };
+
+// ── 食物热量速算：从用户输入里提取「克数 + 食物名」，在本站营养库中匹配并换算 ──
+interface FoodQuery {
+  grams: number;
+  query: string;
+  unit: string;
+}
+
+const GRAM_RE = /(\d+(?:\.\d+)?)\s*(克|g|G|毫升|ml|mL|ML)\s*([^，。？！,?!\n]+)/;
+const GRAM_RE2 = /([^，。？！,?!\n]{1,14}?)\s*(\d+(?:\.\d+)?)\s*(克|g|G|毫升|ml|mL|ML)/;
+
+function parseFoodQuery(text: string): FoodQuery | null {
+  const m1 = text.match(GRAM_RE);
+  const m2 = text.match(GRAM_RE2);
+  let grams: number;
+  let q: string;
+  let unit: string;
+  if (m1) {
+    grams = parseFloat(m1[1]);
+    q = m1[3];
+    unit = m1[2];
+  } else if (m2) {
+    grams = parseFloat(m2[2]);
+    q = m2[1];
+    unit = m2[3];
+  } else {
+    return null;
+  }
+  grams = Number.isFinite(grams) ? grams : NaN;
+  q = (q ?? '').trim();
+  if (!Number.isFinite(grams) || grams <= 0 || !q) return null;
+  return { grams, query: q, unit: unit ?? '克' };
+}
+
+function cleanFoodQuery(s: string): string {
+  return s
+    .replace(/[（(].*?[)）]/g, '')
+    .replace(/(的)?(热量|卡路里|营养|营养成分|蛋白质|脂肪|碳水|纤维素|是多少|多少|怎么样|怎么算|如何|有吗|好吗|呢|吧)/g, '')
+    .replace(/[，。？！,?!·\s]/g, '')
+    .trim();
+}
+
+function matchFood(raw: string): IFood | null {
+  const q = cleanFoodQuery(raw);
+  if (!q) return null;
+  const direct = FOODS.find((f) => f.name === raw || f.name === q);
+  if (direct) return direct;
+  const hits = FOODS.filter((f) => f.name.includes(q) || q.includes(f.name.replace(/[（(].*?[)）]/g, '')));
+  if (hits.length === 1) return hits[0];
+  if (hits.length > 1) {
+    const exactish = hits.find((f) => f.name.replace(/[（(].*?[)）]/g, '') === q);
+    if (exactish) return exactish;
+    return null; // 命中太泛（如只写"牛肉"），让用户细化或交给 AI
+  }
+  return null;
+}
+
+function buildFoodCalcText(food: IFood, grams: number, unit: string): string {
+  const ratio = grams / 100;
+  const kcal = Math.round(food.kcal * ratio);
+  const protein = (food.protein * ratio).toFixed(1);
+  const fat = (food.fat * ratio).toFixed(1);
+  const carb = (food.carb * ratio).toFixed(1);
+  const u = /毫升|ml|mL|ML/.test(unit) ? 'ml' : 'g';
+  return (
+    `【食物热量速算】${food.name} ${grams}${u}\n\n` +
+    `· 热量 ${kcal} kcal\n` +
+    `· 蛋白质 ${protein} g\n` +
+    `· 脂肪 ${fat} g\n` +
+    `· 碳水 ${carb} g\n\n` +
+    `（按本站营养库每100${u === 'ml' ? 'ml' : 'g'}参考值折算：热量 ${food.kcal} kcal / 蛋白 ${food.protein} g / 脂肪 ${food.fat} g / 碳水 ${food.carb} g）\n` +
+    `⚠ 为市面平均参考值，实际因部位肥瘦、烹调方式略有差异，以产品包装营养表为准。`
+  );
+}
 
 export default function CoachPage() {
   const [sleep, setSleep] = useState('7.5');
@@ -562,6 +637,23 @@ function AIChatPanel() {
   const handleSend = async () => {
     const text = input.trim();
     if (!text || sending) return;
+
+    // ── 食物热量速算：本地营养库直接算，不消耗 AI 额度、后台离线也能用 ──
+    const foodQ = parseFoodQuery(text);
+    if (foodQ) {
+      const food = matchFood(foodQ.query);
+      if (food) {
+        setError('');
+        setMessages([...messages, { role: 'user', content: text }, { role: 'assistant', content: buildFoodCalcText(food, foodQ.grams, foodQ.unit) }]);
+        setInput('');
+        return;
+      }
+      if (backend === 'offline') {
+        setError(`营养库里没找到「${cleanFoodQuery(foodQ.query)}」。试试更具体的名字，如“牛里脊 / 鸡胸肉 / 糙米饭”，或把名字发给我（后台连接后 AI 可帮忙估算）。`);
+        return;
+      }
+    }
+
     if (backend === 'offline') {
       setShowAddress(true);
       return;
@@ -791,7 +883,9 @@ function AIChatPanel() {
         <div ref={listRef} className="max-h-80 space-y-2 overflow-y-auto rounded-md border border-border bg-muted/30 p-3">
           {messages.length === 0 ? (
             <p className="py-6 text-center text-xs text-muted-foreground">
-              问点具体的，比如“今天练背，只睡了 6 小时，重量怎么调？”
+              发 <b className="text-primary">100克牛里脊</b> 秒算热量蛋白（本站营养库，不耗 AI 额度）；
+              <br />
+              或问点具体的，比如“今天练背，只睡了 6 小时，重量怎么调？”
             </p>
           ) : (
             messages.map((m, i) => (
