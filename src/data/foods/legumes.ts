@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: LEGUMES
 // 豆类与豆制品，每 100g 参考值（标注干/鲜/熟）
@@ -51,4 +51,7 @@ export const LEGUMES: IFood[] = [
 
   // ---- 带壳鲜豆（用户点名） ----
   { id: 'edamame-pod', name: '毛豆荚（带壳鲜）', cat: 'legume', kcal: 60, protein: 5.5, fat: 2.3, carb: 5, fiber: 2.5, sodium: 4, vitFat: ['K', 'E'], vitWater: ['叶酸', 'C'], minerals: ['镁', '钾'], note: '带壳称重口径，可食部分约 45%（去壳后按毛豆鲜 131kcal/100g 计）；水煮撒盐经典，嘌呤中高' },
+
+  // ---- 用户点名补充 ----
+  { id: 'pea-fresh', name: '鲜豌豆粒', cat: 'legume', kcal: 111, protein: 7.4, fat: 0.4, carb: 20, fiber: 5, sodium: 5, vitFat: [], vitWater: ['C', 'B1', '叶酸'], minerals: ['钾', '铁'], note: '鲜豆蛋白在蔬菜里偏高，淀粉比叶菜高；配米饭当半主食；老豌豆淀粉更高，嫩豌豆当菜' },
 ];

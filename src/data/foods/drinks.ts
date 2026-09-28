@@ -85,4 +85,8 @@ export const DRINKS: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'sea-buckthorn-juice', name: '沙棘果汁（含糖市售）', cat: 'drink', kcal: 50, protein: 0.5, fat: 0.1, carb: 12, fiber: 0.2, sodium: 10, vitFat: ['A', 'E'], vitWater: ['C'], minerals: ['钾'], phytochem: ['沙棘黄酮', 'Omega-7', '类胡萝卜素'], note: '维C与黄酮密度高，但市售款多加糖；选100%原浆/低糖款更佳；原浆极酸，需兑水或蜂蜜' },
+
+  // ---- 用户点名补充 ----
+  { id: 'lao-zao', name: '醪糟（酒酿/甜米酒）', cat: 'drink', kcal: 91, protein: 3, fat: 0.1, carb: 18, fiber: 0.2, sodium: 10, vitFat: [], vitWater: ['B族'], minerals: [], phytochem: ['根霉糖化酶'], note: '糯米+酒曲发酵，含微量酒精（约1-2%），煮开后大部分挥发；产妇/经期常食但别大量；开车/服药者慎饮；一碗约200g=182kcal' },
+  { id: 'chidou-niangzao', name: '赤豆酒酿', cat: 'drink', kcal: 90, protein: 3.5, fat: 0.2, carb: 18, fiber: 1.5, sodium: 15, vitFat: [], vitWater: ['B族'], minerals: ['铁'], note: '醪糟+红豆沙，比纯醪糟多一点铁与纤维；糖与钠看店家配方；夏天冷饮常见，一碗约300g=270kcal' },
 ];

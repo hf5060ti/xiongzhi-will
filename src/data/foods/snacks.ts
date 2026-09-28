@@ -130,4 +130,7 @@ export const SNACKS: IFood[] = [
   { id: 'oreo', name: '奥利奥（原味夹心）', cat: 'snack', kcal: 484, protein: 5, fat: 20, carb: 70, fiber: 1.5, sodium: 400, vitFat: [], vitWater: ['B2'], minerals: ['铁'], note: '可可饼干+糖脂夹心；2片约29g=140kcal，几乎全是精制碳水+添加脂肪；"轻甜/薄脆"款热量接近' },
   { id: 'latiao', name: '辣条（面筋制品）', cat: 'snack', kcal: 450, protein: 10, fat: 25, carb: 45, fiber: 2, sodium: 2000, vitFat: [], vitWater: [], minerals: ['钠'], note: '高油高盐高钠代表，一包100g钠常超NRV的100%；偶尔解馋，吃完当天多喝水、别再吃咸的；儿童/高血压者少食' },
   { id: 'zhima-ye', name: '炸芝麻叶（皖北传统小吃）', cat: 'snack', kcal: 450, protein: 8, fat: 25, carb: 45, fiber: 3, sodium: 300, vitFat: [], vitWater: [], minerals: ['钙'], phytochem: ['芝麻素'], note: '皖北特产，嫩芝麻叶裹薄面糊油炸，形似树叶、薄脆如纸；下酒/茶点；油脂偏高，一把约30g=135kcal' },
+
+  // ---- 用户点名补充 ----
+  { id: 'chip-original', name: '薯片（原味）', cat: 'snack', kcal: 536, protein: 7, fat: 35, carb: 53, fiber: 4, sodium: 500, vitFat: [], vitWater: ['B6'], minerals: ['钾'], note: '高脂高盐，一小包70g=375kcal；油炸款脂肪约35%，烘焙款约25%；越嚼越停不下来，建议一次倒出一小把而非对着袋吃' },
 ];

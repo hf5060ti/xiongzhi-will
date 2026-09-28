@@ -133,4 +133,11 @@ export const STAPLES: IFood[] = [
   { id: 'huajuan', name: '花卷', cat: 'staple', kcal: 214, protein: 6, fat: 1, carb: 45, fiber: 1, sodium: 280, vitFat: [], vitWater: ['B1'], minerals: [], note: '蒸制发酵面食，葱油/椒盐味；脂肪低，配粥+蛋是减脂友好早餐' },
   { id: 'mantou', name: '白面馒头', cat: 'staple', kcal: 223, protein: 7, fat: 1.1, carb: 47, fiber: 1.3, sodium: 165, vitFat: [], vitWater: ['B1'], minerals: ['钙'], note: '北方主食，GI约88偏高；一餐1-2个约100-150g为宜；全麦馒头GI更低' },
   { id: 'cream-bread', name: '奶油夹心面包', cat: 'staple', kcal: 350, protein: 7, fat: 12, carb: 52, fiber: 1, sodium: 330, vitFat: ['A'], vitWater: ['B2'], minerals: ['钙'], note: '面包胚+植物奶油夹心，糖脂双高；一个约80g=280kcal；选真奶油/全麦款更佳' },
+
+  // ---- 用户点名补充：中式糕点 / 节令食品 ----
+  { id: 'guihua-gao', name: '桂花糕', cat: 'staple', kcal: 330, protein: 5, fat: 8, carb: 60, fiber: 1.5, sodium: 120, vitFat: [], vitWater: ['B1'], minerals: [], phytochem: ['桂花芳香苷'], note: '糯米粉+糖+桂花蒸制，糖油混合；一块约50g=165kcal；配清茶当茶点，别当饭吃' },
+  { id: 'mi-gao', name: '米糕（普通白米蒸糕）', cat: 'staple', kcal: 215, protein: 5, fat: 1, carb: 46, fiber: 1, sodium: 180, vitFat: [], vitWater: ['B1'], minerals: [], note: '大米发酵蒸制，松软易消化；脂肪低但GI偏高；一块约100g，配豆浆+蛋当早餐' },
+  { id: 'xiaomi-gao', name: '小米糕', cat: 'staple', kcal: 220, protein: 6, fat: 1.5, carb: 45, fiber: 1.2, sodium: 170, vitFat: [], vitWater: ['B1'], minerals: ['铁'], note: '小米面蒸制，比白米糕多一点B族与铁；脂肪低；老人小孩都好消化' },
+  { id: 'tangyuan-huasheng', name: '花生汤圆（熟）', cat: 'staple', kcal: 250, protein: 4, fat: 10, carb: 37, fiber: 1, sodium: 60, vitFat: [], vitWater: [], minerals: ['锌'], note: '糯米皮+花生酱馅，糯米难消化；一碗10个约200g=500kcal，当主食别当甜点；痛风者少喝汤（嘌呤溶于汤）' },
+  { id: 'tangyuan-zima', name: '芝麻汤圆（熟）', cat: 'staple', kcal: 260, protein: 4, fat: 12, carb: 36, fiber: 1.5, sodium: 60, vitFat: ['E'], vitWater: [], minerals: ['钙', '铁'], phytochem: ['芝麻木脂素'], note: '黑芝麻猪油馅，脂肪高；10个约200g=520kcal；煮后别喝甜汤（糖在汤里）；胃酸/消化不良者少食糯米' },
 ];

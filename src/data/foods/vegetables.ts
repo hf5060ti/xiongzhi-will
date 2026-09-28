@@ -149,4 +149,8 @@ export const VEGETABLES: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'kale', name: '羽衣甘蓝', cat: 'veg', kcal: 49, protein: 4.3, fat: 0.9, carb: 9, fiber: 4.1, sodium: 50, vitFat: ['A', 'K'], vitWater: ['C', 'B2', '叶酸'], minerals: ['钙', '钾', '镁'], phytochem: ['萝卜硫素', '叶黄素', '花青素'], note: '每100g钙约150mg、维C约120mg，密度极高；生食较硬，建议焯水或做沙拉轻揉；超级食物代表' },
+
+  // ---- 用户点名补充 ----
+  { id: 'garlic', name: '大蒜（生）', cat: 'veg', kcal: 149, protein: 6.4, fat: 0.5, carb: 33, fiber: 2.1, sodium: 17, vitFat: [], vitWater: ['C', 'B6'], minerals: ['锰', '硒'], phytochem: ['大蒜素（allicin）', '硫化物'], note: '大蒜素切碎放置10分钟后活性最高，高温久煮损失；日常2-3瓣约10g即可；空腹生食刺激胃，胃炎者熟吃' },
+  { id: 'bamboo-shoot', name: '春笋/冬笋（鲜）', cat: 'veg', kcal: 27, protein: 2.6, fat: 0.2, carb: 4, fiber: 1.8, sodium: 1, vitFat: [], vitWater: ['C', 'B6'], minerals: ['钾'], phytochem: ['酪氨酸'], note: '极低卡高纤维，减脂友好；含草酸与氰苷，必须焯水5-10分钟去涩去毒；冬笋脂肪略高于春笋；痛风者少食（嘌呤中高）' },
 ];
