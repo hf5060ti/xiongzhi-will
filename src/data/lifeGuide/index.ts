@@ -35,6 +35,14 @@ export const LIFE_CHAPTERS: LifeChapterMeta[] = [
   { id: 32, title: "32. 出国留学：身份、打工、保险和回国认证", file: "32-出国留学.md" },
   { id: 33, title: "33. 残疾之后怎么活", file: "33-残疾之后怎么活.md" },
 ];
+export const LIFE_APPENDIXES: LifeChapterMeta[] = [
+  { id: 101, title: "附录 1 · 做平台要办哪些证", file: "做平台要办哪些证.md" },
+  { id: 102, title: "附录 2 · 家庭应急装备清单", file: "家庭应急装备清单.md" },
+  { id: 103, title: "附录 3 · 生物钟和夜班", file: "生物钟和夜班.md" },
+  { id: 104, title: "附录 4 · 结婚划不划算", file: "结婚划不划算.md" },
+  { id: 105, title: "附录 5 · 遇到陌生人出事该不该停", file: "遇到陌生人出事该不该停.md" },
+  { id: 106, title: "附录 6 · 引用对照表", file: "引用对照.md" },
+];
 export const LIFE_SOURCE = {
   title: '高性价比人生指南',
   url: 'https://eternity4719.github.io/HowToLiveBetter/',

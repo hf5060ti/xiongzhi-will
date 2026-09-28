@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookMarked, ExternalLink, Library, ShieldCheck } from 'lucide-react';
-import { LIFE_CHAPTERS, LIFE_SOURCE } from '@/data/lifeGuide';
+import { LIFE_APPENDIXES, LIFE_CHAPTERS, LIFE_SOURCE } from '@/data/lifeGuide';
 import { markdownToReact } from './markdown';
 import PageFallback from '@/components/PageFallback';
 
@@ -42,6 +42,12 @@ const loaders: Record<number, () => Promise<ChapterMod>> = {
   31: () => import('@/data/lifeGuide/chapter31'),
   32: () => import('@/data/lifeGuide/chapter32'),
   33: () => import('@/data/lifeGuide/chapter33'),
+  101: () => import('@/data/lifeGuide/appendix101'),
+  102: () => import('@/data/lifeGuide/appendix102'),
+  103: () => import('@/data/lifeGuide/appendix103'),
+  104: () => import('@/data/lifeGuide/appendix104'),
+  105: () => import('@/data/lifeGuide/appendix105'),
+  106: () => import('@/data/lifeGuide/appendix106'),
 };
 
 const ChapterBody = ({ id }: { id: number }) => {
@@ -69,15 +75,20 @@ const SourceNote = () => (
 );
 
 const ChapterView = ({ id }: { id: number }) => {
-  const prev = LIFE_CHAPTERS.find((c) => c.id === id - 1);
-  const next = LIFE_CHAPTERS.find((c) => c.id === id + 1);
+  const isAppendix = id > 100;
+  const list = isAppendix ? LIFE_APPENDIXES : LIFE_CHAPTERS;
+  const total = isAppendix ? LIFE_APPENDIXES.length : LIFE_CHAPTERS.length;
+  const prev = list.find((c) => c.id === id - 1);
+  const next = list.find((c) => c.id === id + 1);
   return (
     <div className="mx-auto w-full max-w-3xl">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <Link to="/life" className="inline-flex items-center gap-1.5 rounded-lg border border-border/50 bg-card/60 px-3 py-1.5 text-xs text-muted-foreground backdrop-blur-xl transition-colors hover:bg-accent/60 hover:text-foreground">
           <ArrowLeft className="h-3.5 w-3.5" /> 返回目录
         </Link>
-        <span className="rounded-full border border-primary/25 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary">第 {id} / 33 章</span>
+        <span className="rounded-full border border-primary/25 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary">
+          {isAppendix ? `附录 ${id - 100} / ${total}` : `第 ${id} / ${total} 章`}
+        </span>
       </div>
       <div className="rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-2xl sm:p-7">
         <ChapterBody id={id} />
@@ -172,6 +183,36 @@ export default function LifeGuidePage() {
             </Link>
           );
         })}
+      </div>
+
+      <div className="rounded-2xl border border-border/50 bg-card/60 p-5 backdrop-blur-2xl sm:p-6">
+        <h2 className="mb-3 flex items-center gap-2 font-display text-base font-bold text-foreground">
+          <Library className="h-4 w-4 text-primary" /> 附录 · 长文专题
+        </h2>
+        <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
+          原项目 docs/ 目录下的延伸长文，与正文互引，一并收录。
+        </p>
+        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+          {LIFE_APPENDIXES.map((c) => {
+            const name = c.title.replace(/^附录\s*\d+\s*·\s*/, '');
+            return (
+              <Link
+                key={c.id}
+                to={`/life/${c.id}`}
+                className="group flex items-center gap-3 rounded-xl border border-border/50 bg-white/[0.02] p-3.5 backdrop-blur-xl transition-all hover:border-primary/40 hover:bg-accent/50"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 font-display text-sm font-bold text-primary">
+                  {String(c.id - 100).padStart(2, '0')}
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-sm font-medium text-foreground group-hover:text-primary">{name}</span>
+                  <span className="block text-[11px] text-muted-foreground">附录 {c.id - 100}</span>
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
+              </Link>
+            );
+          })}
+        </div>
       </div>
 
       <SourceNote />
