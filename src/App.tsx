@@ -17,6 +17,7 @@ const PhysiquePage = lazy(() => import('@/pages/PhysiquePage'));
 const CoachPage = lazy(() => import('@/pages/CoachPage'));
 const ExerciseLibraryPage = lazy(() => import('@/pages/ExerciseLibraryPage'));
 const TrainingLogPage = lazy(() => import('@/pages/TrainingLogPage'));
+const ToolsPage = lazy(() => import('@/pages/ToolsPage'));
 const MindPage = lazy(() => import('@/pages/MindPage'));
 const CareerPage = lazy(() => import('@/pages/CareerPage'));
 const WealthPage = lazy(() => import('@/pages/WealthPage'));
@@ -59,6 +60,7 @@ export default function App() {
             <Route path="stomach" element={<StomachPage />} />
             <Route path="diet-knowledge" element={<DietKnowledgePage />} />
             <Route path="training-logs" element={<TrainingLogPage />} />
+            <Route path="tools" element={<ToolsPage />} />
             <Route path="light" element={<LightPage />} />
             <Route path="privacy" element={<PrivacyPage />} />
             <Route path="sources" element={<SourcesPage />} />

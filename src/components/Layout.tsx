@@ -2,7 +2,7 @@
 // See LICENSE / NOTICE for details.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
@@ -12,6 +12,7 @@ import VideoBackground from '@/components/VideoBackground';
 const NAV_ITEMS = [
   { path: '/', label: '身体', icon: Dumbbell, end: true },
   { path: '/training-logs', label: '训练', icon: ClipboardList, end: false },
+  { path: '/tools', label: '工具', icon: Crosshair, end: false },
   { path: '/light', label: '轻盈', icon: TrendingDown, end: false },
   { path: '/stomach', label: '胃部', icon: Soup, end: false },
   { path: '/diet-knowledge', label: '饮食', icon: BookOpen, end: false },
@@ -47,6 +48,7 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/stomach': { title: '胃部 - 雄性意志', desc: '饮食与消化：蛋白质摄入量、嘌呤、吸收率、空腹训练建议。' },
   '/diet-knowledge': { title: '饮食讲解 - 雄性意志', desc: '公开健身博主讲解整理：每条注明证据等级与来源链接，非医疗建议。' },
   '/training-logs': { title: '训练日志 - 雄性意志', desc: '近 7 天训练频次、周容量、力量与耐力追踪。' },
+  '/tools': { title: '力量计算器 - 雄性意志', desc: '1RM 估算（Epley/Brzycki/Lombardi 三公式对照）、按目标反推做组重量、RPE 主观强度标尺。' },
   '/sources': { title: '内容来源与循证 - 雄性意志', desc: '本站每个模块的内容来源、证据等级与免责边界。' },
   '/faq': { title: '关于与常见问题 - 雄性意志', desc: '项目初衷、公式方法论（BMR / TDEE / MET）、隐私与免责、免费开源说明。' },
   '/privacy': { title: '隐私政策 - 雄性意志', desc: '数据只存本地浏览器，不上传、不追踪、无账号。' },
