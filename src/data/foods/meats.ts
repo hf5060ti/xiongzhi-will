@@ -181,4 +181,7 @@ export const MEATS: IFood[] = [
   { id: 'baiqie-ji', name: '白切鸡（带皮）', cat: 'meat', kcal: 200, protein: 20, fat: 13, carb: 0, fiber: 0, sodium: 60, vitFat: ['A'], vitWater: ['B12'], minerals: ['铁', '锌'], note: '粤菜代表，水煮后蘸姜葱蓉；皮是脂肪主要来源，去皮约160kcal/100g；1/4只约200g=400kcal' },
   { id: 'yanshui-ya', name: '盐水鸭（南京特产）', cat: 'meat', kcal: 250, protein: 20, fat: 18, carb: 0, fiber: 0, sodium: 1200, vitFat: ['A'], vitWater: ['B12'], minerals: ['铁'], note: '南京/淮扬名菜，鸭皮脂肪厚、腌制后钠高（约1200mg/100g）；一次50-80g切片；下酒配粥，别就着咸汤喝' },
   { id: 'niu-xiong', name: '牛胸肉（Brisket，生）', cat: 'meat', kcal: 300, protein: 17, fat: 25, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12', 'B3'], minerals: ['铁', '锌'], note: '肥瘦相间、筋膜多，适合低温慢炖/烟熏/卤制；烤牛胸（BBQ Brisket）是美式烧烤代表；生肉脂肪约25%，慢炖后筋膜化口；减脂期不如选牛腱/里脊' },
+
+  // ---- 用户点名补充：争议食材 ----
+  { id: 'lizard', name: '蜥蜴肉（参考值，仅作营养参考）', cat: 'meat', kcal: 120, protein: 20, fat: 3, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], phytochem: [], note: '【重要声明】本网站不支持任何违法乱纪、捕食野生保护动物或食用野味的行为。蜥蜴在世界部分地区（如部分东南亚、拉美）有合法食用传统，但我国野生蜥蜴多属"三有"保护动物，私自捕捉/食用涉嫌违法。以下数据仅为营养学参考：人工养殖、合法渠道、彻底煮熟后蛋白质约20g/100g、脂肪极低。任何情况下请遵守当地法律法规，尊重生态保护。' },
 ];
