@@ -190,4 +190,6 @@ export const MEATS: IFood[] = [
   { id: 'ya-chang', name: '鸭肠（熟，火锅）', cat: 'meat', kcal: 129, protein: 14, fat: 7, carb: 1, fiber: 0, sodium: 200, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '火锅经典，"七上八下"涮15秒；脆嫩；胆固醇偏高；一份约100g；蘸料别太多油碟' },
   { id: 'ji-chang', name: '鸡肠（熟）', cat: 'meat', kcal: 96, protein: 14, fat: 4, carb: 1, fiber: 0, sodium: 150, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '卤味/干锅/冒菜常见；脂肪比鸭肠低；清洗要彻底；胆固醇偏高，一次50-80g' },
   { id: 'ya-xue', name: '鸭血（熟）', cat: 'meat', kcal: 55, protein: 12, fat: 0.4, carb: 1, fiber: 0, sodium: 180, vitFat: [], vitWater: ['B12'], minerals: ['铁（血红素铁）', '硒'], note: '毛血旺/鸭血粉丝汤/火锅主角；高铁低脂，吸收率高，补铁优选；一盒约300g；痛风/高尿酸者适量（嘌呤中高）；必须彻底煮熟' },
+
+  { id: 'snake', name: '蛇肉（参考值，仅限合法人工养殖）', cat: 'meat', kcal: 90, protein: 18, fat: 1.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], phytochem: [], note: '【重要法律与生态声明】本网站不支持任何违法狩猎、捕食野生保护动物或食用野味的行为。野生蛇类在我国多为国家重点保护或"三有"保护动物，私自捕捉/交易/食用涉嫌违法犯罪。以下数据仅作营养学参考：仅限人工养殖、合法渠道、彻底煮熟后（防裂头蚴/绦虫）的食用蛇种（如人工养殖乌梢蛇、水律蛇），蛋白质约18g/100g、脂肪极低。任何情况下请自觉遵守当地法律法规，尊重生态保护。' },
 ];

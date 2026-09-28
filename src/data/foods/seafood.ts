@@ -104,4 +104,7 @@ export const SEAFOODS: IFood[] = [
   { id: 'huajia', name: '花甲/花蛤（熟去壳）', cat: 'seafood', kcal: 45, protein: 7, fat: 0.8, carb: 2, fiber: 0, sodium: 300, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌', '硒'], note: '极低卡高蛋白高锌；夜市辣炒/蒜蓉粉丝蒸；吐沙需盐水养2小时；痛风急性期少吃（嘌呤中高）' },
   { id: 'black-clam', name: '黑口贝/紫石房蛤（熟）', cat: 'seafood', kcal: 60, protein: 10, fat: 1, carb: 2, fiber: 0, sodium: 280, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌', '硒'], note: '北方沿海常见，肉质紧实；碳烤/蒜蓉蒸；与花蛤类似但个大肉厚；必须鲜活，死贝不可食用' },
   { id: 'loach', name: '泥鳅（熟）', cat: 'seafood', kcal: 96, protein: 18, fat: 2, carb: 0, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B12'], minerals: ['钙', '铁', '磷'], phytochem: [], note: '小型淡水鱼，钙铁含量在鱼类里偏高；北方"泥鳅钻豆腐"/干炸；必须彻底煮熟（棘颚口线虫风险）；儿童补钙可适量' },
+
+  // ---- 用户点名补充：养殖水产 / 争议食材 ----
+  { id: 'huangshan', name: '黄鳝（熟）', cat: 'seafood', kcal: 83, protein: 18, fat: 1.4, carb: 0, fiber: 0, sodium: 70, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['铁', '磷', '硒'], phytochem: [], note: '低脂高蛋白，铁含量在淡水鱼里偏高；江浙响油鳝糊/红烧；【重要】野生/生食黄鳝可能携带颚口线虫，必须彻底煮熟（中心温度70℃以上），绝对不要"响油"带血三分熟；孕妇/儿童尤其要煮透；现杀现烹，死鳝体内组胺快速升高，死亡超过半天不要吃' },
 ];
