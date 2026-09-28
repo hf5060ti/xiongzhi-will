@@ -133,4 +133,13 @@ export const SNACKS: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'chip-original', name: '薯片（原味）', cat: 'snack', kcal: 536, protein: 7, fat: 35, carb: 53, fiber: 4, sodium: 500, vitFat: [], vitWater: ['B6'], minerals: ['钾'], note: '高脂高盐，一小包70g=375kcal；油炸款脂肪约35%，烘焙款约25%；越嚼越停不下来，建议一次倒出一小把而非对着袋吃' },
+
+  // ---- 用户点名补充：节令糕点 ----
+  { id: 'yuebing-wuren', name: '五仁月饼（传统广式）', cat: 'snack', kcal: 416, protein: 8, fat: 16, carb: 60, fiber: 3, sodium: 280, vitFat: ['E'], vitWater: ['B1'], minerals: ['镁', '锌'], phytochem: ['坚果不饱和脂肪酸'], note: '一个约100g=416kcal，相当于2碗米饭；糖油混合，一天最多1/4个（约25g）配茶；坚果款比莲蓉/豆沙款多一点蛋白' },
+  { id: 'yuebing-bingpi', name: '冰皮月饼', cat: 'snack', kcal: 250, protein: 5, fat: 8, carb: 40, fiber: 1, sodium: 150, vitFat: [], vitWater: ['B2'], minerals: ['钙'], note: '不烘烤、糯米冰皮，比传统月饼低约40%热量；但冷藏后糯米更难消化，一次1个（约60g）' },
+  { id: 'yuebing-liulian', name: '榴莲月饼', cat: 'snack', kcal: 350, protein: 6, fat: 15, carb: 45, fiber: 2, sodium: 180, vitFat: [], vitWater: ['C', 'B6'], minerals: ['钾'], phytochem: ['榴莲酯类香气'], note: '榴莲本身高脂高糖，月饼馅再加油糖；一个约80g=280kcal；糖尿病/肥胖者浅尝' },
+  { id: 'yuebing-lvdousha', name: '绿豆沙月饼', cat: 'snack', kcal: 380, protein: 6, fat: 12, carb: 60, fiber: 2, sodium: 200, vitFat: [], vitWater: ['B1'], minerals: ['钾'], phytochem: ['绿豆黄酮'], note: '绿豆沙加油加糖炒馅，虽叫绿豆但糖脂高；一个约100g=380kcal；选低糖/无蔗糖款' },
+  { id: 'danhuang-su', name: '蛋黄酥', cat: 'snack', kcal: 450, protein: 8, fat: 20, carb: 60, fiber: 1.5, sodium: 260, vitFat: ['A'], vitWater: ['B2'], minerals: ['铁'], note: '酥皮+红豆沙+咸蛋黄，一个约60g=270kcal；脂肪主要来自酥皮黄油；配黑咖啡解腻' },
+  { id: 'liulian-su', name: '榴莲酥', cat: 'snack', kcal: 420, protein: 6, fat: 18, carb: 58, fiber: 1.5, sodium: 200, vitFat: [], vitWater: ['C', 'B6'], minerals: ['钾'], note: '起酥皮+榴莲馅烘烤，一个约50g=210kcal；油炸/烘烤款脂肪略不同' },
+  { id: 'lvdou-gao', name: '绿豆糕', cat: 'snack', kcal: 350, protein: 10, fat: 12, carb: 50, fiber: 2, sodium: 120, vitFat: [], vitWater: ['B1'], minerals: ['钾', '镁'], phytochem: ['绿豆黄酮'], note: '绿豆+糖+油脂蒸/压制；传统北派vs苏派差异大，苏派油更大；一块约50g=175kcal，配绿茶' },
 ];

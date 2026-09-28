@@ -170,4 +170,10 @@ export const MEATS: IFood[] = [
   { id: 'duck-feet', name: '鸭掌（生）', cat: 'meat', kcal: 150, protein: 19, fat: 8, carb: 0.2, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B3'], minerals: ['钙'], note: '皮骨多、肉少，胶原蛋白丰富；泡椒鸭掌钠高；卤味适量' },
   { id: 'beef-cartilage', name: '牛脆骨（牛软骨）', cat: 'meat', kcal: 200, protein: 20, fat: 13, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['钙'], phytochem: ['硫酸软骨素'], note: '牛胸/关节软骨，烧烤/卤；钙与软骨素丰富，但难嚼；油炸后热量飙升' },
   { id: 'lamb-cartilage', name: '羊脆骨', cat: 'meat', kcal: 200, protein: 18, fat: 14, carb: 0, fiber: 0, sodium: 65, vitFat: [], vitWater: ['B12'], minerals: ['钙', '锌'], note: '羊胸软骨，烧烤常见；膻味明显；钙丰富但脂肪不低' },
+
+  // ---- 用户点名补充 ----
+  { id: 'rousong', name: '肉松（猪肉松平均值）', cat: 'meat', kcal: 396, protein: 30, fat: 25, carb: 10, fiber: 0, sodium: 1500, vitFat: [], vitWater: ['B1'], minerals: ['铁', '锌'], note: '瘦肉经煮炒烘干，蛋白高但脂肪与钠也高（市售款常加油糖）；1小袋约15g=60kcal；配粥/面包点缀，别当纯肉吃；儿童款钠高' },
+  { id: 'yang-tourou', name: '酱羊头肉（熟）', cat: 'meat', kcal: 200, protein: 25, fat: 10, carb: 1, fiber: 0, sodium: 800, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '羊脸/舌/脑混合，卤制后钠高；肉冻/凉拌常见；羊脑胆固醇高，一次少尝；下酒菜，配大量蔬菜平衡钠' },
+  { id: 'niu-tourou', name: '酱牛头肉（熟）', cat: 'meat', kcal: 230, protein: 20, fat: 16, carb: 1, fiber: 0, sodium: 750, vitFat: [], vitWater: ['B12'], minerals: ['锌', '铁'], note: '牛头皮/脸肉，胶质多脂肪高；凉拌/火锅；比纯牛腱脂肪高约3倍；一顿50-80g切片' },
+  { id: 'dog-meat', name: '狗肉（瘦，参考值）', cat: 'meat', kcal: 110, protein: 20, fat: 3, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], phytochem: [], note: '【本网站立场】本网站反对任何形式的食用狗肉，以下数据仅为营养参考，不代表鼓励。食用狗肉在我国多数地区已被立法禁止或社会广泛抵制，江苏部分地区历史上俗称"香肉"，属地方性争议饮食。请遵守当地法律法规与公序良俗，尊重伴侣动物。' },
 ];

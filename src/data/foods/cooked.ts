@@ -183,4 +183,8 @@ export const COOKED: IFood[] = [
   { id: 'kao-mianjin', name: '烤面筋（刷辣酱）', cat: 'cooked', kcal: 180, protein: 25, fat: 5, carb: 8, fiber: 1, sodium: 900, vitFat: [], vitWater: [], minerals: ['钙'], note: '水洗面筋，植物蛋白含量高（约25g/100g）；刷油辣酱后钠高；一串约60g=108kcal，素食烤串里相对友好' },
   { id: 'kao-lengmian', name: '烤冷面（东北街头）', cat: 'cooked', kcal: 180, protein: 6, fat: 7, carb: 25, fiber: 1, sodium: 600, vitFat: [], vitWater: ['B2'], minerals: [], note: '冷面片+鸡蛋+香肠+洋葱+甜辣酱；一份约300g=540kcal；蛋加双份能补蛋白，肠换鸡柳更健康' },
   { id: 'choudoufu', name: '油炸臭豆腐（长沙/绍兴）', cat: 'cooked', kcal: 150, protein: 10, fat: 10, carb: 5, fiber: 0.5, sodium: 700, vitFat: [], vitWater: ['B2'], minerals: ['铁'], note: '发酵豆腐油炸，外酥内嫩；蛋白质在豆腐本身，但吸油多；一份10片约150g=225kcal；配蒜蓉辣椒酱钠高' },
+
+  // ---- 用户点名补充 ----
+  { id: 'baozi-beef', name: '牛肉包子（1个约100g）', cat: 'cooked', kcal: 230, protein: 9, fat: 8, carb: 30, fiber: 1, sodium: 480, vitFat: [], vitWater: ['B1', 'B12'], minerals: ['铁', '锌'], note: '面皮+牛肉大葱馅，脂肪低于猪肉包；2个约200g=460kcal；配一碗豆浆/粥平衡' },
+  { id: 'baozi-lamb', name: '羊肉包子（1个约100g）', cat: 'cooked', kcal: 240, protein: 8, fat: 10, carb: 30, fiber: 1, sodium: 500, vitFat: [], vitWater: ['B12'], minerals: ['锌', '铁'], note: '羊肉胡萝卜/大葱馅，膻味因人而异；脂肪略高于牛肉包；2个约480kcal，配生蒜/醋' },
 ];
