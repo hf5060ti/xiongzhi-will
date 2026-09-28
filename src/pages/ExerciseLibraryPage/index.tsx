@@ -469,15 +469,31 @@ export default function ExerciseLibraryPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <CardContent className="space-y-4 p-6">
-              <div className="flex items-start gap-4">
-                <div className="flex shrink-0 flex-col gap-2">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                <div className="flex shrink-0 flex-col gap-2 self-center sm:self-start">
                   {selected.gif ? (
-                    <div className="flex flex-col gap-1">
-                      <img
-                        src={selected.gif}
-                        alt={`${getCnName(selected) || selected.name}${selected.approx ? '（近似演示）' : ''} 演示动图`}
-                        className="h-40 w-40 animate-[fadeIn_.3s_ease-out] rounded-lg border border-border bg-muted/30 object-contain"
-                      />
+                    <div className="flex flex-col gap-1.5">
+                      {/* 竖版演示播放器：对齐动作详解面板样式 */}
+                      <div className="relative aspect-[3/4] w-44 overflow-hidden rounded-xl border border-border bg-black sm:w-52">
+                        <img
+                          src={selected.gif}
+                          alt={`${getCnName(selected) || selected.name}${selected.approx ? '（近似演示）' : ''} 演示`}
+                          className="h-full w-full animate-[fadeIn_.3s_ease-out] object-contain"
+                        />
+                        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black/45 backdrop-blur-sm">
+                            <PlayCircle className="h-7 w-7 text-white/90" />
+                          </div>
+                        </div>
+                        {(() => {
+                          const cue = findGuidance(getCnName(selected) || '', selected.name)?.cues?.[0];
+                          return cue ? (
+                            <div className="absolute inset-x-2 bottom-2 rounded-md bg-black/65 px-2 py-1.5 text-center text-[11px] font-semibold leading-snug text-[#FACC15]">
+                              {cue}
+                            </div>
+                          ) : null;
+                        })()}
+                      </div>
                       <span
                         className={
                           selected.approx
@@ -485,7 +501,7 @@ export default function ExerciseLibraryPage() {
                             : 'text-center text-[10px] text-muted-foreground'
                         }
                       >
-                        {selected.approx ? '近似演示' : '站上同名演示'}
+                        {selected.approx ? '近似演示' : '动作演示'}
                       </span>
                     </div>
                   ) : (
@@ -654,10 +670,10 @@ export default function ExerciseLibraryPage() {
                     href={selected.page}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-primary/50"
+                    className="inline-flex items-center gap-1.5 rounded-md border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
                   >
                     <ExternalLink className="h-3.5 w-3.5" />
-                    {selected.approx ? '查看近似动作详情' : '查看动作百科详情'}
+                    原作者教学参考 · 查看原来源
                   </a>
                 )}
                 <a
