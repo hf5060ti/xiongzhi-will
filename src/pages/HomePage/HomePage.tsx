@@ -25,6 +25,7 @@ import {
   saveLastBackupAt,
   exportAllData,
   importAllData,
+  hasAnyUserData,
 } from '@/lib/store';
 
 export default function HomePage() {
@@ -46,7 +47,9 @@ export default function HomePage() {
     a.download = `雄性意志-备份-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    saveLastBackupAt(Date.now());
+    const now = Date.now();
+    saveLastBackupAt(now);
+    setLastBackupAt(now); // 顶部提醒条立即消失
     toast.success('数据已导出');
   };
 
@@ -72,9 +75,11 @@ export default function HomePage() {
   const hasSaved = Boolean(savedGoal && savedDiet);
 
   // 备份提醒：距上次导出备份的天数（清缓存即丢数据，超 7 天给醒目提示）
-  const lastBackupAt = loadLastBackupAt();
+  // 用 state 存时间戳，导出后立即重算，顶部提醒条随之消失
+  const [lastBackupAt, setLastBackupAt] = useState<number | null>(loadLastBackupAt);
   const backupDays = lastBackupAt ? Math.floor((Date.now() - lastBackupAt) / 86400000) : null;
   const backupStale = backupDays == null || backupDays >= 7;
+  const showBackupBanner = backupStale && hasAnyUserData();
 
   const handleGenerate = () => {
     if (!goalId || !dietId) {
@@ -91,6 +96,22 @@ export default function HomePage() {
   return (
     <div className="space-y-6 sm:space-y-10">
       <HeroSection />
+
+      {/* 顶部备份提醒条：有真实数据且超过 7 天没导出时出现，一键导出后消失 */}
+      {showBackupBanner && (
+        <div className="flex flex-col gap-3 rounded-lg border border-warning/40 bg-warning/10 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs leading-relaxed text-warning sm:text-sm">
+            <span className="mr-1.5 font-semibold">数据只存在这台浏览器里</span>
+            {backupDays == null
+              ? '你还没导出过备份。清一次缓存、换个浏览器，练了几个月的记录就全没了。'
+              : `距上次备份已 ${backupDays} 天。换设备或清缓存前，建议先导出一份。`}
+          </p>
+          <Button size="sm" variant="outline" onClick={handleExport} className="shrink-0 border-warning/60 text-warning hover:bg-warning/10">
+            <Download className="mr-1.5 h-3.5 w-3.5" />
+            立即导出
+          </Button>
+        </div>
+      )}
 
       {/* 今日驾驶舱：今天吃了多少、练没练、打卡没、最近体重 */}
       <TodayPanel />

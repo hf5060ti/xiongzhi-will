@@ -12,6 +12,9 @@
 // 用户选择（目标 / 饮食 / 体重）的浏览器本地持久化，命名空间 fitness-goal-app
 const NS = 'fitness-goal-app';
 
+/** 本地数据结构版本号：未来字段结构升级时 +1，并在 migrateDataIfNeeded 里写迁移规则 */
+export const DATA_VERSION = 1;
+
 function read<T>(key: string, fallback: T): T {
   try {
     const raw = localStorage.getItem(`${NS}:${key}`);
@@ -639,7 +642,7 @@ export function exportAllData(): string {
       }
     }
   }
-  return JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), data }, null, 2);
+  return JSON.stringify({ version: DATA_VERSION, exportedAt: new Date().toISOString(), data }, null, 2);
 }
 
 export function importAllData(json: string): { success: boolean; count: number; error?: string; warning?: string } {
@@ -652,16 +655,51 @@ export function importAllData(json: string): { success: boolean; count: number; 
     let warning: string | undefined;
     if (version === 0) {
       warning = '这是早期版本的备份文件（无版本号），已按兼容模式导入。';
-    } else if (version > 1) {
-      warning = `这是 v${version} 版备份，当前网站为 v1 数据结构。已尽力导入，但个别较新字段可能无法识别，建议升级到最新版网站后再导出。`;
+    } else if (version > DATA_VERSION) {
+      warning = `这是 v${version} 版备份，当前网站为 v${DATA_VERSION} 数据结构。已尽力导入，但个别较新字段可能无法识别，建议升级到最新版网站后再导出。`;
     }
     let count = 0;
     for (const [key, value] of Object.entries(parsed.data)) {
       localStorage.setItem(`${NS}:${key}`, JSON.stringify(value));
       count++;
     }
+    // 导入后把数据版本号落回本地，供未来结构升级时做迁移判断
+    write('data-version', Math.max(version, 1));
     return { success: true, count, warning };
   } catch {
     return { success: false, count: 0, error: 'JSON 解析失败' };
   }
+}
+
+// ---------- 数据版本与"是否有真实数据"判断 ----------
+/** 本地数据结构版本号（导入备份时回写；老用户首次升级时缺省视为 1） */
+export function loadDataVersion(): number {
+  const v = read<number>('data-version', DATA_VERSION);
+  return typeof v === 'number' && v > 0 ? v : DATA_VERSION;
+}
+
+/**
+ * 未来数据结构升级时的迁移入口。
+ * 现在 v1 直接 noop；以后字段结构变了，在这里按 oldVersion 分支迁移后回写新版本号。
+ */
+export function migrateDataIfNeeded(): void {
+  const old = loadDataVersion();
+  if (old >= DATA_VERSION) return;
+  // 例：if (old < 2) { /* 迁移旧字段 */ }
+  write('data-version', DATA_VERSION);
+}
+
+/**
+ * 是否有真实用户数据（决定首页是否需要顶部备份提醒）。
+ * 新用户没填过任何东西时不提醒，避免一打开就被烦到。
+ */
+export function hasAnyUserData(): boolean {
+  if (loadGoalId()) return true;
+  if (loadWeightKg() > 0) return true;
+  if (loadTrainingLogs().length > 0) return true;
+  if (loadMeasurements().length > 0) return true;
+  if (loadPerformanceLogs().strength.length + loadPerformanceLogs().endurance.length + loadPerformanceLogs().athletic.length > 0) return true;
+  if (loadLightEntries().length > 0) return true;
+  if (loadDailyLog().length > 0) return true;
+  return false;
 }
