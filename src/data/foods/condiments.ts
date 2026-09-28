@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: CONDIMENTS
 // 酱料 / 调味品 / 香料，每 100g 参考值（品牌差异大，以包装标签为准）
@@ -93,4 +93,7 @@ export const CONDIMENTS: IFood[] = [
   { id: 'ketchup-sugar-free', name: '番茄酱（无糖版）', cat: 'condiment', kcal: 40, protein: 1.5, fat: 0.2, carb: 8, fiber: 1, sodium: 850, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['番茄红素：抗氧化、护前列腺'], note: '无添加糖，甜味来自番茄天然糖；与有糖版（约81kcal）相比碳水减半，仍是高钠，蘸食适量' },
   { id: 'pesto', name: '青酱（罗勒青酱）', cat: 'condiment', kcal: 480, protein: 7, fat: 48, carb: 8, fiber: 2, sodium: 700, vitFat: ['A', 'E', 'K'], vitWater: ['B2', '叶酸'], minerals: ['钙', '镁'], phytochem: ['罗勒芳香精油', '橄榄多酚'], note: '罗勒+松子+帕玛森芝士+橄榄油+蒜，单不饱和脂肪优质但热量高，1 汤匙约 70kcal；配意面/鸡肉用少量' },
   { id: 'katsuobushi', name: '木鱼花（柴鱼片）', cat: 'condiment', kcal: 340, protein: 66, fat: 3, carb: 0, fiber: 0, sodium: 300, vitFat: ['D'], vitWater: ['B3', 'B12'], minerals: ['钾', '硒'], note: '鲣鱼烟熏干制后刨成薄片，日式高汤/章鱼烧/冷奴豆腐提鲜；干鱼制品嘌呤很高，痛风者慎用' },
+
+  // ---- 用户点名补充 ----
+  { id: 'yan-huanggua', name: '腌黄瓜（酱黄瓜）', cat: 'condiment', kcal: 15, protein: 0.5, fat: 0.1, carb: 3, fiber: 0.5, sodium: 800, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '低卡但钠高，100g钠约占成人一日40%；配粥/馒头爽口，一顿30-50g即可；别当蔬菜大碗吃' },
 ];

@@ -121,4 +121,13 @@ export const SNACKS: IFood[] = [
   // ---- 用户点名补充：方便面 ----
   { id: 'instant-fried', name: '方便面（油炸款，干面块）', cat: 'snack', kcal: 472, protein: 9, fat: 21, carb: 60, fiber: 2, sodium: 1200, vitFat: [], vitWater: ['B1'], minerals: ['钠'], note: '面饼经油炸，脂肪约20%；调料包钠约1500-2000mg，建议只放一半料包、加蛋加菜平衡；偶尔应急，不建议当健身主食' },
   { id: 'instant-nonfried', name: '方便面（非油炸款，干面块）', cat: 'snack', kcal: 380, protein: 9, fat: 6, carb: 75, fiber: 2, sodium: 1000, vitFat: [], vitWater: ['B1'], minerals: ['钠'], note: '热风干燥，脂肪比油炸款低约70%；但钠仍高，依旧少放料包；荞麦面/乌冬干面同类' },
+
+  // ---- 用户点名补充：零食/街头炸物 ----
+  { id: 'mahua', name: '麻花（油炸）', cat: 'snack', kcal: 527, protein: 8, fat: 28, carb: 60, fiber: 1.5, sodium: 380, vitFat: [], vitWater: ['B1'], minerals: [], note: '油炸发酵面制品，糖油混合物；天津十八街/稷山麻花代表；一根约50g=264kcal，解馋量' },
+  { id: 'tanghulu', name: '糖葫芦（山楂裹冰糖）', cat: 'snack', kcal: 159, protein: 0.5, fat: 0.2, carb: 40, fiber: 1, sodium: 3, vitFat: [], vitWater: ['C'], minerals: [], phytochem: ['山楂黄酮'], note: '糖衣约占一半重量，本质是裹糖水果；一串约100g=159kcal，主要是添加糖；蓝莓/葡萄/草莓款同理' },
+  { id: 'soda-cracker-sugarfree', name: '苏打饼干（无糖）', cat: 'snack', kcal: 408, protein: 9, fat: 9, carb: 76, fiber: 3, sodium: 600, vitFat: [], vitWater: ['B1'], minerals: ['钠'], note: '发酵饼干，脂肪低于曲奇；但钠不低，"无糖"不等于低卡；胃酸多时2片应急可以，别当健康零食囤' },
+  { id: 'soda-cracker-sugared', name: '苏打饼干（含糖甜味款）', cat: 'snack', kcal: 430, protein: 8, fat: 12, carb: 72, fiber: 2, sodium: 500, vitFat: [], vitWater: ['B1'], minerals: [], note: '奶盐/甜味苏打，糖油比原味多；配料表前几位常有精炼植物油与白砂糖' },
+  { id: 'oreo', name: '奥利奥（原味夹心）', cat: 'snack', kcal: 484, protein: 5, fat: 20, carb: 70, fiber: 1.5, sodium: 400, vitFat: [], vitWater: ['B2'], minerals: ['铁'], note: '可可饼干+糖脂夹心；2片约29g=140kcal，几乎全是精制碳水+添加脂肪；"轻甜/薄脆"款热量接近' },
+  { id: 'latiao', name: '辣条（面筋制品）', cat: 'snack', kcal: 450, protein: 10, fat: 25, carb: 45, fiber: 2, sodium: 2000, vitFat: [], vitWater: [], minerals: ['钠'], note: '高油高盐高钠代表，一包100g钠常超NRV的100%；偶尔解馋，吃完当天多喝水、别再吃咸的；儿童/高血压者少食' },
+  { id: 'zhima-ye', name: '炸芝麻叶（皖北传统小吃）', cat: 'snack', kcal: 450, protein: 8, fat: 25, carb: 45, fiber: 3, sodium: 300, vitFat: [], vitWater: [], minerals: ['钙'], phytochem: ['芝麻素'], note: '皖北特产，嫩芝麻叶裹薄面糊油炸，形似树叶、薄脆如纸；下酒/茶点；油脂偏高，一把约30g=135kcal' },
 ];

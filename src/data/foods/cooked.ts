@@ -172,4 +172,15 @@ export const COOKED: IFood[] = [
   { id: 'roast-duck-skin', name: '秘制烤鸭（带皮）', cat: 'cooked', kcal: 350, protein: 20, fat: 30, carb: 2, fiber: 0, sodium: 700, vitFat: ['A'], vitWater: ['B3'], minerals: ['铁'], note: '北京烤鸭皮脂肪极高，一口皮约30kcal；蛋白在瘦肉部分；薄饼+甜面酱后碳水叠加，2-3片鸭+1饼为宜' },
   { id: 'steam-noodle', name: '蒸面条（每100g碗装）', cat: 'cooked', kcal: 160, protein: 5, fat: 4, carb: 26, fiber: 1, sodium: 500, vitFat: [], vitWater: ['B1'], minerals: [], note: '河南蒸面条，拌豆角/五花肉蒸制；油肉裹在面上，一碗约400g=640kcal' },
   { id: 'boiled-fish', name: '水煮鱼（每100g带油汤）', cat: 'cooked', kcal: 120, protein: 12, fat: 7, carb: 3, fiber: 0.5, sodium: 800, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '鱼片本身低脂高蛋白，但表面浮油与辣椒红油极高；撇油后鱼肉约80kcal/100g；钠重，少喝汤' },
+
+  // ---- 用户点名补充：家常菜 / 街头烤串小吃 ----
+  { id: 'yuxiang-rousi', name: '鱼香肉丝', cat: 'cooked', kcal: 110, protein: 8, fat: 6, carb: 6, fiber: 1, sodium: 500, vitFat: [], vitWater: ['B2'], minerals: ['铁'], note: '猪肉丝+木耳+胡萝卜+泡椒鱼香汁；糖醋酸辣，市售/外卖款油糖偏高；一盘约300g=330kcal' },
+  { id: 'gongbao-jiding', name: '宫保鸡丁', cat: 'cooked', kcal: 150, protein: 12, fat: 9, carb: 7, fiber: 1.5, sodium: 480, vitFat: [], vitWater: ['B3'], minerals: ['锌'], note: '鸡腿肉+花生+干辣椒+糖醋芡；花生带来脂肪与蛋白；一盒外卖约400g=600kcal，米饭另算' },
+  { id: 'xiehuang-tangbao', name: '蟹黄汤包', cat: 'cooked', kcal: 220, protein: 10, fat: 12, carb: 18, fiber: 0.5, sodium: 600, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '靖江/镇江名点，汤包皮冻+蟹黄蟹肉；一笼约6只300g=660kcal，"先开窗后喝汤"；蟹黄胆固醇高，一次1-2只' },
+  { id: 'fensi-jiaozi', name: '粉丝素饺子', cat: 'cooked', kcal: 200, protein: 6, fat: 8, carb: 26, fiber: 1.5, sodium: 450, vitFat: [], vitWater: [], minerals: [], note: '粉丝+韭菜+鸡蛋馅；粉丝几乎纯淀粉，蛋白低于肉饺；10只约250g=500kcal；蘸醋+蒜，少喝饺子汤（钠）' },
+  { id: 'gunai-kaochang', name: '骨泥烤肠（夜市铁板肠）', cat: 'cooked', kcal: 280, protein: 12, fat: 22, carb: 8, fiber: 0, sodium: 800, vitFat: [], vitWater: ['B1'], minerals: ['磷'], note: '鸡皮/骨泥/淀粉+香精灌肠，脂肪与钠双高；一根约70g=196kcal；偶尔解馋，别当蛋白质来源' },
+  { id: 'gurou-xianglian', name: '骨肉相连（烤串）', cat: 'cooked', kcal: 220, protein: 14, fat: 15, carb: 6, fiber: 0, sodium: 700, vitFat: [], vitWater: ['B3'], minerals: ['钙'], note: '鸡胸软骨+鸡腿肉串，腌制后油炸/烧烤；软骨补钙但脂肪不低；一串约40g=88kcal，5串440kcal' },
+  { id: 'kao-mianjin', name: '烤面筋（刷辣酱）', cat: 'cooked', kcal: 180, protein: 25, fat: 5, carb: 8, fiber: 1, sodium: 900, vitFat: [], vitWater: [], minerals: ['钙'], note: '水洗面筋，植物蛋白含量高（约25g/100g）；刷油辣酱后钠高；一串约60g=108kcal，素食烤串里相对友好' },
+  { id: 'kao-lengmian', name: '烤冷面（东北街头）', cat: 'cooked', kcal: 180, protein: 6, fat: 7, carb: 25, fiber: 1, sodium: 600, vitFat: [], vitWater: ['B2'], minerals: [], note: '冷面片+鸡蛋+香肠+洋葱+甜辣酱；一份约300g=540kcal；蛋加双份能补蛋白，肠换鸡柳更健康' },
+  { id: 'choudoufu', name: '油炸臭豆腐（长沙/绍兴）', cat: 'cooked', kcal: 150, protein: 10, fat: 10, carb: 5, fiber: 0.5, sodium: 700, vitFat: [], vitWater: ['B2'], minerals: ['铁'], note: '发酵豆腐油炸，外酥内嫩；蛋白质在豆腐本身，但吸油多；一份10片约150g=225kcal；配蒜蓉辣椒酱钠高' },
 ];

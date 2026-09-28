@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: STAPLES
 // 主食（米面 / 薯类 / 杂粮），每 100g 参考值（标注干湿）
@@ -126,4 +126,11 @@ export const STAPLES: IFood[] = [
   { id: 'oat-grain-dry', name: '燕麦米（整粒去壳，干）', cat: 'staple', kcal: 367, protein: 15, fat: 6.7, carb: 61.4, fiber: 10.6, sodium: 4, vitFat: ['E'], vitWater: ['B1', 'B3'], minerals: ['镁', '锌'], note: '整粒燕麦去芒壳，需提前浸泡久煮；β-葡聚糖与膳食纤维高于燕麦片，升糖更慢' },
   { id: 'sea-rice-dry', name: '海水稻米（耐盐碱稻米，干）', cat: 'staple', kcal: 348, protein: 7.5, fat: 0.8, carb: 77, fiber: 0.9, sodium: 6, vitFat: [], vitWater: ['B1', 'B3'], minerals: ['钾', '镁'], note: '耐盐碱稻（海水稻）品种参考值，营养接近普通籼米，矿物质略高；数据为市面平均参考，以实际包装为准' },
   { id: 'rice-bran', name: '米糠（干）', cat: 'staple', kcal: 316, protein: 13.3, fat: 20.9, carb: 49.7, fiber: 21, sodium: 5, vitFat: ['E', 'K'], vitWater: ['B1', 'B3', 'B6'], minerals: ['镁', '锌', '钾'], phytochem: ['γ-谷维素：抗氧化、传统认为稳情绪'], note: '稻米碾磨的皮层，膳食纤维极高；脂肪含量高易氧化，需低温密封保存，少量拌粥/酸奶' },
+
+  // ---- 用户点名补充：中式面点 ----
+  { id: 'zhen-tou-mo', name: '阜阳枕头馍', cat: 'staple', kcal: 230, protein: 7, fat: 1, carb: 50, fiber: 1.5, sodium: 220, vitFat: [], vitWater: ['B1'], minerals: [], note: '阜阳特色硬面大馍，形似枕头，层层起酥；比软馒头更扎实，一个约500g，主食份量需自行减量；耐储存，曾为行军干粮' },
+  { id: 'shaobing', name: '油酥烧饼', cat: 'staple', kcal: 300, protein: 8, fat: 8, carb: 50, fiber: 1.5, sodium: 400, vitFat: [], vitWater: ['B1'], minerals: [], note: '芝麻表面+油酥夹层，烤后酥脆；夹里脊/肠后热量飙升；一个约120g=360kcal' },
+  { id: 'huajuan', name: '花卷', cat: 'staple', kcal: 214, protein: 6, fat: 1, carb: 45, fiber: 1, sodium: 280, vitFat: [], vitWater: ['B1'], minerals: [], note: '蒸制发酵面食，葱油/椒盐味；脂肪低，配粥+蛋是减脂友好早餐' },
+  { id: 'mantou', name: '白面馒头', cat: 'staple', kcal: 223, protein: 7, fat: 1.1, carb: 47, fiber: 1.3, sodium: 165, vitFat: [], vitWater: ['B1'], minerals: ['钙'], note: '北方主食，GI约88偏高；一餐1-2个约100-150g为宜；全麦馒头GI更低' },
+  { id: 'cream-bread', name: '奶油夹心面包', cat: 'staple', kcal: 350, protein: 7, fat: 12, carb: 52, fiber: 1, sodium: 330, vitFat: ['A'], vitWater: ['B2'], minerals: ['钙'], note: '面包胚+植物奶油夹心，糖脂双高；一个约80g=280kcal；选真奶油/全麦款更佳' },
 ];

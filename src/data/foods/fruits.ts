@@ -1,4 +1,4 @@
-// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+﻿// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: FRUITS
 // 水果（常见 / 浆果与特色果），每 100g 可食部参考值
@@ -82,4 +82,7 @@ export const FRUITS: IFood[] = [
 
   // ---- 干果补充（用户点名） ----
   { id: 'date-medjool', name: '椰枣（干）', cat: 'fruit', kcal: 277, protein: 1.8, fat: 0.2, carb: 75, fiber: 6.7, sodium: 1, vitFat: [], vitWater: ['B6'], minerals: ['钾', '镁'], note: '天然高糖干果，训练前后快速补糖可用；含钾丰富，控糖人群注意份量' },
+
+  // ---- 用户点名补充 ----
+  { id: 'shanzha', name: '山楂（鲜）', cat: 'fruit', kcal: 102, protein: 0.5, fat: 0.2, carb: 25, fiber: 3, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['山楂酸', '山楂黄酮', '果胶'], note: '鲜山楂维C约53mg/100g，黄酮助消化、辅助降血脂；味极酸，多做糖葫芦/果丹皮/蜜饯，加工后糖飙升；脾胃弱者空腹少食' },
 ];
