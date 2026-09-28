@@ -142,4 +142,7 @@ export const SNACKS: IFood[] = [
   { id: 'danhuang-su', name: '蛋黄酥', cat: 'snack', kcal: 450, protein: 8, fat: 20, carb: 60, fiber: 1.5, sodium: 260, vitFat: ['A'], vitWater: ['B2'], minerals: ['铁'], note: '酥皮+红豆沙+咸蛋黄，一个约60g=270kcal；脂肪主要来自酥皮黄油；配黑咖啡解腻' },
   { id: 'liulian-su', name: '榴莲酥', cat: 'snack', kcal: 420, protein: 6, fat: 18, carb: 58, fiber: 1.5, sodium: 200, vitFat: [], vitWater: ['C', 'B6'], minerals: ['钾'], note: '起酥皮+榴莲馅烘烤，一个约50g=210kcal；油炸/烘烤款脂肪略不同' },
   { id: 'lvdou-gao', name: '绿豆糕', cat: 'snack', kcal: 350, protein: 10, fat: 12, carb: 50, fiber: 2, sodium: 120, vitFat: [], vitWater: ['B1'], minerals: ['钾', '镁'], phytochem: ['绿豆黄酮'], note: '绿豆+糖+油脂蒸/压制；传统北派vs苏派差异大，苏派油更大；一块约50g=175kcal，配绿茶' },
+
+  // ---- 用户点名补充 ----
+  { id: 'zhu-roufu', name: '猪肉脯', cat: 'snack', kcal: 380, protein: 30, fat: 10, carb: 35, fiber: 0, sodium: 1500, vitFat: [], vitWater: ['B1'], minerals: ['铁', '锌'], note: '瘦肉经糖腌烘烤，蛋白高但糖与钠双高（约1500mg/100g）；一小包约30g=114kcal；追剧零食建议一次1-2小包，别整袋吃' },
 ];

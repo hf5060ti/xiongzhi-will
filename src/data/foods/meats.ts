@@ -176,4 +176,9 @@ export const MEATS: IFood[] = [
   { id: 'yang-tourou', name: '酱羊头肉（熟）', cat: 'meat', kcal: 200, protein: 25, fat: 10, carb: 1, fiber: 0, sodium: 800, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '羊脸/舌/脑混合，卤制后钠高；肉冻/凉拌常见；羊脑胆固醇高，一次少尝；下酒菜，配大量蔬菜平衡钠' },
   { id: 'niu-tourou', name: '酱牛头肉（熟）', cat: 'meat', kcal: 230, protein: 20, fat: 16, carb: 1, fiber: 0, sodium: 750, vitFat: [], vitWater: ['B12'], minerals: ['锌', '铁'], note: '牛头皮/脸肉，胶质多脂肪高；凉拌/火锅；比纯牛腱脂肪高约3倍；一顿50-80g切片' },
   { id: 'dog-meat', name: '狗肉（瘦，参考值）', cat: 'meat', kcal: 110, protein: 20, fat: 3, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], phytochem: [], note: '【本网站立场】本网站反对任何形式的食用狗肉，以下数据仅为营养参考，不代表鼓励。食用狗肉在我国多数地区已被立法禁止或社会广泛抵制，江苏部分地区历史上俗称"香肉"，属地方性争议饮食。请遵守当地法律法规与公序良俗，尊重伴侣动物。' },
+
+  // ---- 用户点名补充 ----
+  { id: 'baiqie-ji', name: '白切鸡（带皮）', cat: 'meat', kcal: 200, protein: 20, fat: 13, carb: 0, fiber: 0, sodium: 60, vitFat: ['A'], vitWater: ['B12'], minerals: ['铁', '锌'], note: '粤菜代表，水煮后蘸姜葱蓉；皮是脂肪主要来源，去皮约160kcal/100g；1/4只约200g=400kcal' },
+  { id: 'yanshui-ya', name: '盐水鸭（南京特产）', cat: 'meat', kcal: 250, protein: 20, fat: 18, carb: 0, fiber: 0, sodium: 1200, vitFat: ['A'], vitWater: ['B12'], minerals: ['铁'], note: '南京/淮扬名菜，鸭皮脂肪厚、腌制后钠高（约1200mg/100g）；一次50-80g切片；下酒配粥，别就着咸汤喝' },
+  { id: 'niu-xiong', name: '牛胸肉（Brisket，生）', cat: 'meat', kcal: 300, protein: 17, fat: 25, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12', 'B3'], minerals: ['铁', '锌'], note: '肥瘦相间、筋膜多，适合低温慢炖/烟熏/卤制；烤牛胸（BBQ Brisket）是美式烧烤代表；生肉脂肪约25%，慢炖后筋膜化口；减脂期不如选牛腱/里脊' },
 ];

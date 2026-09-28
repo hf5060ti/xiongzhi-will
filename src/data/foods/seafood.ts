@@ -87,4 +87,11 @@ export const SEAFOODS: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'fish-skin-dried', name: '即食烤鱼皮（咸蛋黄/原味）', cat: 'seafood', kcal: 520, protein: 25, fat: 40, carb: 15, fiber: 0, sodium: 800, vitFat: ['D'], vitWater: ['B12'], minerals: ['钙', '磷'], note: '鱼皮经油炸/烘烤，脂肪与钠极高，下酒零食；胶原蛋白丰富但为不完全蛋白；当零食少量，别当高蛋白来源' },
+
+  // ---- 用户点名补充 ----
+  { id: 'yu-doufu', name: '鱼豆腐（油炸鱼糜）', cat: 'seafood', kcal: 150, protein: 10, fat: 8, carb: 10, fiber: 0, sodium: 600, vitFat: [], vitWater: ['B12'], minerals: ['钙'], note: '鱼糜+大豆蛋白油炸，火锅/关东煮常见；看着像鱼其实吸油多；一串约30g=45kcal，10串=450kcal' },
+  { id: 'yu-mi', name: '鱼糜（鱼丸原料）', cat: 'seafood', kcal: 110, protein: 12, fat: 1, carb: 10, fiber: 0, sodium: 800, vitFat: [], vitWater: ['B12'], minerals: ['硒'], note: '海鱼去皮去骨擂成泥，加淀粉/水/盐；本身低卡高蛋，但钠高；是鱼丸/蟹棒/竹轮的原料' },
+  { id: 'yuwan', name: '鱼丸（熟）', cat: 'seafood', kcal: 100, protein: 10, fat: 3, carb: 8, fiber: 0, sodium: 700, vitFat: [], vitWater: ['B12'], minerals: ['硒'], note: '火锅/汤粉常见；选配料表前几位是鱼糜而非鱼糜制品+淀粉；不建议当纯海鲜蛋白，淀粉占比高' },
+  { id: 'niuwa', name: '牛蛙肉（去头去皮熟）', cat: 'seafood', kcal: 81, protein: 16, fat: 0.3, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒'], phytochem: [], note: '极低脂高蛋白，比鸡胸还瘦；但泡椒/干锅/水煮做法脂肪飙升；1只可食部约100g；必须彻底煮熟（寄生虫风险）' },
+  { id: 'xiaolongxia', name: '小龙虾（熟去壳净肉）', cat: 'seafood', kcal: 90, protein: 18, fat: 1, carb: 1, fiber: 0, sodium: 200, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒', '铜'], note: '净肉极低脂高蛋白；但麻辣/十三香汤汁钠油极高，热量主要来自汤汁配面条；一餐剥1斤虾约200g净肉=180kcal；尿酸高者适量（嘌呤中高）；务必煮熟煮透' },
 ];
