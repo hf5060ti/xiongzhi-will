@@ -102,4 +102,9 @@ export const FRUITS: IFood[] = [
   { id: 'shui-mi-tao', name: '水蜜桃', cat: 'fruit', kcal: 48, protein: 0.9, fat: 0.1, carb: 12, fiber: 1.3, sodium: 0, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['花青素（红皮）'], note: '一个约150g=72kcal；多汁软甜，桃毛过敏者削皮；升糖指数约28，比西瓜低；别把桃罐头（加糖）当水果' },
   { id: 'xue-cheng', name: '血橙', cat: 'fruit', kcal: 47, protein: 0.9, fat: 0.1, carb: 12, fiber: 2.4, sodium: 0, vitFat: [], vitWater: ['C', '叶酸'], minerals: ['钾'], phytochem: ['花青素（天竺葵素，红色果肉）', '橙皮苷'], note: '一个约150g=70kcal；红色来自花青素（普通橙子没有），抗氧化更强；口感比普通橙略酸；冬季限定；维C与普通橙接近' },
   { id: 'xiang-jiao', name: '香蕉', cat: 'fruit', kcal: 89, protein: 1.1, fat: 0.3, carb: 23, fiber: 2.6, sodium: 1, vitFat: [], vitWater: ['B6', 'C', '叶酸'], minerals: ['钾（约358mg/100g）', '镁'], phytochem: ['多巴胺（果肉，少量）', '血清素前体（色氨酸）'], note: '一根约120g=107kcal；练后快碳+钾来源，防抽筋；青香蕉抗性淀粉多（助消化），熟香蕉糖高；"助眠"来自色氨酸但量有限；别空腹大量吃（鞣酸+镁）' },
+
+  // ---- 用户点名补充 ----
+  { id: 'ying-tao', name: '樱桃', cat: 'fruit', kcal: 63, protein: 1.1, fat: 0.2, carb: 16, fiber: 2.1, sodium: 0, vitFat: [], vitWater: ['C', 'A'], minerals: ['钾'], phytochem: ['花青素（红皮）', '褪黑素（天然）', '樱桃酸'], note: '一小碗约100g=63kcal；花青素密度高；研究提示樱桃酸有助缓解痛风发作（樱桃酸促尿酸排泄）；含天然褪黑素（量少）；别买糖渍樱桃罐头；核别嚼碎（苦杏仁苷）' },
+  { id: 'lan-bao-shi', name: '蓝宝石葡萄/月光之泪', cat: 'fruit', kcal: 70, protein: 0.8, fat: 0.2, carb: 18, fiber: 1, sodium: 2, vitFat: [], vitWater: ['C', 'K'], minerals: ['钾'], phytochem: ['白藜芦醇（皮）', '花青素'], note: '长形无核葡萄品种，比普通提子更甜；一串约150g=105kcal；含糖约17-19%，比橘子高；一口一个容易吃多，一次别超一小碗；皮薄无籽连皮吃' },
+  { id: 'hei-mei-ren', name: '黑美人西瓜', cat: 'fruit', kcal: 30, protein: 0.6, fat: 0.2, carb: 8, fiber: 0.4, sodium: 1, vitFat: [], vitWater: ['C', 'B6'], minerals: ['钾'], phytochem: ['番茄红素（红瓤）', '瓜氨酸'], note: '【精氨酸友好】西瓜瓜氨酸含量高，有助于血管舒张（运动前吃半块）；黑美人是常见品种，瓜皮深黑绿、瓜瓤深红；一块约300g=90kcal；升糖指数GI约72偏高，但GL低（水分大）；糖尿病人一次100-150g；别冰镇太狠伤胃' },
 ];
