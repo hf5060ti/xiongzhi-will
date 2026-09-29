@@ -197,4 +197,8 @@ export const COOKED: IFood[] = [
   { id: 'dumpling-steam', name: '蒸饺（熟，每只约20g）', cat: 'cooked', kcal: 225, protein: 8, fat: 8, carb: 30, fiber: 0.8, sodium: 460, vitFat: [], vitWater: ['B1'], minerals: [], note: '蒸制比煎饺少油；馅荤素决定热量；10只约200g=450kcal；蘸醋+辣椒油另算热量' },
   { id: 'xiaolongbao', name: '小笼包（1个约35g）', cat: 'cooked', kcal: 230, protein: 8, fat: 10, carb: 26, fiber: 0.5, sodium: 550, vitFat: [], vitWater: ['B1'], minerals: ['磷'], note: '上海/江南名点；薄皮+猪肉馅+皮冻汤汁；一笼8个约280g=644kcal；先开窗喝汤再吃包，小心烫嘴；钠偏高' },
   { id: 'mantou-white', name: '白面馒头（1个约100g）', cat: 'cooked', kcal: 223, protein: 7, fat: 1.1, carb: 47, fiber: 1.3, sodium: 165, vitFat: [], vitWater: ['B1'], minerals: [], note: '高碳低脂，练后快碳；发面好消化，肠胃弱时友好；1个约223kcal，配鸡蛋/豆浆补蛋白' },
+
+  // ---- 用户点名：酸菜鱼 / 水煮鱼 ----
+  { id: 'suan-cai-yu', name: '酸菜鱼（每100g带汤）', cat: 'cooked', kcal: 90, protein: 10, fat: 4.5, carb: 3, fiber: 0.8, sodium: 750, vitFat: [], vitWater: ['B12', 'C'], minerals: ['硒', '钙'], phytochem: ['乳酸菌（酸菜）'], note: '四川/重庆名菜；黑鱼/草鱼切片+泡酸菜煮制；鱼片本身低脂高蛋白，但汤里浮油和酸菜钠高；撇油后鱼肉约70kcal/100g；酸菜含乳酸菌有助肠道；一份约500g=450kcal，配米饭；痛风急性期少喝汤（嘌呤溶于汤）' },
+  { id: 'shui-zhu-yu', name: '水煮鱼（每100g带油汤）', cat: 'cooked', kcal: 120, protein: 12, fat: 7, carb: 3, fiber: 0.5, sodium: 800, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '鱼片本身低脂高蛋白，但表面浇的热油+辣椒红油极高；撇油后鱼肉约80kcal/100g；钠重，少喝汤；一份约500g=600kcal（含油汤），实际吃鱼肉约200g=160kcal；配米饭' },
 ];

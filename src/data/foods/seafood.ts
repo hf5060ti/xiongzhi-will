@@ -107,4 +107,5 @@ export const SEAFOODS: IFood[] = [
 
   // ---- 用户点名补充：养殖水产 / 争议食材 ----
   { id: 'huangshan', name: '黄鳝（熟）', cat: 'seafood', kcal: 83, protein: 18, fat: 1.4, carb: 0, fiber: 0, sodium: 70, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['铁', '磷', '硒'], phytochem: [], note: '低脂高蛋白，铁含量在淡水鱼里偏高；江浙响油鳝糊/红烧；【重要】野生/生食黄鳝可能携带颚口线虫，必须彻底煮熟（中心温度70℃以上），绝对不要"响油"带血三分熟；孕妇/儿童尤其要煮透；现杀现烹，死鳝体内组胺快速升高，死亡超过半天不要吃' },
+  { id: 'sea-bream', name: '鲷鱼/真鲷/加吉鱼（熟）', cat: 'seafood', kcal: 100, protein: 20, fat: 2.5, carb: 0, fiber: 0, sodium: 70, vitFat: ['D'], vitWater: ['B12', 'B6'], minerals: ['硒', '钾', '磷'], note: '海鱼代表，肉质白嫩细腻，刺少肉厚；日式刺身/清蒸/盐烤；低脂高蛋白，欧米伽3含量中等；一条约1-2kg，出肉率高；适合健身期优质蛋白来源；嘌呤中等，痛风急性期适量' },
 ];
