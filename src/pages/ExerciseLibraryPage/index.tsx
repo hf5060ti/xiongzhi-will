@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import exercisesData from '@/data/exercises-db.json';
 import extData from '@/data/exercises-ext.json';
 import { EXERCISE_MEDIA } from '@/data/exercise-media';
+import zhStepsData from '@/data/exercise-zh-steps.json';
 import { TAN_CHENGYI, type CoachVideo } from '@/data/coach-videos';
 import { findGuidance } from '@/data/exercise-guidance';
 import { restFor } from '@/lib/training-plan';
@@ -58,6 +59,8 @@ interface ExerciseView {
   primaryMuscles: string[];
   secondaryMuscles: string[];
   instructions: string[];
+  /** 中文步骤（从动作百科匹配，仅部分动作有） */
+  zhSteps?: string[];
   level: string;
   mechanic: string;
   images: string[];
@@ -175,6 +178,7 @@ const ALL_EXERCISES: ExerciseView[] = [
       primaryMuscles: normMuscles(e.primaryMuscles),
       secondaryMuscles: normMuscles(e.secondaryMuscles),
       instructions: e.instructions,
+      zhSteps: (zhStepsData as Record<string, {zh: string; steps: string[]}>)[e.id]?.steps,
       level: e.level,
       mechanic: e.mechanic,
       images: e.images.map((i) => IMG_BASE + i),
@@ -409,8 +413,17 @@ export default function ExerciseLibraryPage() {
                   src={src}
                   alt={cnName || ex.name}
                   loading="lazy"
+                  onError={(ev) => {
+                    const el = ev.currentTarget;
+                    el.style.display = 'none';
+                  }}
                   className="h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105"
                 />
+                {!src && (
+                  <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
+                    <Dumbbell className="h-8 w-8" />
+                  </div>
+                )}
                 {ex.gif && (
                   <span className="absolute right-1 top-1 inline-flex items-center gap-0.5 rounded bg-black/60 px-1 py-0.5 text-[9px] font-medium text-white">
                     <PlayCircle className="h-2.5 w-2.5" />
@@ -511,6 +524,7 @@ export default function ExerciseLibraryPage() {
                         <img
                           src={selected.gif}
                           alt={`${getCnName(selected) || selected.name}${selected.approx ? '（近似演示）' : ''} 演示`}
+                          onError={(ev) => { ev.currentTarget.style.display = 'none'; }}
                           className="h-full w-full animate-[fadeIn_.3s_ease-out] object-contain"
                         />
                         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -543,6 +557,7 @@ export default function ExerciseLibraryPage() {
                         key={i}
                         src={img}
                         alt={`${selected.name} ${i + 1}`}
+                        onError={(ev) => { ev.currentTarget.style.display = 'none'; }}
                         className="h-32 w-32 rounded-lg border border-border bg-muted/30 object-contain"
                       />
                     ))
@@ -734,16 +749,41 @@ export default function ExerciseLibraryPage() {
                   <Dumbbell className="h-4 w-4 text-primary" />
                   动作步骤
                 </h3>
-                <ol className="space-y-2">
-                  {selected.instructions.map((step, i) => (
-                    <li key={i} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
-                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">
-                        {i + 1}
-                      </span>
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ol>
+                {selected.zhSteps && selected.zhSteps.length > 0 ? (
+                  <>
+                    <ol className="space-y-2">
+                      {selected.zhSteps.map((step, i) => (
+                        <li key={i} className="flex gap-2 text-sm leading-relaxed text-foreground">
+                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">
+                            {i + 1}
+                          </span>
+                          <span>{step}</span>
+                        </li>
+                      ))}
+                    </ol>
+                    {selected.instructions && selected.instructions.length > 0 && (
+                      <details className="mt-3 rounded-md border border-border bg-muted/20 p-2">
+                        <summary className="cursor-pointer text-xs text-muted-foreground">英文原始步骤参考</summary>
+                        <ol className="mt-2 space-y-1.5 pl-4">
+                          {selected.instructions.map((step, i) => (
+                            <li key={i} className="text-xs leading-relaxed text-muted-foreground">{step}</li>
+                          ))}
+                        </ol>
+                      </details>
+                    )}
+                  </>
+                ) : (
+                  <ol className="space-y-2">
+                    {selected.instructions.map((step, i) => (
+                      <li key={i} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">
+                          {i + 1}
+                        </span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                )}
               </div>
             </CardContent>
           </Card>
