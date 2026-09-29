@@ -8,6 +8,7 @@ import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
 import { cn } from '@/lib/utils';
 import VideoBackground from '@/components/VideoBackground';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 const NAV_ITEMS = [
   { path: '/', label: '身体', icon: Dumbbell, end: true },
@@ -341,7 +342,9 @@ export const Layout = () => {
 
         )}
         <div className="mx-auto w-full max-w-7xl px-3 py-5 sm:px-4 sm:py-6 lg:px-8 lg:py-8">
-          <Outlet />
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
         </div>
 
         <footer className="border-t border-border/30 bg-card/40 px-4 py-4 backdrop-blur-xl lg:px-8">

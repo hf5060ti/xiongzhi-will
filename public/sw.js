@@ -1,8 +1,11 @@
 /* 雄性意志 PWA Service Worker
- * 策略：导航请求 network-first（离线回退缓存）；静态资源 cache-first。
- * 缓存名带版本，发新版时改 CACHE 名即自动清旧缓存。
+ * 策略：
+ *   - 导航请求 network-first（离线回退缓存 index.html）
+ *   - 静态资源 stale-while-revalidate（先给缓存秒开，后台更新；新版本部署后下次访问自动生效）
+ *   - JS/CSS chunk 如果 404（发版后旧 hash 失效），自动清缓存并刷新
+ * 缓存名带版本，发版时 bump 即清旧缓存。
  */
-const CACHE = 'xiongzhi-will-v1';
+const CACHE = 'xiongzhi-will-v2';
 const CORE = ['./', './index.html', './manifest.webmanifest', './images/icon-192.png', './images/icon-512.png'];
 
 self.addEventListener('install', (event) => {
@@ -39,18 +42,34 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 静态资源：cache-first
+  // 静态资源：stale-while-revalidate
+  // 先返回缓存（秒开），同时后台拉新的更新缓存；下次访问就是新的
   event.respondWith(
-    caches.match(req).then(
-      (hit) =>
-        hit ||
-        fetch(req).then((res) => {
-          if (res.ok) {
+    caches.match(req).then((cached) => {
+      const networkFetch = fetch(req)
+        .then((res) => {
+          if (res && res.ok && res.type === 'basic') {
             const copy = res.clone();
             caches.open(CACHE).then((c) => c.put(req, copy));
           }
           return res;
-        }),
-    ),
+        })
+        .catch(() => cached);
+      // 关键：如果缓存没有且网络 404（发版后旧 chunk 失效），清全部缓存
+      if (!cached) {
+        return networkFetch.then((res) => {
+          if (res && res.status === 404) {
+            // 旧 chunk 404 = 发版了，清缓存让下次拿全新 index.html
+            caches.keys().then((keys) =>
+              Promise.all(keys.map((k) => caches.delete(k))),
+            ).then(() => self.clients.matchAll().then((clients) =>
+              clients.forEach((c) => c.navigate(c.url)),
+            ));
+          }
+          return res;
+        });
+      }
+      return cached || networkFetch;
+    }),
   );
 });

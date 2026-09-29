@@ -65,6 +65,22 @@
         <div class="motto">本网站只提供健康自然的健身方式，不提供任何极端和药物，请遵守当地法律法规</div>
       </div>
     </div>
+    <script>
+      // JS 加载失败兜底：10 秒后 React 仍未挂载（root 里还有骨架屏），说明 chunk 没加载出来
+      // 此时把转圈换成"加载失败，点此刷新"，避免用户以为白屏/卡死
+      (function () {
+        var splash = document.getElementById('xy-splash');
+        setTimeout(function () {
+          // React 挂载后会清空 #root，骨架屏就被移除了
+          if (!document.body.contains(splash)) return;
+          splash.innerHTML =
+            '<div class="spinner" style="border-top-color:#EF4444"></div>' +
+            '<div class="brand" style="font-size:18px">加载失败</div>' +
+            '<div class="motto">可能是网络问题导致核心脚本没下载完成。<br/><br/>' +
+            '<a href="javascript:location.reload()" style="color:#FACC15;text-decoration:underline;cursor:pointer">点此刷新重试</a></div>';
+        }, 10000);
+      })();
+    </script>
     <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>

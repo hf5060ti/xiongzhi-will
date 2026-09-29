@@ -36,40 +36,38 @@ const NotFoundPage = lazy(() => import('@/pages/NotFoundPage/NotFoundPage'));
 
 export default function App() {
   return (
-    <ErrorBoundary>
-      <Suspense fallback={<PageFallback />}>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="plan" element={<PlanPage />} />
-            <Route path="nutrition" element={<NutritionPage />} />
-            <Route path="body" element={<BodyDataPage />} />
-            <Route path="cardio" element={<CardioPage />} />
-            <Route path="bodyweight" element={<BodyweightPage />} />
-            <Route path="physique" element={<PhysiquePage />} />
-            <Route path="coach" element={<CoachPage />} />
-            <Route path="library" element={<ExerciseLibraryPage />} />
-            <Route path="mind" element={<MindPage />} />
-            <Route path="career" element={<CareerPage />} />
-            <Route path="wealth" element={<WealthPage />} />
-            <Route path="relation" element={<RelationPage />} />
-            <Route path="skills" element={<SkillsPage />} />
-            <Route path="wild" element={<WildPage />} />
-            <Route path="life" element={<LifeGuidePage />} />
-            <Route path="life/:id" element={<LifeGuidePage />} />
-            <Route path="stomach" element={<StomachPage />} />
-            <Route path="diet-knowledge" element={<DietKnowledgePage />} />
-            <Route path="training-logs" element={<TrainingLogPage />} />
-            <Route path="tools" element={<ToolsPage />} />
-            <Route path="light" element={<LightPage />} />
-            <Route path="privacy" element={<PrivacyPage />} />
-            <Route path="sources" element={<SourcesPage />} />
-            <Route path="faq" element={<FaqPage />} />
-            <Route path="collect" element={<CollectPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </Suspense>
-    </ErrorBoundary>
+    <Suspense fallback={<PageFallback />}>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="plan" element={<PlanPage />} />
+          <Route path="nutrition" element={<NutritionPage />} />
+          <Route path="body" element={<BodyDataPage />} />
+          <Route path="cardio" element={<CardioPage />} />
+          <Route path="bodyweight" element={<BodyweightPage />} />
+          <Route path="physique" element={<PhysiquePage />} />
+          <Route path="coach" element={<CoachPage />} />
+          <Route path="library" element={<ExerciseLibraryPage />} />
+          <Route path="mind" element={<MindPage />} />
+          <Route path="career" element={<CareerPage />} />
+          <Route path="wealth" element={<WealthPage />} />
+          <Route path="relation" element={<RelationPage />} />
+          <Route path="skills" element={<SkillsPage />} />
+          <Route path="wild" element={<WildPage />} />
+          <Route path="life" element={<LifeGuidePage />} />
+          <Route path="life/:id" element={<LifeGuidePage />} />
+          <Route path="stomach" element={<StomachPage />} />
+          <Route path="diet-knowledge" element={<DietKnowledgePage />} />
+          <Route path="training-logs" element={<TrainingLogPage />} />
+          <Route path="tools" element={<ToolsPage />} />
+          <Route path="light" element={<LightPage />} />
+          <Route path="privacy" element={<PrivacyPage />} />
+          <Route path="sources" element={<SourcesPage />} />
+          <Route path="faq" element={<FaqPage />} />
+          <Route path="collect" element={<CollectPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
