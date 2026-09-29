@@ -167,4 +167,6 @@ export const SNACKS: IFood[] = [
   { id: 'quail-egg', name: '鹌鹑蛋（卤/熟）', cat: 'snack', kcal: 160, protein: 13, fat: 11, carb: 2, fiber: 0, sodium: 500, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['铁', '硒'], note: '1颗约10g=16kcal，10颗=160kcal；卤味款钠高（500mg/100g）；比鸡蛋小但营养密度接近，胆固醇含量与鸡蛋相当；3-5颗当加餐合适' },
   { id: 'beef-jerky', name: '牛肉干', cat: 'snack', kcal: 350, protein: 45, fat: 10, carb: 15, fiber: 0, sodium: 2000, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '【高蛋白但高钠】蛋白密度极高（45g/100g），是健身加餐好选择；但钠约2000mg/100g（一天上限2300mg），一次20-30g足够；选原味/风干款，别选蜜汁/沙嗲（糖更高）；一小包50g=175kcal' },
   { id: 'chicken-jerky', name: '鸡胸肉干', cat: 'snack', kcal: 300, protein: 50, fat: 3, carb: 15, fiber: 0, sodium: 1800, vitFat: [], vitWater: ['B6', 'B12'], minerals: ['锌'], note: '比牛肉干脂肪更低（3g vs 10g），蛋白更高；但口感更柴；钠仍高（1800mg/100g）；一次20-30g；看配料表选无添加蔗糖款；别整袋当饭吃' },
+  { id: 'mao-er-ger-snack', name: '猫耳朵（零食）', cat: 'snack', kcal: 520, protein: 7, fat: 28, carb: 60, fiber: 1, sodium: 500, vitFat: [], vitWater: [], minerals: [], note: '【注意区分】这是零食版猫耳朵（油炸面制品，形似猫耳），不是山西面食猫耳朵；常见麻辣/牛排/蟹黄味；一小包60g=312kcal；油糖盐三高，追剧别停不下来' },
+  { id: 'mahua', name: '麻花（油炸面食）', cat: 'snack', kcal: 480, protein: 9, fat: 22, carb: 62, fiber: 1, sodium: 400, vitFat: [], vitWater: ['B1'], minerals: [], note: '中国传统小吃，精制面粉搓成8字形油炸；天津大麻花/山西麻花/湖北麻花各有风味；一根约80g=384kcal；脂肪高但比薯片略低；甜/咸口味都有；配茶解腻；减脂期偶尔解馋' },
 ];

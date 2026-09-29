@@ -201,4 +201,8 @@ export const COOKED: IFood[] = [
   // ---- 用户点名：酸菜鱼 / 水煮鱼 ----
   { id: 'suan-cai-yu', name: '酸菜鱼（每100g带汤）', cat: 'cooked', kcal: 90, protein: 10, fat: 4.5, carb: 3, fiber: 0.8, sodium: 750, vitFat: [], vitWater: ['B12', 'C'], minerals: ['硒', '钙'], phytochem: ['乳酸菌（酸菜）'], note: '四川/重庆名菜；黑鱼/草鱼切片+泡酸菜煮制；鱼片本身低脂高蛋白，但汤里浮油和酸菜钠高；撇油后鱼肉约70kcal/100g；酸菜含乳酸菌有助肠道；一份约500g=450kcal，配米饭；痛风急性期少喝汤（嘌呤溶于汤）' },
   { id: 'shui-zhu-yu', name: '水煮鱼（每100g带油汤）', cat: 'cooked', kcal: 120, protein: 12, fat: 7, carb: 3, fiber: 0.5, sodium: 800, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '鱼片本身低脂高蛋白，但表面浇的热油+辣椒红油极高；撇油后鱼肉约80kcal/100g；钠重，少喝汤；一份约500g=600kcal（含油汤），实际吃鱼肉约200g=160kcal；配米饭' },
+
+  // ---- 用户点名补充 ----
+  { id: 'mao-er-ger-noodle', name: '山西猫耳朵（面食，带卤）', cat: 'cooked', kcal: 160, protein: 5, fat: 4, carb: 26, fiber: 1.5, sodium: 400, vitFat: [], vitWater: ['B族'], minerals: ['铁'], note: '山西传统面食，面团搓成猫耳形状；配番茄鸡蛋/炸酱/羊肉卤；一份约300g=480kcal；比挂面口感筋道，但本质还是精制碳水；减脂期配多蔬菜少卤油' },
+  { id: 'kao-ji', name: '烤鸡（整只，每100g可食部）', cat: 'cooked', kcal: 250, protein: 22, fat: 17, carb: 2, fiber: 0, sodium: 600, vitFat: ['A'], vitWater: ['B12', 'B6'], minerals: ['铁', '锌'], note: '【热量炸弹/放纵餐】整只烤鸡约1kg可食部≈2500kcal；鸡皮脂肪占大头（去皮约180kcal/100g）；钠重（腌料）；适合放纵餐，别当日常蛋白；鸡腿/鸡翅部位更肥；配蔬菜解腻' },
 ];
