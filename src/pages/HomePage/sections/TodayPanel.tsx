@@ -64,6 +64,13 @@ export default function TodayPanel() {
     : 99;
   const recommendation = getTodayRecommendation(split, lastDayLabel, trainedToday ? 0 : daysSinceLast);
 
+  // 减载周提醒：最近7天训练天数
+  const recent7 = allLogs.filter((l) => {
+    const d = Math.round((Date.now() - new Date(l.date + 'T00:00:00').getTime()) / 86400000);
+    return d >= 0 && d <= 6;
+  }).length;
+  const needsDeload = recent7 >= 6;
+
   // 有任何追踪数据才显示驾驶舱，避免新用户看到一排空卡片
   const hasAnyData =
     entries.length > 0 || trainingLogs.length > 0 || lightEntries.length > 0 || lightTarget != null || displayDone > 0;
@@ -203,6 +210,14 @@ export default function TodayPanel() {
             </Link>
           </div>
         </div>
+
+        {/* 减载周提醒：最近7天练了6天以上 */}
+        {needsDeload && (
+          <div className="mt-4 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-2.5 text-xs leading-relaxed text-amber-600 dark:text-amber-400">
+            <b>⚠ 减载提醒：</b>
+            最近7天你训练了 {recent7} 天。自然训练者恢复能力有限，连续高强度训练会导致皮质醇升高、睾酮下降、动作质量变差。建议明天安排主动恢复（散步/拉伸/完全休息），下一周训练量减到 50-60%，让身体超量恢复。
+          </div>
+        )}
       </CardContent>
     </Card>
   );
