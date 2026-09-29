@@ -76,4 +76,5 @@ export const DAIRY: IFood[] = [
   // ---- 用户点名补充 ----
   { id: 'ice-cream', name: '冰淇淋（奶油味）', cat: 'dairy', kcal: 207, protein: 3.5, fat: 11, carb: 24, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2'], minerals: ['钙'], note: '全脂奶油+糖，热量主要来自添加糖与饱和脂肪；减脂期偶尔解馋，一支雪糕约70g=145kcal' },
   { id: 'mozzarella-shred', name: '马苏里拉芝士碎', cat: 'dairy', kcal: 280, protein: 28, fat: 17, carb: 3.5, fiber: 0, sodium: 620, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '披萨/焗饭用；蛋白高脂肪适中，但钠高；一把20g约56kcal，拉丝效果核心' },
+  { id: 'tofu-milk', name: '奶豆腐（蒙古族传统）', cat: 'dairy', kcal: 350, protein: 35, fat: 18, carb: 8, fiber: 0, sodium: 150, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'], note: '蒙古族传统奶制食品；牛奶脱脂后熬制凝固，类似硬质奶酪；蛋白质极高（约35g/100g），钙丰富；口感酸甜微咸，可直接吃或泡奶茶；与酸奶疙瘩类似但水分稍高；增肌期便携高蛋白零食，一次约30g=105kcal' },
 ];

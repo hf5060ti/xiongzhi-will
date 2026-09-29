@@ -147,4 +147,10 @@ export const STAPLES: IFood[] = [
   // ---- 用户点名补充 ----
   { id: 'potato-mash', name: '土豆泥（家常，加奶+黄油）', cat: 'staple', kcal: 110, protein: 2, fat: 4, carb: 17, fiber: 1.5, sodium: 280, vitFat: ['A'], vitWater: ['C', 'B6'], minerals: ['钾'], phytochem: [], note: '基础土豆仅77kcal/100g，加奶+黄油后升到110；餐厅/肯德基款可达150-180kcal/100g；钠高（盐+黄油）；健身替代白米饭时选无油版' },
   { id: 'rice-porridge', name: '米糊（即食米粉冲调，按成品计）', cat: 'staple', kcal: 46, protein: 1, fat: 0.5, carb: 9.5, fiber: 0.3, sodium: 80, vitFat: [], vitWater: ['B1'], minerals: ['钙（强化款）'], phytochem: [], note: '【定位】高碳水、低脂肪、低蛋白，参考市面常见即食米粉平均值；与增肌粉类似，更适合天生瘦、吃不下饭、训练量大的"瘦难长"人群；强烈推荐作为练后快碳——快吸收、低脂、不增加肠胃负担，常添加益生菌辅助吸收；冲调后约46kcal/100ml，一碗300ml≈138kcal；干米粉本身约370kcal/100g；术后/儿童/老人也可；市售"营养米糊"常加糖，看配料表；不适合作为唯一主食，蛋白偏低，要额外配鸡蛋/牛奶/蛋白粉补蛋白' },
+
+  // ---- 用户点名：荞麦 / 青稞糌粑 / 玉米面 / 窝窝头 ----
+  { id: 'buckwheat-cooked', name: '荞麦（煮熟，每100g）', cat: 'staple', kcal: 99, protein: 3.8, fat: 0.6, carb: 21, fiber: 2.3, sodium: 4, vitFat: [], vitWater: ['B1', 'B2', '烟酸'], minerals: ['镁', '锰', '钾'], phytochem: ['芦丁（黄酮类）', 'D-手性肌醇'], note: '甜荞/苦荞均可；芦丁有助血管健康、D-手性肌醇有助胰岛素敏感性；不含麸质，乳糜泻者友好；升糖指数低于白米；常做荞麦饭/荞麦面；苦荞口感偏苦，混合白米更佳' },
+  { id: 'tsampa', name: '青稞糌粑（炒熟青稞粉，每100g）', cat: 'staple', kcal: 370, protein: 10, fat: 1.5, carb: 77, fiber: 8, sodium: 5, vitFat: [], vitWater: ['B1', 'B3'], minerals: ['镁', '锌', '硒'], phytochem: ['beta-葡聚糖', '青稞黄酮'], note: '藏族传统主食；炒青稞后磨粉，用酥油茶/奶茶拌成团吃；β-葡聚糖含量高于燕麦，膳食纤维极高（约8g/100g）；饱腹感强、升糖慢；一次约30-50g干粉（110-185kcal），配酥油茶后脂肪增加；高原能量食品，适合练前持久供能' },
+  { id: 'cornmeal-cooked', name: '玉米面（煮成糊/粥，每100g）', cat: 'staple', kcal: 46, protein: 1.2, fat: 0.8, carb: 9, fiber: 1.5, sodium: 2, vitFat: ['A（黄玉米）'], vitWater: ['B1', '烟酸'], minerals: ['镁'], phytochem: ['叶黄素', '玉米黄质'], note: '黄玉米面含叶黄素/玉米黄质，有益视力；玉米面粥好消化，适合早餐/肠胃弱；干玉米面约340kcal/100g；可做窝头/贴饼子；避免与高糖食物同食（甜玉米糊加糖后热量飙升）' },
+  { id: 'wowo-tou', name: '窝窝头（玉米面蒸制，1个约100g）', cat: 'staple', kcal: 220, protein: 7, fat: 1.5, carb: 46, fiber: 4, sodium: 180, vitFat: ['A'], vitWater: ['B1'], minerals: ['镁'], phytochem: ['叶黄素'], note: '北方粗粮；纯玉米面蒸制，低脂高纤；1个约220kcal，比白面馒头纤维高3倍；可加黄豆面/小米面混合；搭配菜/肉/蛋食用，弥补蛋白质不足；糖尿病/减脂期优选主食之一' },
 ];

@@ -187,4 +187,14 @@ export const COOKED: IFood[] = [
   // ---- 用户点名补充 ----
   { id: 'baozi-beef', name: '牛肉包子（1个约100g）', cat: 'cooked', kcal: 230, protein: 9, fat: 8, carb: 30, fiber: 1, sodium: 480, vitFat: [], vitWater: ['B1', 'B12'], minerals: ['铁', '锌'], note: '面皮+牛肉大葱馅，脂肪低于猪肉包；2个约200g=460kcal；配一碗豆浆/粥平衡' },
   { id: 'baozi-lamb', name: '羊肉包子（1个约100g）', cat: 'cooked', kcal: 240, protein: 8, fat: 10, carb: 30, fiber: 1, sodium: 500, vitFat: [], vitWater: ['B12'], minerals: ['锌', '铁'], note: '羊肉胡萝卜/大葱馅，膻味因人而异；脂肪略高于牛肉包；2个约480kcal，配生蒜/醋' },
+
+  // ---- 用户点名：武汉热干面 / 各类饺子 / 小笼包 / 馒头 ----
+  { id: 'hot-dry-noodle', name: '武汉热干面（每100g碗装）', cat: 'cooked', kcal: 198, protein: 6, fat: 8, carb: 26, fiber: 1, sodium: 700, vitFat: [], vitWater: ['B1'], minerals: ['钙'], phytochem: ['芝麻木脂素（芝麻酱）'], note: '湖北武汉名吃；碱水面+芝麻酱+萝卜丁+葱花；一碗约400g=792kcal，芝麻酱是热量主力；蛋白质偏低，建议加个蛋或豆皮' },
+  { id: 'dumpling-pork', name: '猪肉饺子（熟，每只约20g）', cat: 'cooked', kcal: 240, protein: 9, fat: 10, carb: 28, fiber: 0.8, sodium: 450, vitFat: [], vitWater: ['B1'], minerals: ['锌'], note: '猪肥瘦肉馅；10只约200g=480kcal；蘸醋+蒜，少喝饺子汤（钠）；减脂期可加大白菜比例' },
+  { id: 'dumpling-lamb', name: '羊肉饺子（熟，每只约20g）', cat: 'cooked', kcal: 230, protein: 10, fat: 9, carb: 27, fiber: 0.8, sodium: 480, vitFat: [], vitWater: ['B12'], minerals: ['锌', '铁'], note: '羊肉胡萝卜/大葱馅；脂肪略低于猪肉饺；10只约460kcal；膻味因人而异' },
+  { id: 'dumpling-beef', name: '牛肉饺子（熟，每只约20g）', cat: 'cooked', kcal: 220, protein: 11, fat: 7, carb: 28, fiber: 0.8, sodium: 460, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '牛肉芹菜/大葱馅；蛋白质高于猪肉饺，脂肪更低；10只约440kcal；配蒜泥醋' },
+  { id: 'dumpling-shrimp', name: '虾饺（熟，每只约25g）', cat: 'cooked', kcal: 180, protein: 8, fat: 5, carb: 26, fiber: 0.5, sodium: 500, vitFat: [], vitWater: ['B12'], minerals: ['硒', '钙'], note: '广式早茶点心；澄面皮+鲜虾仁；皮薄馅鲜，脂肪低；6只约150g=270kcal；嘌呤中等，痛风急性期少吃' },
+  { id: 'dumpling-steam', name: '蒸饺（熟，每只约20g）', cat: 'cooked', kcal: 225, protein: 8, fat: 8, carb: 30, fiber: 0.8, sodium: 460, vitFat: [], vitWater: ['B1'], minerals: [], note: '蒸制比煎饺少油；馅荤素决定热量；10只约200g=450kcal；蘸醋+辣椒油另算热量' },
+  { id: 'xiaolongbao', name: '小笼包（1个约35g）', cat: 'cooked', kcal: 230, protein: 8, fat: 10, carb: 26, fiber: 0.5, sodium: 550, vitFat: [], vitWater: ['B1'], minerals: ['磷'], note: '上海/江南名点；薄皮+猪肉馅+皮冻汤汁；一笼8个约280g=644kcal；先开窗喝汤再吃包，小心烫嘴；钠偏高' },
+  { id: 'mantou-white', name: '白面馒头（1个约100g）', cat: 'cooked', kcal: 223, protein: 7, fat: 1.1, carb: 47, fiber: 1.3, sodium: 165, vitFat: [], vitWater: ['B1'], minerals: [], note: '高碳低脂，练后快碳；发面好消化，肠胃弱时友好；1个约223kcal，配鸡蛋/豆浆补蛋白' },
 ];
