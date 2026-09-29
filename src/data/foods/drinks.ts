@@ -93,4 +93,12 @@ export const DRINKS: IFood[] = [
   // ---- 用户点名补充：散装茶叶（冲泡后每100ml） ----
   { id: 'tea-puer', name: '普洱茶（熟普，冲泡）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['茶多酚', '茶褐素', '儿茶素'], note: '熟普渥堆发酵，茶汤醇厚；零热量；常被宣传刮油减脂，证据有限，不能替代饮食控制；空腹/失眠/贫血/孕期少饮；服药前后1小时别喝（鞣酸影响铁吸收）' },
   { id: 'tea-dahongpao', name: '大红袍（武夷岩茶，冲泡）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['茶多酚', '岩茶香气物质', '咖啡因'], note: '半发酵乌龙，焙火香；零热量；咖啡因中等，下午4点后喝易失眠；胃寒者岩茶比绿茶友好；别配大量肉鱼一次暴饮，鞣酸影响消化' },
+
+  // ---- 用户点名：市售酸奶/乳饮料 ----
+  { id: 'yoshan', name: '优酸乳（原味乳饮料）', cat: 'drink', kcal: 47, protein: 1.5, fat: 1.2, carb: 8, fiber: 0, sodium: 40, vitFat: ['A', 'D'], vitWater: ['B2'], minerals: ['钙'], note: '【注意】是"乳饮料"不是纯酸奶——水+奶+糖+添加剂，蛋白仅1.5g/100ml，远低于纯酸奶（≥2.9g）；一盒250ml约118kcal；想补蛋白别靠它' },
+  { id: 'chunzhen', name: '纯甄酸牛奶（原味）', cat: 'drink', kcal: 95, protein: 3.1, fat: 3.5, carb: 12, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '纯酸奶（发酵乳），蛋白3.1g/100ml，比乳饮料高；一杯200g约190kcal；看配料表选"生牛乳+菌种"，少香精/果胶；减脂期选无蔗糖款' },
+  { id: 'anmuxi-original', name: '安慕希希腊风味酸奶（原味）', cat: 'drink', kcal: 95, protein: 3.1, fat: 3.5, carb: 12, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '希腊风味浓酸奶，蛋白与纯甄接近；一杯200g约190kcal；增肌后加餐可；减脂期看碳水（12g/100ml偏高），可选0蔗糖款' },
+  { id: 'anmuxi-strawberry', name: '安慕希草莓味酸奶', cat: 'drink', kcal: 98, protein: 3.0, fat: 3.3, carb: 13, fiber: 0.3, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2', 'C'], minerals: ['钙'], note: '加草莓果酱/香精，碳水比原味略高；一杯200g约196kcal；果味款糖更多，减脂期选原味' },
+  { id: 'anmuxi-blueberry', name: '安慕希蓝莓味酸奶', cat: 'drink', kcal: 96, protein: 3.0, fat: 3.3, carb: 12.5, fiber: 0.2, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2'], minerals: ['钙'], phytochem: ['蓝莓花青素（少量）'], note: '蓝莓果味，与草莓款接近；一杯200g约192kcal；花青素主要来自果酱，别当抗氧化神药' },
+  { id: 'anmuxi-sugarfree', name: '安慕希无蔗糖酸奶', cat: 'drink', kcal: 60, protein: 3.1, fat: 3.5, carb: 6, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '用代糖（赤藓糖醇/甜菊糖苷）替代蔗糖，碳水从12g降到6g；一杯200g约120kcal；减脂/控糖优选；但仍有脂肪与蛋白，别当水喝' },
 ];

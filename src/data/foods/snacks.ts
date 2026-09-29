@@ -148,4 +148,13 @@ export const SNACKS: IFood[] = [
 
   // ---- 用户点名补充：补剂 ----
   { id: 'weight-gainer', name: '增肌粉/增重粉（Weight Gainer，参考平均值）', cat: 'snack', kcal: 380, protein: 15, fat: 5, carb: 75, fiber: 2, sodium: 200, vitFat: [], vitWater: ['B族'], minerals: ['钙', '镁', '锌'], phytochem: [], note: '【重要】配方以高碳水（70-80%）+少量蛋白+益生菌为主，每份一勺（约100g干粉）380kcal，冲水后约600ml；更适合天生瘦、吃不下饭、训练量大的"瘦难长"人群；本就体脂偏高者喝了只会长肚子不长肌；参考市面常见产品平均值，具体品牌差异大，别当神药；训练后或加餐时用，别替代正餐' },
+
+  // ---- 用户点名：常见市售零食 ----
+  { id: 'babao-zhou', name: '八宝粥（罐装，含糖款）', cat: 'snack', kcal: 83, protein: 2.5, fat: 1.5, carb: 15, fiber: 1, sodium: 60, vitFat: [], vitWater: ['B1'], minerals: ['钾', '铁'], phytochem: ['豆类多酚'], note: '一罐360g约300kcal；配料=水+糯米+红豆+绿豆+花生+桂圆+糖；无糖款约70kcal/100g；练后应急碳水来源，但蛋白偏低；看配料表选"无添加蔗糖"款' },
+  { id: 'wangzai-mantou', name: '旺仔小馒头', cat: 'snack', kcal: 380, protein: 8, fat: 8, carb: 70, fiber: 1, sodium: 200, vitFat: [], vitWater: ['B1'], minerals: ['钙'], note: '马铃薯粉+奶粉+糖烘烤，一口一个；一小袋30g约114kcal；儿童零食钠糖不低；别当健康食品' },
+  { id: 'wahaha-biscuit', name: '娃哈哈夹心饼干', cat: 'snack', kcal: 450, protein: 6, fat: 18, carb: 65, fiber: 1, sodium: 300, vitFat: [], vitWater: [], minerals: [], note: '酥性饼干+糖油夹心，一包约100g=450kcal；与苏打饼干完全不同；看包装背面营养表，糖排在前几位的少买' },
+  { id: 'chip-original', name: '薯片（原味，马铃薯切制油炸）', cat: 'snack', kcal: 536, protein: 7, fat: 35, carb: 53, fiber: 4, sodium: 530, vitFat: [], vitWater: ['C（少量）'], minerals: ['钾'], note: '100g=536kcal，一包70g约375kcal；脂肪主要来自棕榈油；选烘焙款（约470kcal）或小包装；别边刷手机边整袋吃' },
+  { id: 'chip-tomato', name: '薯片（番茄味）', cat: 'snack', kcal: 510, protein: 6, fat: 28, carb: 62, fiber: 3, sodium: 750, vitFat: [], vitWater: [], minerals: [], note: '番茄粉+糖+盐调味，钠比原味更高（约750mg/100g）；一包70g约357kcal；注意钠摄入' },
+  { id: 'chip-cucumber', name: '薯片（黄瓜/青柠味）', cat: 'snack', kcal: 490, protein: 6, fat: 25, carb: 62, fiber: 3, sodium: 650, vitFat: [], vitWater: [], minerals: [], note: '口味清爽但钠仍高；一包70g约343kcal；别因"黄瓜味"就觉得健康' },
+  { id: 'shuidou-gao', name: '豌豆黄/豌豆脆', cat: 'snack', kcal: 380, protein: 12, fat: 5, carb: 70, fiber: 5, sodium: 300, vitFat: [], vitWater: ['B族'], minerals: ['钾', '铁'], phytochem: ['豌豆凝集素（煮熟破坏）'], note: '豌豆制品，比薯片蛋白高、脂肪低；但调味款盐糖仍高；一小包30g约114kcal' },
 ];
