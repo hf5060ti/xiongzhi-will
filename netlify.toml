@@ -1,3 +1,15 @@
+# Netlify 部署配置
+# 构建：npm run build（需 SKIP_MIAODA=1 跳过妙搭输出插件，直接用 vite 原生产物）
+# 发布目录：dist/client（vite 默认输出，不是 dist/）
+
+[build]
+  command = "SKIP_MIAODA=1 npm run build"
+  publish = "dist/client"
+
+[build.environment]
+  NODE_VERSION = "20"
+  SKIP_MIAODA = "1"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
