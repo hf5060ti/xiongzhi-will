@@ -70,6 +70,20 @@ export default function NutritionPage() {
         </div>
       </div>
 
+      {/* 药食同源免责声明 */}
+      <div className="rounded-xl border border-amber-500/40 bg-amber-500/5 p-4 sm:p-5">
+        <div className="flex flex-wrap items-start gap-2">
+          <span className="rounded-md bg-amber-500/15 px-2 py-0.5 text-[11px] font-bold text-amber-300">ℹ 药食同源声明</span>
+          <p className="min-w-0 flex-1 text-xs leading-relaxed text-amber-200/90">
+            本库收录的枸杞、红枣、桂圆、莲子、银耳、茯苓、芡实、葛根、山药、薏苡仁、赤小豆、百合、陈皮、山楂、罗汉果、决明子、菊花、蜂蜜、黑芝麻、核桃、杏仁、白果、乌梅、桑葚、五味子、甘草、生姜、干辣椒等，
+            均为国家药食同源目录中的<strong>常见食物/汤料/茶饮</strong>，仅作为健身营养参考。
+            本站<strong>不提供任何医疗建议、不诊断、不治疗、不替代任何药物</strong>；
+            「明目/安神/祛湿/降血脂/壮阳」等传统说法均未在本站作为疗效主张。
+            如有疾病、孕产期、服药期间，请先咨询医生或注册营养师。
+          </p>
+        </div>
+      </div>
+
       {/* 今日饮食记录 */}
       <DailyLog refreshKey={refreshLog} />
 
