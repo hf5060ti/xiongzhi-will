@@ -24,8 +24,16 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 
   handleReset = () => {
-    localStorage.clear();
+    // 不要默认清空 localStorage：chunk 加载失败 / 网络抖动不该丢用户数据
+    // 只刷新一次；真正数据损坏时由用户主动点"清空数据"
     window.location.reload();
+  };
+
+  handleClearData = () => {
+    if (window.confirm('确定清空所有本地数据？训练记录、身体数据、饮食记录都会丢失。建议先在「数据备份」页导出 JSON。')) {
+      localStorage.clear();
+      window.location.reload();
+    }
   };
 
   render() {
@@ -36,17 +44,17 @@ export default class ErrorBoundary extends Component<Props, State> {
             <CardContent className="p-6 text-center">
               <h1 className="font-display text-xl font-bold text-destructive">出问题了</h1>
               <p className="mt-2 text-sm text-muted-foreground">
-                页面加载时出错了。可能是数据损坏。
+                页面加载时出错了。多数情况是网络抖动或资源加载失败，点「刷新重试」即可。
               </p>
-              <p className="mt-1 text-xs text-muted-foreground">
+              <p className="mt-1 text-xs text-muted-foreground break-all">
                 {this.state.error?.message}
               </p>
               <div className="mt-4 flex gap-2 justify-center">
-                <Button variant="outline" onClick={() => window.location.reload()}>
+                <Button variant="default" onClick={this.handleReset}>
                   刷新重试
                 </Button>
-                <Button variant="destructive" onClick={this.handleReset}>
-                  清空数据并重置
+                <Button variant="outline" onClick={this.handleClearData}>
+                  清空数据（慎用）
                 </Button>
               </div>
               <p className="mt-3 text-xs text-muted-foreground">
