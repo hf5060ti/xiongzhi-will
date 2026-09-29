@@ -70,9 +70,9 @@ function Root() {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HashRouter>
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ReactErrorBoundary FallbackComponent={ErrorFallback}>
         <Root />
-      </ErrorBoundary>
+      </ReactErrorBoundary>
     </HashRouter>
   </StrictMode>,
 );
