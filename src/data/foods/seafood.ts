@@ -108,4 +108,12 @@ export const SEAFOODS: IFood[] = [
   // ---- 用户点名补充：养殖水产 / 争议食材 ----
   { id: 'huangshan', name: '黄鳝（熟）', cat: 'seafood', kcal: 83, protein: 18, fat: 1.4, carb: 0, fiber: 0, sodium: 70, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['铁', '磷', '硒'], phytochem: [], note: '低脂高蛋白，铁含量在淡水鱼里偏高；江浙响油鳝糊/红烧；【重要】野生/生食黄鳝可能携带颚口线虫，必须彻底煮熟（中心温度70℃以上），绝对不要"响油"带血三分熟；孕妇/儿童尤其要煮透；现杀现烹，死鳝体内组胺快速升高，死亡超过半天不要吃' },
   { id: 'sea-bream', name: '鲷鱼/真鲷/加吉鱼（熟）', cat: 'seafood', kcal: 100, protein: 20, fat: 2.5, carb: 0, fiber: 0, sodium: 70, vitFat: ['D'], vitWater: ['B12', 'B6'], minerals: ['硒', '钾', '磷'], note: '海鱼代表，肉质白嫩细腻，刺少肉厚；日式刺身/清蒸/盐烤；低脂高蛋白，欧米伽3含量中等；一条约1-2kg，出肉率高；适合健身期优质蛋白来源；嘌呤中等，痛风急性期适量' },
+
+  // ---- 用户点名补充 ----
+  { id: 'fish-roe', name: '鱼籽（鲑鱼/鳕鱼籽，熟）', cat: 'seafood', kcal: 140, protein: 22, fat: 6, carb: 1, fiber: 0, sodium: 1500, vitFat: ['A', 'D', 'E'], vitWater: ['B12', '叶酸'], minerals: ['锌', '硒', '磷'], phytochem: ['DHA', 'EPA（磷脂型）'], note: '【高钠高胆固醇】鱼籽是营养密度炸弹：DHA/EPA、维A/D、B12、锌都高；但钠极高（1500mg/100g）、胆固醇也高；一次10-30g足够；痛风/高尿酸者注意嘌呤高；鱼子酱/鲑鱼籽/飞鱼籽都在此列' },
+  { id: 'squid', name: '鱿鱼（熟）', cat: 'seafood', kcal: 92, protein: 18, fat: 1.4, carb: 3, fiber: 0, sodium: 130, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒', '铜'], phytochem: ['牛磺酸'], note: '低脂高蛋白，牛磺酸高；烤鱿鱼/白灼/鱿鱼丝；干鱿鱼丝钠极高（约2000mg/100g），当零食别多吃；胆固醇含量近年研究表明对血胆固醇影响有限，不必过度担心；必须煮熟，半生鱿鱼有副溶血性弧菌风险' },
+  { id: 'octopus', name: '章鱼/八爪鱼（熟）', cat: 'seafood', kcal: 82, protein: 15, fat: 1, carb: 2, fiber: 0, sodium: 200, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒', '钾'], phytochem: ['牛磺酸'], note: '比鱿鱼更瘦，脂肪仅1g；日式刺身/白灼/章鱼小丸子；口感脆韧；必须彻底煮熟（活章鱼吞咽有窒息风险，韩国活吃传统危险）；嘌呤中等' },
+  { id: 'swimming-crab', name: '梭子蟹（熟，可食部）', cat: 'seafood', kcal: 95, protein: 18, fat: 2, carb: 0, fiber: 0, sodium: 300, vitFat: ['A'], vitWater: ['B12'], minerals: ['锌', '硒', '钙'], phytochem: ['虾青素'], note: '海蟹代表，肉白鲜甜；一只约200g可食部=190kcal；蟹黄/蟹膏脂肪高（另算）；性寒，配姜醋；必须鲜活蒸煮，死蟹组胺中毒风险高；痛风/高尿酸急性期禁食' },
+  { id: 'crab-roe', name: '蟹黄/蟹膏（熟）', cat: 'seafood', kcal: 240, protein: 12, fat: 20, carb: 5, fiber: 0, sodium: 400, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['锌', '硒', '胆固醇极高'], phytochem: ['虾青素', '磷脂'], note: '【高脂高胆固醇】蟹黄是蟹的肝胰腺/性腺，脂肪20g/100g，胆固醇极高；一次10-20g调味即可；蟹粉豆腐/蟹黄面主要热量来自它；减脂期浅尝；痛风禁食' },
+  { id: 'australian-lobster', name: '澳洲龙虾/澳龙（熟，可食部）', cat: 'seafood', kcal: 90, protein: 20, fat: 1, carb: 0, fiber: 0, sodium: 200, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒', '镁'], phytochem: ['虾青素'], note: '高端海产，肉厚弹牙；脂肪极低、蛋白高；一只约1kg可食部约200g=180kcal；刺身/焗烤/芝士焗；嘌呤中高，痛风适量；价格贵但营养与普通虾/龙虾接近，不必神化' },
 ];

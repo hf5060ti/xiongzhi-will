@@ -165,4 +165,6 @@ export const SNACKS: IFood[] = [
   { id: 'haoliyou-pie', name: '好丽友派', cat: 'snack', kcal: 430, protein: 5, fat: 16, carb: 68, fiber: 1, sodium: 180, vitFat: [], vitWater: [], minerals: [], note: '蛋糕+巧克力涂层+棉花糖夹心，一个约28g=120kcal；脂肪与糖双高；当加餐别整盒吃' },
   { id: 'snickers', name: '士力架', cat: 'snack', kcal: 480, protein: 9, fat: 22, carb: 60, fiber: 2, sodium: 200, vitFat: [], vitWater: [], minerals: ['镁'], phytochem: ['可可多酚'], note: '花生+焦糖+牛轧糖+巧克力，一条51g约245kcal；"横扫饥饿"是营销，实际是高糖高脂应急能量棒；运动前1小时可半条，日常别当零食；减脂期慎入' },
   { id: 'quail-egg', name: '鹌鹑蛋（卤/熟）', cat: 'snack', kcal: 160, protein: 13, fat: 11, carb: 2, fiber: 0, sodium: 500, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['铁', '硒'], note: '1颗约10g=16kcal，10颗=160kcal；卤味款钠高（500mg/100g）；比鸡蛋小但营养密度接近，胆固醇含量与鸡蛋相当；3-5颗当加餐合适' },
+  { id: 'beef-jerky', name: '牛肉干', cat: 'snack', kcal: 350, protein: 45, fat: 10, carb: 15, fiber: 0, sodium: 2000, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '【高蛋白但高钠】蛋白密度极高（45g/100g），是健身加餐好选择；但钠约2000mg/100g（一天上限2300mg），一次20-30g足够；选原味/风干款，别选蜜汁/沙嗲（糖更高）；一小包50g=175kcal' },
+  { id: 'chicken-jerky', name: '鸡胸肉干', cat: 'snack', kcal: 300, protein: 50, fat: 3, carb: 15, fiber: 0, sodium: 1800, vitFat: [], vitWater: ['B6', 'B12'], minerals: ['锌'], note: '比牛肉干脂肪更低（3g vs 10g），蛋白更高；但口感更柴；钠仍高（1800mg/100g）；一次20-30g；看配料表选无添加蔗糖款；别整袋当饭吃' },
 ];

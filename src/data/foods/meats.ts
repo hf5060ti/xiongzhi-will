@@ -196,4 +196,14 @@ export const MEATS: IFood[] = [
   // ---- 用户点名补充 ----
   { id: 'quail', name: '鹌鹑（熟）', cat: 'meat', kcal: 120, protein: 20, fat: 4, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌', '硒'], note: '一只约100g可食部=120kcal；比鸡肉瘦，蛋白密度高；卤/烤/炖汤；胆固醇略高，一次1-2只；"动物人参"是营销说法，营养与鸡肉接近' },
   { id: 'pigeon', name: '鸽子（熟，乳鸽）', cat: 'meat', kcal: 150, protein: 19, fat: 7, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '一只乳鸽约200g=300kcal；比鹌鹑肥，脂肪略高；粤式脆皮乳鸽/炖汤；"补气血"中医说法，现代医学证据有限；术后恢复常食，但与鸡肉比无特殊优势' },
+
+  // ---- 用户点名：鹿肉与羊肉各部位 ----
+  { id: 'deer-leg', name: '鹿肉（腿肉，熟）', cat: 'meat', kcal: 120, protein: 25, fat: 2.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁（血红素铁）', '锌', '磷'], phytochem: ['共轭亚油酸（CLA）'], note: '【合法养殖】野生鹿多为保护动物，以下仅限合法人工养殖鹿种（如梅花鹿、马鹿养殖）。鹿肉是所有常见肉里脂肪最低、蛋白最高的之一；CLA含量比牛肉高；口感比牛肉粗、略柴，适合慢炖/卤/做鹿肉干；嘌呤中高，痛风适量' },
+  { id: 'lamb-leg', name: '羊腿肉（熟）', cat: 'meat', kcal: 200, protein: 26, fat: 10, carb: 0, fiber: 0, sodium: 70, vitFat: ['B12'], vitWater: ['B族'], minerals: ['铁', '锌'], note: '羊肉代表部位，烤羊腿/清炖；脂肪比牛肉高但瘦肉多；膻味来自支链脂肪酸，去膻靠焯水/萝卜/花椒；冬季温补；嘌呤中高' },
+  { id: 'lamb-chop', name: '羊排/羊肋排（熟）', cat: 'meat', kcal: 290, protein: 20, fat: 23, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '脂肪层厚，烤羊排/孜然羊肉；一根排约150g=435kcal；脂肪是腿肉两倍；健身期偶尔解馋，别当日常蛋白' },
+  { id: 'lamb-belly', name: '羊腩/羊五花肉（熟）', cat: 'meat', kcal: 320, protein: 18, fat: 28, carb: 0, fiber: 0, sodium: 75, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '肥瘦相间，红焖/涮火锅；脂肪最高部位；一份100g=320kcal；减脂期避开' },
+  { id: 'lamb-heart', name: '羊心（熟）', cat: 'meat', kcal: 120, protein: 18, fat: 5, carb: 1, fiber: 0, sodium: 80, vitFat: [], vitWater: ['B12', 'CoQ10'], minerals: ['铁', '锌', '硒'], phytochem: ['辅酶Q10'], note: '内脏里CoQ10和铁密度高；卤/炒/烤；胆固醇偏高，一次50-80g；"以心补心"是中医取象比类，别当真' },
+  { id: 'lamb-liver', name: '羊肝（熟）', cat: 'meat', kcal: 130, protein: 18, fat: 5, carb: 2, fiber: 0, sodium: 100, vitFat: ['A（极高）', 'B12', 'D'], vitWater: ['B2', '叶酸', '铁'], minerals: ['铁（血红素铁极高）', '锌', '硒'], phytochem: [], note: '【维生素A警告】羊肝维A极高，一次别超40g，一周1-2次足够；长期大量可致维A中毒（颅压高/脱发/肝损）；补铁补叶酸经典；孕妇别大量吃（维A致畸风险）；必须彻底煮熟防弓形虫' },
+  { id: 'lamb-tripe', name: '羊肚（熟）', cat: 'meat', kcal: 100, protein: 15, fat: 4, carb: 1, fiber: 0, sodium: 90, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '羊杂汤/爆肚；纤维感强、蛋白高脂肪低；清洗要彻底（翻肚/面粉搓）；胆固醇中等' },
+  { id: 'lamb-trotter', name: '羊蹄（熟）', cat: 'meat', kcal: 200, protein: 15, fat: 15, carb: 0, fiber: 0, sodium: 80, vitFat: [], vitWater: [], minerals: ['钙', '胶原蛋白'], note: '主要是皮、筋、骨胶原；"补胶原"不能直接补到皮肤，吃下去拆成氨基酸；一份100g=200kcal；骨髓脂肪高' },
 ];
