@@ -9,9 +9,11 @@ import {
   loadLightCheckins,
   loadLightEntries,
   loadLightTarget,
+  loadSplit,
   loadTrainingLogs,
 } from '@/lib/store';
 import { getDailyTargets } from '@/lib/nutrition-targets';
+import { getTodayRecommendation } from '@/lib/today-recommendation';
 import { cn } from '@/lib/utils';
 
 function todayStr(): string {
@@ -50,6 +52,17 @@ export default function TodayPanel() {
   const latestWeight = lightEntries.length > 0 ? lightEntries[lightEntries.length - 1] : null;
   const prevWeight = lightEntries.length > 1 ? lightEntries[lightEntries.length - 2] : null;
   const lightTarget = loadLightTarget();
+
+  // 今日训练建议：根据分化方案 + 最近训练记录
+  const split = loadSplit();
+  const allLogs = loadTrainingLogs();
+  const lastLog = allLogs.length > 0 ? allLogs[allLogs.length - 1] : null;
+  const lastLogDate = lastLog?.date ?? null;
+  const lastDayLabel = lastLog?.dayLabel ?? null;
+  const daysSinceLast = lastLogDate
+    ? Math.round((Date.now() - new Date(lastLogDate + 'T00:00:00').getTime()) / 86400000)
+    : 99;
+  const recommendation = getTodayRecommendation(split, lastDayLabel, trainedToday ? 0 : daysSinceLast);
 
   // 有任何追踪数据才显示驾驶舱，避免新用户看到一排空卡片
   const hasAnyData =
@@ -112,19 +125,23 @@ export default function TodayPanel() {
             </p>
             {trainedToday ? (
               <>
-                <p className="mt-1.5 font-display text-xl font-bold text-primary">已练</p>
+                <p className="mt-1.5 font-display text-xl font-bold text-primary">已练 ✓</p>
                 <p className="mt-1 text-[11px] text-muted-foreground">
                   {todayMoves > 0 ? `${todayMoves} 个动作 · ${todaySets} 组` : '当天有训练记录'}
                 </p>
               </>
             ) : (
               <>
-                <p className="mt-1.5 font-display text-xl font-bold text-foreground">待练</p>
-                <p className="mt-1 text-[11px] text-muted-foreground">今天还没有训练记录</p>
+                <p className="mt-1.5 font-display text-xl font-bold text-foreground">
+                  {recommendation.isRest ? '休息日' : recommendation.dayTitle}
+                </p>
+                <p className="mt-1 text-[11px] text-muted-foreground">
+                  {recommendation.muscles || recommendation.message}
+                </p>
               </>
             )}
             <Link to="/training-logs" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline">
-              去记录 <ArrowRight className="h-3 w-3" />
+              {trainedToday ? '查看记录' : '去训练'} <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
 
