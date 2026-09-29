@@ -9,6 +9,7 @@ import TrainingArchitecture from './sections/TrainingArchitecture';
 import WeekTrainingGenerator from './sections/WeekTrainingGenerator';
 import TrainingRules from './sections/TrainingRules';
 import SpecialNeedsGuide from './sections/SpecialNeedsGuide';
+import WarmupGuide from './sections/WarmupGuide';
 import DietSection from './sections/DietSection';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
@@ -63,6 +64,7 @@ export default function PlanPage() {
       <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_400px]">
         <div className="space-y-8 sm:space-y-12">
           <TrainingArchitecture />
+          <WarmupGuide />
           <WeekTrainingGenerator />
           <TrainingSection goal={goal} />
           <DietSection diet={diet} weightKg={weightKg} />

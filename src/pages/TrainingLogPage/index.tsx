@@ -47,6 +47,7 @@ import {
   upsertRecovery,
   type RecoveryEntry,
 } from '@/lib/recovery';
+import { getOverloadAdvice } from '@/lib/progressive-overload';
 
 interface DraftSet {
   weight: string;
@@ -1276,6 +1277,15 @@ export default function TrainingLogPage() {
                         {tip && (
                           <p className="mt-0.5 text-[11px] text-muted-foreground">{tip}</p>
                         )}
+                        {best && best.weightKg && best.reps && (() => {
+                          const advice = getOverloadAdvice(ex.name, [[{ weightKg: best.weightKg, reps: best.reps }]]);
+                          if (!advice || !advice.nextWeightKg) return null;
+                          return (
+                            <p className="mt-1 text-[11px] font-medium text-primary">
+                              下次建议：{advice.nextWeightKg}kg × {advice.nextReps} 次
+                            </p>
+                          );
+                        })()}
                       </div>
                     );
                   })()}
