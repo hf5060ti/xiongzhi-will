@@ -157,4 +157,12 @@ export const SNACKS: IFood[] = [
   { id: 'chip-tomato', name: '薯片（番茄味）', cat: 'snack', kcal: 510, protein: 6, fat: 28, carb: 62, fiber: 3, sodium: 750, vitFat: [], vitWater: [], minerals: [], note: '番茄粉+糖+盐调味，钠比原味更高（约750mg/100g）；一包70g约357kcal；注意钠摄入' },
   { id: 'chip-cucumber', name: '薯片（黄瓜/青柠味）', cat: 'snack', kcal: 490, protein: 6, fat: 25, carb: 62, fiber: 3, sodium: 650, vitFat: [], vitWater: [], minerals: [], note: '口味清爽但钠仍高；一包70g约343kcal；别因"黄瓜味"就觉得健康' },
   { id: 'shuidou-gao', name: '豌豆黄/豌豆脆', cat: 'snack', kcal: 380, protein: 12, fat: 5, carb: 70, fiber: 5, sodium: 300, vitFat: [], vitWater: ['B族'], minerals: ['钾', '铁'], phytochem: ['豌豆凝集素（煮熟破坏）'], note: '豌豆制品，比薯片蛋白高、脂肪低；但调味款盐糖仍高；一小包30g约114kcal' },
+
+  // ---- 用户点名：市售零食 ----
+  { id: 'wang-wang-snow', name: '旺旺雪饼', cat: 'snack', kcal: 480, protein: 6, fat: 20, carb: 70, fiber: 1, sodium: 300, vitFat: [], vitWater: ['B1'], minerals: ['铁'], note: '米饼表面糖霜+烘烤，一包54g约260kcal；比薯片脂肪略低但糖高；一片约15g=72kcal，别一次半包' },
+  { id: 'wang-wang-mi', name: '旺旺仙贝/米饼', cat: 'snack', kcal: 450, protein: 6, fat: 18, carb: 68, fiber: 1, sodium: 400, vitFat: [], vitWater: ['B1'], minerals: [], note: '米饼+酱油调味，钠比雪饼高；一包约48g=216kcal；"米饼"听着健康，实际油盐糖不低' },
+  { id: 'daliyuan-bread', name: '达利园小面包', cat: 'snack', kcal: 380, protein: 8, fat: 12, carb: 58, fiber: 1, sodium: 300, vitFat: [], vitWater: ['B1'], minerals: [], note: '软面包+奶油夹心，一个约30g=114kcal；早餐应急但糖油不低；看配料表前几位是小麦粉、植物油、白砂糖' },
+  { id: 'haoliyou-pie', name: '好丽友派', cat: 'snack', kcal: 430, protein: 5, fat: 16, carb: 68, fiber: 1, sodium: 180, vitFat: [], vitWater: [], minerals: [], note: '蛋糕+巧克力涂层+棉花糖夹心，一个约28g=120kcal；脂肪与糖双高；当加餐别整盒吃' },
+  { id: 'snickers', name: '士力架', cat: 'snack', kcal: 480, protein: 9, fat: 22, carb: 60, fiber: 2, sodium: 200, vitFat: [], vitWater: [], minerals: ['镁'], phytochem: ['可可多酚'], note: '花生+焦糖+牛轧糖+巧克力，一条51g约245kcal；"横扫饥饿"是营销，实际是高糖高脂应急能量棒；运动前1小时可半条，日常别当零食；减脂期慎入' },
+  { id: 'quail-egg', name: '鹌鹑蛋（卤/熟）', cat: 'snack', kcal: 160, protein: 13, fat: 11, carb: 2, fiber: 0, sodium: 500, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['铁', '硒'], note: '1颗约10g=16kcal，10颗=160kcal；卤味款钠高（500mg/100g）；比鸡蛋小但营养密度接近，胆固醇含量与鸡蛋相当；3-5颗当加餐合适' },
 ];

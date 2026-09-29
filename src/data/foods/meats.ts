@@ -192,4 +192,8 @@ export const MEATS: IFood[] = [
   { id: 'ya-xue', name: '鸭血（熟）', cat: 'meat', kcal: 55, protein: 12, fat: 0.4, carb: 1, fiber: 0, sodium: 180, vitFat: [], vitWater: ['B12'], minerals: ['铁（血红素铁）', '硒'], note: '毛血旺/鸭血粉丝汤/火锅主角；高铁低脂，吸收率高，补铁优选；一盒约300g；痛风/高尿酸者适量（嘌呤中高）；必须彻底煮熟' },
 
   { id: 'snake', name: '蛇肉（参考值，仅限合法人工养殖）', cat: 'meat', kcal: 90, protein: 18, fat: 1.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], phytochem: [], note: '【重要法律与生态声明】本网站不支持任何违法狩猎、捕食野生保护动物或食用野味的行为。野生蛇类在我国多为国家重点保护或"三有"保护动物，私自捕捉/交易/食用涉嫌违法犯罪。以下数据仅作营养学参考：仅限人工养殖、合法渠道、彻底煮熟后（防裂头蚴/绦虫）的食用蛇种（如人工养殖乌梢蛇、水律蛇），蛋白质约18g/100g、脂肪极低。任何情况下请自觉遵守当地法律法规，尊重生态保护。' },
+
+  // ---- 用户点名补充 ----
+  { id: 'quail', name: '鹌鹑（熟）', cat: 'meat', kcal: 120, protein: 20, fat: 4, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌', '硒'], note: '一只约100g可食部=120kcal；比鸡肉瘦，蛋白密度高；卤/烤/炖汤；胆固醇略高，一次1-2只；"动物人参"是营销说法，营养与鸡肉接近' },
+  { id: 'pigeon', name: '鸽子（熟，乳鸽）', cat: 'meat', kcal: 150, protein: 19, fat: 7, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '一只乳鸽约200g=300kcal；比鹌鹑肥，脂肪略高；粤式脆皮乳鸽/炖汤；"补气血"中医说法，现代医学证据有限；术后恢复常食，但与鸡肉比无特殊优势' },
 ];
