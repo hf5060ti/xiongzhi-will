@@ -120,12 +120,19 @@ export const Layout = () => {
 
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
   const [open, setOpen] = useState(false);
   /** 手机端搜索面板（lg 以下断点使用，桌面端仍用内容区顶部搜索框） */
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
-  const results = useMemo(() => searchEntries(query), [query]);
+  // 搜索防抖：用户停止输入 200ms 后才真正搜索，避免每次按键都触发
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedQuery(query), 200);
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  const results = useMemo(() => searchEntries(debouncedQuery), [debouncedQuery]);
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
