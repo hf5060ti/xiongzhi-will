@@ -77,4 +77,18 @@ export const DAIRY: IFood[] = [
   { id: 'ice-cream', name: '冰淇淋（奶油味）', cat: 'dairy', kcal: 207, protein: 3.5, fat: 11, carb: 24, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2'], minerals: ['钙'], note: '全脂奶油+糖，热量主要来自添加糖与饱和脂肪；减脂期偶尔解馋，一支雪糕约70g=145kcal' },
   { id: 'mozzarella-shred', name: '马苏里拉芝士碎', cat: 'dairy', kcal: 280, protein: 28, fat: 17, carb: 3.5, fiber: 0, sodium: 620, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '披萨/焗饭用；蛋白高脂肪适中，但钠高；一把20g约56kcal，拉丝效果核心' },
   { id: 'tofu-milk', name: '奶豆腐（蒙古族传统）', cat: 'dairy', kcal: 350, protein: 35, fat: 18, carb: 8, fiber: 0, sodium: 150, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'], note: '蒙古族传统奶制食品；牛奶脱脂后熬制凝固，类似硬质奶酪；蛋白质极高（约35g/100g），钙丰富；口感酸甜微咸，可直接吃或泡奶茶；与酸奶疙瘩类似但水分稍高；增肌期便携高蛋白零食，一次约30g=105kcal' },
+
+  // ---- 蛋白粉类（运动补剂，参考市面平均值） ----
+  // ⚠ 以下数据为市面常见产品平均值，不同品牌差异大，具体以包装营养表为准
+  { id: 'protein-whey', name: '乳清蛋白粉（浓缩）', cat: 'dairy', kcal: 380, protein: 75, fat: 8, carb: 10, fiber: 0, sodium: 200, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '最常见的补剂；快速吸收，练后加餐首选；一勺约30g=114kcal、22.5g蛋白；不同品牌蛋白含量70-80%不等' },
+  { id: 'protein-whey-isolate', name: '分离乳清蛋白粉', cat: 'dairy', kcal: 370, protein: 90, fat: 3, carb: 4, fiber: 0, sodium: 180, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '过滤去除大部分乳糖与脂肪；蛋白含量高（约90%），乳糖不耐者友好；价格比浓缩乳清高' },
+  { id: 'protein-egg', name: '鸡蛋蛋白粉', cat: 'dairy', kcal: 385, protein: 80, fat: 5, carb: 8, fiber: 0, sodium: 220, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['硒'], note: '蛋清粉喷雾干燥；生物价（BV）极高，氨基酸谱完美；但口感略腥，价格偏高' },
+  { id: 'protein-casein', name: '酪蛋白粉', cat: 'dairy', kcal: 365, protein: 75, fat: 6, carb: 12, fiber: 0, sodium: 190, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '缓释蛋白，睡前喝防止夜间肌肉分解；浓稠管饱，适合代餐；吸收慢（4-6小时）' },
+  { id: 'protein-yeast-hydrolyzed', name: '水解酵母蛋白粉', cat: 'dairy', kcal: 340, protein: 55, fat: 5, carb: 30, fiber: 5, sodium: 300, vitFat: [], vitWater: ['B族维生素'], minerals: ['锌', '硒'], note: '植物蛋白来源（酵母提取物）；含天然B族维生素与谷胱甘肽；蛋白含量中等（约55%），氨基酸谱不如动物蛋白完整；素食者友好' },
+  { id: 'protein-yeast-isolate', name: '分离酵母蛋白粉', cat: 'dairy', kcal: 360, protein: 65, fat: 3, carb: 20, fiber: 4, sodium: 280, vitFat: [], vitWater: ['B族维生素'], minerals: ['锌', '硒'], note: '酵母蛋白提纯版；蛋白含量更高（约65%），去除部分碳水与核酸；仍含B族维生素；素食/乳糖不耐者可选' },
+  { id: 'protein-bovine-hydrolyzed', name: '牛肉水解蛋白粉', cat: 'dairy', kcal: 390, protein: 80, fat: 5, carb: 8, fiber: 0, sodium: 250, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '⚠ 争议较大：牛肉蛋白的氨基酸吸收效率与乳清相比并无明显优势，且价格高；更推荐直接吃瘦牛肉（牛腩/牛里脊）；此条目仅作补充来源参考，不推荐常规使用' },
+  { id: 'protein-beef', name: '牛肉蛋白粉（浓缩）', cat: 'dairy', kcal: 385, protein: 75, fat: 8, carb: 8, fiber: 0, sodium: 240, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '与水解版类似，但吸收稍慢；含肌酸与支链氨基酸；同样推荐直接吃牛肉而非喝粉' },
+  { id: 'protein-milk', name: '牛乳蛋白粉（浓缩）', cat: 'dairy', kcal: 375, protein: 70, fat: 7, carb: 12, fiber: 0, sodium: 200, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '牛奶蛋白浓缩（乳清+酪蛋白混合）；缓释与快吸兼有；性价比介于乳清与酪蛋白之间' },
+  { id: 'protein-soy', name: '大豆蛋白粉', cat: 'dairy', kcal: 350, protein: 65, fat: 6, carb: 20, fiber: 5, sodium: 250, vitFat: [], vitWater: ['B族'], minerals: ['铁', '钙'], note: '植物蛋白代表；异黄酮含量高（雌激素样作用）；氨基酸谱不如动物蛋白完整；素食者首选' },
+  { id: 'protein-soy-isolate', name: '分离大豆蛋白粉', cat: 'dairy', kcal: 365, protein: 85, fat: 3, carb: 8, fiber: 2, sodium: 230, vitFat: [], vitWater: ['B族'], minerals: ['铁', '钙'], note: '大豆蛋白提纯版；蛋白含量高（约85%），去除大部分碳水与脂肪；仍含异黄酮；乳糖不耐者友好' },
 ];
