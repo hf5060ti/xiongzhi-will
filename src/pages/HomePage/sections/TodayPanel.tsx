@@ -145,6 +145,18 @@ export default function TodayPanel() {
                 <p className="mt-1 text-[11px] text-muted-foreground">
                   {recommendation.muscles || recommendation.message}
                 </p>
+                {/* 上次训练提醒：让用户一眼看到上次练了什么 */}
+                {lastLog && !recommendation.isRest && (
+                  <p className="mt-1.5 border-t border-border/40 pt-1.5 text-[11px] text-muted-foreground">
+                    <span className="font-medium text-foreground">上次练：</span>
+                    {lastDayLabel ? `${lastDayLabel} · ` : ''}
+                    {lastLog.exercises.slice(0, 3).map((e) => e.name).join('、')}
+                    {lastLog.exercises.length > 3 ? ` 等${lastLog.exercises.length}个动作` : ''}
+                    <span className="ml-1 opacity-70">
+                      （{daysSinceLast === 0 ? '今天' : `${daysSinceLast}天前`}）
+                    </span>
+                  </p>
+                )}
               </>
             )}
             <Link to="/training-logs" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline">
