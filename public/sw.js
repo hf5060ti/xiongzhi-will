@@ -5,7 +5,7 @@
  *   - JS/CSS chunk 如果 404（发版后旧 hash 失效），自动清缓存并刷新
  * 缓存名带版本，发版时 bump 即清旧缓存。
  */
-const CACHE = 'xiongzhi-will-v2';
+const CACHE = 'xiongzhi-will-v3';
 const CORE = ['./', './index.html', './manifest.webmanifest', './images/icon-192.png', './images/icon-512.png'];
 
 self.addEventListener('install', (event) => {
@@ -38,6 +38,25 @@ self.addEventListener('fetch', (event) => {
           return res;
         })
         .catch(() => caches.match(req).then((hit) => hit || caches.match('./index.html'))),
+    );
+    return;
+  }
+
+  // 背景/加载视频：cache-first（文件几乎不变，避免每次后台校验浪费流量；发版 bump 缓存名后自动更新）
+  if (/\/images\/.*\.mp4$/.test(url.pathname)) {
+    event.respondWith(
+      caches.match(req).then((cached) => {
+        if (cached) return cached;
+        return fetch(req)
+          .then((res) => {
+            if (res && res.ok) {
+              const copy = res.clone();
+              caches.open(CACHE).then((c) => c.put(req, copy));
+            }
+            return res;
+          })
+          .catch(() => cached);
+      }),
     );
     return;
   }

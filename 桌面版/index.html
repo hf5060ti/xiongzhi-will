@@ -55,15 +55,8 @@
       }
       @keyframes xy-load { 0% { margin-left: -40%; } 100% { margin-left: 100%; } }
     </style>
-    <script type="module" crossorigin src="./assets/index-CfCwo90j.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-CfjKz_hj.js">
-    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-DkuC_egW.js">
-    <link rel="modulepreload" crossorigin href="./assets/dumbbell-fVHUcAur.js">
-    <link rel="modulepreload" crossorigin href="./assets/flame-Q_X9CLFF.js">
-    <link rel="modulepreload" crossorigin href="./assets/utils-DojpP95n.js">
-    <link rel="modulepreload" crossorigin href="./assets/dist-7N5yd6ZR.js">
-    <link rel="modulepreload" crossorigin href="./assets/dist-rYY0ay2T.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-BOsxO2PF.css">
+    <!-- 桌面离线版：iife 单 bundle，经典 script + defer（同步执行会在 body 解析前运行导致 createRoot 拿不到 #root，defer 保证 DOM 解析完后执行；file:// 下 module script 会被 CORS 拦截） -->
+    <script defer src="./assets/index-DAEIzLjs.js"></script>
   </head>
   <body>
     <div id="root">
@@ -89,6 +82,6 @@
             '<a href="javascript:location.reload()" style="color:#FACC15;text-decoration:underline;cursor:pointer">点此刷新重试</a></div>';
         }, 10000);
       })();
-    </script>
+    </script>
   </body>
 </html>
