@@ -205,4 +205,42 @@ export const VEGETABLES: IFood[] = [
   { id: 'ginger', name: '生姜（鲜）', cat: 'veg', kcal: 46, protein: 1.8, fat: 0.8, carb: 10, fiber: 2.7, sodium: 14, vitFat: [], vitWater: ['C', 'B族'], minerals: ['钾', '锰'], phytochem: ['姜辣素（gingerol）', '姜烯酚'], note: '【食物参考】姜辣素有一定止吐/促循证据，晕车/孕早期恶心可含姜糖；但不能替代止吐药；一次3-5g；阴虚火旺/胃溃疡/睡前少用；不替代药物' },
   { id: 'red-pepper-dried', name: '干辣椒', cat: 'veg', kcal: 328, protein: 15, fat: 12, carb: 60, fiber: 30, sodium: 30, vitFat: [], vitWater: ['C（干品少）', 'B族'], minerals: ['钾', '铁'], phytochem: ['辣椒素（capsaicin）'], note: '【食物参考】辣椒素在研究中轻微促代谢/提食欲，但"燃脂"效果很有限，不能靠吃辣减肥；一次1-5g；胃炎/痔疮/痔疮急性期少用；不替代药物' },
   { id: 'suantai', name: '蒜苔/蒜薹', cat: 'veg', kcal: 66, protein: 2, fat: 0.4, carb: 15, fiber: 2.5, sodium: 4, vitFat: [], vitWater: ['C', 'B6'], minerals: ['钾'], phytochem: ['大蒜素（allicin，切开后生成）', '槲皮素'], note: '大蒜的花茎，蒜味比大蒜温和；炒腊肉/炒肉；纤维与维B6不错；炒前先切段拍一下让大蒜素生成；熟吃后刺激性降低，胃敏感者可吃；别炒太黄，营养流失' },
+
+  // ---- 更多叶菜/根茎补充 ----
+  { id: 'chinese-leek-green', name: '青蒜（蒜苗）', cat: 'veg', kcal: 37, protein: 2.1, fat: 0.4, carb: 8, fiber: 1.7, sodium: 8, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['大蒜素'], note: '大蒜幼苗；蒜味比大蒜温和；炒回锅肉/炒腊肉；冬季常见' },
+  { id: 'scallion-green', name: '小葱（香葱）', cat: 'veg', kcal: 30, protein: 1.7, fat: 0.3, carb: 6.5, fiber: 1.3, sodium: 5, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['大蒜素'], note: '调味用，一次几根；葱花/葱油；热量可忽略' },
+  { id: 'cilantro-leaf', name: '香菜（芫荽）', cat: 'veg', kcal: 31, protein: 1.8, fat: 0.4, carb: 5.4, fiber: 1.2, sodium: 48, vitFat: ['A', 'K'], vitWater: ['C'], minerals: ['钾', '钙'], phytochem: ['挥发油'], note: '两极分化：爱的爱死恨的恨（基因决定OR6A2嗅觉受体）；提味用，一次几根；别当菜吃' },
+  { id: 'celery-stem', name: '西芹', cat: 'veg', kcal: 16, protein: 0.7, fat: 0.2, carb: 3, fiber: 1.6, sodium: 80, vitFat: ['K'], vitWater: [], minerals: ['钾'], note: '比本地芹菜更粗更脆；榨汁/炒；钠在蔬菜中偏高但可忽略' },
+  { id: 'asparagus-lettuce', name: '莴笋（茎用莴苣）', cat: 'veg', kcal: 15, protein: 1, fat: 0.1, carb: 2.8, fiber: 0.6, sodium: 36, vitFat: ['A'], vitWater: ['C', '叶酸'], minerals: ['钾'], note: '茎和叶都能吃；叶比茎营养好很多；凉拌/清炒；超低热量减脂友好' },
+  { id: 'choy-sum', name: '菜心（菜薹）', cat: 'veg', kcal: 24, protein: 2.8, fat: 0.5, carb: 3.8, fiber: 1.2, sodium: 33, vitFat: ['A'], vitWater: ['C', 'B2'], minerals: ['钙'], note: '广东菜心；白灼最好吃；火锅/清炒；南方春冬常见' },
+  { id: 'red-radish', name: '红心萝卜（水萝卜）', cat: 'veg', kcal: 23, protein: 1, fat: 0.2, carb: 5.5, fiber: 1.6, sodium: 50, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['花青素'], note: '心里美萝卜；心里美是品种不是特效；凉拌/糖醋；粉粉的很脆' },
+  { id: 'purple-carrot', name: '紫胡萝卜', cat: 'veg', kcal: 35, protein: 1, fat: 0.2, carb: 8, fiber: 3, sodium: 60, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['花青素', 'β-胡萝卜素'], note: '比橙胡萝卜多花青素；β-胡萝卜素需要油脂帮助吸收；别吃太多变橙人' },
+  { id: 'fruit-cucumber', name: '水果黄瓜（无刺小黄瓜）', cat: 'veg', kcal: 15, protein: 0.8, fat: 0.2, carb: 2.9, fiber: 0.5, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '小黄瓜/荷兰黄瓜；当零食吃；减脂期嘴馋救星；95%是水' },
+  { id: 'purple-eggplant', name: '紫皮茄子', cat: 'veg', kcal: 23, protein: 1.1, fat: 0.2, carb: 4.9, fiber: 1.3, sodium: 5, vitFat: [], vitWater: ['C', 'B族'], minerals: ['钾'], phytochem: ['花青素（皮）', '茄碱（未熟）'], note: '【注意】茄子吸油如海绵，红烧/油焖后热量翻10倍；烤/蒸/凉拌少油才健康；老茄子籽多茄碱高' },
+  { id: 'green-eggplant', name: '青茄子（绿皮）', cat: 'veg', kcal: 20, protein: 1, fat: 0.1, carb: 4.5, fiber: 1.2, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '比紫茄子更嫩更不吸油；北方常见；炒/烧' },
+  { id: 'white-tomato', name: '白番茄', cat: 'veg', kcal: 18, protein: 0.9, fat: 0.2, carb: 3.9, fiber: 1.2, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['八氢番茄红素（无色类胡萝卜素）'], note: '稀有品种；不含番茄红素；口感偏淡偏甜；抗氧化研究中' },
+  { id: 'zucchini-summer', name: '西葫芦（角瓜）', cat: 'veg', kcal: 19, protein: 1.2, fat: 0.2, carb: 3.8, fiber: 1.1, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '擦丝做饼/清炒；别炒太软；热量极低' },
+  { id: 'pumpkin-winter', name: '南瓜（倭瓜）', cat: 'veg', kcal: 23, protein: 0.7, fat: 0.1, carb: 5.3, fiber: 0.8, sodium: 1, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['β-胡萝卜素'], note: 'GI不低（约75），糖尿病人别当菜狂吃；蒸/煮粥；老南瓜更甜更面' },
+  { id: 'loofah-sponge', name: '丝瓜', cat: 'veg', kcal: 20, protein: 1, fat: 0.2, carb: 4.2, fiber: 0.6, sodium: 3, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '夏天清热；炒/蛋花汤；发黑就老了别吃' },
+  { id: 'bitter-melon-balsam', name: '苦瓜', cat: 'veg', kcal: 19, protein: 1, fat: 0.1, carb: 4.2, fiber: 1.4, sodium: 2, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['苦瓜苷'], note: '【注意】"降血糖"是提取物研究，吃苦瓜不能代替降糖药；脾胃虚寒/孕妇慎；切薄片盐腌去苦' },
+  { id: 'wax-gourd-ash', name: '冬瓜', cat: 'veg', kcal: 12, protein: 0.4, fat: 0.2, carb: 2.6, fiber: 0.7, sodium: 2, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '利尿消肿是经验说；虾仁烧冬瓜；超低热量减脂期吃' },
+
+  // ---- 更多菌菇 ----
+  { id: 'oyster-mushroom', name: '平菇', cat: 'veg', kcal: 24, protein: 1.9, fat: 0.3, carb: 4.6, fiber: 2.3, sodium: 4, vitFat: ['D'], vitWater: ['B族'], minerals: ['钾'], note: '最平价的蘑菇；炒/汤；撕小朵别切，撕的更入味' },
+  { id: 'tea-tree-mushroom-dry', name: '茶树菇（干）', cat: 'veg', kcal: 270, protein: 23, fat: 2.6, carb: 57, fiber: 14, sodium: 5, vitFat: ['D'], vitWater: ['B族'], minerals: ['铁', '钾'], note: '干品热量高但泡发后低；煲老鸭汤；嚼劲好；必须煮熟，没熟的可能中毒' },
+  { id: 'straw-mushroom-caogu', name: '草菇', cat: 'veg', kcal: 27, protein: 2.7, fat: 0.2, carb: 4.3, fiber: 1.6, sodium: 70, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '爆炒/粤菜；维生素C在蘑菇中少见；钠略高' },
+  { id: 'beech-mushroom', name: '蟹味菇（真姬菇）', cat: 'veg', kcal: 20, protein: 2.8, fat: 0.4, carb: 3.2, fiber: 1.9, sodium: 4, vitFat: ['D'], vitWater: ['B族'], minerals: ['钾'], note: '小朵带蟹香味；火锅/炒；白玉菇是白色版本' },
+  { id: 'matsutake-pine', name: '松茸（鲜）', cat: 'veg', kcal: 24, protein: 1.9, fat: 0.4, carb: 4.5, fiber: 1.4, sodium: 5, vitFat: ['D'], vitWater: ['B族'], minerals: ['钾', '硒'], phytochem: ['松茸多糖', '松茸醇'], note: '高端货；贵；烤/刺身；味道就是松树味；普通人不必追贵价菌' },
+  { id: 'porcini-bolete', name: '牛肝菌（干）', cat: 'veg', kcal: 250, protein: 28, fat: 4, carb: 53, fiber: 20, sodium: 30, vitFat: [], vitWater: ['B族'], minerals: ['铁', '钾'], phytochem: ['多糖'], note: '干品；意面/炖肉；香；别采野蘑菇，每年都有人吃毒蘑菇躺板板' },
+  { id: 'morel-mushroom', name: '羊肚菌（干）', cat: 'veg', kcal: 295, protein: 28, fat: 3.5, carb: 55, fiber: 30, sodium: 20, vitFat: ['D'], vitWater: ['B族'], minerals: ['铁', '锌'], note: '菌中皇后；贵；煲汤；价格被炒起来的' },
+  { id: 'lion-mane-mushroom', name: '猴头菇（干）', cat: 'veg', kcal: 230, protein: 26, fat: 2.5, carb: 45, fiber: 30, sodium: 10, vitFat: ['D'], vitWater: ['B族'], minerals: ['铁'], phytochem: ['猴头菇多糖', '猴头菌素'], note: '【食物参考】养胃是传统说法；现代研究关注神经生长因子，但"吃了变聪明"证据不足；煲汤/做菜；干货要泡发' },
+  { id: 'portobello', name: '口蘑（白蘑菇）', cat: 'veg', kcal: 22, protein: 3.1, fat: 0.3, carb: 3.3, fiber: 1, sodium: 9, vitFat: ['D'], vitWater: ['B2', 'B3'], minerals: ['硒'], note: '最常见的蘑菇；煎/烤/汤；本身鲜味浓；别煮太久会缩' },
+
+  // ---- 更多海藻类 ----
+  { id: 'kelp-fresh', name: '海带（鲜）', cat: 'veg', kcal: 13, protein: 1.2, fat: 0.1, carb: 3, fiber: 1.3, sodium: 107, vitFat: [], vitWater: ['C'], minerals: ['碘', '钙', '钾'], phytochem: ['褐藻多糖'], note: '【注意】碘极高，甲状腺疾病患者别大量吃；拌/炖；干品300kcal泡发后极轻' },
+  { id: 'kelp-sprout-young', name: '海带苗（嫩海带）', cat: 'veg', kcal: 15, protein: 1.5, fat: 0.2, carb: 3, fiber: 1, sodium: 120, vitFat: [], vitWater: [], minerals: ['碘', '钙'], note: '海带的嫩尖；火锅/凉拌；比老海带嫩很多' },
+  { id: 'laver-dried', name: '紫菜（干）', cat: 'veg', kcal: 250, protein: 26, fat: 1.1, carb: 44, fiber: 21, sodium: 710, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['碘', '铁', '钙'], phytochem: ['藻胆蛋白'], note: '干品；汤/包饭；B12在植物中罕见（但也可能是类似物）；钠高，少放' },
+  { id: 'wakame-sea', name: '裙带菜（干）', cat: 'veg', kcal: 200, protein: 15, fat: 2, carb: 40, fiber: 30, sodium: 500, vitFat: ['A'], vitWater: ['K'], minerals: ['碘', '钙', '镁'], phytochem: ['褐藻多糖'], note: '味噌汤里的绿色菜；泡发很快；比海带嫩；碘高，甲状腺注意' },
+  { id: 'agar-agar', name: '石花菜（海冻菜）', cat: 'veg', kcal: 20, protein: 0.5, fat: 0, carb: 5, fiber: 5, sodium: 100, vitFat: [], vitWater: [], minerals: ['碘'], note: '做凉粉的原料；脆脆的；凉拌；几乎全是纤维' },
+  { id: 'sea-grape-caviar', name: '海葡萄', cat: 'veg', kcal: 70, protein: 2, fat: 0.5, carb: 15, fiber: 5, sodium: 300, vitFat: [], vitWater: ['C'], minerals: ['碘', '钙'], note: '热带海藻；咬爆珠口感；日料；贵；像绿色鱼子酱' },
 ];
