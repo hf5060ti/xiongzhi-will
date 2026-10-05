@@ -13,6 +13,10 @@ export interface IGoalMovement {
   videoUrl?: string;
   /** 动作演示GIF链接 */
   videoGif?: string;
+  /** 是否为近似动作（无单独演示视频） */
+  approx?: boolean;
+  /** 近似动作说明 */
+  approxNote?: string;
   /** 优点 */
   pros?: string[];
   /** 缺点 / 局限 */
