@@ -486,7 +486,7 @@ export const GOALS: IGoal[] = [
       { name: '旋前 / 旋后转腕', set: '4 × 8–12，组间歇 90s', videoUrl: 'https://fitness.xingshuwen.com/exercise/0126', videoGif: 'https://fitness.xingshuwen.com/videos/0126-82LxxkW.gif' },
       { name: '尺偏侧链等长', set: '4 × 10–15s，组间歇 60s', tip: '手腕保持中立位，侧偏到极限后等长收缩10–15秒，可用弹力带或手腕负重完成。' },
       { name: '二头弯举', set: '4 × 6–8，组间歇 90s', videoUrl: 'https://fitness.xingshuwen.com/exercise/0031', videoGif: 'https://fitness.xingshuwen.com/videos/0031-25GPyDY.gif' },
-      { name: '虎口悬提（捏握重物行走）', set: '4 × 20–40m，组间歇 90s · 拇指 + 指屈肌 + 握力', tip: '用捏握（不是全握）提起哑铃片或握力器；虎口捏紧，走路时不松；重量以能走完距离为度。参考农夫行走姿势，但改为单指捏握。', videoUrl: 'https://fitness.xingshuwen.com/exercise/2133', videoGif: 'https://fitness.xingshuwen.com/videos/2133-qPEzJjA.gif' },
+      { name: '虎口悬提（捏握重物行走）', set: '4 × 20–40m，组间歇 90s · 拇指 + 指屈肌 + 握力', tip: '用捏握（不是全握）提起哑铃片或握力器；虎口捏紧，走路时不松；重量以能走完距离为度。参考农夫行走姿势，但改为单指捏握。', videoUrl: 'https://fitness.xingshuwen.com/exercise/2133', videoGif: 'https://fitness.xingshuwen.com/videos/2133-qPEzJjA.gif', approx: true, approxNote: '近似动作：农夫行走（虎口悬提为捏握变体，无单独演示视频）' },
       { name: '悬吊（dead hang）', set: '3 × 15–30s，组间歇 60s', tip: '双手正握单杠，身体自然悬垂，肩胛下沉保持稳定，不要摆动。', videoUrl: 'https://fitness.xingshuwen.com/exercise/0472', videoGif: 'https://fitness.xingshuwen.com/videos/0472-I3tsCnC.gif' },
     ],
     progression: '等长时长每周 +2–3 秒；负重动作每 2 周 +2.5kg；动作技术永远优先于重量。',

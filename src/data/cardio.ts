@@ -30,7 +30,6 @@ import {
   PersonStanding,
   Snowflake,
   Heart,
-  Skate,
   Trophy,
 } from 'lucide-react';
 
@@ -968,7 +967,7 @@ export const CARDIO_ITEMS: ICardioItem[] = [
     id: 'hockey',
     name: '冰球',
     en: 'Ice Hockey',
-    icon: Skate,
+    icon: Snowflake,
     tagline: '冰上对抗 · 3 档强度',
     desc: '冰球：高速对抗性团队运动，练心肺、下肢爆发、反应速度与团队配合。消耗极高但受伤风险也高。⚠️ 以下数据参考 Ainsworth《体力活动纲要》，不同位置（前锋/后卫/门将）消耗差异大，仅供参考。',
     metRows: [
