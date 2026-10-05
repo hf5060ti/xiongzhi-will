@@ -2,10 +2,11 @@
 // See LICENSE / NOTICE for details.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair, LogIn, LogOut } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
+import { getUser, isLoggedIn, loginWithGithub, logout, type AuthUser } from '@/lib/auth';
 import { cn } from '@/lib/utils';
 import VideoBackground from '@/components/VideoBackground';
 import ErrorBoundary from '@/components/ErrorBoundary';
@@ -52,7 +53,7 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/tools': { title: '力量计算器 - 雄性意志', desc: '1RM 估算（Epley/Brzycki/Lombardi 三公式对照）、按目标反推做组重量、RPE 主观强度标尺。' },
   '/sources': { title: '内容来源与循证 - 雄性意志', desc: '本站每个模块的内容来源、证据等级与免责边界。' },
   '/faq': { title: '关于与常见问题 - 雄性意志', desc: '项目初衷、公式方法论（BMR / TDEE / MET）、隐私与免责、免费开源说明。' },
-  '/privacy': { title: '隐私政策 - 雄性意志', desc: '数据只存本地浏览器，不上传、不追踪、无账号。' },
+  '/privacy': { title: '隐私政策 - 雄性意志', desc: '未登录时数据只存本地浏览器；登录 GitHub 后可开启云端同步，数据存储在你的账号下。' },
   '/collect': { title: '收藏导入 - 雄性意志', desc: '粘贴抖音收藏的分享文本，自动解析标题/作者/链接，按训练、饮食、心智等维度分类并生成周总结。数据只存本地。' },
 };
 
@@ -63,6 +64,121 @@ const TYPE_ICON = {
   knowledge: BookOpen,
 };
 const TYPE_LABEL = { movement: '动作', food: '食物', formula: '公式', knowledge: '讲解' };
+
+// ── 账号登录区：GitHub 登录 / 用户菜单 / 云同步状态 ──
+// 登录入口会随"xy-auth-change"事件刷新（登录回调落地、退出登录时触发）
+function AuthSection({ compact }: { compact?: boolean }) {
+  const [user, setUser] = useState<AuthUser | null>(() => getUser());
+  const [menuOpen, setMenuOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onAuth = () => setUser(getUser());
+    window.addEventListener('xy-auth-change', onAuth);
+    return () => window.removeEventListener('xy-auth-change', onAuth);
+  }, []);
+
+  useEffect(() => {
+    const onDoc = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setMenuOpen(false);
+    };
+    document.addEventListener('mousedown', onDoc);
+    return () => document.removeEventListener('mousedown', onDoc);
+  }, []);
+
+  const menu = user ? (
+    <div
+      className={
+        compact
+          ? 'absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-border/60 bg-popover/95 p-3 shadow-2xl backdrop-blur-2xl'
+          : 'absolute left-full top-0 z-50 ml-3 w-56 rounded-xl border border-border/60 bg-popover/95 p-3 shadow-2xl backdrop-blur-2xl'
+      }
+    >
+      <p className="truncate text-sm font-medium text-foreground">{user.name}</p>
+      <p className="truncate text-xs text-muted-foreground">@{user.login}</p>
+      <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+        已开启云端同步：训练记录、身体数据、计划与收藏会跟随账号，换设备自动取回。
+      </p>
+      <button
+        type="button"
+        onClick={() => {
+          logout();
+          setMenuOpen(false);
+        }}
+        className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg border border-border/60 py-1.5 text-xs text-foreground transition-colors hover:bg-accent"
+      >
+        <LogOut className="h-3.5 w-3.5" />
+        退出登录
+      </button>
+    </div>
+  ) : null;
+
+  if (compact) {
+    // 手机端：顶部右侧图标按钮
+    return (
+      <div ref={ref} className="relative shrink-0">
+        {user ? (
+          <button
+            type="button"
+            aria-label="账号"
+            onClick={() => setMenuOpen((v) => !v)}
+            className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg border border-border/60 transition-colors hover:bg-accent"
+          >
+            {user.avatar ? (
+              <img src={user.avatar} alt="" className="h-full w-full object-cover" />
+            ) : (
+              <User className="h-5 w-5 text-muted-foreground" />
+            )}
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={loginWithGithub}
+            className="flex h-9 items-center gap-1 rounded-lg border border-border/60 px-2.5 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          >
+            <LogIn className="h-4 w-4" />
+            登录
+          </button>
+        )}
+        {menu}
+      </div>
+    );
+  }
+
+  // 桌面端：左侧栏底部
+  return (
+    <div ref={ref} className="relative">
+      {user ? (
+        <button
+          type="button"
+          onClick={() => setMenuOpen((v) => !v)}
+          title={user.login}
+          className="flex w-14 flex-col items-center gap-1 rounded-xl py-2.5 transition-all hover:bg-accent/50"
+        >
+          {user.avatar ? (
+            <img src={user.avatar} alt="" className="h-8 w-8 rounded-full border border-border/60" />
+          ) : (
+            <User className="h-5 w-5 text-muted-foreground" strokeWidth={1.8} />
+          )}
+          <span className="max-w-full truncate text-[10px] leading-none text-muted-foreground">
+            {user.login}
+          </span>
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={loginWithGithub}
+          title="GitHub 登录 · 云端同步"
+          className="flex w-14 flex-col items-center gap-1 rounded-xl py-2.5 text-muted-foreground transition-all hover:bg-accent/50 hover:text-foreground"
+        >
+          <LogIn className="h-5 w-5" strokeWidth={1.8} />
+          <span className="text-[10px] leading-none">登录</span>
+        </button>
+      )}
+      {menu}
+    </div>
+  );
+}
 
 /** 搜索结果列表：桌面下拉与手机搜索面板共用同一份渲染，保证两端口径一致 */
 const SearchResultList = ({
@@ -116,6 +232,11 @@ export const Layout = () => {
       }
       desc.setAttribute('content', meta.desc);
     }
+  }, [pathname]);
+
+  // 通知云同步：路由切换 = 用户可能刚改完某页数据，强制刷一次
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('xy-route-change'));
   }, [pathname]);
 
   const navigate = useNavigate();
@@ -222,6 +343,11 @@ export const Layout = () => {
             );
           })}
         </nav>
+
+        {/* 账号：GitHub 登录 / 云同步（左侧栏底部） */}
+        <div className="border-t border-border/60 py-2">
+          <AuthSection />
+        </div>
       </aside>
 
       {/* 手机端顶部导航 */}
@@ -243,6 +369,8 @@ export const Layout = () => {
           >
             <Search className="h-5 w-5" strokeWidth={1.8} />
           </button>
+          {/* 账号：GitHub 登录 / 云同步（手机端） */}
+          <AuthSection compact />
         </div>
         {/* 手机端导航横向滚动 */}
         <nav className="flex gap-1 overflow-x-auto px-3 pb-2">

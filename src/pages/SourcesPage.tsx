@@ -201,7 +201,7 @@ export default function SourcesPage() {
           </p>
           <ul className="mt-2 space-y-1.5 text-xs leading-relaxed text-muted-foreground">
             <li>· 本站不构成医疗建议，不诊断、不治疗、不预防任何疾病</li>
-            <li>· 数据只存本地浏览器，不上传、不追踪、不做账号</li>
+            <li>· 未登录时数据只存本地浏览器；GitHub 登录后可开启云端同步（数据存储在你自己的账号下）</li>
             <li>· 特殊人群（慢性病 / 孕产 / 老年 / 大病初愈）请以医嘱为准</li>
             <li>· 健身是生活的调味剂，别被健身绑架；真正的力量是能面对生活、再站起来</li>
           </ul>

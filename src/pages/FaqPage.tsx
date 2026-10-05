@@ -32,7 +32,7 @@ const FAQS: FaqRow[] = [
   },
   {
     q: '我的数据存在哪里？会上传吗？',
-    a: '数据只存在你当前浏览器的本地存储（localStorage）里，不注册账号、不上传服务器、不追踪行为。换设备或清理缓存前，请到首页底部「数据备份」卡片导出 JSON，之后可随时导入恢复。',
+    a: '未登录时，数据只存在你当前浏览器的本地存储（localStorage）里，不上传、不追踪行为。需要换设备不丢数据？点击左侧栏「登录」，用 GitHub 账号登录后即开启云端同步：训练记录、身体数据、计划与收藏会加密存储到你自己的账号下，换设备登录自动取回，随时可退出（云端数据保留）。不想用账号也没关系，首页底部「数据备份」卡片仍可导出 / 导入 JSON。',
   },
   {
     q: 'AI 教练和拍照估热量怎么用？',
@@ -75,7 +75,7 @@ export default function FaqPage() {
       <section className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
         {[
           { icon: <HeartPulse className="h-4 w-4" />, title: '自然训练', desc: '不提供任何极端和药物，肌肉量上限按自然统计边界' },
-          { icon: <ShieldCheck className="h-4 w-4" />, title: '数据本地', desc: '不上传、不追踪、无账号，隐私是默认配置' },
+          { icon: <ShieldCheck className="h-4 w-4" />, title: '数据本地', desc: '未登录默认本地存储；登录后云端同步，随时可退出' },
           { icon: <Calculator className="h-4 w-4" />, title: '口径透明', desc: '每个公式都可追溯来源，误差与局限写清楚' },
           { icon: <Code2 className="h-4 w-4" />, title: '免费开源', desc: 'MIT 协议公开，任何人都能部署与改进' },
         ].map((c) => (

@@ -6,6 +6,8 @@ import { HashRouter } from 'react-router-dom';
 import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from '@/components/ErrorFallback';
 import LoadingScreen from '@/components/LoadingScreen';
+import { handleAuthCallback } from '@/lib/auth';
+import { initSyncIfLoggedIn } from '@/lib/sync';
 import App from './App';
 import './index.css';
 
@@ -57,6 +59,13 @@ function Root() {
     // 动画时长缩短到 1.6 秒：视频首帧 poster 已足够建立品牌感，不等完整视频加载
     const t = setTimeout(() => setSplashDone(true), 1600);
     return () => clearTimeout(t);
+  }, []);
+
+  // 账号系统初始化：处理 GitHub 登录回调（落地会话 + 拉取云端数据），
+  // 以及刷新后恢复已登录会话的同步
+  useEffect(() => {
+    void handleAuthCallback();
+    initSyncIfLoggedIn();
   }, []);
 
   return (

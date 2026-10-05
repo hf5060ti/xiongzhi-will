@@ -27,6 +27,8 @@ function read<T>(key: string, fallback: T): T {
 function write(key: string, value: unknown) {
   try {
     localStorage.setItem(`${NS}:${key}`, JSON.stringify(value));
+    // 通知云同步模块：本地数据有变更（防抖后上传）
+    window.dispatchEvent(new CustomEvent('xy-store-write'));
   } catch {
     /* 隐私模式 / 禁用站点数据时静默降级 */
   }
