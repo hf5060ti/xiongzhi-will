@@ -55,7 +55,7 @@ export const MEATS: IFood[] = [
   { id: 'pork-loin-chop', name: '猪大排', cat: 'meat', kcal: 264, protein: 18.3, fat: 20.4, carb: 1.5, fiber: 0, sodium: 62, vitFat: [], vitWater: ['B1', 'B12'], minerals: ['锌', '铁'] },
   { id: 'pork-hock', name: '猪蹄', cat: 'meat', kcal: 260, protein: 22.6, fat: 18.8, carb: 0, fiber: 0, sodium: 101, vitFat: [], vitWater: [], minerals: ['锌'], note: '胶原蛋白为主，非优质蛋白' },
   { id: 'pork-ear', name: '猪耳', cat: 'meat', kcal: 190, protein: 22.5, fat: 12.5, carb: 0, fiber: 0, sodium: 58, vitFat: [], vitWater: [], minerals: ['锌'] },
-  { id: 'pork-blood', name: '猪血', cat: 'meat', kcal: 55, protein: 12.2, fat: 0.3, carb: 0.9, fiber: 0, sodium: 56, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '血红素铁含量高' },
+  { id: 'pork-blood', name: '猪血', cat: 'meat', kcal: 55, protein: 12.2, fat: 0.3, carb: 0.9, fiber: 0, sodium: 56, vitFat: [], vitWater: ['B12'], minerals: ['铁', '硒'], note: '优点：蛋白质约12.2g/100g与鸡蛋相当，低脂低热量，血红素铁含量高（约8.7mg/100g）且吸收率远超植物铁；缺点：铁含量低于鸭血（30.5mg），动物血整体嘌呤中高，痛风/高尿酸者适量；凉拌/韭菜炒/毛血旺，必须彻底煮熟防寄生虫' },
   { id: 'pork-heart', name: '猪心', cat: 'meat', kcal: 119, protein: 16.6, fat: 5.3, carb: 1.1, fiber: 0, sodium: 71, vitFat: ['A'], vitWater: ['B1', 'B12'], minerals: ['锌', '硒'] },
   { id: 'pork-tongue', name: '猪舌', cat: 'meat', kcal: 225, protein: 15.7, fat: 18.1, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['锌', '铁'] },
   { id: 'bacon', name: '培根', cat: 'meat', kcal: 460, protein: 20, fat: 42, carb: 1.5, fiber: 0, sodium: 1500, vitFat: ['D'], vitWater: ['B1', 'B12'], minerals: ['锌', '硒'], note: '加工肉制品，高钠' },
@@ -89,7 +89,7 @@ export const MEATS: IFood[] = [
   { id: 'wild-boar', name: '野猪肉', cat: 'meat', kcal: 143, protein: 20, fat: 6, carb: 0, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B1', 'B12'], minerals: ['锌'], note: '瘦肉比例高，肉质紧实' },
   { id: 'frog-meat', name: '牛蛙', cat: 'meat', kcal: 78, protein: 18, fat: 0.9, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12'], minerals: ['锌', '钾'], note: '高蛋白低脂，蛙腿肉细嫩，嘌呤中等' },
   { id: 'silk-worm', name: '蚕蛹', cat: 'meat', kcal: 230, protein: 18, fat: 15, carb: 6, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒'], note: '昆虫蛋白，蛋白质量高，嘌呤高，过敏者慎食' },
-  { id: 'duck-blood', name: '鸭血', cat: 'meat', kcal: 55, protein: 13, fat: 0.4, carb: 0.2, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '补铁冠军，铁含量高且易吸收' },
+  { id: 'duck-blood', name: '鸭血', cat: 'meat', kcal: 55, protein: 13, fat: 0.4, carb: 0.2, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁（血红素铁）', '硒'], note: '补铁冠军：铁含量约30.5mg/100g为常见动物血最高，血红素铁吸收率25%~30%，低脂低热量高蛋白；缺点：动物血整体嘌呤中高，痛风/高尿酸者适量；火锅/鸭血粉丝汤/毛血旺主角，必须彻底煮熟' },
 
   // ---- 胶质蛋白类（健身人群高频） ----
   { id: 'pork-skin', name: '猪皮', cat: 'meat', kcal: 340, protein: 27, fat: 24, carb: 0.5, fiber: 0, sodium: 80, vitFat: [], vitWater: [], minerals: ['锌'], note: '胶原蛋白为主，脂肪不低；煮皮冻可去脂' },
@@ -190,6 +190,10 @@ export const MEATS: IFood[] = [
   { id: 'ya-chang', name: '鸭肠（熟，火锅）', cat: 'meat', kcal: 129, protein: 14, fat: 7, carb: 1, fiber: 0, sodium: 200, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '火锅经典，"七上八下"涮15秒；脆嫩；胆固醇偏高；一份约100g；蘸料别太多油碟' },
   { id: 'ji-chang', name: '鸡肠（熟）', cat: 'meat', kcal: 96, protein: 14, fat: 4, carb: 1, fiber: 0, sodium: 150, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '卤味/干锅/冒菜常见；脂肪比鸭肠低；清洗要彻底；胆固醇偏高，一次50-80g' },
   { id: 'ya-xue', name: '鸭血（熟）', cat: 'meat', kcal: 55, protein: 12, fat: 0.4, carb: 1, fiber: 0, sodium: 180, vitFat: [], vitWater: ['B12'], minerals: ['铁（血红素铁）', '硒'], note: '毛血旺/鸭血粉丝汤/火锅主角；高铁低脂，吸收率高，补铁优选；一盒约300g；痛风/高尿酸者适量（嘌呤中高）；必须彻底煮熟' },
+
+  // ---- 血制品补充：羊血 / 鸡血 ----
+  { id: 'lamb-blood', name: '羊血', cat: 'meat', kcal: 57, protein: 6.8, fat: 0.2, carb: 6.9, fiber: 0, sodium: 443, vitFat: [], vitWater: ['B1', 'B2'], minerals: ['铁', '硒', '锌'], note: '优点：铁含量约18.3mg/100g，血红素铁易吸收，低脂低热量；缺点：蛋白质（6.8g/100g）低于猪血鸭血，钠偏高（约443mg/100g）高血压者控量；动物血整体嘌呤中高，痛风/高尿酸者适量；韭菜炒羊血/羊血粉丝经典，必须彻底煮熟' },
+  { id: 'chicken-blood', name: '鸡血', cat: 'meat', kcal: 49, protein: 7.8, fat: 0.2, carb: 4.1, fiber: 0, sodium: 208, vitFat: ['A'], vitWater: ['B1', 'B2', '烟酸'], minerals: ['铁', '硒', '磷'], note: '优点：铁含量约25mg/100g仅次于鸭血，低脂低热量（49kcal/100g）；缺点：蛋白质偏低（7.8g/100g），胆固醇较高（约170mg/100g）高血脂者适量；嘌呤偏高，痛风/高尿酸者少吃；鸭血粉丝汤/血豆腐/火锅，必须彻底煮熟' },
 
   { id: 'snake', name: '蛇肉（参考值，仅限合法人工养殖）', cat: 'meat', kcal: 90, protein: 18, fat: 1.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], phytochem: [], note: '【重要法律与生态声明】本网站不支持任何违法狩猎、捕食野生保护动物或食用野味的行为。野生蛇类在我国多为国家重点保护或"三有"保护动物，私自捕捉/交易/食用涉嫌违法犯罪。以下数据仅作营养学参考：仅限人工养殖、合法渠道、彻底煮熟后（防裂头蚴/绦虫）的食用蛇种（如人工养殖乌梢蛇、水律蛇），蛋白质约18g/100g、脂肪极低。任何情况下请自觉遵守当地法律法规，尊重生态保护。' },
 
