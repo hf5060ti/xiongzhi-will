@@ -206,4 +206,34 @@ export const MEATS: IFood[] = [
   { id: 'lamb-liver', name: '羊肝（熟）', cat: 'meat', kcal: 130, protein: 18, fat: 5, carb: 2, fiber: 0, sodium: 100, vitFat: ['A（极高）', 'B12', 'D'], vitWater: ['B2', '叶酸', '铁'], minerals: ['铁（血红素铁极高）', '锌', '硒'], phytochem: [], note: '【维生素A警告】羊肝维A极高，一次别超40g，一周1-2次足够；长期大量可致维A中毒（颅压高/脱发/肝损）；补铁补叶酸经典；孕妇别大量吃（维A致畸风险）；必须彻底煮熟防弓形虫' },
   { id: 'lamb-tripe', name: '羊肚（熟）', cat: 'meat', kcal: 100, protein: 15, fat: 4, carb: 1, fiber: 0, sodium: 90, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '羊杂汤/爆肚；纤维感强、蛋白高脂肪低；清洗要彻底（翻肚/面粉搓）；胆固醇中等' },
   { id: 'lamb-trotter', name: '羊蹄（熟）', cat: 'meat', kcal: 200, protein: 15, fat: 15, carb: 0, fiber: 0, sodium: 80, vitFat: [], vitWater: [], minerals: ['钙', '胶原蛋白'], note: '主要是皮、筋、骨胶原；"补胶原"不能直接补到皮肤，吃下去拆成氨基酸；一份100g=200kcal；骨髓脂肪高' },
+
+  // ---- 牦牛肉（高原特色，藏族传统食材）----
+  { id: 'yak-meat', name: '牦牛肉（瘦，生）', cat: 'meat', kcal: 110, protein: 22, fat: 2.5, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12', '铁'], minerals: ['铁（血红素铁极高）', '锌', '硒'], phytochem: ['共轭亚油酸（CLA）', 'Omega-3'], note: '高原散养牦牛肉，脂肪比普通黄牛更低，蛋白更高；CLA和Omega-3含量是谷饲牛肉的3-5倍；口感偏粗、纤维紧，适合卤/炖/风干；藏族传统食材；嘌呤中等' },
+  { id: 'yak-liver', name: '牦牛肝（熟）', cat: 'meat', kcal: 130, protein: 20, fat: 4, carb: 3, fiber: 0, sodium: 85, vitFat: ['A（极高）'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁（极高）', '铜', '锌'], note: '【维生素A警告】牦牛肝维A极高，一次别超40g，一周1-2次；高原动物肝脏重金属富集风险略高，适量；补铁补叶酸效果极强' },
+  { id: 'yak-heart', name: '牦牛心（熟）', cat: 'meat', kcal: 150, protein: 25, fat: 4, carb: 0, fiber: 0, sodium: 65, vitFat: [], vitWater: ['B12', 'CoQ10'], minerals: ['铁', '锌', '硒'], phytochem: ['辅酶Q10'], note: '高原动物心脏，CoQ10密度高；卤/炒；胆固醇偏高，一次50-80g' },
+
+  // ---- 马肉（欧洲/中亚传统食材，国内小众）----
+  { id: 'horse-meat', name: '马肉（瘦，生）', cat: 'meat', kcal: 120, protein: 21, fat: 3.5, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B12', '铁'], minerals: ['铁', '锌', '磷'], phytochem: ['共轭亚油酸（CLA）'], note: '马肉是高蛋白低脂肉类，脂肪比牛肉低30%；欧洲（法/意/德）和中亚传统食材；国内非主流，多为马肉干/马肉肠；口感偏甜、纤维细；嘌呤中等' },
+  { id: 'horse-liver', name: '马肝（熟）', cat: 'meat', kcal: 135, protein: 20, fat: 4.5, carb: 3, fiber: 0, sodium: 90, vitFat: ['A（极高）'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜', '锌'], note: '【维生素A警告】马肝维A极高，一次别超40g；马肝维生素A含量甚至高于牛肝，切忌大量食用' },
+  { id: 'horse-heart', name: '马心（熟）', cat: 'meat', kcal: 145, protein: 24, fat: 4, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12', 'CoQ10'], minerals: ['铁', '锌', '硒'], phytochem: ['辅酶Q10'], note: '心脏类内脏，CoQ10和铁密度高；小众食材，国内少见' },
+
+  // ---- 驴肉（华北传统食材，"天上龙肉地上驴肉"）----
+  { id: 'donkey-meat', name: '驴肉（瘦，熟）', cat: 'meat', kcal: 120, protein: 21, fat: 3.5, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12', '铁'], minerals: ['铁', '锌', '磷'], phytochem: [], note: '华北传统食材（保定驴肉火烧）；"天上龙肉，地上驴肉"；高蛋白低脂，脂肪比牛肉还低；口感细嫩、味道鲜；驴火经典搭配；嘌呤中等' },
+  { id: 'donkey-hide', name: '驴皮（熬胶原料）', cat: 'meat', kcal: 350, protein: 80, fat: 1, carb: 0, fiber: 0, sodium: 30, vitFat: [], vitWater: [], minerals: ['钙', '胶原蛋白'], note: '阿胶的原料；主要是胶原蛋白，氨基酸组成不完整（缺色氨酸）；"补胶原"不能直接补皮肤，吃下去拆成氨基酸；不推荐作为日常蛋白来源' },
+
+  // ---- 争议/特殊肉类（法律声明）----
+  { id: 'kangaroo-meat', name: '袋鼠肉（熟）', cat: 'meat', kcal: 100, protein: 23, fat: 2, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B12', '铁'], minerals: ['铁', '锌', '硒'], phytochem: ['共轭亚油酸（CLA）'], note: '【法律声明】袋鼠肉在澳大利亚是合法狩猎/食用的（袋鼠是害兽，政府鼓励捕杀），但在其他国家/地区可能受保护或禁止进口。本站仅作营养数据参考，不鼓励任何违法捕猎；袋鼠肉是所有红肉里脂肪最低的之一，CLA含量极高' },
+  { id: 'crocodile-meat', name: '鳄鱼肉（人工养殖，熟）', cat: 'meat', kcal: 110, protein: 22, fat: 2.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌', '磷'], note: '【法律声明】仅限合法人工养殖鳄鱼；野生鳄鱼多为保护动物（如扬子鳄是国家一级保护动物），严禁猎捕。本站坚决反对偷猎和非法野生动物贸易；鳄鱼肉高蛋白低脂，口感类似鸡肉+鱼肉混合' },
+  { id: 'snake-meat', name: '蛇肉（人工养殖，熟）', cat: 'meat', kcal: 95, protein: 20, fat: 1.5, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '【法律声明】仅限合法人工养殖蛇类；野生蛇类多为"三有"保护动物，严禁私自捕捉食用。本站反对非法野生动物交易；蛇肉高蛋白低脂，两广传统食材；注意彻底煮熟防寄生虫（曼氏裂头蚴）' },
+  { id: 'dog-meat', name: '狗肉（争议食材）', cat: 'meat', kcal: 150, protein: 20, fat: 7, carb: 0, fiber: 0, sodium: 65, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '【争议声明】狗肉在部分地区（如江苏沛县/徐州、延边）有食用传统，但在全球范围内动物保护争议极大。本站仅作营养数据参考，不鼓励也不反对；强烈建议选择合法养殖、经过检疫的肉用犬；爱狗人士请跳过此项' },
+  { id: 'lizard-meat', name: '蜥蜴肉（部分地区合法）', cat: 'meat', kcal: 110, protein: 21, fat: 3, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '【法律声明】蜥蜴在世界部分地区是合法食用的（如一些热带国家），但在多数地区野生蜥蜴受保护。本站仅作营养数据参考，不支持任何违法捕猎野生动物的行为；爬行动物肉普遍高蛋白低脂' },
+
+  // ---- 猪肉/鸡肉细分部位 ----
+  { id: 'wild-boar-meat', name: '野猪肉（合法狩猎，熟）', cat: 'meat', kcal: 130, protein: 20, fat: 5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B1', 'B12'], minerals: ['铁', '锌'], note: '【法律声明】仅限合法狩猎的野猪（部分地区野猪成灾，政府鼓励捕猎）；野猪肉脂肪比家猪低一半，瘦肉更紧、味道更浓；必须彻底煮熟防非洲猪瘟和寄生虫' },
+  { id: 'chicken-frame', name: '鸡架', cat: 'meat', kcal: 180, protein: 15, fat: 13, carb: 0, fiber: 0, sodium: 80, vitFat: [], vitWater: ['B12'], minerals: ['钙', '磷'], note: '主要是骨头+皮+少量肉；沈阳鸡架文化；蛋白不高（啃个味道），钙和骨髓脂肪；一份100g=180kcal；减脂期别当蛋白来源' },
+  { id: 'chicken-cartilage', name: '鸡脆骨/掌中宝', cat: 'meat', kcal: 200, protein: 15, fat: 15, carb: 0, fiber: 0, sodium: 90, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '鸡爪掌中间的脆骨；烤/炸/椒盐；主要是软骨组织，钙含量高但蛋白不高；"补钙"效果有限，吃下去拆成氨基酸和钙盐' },
+  { id: 'chicken-skin', name: '鸡皮（熟）', cat: 'meat', kcal: 450, protein: 15, fat: 45, carb: 0, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: [], minerals: [], note: '纯脂肪+皮；一份100g=450kcal；减脂期绝对避开；烤鸡的油大部分来自鸡皮；要低脂就去皮吃' },
+  { id: 'duck-web', name: '鸭掌', cat: 'meat', kcal: 150, protein: 18, fat: 8, carb: 0, fiber: 0, sodium: 100, vitFat: [], vitWater: ['B12'], minerals: ['钙', '胶原蛋白'], note: '主要是皮、筋、骨；卤鸭掌/泡椒鸭掌；胶原蛋白为主，蛋白质量不高；啃个味道还行，别当蛋白来源' },
+  { id: 'beef-cartilage', name: '牛脆骨', cat: 'meat', kcal: 120, protein: 18, fat: 4, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '牛气管/关节处的软骨；烤/卤；主要是软骨素和胶原蛋白；"补软骨"不能直接补到关节，吃下去拆成氨基酸' },
+  { id: 'lamb-cartilage', name: '羊脆骨', cat: 'meat', kcal: 130, protein: 17, fat: 6, carb: 0, fiber: 0, sodium: 75, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '羊胸/关节处的脆骨；烤羊脆骨；口感脆，补钙是噱头，主要是解馋' },
 ];

@@ -91,4 +91,29 @@ export const DAIRY: IFood[] = [
   { id: 'protein-milk', name: '牛乳蛋白粉（浓缩）', cat: 'dairy', kcal: 375, protein: 70, fat: 7, carb: 12, fiber: 0, sodium: 200, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '牛奶蛋白浓缩（乳清+酪蛋白混合）；缓释与快吸兼有；性价比介于乳清与酪蛋白之间' },
   { id: 'protein-soy', name: '大豆蛋白粉', cat: 'dairy', kcal: 350, protein: 65, fat: 6, carb: 20, fiber: 5, sodium: 250, vitFat: [], vitWater: ['B族'], minerals: ['铁', '钙'], note: '植物蛋白代表；异黄酮含量高（雌激素样作用）；氨基酸谱不如动物蛋白完整；素食者首选' },
   { id: 'protein-soy-isolate', name: '分离大豆蛋白粉', cat: 'dairy', kcal: 365, protein: 85, fat: 3, carb: 8, fiber: 2, sodium: 230, vitFat: [], vitWater: ['B族'], minerals: ['铁', '钙'], note: '大豆蛋白提纯版；蛋白含量高（约85%），去除大部分碳水与脂肪；仍含异黄酮；乳糖不耐者友好' },
+
+  // ---- 奶酪大全（用户点名）----
+  { id: 'cheese-cheddar', name: '车打奶酪（切达）', cat: 'dairy', kcal: 403, protein: 25, fat: 33, carb: 1.3, fiber: 0, sodium: 621, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '最常见的硬质奶酪；汉堡/三明治/零食；钠极高（一片20g=124mg钠）；减脂期控制量' },
+  { id: 'cheese-parmesan', name: '帕玛森奶酪（干酪）', cat: 'dairy', kcal: 431, protein: 38, fat: 29, carb: 3.2, fiber: 0, sodium: 1600, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '最硬的奶酪，擦丝撒意面；蛋白极高（38g/100g）但钠爆炸（1600mg）；一次5g就够味' },
+  { id: 'cheese-brie', name: '布里奶酪（软质）', cat: 'dairy', kcal: 334, protein: 20, fat: 28, carb: 0.5, fiber: 0, sodium: 629, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '白霉软酪，法国传统；口感绵密像奶油；配面包/红酒；脂肪比车打略低但钠同样高' },
+  { id: 'cheese-blue', name: '蓝纹奶酪', cat: 'dairy', kcal: 353, protein: 21, fat: 29, carb: 2.3, fiber: 0, sodium: 1390, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '蓝纹霉菌发酵，味道浓烈；丹麦蓝/洛克福/斯蒂尔顿；钠极高（1390mg）；爱者极爱，恨者极恨' },
+  { id: 'cheese-feta', name: '羊奶酪（菲达）', cat: 'dairy', kcal: 264, protein: 14, fat: 21, carb: 4.1, fiber: 0, sodium: 1116, vitFat: ['A'], vitWater: ['B12'], minerals: ['钙'], note: '希腊传统羊奶酪；沙拉/意面；羊奶做的比牛奶奶酪脂肪略低；钠极高' },
+  { id: 'cheese-cream', name: '奶油奶酪（芝士蛋糕用）', cat: 'dairy', kcal: 342, protein: 6, fat: 34, carb: 4, fiber: 0, sodium: 321, vitFat: ['A'], vitWater: ['B2'], minerals: ['钙'], note: '奶油芝士蛋糕/抹贝果；蛋白极低脂肪极高；减脂期绝对避开' },
+  { id: 'cheese-mozzarella', name: '马苏里拉奶酪（鲜）', cat: 'dairy', kcal: 280, protein: 28, fat: 17, carb: 3.5, fiber: 0, sodium: 620, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '水牛/牛奶做的鲜奶酪；沙拉/卡普里沙拉；蛋白高（28g），是奶酪里相对适合增肌的' },
+  { id: 'cheese-gouda', name: '高达奶酪（荷兰）', cat: 'dairy', kcal: 356, protein: 25, fat: 27, carb: 2.2, fiber: 0, sodium: 819, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '荷兰传统黄奶酪；温和不冲，配面包；蛋白高脂肪高钠高' },
+  { id: 'cheese-swiss', name: '埃曼塔奶酪（瑞士）', cat: 'dairy', kcal: 380, protein: 27, fat: 29, carb: 1.5, fiber: 0, sodium: 490, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '大孔奶酪；钠在奶酪里算低的（490mg）；儿童奶酪棒常用' },
+  { id: 'cheese-ricotta', name: '瑞可塔奶酪（乳清）', cat: 'dairy', kcal: 174, protein: 11, fat: 13, carb: 3, fiber: 0, sodium: 84, vitFat: ['A'], vitWater: ['B12'], minerals: ['钙'], note: '乳清做的鲜奶酪；奶酪里热量最低（174kcal）；钠极低（84mg）；意式奶酪馅/沙拉；减脂期友好的奶酪选择' },
+  { id: 'cheese-cottage', name: '茅屋奶酪（ cottage cheese）', cat: 'dairy', kcal: 98, protein: 11, fat: 4.3, carb: 3.4, fiber: 0, sodium: 364, vitFat: ['A'], vitWater: ['B12'], minerals: ['钙'], note: '奶酪里热量最低（98kcal/100g）；增肌减脂期经典；配水果/全麦面包；蛋白高（11g）；钠中等' },
+  { id: 'cheese-shred-mix', name: '混合芝士碎（披萨用）', cat: 'dairy', kcal: 300, protein: 22, fat: 23, carb: 3, fiber: 0, sodium: 700, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '马苏里拉+车打混合拉丝；披萨/焗饭；一把30g=90kcal；钠高' },
+
+  // ---- 希腊酸奶 & 脱脂酸奶 ----
+  { id: 'yogurt-greek-full', name: '希腊酸奶（全脂）', cat: 'dairy', kcal: 97, protein: 9, fat: 5, carb: 3.6, fiber: 0, sodium: 36, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '过滤乳清的浓稠酸奶；蛋白质是普通酸奶的2倍；全脂版脂肪5g；配水果/坚果当早餐' },
+  { id: 'yogurt-greek-skim', name: '希腊酸奶（脱脂）', cat: 'dairy', kcal: 59, protein: 10, fat: 0.4, carb: 3.6, fiber: 0, sodium: 36, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '脱脂希腊酸奶；高蛋白（10g）低脂（0.4g）；增肌减脂期神器；配蓝莓/奇亚籽' },
+  { id: 'yogurt-plain-skim', name: '原味脱脂酸奶', cat: 'dairy', kcal: 45, protein: 4, fat: 0.2, carb: 7, fiber: 0, sodium: 50, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '普通脱脂酸奶；蛋白比希腊酸奶低；便宜易得；选无糖原味，别买风味酸奶（糖爆炸）' },
+
+  // ---- 奶类补充 ----
+  { id: 'milk-sheep-skim', name: '脱脂绵羊奶', cat: 'dairy', kcal: 50, protein: 4, fat: 1, carb: 6, fiber: 0, sodium: 50, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '绵羊奶脱脂版；脂肪降低但蛋白钙保留；羊奶脂肪球小，更好消化' },
+  { id: 'milk-goat-full', name: '全脂山羊奶', cat: 'dairy', kcal: 69, protein: 3.5, fat: 4.1, carb: 4.5, fiber: 0, sodium: 38, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '羊奶脂肪球比牛奶小1/3，乳糖结构略有不同；乳糖轻度不耐者可尝试；膻味来自辛酸/癸酸' },
+  { id: 'milk-goat-skim', name: '脱脂山羊奶', cat: 'dairy', kcal: 40, protein: 3.5, fat: 0.5, carb: 4.5, fiber: 0, sodium: 38, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '脱脂山羊奶；低脂版；适合需要控制脂肪又想试羊奶的人' },
+  { id: 'milk-camel-full', name: '全脂骆驼奶', cat: 'dairy', kcal: 70, protein: 3.5, fat: 3.2, carb: 4.9, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2', 'C'], minerals: ['钙', '铁'], note: '驼奶含铁量比牛奶高10倍；胰岛素样蛋白含量高（传统说法对糖尿病友好，证据有限）；价格贵' },
 ];

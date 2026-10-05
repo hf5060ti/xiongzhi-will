@@ -101,4 +101,37 @@ export const DRINKS: IFood[] = [
   { id: 'anmuxi-strawberry', name: '安慕希草莓味酸奶', cat: 'drink', kcal: 98, protein: 3.0, fat: 3.3, carb: 13, fiber: 0.3, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2', 'C'], minerals: ['钙'], note: '加草莓果酱/香精，碳水比原味略高；一杯200g约196kcal；果味款糖更多，减脂期选原味' },
   { id: 'anmuxi-blueberry', name: '安慕希蓝莓味酸奶', cat: 'drink', kcal: 96, protein: 3.0, fat: 3.3, carb: 12.5, fiber: 0.2, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2'], minerals: ['钙'], phytochem: ['蓝莓花青素（少量）'], note: '蓝莓果味，与草莓款接近；一杯200g约192kcal；花青素主要来自果酱，别当抗氧化神药' },
   { id: 'anmuxi-sugarfree', name: '安慕希无蔗糖酸奶', cat: 'drink', kcal: 60, protein: 3.1, fat: 3.5, carb: 6, fiber: 0, sodium: 60, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '用代糖（赤藓糖醇/甜菊糖苷）替代蔗糖，碳水从12g降到6g；一杯200g约120kcal；减脂/控糖优选；但仍有脂肪与蛋白，别当水喝' },
+
+  // ---- 碳酸饮料（用户点名）----
+  { id: 'cola-classic', name: '可口可乐（经典含糖）', cat: 'drink', kcal: 42, protein: 0, fat: 0, carb: 10.6, fiber: 0, sodium: 5, vitFat: [], vitWater: ['B族少量'], minerals: [], note: '每100ml约42kcal；一罐330ml≈139kcal（约35g糖=7块方糖）；液体糖，减脂期绝对避开；无糖款见下' },
+  { id: 'cola-zero', name: '零度可乐（无糖）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 8, vitFat: [], vitWater: [], minerals: [], note: '零糖零卡，用阿斯巴甜/安赛蜜代糖；解渴解馋可以，但代糖长期影响肠道菌群/胰岛素敏感性证据仍在研究；别当水喝' },
+  { id: 'pepsi-classic', name: '百事可乐（经典含糖）', cat: 'drink', kcal: 41, protein: 0, fat: 0, carb: 10.6, fiber: 0, sodium: 7, vitFat: [], vitWater: [], minerals: [], note: '与可口可乐热量接近；一罐330ml≈135kcal；糖含量几乎一样' },
+  { id: 'pepsi-max', name: '百事极度（无糖）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '百事无糖款；与零度类似' },
+  { id: 'sprite', name: '雪碧（柠檬味碳酸）', cat: 'drink', kcal: 41, protein: 0, fat: 0, carb: 10.6, fiber: 0, sodium: 9, vitFat: [], vitWater: ['维C（少量添加）'], minerals: [], note: '柠檬味汽水；一罐330ml≈135kcal；糖与可乐接近；柠檬味主要来自香精' },
+  { id: 'sprite-zero', name: '雪碧零卡（无糖）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '无糖雪碧；代糖调味' },
+  { id: 'mirinda-orange', name: '美年达（橙味碳酸）', cat: 'drink', kcal: 43, protein: 0, fat: 0, carb: 11, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '橙味汽水；一罐330ml≈142kcal；比可乐略甜' },
+  { id: 'fanta-orange', name: '芬达（橙味碳酸）', cat: 'drink', kcal: 44, protein: 0, fat: 0, carb: 11, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '可口可乐公司橙味汽水；与美年达类似；一罐330ml≈145kcal' },
+  { id: 'tropic-orange', name: '果粒橙（橙汁饮料）', cat: 'drink', kcal: 45, protein: 0, fat: 0.1, carb: 11, fiber: 0.1, sodium: 8, vitFat: [], vitWater: ['C（强化）'], minerals: ['钾'], note: '含橙肉颗粒；但仍是"饮料"不是纯果汁——水+糖+橙汁+香精；一瓶450ml≈203kcal；想喝橙汁直接吃橙子' },
+
+  // ---- 冰红茶/茶饮 ----
+  { id: 'iced-tea-lemon', name: '冰红茶（柠檬味含糖）', cat: 'drink', kcal: 38, protein: 0, fat: 0, carb: 9.5, fiber: 0, sodium: 10, vitFat: [], vitWater: ['B族'], minerals: [], note: '康师傅/统一经典；每100ml约38kcal；一瓶500ml≈190kcal（约47g糖）；"茶味"主要是香精+糖' },
+  { id: 'east-leaf-green', name: '东方树叶（绿茶，无糖）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['茶多酚', '儿茶素', '咖啡因'], note: '无糖纯茶，零卡；农夫山泉出品；茶多酚保留完整；比含糖茶饮健康得多；咖啡因中等，下午喝可能影响睡眠' },
+  { id: 'east-leaf-oolong', name: '东方树叶（乌龙茶，无糖）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['茶多酚', '茶多糖', '咖啡因'], note: '无糖乌龙；半发酵茶，回甘；零卡解腻；"刮油"证据有限，但解腻是真的' },
+  { id: 'east-leaf-jasmine', name: '东方树叶（茉莉花茶，无糖）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['钾'], phytochem: ['茶多酚', '茉莉花香气'], note: '无糖茉莉绿茶；香气清新；零卡；咖啡因比乌龙略低' },
+  { id: 'honey-yuzu', name: '蜂蜜柚子茶（市售冲调）', cat: 'drink', kcal: 50, protein: 0, fat: 0, carb: 12, fiber: 0.5, sodium: 10, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '柚子蜜+水冲调；每100ml约50kcal；蜂蜜含糖量高，别当健康饮品；一杯300ml≈150kcal' },
+
+  // ---- 椰汁/植物蛋白饮料 ----
+  { id: 'special-forces-coconut', name: '特种兵椰子汁', cat: 'drink', kcal: 55, protein: 0.5, fat: 3.5, carb: 6, fiber: 0.3, sodium: 20, vitFat: ['A'], vitWater: [], minerals: ['钾'], note: '椰肉榨汁+水+糖；脂肪来自椰肉（饱和脂肪为主）；一瓶500ml≈275kcal；椰树/特种兵类似；别当健康饮品' },
+  { id: 'coconut-water', name: '椰子水（纯，非椰奶）', cat: 'drink', kcal: 19, protein: 0.2, fat: 0.2, carb: 3.7, fiber: 0.5, sodium: 105, vitFat: [], vitWater: ['C'], minerals: ['钾（极高）', '钠', '镁'], phytochem: [], note: '天然等渗电解质饮料；钾含量极高（约250mg/100ml），比香蕉还高；运动后补水补电解质；低糖低卡；注意：椰子水≠椰奶（椰奶是椰肉榨的，脂肪高）' },
+
+  // ---- 奶茶/果茶（参考蜜雪冰城）----
+  { id: 'mixue-lemon-water', name: '柠檬水（蜜雪冰城标准）', cat: 'drink', kcal: 25, protein: 0, fat: 0, carb: 6, fiber: 0.2, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '蜜雪冰城招牌；一杯中杯约25kcal（少冰半糖）；柠檬水是奶茶店最低卡选择；选无糖/少糖' },
+  { id: 'mixue-milk-tea', name: '奶茶（蜜雪冰城原味）', cat: 'drink', kcal: 80, protein: 1, fat: 2.5, carb: 13, fiber: 0, sodium: 30, vitFat: [], vitWater: [], minerals: [], note: '奶精+茶+糖；中杯约300ml≈240kcal；奶精（植脂末）含反式脂肪；减脂期尽量避开；想喝奶盖/珍珠再加100-150kcal' },
+  { id: 'milk-tea-bubble', name: '珍珠奶茶（常规）', cat: 'drink', kcal: 90, protein: 1.5, fat: 2.5, carb: 16, fiber: 0.2, sodium: 35, vitFat: [], vitWater: [], minerals: [], note: '奶茶+珍珠（木薯粉圆）；一杯500ml≈450kcal；珍珠本身是淀粉，没营养但吸糖水；一杯=一顿饭的热量；减脂期偶尔解馋' },
+
+  // ---- 酒类（用户点名，标注危害）----
+  { id: 'alcohol-baijiu', name: '白酒（52度，每100ml）', cat: 'drink', kcal: 310, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 0, vitFat: [], vitWater: ['B族（极少量）'], minerals: [], note: '【酒精危害】1g酒精=7kcal；白酒几乎全是空热量；长期饮酒伤肝、升血压、增加癌症风险（WHO一类致癌物）；中国居民膳食指南建议男性一天酒精不超25g（约白酒50ml），女性不超15g；喝多了训练效果归零（酒精抑制蛋白合成24-48小时）' },
+  { id: 'alcohol-zhiyuan', name: '中国劲酒（35度，每100ml）', cat: 'drink', kcal: 200, protein: 0, fat: 0, carb: 5, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '【酒精+中药酒】35度露酒；每瓶125ml约250kcal；"补肾壮阳"功效证据不足；本质是酒精+糖+中药提取物；不是保健品，别当养生喝；过量伤肝' },
+  { id: 'alcohol-beer', name: '啤酒（普通，每100ml）', cat: 'drink', kcal: 43, protein: 0.5, fat: 0, carb: 3.5, fiber: 0, sodium: 5, vitFat: [], vitWater: ['B族'], minerals: ['硅'], note: '【啤酒肚】一罐500ml≈215kcal；液体面包；长期喝啤酒+下酒菜=热量爆炸；啤酒本身酒精不高，但量大；痛风注意嘌呤高（啤酒嘌呤在酒类里最高）' },
+  { id: 'alcohol-wine-red', name: '红酒（干红，每100ml）', cat: 'drink', kcal: 85, protein: 0.1, fat: 0, carb: 2.5, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: ['锰'], phytochem: ['白藜芦醇（极少量）'], note: '【红酒养生骗局】"红酒软化血管"证据极弱，白藜芦醇含量要喝几百瓶才够；一杯150ml≈128kcal；还是酒精，喝多了一样伤肝；别因为"健康"多喝' },
 ];
