@@ -5,7 +5,7 @@
  *   - JS/CSS chunk 如果 404（发版后旧 hash 失效），自动清缓存并刷新
  * 缓存名带版本，发版时 bump 即清旧缓存。
  */
-const CACHE = 'xiongzhi-will-v3';
+const CACHE = 'xiongzhi-will-v4';
 const CORE = ['./', './index.html', './manifest.webmanifest', './images/icon-192.png', './images/icon-512.png'];
 
 self.addEventListener('install', (event) => {
