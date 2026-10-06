@@ -488,12 +488,27 @@ export const GOALS: IGoal[] = [
       { title: '对抗日', detail: '与搭子实战，或对墙等长对抗 10–15 秒' },
     ],
     movements: [
+      // —— 基础力量：腕 / 前臂 ——
       { name: '腕弯举（正 / 反）', set: '4 × 8–12，组间歇 90s', videoUrl: 'https://fitness.xingshuwen.com/exercise/1412', videoGif: 'https://fitness.xingshuwen.com/videos/1412-SJAA2IQ.gif' },
       { name: '旋前 / 旋后转腕', set: '4 × 8–12，组间歇 90s', videoUrl: 'https://fitness.xingshuwen.com/exercise/0126', videoGif: 'https://fitness.xingshuwen.com/videos/0126-82LxxkW.gif' },
-      { name: '尺偏侧链等长', set: '4 × 10–15s，组间歇 60s', tip: '手腕保持中立位，侧偏到极限后等长收缩10–15秒，可用弹力带或手腕负重完成。' },
+      { name: '尺偏腕弯举（专项）', set: '4 × 8–12，组间歇 90s · 腕向小指侧偏发力', tip: '哑铃握在手中，只做手腕向小指侧的偏移（尺偏），幅度小、控制慢；这是斗腕桌面力线的核心力量，很多人的「手腕没力」其实是尺偏链弱。', videoUrl: 'https://fitness.xingshuwen.com/exercise/0310', videoGif: 'https://fitness.xingshuwen.com/videos/0310-KUzvbgR.gif', approx: true, approxNote: '近似动作：腕弯举（尺偏专项无单独演示，用腕弯举看发力位置）' },
+      { name: '腕伸（反手背伸）', set: '3 × 10–15，组间歇 60s · 前臂伸肌群', tip: '反手（掌心向下）腕弯举或手腕背伸对抗；斗腕里 rise 的「立腕」需要伸腕链配合，别只练屈腕。', videoUrl: 'https://fitness.xingshuwen.com/exercise/1412', videoGif: 'https://fitness.xingshuwen.com/videos/1412-SJAA2IQ.gif', approx: true, approxNote: '近似动作：腕弯举（反手做即练伸腕链）' },
+      // —— 斗腕技术动作：桌面专项 ——
+      { name: 'Rise 挺腕（立腕）', set: '4 × 8–12，组间歇 90s · 前臂屈肌把腕从中立位挺起', tip: '握拳屈肘，前臂放在桌面 / 大腿上，手腕从平直位用力向上挺起至极限再控回；全程前臂不动只动腕。这是斗腕最核心的「立腕」力量，高位手位的根基。', videoUrl: 'https://fitness.xingshuwen.com/exercise/1412', videoGif: 'https://fitness.xingshuwen.com/videos/1412-SJAA2IQ.gif', approx: true, approxNote: '近似动作：腕弯举（rise 为腕弯举的桌面上举变体，幅度更小更控）' },
+      { name: 'Cup 杯握（屈腕钩握）', set: '4 × 8–12，组间歇 90s · 手指 + 腕屈把对手手背扣向自己', tip: '哑铃横握（握杯姿势），手腕用力向掌心侧屈，把哑铃一端「扣」向自己身体；发力想象把对手手背压向自己掌心。杯握力量决定你能否「锁住」对手手位。', videoUrl: 'https://fitness.xingshuwen.com/exercise/1412', videoGif: 'https://fitness.xingshuwen.com/videos/1412-SJAA2IQ.gif', approx: true, approxNote: '近似动作：腕弯举（杯握为屈腕位专用，哑铃横握）' },
+      { name: 'Top Roll 翻腕滚压', set: '4 × 6–8（每侧），组间歇 90s · rise + 旋后 + 后拉组合', tip: '弹力带一端固定在低处，握拳模拟斗腕握法（手背朝自己侧），先立腕（rise）再顺势旋后翻腕并向后拉，一气呵成；重点在「翻」的动作链，不是拉重。', approx: true, approxNote: '无站上精确演示：这是斗腕专属动作，用弹力带完成' },
+      { name: 'Hook 钩手训练', set: '4 × 6–8（每侧），组间歇 90s · 屈腕 + 内旋 + 拉向自己', tip: '弹力带固定在前上方，掌心朝自己握拳，屈腕钩住后内旋并把肘拉向身体；模拟钩手战术的「钩住 + 内压 + 回收」三段发力。', approx: true, approxNote: '无站上精确演示：斗腕专属动作，用弹力带完成' },
+      { name: 'Back Pressure 后压力', set: '4 × 8–12，组间歇 90s · 二头 + 背阔 + 肩胛后收', tip: '弹力带或绳索固定在前方，握拳屈肘向后拉，肩胛后收、肘贴近身体；这是斗腕里「整条手臂往回拽」的力量，决定你能不能把对手拉出中心线。', videoUrl: 'https://fitness.xingshuwen.com/exercise/2380', videoGif: 'https://fitness.xingshuwen.com/videos/2380-JYfT90s.gif', approx: true, approxNote: '近似动作：绳索弯举（后压力为水平后拉变体，肘位不同）' },
+      { name: '肩旋内拉钩（弹力带）', set: '3 × 10–15（每侧），组间歇 60s · 肩内旋链', tip: '弹力带固定体侧，屈肘 90° 大臂贴身，前臂向内旋转拉弹力带；钩手战术的「内旋」主要靠这条链。', approx: true, approxNote: '无站上精确演示：用弹力带完成肩内旋' },
+      { name: '耸肩锁位（肩带后缩）', set: '3 × 10–12，组间歇 60s · 斜方 / 肩胛锁定', tip: '站姿持杠铃片或哑铃于体侧，耸肩并让肩胛后缩下沉，顶端停 1–2 秒；高位对拉时肩带锁住是防被压翻的最后一层。', videoUrl: 'https://fitness.xingshuwen.com/exercise/1404', videoGif: 'https://fitness.xingshuwen.com/videos/1404-RVJz3AT.gif', approx: true, approxNote: '近似动作：杠铃耸肩（斗腕强调后缩锁定，幅度更小）' },
+      // —— 支撑与握力 ——
       { name: '二头弯举', set: '4 × 6–8，组间歇 90s', videoUrl: 'https://fitness.xingshuwen.com/exercise/0031', videoGif: 'https://fitness.xingshuwen.com/videos/0031-25GPyDY.gif' },
       { name: '虎口悬提（捏握重物行走）', set: '4 × 20–40m，组间歇 90s · 拇指 + 指屈肌 + 握力', tip: '用捏握（不是全握）提起哑铃片或握力器；虎口捏紧，走路时不松；重量以能走完距离为度。参考农夫行走姿势，但改为单指捏握。', videoUrl: 'https://fitness.xingshuwen.com/exercise/2133', videoGif: 'https://fitness.xingshuwen.com/videos/2133-qPEzJjA.gif', approx: true, approxNote: '近似动作：农夫行走（虎口悬提为捏握变体，无单独演示视频）' },
+      { name: '指屈闭合（手指握力器）', set: '4 × 10–15，组间歇 60s · 指屈肌闭合力量', tip: '用握力器 / 捏力球做手指完全闭合的握压；斗腕里指力决定你能不能「包住」对手拇指侧，闭合力量比单纯握力更重要。', approx: true, approxNote: '无站上精确演示：握力器闭合动作' },
       { name: '悬吊（dead hang）', set: '3 × 15–30s，组间歇 60s', tip: '双手正握单杠，身体自然悬垂，肩胛下沉保持稳定，不要摆动。', videoUrl: 'https://fitness.xingshuwen.com/exercise/0472', videoGif: 'https://fitness.xingshuwen.com/videos/0472-I3tsCnC.gif' },
+      // —— 实战与等长 ——
+      { name: '桌面对抗等长', set: '4 × 10–15s，组间歇 60s · 对墙 / 对搭子模拟桌面力线', tip: '找一张桌面或与搭子对握：一方施压一方顶住，各方向（立腕位 / 钩手位 / 翻腕位）分别做 10–15 秒等长对抗；这是把力量「翻译」到桌面上的最快方式。', approx: true, approxNote: '无站上精确演示：需搭档或桌面完成' },
+      { name: '尺偏侧链等长', set: '4 × 10–15s，组间歇 60s', tip: '手腕保持中立位，侧偏到极限后等长收缩10–15秒，可用弹力带或手腕负重完成。' },
     ],
     progression: '等长时长每周 +2–3 秒；负重动作每 2 周 +2.5kg；动作技术永远优先于重量。',
     note: '腕力对关节压力大，手腕和肘部热身务必充分。指力与背阔决定上限，别只盯着前臂练。',

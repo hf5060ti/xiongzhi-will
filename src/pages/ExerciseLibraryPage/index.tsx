@@ -257,12 +257,12 @@ const CAT_OPTIONS: { label: string; value: string }[] = [
   { label: '斗腕', value: 'armwrest' },
 ];
 
-/** 判断动作是否属于某分类；斗腕按名称含「腕 / Wrist」聚合 */
+/** 判断动作是否属于某分类；斗腕按名称含「腕 / Wrist」或 category=armwrest（斗腕专项）聚合 */
 function matchCategory(ex: ExerciseView, cat: string): boolean {
   if (cat === 'all') return true;
   if (cat === 'armwrest') {
     const n = `${ex.nameZh || ''} ${ex.name || ''}`;
-    return n.includes('腕') || /Wrist/i.test(n);
+    return n.includes('腕') || /Wrist|Armwrest|Rise|Top Roll|Hook|Cup|Back Pressure/i.test(n) || ex.category === 'armwrest';
   }
   if (cat === 'strength') return ex.category === 'strength' || ex.category === 'powerlifting';
   return ex.category === cat;
