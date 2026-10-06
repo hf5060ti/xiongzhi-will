@@ -5,7 +5,10 @@
 import { startSync, stopSync, flushSync } from '@/lib/sync';
 
 // ⚠️ 部署 Worker 后改成实际地址，例如 'https://xiongzhi-auth.你的子域.workers.dev'
-export const WORKER_URL = 'https://xiongzhi-auth.YOUR-SUBDOMAIN.workers.dev';
+// Worker 已部署到 Cloudflare，但 *.workers.dev 在国内被墙，登录暂不开放跳转；
+// 数据全部存浏览器本地，不影响使用。以后国内可访问时把 ENABLE_LOGIN 改回 true。
+export const WORKER_URL = 'https://xiongzhi-auth.3163599272.workers.dev';
+const ENABLE_LOGIN = false;
 
 const TOKEN_KEY = 'xiongzhi-will:auth-token';
 const USER_KEY = 'xiongzhi-will:auth-user';
@@ -50,6 +53,16 @@ export function clearSession() {
 
 /** 发起 GitHub 登录：跳转 Worker /login，完成后 Worker 回跳站点并带 token */
 export function loginWithGithub() {
+  if (!ENABLE_LOGIN) {
+    // 国内访问 workers.dev 不稳定，先不跳转死链，给用户明确提示
+    import('sonner').then(({ toast }) => {
+      toast.info('账号云同步即将上线', {
+        description: '当前所有训练记录、身体数据都保存在你自己的浏览器本地，不登录也能正常使用全部功能。云同步等国内可访问的后端部署好后再开放。',
+        duration: 6000,
+      });
+    });
+    return;
+  }
   window.location.href = `${WORKER_URL}/login`;
 }
 

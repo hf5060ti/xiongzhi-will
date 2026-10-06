@@ -1,0 +1,7 @@
+name = "xiongzhi-auth"
+main = "cloudflare-worker/auth-worker.js"
+compatibility_date = "2024-09-23"
+
+[[kv_namespaces]]
+binding = "USER_DATA"
+id = "7065eb309bc4496ebbb904fe8e9410dd"
