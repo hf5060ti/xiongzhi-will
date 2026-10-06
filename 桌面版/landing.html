@@ -24,7 +24,6 @@
   body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:var(--gold);text-decoration:none}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-  /* 顶栏 */
   header{position:sticky;top:0;z-index:50;background:rgba(20,20,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.12em;color:var(--gold);font-size:15px}
@@ -32,7 +31,6 @@
   .nav-links{display:flex;gap:22px;font-size:13px;color:var(--muted)}
   .nav-links a:hover{color:var(--gold)}
   @media(max-width:640px){.nav-links{display:none}}
-  /* Hero */
   .hero{padding:88px 0 64px;text-align:center;position:relative;overflow:hidden}
   .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 50% -40px, rgba(247,231,206,.07), transparent 70%)}
   .hero .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 16px;font-size:12px;color:var(--gold-dim);letter-spacing:.22em;margin-bottom:22px}
@@ -48,12 +46,10 @@
   .btn-gold:hover{background:#fff;transform:translateY(-1px)}
   .btn-ghost{border:1px solid var(--line);color:var(--text)}
   .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
-  /* 章节 */
   section{padding:56px 0}
   .sec-head{margin-bottom:32px}
   .sec-head .k{font-size:12px;letter-spacing:.3em;color:var(--gold-dim);margin-bottom:8px}
   .sec-head h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;letter-spacing:.02em}
-  /* 特性网格 */
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:.2s}
   .card:hover{border-color:rgba(247,231,206,.4);transform:translateY(-2px)}
@@ -61,17 +57,14 @@
   .card h3{font-size:16px;font-weight:700;margin-bottom:8px}
   .card p{font-size:13px;color:var(--muted)}
   .card .num{font-size:11px;color:var(--gold);letter-spacing:.12em;margin-top:12px;display:block}
-  /* 截图 */
   .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
   .shot{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
   .shot img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:top;background:#000}
   .shot .cap{padding:12px 16px;font-size:12px;color:var(--muted)}
-  /* 理念 */
   .philo{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:34px;max-width:760px;margin:0 auto;text-align:center}
   .philo h3{color:var(--gold);letter-spacing:.2em;font-size:13px;margin-bottom:16px}
   .philo p{font-size:15px;color:var(--text)}
   .philo p+p{margin-top:10px;color:var(--muted);font-size:13px}
-  /* footer */
   footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--muted);font-size:12px;text-align:center}
   footer .links{display:flex;gap:22px;justify-content:center;margin-bottom:14px;font-size:13px}
   .disc{max-width:720px;margin:0 auto;line-height:1.7;opacity:.75}
@@ -128,12 +121,12 @@
     <h2>实机截图</h2>
   </div>
   <div class="shots">
-    <div class="shot"><img src="docs/screenshots/show-home.png" alt="首页"><div class="cap">首页 · 目标设定</div></div>
-    <div class="shot"><img src="docs/screenshots/show-plan.png" alt="训练计划"><div class="cap">训练计划 · 经典计划模板</div></div>
-    <div class="shot"><img src="docs/screenshots/show-library.png" alt="动作百科"><div class="cap">动作百科 · 分类筛选</div></div>
-    <div class="shot"><img src="docs/screenshots/show-nutrition.png" alt="营养库"><div class="cap">营养库 · 补剂库</div></div>
-    <div class="shot"><img src="docs/screenshots/show-isometric.png" alt="等长训练"><div class="cap">等长训练 · 术后恢复方案</div></div>
-    <div class="shot"><img src="docs/screenshots/library-armwrest.png" alt="斗腕分类"><div class="cap">动作百科 · 斗腕分类</div></div>
+    <div class="shot"><img src="screenshots/show-home.png" alt="首页"><div class="cap">首页 · 目标设定</div></div>
+    <div class="shot"><img src="screenshots/show-plan.png" alt="训练计划"><div class="cap">训练计划 · 经典计划模板</div></div>
+    <div class="shot"><img src="screenshots/show-library.png" alt="动作百科"><div class="cap">动作百科 · 分类筛选</div></div>
+    <div class="shot"><img src="screenshots/show-nutrition.png" alt="营养库"><div class="cap">营养库 · 补剂库</div></div>
+    <div class="shot"><img src="screenshots/show-isometric.png" alt="等长训练"><div class="cap">等长训练 · 术后恢复方案</div></div>
+    <div class="shot"><img src="screenshots/library-armwrest.png" alt="斗腕分类"><div class="cap">动作百科 · 斗腕分类</div></div>
   </div>
 </section>
 
