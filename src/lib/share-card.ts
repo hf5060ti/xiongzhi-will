@@ -152,12 +152,13 @@ const M = 76; // 页面边距
 
 const BG_TOP = '#171d18';
 const BG_BOTTOM = '#0a0d0b';
-const GOLD = '#f2c200';
-const GOLD_DIM = 'rgba(242,194,0,0.35)';
+const GOLD = '#c2a24e'; // 暗金：沉稳有质感，贴合黑金气质
+const GOLD_BRIGHT = '#dcbf6b'; // 暗金中的提亮色（大数字用，与暗金同系）
+const GOLD_DIM = 'rgba(194,162,78,0.30)';
 const WHITE = '#f4f4ee';
 const MUTED = '#9aa69c';
 const CARD_BG = 'rgba(255,255,255,0.045)';
-const CARD_BORDER = 'rgba(242,194,0,0.22)';
+const CARD_BORDER = 'rgba(194,162,78,0.26)';
 
 function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
   ctx.beginPath();
@@ -208,8 +209,8 @@ export function renderShareCard(data: ShareCardData): string {
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, CARD_W, CARD_H);
   const glow = ctx.createRadialGradient(CARD_W - 200, 260, 40, CARD_W - 200, 260, 560);
-  glow.addColorStop(0, 'rgba(242,194,0,0.10)');
-  glow.addColorStop(1, 'rgba(242,194,0,0)');
+  glow.addColorStop(0, 'rgba(194,162,78,0.10)');
+  glow.addColorStop(1, 'rgba(194,162,78,0)');
   ctx.fillStyle = glow;
   ctx.fillRect(0, 0, CARD_W, CARD_H);
 
@@ -237,7 +238,7 @@ export function renderShareCard(data: ShareCardData): string {
   // ---- 主体 1：当前体重 ----
   centerText(ctx, '当 前 体 重', cx, 372, 24, MUTED);
   const wStr = data.weightKg > 0 ? String(Math.round(data.weightKg * 10) / 10) : '--';
-  centerNum(ctx, wStr, cx, 540, 170, GOLD);
+  centerNum(ctx, wStr, cx, 540, 170, GOLD_BRIGHT);
   const wUnit = ctx.measureText(wStr).width;
   text(ctx, 'kg', cx + wUnit / 2 + 22, 470, 44, MUTED);
 
@@ -278,7 +279,7 @@ export function renderShareCard(data: ShareCardData): string {
     ctx.stroke();
     centerText(ctx, lift.label, x + lw / 2, ly + 52, 26, MUTED);
     const v = lift.bestKg > 0 ? String(Math.round(lift.bestKg)) : '--';
-    centerNum(ctx, v, x + lw / 2, ly + 160, 78, GOLD);
+    centerNum(ctx, v, x + lw / 2, ly + 160, 78, GOLD_BRIGHT);
     const unitW = ctx.measureText(v).width;
     text(ctx, 'kg', x + lw / 2 + unitW / 2 + 16, ly + 135, 30, MUTED);
   });
