@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雄性意志 Xiongzhi Will · 给自然训练者的健身系统</title>
+<meta name="description" content="免费开源的健身训练 + 营养 + 动作百科系统：2428 个动作、斗腕专项、等长训练、补剂库，无广告无需登录。">
+<meta property="og:title" content="雄性意志 · 给自然训练者的健身系统">
+<meta property="og:description" content="2428 动作 / 斗腕专项 / 等长训练 / 补剂库——免费开源，打开即用">
+<style>
+  :root{
+    --bg:#141414;
+    --bg2:#1C1C1C;
+    --card:#222222;
+    --gold:#F7E7CE;
+    --gold-dim:#c9b28a;
+    --text:#EDE6D8;
+    --muted:#9a9182;
+    --line:rgba(247,231,206,.14);
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--gold);text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  header{position:sticky;top:0;z-index:50;background:rgba(20,20,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.12em;color:var(--gold);font-size:15px}
+  .brand b{font-weight:800}
+  .nav-links{display:flex;gap:22px;font-size:13px;color:var(--muted)}
+  .nav-links a:hover{color:var(--gold)}
+  @media(max-width:640px){.nav-links{display:none}}
+  .hero{padding:88px 0 64px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 50% -40px, rgba(247,231,206,.07), transparent 70%)}
+  .hero .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 16px;font-size:12px;color:var(--gold-dim);letter-spacing:.22em;margin-bottom:22px}
+  .hero h1{font-size:clamp(34px,6vw,54px);font-weight:900;letter-spacing:.04em;line-height:1.15}
+  .hero h1 span{color:var(--gold)}
+  .hero .sub{margin:20px auto 0;max-width:640px;color:var(--muted);font-size:15px}
+  .hero .stats{display:flex;justify-content:center;gap:clamp(20px,6vw,56px);margin-top:40px;flex-wrap:wrap}
+  .stat b{display:block;font-size:clamp(26px,4vw,38px);font-weight:900;color:var(--gold)}
+  .stat span{font-size:12px;color:var(--muted);letter-spacing:.1em}
+  .cta{display:flex;gap:14px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 34px;border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.06em;transition:.2s}
+  .btn-gold{background:var(--gold);color:#1a1a1a}
+  .btn-gold:hover{background:#fff;transform:translateY(-1px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  section{padding:56px 0}
+  .sec-head{margin-bottom:32px}
+  .sec-head .k{font-size:12px;letter-spacing:.3em;color:var(--gold-dim);margin-bottom:8px}
+  .sec-head h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;letter-spacing:.02em}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:.2s}
+  .card:hover{border-color:rgba(247,231,206,.4);transform:translateY(-2px)}
+  .card .ic{width:40px;height:40px;border-radius:10px;background:rgba(247,231,206,.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:14px}
+  .card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+  .card p{font-size:13px;color:var(--muted)}
+  .card .num{font-size:11px;color:var(--gold);letter-spacing:.12em;margin-top:12px;display:block}
+  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .shot{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .shot img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:top;background:#000}
+  .shot .cap{padding:12px 16px;font-size:12px;color:var(--muted)}
+  .philo{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:34px;max-width:760px;margin:0 auto;text-align:center}
+  .philo h3{color:var(--gold);letter-spacing:.2em;font-size:13px;margin-bottom:16px}
+  .philo p{font-size:15px;color:var(--text)}
+  .philo p+p{margin-top:10px;color:var(--muted);font-size:13px}
+  footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--muted);font-size:12px;text-align:center}
+  footer .links{display:flex;gap:22px;justify-content:center;margin-bottom:14px;font-size:13px}
+  .disc{max-width:720px;margin:0 auto;line-height:1.7;opacity:.75}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">雄性意志 <b>XIONGZHI WILL</b></div>
+    <div class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#screens">实机截图</a>
+      <a href="#philosophy">训练哲学</a>
+      <a href="https://github.com/hf5060ti/xiongzhi-will" target="_blank" rel="noopener">GitHub 源码</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero wrap">
+  <span class="tag">免费 · 开源 · 无广告 · 无需登录</span>
+  <h1>给自然训练者的<br><span>健身 · 营养 · 动作百科</span></h1>
+  <p class="sub">没有会员墙、没有卖课、没有数据云端绑架。打开浏览器就能用，你的数据只存在你自己的设备里。</p>
+  <div class="stats">
+    <div class="stat"><b>2428</b><span>动作百科</span></div>
+    <div class="stat"><b>84</b><span>斗腕专项</span></div>
+    <div class="stat"><b>42</b><span>等长训练</span></div>
+    <div class="stat"><b>24</b><span>健身补剂</span></div>
+  </div>
+  <div class="cta">
+    <a class="btn btn-gold" href="./">开始使用 →</a>
+    <a class="btn btn-ghost" href="https://github.com/hf5060ti/xiongzhi-will" target="_blank" rel="noopener">查看开源代码</a>
+  </div>
+</div>
+
+<section id="features" class="wrap">
+  <div class="sec-head">
+    <div class="k">CORE FEATURES</div>
+    <h2>一套系统，覆盖训练与营养</h2>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="ic">🏋️</div><h3>动作百科</h3><p>2428 个动作，中英文搜索 + 8 大分类筛选，演示动图 / 视频直达，外站失败自动回退。</p><span class="num">2428 ACTIONS</span></div>
+    <div class="card"><div class="ic">🤝</div><h3>斗腕专项体系</h3><p>Rise 挺腕、Cup 杯握、Top Roll 翻腕、Hook 钩手、Back Pressure 后压力——全网最完整的桌面力量中文动作库。</p><span class="num">84 ARMWRESTLING</span></div>
+    <div class="card"><div class="ic">🧘</div><h3>等长训练 + 术后恢复</h3><p>42 个等长动作按部位分组；眼科术后四阶段方案：不憋气、不低头、强度递进，搭配散步保肌。</p><span class="num">42 ISOMETRIC</span></div>
+    <div class="card"><div class="ic">💊</div><h3>健身补剂库</h3><p>肌酸、咖啡因、钙（液体 / 固体）、镁、锌、甜菜根粉、CoQ10 等 24 种，独立分类不混热量，含剂量 / 时机 / 优缺点 / 循证。</p><span class="num">24 SUPPLEMENTS</span></div>
+    <div class="card"><div class="ic">📋</div><h3>经典计划模板</h3><p>新手全身、推拉腿 PPL、五分化、力量举 5×5、斗腕专项、徒手等长——8 套可直接执行的计划，动作直达百科。</p><span class="num">8 PLANS</span></div>
+    <div class="card"><div class="ic">🥗</div><h3>营养库 + 饮食记录</h3><p>200+ 食物营养表（含嘌呤提醒）、拍照估算热量、按餐次自动统计、一日三餐精确到克。</p><span class="num">200+ FOODS</span></div>
+  </div>
+</section>
+
+<section id="screens" class="wrap">
+  <div class="sec-head">
+    <div class="k">SCREENSHOTS</div>
+    <h2>实机截图</h2>
+  </div>
+  <div class="shots">
+    <div class="shot"><img src="screenshots/show-home.png" alt="首页"><div class="cap">首页 · 目标设定</div></div>
+    <div class="shot"><img src="screenshots/show-plan.png" alt="训练计划"><div class="cap">训练计划 · 经典计划模板</div></div>
+    <div class="shot"><img src="screenshots/show-library.png" alt="动作百科"><div class="cap">动作百科 · 分类筛选</div></div>
+    <div class="shot"><img src="screenshots/show-nutrition.png" alt="营养库"><div class="cap">营养库 · 补剂库</div></div>
+    <div class="shot"><img src="screenshots/show-isometric.png" alt="等长训练"><div class="cap">等长训练 · 术后恢复方案</div></div>
+    <div class="shot"><img src="screenshots/library-armwrest.png" alt="斗腕分类"><div class="cap">动作百科 · 斗腕分类</div></div>
+  </div>
+</section>
+
+<section id="philosophy" class="wrap">
+  <div class="philo">
+    <h3>训练哲学</h3>
+    <p>只服务自然训练者：练得对 + 睡得够 + 吃得稳。</p>
+    <p>复合动作组间休息 3–5 分钟、单次力量训练 70 分钟封顶、睡眠是训练的一部分——</p>
+    <p>健身是生活的调味剂，不是被健身绑架。</p>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="links">
+    <a href="./">开始使用</a>
+    <a href="https://github.com/hf5060ti/xiongzhi-will" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/hf5060ti/xiongzhi-will/blob/main/LICENSE" target="_blank" rel="noopener">Apache-2.0 License</a>
+  </div>
+  <div class="disc">
+    雄性意志（Xiongzhi Will）· 开源健身项目，提供一般训练规划与营养参考，不构成医疗诊断或康复建议；术后运动请遵医嘱。版权所有 hf5060ti（2026）。
+  </div>
+</footer>
+
+</body>
+</html>
