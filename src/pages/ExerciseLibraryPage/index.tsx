@@ -535,7 +535,7 @@ export default function ExerciseLibraryPage() {
                         {(() => {
                           const cue = findGuidance(getCnName(selected) || '', selected.name)?.cues?.[0];
                           return cue ? (
-                            <div className="absolute inset-x-2 bottom-2 rounded-md bg-black/65 px-2 py-1.5 text-center text-[11px] font-semibold leading-snug text-[#FACC15]">
+                            <div className="absolute inset-x-2 bottom-2 rounded-md bg-black/65 px-2 py-1.5 text-center text-[11px] font-semibold leading-snug text-[#F7E7CE]">
                               {cue}
                             </div>
                           ) : null;

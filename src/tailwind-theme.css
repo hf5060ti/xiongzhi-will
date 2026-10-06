@@ -9,27 +9,27 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  /* 玻璃拟态（glassmorphism）统一参数：半透明灰黑玻璃 + 顶部高光描边 + 深阴影 */
+  /* 玻璃拟态（glassmorphism）统一参数：墨黑玻璃 + 顶部高光描边 + 深阴影 */
   --glass-blur: 40px;
-  --glass-bg: linear-gradient(135deg, rgba(38,42,39,0.25) 0%, rgba(22,25,23,0.15) 100%);
+  --glass-bg: linear-gradient(135deg, rgba(44,44,44,0.25) 0%, rgba(26,26,26,0.16) 100%);
   --glass-shadow: 0 32px 80px -32px rgba(0,0,0,0.9), 0 12px 32px -16px rgba(0,0,0,0.6), inset 0 1px 0 0 rgba(255,255,255,0.18);
   --glass-highlight: inset 0 1px 0 0 rgba(255,255,255,0.20), inset 0 -1px 0 0 rgba(255,255,255,0.06);
 
-  --background: hsl(150 8% 6%);
-  --foreground: hsl(140 20% 96%);
-  --card: rgba(24,27,25,0.25);
-  --card-foreground: hsl(140 20% 96%);
-  --card-border: rgba(255,255,255,0.18);
-  --popover: rgba(15,17,16,0.92);
-  --popover-foreground: hsl(140 20% 96%);
-  --primary: hsl(48 96% 53%);
-  --primary-foreground: hsl(48 60% 8%);
+  --background: #1C1C1C;          /* 墨黑 */
+  --foreground: hsl(45 12% 96%);  /* 暖白 */
+  --card: rgba(42,42,42,0.28);
+  --card-foreground: hsl(45 12% 96%);
+  --card-border: rgba(247,231,206,0.15);
+  --popover: rgba(20,20,20,0.94);
+  --popover-foreground: hsl(45 12% 96%);
+  --primary: #F7E7CE;             /* 香槟金 */
+  --primary-foreground: #1C1C1C;
   --secondary: rgba(255,255,255,0.06);
-  --secondary-foreground: hsl(140 12% 88%);
+  --secondary-foreground: hsl(45 10% 88%);
   --muted: rgba(255,255,255,0.05);
-  --muted-foreground: hsl(220 9% 65%);
-  --accent: rgba(250,204,21,0.14);
-  --accent-foreground: hsl(48 96% 60%);
+  --muted-foreground: hsl(40 10% 62%);
+  --accent: rgba(247,231,206,0.10);
+  --accent-foreground: #F7E7CE;
   --info: hsl(210 70% 60%);
   --info-foreground: hsl(0 0% 98%);
   --destructive: hsl(0 75% 50%);
@@ -38,25 +38,25 @@
   --success-foreground: hsl(140 40% 98%);
   --warning: hsl(16 100% 56%);
   --warning-foreground: hsl(16 100% 96%);
-  --border: rgba(255,255,255,0.10);
-  --input: rgba(255,255,255,0.12);
-  --ring: hsl(48 96% 53%);
-  --chart-1: #FACC15;
+  --border: rgba(247,231,206,0.14);
+  --input: rgba(247,231,206,0.14);
+  --ring: #F7E7CE;
+  --chart-1: #F7E7CE;
   --chart-2: #FF5A1F;
   --chart-3: #22C55E;
   --chart-4: #60A5FA;
   --chart-5: #C084FC;
-  --sidebar: rgba(15,17,16,0.8);
-  --sidebar-foreground: hsl(140 20% 95%);
-  --sidebar-primary: hsl(48 96% 53%);
-  --sidebar-primary-foreground: hsl(48 60% 8%);
-  --sidebar-accent: hsl(150 10% 14%);
-  --sidebar-accent-foreground: hsl(48 96% 60%);
-  --sidebar-border: rgba(255,255,255,0.08);
-  --sidebar-ring: hsl(48 96% 53%);
+  --sidebar: rgba(22,22,22,0.86);
+  --sidebar-foreground: hsl(45 12% 95%);
+  --sidebar-primary: #F7E7CE;
+  --sidebar-primary-foreground: #1C1C1C;
+  --sidebar-accent: hsl(0 0% 16%);
+  --sidebar-accent-foreground: #F7E7CE;
+  --sidebar-border: rgba(247,231,206,0.10);
+  --sidebar-ring: #F7E7CE;
 
   /* Computed borders using hsl relative color syntax */
-  --primary-border: hsl(from hsl(48 96% 53%) h s calc(l + var(--opaque-button-border-intensity)));
+  --primary-border: hsl(from hsl(38 73% 89%) h s calc(l + var(--opaque-button-border-intensity)));
   --secondary-border: hsl(from hsl(220 10% 13%) h s calc(l + var(--opaque-button-border-intensity)));
   --destructive-border: hsl(from hsl(0 75% 50%) h s calc(l + var(--opaque-button-border-intensity)));
   --accent-border: hsl(from hsl(220 10% 14%) h s calc(l + var(--opaque-button-border-intensity)));

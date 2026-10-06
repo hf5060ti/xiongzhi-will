@@ -26,6 +26,7 @@ const SkillsPage = lazy(() => import('@/pages/SkillsPage'));
 const WildPage = lazy(() => import('@/pages/WildPage'));
 const LifeGuidePage = lazy(() => import('@/pages/LifeGuidePage'));
 const StomachPage = lazy(() => import('@/pages/StomachPage'));
+const IsometricPage = lazy(() => import('@/pages/IsometricPage'));
 const DietKnowledgePage = lazy(() => import('@/pages/DietKnowledgePage'));
 const LightPage = lazy(() => import('@/pages/LightPage'));
 const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'));
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="life" element={<LifeGuidePage />} />
           <Route path="life/:id" element={<LifeGuidePage />} />
           <Route path="stomach" element={<StomachPage />} />
+          <Route path="isometric" element={<IsometricPage />} />
           <Route path="diet-knowledge" element={<DietKnowledgePage />} />
           <Route path="training-logs" element={<TrainingLogPage />} />
           <Route path="tools" element={<ToolsPage />} />

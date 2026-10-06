@@ -1044,7 +1044,7 @@ function AIChatPanel() {
                               <svg viewBox="0 0 24 24" className="h-5 w-5 translate-x-0.5 fill-white"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                           </div>
-                          <div className="absolute bottom-0 left-0 right-0 bg-[#FACC15] px-1.5 py-1 text-[10px] font-medium leading-tight text-black">
+                          <div className="absolute bottom-0 left-0 right-0 bg-[#F7E7CE] px-1.5 py-1 text-[10px] font-medium leading-tight text-black">
                             {cue}
                           </div>
                         </div>
@@ -1132,7 +1132,7 @@ function AIChatPanel() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
           <div className="w-full max-w-md rounded-lg border border-border bg-[#1A1D1B] p-5 shadow-2xl">
             <div className="mb-2 flex items-center gap-2">
-              <ShieldQuestion className="h-5 w-5 text-[#FACC15]" />
+              <ShieldQuestion className="h-5 w-5 text-[#F7E7CE]" />
               <h3 className="text-base font-semibold text-foreground">动作照片上传权限</h3>
             </div>
             <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
@@ -1144,7 +1144,7 @@ function AIChatPanel() {
               <button
                 type="button"
                 onClick={() => confirmPerm('allow')}
-                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#FACC15]"
+                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#F7E7CE]"
               >
                 <div className="font-medium">完全访问</div>
                 <div className="mt-0.5 text-xs text-muted-foreground">以后直接上传，不再询问（推荐）</div>
@@ -1152,7 +1152,7 @@ function AIChatPanel() {
               <button
                 type="button"
                 onClick={() => confirmPerm('ask')}
-                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#FACC15]"
+                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#F7E7CE]"
               >
                 <div className="font-medium">每次使用都询问</div>
                 <div className="mt-0.5 text-xs text-muted-foreground">每次上传前都会弹确认，可随时取消</div>

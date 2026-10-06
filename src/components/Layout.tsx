@@ -2,7 +2,7 @@
 // See LICENSE / NOTICE for details.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair, LogIn, LogOut } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair, LogIn, LogOut, Hand } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
@@ -17,6 +17,7 @@ const NAV_ITEMS = [
   { path: '/tools', label: '工具', icon: Crosshair, end: false },
   { path: '/light', label: '轻盈', icon: TrendingDown, end: false },
   { path: '/stomach', label: '胃部', icon: Soup, end: false },
+  { path: '/isometric', label: '等长', icon: Hand, end: false },
   { path: '/diet-knowledge', label: '饮食', icon: BookOpen, end: false },
   { path: '/mind', label: '心智', icon: Brain, end: false },
   { path: '/career', label: '事业', icon: Briefcase, end: false },
@@ -48,6 +49,7 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/wild': { title: '荒野 - 雄性意志', desc: '生存工具（打火石、生存斧、刀具与钢材特性）、户外技能。' },
   '/life': { title: '人生 - 雄性意志', desc: '《高性价比人生指南》33 章全收录（MIT 开源）：每一条都回答花掉什么、换回什么，标注成本、说人话、收益、证据等级与来源。' },
   '/stomach': { title: '胃部 - 雄性意志', desc: '饮食与消化：蛋白质摄入量、嘌呤、吸收率、空腹训练建议。' },
+  '/isometric': { title: '等长训练 - 雄性意志', desc: '等长式训练：术后恢复期、环境受限时的低压力保肌方案——动作库、眼部手术后分阶段恢复指南，搭配散步温和促进循环。' },
   '/diet-knowledge': { title: '饮食讲解 - 雄性意志', desc: '公开健身博主讲解整理：每条注明证据等级与来源链接，非医疗建议。' },
   '/training-logs': { title: '训练日志 - 雄性意志', desc: '近 7 天训练频次、周容量、力量与耐力追踪。' },
   '/tools': { title: '力量计算器 - 雄性意志', desc: '1RM 估算（Epley/Brzycki/Lombardi 三公式对照）、按目标反推做组重量、RPE 主观强度标尺。' },

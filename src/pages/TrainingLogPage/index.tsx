@@ -1731,7 +1731,7 @@ function WorkoutRunner({
                   onChange={(e) => setWeight(e.target.value)}
                   inputMode="decimal"
                   placeholder="自重留空"
-                  className="mt-1 h-14 w-full rounded-xl border border-border bg-black/30 text-center font-display text-2xl font-bold text-foreground outline-none focus:border-[#FACC15]"
+                  className="mt-1 h-14 w-full rounded-xl border border-border bg-black/30 text-center font-display text-2xl font-bold text-foreground outline-none focus:border-[#F7E7CE]"
                 />
               </div>
               <div>
@@ -1741,13 +1741,13 @@ function WorkoutRunner({
                   onChange={(e) => setReps(e.target.value)}
                   inputMode="numeric"
                   placeholder="如 8"
-                  className="mt-1 h-14 w-full rounded-xl border border-border bg-black/30 text-center font-display text-2xl font-bold text-foreground outline-none focus:border-[#FACC15]"
+                  className="mt-1 h-14 w-full rounded-xl border border-border bg-black/30 text-center font-display text-2xl font-bold text-foreground outline-none focus:border-[#F7E7CE]"
                 />
               </div>
             </div>
             <button
               onClick={completeSet}
-              className="mt-6 h-14 w-full rounded-xl bg-[#FACC15] font-display text-lg font-bold text-black transition-transform active:scale-[0.98]"
+              className="mt-6 h-14 w-full rounded-xl bg-[#F7E7CE] font-display text-lg font-bold text-black transition-transform active:scale-[0.98]"
             >
               完成本组
             </button>

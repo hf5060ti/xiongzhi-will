@@ -1,0 +1,316 @@
+// 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
+// See LICENSE / NOTICE for details.
+/**
+ * 等长训练（Isometric Training）
+ * - 原理：肌肉持续收缩但关节不产生位移，张力恒定、压力可控
+ * - 价值：低压力保肌 / 无器械 / 环境受限可用 / 术后恢复期维持手段
+ * - 重点场景：眼部手术后不能加压时，搭配散步温和促进血液循环、保留肌肉
+ * - 本页所有内容均为健身参考，术后运动务必先遵医嘱
+ */
+import { Activity, AlertTriangle, Apple, Armchair, Bed, Clock, Dumbbell, Footprints, Hand, HeartPulse, Info, Leaf, Moon, Shield, ShieldCheck, Sparkles, Stethoscope, Tag, Timer, TrendingUp, Wind, Zap } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
+
+interface IsoExercise {
+  name: string;
+  target: string;
+  how: string;
+  dose: string;
+  note: string;
+  icon: typeof Hand;
+}
+
+/** 等长动作库：每个动作只要求「持续张力 + 正常呼吸」，全程不憋气 */
+const EXERCISES: IsoExercise[] = [
+  {
+    name: '靠墙静蹲',
+    target: '大腿前侧 / 臀部',
+    how: '背靠墙，双脚与肩同宽、离墙约半步，屈膝下蹲至 90° 左右，后背贴墙保持不动。',
+    dose: '30–60 秒 × 3 组，组间休息 30 秒',
+    note: '膝盖不超过脚尖；感觉发抖即稍抬高角度。',
+    icon: Armchair,
+  },
+  {
+    name: '平板支撑',
+    target: '核心 / 肩袖',
+    how: '肘撑地，肘在肩正下方，身体从头到脚跟成一条直线，腹部收紧持续发力。',
+    dose: '20–45 秒 × 3 组，组间休息 45 秒',
+    note: '腰塌或臀抬就结束该组，保持正常呼吸不憋气。',
+    icon: Timer,
+  },
+  {
+    name: '侧平板支撑',
+    target: '腹斜肌 / 肩',
+    how: '侧卧，前臂撑地，髋部抬起，身体成直线，另一只手叉腰或向上指。',
+    dose: '每侧 15–30 秒 × 2–3 组',
+    note: '髋部下沉即结束；平衡困难时可双膝着地降低难度。',
+    icon: Activity,
+  },
+  {
+    name: '静态臀桥',
+    target: '臀部 / 腘绳肌',
+    how: '仰卧屈膝，脚掌踩地，臀部收紧抬起至肩-髋-膝成直线，保持不动。',
+    dose: '30–60 秒 × 3 组',
+    note: '全程呼气，不要用腰代偿；这是术后最安全的腿部训练之一。',
+    icon: Zap,
+  },
+  {
+    name: '等长推墙',
+    target: '胸 / 肩 / 三头',
+    how: '面对墙站立，双手推墙与胸同高，持续发力压墙，身体不移动。',
+    dose: '20–40 秒 × 3 组，力量用 60–70%',
+    note: '发力时呼气，避免屏息加压；手部术后改为轻压不发力。',
+    icon: Hand,
+  },
+  {
+    name: '静态悬垂',
+    target: '背 / 握力 / 肩胛',
+    how: '双手抓单杠（或门框稳妥横杆），自然悬垂，肩胛微收，不引体、只挂住。',
+    dose: '20–40 秒 × 2–3 组',
+    note: '双脚离地即可；握不住就踩凳半挂。眼部术后第 1 周建议跳过。',
+    icon: Dumbbell,
+  },
+  {
+    name: '等长弯举（毛巾对抗）',
+    target: '肱二头肌 / 前臂',
+    how: '单手抓毛巾一端，另一端踩在脚下或卡在门缝，屈肘持续对抗毛巾。',
+    dose: '20–30 秒 × 3 组，中等用力',
+    note: '对抗强度以「能做但吃力」为准，不追求极限。',
+    icon: Hand,
+  },
+  {
+    name: '马步站桩',
+    target: '全身 / 大腿 / 核心',
+    how: '双脚宽于肩，屈膝沉髋如骑马，上身正直，双手抱拳于腰间，静态保持。',
+    dose: '45–90 秒 × 2–3 组',
+    note: '传统功法；注意膝盖方向与脚尖一致，不内扣。',
+    icon: Activity,
+  },
+  {
+    name: '等长划船（毛巾拉背）',
+    target: '背 / 肩胛',
+    how: '坐姿，毛巾绕过脚底，双手握两端屈肘后拉，肩胛夹紧持续对抗。',
+    dose: '20–30 秒 × 3 组',
+    note: '肩胛骨向内收是重点，不是单纯手臂发力。',
+    icon: Wind,
+  },
+];
+
+/** 眼部手术后恢复阶段：原则是「全程不憋气、头部不高位、强度递进」 */
+const STAGES = [
+  {
+    phase: '阶段一 · 术后 0–3 天',
+    tag: '严格避压',
+    color: 'text-warning border-warning/30 bg-warning/5',
+    items: [
+      '以卧床休养为主，禁止任何上强度训练；避免低头、弯腰搬物、揉眼。',
+      '可做踝泵（勾脚背 10 秒 × 10 次，促进下肢循环）、深呼吸练习。',
+      '手指等长（五指张开对抗合拢）等极轻量动作，意义是「维持神经激活」。',
+      '散步暂缓或仅在室内慢走 5–10 分钟，戴好护目镜防风吹。',
+    ],
+  },
+  {
+    phase: '阶段二 · 术后 1–2 周',
+    tag: '温和启动',
+    color: 'text-primary border-primary/25 bg-primary/5',
+    items: [
+      '开始坐姿 / 卧姿等长入门：静态臀桥、平板支撑短组、等长推墙轻压。',
+      '每组时长砍半（如平板 15–20 秒起步），强度以「轻松完成」为准。',
+      '搭配散步 15–20 分钟 / 天：温和匀速，心率控制在能轻松说话的强度。',
+      '绝对禁止：憋气发力、倒立 / 头低于心脏动作、剧烈晃动、出汗进眼。',
+    ],
+  },
+  {
+    phase: '阶段三 · 术后 2–4 周',
+    tag: '常规循环',
+    color: 'text-success border-success/30 bg-success/5',
+    items: [
+      '可完成完整等长循环：靠墙静蹲 / 平板 / 侧平板 / 静态臀桥 / 等长推墙，每项 2–3 组。',
+      '散步加量至 25–35 分钟 / 天，可分早晚两次；天气好可户外。',
+      '全程呼气发力，组间充分休息；出现头晕、眼胀、异物感立即停止。',
+      '护目镜 / 墨镜外出常戴，避免阳光直射与灰尘。',
+    ],
+  },
+  {
+    phase: '阶段四 · 术后 4 周+',
+    tag: '遵医嘱进阶',
+    color: 'text-info border-info/30 bg-info/5',
+    items: [
+      '复查确认后，方可逐步恢复常规抗阻训练；从 50–60% 重量开始。',
+      '前 4 周仍避免：剧烈跑跳、倒立、大重量憋气动作、对抗类运动。',
+      '等长训练可继续作为「热身激活」与「恢复日」保留项目。',
+      '任何阶段：医生说的优先级高于本页一切建议。',
+    ],
+  },
+];
+
+export default function IsometricPage() {
+  return (
+    <div className="mx-auto w-full max-w-5xl space-y-8 px-3 pb-12 pt-4 sm:px-4 sm:pt-6">
+      {/* 页头 */}
+      <div className="space-y-2">
+        <div className="flex items-center gap-2 text-xs font-medium text-primary">
+          <Hand className="h-4 w-4" />
+          等长训练 · Isometric Training
+        </div>
+        <h1 className="font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          低压力保肌：等长式训练
+        </h1>
+        <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
+          肌肉持续收缩、关节不产生位移——等长训练不依赖器械、不冲击关节，热量消耗低，但能维持神经募集与肌肉量。
+          尤其适合术后恢复期、环境条件有限、或暂时不能承受大压力的人；搭配散步，用温和的方式促进血液循环、保住训练成果。
+        </p>
+      </div>
+
+      {/* 为什么练等长 */}
+      <div className="grid gap-3 sm:grid-cols-3">
+        {[
+          { icon: ShieldCheck, t: '低压力', d: '关节零冲击、无离心冲击，眼压 / 血压负荷可控，只要不憋气就非常安全。' },
+          { icon: Sparkles, t: '保肌有效', d: '等长收缩同样产生高阈值运动单位募集，维持肌肉量与神经效率，热量低但价值不低。' },
+          { icon: Armchair, t: '随处可练', d: '一面墙、一条毛巾、一块地板就能完成全套，宿舍、病床、办公室都行。' },
+        ].map(({ icon: Icon, t, d }) => (
+          <Card key={t}>
+            <CardContent className="p-4">
+              <Icon className="mb-2 h-5 w-5 text-primary" />
+              <p className="text-sm font-semibold text-foreground">{t}</p>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{d}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* 动作库 */}
+      <div className="space-y-3">
+        <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <Dumbbell className="h-3.5 w-3.5 text-primary" />
+          等长动作库
+          <span className="font-normal text-muted-foreground/70">—— 全程正常呼吸，不憋气，是唯一的硬规矩</span>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {EXERCISES.map(({ name, target, how, dose, note, icon: Icon }) => (
+            <Card key={name} className="hover:border-primary/30">
+              <CardContent className="p-4">
+                <div className="mb-2 flex items-start justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <Icon className="h-4 w-4 text-primary" />
+                    <p className="text-sm font-semibold text-foreground">{name}</p>
+                  </div>
+                  <Badge variant="secondary" className="text-[10px]">{target}</Badge>
+                </div>
+                <p className="text-xs leading-relaxed text-muted-foreground">{how}</p>
+                <p className="mt-2 flex items-center gap-1 text-[11px] font-medium text-primary">
+                  <Timer className="h-3 w-3" />
+                  {dose}
+                </p>
+                <p className="mt-1 flex items-start gap-1 text-[11px] leading-relaxed text-muted-foreground">
+                  <Info className="mt-0.5 h-3 w-3 shrink-0" />
+                  {note}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* 眼部手术后恢复方案（核心场景） */}
+      <div className="space-y-3">
+        <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <HeartPulse className="h-3.5 w-3.5 text-primary" />
+          眼部手术后恢复方案
+          <span className="font-normal text-muted-foreground/70">—— 近视 / 眼科术后无法加压时的保肌路线</span>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {STAGES.map(({ phase, tag, color, items }) => (
+            <Card key={phase} className={color}>
+              <CardContent className="space-y-2 p-4">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
+                    <Tag className="h-4 w-4 text-primary" />
+                    {phase}
+                  </p>
+                  <Badge className="bg-primary/10 text-primary">{tag}</Badge>
+                </div>
+                <ul className="space-y-1.5">
+                  {items.map((it) => (
+                    <li key={it} className="flex items-start gap-1.5 text-xs leading-relaxed text-muted-foreground">
+                      <Shield className="mt-0.5 h-3 w-3 shrink-0 text-primary/70" />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* 搭配散步 */}
+      <Card>
+        <CardContent className="grid gap-4 p-4 sm:grid-cols-[auto_1fr] sm:items-center">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/25 bg-primary/5">
+            <Footprints className="h-5 w-5 text-primary" />
+          </div>
+          <div className="space-y-1">
+            <p className="text-sm font-semibold text-foreground">散步是等长的最佳搭档</p>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              散步本身热量不高，但它温和促进全身血液循环、帮助术后恢复与代谢维持。搭配原则：心率控制在「能轻松说话」的强度；
+              术后早期戴护目镜防风吹防异物；从 10–15 分钟起步，每周加 5 分钟；环境允许就户外，全程匀速不追求速度。
+              等长训练负责「肌肉」，散步负责「循环与心情」，两者互补。
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* 一周安排示例 */}
+      <Card>
+        <CardContent className="space-y-2 p-4">
+          <p className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
+            <TrendingUp className="h-4 w-4 text-primary" />
+            恢复期一周安排示例（阶段三可用）
+          </p>
+          <ul className="space-y-1.5">
+            {[
+              '周一 / 周三 / 周五：等长循环 15–20 分钟（静蹲 + 平板 + 侧平板 + 臀桥 + 推墙，每项 2–3 组）+ 散步 25 分钟',
+              '周二 / 周四：散步 30 分钟 + 睡前静态拉伸 10 分钟',
+              '周六：散步 40 分钟（可户外慢走）',
+              '周日：完全休息，只做深呼吸与踝泵',
+              '全程原则：组间不憋气、强度宁低勿高、不适即停。',
+            ].map((it) => (
+              <li key={it} className="flex items-start gap-1.5 text-xs leading-relaxed text-muted-foreground">
+                <Moon className="mt-0.5 h-3 w-3 shrink-0 text-primary/70" />
+                {it}
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      {/* 红线清单 */}
+      <div className="rounded-lg border border-destructive/25 bg-destructive/5 p-4">
+        <p className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
+          <AlertTriangle className="h-4 w-4 text-destructive" />
+          红线清单：以下情况立即停止
+        </p>
+        <ul className="mt-2 space-y-1.5">
+          {[
+            '任何形式的憋气发力（Valsalva）——会显著升高眼压，术后绝对禁止',
+            '头部低于心脏的动作（倒立、深度弯腰负重）',
+            '揉眼、剧烈晃动、碰撞、汗水进眼',
+            '出现眼胀、眼痛、视物模糊、头晕——停止并联系医生',
+            '未经医生复查确认，不进行跑跳、大重量、对抗类训练',
+          ].map((it) => (
+            <li key={it} className="flex items-start gap-1.5 text-xs leading-relaxed text-muted-foreground">
+              <Stethoscope className="mt-0.5 h-3 w-3 shrink-0 text-destructive/80" />
+              {it}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <p className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+        <Apple className="h-3 w-3" />
+        本站所有内容仅供健身参考，不构成医疗建议；术后运动方案请以主治医生意见为准。
+      </p>
+    </div>
+  );
+}
