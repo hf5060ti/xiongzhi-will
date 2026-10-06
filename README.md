@@ -99,7 +99,7 @@ npm run build        # 构建：产物在 dist/
 
 打开 **https://hf5060ti.github.io/xiongzhi-will/** 即可使用，无需登录。
 
-自部署：fork 本仓库，GitHub Actions 在 push 到 main 时自动构建并部署到 Pages；`docs/` 为构建产物，`404.html` 已配置 SPA 路由回退；也支持 Netlify / Vercel（已内置配置文件）。
+自部署：fork 本仓库，GitHub Actions 在 push 到 main 时自动构建并部署到 Pages（产物 dist/client，已配置 404.html SPA 路由回退）；`docs/screenshots/` 为 README 与对外主页展示截图；也支持 Netlify / Vercel（已内置配置文件）。
 
 ---
 
