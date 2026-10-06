@@ -8,37 +8,21 @@ export const SEAFOODS: IFood[] = [
   // ---- 鱼类 ----
   { id: 'salmon', name: '三文鱼（生）', cat: 'seafood', kcal: 208, protein: 20, fat: 13, carb: 0, fiber: 0, sodium: 59, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '钾'], note: '富含欧米伽3' },
   { id: 'tuna-canned', name: '金枪鱼（水浸罐头）', cat: 'seafood', kcal: 132, protein: 28, fat: 1, carb: 0, fiber: 0, sodium: 320, vitFat: ['D'], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒'], note: '嘌呤中等' },
-  { id: 'cod', name: '鳕鱼', cat: 'seafood', kcal: 82, protein: 18, fat: 0.7, carb: 0, fiber: 0, sodium: 55, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '磷'] },
-  { id: 'sea-bass', name: '鲈鱼', cat: 'seafood', kcal: 105, protein: 20, fat: 2.5, carb: 0, fiber: 0, sodium: 60, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '钾'] },
-  { id: 'hairtail', name: '带鱼', cat: 'seafood', kcal: 127, protein: 18, fat: 5, carb: 0, fiber: 0, sodium: 150, vitFat: ['D'], vitWater: ['B3', 'B12'], minerals: ['硒'], note: '嘌呤中等' },
   { id: 'pomfret', name: '鲳鱼', cat: 'seafood', kcal: 140, protein: 18, fat: 7, carb: 0, fiber: 0, sodium: 70, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
-  { id: 'yellow-croaker', name: '黄花鱼', cat: 'seafood', kcal: 97, protein: 18, fat: 2, carb: 0.8, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['硒'] },
   { id: 'crucian', name: '鲫鱼', cat: 'seafood', kcal: 108, protein: 18, fat: 3.5, carb: 0.8, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12'], minerals: ['硒'], note: '嘌呤中等' },
-  { id: 'grass-carp', name: '草鱼', cat: 'seafood', kcal: 113, protein: 17, fat: 4.5, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B12'], minerals: ['硒'] },
   { id: 'mackerel', name: '鲭鱼', cat: 'seafood', kcal: 205, protein: 19, fat: 14, carb: 0, fiber: 0, sodium: 90, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '嘌呤中等' },
-  { id: 'sardine', name: '沙丁鱼（罐头）', cat: 'seafood', kcal: 208, protein: 25, fat: 11, carb: 0, fiber: 0, sodium: 305, vitFat: ['D'], vitWater: ['B12'], minerals: ['钙', '硒'], note: '嘌呤较高，高尿酸者少吃' },
-  { id: 'eel', name: '鳗鱼', cat: 'seafood', kcal: 184, protein: 20, fat: 11, carb: 0, fiber: 0, sodium: 55, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['硒'], note: '嘌呤较高' },
 
   // ---- 虾蟹贝类 ----
   { id: 'shrimp', name: '基围虾（生）', cat: 'seafood', kcal: 99, protein: 18, fat: 0.8, carb: 2, fiber: 0, sodium: 165, vitFat: [], vitWater: ['B12'], minerals: ['硒', '碘'], note: '嘌呤中等，痛风敏感者控制频率' },
   { id: 'lobster', name: '龙虾', cat: 'seafood', kcal: 89, protein: 19, fat: 1, carb: 0.5, fiber: 0, sodium: 200, vitFat: [], vitWater: ['B12'], minerals: ['硒', '锌'] },
   { id: 'crab', name: '螃蟹', cat: 'seafood', kcal: 87, protein: 18, fat: 1.3, carb: 1, fiber: 0, sodium: 260, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒'], note: '嘌呤中等' },
-  { id: 'oyster', name: '生蚝（鲜）', cat: 'seafood', kcal: 73, protein: 9, fat: 2.3, carb: 4.5, fiber: 0, sodium: 106, vitFat: ['D'], vitWater: ['B12'], minerals: ['锌', '硒'], note: '嘌呤高，痛风急性期禁食' },
-  { id: 'scallop', name: '扇贝', cat: 'seafood', kcal: 88, protein: 17, fat: 1.5, carb: 2.6, fiber: 0, sodium: 180, vitFat: [], vitWater: ['B12'], minerals: ['锌', '硒'], note: '嘌呤较高' },
   { id: 'clam', name: '蛤蜊', cat: 'seafood', kcal: 74, protein: 13, fat: 1, carb: 2.6, fiber: 0, sodium: 120, vitFat: [], vitWater: ['B12'], minerals: ['铁', '硒'], note: '嘌呤较高' },
-  { id: 'squid', name: '鱿鱼', cat: 'seafood', kcal: 92, protein: 16, fat: 1.4, carb: 3, fiber: 0, sodium: 200, vitFat: [], vitWater: ['B12'], minerals: ['硒', '磷'], note: '嘌呤较高，胆固醇高' },
-  { id: 'octopus', name: '章鱼', cat: 'seafood', kcal: 82, protein: 15, fat: 1, carb: 2, fiber: 0, sodium: 230, vitFat: [], vitWater: ['B12'], minerals: ['铁', '硒'] },
-  { id: 'sea-cucumber', name: '海参（水发）', cat: 'seafood', kcal: 78, protein: 16, fat: 0.5, carb: 2.5, fiber: 0, sodium: 500, vitFat: [], vitWater: [], minerals: ['钙'], note: '蛋白质以胶原蛋白等非必需氨基酸为主，并非优质必需氨基酸蛋白；另有海参皂苷/黏多糖，嘌呤低' },
   { id: 'kelp', name: '海带（鲜）', cat: 'seafood', kcal: 43, protein: 1.7, fat: 0.6, carb: 9.6, fiber: 3, sodium: 107, vitFat: ['K'], vitWater: ['叶酸'], minerals: ['碘', '钙'], note: '碘含量高，甲亢者控制' },
 
   // ---- 公开食物成分数据扩充（30 条）：每 100g 参考值 ----
   { id: 'tuna-fresh', name: '金枪鱼（生）', cat: 'seafood', kcal: 110, protein: 23.3, fat: 1.3, carb: 0, fiber: 0, sodium: 45, vitFat: ['D'], vitWater: ['B12', 'B3'], minerals: ['硒'] },
-  { id: 'trout', name: '鳟鱼', cat: 'seafood', kcal: 119, protein: 20, fat: 4, carb: 0, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
-  { id: 'herring', name: '鲱鱼', cat: 'seafood', kcal: 158, protein: 18, fat: 9, carb: 0, fiber: 0, sodium: 90, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
   { id: 'seabream', name: '鲷鱼', cat: 'seafood', kcal: 105, protein: 19, fat: 3, carb: 0, fiber: 0, sodium: 60, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
   { id: 'flounder', name: '比目鱼', cat: 'seafood', kcal: 90, protein: 18, fat: 2, carb: 0, fiber: 0, sodium: 80, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
-  { id: 'snakehead', name: '黑鱼', cat: 'seafood', kcal: 85, protein: 18.5, fat: 1.2, carb: 0, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
-  { id: 'catfish', name: '鲶鱼', cat: 'seafood', kcal: 146, protein: 14.4, fat: 9.6, carb: 0.5, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
   { id: 'tilapia', name: '罗非鱼', cat: 'seafood', kcal: 98, protein: 20, fat: 2, carb: 0, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
   { id: 'salmon-smoked', name: '烟熏三文鱼', cat: 'seafood', kcal: 117, protein: 18.3, fat: 4.3, carb: 0, fiber: 0, sodium: 700, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '高钠' },
   { id: 'shrimp-dried', name: '虾皮（干）', cat: 'seafood', kcal: 153, protein: 30.7, fat: 2.2, carb: 2.5, fiber: 0, sodium: 5058, vitFat: ['D'], vitWater: ['B12'], minerals: ['钙', '碘'], note: '高钙但高钠' },
@@ -48,7 +32,6 @@ export const SEAFOODS: IFood[] = [
   { id: 'abalone', name: '鲍鱼', cat: 'seafood', kcal: 84, protein: 15.1, fat: 1, carb: 3.4, fiber: 0, sodium: 200, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '碘'] },
   { id: 'mussel', name: '淡菜（青口）', cat: 'seafood', kcal: 90, protein: 11.9, fat: 2.5, carb: 4.7, fiber: 0, sodium: 300, vitFat: ['D'], vitWater: ['B12'], minerals: ['铁', '硒'] },
   { id: 'razor-clam', name: '蛏子', cat: 'seafood', kcal: 40, protein: 7.3, fat: 0.3, carb: 2.1, fiber: 0, sodium: 130, vitFat: ['D'], vitWater: ['B12'], minerals: ['铁', '锌'] },
-  { id: 'fish-roe', name: '鱼子', cat: 'seafood', kcal: 151, protein: 20.6, fat: 8.1, carb: 2.4, fiber: 0, sodium: 200, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
   { id: 'freshwater-shrimp', name: '河虾', cat: 'seafood', kcal: 87, protein: 16.4, fat: 2.4, carb: 0, fiber: 0, sodium: 133, vitFat: ['D'], vitWater: ['B12'], minerals: ['钙', '硒'] },
   { id: 'crayfish', name: '小龙虾', cat: 'seafood', kcal: 93, protein: 18.9, fat: 1.1, carb: 0, fiber: 0, sodium: 190, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '锌'] },
   { id: 'nori-dry', name: '紫菜（干）', cat: 'seafood', kcal: 207, protein: 26.7, fat: 1.1, carb: 44.1, fiber: 21.6, sodium: 710, vitFat: ['K'], vitWater: ['B12', 'B2'], minerals: ['碘', '铁', '钙'], note: '碘含量高，甲状腺疾病患者注意' },
@@ -61,12 +44,9 @@ export const SEAFOODS: IFood[] = [
   { id: 'tuna-tinned-oil', name: '金枪鱼（油浸罐头）', cat: 'seafood', kcal: 200, protein: 22, fat: 12, carb: 0, fiber: 0, sodium: 400, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '油浸热量高于水浸' },
   { id: 'sea-urchin', name: '海胆', cat: 'seafood', kcal: 120, protein: 13, fat: 7, carb: 2, fiber: 0, sodium: 200, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'] },
   { id: 'fish-ball', name: '鱼丸', cat: 'seafood', kcal: 100, protein: 10, fat: 3, carb: 8, fiber: 0, sodium: 500, vitFat: [], vitWater: [], minerals: ['硒'], note: '加工制品，含淀粉与钠' },
-  { id: 'anchovy', name: '凤尾鱼（罐头）', cat: 'seafood', kcal: 210, protein: 20, fat: 10, carb: 0, fiber: 0, sodium: 3000, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒'], note: '高钠' },
 
   // ---- 用户点名扩充 ----
-  { id: 'saury', name: '秋刀鱼', cat: 'seafood', kcal: 258, protein: 21, fat: 17, carb: 0, fiber: 0, sodium: 150, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '钾'], phytochem: ['ω-3（EPA/DHA）：脂肪含量较高，护心血管'], note: '烤秋刀鱼经典；脂肪较高，减脂期控量' },
   { id: 'ark-shell', name: '北极贝', cat: 'seafood', kcal: 77, protein: 14, fat: 1.5, carb: 2, fiber: 0, sodium: 350, vitFat: [], vitWater: ['B12'], minerals: ['铁', '硒'], note: '刺身常见，嘌呤中等；务必选正规冷链' },
-  { id: 'crab-roe', name: '蟹黄（蟹膏）', cat: 'seafood', kcal: 240, protein: 12, fat: 18, carb: 5, fiber: 0, sodium: 500, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['锌', '硒'], note: '高胆固醇高嘌呤，痛风急性期禁食；尝鲜即可' },
   { id: 'sturgeon-farmed', name: '鲟鱼（合法养殖）', cat: 'seafood', kcal: 120, protein: 18, fat: 5, carb: 0, fiber: 0, sodium: 60, vitFat: ['D'], vitWater: ['B12'], minerals: ['硒', '磷'], note: '⚠ 仅采用合法养殖渠道；野生鲟鱼为国家重点保护动物，严禁捕捞、交易、食用' },
 
   // ---- 鱼类扩充（点名品种 + 金枪鱼分种分部位） ----
@@ -83,7 +63,6 @@ export const SEAFOODS: IFood[] = [
 
   // ---- 小众水产（用户点名） ----
   { id: 'sea-star', name: '海星（食用生殖腺）', cat: 'seafood', kcal: 110, protein: 10, fat: 6, carb: 3, fiber: 0, sodium: 300, vitFat: ['D'], vitWater: ['B12'], minerals: ['锌', '硒'], note: '可食部分为生殖腺（海星黄），口感似海胆；嘌呤较高，蟹黄类高胆固醇；务必正规来源并彻底熟制，赤潮期/来源不明禁食' },
-  { id: 'swimming-crab', name: '梭子蟹', cat: 'seafood', kcal: 95, protein: 18, fat: 2, carb: 0.5, fiber: 0, sodium: 300, vitFat: ['D'], vitWater: ['B12'], minerals: ['锌', '硒'], note: '我国沿海经济蟹类（三疣梭子蟹），清蒸/葱姜炒经典；蟹肉低脂高蛋白，蟹黄胆固醇高；嘌呤较高，痛风者少食；死蟹易产生组胺，务必鲜活烹饪' },
 
   // ---- 用户点名补充 ----
   { id: 'fish-skin-dried', name: '即食烤鱼皮（咸蛋黄/原味）', cat: 'seafood', kcal: 520, protein: 25, fat: 40, carb: 15, fiber: 0, sodium: 800, vitFat: ['D'], vitWater: ['B12'], minerals: ['钙', '磷'], note: '鱼皮经油炸/烘烤，脂肪与钠极高，下酒零食；胶原蛋白丰富但为不完全蛋白；当零食少量，别当高蛋白来源' },

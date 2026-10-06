@@ -23,9 +23,6 @@ export const DAIRY: IFood[] = [
   { id: 'yogurt-skim', name: '脱脂酸奶（无糖）', cat: 'dairy', kcal: 56, protein: 5.2, fat: 0.2, carb: 5.4, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '零脂肪高钙，蛋白接近普通全脂酸奶而热量减半；部分品牌会加糖，选购看配料表，乳糖不耐者留意' },
 
   // ---- 奶酪 / 黄油 ----
-  { id: 'cheese-cheddar', name: '奶酪（切达）', cat: 'dairy', kcal: 400, protein: 25, fat: 33, carb: 1.3, fiber: 0, sodium: 621, vitFat: ['A'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '高钠高脂，适量' },
-  { id: 'cheese-mozzarella', name: '马苏里拉奶酪', cat: 'dairy', kcal: 280, protein: 28, fat: 17, carb: 3, fiber: 0, sodium: 373, vitFat: ['A'], vitWater: ['B12'], minerals: ['钙'] },
-  { id: 'cheese-parmesan', name: '帕玛森奶酪', cat: 'dairy', kcal: 431, protein: 38, fat: 29, carb: 4, fiber: 0, sodium: 1529, vitFat: ['A'], vitWater: ['B12'], minerals: ['钙'], note: '高钠，调味少量使用' },
   { id: 'cream-cheese', name: '奶油奶酪', cat: 'dairy', kcal: 342, protein: 6, fat: 34, carb: 4, fiber: 0, sodium: 330, vitFat: ['A'], vitWater: ['B2'], minerals: ['钙'] },
   { id: 'butter', name: '黄油', cat: 'dairy', kcal: 717, protein: 0.9, fat: 81, carb: 0.1, fiber: 0, sodium: 11, vitFat: ['A', 'D', 'E', 'K'], vitWater: [], minerals: [], note: '纯脂肪，1g 约 7kcal' },
 
@@ -37,15 +34,9 @@ export const DAIRY: IFood[] = [
   { id: 'yogurt-skyr', name: '冰岛酸奶（脱脂）', cat: 'dairy', kcal: 60, protein: 11, fat: 0.2, carb: 4, fiber: 0, sodium: 50, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙'] },
   { id: 'kefir', name: '开菲尔', cat: 'dairy', kcal: 55, protein: 3.3, fat: 3, carb: 4, fiber: 0, sodium: 40, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'] },
   { id: 'milk-goat', name: '山羊奶', cat: 'dairy', kcal: 71, protein: 3.6, fat: 4.1, carb: 4.5, fiber: 0, sodium: 50, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'] },
-  { id: 'milk-goat-skim', name: '脱脂羊奶', cat: 'dairy', kcal: 38, protein: 3.6, fat: 0.2, carb: 4.6, fiber: 0, sodium: 48, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'], note: '脂肪近乎为零，乳糖仍在，乳糖不耐者留意' },
   { id: 'milk-powder-goat-skim', name: '脱脂羊奶粉', cat: 'dairy', kcal: 355, protein: 36, fat: 1, carb: 52, fiber: 0, sodium: 380, vitFat: ['D'], vitWater: ['B2', 'B12'], minerals: ['钙', '磷'], note: '冲泡按包装比例；蛋白密度高，适合增肌加餐' },
   { id: 'cream-heavy', name: '淡奶油', cat: 'dairy', kcal: 340, protein: 2.1, fat: 36.1, carb: 2.8, fiber: 0, sodium: 38, vitFat: ['A', 'D'], vitWater: ['B2'], minerals: ['钙'] },
   { id: 'sour-cream', name: '酸奶油', cat: 'dairy', kcal: 198, protein: 2.4, fat: 19.4, carb: 4.6, fiber: 0, sodium: 50, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'] },
-  { id: 'cheese-swiss', name: '瑞士奶酪', cat: 'dairy', kcal: 393, protein: 27, fat: 31, carb: 1.5, fiber: 0, sodium: 190, vitFat: ['A', 'D'], vitWater: ['B12', 'B2'], minerals: ['钙', '磷'], note: '高钙' },
-  { id: 'cheese-brie', name: '布里奶酪', cat: 'dairy', kcal: 334, protein: 21, fat: 28, carb: 0.5, fiber: 0, sodium: 630, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'], note: '高钠' },
-  { id: 'cheese-ricotta', name: '里科塔奶酪', cat: 'dairy', kcal: 174, protein: 11.3, fat: 13, carb: 3, fiber: 0, sodium: 84, vitFat: ['A', 'D'], vitWater: ['B12', 'B2'], minerals: ['钙'] },
-  { id: 'cheese-cottage', name: '农家干酪', cat: 'dairy', kcal: 98, protein: 11.1, fat: 4.3, carb: 3.4, fiber: 0, sodium: 364, vitFat: ['A', 'D'], vitWater: ['B12', 'B2'], minerals: ['钙'] },
-  { id: 'cheese-blue', name: '蓝纹奶酪', cat: 'dairy', kcal: 353, protein: 21.4, fat: 28.7, carb: 2.3, fiber: 0, sodium: 1146, vitFat: ['A', 'D'], vitWater: ['B12', 'B2'], minerals: ['钙'], note: '高钠' },
   { id: 'cheese-goat', name: '羊奶酪（山羊奶酪）', cat: 'dairy', kcal: 364, protein: 21.6, fat: 30, carb: 2.5, fiber: 0, sodium: 700, vitFat: ['A', 'D'], vitWater: ['B12', 'B2'], minerals: ['钙', '磷'], note: '羊奶凝乳，蛋白更易消化，中链脂肪稍高；高钠适量' },
   { id: 'cheese-horse', name: '马奶酪（马奶干酪）', cat: 'dairy', kcal: 300, protein: 18, fat: 24, carb: 3, fiber: 0, sodium: 400, vitFat: ['A'], vitWater: ['B12', 'C'], minerals: ['钙'], note: '马奶蛋白含量低、难凝乳，市售极少见；常见的是发酵马奶制品（如马奶酒），此条目为工艺近似参考' },
   { id: 'cheese-mascarpone', name: '马斯卡彭奶酪', cat: 'dairy', kcal: 429, protein: 4, fat: 44, carb: 3, fiber: 0, sodium: 100, vitFat: ['A', 'D'], vitWater: ['B12'], minerals: ['钙'] },

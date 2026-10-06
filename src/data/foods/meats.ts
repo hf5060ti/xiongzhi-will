@@ -26,10 +26,8 @@ export const MEATS: IFood[] = [
 
   // ---- 羊肉 ----
   { id: 'lamb-tenderloin', name: '羊里脊（生）', cat: 'meat', kcal: 123, protein: 20, fat: 4.5, carb: 0, fiber: 0, sodium: 65, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '嘌呤中等' },
-  { id: 'lamb-leg', name: '羊腿肉', cat: 'meat', kcal: 135, protein: 19, fat: 6, carb: 0, fiber: 0, sodium: 72, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'] },
   { id: 'lamb-chops', name: '羊排', cat: 'meat', kcal: 299, protein: 17, fat: 25, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['锌'], note: '脂肪较高' },
   { id: 'lamb-shoulder', name: '羊肩肉', cat: 'meat', kcal: 270, protein: 17, fat: 22, carb: 0, fiber: 0, sodium: 66, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'] },
-  { id: 'lamb-liver', name: '羊肝（熟）', cat: 'meat', kcal: 139, protein: 20, fat: 5, carb: 2, fiber: 0, sodium: 90, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '超级食物：维生素A/B族/铁/铜/锌含量极高；但维生素A易超标，长期大量摄入有维生素A中毒风险。建议每周1~2次，单次不超过40g（熟重），个体差异大，孕妇尤其需遵医嘱；嘌呤偏高' },
 
   // ---- 禽肉 ----
   { id: 'chicken-breast', name: '鸡胸肉（生）', cat: 'meat', kcal: 118, protein: 24, fat: 1.9, carb: 0, fiber: 0, sodium: 44, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒', '磷'] },
@@ -41,7 +39,6 @@ export const MEATS: IFood[] = [
   { id: 'duck-leg', name: '鸭腿', cat: 'meat', kcal: 200, protein: 20, fat: 13, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁'] },
   { id: 'turkey-breast', name: '火鸡胸', cat: 'meat', kcal: 111, protein: 24, fat: 1.5, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['硒', '磷'] },
   { id: 'goose', name: '鹅肉', cat: 'meat', kcal: 371, protein: 16, fat: 34, carb: 0, fiber: 0, sodium: 75, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁'], note: '高脂，适量' },
-  { id: 'pigeon', name: '鸽子肉', cat: 'meat', kcal: 211, protein: 23, fat: 13, carb: 0, fiber: 0, sodium: 90, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'] },
 
   // ---- 公开食物成分数据扩充（30 条）：每 100g 参考值 ----
   { id: 'beef-shank-braised', name: '酱牛肉', cat: 'meat', kcal: 246, protein: 31.4, fat: 11.9, carb: 3.2, fiber: 0, sodium: 869, vitFat: ['A'], vitWater: ['B12', 'B2'], minerals: ['铁', '锌', '硒'], note: '卤制含盐较高' },
@@ -64,9 +61,7 @@ export const MEATS: IFood[] = [
   { id: 'chicken-tender', name: '鸡里脊（生）', cat: 'meat', kcal: 110, protein: 23, fat: 1.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B6', 'B12'], minerals: ['硒', '锌'] },
   { id: 'chicken-drumstick', name: '鸡小腿（去皮，生）', cat: 'meat', kcal: 145, protein: 19, fat: 7, carb: 0, fiber: 0, sodium: 80, vitFat: [], vitWater: ['B6', 'B12'], minerals: ['锌', '硒'] },
   { id: 'chicken-breast-cooked', name: '鸡胸肉（熟）', cat: 'meat', kcal: 165, protein: 31, fat: 3.6, carb: 0, fiber: 0, sodium: 74, vitFat: [], vitWater: ['B6', 'B12'], minerals: ['硒', '锌'] },
-  { id: 'chicken-feet', name: '鸡爪', cat: 'meat', kcal: 254, protein: 23.9, fat: 16.4, carb: 2.7, fiber: 0, sodium: 170, vitFat: [], vitWater: [], minerals: ['锌'], note: '胶原蛋白为主' },
   { id: 'chicken-heart', name: '鸡心', cat: 'meat', kcal: 172, protein: 15.9, fat: 11.8, carb: 0.6, fiber: 0, sodium: 125, vitFat: ['A'], vitWater: ['B1', 'B12'], minerals: ['锌', '铁'] },
-  { id: 'chicken-gizzard', name: '鸡胗', cat: 'meat', kcal: 118, protein: 19.2, fat: 2.8, carb: 4, fiber: 0, sodium: 75, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'] },
   { id: 'duck-whole', name: '鸭肉（带皮）', cat: 'meat', kcal: 240, protein: 15.5, fat: 19.7, carb: 0.2, fiber: 0, sodium: 69, vitFat: [], vitWater: ['B1', 'B12'], minerals: ['铁', '锌'] },
   { id: 'duck-liver', name: '鸭肝', cat: 'meat', kcal: 128, protein: 17.1, fat: 4.8, carb: 6.2, fiber: 0, sodium: 98, vitFat: ['A'], vitWater: ['B12', 'B2'], minerals: ['铁', '锌'], note: '超级食物：维生素A/B族/铁/铜/锌含量极高；但维生素A易超标，长期大量摄入有维生素A中毒风险。建议每周1~2次，单次不超过40g（熟重），个体差异大，孕妇尤其需遵医嘱；嘌呤偏高' },
   { id: 'turkey-leg', name: '火鸡腿', cat: 'meat', kcal: 145, protein: 20, fat: 6.5, carb: 0, fiber: 0, sodium: 80, vitFat: [], vitWater: ['B6', 'B12'], minerals: ['锌', '硒'] },
@@ -82,8 +77,6 @@ export const MEATS: IFood[] = [
   { id: 'yak-jerky', name: '牦牛肉干', cat: 'meat', kcal: 420, protein: 48, fat: 18, carb: 8, fiber: 0, sodium: 1500, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '风干制品，高钠，注意控盐' },
 
   // ---- 肉类扩充（特殊/民族肉） ----
-  { id: 'horse-meat', name: '马肉', cat: 'meat', kcal: 133, protein: 21, fat: 4.6, carb: 0.5, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '高蛋白低脂，草原/中亚特色' },
-  { id: 'donkey-meat', name: '驴肉', cat: 'meat', kcal: 113, protein: 21, fat: 3, carb: 0.4, fiber: 0, sodium: 46, vitFat: [], vitWater: ['B12'], minerals: ['铁'], note: '高蛋白低脂低胆固醇，驴肉火烧经典' },
   { id: 'camel-meat', name: '骆驼肉', cat: 'meat', kcal: 128, protein: 21, fat: 4.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '沙漠地区高蛋白肉，肉质类似牛肉' },
   { id: 'ostrich-meat', name: '鸵鸟肉', cat: 'meat', kcal: 110, protein: 22, fat: 1.8, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '极低脂高蛋白，红肉外观白肉性质' },
   { id: 'wild-boar', name: '野猪肉', cat: 'meat', kcal: 143, protein: 20, fat: 6, carb: 0, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B1', 'B12'], minerals: ['锌'], note: '瘦肉比例高，肉质紧实' },
@@ -102,11 +95,9 @@ export const MEATS: IFood[] = [
   { id: 'beef-bone-marrow', name: '牛骨髓', cat: 'meat', kcal: 400, protein: 7, fat: 41, carb: 0, fiber: 0, sodium: 90, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '几乎全为脂肪，烤骨髓/炖汤增香可以，热量高别当蛋白质来源' },
 
   // ---- 牦牛部位 ----
-  { id: 'yak-liver', name: '牦牛肝（熟）', cat: 'meat', kcal: 132, protein: 20, fat: 4, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '高原特色超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次，单次不超过40g（熟重），孕妇遵医嘱；嘌呤偏高' },
 
   // ---- 马部位细分 ----
   { id: 'horse-liver', name: '马肝（熟）', cat: 'meat', kcal: 125, protein: 19, fat: 4, carb: 4, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次，单次不超过40g（熟重），孕妇遵医嘱；嘌呤偏高' },
-  { id: 'horse-heart', name: '马心（熟）', cat: 'meat', kcal: 110, protein: 17, fat: 3.8, carb: 1, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12', 'B2'], minerals: ['铁', '锌'], note: '高蛋白低脂内脏，口感紧实；充分烹熟' },
   { id: 'horse-lung', name: '马肺（熟）', cat: 'meat', kcal: 92, protein: 16, fat: 2.8, carb: 1, fiber: 0, sodium: 80, vitFat: [], vitWater: ['B2', 'B12'], minerals: ['铁'], note: '类似牛肺口感；嘌呤中高，清洗须充分' },
   { id: 'horse-kidney', name: '马肾（熟）', cat: 'meat', kcal: 97, protein: 15, fat: 3.2, carb: 1, fiber: 0, sodium: 120, vitFat: ['A'], vitWater: ['B12'], minerals: ['铁', '锌', '硒'], note: '臊味重需反复浸泡去味；嘌呤高，痛风者少食' },
 
@@ -115,7 +106,6 @@ export const MEATS: IFood[] = [
   { id: 'venison-heart', name: '鹿心（熟）', cat: 'meat', kcal: 108, protein: 17, fat: 3.5, carb: 1, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '高蛋白低脂，肉质细嫩；充分烹熟' },
 
   // ---- 驴部位细分（含驴皮/阿胶原料） ----
-  { id: 'donkey-hide', name: '驴皮（干品/阿胶原料）', cat: 'meat', kcal: 360, protein: 85, fat: 0.5, carb: 2, fiber: 0, sodium: 90, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '胶原蛋白为主（非优质必需氨基酸蛋白），是传统阿胶的原料；打成胶质后蛋白利用率一般，别当高蛋白食物' },
   { id: 'donkey-liver', name: '驴肝（熟）', cat: 'meat', kcal: 128, protein: 19, fat: 4, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次，单次不超过40g（熟重），孕妇遵医嘱；嘌呤偏高' },
   { id: 'donkey-heart', name: '驴心（熟）', cat: 'meat', kcal: 105, protein: 16.5, fat: 3.6, carb: 1, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '高蛋白低脂，口感紧实有嚼劲；充分烹熟' },
 
@@ -144,13 +134,11 @@ export const MEATS: IFood[] = [
   { id: 'turkey-liver', name: '火鸡肝（熟）', cat: 'meat', kcal: 130, protein: 18, fat: 4.5, carb: 3, fiber: 0, sodium: 85, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜', '硒'], note: '超级食物：维生素A/B族/铁含量极高；但维生素A易超标，建议每周1~2次、单次≤40g（熟重），孕妇遵医嘱；嘌呤偏高' },
 
   // ---- 袋鼠部位（合法性声明） ----
-  { id: 'kangaroo-meat', name: '袋鼠肉（瘦肉，生）', cat: 'meat', kcal: 100, protein: 22, fat: 2, carb: 0, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌', '硒'], note: '⚠ 食用合法性因国家/地区而异，进口/出口各国有不同规定，务必遵守当地法律法规；本站仅标注营养含量，不代表任何立场。极低脂高蛋白，肉质偏瘦，久煮易柴，适合快煎' },
   { id: 'kangaroo-tenderloin', name: '袋鼠里脊/菲力（生）', cat: 'meat', kcal: 105, protein: 23, fat: 1.8, carb: 0, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '⚠ 合法性因国家/地区而异，遵守当地法律法规；本站仅标注营养含量。最嫩部位，低温慢煎或火锅片' },
   { id: 'kangaroo-tail', name: '袋鼠尾（带骨）', cat: 'meat', kcal: 140, protein: 20, fat: 6, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '⚠ 合法性因国家/地区而异，遵守当地法律法规；本站仅标注营养含量。炖汤/慢煮出胶质，骨肉同食' },
   { id: 'kangaroo-liver', name: '袋鼠肝（熟）', cat: 'meat', kcal: 128, protein: 19, fat: 4, carb: 3, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜'], note: '⚠ 合法性因国家/地区而异，遵守当地法律法规；本站仅标注营养含量。超级食物：维生素A/B族/铁含量极高，但维生素A易超标，建议每周1~2次、单次≤40g（熟重），孕妇遵医嘱；嘌呤偏高' },
 
   // ---- 鳄鱼部位（仅人工养殖） ----
-  { id: 'crocodile-meat', name: '鳄鱼肉（人工养殖，生）', cat: 'meat', kcal: 105, protein: 22, fat: 2.5, carb: 0, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌', '硒'], note: '⚠ 必须为人工养殖；野生鳄鱼属保护动物，严禁捕杀食用；请遵守当地法律法规，本站不支持偷抓偷猎等任何违法活动。高蛋白低脂、低饱和脂肪，肉质偏瘦，久煮易柴' },
   { id: 'crocodile-tenderloin', name: '鳄鱼里脊/菲力（养殖，生）', cat: 'meat', kcal: 110, protein: 24, fat: 1.8, carb: 0, fiber: 0, sodium: 45, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '⚠ 必须为人工养殖；野生鳄鱼严禁捕杀食用；遵守当地法律法规，本站不支持偷抓偷猎等违法活动。最嫩部位，快煎/涮片' },
   { id: 'crocodile-tail', name: '鳄鱼尾（养殖，生）', cat: 'meat', kcal: 120, protein: 20, fat: 4.5, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '⚠ 必须为人工养殖；野生鳄鱼严禁捕杀食用；遵守当地法律法规，本站不支持偷抓偷猎等违法活动。尾部胶质与瘦肉兼具，炖汤/焖烧' },
   { id: 'crocodile-paw', name: '鳄鱼掌（养殖，熟）', cat: 'meat', kcal: 180, protein: 22, fat: 8, carb: 1, fiber: 0, sodium: 90, vitFat: [], vitWater: ['B12'], minerals: ['锌', '钙'], note: '⚠ 必须为人工养殖；野生鳄鱼严禁捕杀食用；遵守当地法律法规，本站不支持偷抓偷猎等违法活动。胶质丰富类似禽掌，炖汤滋补口感' },
@@ -162,20 +150,16 @@ export const MEATS: IFood[] = [
   { id: 'beef-ribeye', name: '眼肉牛排（生）', cat: 'meat', kcal: 270, protein: 22, fat: 20, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['铁', '锌'], note: '肋眼雪花脂肪最高、风味最足，热量炸弹级别；增肌期可吃，减脂期少选' },
 
   // ---- 用户点名补充：禽畜杂件/脆骨 ----
-  { id: 'chicken-frame', name: '鸡架（带骨可食肉）', cat: 'meat', kcal: 200, protein: 18, fat: 14, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B3'], minerals: ['钙', '磷'], note: '沈阳/东北小吃；肉少骨多，主要啃风味；炖汤后弃骨；嘌呤与钠偏高' },
-  { id: 'chicken-cartilage', name: '鸡脆骨（掌中宝）', cat: 'meat', kcal: 150, protein: 15, fat: 9, carb: 1, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B3'], minerals: ['钙'], note: '鸡爪掌间脆骨，椒盐/烧烤常见；口感脆，钙与胶原蛋白丰富；油炸后热量翻倍' },
   { id: 'chicken-gizzard', name: '鸡胗（鸡胃）', cat: 'meat', kcal: 118, protein: 19, fat: 2.8, carb: 3, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B3'], minerals: ['铁', '锌'], note: '低脂高蛋白，卤味下酒；口感韧，需切花刀熟透；嘌呤中等' },
-  { id: 'chicken-skin', name: '鸡皮（生）', cat: 'meat', kcal: 450, protein: 13, fat: 45, carb: 0.1, fiber: 0, sodium: 50, vitFat: ['A'], vitWater: [], minerals: [], note: '脂肪与饱和脂肪极高，减脂期去皮吃；增肌期偶尔保留皮增风味' },
   { id: 'chicken-feet', name: '鸡爪（生）', cat: 'meat', kcal: 254, protein: 24, fat: 16, carb: 0.1, fiber: 0, sodium: 70, vitFat: [], vitWater: [], minerals: ['钙'], phytochem: ['胶原蛋白'], note: '胶原蛋白丰富但为不完全蛋白，吃猪蹄/鸡爪补胶原并不能直接补到脸上；卤/泡凤爪钠高' },
   { id: 'duck-feet', name: '鸭掌（生）', cat: 'meat', kcal: 150, protein: 19, fat: 8, carb: 0.2, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B3'], minerals: ['钙'], note: '皮骨多、肉少，胶原蛋白丰富；泡椒鸭掌钠高；卤味适量' },
   { id: 'beef-cartilage', name: '牛脆骨（牛软骨）', cat: 'meat', kcal: 200, protein: 20, fat: 13, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['钙'], phytochem: ['硫酸软骨素'], note: '牛胸/关节软骨，烧烤/卤；钙与软骨素丰富，但难嚼；油炸后热量飙升' },
-  { id: 'lamb-cartilage', name: '羊脆骨', cat: 'meat', kcal: 200, protein: 18, fat: 14, carb: 0, fiber: 0, sodium: 65, vitFat: [], vitWater: ['B12'], minerals: ['钙', '锌'], note: '羊胸软骨，烧烤常见；膻味明显；钙丰富但脂肪不低' },
 
   // ---- 用户点名补充 ----
   { id: 'rousong', name: '肉松（猪肉松平均值）', cat: 'meat', kcal: 396, protein: 30, fat: 25, carb: 10, fiber: 0, sodium: 1500, vitFat: [], vitWater: ['B1'], minerals: ['铁', '锌'], note: '瘦肉经煮炒烘干，蛋白高但脂肪与钠也高（市售款常加油糖）；1小袋约15g=60kcal；配粥/面包点缀，别当纯肉吃；儿童款钠高' },
   { id: 'yang-tourou', name: '酱羊头肉（熟）', cat: 'meat', kcal: 200, protein: 25, fat: 10, carb: 1, fiber: 0, sodium: 800, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '羊脸/舌/脑混合，卤制后钠高；肉冻/凉拌常见；羊脑胆固醇高，一次少尝；下酒菜，配大量蔬菜平衡钠' },
   { id: 'niu-tourou', name: '酱牛头肉（熟）', cat: 'meat', kcal: 230, protein: 20, fat: 16, carb: 1, fiber: 0, sodium: 750, vitFat: [], vitWater: ['B12'], minerals: ['锌', '铁'], note: '牛头皮/脸肉，胶质多脂肪高；凉拌/火锅；比纯牛腱脂肪高约3倍；一顿50-80g切片' },
-  { id: 'dog-meat', name: '狗肉（瘦，参考值）', cat: 'meat', kcal: 110, protein: 20, fat: 3, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], phytochem: [], note: '【本网站立场】本网站反对任何形式的食用狗肉，以下数据仅为营养参考，不代表鼓励。食用狗肉在我国多数地区已被立法禁止或社会广泛抵制，江苏部分地区历史上俗称"香肉"，属地方性争议饮食。请遵守当地法律法规与公序良俗，尊重伴侣动物。' },
+  { id: 'dog-meat', name: '狗肉（瘦，参考值）', cat: 'meat', kcal: 110, protein: 20, fat: 3, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], phytochem: [], note: '【本网站立场】本网站反对任何形式的食用狗肉，以下数据仅为营养参考，不代表鼓励。食用狗肉在我国多数地区已被立法禁止或社会广泛抵制，江苏部分地区历史上俗称"香肉"，属地方性争议饮食。请遵守当地法律法规与公序良俗，尊重伴侣动物。；【争议声明】狗肉在部分地区（如江苏沛县/徐州、延边）有食用传统，但在全球范围内动物保护争议极大。本站仅作营养数据参考，不鼓励也不反对；强烈建议选择合法养殖、经过检疫的肉用犬；爱狗人士请跳过此项' },
 
   // ---- 用户点名补充 ----
   { id: 'baiqie-ji', name: '白切鸡（带皮）', cat: 'meat', kcal: 200, protein: 20, fat: 13, carb: 0, fiber: 0, sodium: 60, vitFat: ['A'], vitWater: ['B12'], minerals: ['铁', '锌'], note: '粤菜代表，水煮后蘸姜葱蓉；皮是脂肪主要来源，去皮约160kcal/100g；1/4只约200g=400kcal' },
@@ -218,7 +202,6 @@ export const MEATS: IFood[] = [
 
   // ---- 马肉（欧洲/中亚传统食材，国内小众）----
   { id: 'horse-meat', name: '马肉（瘦，生）', cat: 'meat', kcal: 120, protein: 21, fat: 3.5, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B12', '铁'], minerals: ['铁', '锌', '磷'], phytochem: ['共轭亚油酸（CLA）'], note: '马肉是高蛋白低脂肉类，脂肪比牛肉低30%；欧洲（法/意/德）和中亚传统食材；国内非主流，多为马肉干/马肉肠；口感偏甜、纤维细；嘌呤中等' },
-  { id: 'horse-liver', name: '马肝（熟）', cat: 'meat', kcal: 135, protein: 20, fat: 4.5, carb: 3, fiber: 0, sodium: 90, vitFat: ['A（极高）'], vitWater: ['B2', 'B12', '叶酸'], minerals: ['铁', '铜', '锌'], note: '【维生素A警告】马肝维A极高，一次别超40g；马肝维生素A含量甚至高于牛肝，切忌大量食用' },
   { id: 'horse-heart', name: '马心（熟）', cat: 'meat', kcal: 145, protein: 24, fat: 4, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12', 'CoQ10'], minerals: ['铁', '锌', '硒'], phytochem: ['辅酶Q10'], note: '心脏类内脏，CoQ10和铁密度高；小众食材，国内少见' },
 
   // ---- 驴肉（华北传统食材，"天上龙肉地上驴肉"）----
@@ -229,7 +212,6 @@ export const MEATS: IFood[] = [
   { id: 'kangaroo-meat', name: '袋鼠肉（熟）', cat: 'meat', kcal: 100, protein: 23, fat: 2, carb: 0, fiber: 0, sodium: 50, vitFat: [], vitWater: ['B12', '铁'], minerals: ['铁', '锌', '硒'], phytochem: ['共轭亚油酸（CLA）'], note: '【法律声明】袋鼠肉在澳大利亚是合法狩猎/食用的（袋鼠是害兽，政府鼓励捕杀），但在其他国家/地区可能受保护或禁止进口。本站仅作营养数据参考，不鼓励任何违法捕猎；袋鼠肉是所有红肉里脂肪最低的之一，CLA含量极高' },
   { id: 'crocodile-meat', name: '鳄鱼肉（人工养殖，熟）', cat: 'meat', kcal: 110, protein: 22, fat: 2.5, carb: 0, fiber: 0, sodium: 60, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌', '磷'], note: '【法律声明】仅限合法人工养殖鳄鱼；野生鳄鱼多为保护动物（如扬子鳄是国家一级保护动物），严禁猎捕。本站坚决反对偷猎和非法野生动物贸易；鳄鱼肉高蛋白低脂，口感类似鸡肉+鱼肉混合' },
   { id: 'snake-meat', name: '蛇肉（人工养殖，熟）', cat: 'meat', kcal: 95, protein: 20, fat: 1.5, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '【法律声明】仅限合法人工养殖蛇类；野生蛇类多为"三有"保护动物，严禁私自捕捉食用。本站反对非法野生动物交易；蛇肉高蛋白低脂，两广传统食材；注意彻底煮熟防寄生虫（曼氏裂头蚴）' },
-  { id: 'dog-meat', name: '狗肉（争议食材）', cat: 'meat', kcal: 150, protein: 20, fat: 7, carb: 0, fiber: 0, sodium: 65, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '【争议声明】狗肉在部分地区（如江苏沛县/徐州、延边）有食用传统，但在全球范围内动物保护争议极大。本站仅作营养数据参考，不鼓励也不反对；强烈建议选择合法养殖、经过检疫的肉用犬；爱狗人士请跳过此项' },
   { id: 'lizard-meat', name: '蜥蜴肉（部分地区合法）', cat: 'meat', kcal: 110, protein: 21, fat: 3, carb: 0, fiber: 0, sodium: 55, vitFat: [], vitWater: ['B12'], minerals: ['铁', '锌'], note: '【法律声明】蜥蜴在世界部分地区是合法食用的（如一些热带国家），但在多数地区野生蜥蜴受保护。本站仅作营养数据参考，不支持任何违法捕猎野生动物的行为；爬行动物肉普遍高蛋白低脂' },
 
   // ---- 猪肉/鸡肉细分部位 ----
@@ -238,6 +220,5 @@ export const MEATS: IFood[] = [
   { id: 'chicken-cartilage', name: '鸡脆骨/掌中宝', cat: 'meat', kcal: 200, protein: 15, fat: 15, carb: 0, fiber: 0, sodium: 90, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '鸡爪掌中间的脆骨；烤/炸/椒盐；主要是软骨组织，钙含量高但蛋白不高；"补钙"效果有限，吃下去拆成氨基酸和钙盐' },
   { id: 'chicken-skin', name: '鸡皮（熟）', cat: 'meat', kcal: 450, protein: 15, fat: 45, carb: 0, fiber: 0, sodium: 80, vitFat: ['A'], vitWater: [], minerals: [], note: '纯脂肪+皮；一份100g=450kcal；减脂期绝对避开；烤鸡的油大部分来自鸡皮；要低脂就去皮吃' },
   { id: 'duck-web', name: '鸭掌', cat: 'meat', kcal: 150, protein: 18, fat: 8, carb: 0, fiber: 0, sodium: 100, vitFat: [], vitWater: ['B12'], minerals: ['钙', '胶原蛋白'], note: '主要是皮、筋、骨；卤鸭掌/泡椒鸭掌；胶原蛋白为主，蛋白质量不高；啃个味道还行，别当蛋白来源' },
-  { id: 'beef-cartilage', name: '牛脆骨', cat: 'meat', kcal: 120, protein: 18, fat: 4, carb: 0, fiber: 0, sodium: 70, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '牛气管/关节处的软骨；烤/卤；主要是软骨素和胶原蛋白；"补软骨"不能直接补到关节，吃下去拆成氨基酸' },
   { id: 'lamb-cartilage', name: '羊脆骨', cat: 'meat', kcal: 130, protein: 17, fat: 6, carb: 0, fiber: 0, sodium: 75, vitFat: [], vitWater: [], minerals: ['钙', '磷'], note: '羊胸/关节处的脆骨；烤羊脆骨；口感脆，补钙是噱头，主要是解馋' },
 ];

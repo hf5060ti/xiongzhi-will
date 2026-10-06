@@ -33,9 +33,6 @@ export const SNACKS: IFood[] = [
   { id: 'bubble-tea', name: '珍珠奶茶', cat: 'snack', kcal: 110, protein: 1.2, fat: 3, carb: 19, fiber: 0, sodium: 60, vitFat: [], vitWater: [], minerals: [], note: '含糖与木薯珍珠，每 100ml' },
   { id: 'coffee-black', name: '黑咖啡', cat: 'snack', kcal: 2, protein: 0.2, fat: 0, carb: 0, fiber: 0, sodium: 2, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '几乎无热量，每 100ml' },
   { id: 'latte', name: '拿铁（全脂）', cat: 'snack', kcal: 55, protein: 3, fat: 3, carb: 4.5, fiber: 0, sodium: 40, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '每 100ml' },
-  { id: 'beer', name: '啤酒', cat: 'snack', kcal: 32, protein: 0.3, fat: 0, carb: 3.1, fiber: 0, sodium: 4, vitFat: [], vitWater: ['B3'], minerals: [], note: '酒精 7 kcal/g，每 100ml' },
-  { id: 'red-wine', name: '红葡萄酒', cat: 'snack', kcal: 85, protein: 0.1, fat: 0, carb: 2.6, fiber: 0, sodium: 4, vitFat: [], vitWater: [], minerals: ['钾'], note: '每 100ml，酒精有害健康' },
-  { id: 'baijiu', name: '白酒（52 度）', cat: 'snack', kcal: 298, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 1, vitFat: [], vitWater: [], minerals: [], note: '每 100ml，酒精有害健康' },
   { id: 'ice-cream', name: '冰淇淋（香草）', cat: 'snack', kcal: 207, protein: 3.5, fat: 11, carb: 24, fiber: 0, sodium: 80, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '含糖' },
   { id: 'cake-sponge', name: '蛋糕（海绵）', cat: 'snack', kcal: 350, protein: 7, fat: 15, carb: 48, fiber: 1, sodium: 300, vitFat: ['A', 'D'], vitWater: ['B2'], minerals: ['钙'], note: '含糖与油脂' },
   { id: 'cheesecake', name: '芝士蛋糕', cat: 'snack', kcal: 321, protein: 5.5, fat: 22.5, carb: 25, fiber: 0.5, sodium: 300, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'] },
@@ -104,7 +101,6 @@ export const SNACKS: IFood[] = [
   { id: 'fish-oil', name: '鱼油（Omega-3）', cat: 'snack', kcal: 900, protein: 0, fat: 100, carb: 0, fiber: 0, sodium: 0, vitFat: ['A', 'D'], vitWater: [], minerals: ['硒'], note: '典型胶囊每粒1g含EPA约180mg/DHA约120mg、约9kcal；抗炎、护关节心血管、辅助睡眠与情绪。⚠ 各品牌浓度差异大，以包装为准；高剂量服前咨询（抗凝药物者尤其）' },
   { id: 'vitamin-d3', name: '维生素D3（补剂）', cat: 'snack', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 0, vitFat: ['D'], vitWater: [], minerals: ['钙'], note: '每粒典型1000-2000IU（25-50μg），脂溶性维生素本身无热量（软胶囊油载体约1-2kcal/粒）；晒不到太阳的健身者普遍建议补充，与钙同补助骨健康。⚠ 脂溶性不可过量，长期超量有中毒风险，各品牌以包装为准' },
   { id: 'citrulline-powder', name: '瓜氨酸粉（L-瓜氨酸）', cat: 'snack', kcal: 250, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 0, vitFat: [], vitWater: [], minerals: [], note: '游离氨基酸粉（不计入蛋白质），训练前30-60分钟3-6g冲水；体内转精氨酸促一氧化氮、提升泵感与耐力，与甜菜根粉（硝酸盐）作用协同。⚠ 各品牌纯度不同，以产品包装营养表为准' },
-  { id: 'beef-jerky', name: '牛肉干（普通）', cat: 'snack', kcal: 410, protein: 45, fat: 10, carb: 12, fiber: 1, sodium: 1500, vitFat: [], vitWater: ['B3', 'B12'], minerals: ['铁', '锌'], note: '高蛋白便携零食，钠极高（选低盐款）；训练后/出差加餐，一次一小把约30g' },
 
   // ---- 蛋白粉大类（市面平均参考值，用户点名；不标注任何品牌） ----
   { id: 'yeast-protein', name: '酵母蛋白粉', cat: 'snack', kcal: 380, protein: 70, fat: 2, carb: 15, fiber: 3, sodium: 250, vitFat: [], vitWater: ['B1', 'B2', 'B3', 'B6', '叶酸'], minerals: ['锌', '硒'], note: '酵母提取蛋白质，植物性，B族维生素丰富；⚠ 各品牌配方不同，此为市面平均参考值，以产品包装营养成分表为准' },
@@ -123,7 +119,6 @@ export const SNACKS: IFood[] = [
   { id: 'instant-nonfried', name: '方便面（非油炸款，干面块）', cat: 'snack', kcal: 380, protein: 9, fat: 6, carb: 75, fiber: 2, sodium: 1000, vitFat: [], vitWater: ['B1'], minerals: ['钠'], note: '热风干燥，脂肪比油炸款低约70%；但钠仍高，依旧少放料包；荞麦面/乌冬干面同类' },
 
   // ---- 用户点名补充：零食/街头炸物 ----
-  { id: 'mahua', name: '麻花（油炸）', cat: 'snack', kcal: 527, protein: 8, fat: 28, carb: 60, fiber: 1.5, sodium: 380, vitFat: [], vitWater: ['B1'], minerals: [], note: '油炸发酵面制品，糖油混合物；天津十八街/稷山麻花代表；一根约50g=264kcal，解馋量' },
   { id: 'tanghulu', name: '糖葫芦（山楂裹冰糖）', cat: 'snack', kcal: 159, protein: 0.5, fat: 0.2, carb: 40, fiber: 1, sodium: 3, vitFat: [], vitWater: ['C'], minerals: [], phytochem: ['山楂黄酮'], note: '糖衣约占一半重量，本质是裹糖水果；一串约100g=159kcal，主要是添加糖；蓝莓/葡萄/草莓款同理' },
   { id: 'soda-cracker-sugarfree', name: '苏打饼干（无糖）', cat: 'snack', kcal: 408, protein: 9, fat: 9, carb: 76, fiber: 3, sodium: 600, vitFat: [], vitWater: ['B1'], minerals: ['钠'], note: '发酵饼干，脂肪低于曲奇；但钠不低，"无糖"不等于低卡；胃酸多时2片应急可以，别当健康零食囤' },
   { id: 'soda-cracker-sugared', name: '苏打饼干（含糖甜味款）', cat: 'snack', kcal: 430, protein: 8, fat: 12, carb: 72, fiber: 2, sodium: 500, vitFat: [], vitWater: ['B1'], minerals: [], note: '奶盐/甜味苏打，糖油比原味多；配料表前几位常有精炼植物油与白砂糖' },
@@ -132,7 +127,6 @@ export const SNACKS: IFood[] = [
   { id: 'zhima-ye', name: '炸芝麻叶（皖北传统小吃）', cat: 'snack', kcal: 450, protein: 8, fat: 25, carb: 45, fiber: 3, sodium: 300, vitFat: [], vitWater: [], minerals: ['钙'], phytochem: ['芝麻素'], note: '皖北特产，嫩芝麻叶裹薄面糊油炸，形似树叶、薄脆如纸；下酒/茶点；油脂偏高，一把约30g=135kcal' },
 
   // ---- 用户点名补充 ----
-  { id: 'chip-original', name: '薯片（原味）', cat: 'snack', kcal: 536, protein: 7, fat: 35, carb: 53, fiber: 4, sodium: 500, vitFat: [], vitWater: ['B6'], minerals: ['钾'], note: '高脂高盐，一小包70g=375kcal；油炸款脂肪约35%，烘焙款约25%；越嚼越停不下来，建议一次倒出一小把而非对着袋吃' },
 
   // ---- 用户点名补充：节令糕点 ----
   { id: 'yuebing-wuren', name: '五仁月饼（传统广式）', cat: 'snack', kcal: 416, protein: 8, fat: 16, carb: 60, fiber: 3, sodium: 280, vitFat: ['E'], vitWater: ['B1'], minerals: ['镁', '锌'], phytochem: ['坚果不饱和脂肪酸'], note: '一个约100g=416kcal，相当于2碗米饭；糖油混合，一天最多1/4个（约25g）配茶；坚果款比莲蓉/豆沙款多一点蛋白' },

@@ -52,7 +52,6 @@ export const STAPLES: IFood[] = [
   { id: 'zongzi', name: '粽子（肉粽）', cat: 'staple', kcal: 195, protein: 4.6, fat: 5.5, carb: 32, fiber: 0.8, sodium: 350, vitFat: [], vitWater: [], minerals: [] },
   { id: 'steamed-roll', name: '花卷', cat: 'staple', kcal: 214, protein: 6.4, fat: 1, carb: 45, fiber: 1.2, sodium: 130, vitFat: [], vitWater: ['B1'], minerals: [] },
   { id: 'youtiao', name: '油条', cat: 'staple', kcal: 388, protein: 6.9, fat: 17.6, carb: 51, fiber: 0.9, sodium: 585, vitFat: ['E'], vitWater: [], minerals: [], note: '高温油炸，注意油脂与铝残留' },
-  { id: 'shaobing', name: '烧饼', cat: 'staple', kcal: 326, protein: 8, fat: 10, carb: 50, fiber: 1.5, sodium: 450, vitFat: [], vitWater: ['B1'], minerals: [] },
   { id: 'scallion-pancake', name: '手抓饼', cat: 'staple', kcal: 350, protein: 7, fat: 16, carb: 45, fiber: 1.5, sodium: 520, vitFat: [], vitWater: [], minerals: [] },
   { id: 'baozi-meat', name: '肉包子', cat: 'staple', kcal: 227, protein: 7, fat: 7, carb: 31, fiber: 1.2, sodium: 400, vitFat: [], vitWater: ['B1'], minerals: [] },
   { id: 'xiaolongbao', name: '小笼包', cat: 'staple', kcal: 240, protein: 8, fat: 8, carb: 32, fiber: 1.3, sodium: 450, vitFat: [], vitWater: [], minerals: [] },
@@ -85,7 +84,6 @@ export const STAPLES: IFood[] = [
   { id: 'oat-bran', name: '燕麦麸', cat: 'staple', kcal: 246, protein: 17, fat: 7, carb: 66, fiber: 15, sodium: 4, vitFat: ['E'], vitWater: ['B1', 'B3'], minerals: ['镁', '锌'], note: 'β-葡聚糖含量高' },
   // ---- 少数民族特色主食 ----
   { id: 'highland-barley', name: '青稞（干）', cat: 'staple', kcal: 350, protein: 10.8, fat: 1.8, carb: 72, fiber: 8, sodium: 8, vitFat: ['E'], vitWater: ['B1', 'B3'], minerals: ['镁', '锌', '铁'], note: '藏族主食，β-葡聚糖高于普通大麦' },
-  { id: 'tsampa', name: '糌粑（青稞炒面）', cat: 'staple', kcal: 380, protein: 11, fat: 5, carb: 70, fiber: 7, sodium: 10, vitFat: ['E'], vitWater: ['B1', 'B3'], minerals: ['镁', '锌'], note: '青稞炒熟磨粉，常配酥油茶' },
   { id: 'butter-tea', name: '酥油茶', cat: 'staple', kcal: 95, protein: 2, fat: 6, carb: 7, fiber: 0, sodium: 120, vitFat: ['A', 'D'], vitWater: ['B2', 'B12'], minerals: ['钙'], note: '砖茶+酥油+盐，高海拔热量来源，钠不低' },
   { id: 'nang', name: '馕', cat: 'staple', kcal: 260, protein: 8, fat: 4, carb: 48, fiber: 2, sodium: 450, vitFat: [], vitWater: ['B1'], minerals: ['镁'], note: '新疆主食，烤制' },
   { id: 'naan-butter', name: '黄油馕', cat: 'staple', kcal: 310, protein: 8.5, fat: 9, carb: 48, fiber: 2, sodium: 480, vitFat: ['A', 'D'], vitWater: ['B1'], minerals: ['镁'], note: '刷黄油烤制，脂肪更高' },

@@ -8,14 +8,11 @@ import type { IFood } from './types';
 export const DRINKS: IFood[] = [
   // ---- 碳酸饮料 ----
   { id: 'coke-classic', name: '可口可乐（经典）', cat: 'drink', kcal: 43, protein: 0, fat: 0, carb: 10.6, fiber: 0, sodium: 4, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml；一罐 330ml ≈ 142kcal，纯游离糖空热量' },
-  { id: 'pepsi-classic', name: '百事可乐（经典）', cat: 'drink', kcal: 43, protein: 0, fat: 0, carb: 10.9, fiber: 0, sodium: 5, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml；一罐 330ml ≈ 142kcal' },
   { id: 'coke-cherry', name: '樱桃味可口可乐', cat: 'drink', kcal: 45, protein: 0, fat: 0, carb: 11.2, fiber: 0, sodium: 4, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml；比经典款略高' },
   { id: 'coke-vanilla', name: '香草味可口可乐', cat: 'drink', kcal: 44, protein: 0, fat: 0, carb: 11, fiber: 0, sodium: 4, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml' },
   { id: 'sprite-classic', name: '雪碧（柠檬味）', cat: 'drink', kcal: 40, protein: 0, fat: 0, carb: 10, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml；330ml 罐 ≈ 132kcal' },
   { id: 'sprite-zero', name: '雪碧（无糖）', cat: 'drink', kcal: 0.3, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 12, vitFat: [], vitWater: [], minerals: [], note: '无糖代糖，每 100ml；近乎零热量' },
-  { id: 'fanta-orange', name: '芬达（橙味）', cat: 'drink', kcal: 46, protein: 0, fat: 0, carb: 11.5, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml；果味汽水' },
   { id: 'fanta-grape', name: '芬达（葡萄味）', cat: 'drink', kcal: 45, protein: 0, fat: 0, carb: 11.2, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml' },
-  { id: 'mirinda-orange', name: '美年达（橙味）', cat: 'drink', kcal: 46, protein: 0, fat: 0, carb: 11.5, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml' },
   { id: 'mirinda-apple', name: '美年达（青苹果味）', cat: 'drink', kcal: 44, protein: 0, fat: 0, carb: 11, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml' },
   { id: 'seven-up', name: '七喜（柠檬味）', cat: 'drink', kcal: 40, protein: 0, fat: 0, carb: 10, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml' },
   { id: 'arbuck-ice', name: '北冰洋（桔汁汽水）', cat: 'drink', kcal: 45, protein: 0, fat: 0, carb: 11.3, fiber: 0, sodium: 15, vitFat: [], vitWater: [], minerals: [], note: '含糖，每 100ml；国产老牌汽水' },
@@ -52,7 +49,6 @@ export const DRINKS: IFood[] = [
   { id: 'grape-juice', name: '葡萄汁', cat: 'drink', kcal: 60, protein: 0.3, fat: 0, carb: 15, fiber: 0.3, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '含糖，每 100ml；升糖较快' },
   { id: 'hawthorn-drink', name: '山楂汁（瓶装）', cat: 'drink', kcal: 45, protein: 0.2, fat: 0, carb: 11.2, fiber: 0.3, sodium: 10, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '含糖，每 100ml' },
   { id: 'coconut-drink', name: '椰汁（椰树风味）', cat: 'drink', kcal: 70, protein: 0.3, fat: 3.5, carb: 8, fiber: 0, sodium: 15, vitFat: ['E'], vitWater: [], minerals: ['钾'], note: '每 100ml；椰肉榨浆，脂肪来自椰肉，非椰子水（椰子水约 19kcal）' },
-  { id: 'special-forces-coconut', name: '特种兵（生榨椰子汁）', cat: 'drink', kcal: 75, protein: 0.4, fat: 4.5, carb: 8.5, fiber: 0, sodium: 20, vitFat: ['E'], vitWater: [], minerals: ['钾'], note: '每 100ml；生榨椰肉浆，脂肪来自椰肉，热量高于椰子水；"特种兵"为椰汁品牌名' },
 
   // ---- 能量饮料 / 运动饮料 ----
   { id: 'monster-classic', name: '魔爪（Monster 黑罐原味）', cat: 'drink', kcal: 47, protein: 0.3, fat: 0, carb: 11.7, fiber: 0, sodium: 100, vitFat: [], vitWater: ['B3', 'B6', 'B12'], minerals: ['钠', '钾'], note: '含糖+咖啡因约 32mg/100ml+牛磺酸，每 100ml；一罐 355ml ≈ 167kcal；提神但别当水喝，晚练影响睡眠' },
@@ -108,7 +104,6 @@ export const DRINKS: IFood[] = [
   { id: 'pepsi-classic', name: '百事可乐（经典含糖）', cat: 'drink', kcal: 41, protein: 0, fat: 0, carb: 10.6, fiber: 0, sodium: 7, vitFat: [], vitWater: [], minerals: [], note: '与可口可乐热量接近；一罐330ml≈135kcal；糖含量几乎一样' },
   { id: 'pepsi-max', name: '百事极度（无糖）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '百事无糖款；与零度类似' },
   { id: 'sprite', name: '雪碧（柠檬味碳酸）', cat: 'drink', kcal: 41, protein: 0, fat: 0, carb: 10.6, fiber: 0, sodium: 9, vitFat: [], vitWater: ['维C（少量添加）'], minerals: [], note: '柠檬味汽水；一罐330ml≈135kcal；糖与可乐接近；柠檬味主要来自香精' },
-  { id: 'sprite-zero', name: '雪碧零卡（无糖）', cat: 'drink', kcal: 0, protein: 0, fat: 0, carb: 0, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '无糖雪碧；代糖调味' },
   { id: 'mirinda-orange', name: '美年达（橙味碳酸）', cat: 'drink', kcal: 43, protein: 0, fat: 0, carb: 11, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '橙味汽水；一罐330ml≈142kcal；比可乐略甜' },
   { id: 'fanta-orange', name: '芬达（橙味碳酸）', cat: 'drink', kcal: 44, protein: 0, fat: 0, carb: 11, fiber: 0, sodium: 10, vitFat: [], vitWater: [], minerals: [], note: '可口可乐公司橙味汽水；与美年达类似；一罐330ml≈145kcal' },
   { id: 'tropic-orange', name: '果粒橙（橙汁饮料）', cat: 'drink', kcal: 45, protein: 0, fat: 0.1, carb: 11, fiber: 0.1, sodium: 8, vitFat: [], vitWater: ['C（强化）'], minerals: ['钾'], note: '含橙肉颗粒；但仍是"饮料"不是纯果汁——水+糖+橙汁+香精；一瓶450ml≈203kcal；想喝橙汁直接吃橙子' },
