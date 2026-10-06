@@ -27,7 +27,6 @@ export const FRUITS: IFood[] = [
   { id: 'mulberry', name: '桑葚', cat: 'fruit', kcal: 43, protein: 1.4, fat: 0.4, carb: 9.8, fiber: 1.7, sodium: 3, vitFat: [], vitWater: ['C'], minerals: ['铁'], phytochem: ['花青素：抗氧化、护眼', '白藜芦醇：心血管保护'], note: '花青素丰富' },
   { id: 'goji-berry', name: '枸杞（干）', cat: 'fruit', kcal: 349, protein: 14, fat: 0.4, carb: 77, fiber: 13, sodium: 25, vitFat: ['A'], vitWater: ['C', 'B1'], minerals: ['铁', '锌'], phytochem: ['玉米黄质：护眼黄斑', '枸杞多糖：免疫调节'], note: '干品热量密度高，少量食用' },
   { id: 'cranberry', name: '蔓越莓', cat: 'fruit', kcal: 46, protein: 0.4, fat: 0.1, carb: 12, fiber: 4.6, sodium: 2, vitFat: ['K'], vitWater: ['C'], minerals: ['锰'], phytochem: ['原花青素（A型）：抑制大肠杆菌黏附泌尿道，预防尿路感染'], note: '原花青素丰富' },
-  { id: 'raspberry', name: '树莓', cat: 'fruit', kcal: 52, protein: 1.2, fat: 0.7, carb: 12, fiber: 6.5, sodium: 1, vitFat: ['K', 'E'], vitWater: ['C'], minerals: ['锰'], phytochem: ['鞣花单宁：抗氧化、抗癌研究', '覆盆子酮：研究提示辅助脂代谢'], note: '低糖高纤维' },
   { id: 'blackberry', name: '黑莓', cat: 'fruit', kcal: 43, protein: 1.4, fat: 0.5, carb: 10, fiber: 5.3, sodium: 1, vitFat: ['K', 'E'], vitWater: ['C'], minerals: ['锰'], phytochem: ['花青素：抗氧化', '鞣花酸：抗炎'] },
   { id: 'acai-pulp', name: '巴西莓（果泥）', cat: 'fruit', kcal: 70, protein: 0.7, fat: 4.5, carb: 6.7, fiber: 3, sodium: 8, vitFat: ['E'], vitWater: [], minerals: ['钾'], phytochem: ['花青素（飞燕草素）：抗氧化能力在浆果中名列前茅', '植物甾醇：辅助降胆固醇'], note: '花青素抗氧化极强，冷冻果泥常见' },
   { id: 'sea-buckthorn', name: '沙棘果', cat: 'fruit', kcal: 82, protein: 1.4, fat: 5.4, carb: 8, fiber: 4, sodium: 2, vitFat: ['A', 'E', 'K'], vitWater: ['C'], minerals: ['钾', '钙'], phytochem: ['维C：含量约为橙子 10 倍', '沙棘黄酮：抗炎、保护血管', 'ω-7（棕榈油酸）：皮肤黏膜修复'], note: '维C含量约为橙子10倍，类黄酮丰富' },
@@ -49,8 +48,6 @@ export const FRUITS: IFood[] = [
   { id: 'persimmon', name: '柿子', cat: 'fruit', kcal: 74, protein: 0.4, fat: 0.1, carb: 18.5, fiber: 1.4, sodium: 1, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], note: '空腹不宜多食' },
   { id: 'papaya', name: '木瓜', cat: 'fruit', kcal: 30, protein: 0.4, fat: 0.1, carb: 7, fiber: 0.8, sodium: 8, vitFat: ['A'], vitWater: ['C', '叶酸'], minerals: ['钾'], note: '含木瓜蛋白酶' },
   { id: 'dragon-fruit', name: '火龙果', cat: 'fruit', kcal: 55, protein: 1.1, fat: 0.2, carb: 13.3, fiber: 1.6, sodium: 2, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '含甜菜红素与低聚糖' },
-  { id: 'durian', name: '榴莲', cat: 'fruit', kcal: 150, protein: 2.6, fat: 3.3, carb: 28.3, fiber: 1.7, sodium: 3, vitFat: [], vitWater: ['C', 'B1'], minerals: ['钾'], note: '高糖高脂' },
-  { id: 'longan-dry', name: '桂圆（干）', cat: 'fruit', kcal: 313, protein: 5, fat: 0.2, carb: 71.5, fiber: 2, sodium: 10, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '高糖' },
   { id: 'carambola', name: '杨桃', cat: 'fruit', kcal: 31, protein: 0.6, fat: 0.2, carb: 7.4, fiber: 1.2, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['钾'], note: '肾病患者慎食' },
   { id: 'loquat', name: '枇杷', cat: 'fruit', kcal: 41, protein: 0.8, fat: 0.2, carb: 9.3, fiber: 0.8, sodium: 4, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'] },
   { id: 'melon-hami', name: '哈密瓜', cat: 'fruit', kcal: 34, protein: 0.5, fat: 0.1, carb: 7.9, fiber: 0.2, sodium: 27, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'] },
@@ -87,7 +84,7 @@ export const FRUITS: IFood[] = [
   { id: 'shanzha', name: '山楂（鲜）', cat: 'fruit', kcal: 102, protein: 0.5, fat: 0.2, carb: 25, fiber: 3, sodium: 5, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['山楂酸', '山楂黄酮', '果胶'], note: '鲜山楂维C约53mg/100g，黄酮助消化、辅助降血脂；味极酸，多做糖葫芦/果丹皮/蜜饯，加工后糖飙升；脾胃弱者空腹少食' },
 
   // ---- 用户点名补充 ----
-  { id: 'raspberry', name: '树莓/覆盆子', cat: 'fruit', kcal: 53, protein: 1.2, fat: 0.7, carb: 11.9, fiber: 6.5, sodium: 1, vitFat: [], vitWater: ['C', 'K'], minerals: ['锰'], phytochem: ['花青素', '鞣花单宁', '覆盆子酮'], note: '纤维密度在常见水果里最高（约6.5g/100g），净碳水仅约5g；抗氧化密度高；新鲜易烂，冷冻款营养保留好；"覆盆子酮燃脂"证据极弱，别信减肥广告' },
+  { id: 'raspberry', name: '树莓/覆盆子', cat: 'fruit', kcal: 53, protein: 1.2, fat: 0.7, carb: 11.9, fiber: 6.5, sodium: 1, vitFat: [], vitWater: ['C', 'K'], minerals: ['锰'], phytochem: ['花青素', '鞣花单宁', '覆盆子酮'], note: '低嘌呤；纤维密度在常见水果里最高（约6.5g/100g），净碳水仅约5g；抗氧化密度高；新鲜易烂，冷冻款营养保留好；"覆盆子酮燃脂"证据极弱，别信减肥广告' },
   { id: 'bergamot', name: '佛手柑', cat: 'fruit', kcal: 49, protein: 1.3, fat: 0.4, carb: 13, fiber: 5, sodium: 6, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['佛手柑素（bergamottin）', '呋喃香豆素'], note: '【重要药物相互作用】佛手柑素与西柚呋喃香豆素类似，会抑制肝脏CYP3A4酶，与他汀类（阿托伐他汀等）、降压药、抗组胺药、部分抗抑郁药、抗凝药发生相互作用，可能导致血药浓度升高与副作用。服药期间慎饮伯爵茶/佛手柑茶；孕妇/哺乳期适量。' },
   { id: 'dangshan-pear', name: '砀山酥梨（安徽特产）', cat: 'fruit', kcal: 50, protein: 0.3, fat: 0.2, carb: 13, fiber: 3.1, sodium: 2, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['梨多酚'], note: '安徽砀山特产，皮薄汁多味甜；一个中等约250g可食部=125kcal；秋燥润肺常用，冰糖炖梨；果糖含量约7-8%，糖尿病人一次半个；梨籽含微量氰苷，别嚼碎吃' },
 

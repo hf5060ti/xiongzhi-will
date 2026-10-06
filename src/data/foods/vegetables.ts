@@ -34,8 +34,8 @@ export const VEGETABLES: IFood[] = [
   { id: 'white-radish', name: '白萝卜', cat: 'veg', kcal: 18, protein: 0.7, fat: 0.1, carb: 4.1, fiber: 1.6, sodium: 21, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
   { id: 'lotus-root', name: '莲藕', cat: 'veg', kcal: 73, protein: 1.9, fat: 0.2, carb: 16.4, fiber: 1.6, sodium: 40, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
   { id: 'burdock', name: '牛蒡', cat: 'veg', kcal: 72, protein: 1.8, fat: 0.2, carb: 17.5, fiber: 3.3, sodium: 5, vitFat: [], vitWater: ['C', 'B6'], minerals: ['钾'], note: '膳食纤维丰富' },
-  { id: 'asparagus', name: '芦笋', cat: 'veg', kcal: 20, protein: 2.2, fat: 0.1, carb: 3.9, fiber: 2.1, sodium: 2, vitFat: ['K'], vitWater: ['叶酸'], minerals: ['钾'] },
-  { id: 'bamboo-shoot', name: '竹笋', cat: 'veg', kcal: 23, protein: 2.6, fat: 0.3, carb: 3.6, fiber: 2.3, sodium: 4, vitFat: [], vitWater: ['B6'], minerals: ['钾'] },
+  { id: 'asparagus', name: '芦笋', cat: 'veg', kcal: 20, protein: 2.2, fat: 0.1, carb: 3.9, fiber: 2.1, sodium: 2, vitFat: ['K'], vitWater: ['叶酸'], minerals: ['钾'], phytochem: ['天门冬酰胺（鲜味来源）', '谷胱甘肽：抗氧化'], note: '低热量高叶酸；嘌呤中等（约 50mg/100g，属中嘌呤菜），痛风急性期少吃' },
+  { id: 'bamboo-shoot', name: '竹笋（春笋/冬笋）', cat: 'veg', kcal: 23, protein: 2.6, fat: 0.3, carb: 3.6, fiber: 2.3, sodium: 4, vitFat: [], vitWater: ['B6'], minerals: ['钾'], phytochem: ['膳食纤维（木质素/半纤维素）', '酪氨酸（鲜味前体）'], note: '低嘌呤（<30mg/100g，痛风友好，卫健委 2024 食养指南归入低嘌呤）；粗纤维丰富、饱腹感强；含草酸与微量氰苷，焯水 5–10 分钟去涩去毒后再烹饪；肠胃敏感者焯后吃' },
 
   // ---- 菌菇 ----
   { id: 'shiitake', name: '香菇（鲜）', cat: 'veg', kcal: 26, protein: 2.2, fat: 0.3, carb: 5.2, fiber: 2.5, sodium: 3, vitFat: ['D'], vitWater: ['B2', 'B3'], minerals: ['硒'] },
@@ -67,7 +67,7 @@ export const VEGETABLES: IFood[] = [
   { id: 'stem-lettuce', name: '莴笋', cat: 'veg', kcal: 15, protein: 1, fat: 0.1, carb: 2.8, fiber: 0.6, sodium: 36, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
   { id: 'chayote', name: '佛手瓜', cat: 'veg', kcal: 17, protein: 1.2, fat: 0.1, carb: 3.4, fiber: 1.2, sodium: 1, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
   { id: 'loofah', name: '丝瓜', cat: 'veg', kcal: 20, protein: 1, fat: 0.2, carb: 4.2, fiber: 0.6, sodium: 3.7, vitFat: [], vitWater: ['C'], minerals: ['钾'] },
-  { id: 'okra', name: '秋葵', cat: 'veg', kcal: 37, protein: 2, fat: 0.1, carb: 7.5, fiber: 3.9, sodium: 9, vitFat: ['A', 'K'], vitWater: ['C', '叶酸'], minerals: ['钙', '镁', '钾'], note: '黏液多糖，可溶性纤维丰富' },
+  { id: 'okra', name: '秋葵', cat: 'veg', kcal: 37, protein: 2, fat: 0.1, carb: 7.5, fiber: 3.9, sodium: 9, vitFat: ['A', 'K'], vitWater: ['C', '叶酸'], minerals: ['钙', '镁', '钾'], phytochem: ['黏液多糖（果胶/黏蛋白）：可溶性纤维，延缓餐后血糖上升', '类黄酮：抗氧化'], note: '低嘌呤；黏液是可溶性纤维，对血糖友好；焯水后黏液保留更多' },
   { id: 'cherry-tomato', name: '圣女果', cat: 'veg', kcal: 25, protein: 1, fat: 0.2, carb: 5.8, fiber: 1.5, sodium: 5, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'] },
   { id: 'green-bean', name: '四季豆', cat: 'veg', kcal: 31, protein: 2, fat: 0.4, carb: 5.7, fiber: 1.5, sodium: 8.6, vitFat: [], vitWater: ['B1', 'C'], minerals: ['钾'], note: '必须彻底加热后食用' },
   { id: 'long-bean', name: '豇豆', cat: 'veg', kcal: 34, protein: 2.9, fat: 0.3, carb: 6.7, fiber: 2.3, sodium: 4.6, vitFat: [], vitWater: ['B1', 'C'], minerals: ['钾'] },
@@ -152,7 +152,6 @@ export const VEGETABLES: IFood[] = [
 
   // ---- 用户点名补充 ----
   { id: 'garlic', name: '大蒜（生）', cat: 'veg', kcal: 149, protein: 6.4, fat: 0.5, carb: 33, fiber: 2.1, sodium: 17, vitFat: [], vitWater: ['C', 'B6'], minerals: ['锰', '硒'], phytochem: ['大蒜素（allicin）', '硫化物'], note: '大蒜素切碎放置10分钟后活性最高，高温久煮损失；日常2-3瓣约10g即可；空腹生食刺激胃，胃炎者熟吃' },
-  { id: 'bamboo-shoot', name: '春笋/冬笋（鲜）', cat: 'veg', kcal: 27, protein: 2.6, fat: 0.2, carb: 4, fiber: 1.8, sodium: 1, vitFat: [], vitWater: ['C', 'B6'], minerals: ['钾'], phytochem: ['酪氨酸'], note: '极低卡高纤维，减脂友好；含草酸与氰苷，必须焯水5-10分钟去涩去毒；冬笋脂肪略高于春笋；痛风者少食（嘌呤中高）' },
 
   // ---- 用户点名补充 ----
   { id: 'yuxingcao', name: '鱼腥草/折耳根（嫩茎叶）', cat: 'veg', kcal: 37, protein: 2, fat: 0.4, carb: 6, fiber: 1.2, sodium: 9, vitFat: [], vitWater: ['C', 'B2'], minerals: ['钾', '钙'], phytochem: ['鱼腥草素（癸酰乙醛）', '槲皮素'], note: '西南地区特色，味道两极分化；鱼腥草素有抗菌抗炎作用，但对光热不稳定；凉拌/蘸水/炒腊肉；体虚/孕妇少食；口服注射液有过敏史者慎食' },

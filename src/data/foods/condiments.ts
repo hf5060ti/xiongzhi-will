@@ -30,8 +30,8 @@ export const CONDIMENTS: IFood[] = [
   { id: 'vinaigrette', name: '油醋汁', cat: 'condiment', kcal: 120, protein: 0.2, fat: 11, carb: 5, fiber: 0, sodium: 350, vitFat: ['E', 'K'], vitWater: [], minerals: [], note: '橄榄油+醋，减脂沙拉首选，热量可控' },
   { id: 'teriyaki', name: '照烧汁', cat: 'condiment', kcal: 150, protein: 2, fat: 0.5, carb: 34, fiber: 0, sodium: 2200, vitFat: [], vitWater: ['B3'], minerals: ['钾'], note: '糖+酱油，甜咸高钠，鸡胸少淋' },
   { id: 'ketchup', name: '番茄酱', cat: 'condiment', kcal: 81, protein: 1.8, fat: 0.2, carb: 18.8, fiber: 1.2, sodium: 890, vitFat: ['A'], vitWater: ['C'], minerals: ['钾'], phytochem: ['番茄红素'], note: '番茄红素护前列腺抗氧化；含添加糖，选无糖款' },
-  { id: 'yellow-mustard', name: '黄芥末', cat: 'condiment', kcal: 66, protein: 4.4, fat: 3.3, carb: 6, fiber: 4, sodium: 1100, vitFat: [], vitWater: ['B3'], minerals: ['硒'], phytochem: ['芥子苷'], note: '低热量，辛辣开胃' },
-  { id: 'wasabi', name: '山葵（青芥末）', cat: 'condiment', kcal: 292, protein: 6, fat: 3, carb: 55, fiber: 8, sodium: 30, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['异硫氰酸酯'], note: '生鱼片伴侣，抗微生物；市售多为辣根仿制' },
+  { id: 'yellow-mustard', name: '黄芥末', cat: 'condiment', kcal: 66, protein: 4.4, fat: 3.3, carb: 6, fiber: 4, sodium: 1100, vitFat: [], vitWater: ['B3'], minerals: ['硒'], phytochem: ['芥子苷：辛辣风味来源，发酵后生成异硫氰酸酯'], note: '低热量、嘌呤极低（调味用量可忽略）；含钠较高（每100g约1100mg），控盐人群少量；开胃解腻，配烤肉/热狗' },
+  { id: 'wasabi', name: '山葵（青芥末）', cat: 'condiment', kcal: 292, protein: 6, fat: 3, carb: 55, fiber: 8, sodium: 30, vitFat: [], vitWater: ['C'], minerals: ['钾'], phytochem: ['异硫氰酸酯（刺激性冲味来源，抗微生物）', '山葵酚'], note: '生鱼片伴侣；嘌呤极低（调味用量可忽略）；市售"青芥末"多为辣根+色素仿制，真山葵贵且易氧化；冲味刺激鼻，肠胃敏感者少量' },
 
   // ---- 醋 ----
   { id: 'vinegar-chen', name: '陈醋', cat: 'condiment', kcal: 114, protein: 1.1, fat: 0.3, carb: 25.5, fiber: 0, sodium: 190, vitFat: [], vitWater: ['B1', 'B2'], minerals: ['钾'], note: '醋酸延缓胃排空，研究提示可稳血糖' },
