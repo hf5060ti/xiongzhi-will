@@ -4,6 +4,7 @@
 // 全局通用搜索：合并动作 / 食物 / 公式 / 饮食讲解四类条目，导航栏搜索框直接用
 import { GOALS } from '@/data/goals';
 import { FOODS } from '@/data/foods';
+import { SUPPLEMENTS } from '@/data/supplements';
 import { BODYWEIGHT_ITEMS } from '@/data/bodyweight';
 import { DIET_KNOWLEDGE } from '@/data/diet-knowledge';
 import { smartMatch } from '@/lib/smart-search';
@@ -11,6 +12,7 @@ import { smartMatch } from '@/lib/smart-search';
 export type SearchTarget =
   | { route: '/plan'; goalId?: string }
   | { route: '/nutrition'; foodId: string }
+  | { route: '/nutrition'; suppId: string }
   | { route: '/body' }
   | { route: '/cardio'; itemId?: string }
   | { route: '/bodyweight'; itemId?: string }
@@ -39,6 +41,14 @@ const FOOD_ENTRIES: SearchEntry[] = FOODS.map((f) => ({
   label: f.name,
   sublabel: `食物 · ${f.kcal} kcal/100g`,
   target: { route: '/nutrition', foodId: f.id },
+}));
+
+/** 健身补剂：搜索直达营养页补剂库并展开对应条目（独立类别，不按热量） */
+const SUPPLEMENT_ENTRIES: SearchEntry[] = SUPPLEMENTS.map((s) => ({
+  type: 'food' as const,
+  label: s.name,
+  sublabel: `补剂 · ${s.nameEn} · 健身补剂库`,
+  target: { route: '/nutrition', suppId: s.id },
 }));
 
 const FORMULAS: SearchEntry[] = [
@@ -93,7 +103,7 @@ const TRAINING_ENTRIES: SearchEntry[] = [
   { type: 'movement', label: '推 / 拉 / 腿训练日', sublabel: '训练记录 · 给每次训练打上训练日标签', target: { route: '/training-logs' } },
 ];
 
-export const SEARCH_INDEX: SearchEntry[] = [...MOVEMENTS, ...FOOD_ENTRIES, ...BODYWEIGHT_ENTRIES, ...TRAINING_ENTRIES, ...FORMULAS, ...STOMACH_ENTRIES, ...KNOWLEDGE_ENTRIES];
+export const SEARCH_INDEX: SearchEntry[] = [...MOVEMENTS, ...FOOD_ENTRIES, ...SUPPLEMENT_ENTRIES, ...BODYWEIGHT_ENTRIES, ...TRAINING_ENTRIES, ...FORMULAS, ...STOMACH_ENTRIES, ...KNOWLEDGE_ENTRIES];
 
 export function searchEntries(query: string, limit = 8): SearchEntry[] {
   const q = query.trim().toLowerCase();

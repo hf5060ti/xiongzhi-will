@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FoodLibrary from './sections/FoodLibrary';
+import SupplementLibrary from './sections/SupplementLibrary';
 import NutritionCalculator from './sections/NutritionCalculator';
 import ProteinGuide from './sections/ProteinGuide';
 import DailyLog from './sections/DailyLog';
@@ -31,7 +32,6 @@ export default function NutritionPage() {
       }
     }
   }, [searchParams]);
-
   const handleSelect = (food: IFood, presetGrams?: string) => {
     setSelectedFood(food);
     // 点了常见份量（如「1 个 50g」）就直接带入克数，营养值随即算出
@@ -92,6 +92,9 @@ export default function NutritionPage() {
 
       {/* 一日三餐方案 */}
       <MealPlanGenerator />
+
+      {/* 健身补剂库：独立类别，按作用 / 剂量说明，不按热量 */}
+      <SupplementLibrary key={searchParams.get('suppId') ?? 'none'} initialId={searchParams.get('suppId') ?? undefined} />
 
       <div className="grid gap-8 lg:grid-cols-2">
         <FoodLibrary selectedId={selectedFood?.id ?? ''} onSelect={handleSelect} />
