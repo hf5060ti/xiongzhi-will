@@ -10,11 +10,12 @@
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
-import { BarChart3, CalendarDays, Check, Clock, Dumbbell, Eraser, Flame, HeartPulse, Medal, Moon, Pencil, Play, Plus, Save, Scale, SkipForward, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
+import { BarChart3, CalendarDays, Check, Clock, Dumbbell, Download, Eraser, Flame, HeartPulse, Medal, Moon, Pencil, Play, Plus, Save, Scale, Share2, SkipForward, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -48,6 +49,7 @@ import {
   type RecoveryEntry,
 } from '@/lib/recovery';
 import { getOverloadAdvice } from '@/lib/progressive-overload';
+import { generateShareCard } from '@/lib/share-card';
 
 interface DraftSet {
   weight: string;
@@ -241,6 +243,7 @@ export default function TrainingLogPage() {
   const [note, setNote] = useState('');
   const [exs, setExs] = useState<DraftExercise[]>([emptyExercise()]);
   const [confirmClear, setConfirmClear] = useState(false);
+  const [shareCardUrl, setShareCardUrl] = useState<string | null>(null);
   const [runnerOpen, setRunnerOpen] = useState(false);
 
   // 力量判级 / 写入能力追踪所需的体重（与能力追踪页同口径：优先快捷体重，回退身体档案）
@@ -625,11 +628,30 @@ export default function TrainingLogPage() {
       </div>
       {/* 存档统计面板（游戏存档式：一眼看到总进度） */}
       <div className="space-y-2">
-        <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-          <TrendingUp className="h-3.5 w-3.5 text-primary" />
-          我的存档
-          <span className="font-normal text-muted-foreground/70">—— 所有日志合计，自动累计，不用手动维护</span>
-        </p>
+        <div className="flex items-center justify-between gap-2">
+          <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+            <TrendingUp className="h-3.5 w-3.5 text-primary" />
+            我的存档
+            <span className="font-normal text-muted-foreground/70">—— 所有日志合计，自动累计，不用手动维护</span>
+          </p>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="h-7 gap-1.5 px-2.5 text-[11px]"
+            onClick={() => {
+              const url = generateShareCard();
+              if (!url) {
+                toast('还没有可分享的数据：先录入体重或一条训练记录，再来生成分享卡');
+                return;
+              }
+              setShareCardUrl(url);
+            }}
+          >
+            <Share2 className="h-3.5 w-3.5 text-primary" />
+            生成分享卡
+          </Button>
+        </div>
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
           <Card>
             <CardContent className="p-3">
@@ -1550,6 +1572,45 @@ export default function TrainingLogPage() {
           onClose={() => setRunnerOpen(false)}
         />
       )}
+
+      {/* 训练分享卡弹窗 */}
+      <Dialog open={shareCardUrl !== null} onOpenChange={(open) => { if (!open) setShareCardUrl(null); }}>
+        <DialogContent className="max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-1.5">
+              <Share2 className="h-4 w-4 text-primary" />
+              训练分享卡
+            </DialogTitle>
+            <DialogDescription>
+              长按 / 右键图片可保存，或直接下载 PNG 分享到朋友圈、群聊。
+            </DialogDescription>
+          </DialogHeader>
+          {shareCardUrl && (
+            <img
+              src={shareCardUrl}
+              alt="雄性意志训练分享卡"
+              className="mx-auto w-full max-w-[300px] rounded-lg border border-border/60 shadow-lg"
+            />
+          )}
+          <DialogFooter className="gap-2">
+            <DialogClose asChild>
+              <Button variant="outline">关闭</Button>
+            </DialogClose>
+            {shareCardUrl && (
+              <a
+                href={shareCardUrl}
+                download={`雄性意志-训练卡-${new Date().toISOString().slice(0, 10)}.png`}
+                className="inline-flex"
+              >
+                <Button className="gap-1.5">
+                  <Download className="h-4 w-4" />
+                  下载 PNG
+                </Button>
+              </a>
+            )}
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
