@@ -243,7 +243,25 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
                   </TableCell>
                   <TableCell className="text-muted-foreground">{m.set}</TableCell>
                   <TableCell>
-                    {m.videoUrl ? (
+                    {m.videoGif ? (
+                      <a
+                        href={m.videoUrl || m.videoGif}
+                        target="_blank"
+                        rel="noreferrer"
+                        title={m.gifNote ? `${m.name}：${m.gifNote}` : '点击打开讲解页（动图为动作演示）'}
+                        className="block"
+                      >
+                        <img
+                          src={m.videoGif}
+                          alt={m.name}
+                          loading="lazy"
+                          decoding="async"
+                          onError={(ev) => { ev.currentTarget.style.display = 'none'; }}
+                          className="h-14 w-14 rounded-md border border-border bg-muted/30 object-contain transition-transform hover:scale-110"
+                        />
+                        <span className="mt-0.5 block text-center text-[10px] font-medium text-primary">观看</span>
+                      </a>
+                    ) : m.videoUrl ? (
                       <a
                         href={m.videoUrl}
                         target="_blank"

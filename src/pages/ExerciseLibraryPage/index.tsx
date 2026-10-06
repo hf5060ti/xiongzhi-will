@@ -265,6 +265,11 @@ export default function ExerciseLibraryPage() {
   const [muscle, setMuscle] = useState('all');
   const [equip, setEquip] = useState('all');
   const [selected, setSelected] = useState<ExerciseView | null>(null);
+  // 详情演示动图加载状态：gif 未就绪时先显示静态图 + 加载占位，失败自动回退静态图
+  const [gifReady, setGifReady] = useState(false);
+  useEffect(() => {
+    setGifReady(false);
+  }, [selected]);
   const [hovered, setHovered] = useState<string | null>(null);
   const [visible, setVisible] = useState(PAGE_SIZE);
 
@@ -413,8 +418,15 @@ export default function ExerciseLibraryPage() {
                   src={src}
                   alt={cnName || ex.name}
                   loading="lazy"
+                  decoding="async"
                   onError={(ev) => {
                     const el = ev.currentTarget;
+                    // 动图加载失败：回退到本地静态图（而不是整块消失）
+                    if (ex.gif && ex.images[0] && !el.dataset.fb) {
+                      el.dataset.fb = '1';
+                      el.src = ex.images[0];
+                      return;
+                    }
                     el.style.display = 'none';
                   }}
                   className="h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105"
@@ -521,17 +533,27 @@ export default function ExerciseLibraryPage() {
                     <div className="flex flex-col gap-1.5">
                       {/* 竖版演示播放器：对齐动作详解面板样式 */}
                       <div className="relative aspect-[3/4] w-44 overflow-hidden rounded-xl border border-border bg-black sm:w-52">
+                        {/* 静态图：gif 未就绪时的占位底图（加载中 / 失败兜底） */}
                         <img
-                          src={selected.gif}
+                          src={gifReady ? selected.gif : (selected.images[0] || selected.gif)}
                           alt={`${getCnName(selected) || selected.name}${selected.approx ? '（近似演示）' : ''} 演示`}
-                          onError={(ev) => { ev.currentTarget.style.display = 'none'; }}
+                          decoding="async"
+                          onLoad={() => { if (!gifReady) setGifReady(true); }}
+                          onError={() => {
+                            // gif 加载失败：固定回退到本地静态图
+                            if (selected.images[0]) {
+                              setGifReady(false);
+                            }
+                          }}
                           className="h-full w-full animate-[fadeIn_.3s_ease-out] object-contain"
                         />
-                        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black/45 backdrop-blur-sm">
-                            <PlayCircle className="h-7 w-7 text-white/90" />
+                        {!gifReady && (
+                          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black/45 backdrop-blur-sm">
+                              <PlayCircle className="h-7 w-7 animate-pulse text-white/90" />
+                            </div>
                           </div>
-                        </div>
+                        )}
                         {(() => {
                           const cue = findGuidance(getCnName(selected) || '', selected.name)?.cues?.[0];
                           return cue ? (

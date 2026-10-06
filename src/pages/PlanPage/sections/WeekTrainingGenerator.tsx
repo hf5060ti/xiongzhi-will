@@ -144,7 +144,28 @@ export default function WeekTrainingGenerator() {
                       </span>
                       {m.name}
                     </p>
-                    {m.videoUrl && (
+                    {m.videoGif ? (
+                      <a
+                        href={m.videoUrl || m.videoGif}
+                        target="_blank"
+                        rel="noreferrer"
+                        title="点击打开讲解页（动图为动作演示）"
+                        className="flex items-center gap-1.5"
+                      >
+                        <img
+                          src={m.videoGif}
+                          alt={m.name}
+                          loading="lazy"
+                          decoding="async"
+                          onError={(ev) => { ev.currentTarget.style.display = 'none'; }}
+                          className="h-10 w-10 rounded-md border border-border bg-muted/30 object-contain transition-transform hover:scale-110"
+                        />
+                        <span className="flex items-center gap-1 text-[11px] text-primary hover:underline">
+                          <PlayCircle className="h-3.5 w-3.5" />
+                          演示
+                        </span>
+                      </a>
+                    ) : m.videoUrl ? (
                       <a
                         href={m.videoUrl}
                         target="_blank"
@@ -154,7 +175,7 @@ export default function WeekTrainingGenerator() {
                         <PlayCircle className="h-3.5 w-3.5" />
                         视频演示
                       </a>
-                    )}
+                    ) : null}
                   </div>
                   <div className="mb-1 flex flex-wrap items-center gap-1.5">
                     <p className="text-[11px] font-medium text-primary/90">{m.set.replace(/[，,]?\s*组间歇\s*\d+\s*s/g, '')}</p>

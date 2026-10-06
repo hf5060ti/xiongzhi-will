@@ -13,6 +13,8 @@ export interface IGoalMovement {
   videoUrl?: string;
   /** 动作演示GIF链接 */
   videoGif?: string;
+  /** GIF 说明（如近似/共用演示时标注） */
+  gifNote?: string;
   /** 是否为近似动作（无单独演示视频） */
   approx?: boolean;
   /** 近似动作说明 */
@@ -512,9 +514,9 @@ export const GOALS: IGoal[] = [
     ],
     movements: [
       { name: '硬拉', set: '5 × 3–5，组间歇 2–3min', videoUrl: 'https://www.bilibili.com/video/BV1MA411U7Cn/' },
-      { name: '前蹲 / 泽奇蹲', set: '4 × 3–5，组间歇 2min', videoUrl: 'https://www.bilibili.com/video/BV13e411p7eq/' },
+      { name: '前蹲 / 泽奇蹲', set: '4 × 3–5，组间歇 2min', videoUrl: 'https://www.bilibili.com/video/BV13e411p7eq/', videoGif: 'https://fitness.xingshuwen.com/videos/1545-vR1vold.gif', gifNote: '泽奇蹲精确演示；前蹲同用史密斯前蹲演示（1433）' },
       { name: '站姿推举', set: '4 × 3–5，组间歇 2min', videoUrl: 'https://www.bilibili.com/video/BV1jW411x7VR/' },
-      { name: '农夫走', set: '4 × 20–40m，组间歇 2min', videoUrl: 'https://www.bilibili.com/video/BV1Zx4y1M79b/' },
+      { name: '农夫走', set: '4 × 20–40m，组间歇 2min', videoUrl: 'https://www.bilibili.com/video/BV1Zx4y1M79b/', videoGif: 'https://fitness.xingshuwen.com/videos/2133-qPEzJjA.gif' },
       { name: '搬沙袋 / 石头', set: '3 × 10–20m，组间歇 2min', videoUrl: 'https://www.bilibili.com/video/BV14b411H7df/' },
     ],
     progression: '主项按计划线性加重（每周 +2.5–5kg），辅助项跟容量；每 6–8 周安排一次减载周。',
