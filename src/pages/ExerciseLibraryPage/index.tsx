@@ -75,6 +75,8 @@ interface ExerciseView {
   none?: boolean;
   /** 站内搜索用的英文动作名 */
   searchName?: string;
+  /** 来源分类（力量 / 大力士 / 举重 / 爆发力 / 拉伸 / 有氧 等） */
+  category?: string;
 }
 
 // 肌群中英映射
@@ -190,6 +192,7 @@ const ALL_EXERCISES: ExerciseView[] = [
       approxNote: media?.approxNote,
       none: media?.none,
       searchName: media?.searchName,
+      category: e.category,
     };
   }),
   ...(extData as ExtExercise[]).map((e) => ({
@@ -206,6 +209,7 @@ const ALL_EXERCISES: ExerciseView[] = [
     gif: e.gif,
     page: e.page,
     source: e.source,
+    category: e.category,
   })),
 ];
 
@@ -217,6 +221,29 @@ const NO_ANIM = ALL_EXERCISES.length - WITH_ANIM;
 
 // 动作百科站内搜索入口（站上暂无演示时使用；站内搜索框支持英文原名）
 const SITE_SEARCH_URL = SITE_HOME;
+
+// 分类筛选：大力士 / 斗腕 / 力量 / 举重 / 爆发力 / 拉伸 / 有氧
+const CAT_OPTIONS: { label: string; value: string }[] = [
+  { label: '全部', value: 'all' },
+  { label: '力量', value: 'strength' },
+  { label: '大力士', value: 'strongman' },
+  { label: '举重', value: 'olympic weightlifting' },
+  { label: '爆发力', value: 'plyometrics' },
+  { label: '拉伸', value: 'stretching' },
+  { label: '有氧', value: 'cardio' },
+  { label: '斗腕', value: 'armwrest' },
+];
+
+/** 判断动作是否属于某分类；斗腕按名称含「腕 / Wrist」聚合 */
+function matchCategory(ex: ExerciseView, cat: string): boolean {
+  if (cat === 'all') return true;
+  if (cat === 'armwrest') {
+    const n = `${ex.nameZh || ''} ${ex.name || ''}`;
+    return n.includes('腕') || /Wrist/i.test(n);
+  }
+  if (cat === 'strength') return ex.category === 'strength' || ex.category === 'powerlifting';
+  return ex.category === cat;
+}
 
 // 每次渲染的卡片数量，避免一次性渲染全部 1500+ 张卡片
 const PAGE_SIZE = 120;
@@ -264,11 +291,16 @@ export default function ExerciseLibraryPage() {
   const [query, setQuery] = useState(params.get('q') ?? '');
   const [muscle, setMuscle] = useState('all');
   const [equip, setEquip] = useState('all');
+  const [cat, setCat] = useState('all');
   const [selected, setSelected] = useState<ExerciseView | null>(null);
   // 详情演示动图加载状态：gif 未就绪时先显示静态图 + 加载占位，失败自动回退静态图
   const [gifReady, setGifReady] = useState(false);
+  const [gifTry, setGifTry] = useState(0);
+  const [gifSrc, setGifSrc] = useState<string | undefined>(undefined);
   useEffect(() => {
     setGifReady(false);
+    setGifTry(0);
+    setGifSrc(undefined);
   }, [selected]);
   const [hovered, setHovered] = useState<string | null>(null);
   const [visible, setVisible] = useState(PAGE_SIZE);
@@ -277,7 +309,7 @@ export default function ExerciseLibraryPage() {
     () => ['all', ...new Set(ALL_EXERCISES.flatMap((e) => e.primaryMuscles))],
     [],
   );
-  const equips = useMemo(() => ['all', ...new Set(ALL_EXERCISES.map((e) => e.equipment))], []);
+  const equips = useMemo(() => ['all', ...new Set(ALL_EXERCISES.map((e) => e.equipment).filter(Boolean))], []);
 
   // 肌群快捷分组（对应标签按钮）
   const MUSCLE_GROUPS: Record<string, string[]> = {
@@ -291,6 +323,7 @@ export default function ExerciseLibraryPage() {
 
   const filtered = useMemo(() => {
     return ALL_EXERCISES.filter((e) => {
+      if (cat !== 'all' && !matchCategory(e, cat)) return false;
       if (muscle !== 'all') {
         const group = MUSCLE_GROUPS[muscle];
         if (group) {
@@ -320,12 +353,12 @@ export default function ExerciseLibraryPage() {
       }
       return true;
     });
-  }, [query, muscle, equip]);
+  }, [query, muscle, equip, cat]);
 
   // 筛选条件变化后回到首批
   useEffect(() => {
     setVisible(PAGE_SIZE);
-  }, [query, muscle, equip]);
+  }, [query, muscle, equip, cat]);
 
   const shown = filtered.slice(0, visible);
 
@@ -377,6 +410,15 @@ export default function ExerciseLibraryPage() {
           ))}
         </div>
         <select
+          value={cat}
+          onChange={(e) => setCat(e.target.value)}
+          className="h-10 rounded-md border border-border bg-background px-3 text-sm text-foreground"
+        >
+          {CAT_OPTIONS.map((c) => (
+            <option key={c.value} value={c.value}>{c.label}</option>
+          ))}
+        </select>
+        <select
           value={equip}
           onChange={(e) => setEquip(e.target.value)}
           className="h-10 rounded-md border border-border bg-background px-3 text-sm text-foreground"
@@ -421,7 +463,13 @@ export default function ExerciseLibraryPage() {
                   decoding="async"
                   onError={(ev) => {
                     const el = ev.currentTarget;
-                    // 动图加载失败：回退到本地静态图（而不是整块消失）
+                    // 外站动图偶发失败：带参数重试一次
+                    if (ex.gif && !el.dataset.rt) {
+                      el.dataset.rt = '1';
+                      el.src = ex.gif + '?retry=1';
+                      return;
+                    }
+                    // 仍失败：回退到本地静态图（而不是整块消失）
                     if (ex.gif && ex.images[0] && !el.dataset.fb) {
                       el.dataset.fb = '1';
                       el.src = ex.images[0];
@@ -535,12 +583,18 @@ export default function ExerciseLibraryPage() {
                       <div className="relative aspect-[3/4] w-44 overflow-hidden rounded-xl border border-border bg-black sm:w-52">
                         {/* 静态图：gif 未就绪时的占位底图（加载中 / 失败兜底） */}
                         <img
-                          src={gifReady ? selected.gif : (selected.images[0] || selected.gif)}
+                          src={gifReady ? (gifSrc || selected.gif) : (selected.images[0] || selected.gif)}
                           alt={`${getCnName(selected) || selected.name}${selected.approx ? '（近似演示）' : ''} 演示`}
                           decoding="async"
                           onLoad={() => { if (!gifReady) setGifReady(true); }}
                           onError={() => {
-                            // gif 加载失败：固定回退到本地静态图
+                            // gif 已接管画面但外站偶发失败：带参数强制重载一次
+                            if (gifReady && gifTry === 0 && selected.gif) {
+                              setGifTry(1);
+                              setGifSrc(selected.gif + '?retry=1');
+                              return;
+                            }
+                            // 仍失败：固定回退到本地静态图
                             if (selected.images[0]) {
                               setGifReady(false);
                             }
