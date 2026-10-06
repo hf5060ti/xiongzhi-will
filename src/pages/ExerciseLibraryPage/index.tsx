@@ -462,9 +462,12 @@ export default function ExerciseLibraryPage() {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {shown.map((ex) => {
           const cnName = getCnName(ex);
-          // 有动图的动作：进入视口即自动循环播放（loading=lazy 自动懒加载），不靠 hover；
-          // 手机端也能直接看到演示，鼠标 hover 只做微放大，不切图避免闪烁
-          const src = ex.gif || ex.images[0] || '';
+          // 动图策略：桌面端（≥768px）卡片直接加载 gif，hover 微放大；
+          // 手机端一屏十几个 gif 同时解码播放会卡 CPU，列表只显示静态图，点进详情再看动图。
+          const isDesktop = typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
+          const src = isDesktop
+            ? (ex.gif || ex.images[0] || '')
+            : (ex.images[0] || ex.gif || '');
           return (
             <div
               key={ex.id}
