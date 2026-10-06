@@ -152,13 +152,13 @@ const M = 76; // 页面边距
 
 const BG_TOP = '#171d18';
 const BG_BOTTOM = '#0a0d0b';
-const GOLD = '#c2a24e'; // 暗金：沉稳有质感，贴合黑金气质
-const GOLD_BRIGHT = '#dcbf6b'; // 暗金中的提亮色（大数字用，与暗金同系）
-const GOLD_DIM = 'rgba(194,162,78,0.30)';
+const GOLD = '#d4af37'; // 金色（metallic gold）：纯正黄金色，饱和带橙调，金属质感
+const GOLD_BRIGHT = '#e8c95a'; // 提亮金（大数字用，与主金同系）
+const GOLD_DIM = 'rgba(212,175,55,0.32)';
 const WHITE = '#f4f4ee';
 const MUTED = '#9aa69c';
 const CARD_BG = 'rgba(255,255,255,0.045)';
-const CARD_BORDER = 'rgba(194,162,78,0.26)';
+const CARD_BORDER = 'rgba(212,175,55,0.28)';
 
 function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
   ctx.beginPath();
@@ -209,8 +209,8 @@ export function renderShareCard(data: ShareCardData): string {
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, CARD_W, CARD_H);
   const glow = ctx.createRadialGradient(CARD_W - 200, 260, 40, CARD_W - 200, 260, 560);
-  glow.addColorStop(0, 'rgba(194,162,78,0.10)');
-  glow.addColorStop(1, 'rgba(194,162,78,0)');
+  glow.addColorStop(0, 'rgba(212,175,55,0.12)');
+  glow.addColorStop(1, 'rgba(212,175,55,0)');
   ctx.fillStyle = glow;
   ctx.fillRect(0, 0, CARD_W, CARD_H);
 
