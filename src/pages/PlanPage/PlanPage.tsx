@@ -11,6 +11,7 @@ import TrainingRules from './sections/TrainingRules';
 import SpecialNeedsGuide from './sections/SpecialNeedsGuide';
 import WarmupGuide from './sections/WarmupGuide';
 import DietSection from './sections/DietSection';
+import PlanTemplates from './sections/PlanTemplates';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
 import { loadGoalId, loadDietId, loadWeightKg } from '@/lib/store';
@@ -67,6 +68,7 @@ export default function PlanPage() {
           <WarmupGuide />
           <WeekTrainingGenerator />
           <TrainingSection goal={goal} />
+          <PlanTemplates />
           <DietSection diet={diet} weightKg={weightKg} />
         </div>
         <div className="space-y-8 sm:space-y-12 lg:sticky lg:top-6">

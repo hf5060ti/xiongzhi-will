@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import exercisesData from '@/data/exercises-db.json';
 import extData from '@/data/exercises-ext.json';
 import { EXERCISE_MEDIA } from '@/data/exercise-media';
+import { FITWILL_EXERCISES } from '@/data/fitwill-exercises';
 import zhStepsData from '@/data/exercise-zh-steps.json';
 import { TAN_CHENGYI, type CoachVideo } from '@/data/coach-videos';
 import { findGuidance } from '@/data/exercise-guidance';
@@ -77,6 +78,10 @@ interface ExerciseView {
   searchName?: string;
   /** 来源分类（力量 / 大力士 / 举重 / 爆发力 / 拉伸 / 有氧 等） */
   category?: string;
+  /** fitwill 演示视频（S3 mp4，无 gif 时详情页用 <video> 展示） */
+  video?: string;
+  /** 本站自写动作要点（fitwill 条目） */
+  tip?: string;
 }
 
 // 肌群中英映射
@@ -208,6 +213,24 @@ const ALL_EXERCISES: ExerciseView[] = [
     images: [e.image],
     gif: e.gif,
     page: e.page,
+    source: e.source,
+    category: e.category,
+  })),
+  // fitwill 动作（#/library 追加收录；id 前缀 fw- 防冲突，肌群/器械已映射为标准 key，现有筛选直接生效）
+  ...FITWILL_EXERCISES.map((e) => ({
+    id: e.id,
+    name: e.name,
+    nameZh: e.nameZh,
+    equipment: e.equipment,
+    primaryMuscles: normMuscles(e.primaryMuscles),
+    secondaryMuscles: normMuscles(e.secondaryMuscles || []),
+    instructions: [] as string[],
+    level: '',
+    mechanic: '',
+    images: [e.image],
+    gif: e.gif,
+    video: e.video,
+    tip: e.tip,
     source: e.source,
     category: e.category,
   })),
@@ -495,7 +518,7 @@ export default function ExerciseLibraryPage() {
                     近似演示
                   </span>
                 )}
-                {!ex.gif && (
+                {!ex.gif && !ex.video && (
                   <span className="absolute left-1 top-1 rounded bg-black/50 px-1 py-0.5 text-[9px] font-medium text-white">
                     站上暂无演示
                   </span>
@@ -517,6 +540,11 @@ export default function ExerciseLibraryPage() {
                   <span className="mt-1 inline-flex items-center gap-0.5 text-[10px] font-medium text-primary">
                     <PlayCircle className="h-3 w-3" />
                     {ex.approx ? '近似演示·自动播放' : '演示自动播放'}
+                  </span>
+                ) : ex.video ? (
+                  <span className="mt-1 inline-flex items-center gap-0.5 text-[10px] font-medium text-primary">
+                    <PlayCircle className="h-3 w-3" />
+                    演示视频
                   </span>
                 ) : (
                   <div className="mt-1 space-y-0.5">
@@ -627,6 +655,19 @@ export default function ExerciseLibraryPage() {
                         {selected.approx ? '近似演示' : '动作演示'}
                       </span>
                     </div>
+                  ) : selected.video ? (
+                    <div className="flex flex-col gap-1.5">
+                      <div className="relative aspect-[3/4] w-44 overflow-hidden rounded-xl border border-border bg-black sm:w-52">
+                        <video
+                          src={selected.video}
+                          poster={selected.images[0]}
+                          controls
+                          preload="none"
+                          className="h-full w-full object-contain"
+                        />
+                      </div>
+                      <span className="text-center text-[10px] text-muted-foreground">动作演示视频</span>
+                    </div>
                   ) : (
                     selected.images.map((img, i) => (
                       <img
@@ -658,12 +699,18 @@ export default function ExerciseLibraryPage() {
                     {selected.approx && (
                       <Badge className="bg-amber-500 text-white hover:bg-amber-500">近似演示</Badge>
                     )}
-                    {!selected.gif && <Badge variant="outline">站上暂无演示</Badge>}
+                    {!selected.gif && !selected.video && <Badge variant="outline">站上暂无演示</Badge>}
                   </div>
                   {selected.secondaryMuscles.length > 0 && (
                     <div className="mt-2 text-xs text-muted-foreground">
                       <b className="text-foreground">协同肌群：</b>
                       {selected.secondaryMuscles.map((m) => MUSCLE_CN[m] || m).join('、')}
+                    </div>
+                  )}
+                  {selected.tip && (
+                    <div className="mt-3 rounded-lg border border-primary/20 bg-primary/5 p-3 text-xs leading-relaxed text-foreground">
+                      <b className="text-primary">动作要点：</b>
+                      {selected.tip}
                     </div>
                   )}
                   {(() => {
@@ -726,7 +773,7 @@ export default function ExerciseLibraryPage() {
                 </div>
               )}
 
-              {!selected.gif && (
+              {!selected.gif && !selected.video && (
                 <div className="rounded-md border border-border bg-muted/40 p-3 text-xs text-muted-foreground">
                   <b className="text-foreground">站上暂无演示：</b>
                   动作百科（fitness.xingshuwen.com）站内暂无「{selected.name}」的演示动图，
@@ -778,7 +825,7 @@ export default function ExerciseLibraryPage() {
               })()}
 
               <div className="flex flex-wrap gap-2">
-                {!selected.gif && (
+                {!selected.gif && !selected.video && (
                   <a
                     href={SITE_SEARCH_URL}
                     target="_blank"
@@ -849,16 +896,22 @@ export default function ExerciseLibraryPage() {
                     )}
                   </>
                 ) : (
-                  <ol className="space-y-2">
-                    {selected.instructions.map((step, i) => (
-                      <li key={i} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
-                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">
-                          {i + 1}
-                        </span>
-                        <span>{step}</span>
-                      </li>
-                    ))}
-                  </ol>
+                  selected.instructions && selected.instructions.length > 0 ? (
+                    <ol className="space-y-2">
+                      {selected.instructions.map((step, i) => (
+                        <li key={i} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">
+                            {i + 1}
+                          </span>
+                          <span>{step}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  ) : (
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      该动作暂无分步文字，请参考上方「动作要点」{selected.video ? '与演示视频' : ''}，并配合 B 站教学视频练习。
+                    </p>
+                  )
                 )}
               </div>
             </CardContent>
