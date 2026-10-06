@@ -96,7 +96,7 @@ export default function TrainingArchitecture() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {SPLITS.map((s) => (
               <button
                 key={s.id}
@@ -126,7 +126,7 @@ export default function TrainingArchitecture() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2">
+          <div className="grid gap-2 sm:grid-cols-2">
             {PYRAMIDS.map((p) => (
               <button
                 key={p.id}

@@ -59,7 +59,7 @@ export default function DietSection({ diet }: DietSectionProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-2">
+      <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-2">
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-base">宏量营养占比</CardTitle>
@@ -178,7 +178,7 @@ export default function DietSection({ diet }: DietSectionProps) {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
+      <div className="grid gap-2.5 sm:gap-3 sm:grid-cols-2">
         <div className="rounded-lg border border-border bg-card p-4">
           <p className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <ThumbsUp className="h-4 w-4 text-primary" />
