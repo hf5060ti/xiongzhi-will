@@ -15,6 +15,12 @@ import { TAN_CHENGYI, type CoachVideo } from '@/data/coach-videos';
 import { findGuidance } from '@/data/exercise-guidance';
 import { restFor } from '@/lib/training-plan';
 import { smartMatch, buildMuscleAliases } from '@/lib/smart-search';
+import { getLang } from '@/lib/i18n';
+
+/** 显示名：中文环境显示中文名，其他语言显示英文名（数据里本来就有） */
+function displayName(ex: ExerciseView): string {
+  return getLang() === 'zh' ? (ex.nameZh || ex.name) : ex.name;
+}
 
 // 图片 CDN 前缀
 const IMG_BASE = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';
@@ -468,6 +474,7 @@ export default function ExerciseLibraryPage() {
           const src = isDesktop
             ? (ex.gif || ex.images[0] || '')
             : (ex.images[0] || ex.gif || '');
+          const titleName = displayName(ex);
           return (
             <div
               key={ex.id}
@@ -529,9 +536,11 @@ export default function ExerciseLibraryPage() {
               </div>
               <div className="p-2">
                 <p className="truncate text-xs font-medium text-foreground">
-                  {cnName || ex.name}
+                  {titleName}
                 </p>
-                <p className="truncate text-[10px] text-muted-foreground">{ex.name}</p>
+                {getLang() === 'zh' && (
+                  <p className="truncate text-[10px] text-muted-foreground">{ex.name}</p>
+                )}
                 <div className="mt-1 flex flex-wrap gap-0.5">
                   {ex.primaryMuscles.slice(0, 2).map((m) => (
                     <Badge key={m} variant="outline" className="px-1 py-0 text-[9px]">
@@ -685,7 +694,7 @@ export default function ExerciseLibraryPage() {
                 </div>
                 <div className="flex-1">
                   <h2 className="font-display text-2xl font-bold text-foreground">
-                    {getCnName(selected) || selected.name}
+                    {displayName(selected)}
                   </h2>
                   <p className="text-sm text-muted-foreground">{selected.name}</p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
