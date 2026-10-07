@@ -10,23 +10,26 @@ import { getUser, isLoggedIn, loginWithGithub, logout, type AuthUser } from '@/l
 import { cn } from '@/lib/utils';
 import VideoBackground from '@/components/VideoBackground';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { t, onLangChange, getLang } from '@/lib/i18n';
+import { useEffect as useEffectReact, useState as useStateReact } from 'react';
 
 const NAV_ITEMS = [
-  { path: '/', label: '身体', icon: Dumbbell, end: true },
-  { path: '/training-logs', label: '训练', icon: ClipboardList, end: false },
-  { path: '/tools', label: '工具', icon: Crosshair, end: false },
-  { path: '/light', label: '轻盈', icon: TrendingDown, end: false },
-  { path: '/stomach', label: '胃部', icon: Soup, end: false },
-  { path: '/isometric', label: '等长', icon: Hand, end: false },
-  { path: '/diet-knowledge', label: '饮食', icon: BookOpen, end: false },
-  { path: '/mind', label: '心智', icon: Brain, end: false },
-  { path: '/career', label: '事业', icon: Briefcase, end: false },
-  { path: '/wealth', label: '财富', icon: Coins, end: false },
-  { path: '/relation', label: '关系', icon: Heart, end: false },
-  { path: '/skills', label: '技能', icon: Wrench, end: false },
-  { path: '/wild', label: '荒野', icon: Mountain, end: false },
-  { path: '/life', label: '人生', icon: BookMarked, end: false },
-  { path: '/collect', label: '收藏', icon: Bookmark, end: false },
+  { path: '/', labelKey: 'nav_body', icon: Dumbbell, end: true },
+  { path: '/training-logs', labelKey: 'nav_training', icon: ClipboardList, end: false },
+  { path: '/tools', labelKey: 'nav_tools', icon: Crosshair, end: false },
+  { path: '/light', labelKey: 'nav_light', icon: TrendingDown, end: false },
+  { path: '/stomach', labelKey: 'nav_stomach', icon: Soup, end: false },
+  { path: '/isometric', labelKey: 'nav_isometric', icon: Hand, end: false },
+  { path: '/diet-knowledge', labelKey: 'nav_diet', icon: BookOpen, end: false },
+  { path: '/mind', labelKey: 'nav_mind', icon: Brain, end: false },
+  { path: '/career', labelKey: 'nav_career', icon: Briefcase, end: false },
+  { path: '/wealth', labelKey: 'nav_wealth', icon: Coins, end: false },
+  { path: '/relation', labelKey: 'nav_relation', icon: Heart, end: false },
+  { path: '/skills', labelKey: 'nav_skills', icon: Wrench, end: false },
+  { path: '/wild', labelKey: 'nav_wild', icon: Mountain, end: false },
+  { path: '/life', labelKey: 'nav_life', icon: BookMarked, end: false },
+  { path: '/collect', labelKey: 'nav_collect', icon: Bookmark, end: false },
 
 ];
 
@@ -65,7 +68,7 @@ const TYPE_ICON = {
   formula: Sigma,
   knowledge: BookOpen,
 };
-const TYPE_LABEL = { movement: '动作', food: '食物', formula: '公式', knowledge: '讲解' };
+const TYPE_LABEL = { movement: 'type_movement', food: 'type_food', formula: 'type_formula', knowledge: 'type_knowledge' };
 
 // ── 账号登录区：GitHub 登录 / 用户菜单 / 云同步状态 ──
 // 登录入口会随"xy-auth-change"事件刷新（登录回调落地、退出登录时触发）
@@ -110,7 +113,7 @@ function AuthSection({ compact }: { compact?: boolean }) {
         className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg border border-border/60 py-1.5 text-xs text-foreground transition-colors hover:bg-accent"
       >
         <LogOut className="h-3.5 w-3.5" />
-        退出登录
+        {t('logout')}
       </button>
     </div>
   ) : null;
@@ -139,7 +142,7 @@ function AuthSection({ compact }: { compact?: boolean }) {
             className="flex h-9 items-center gap-1 rounded-lg border border-border/60 px-2.5 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           >
             <LogIn className="h-4 w-4" />
-            登录
+            {t('login')}
           </button>
         )}
         {menu}
@@ -170,11 +173,11 @@ function AuthSection({ compact }: { compact?: boolean }) {
         <button
           type="button"
           onClick={loginWithGithub}
-          title="GitHub 登录 · 云端同步"
+          title="GitHub 登录"
           className="flex w-14 flex-col items-center gap-1 rounded-xl py-2.5 text-muted-foreground transition-all hover:bg-accent/50 hover:text-foreground"
         >
           <LogIn className="h-5 w-5" strokeWidth={1.8} />
-          <span className="text-[10px] leading-none">登录</span>
+          <span className="text-[10px] leading-none">{t('login')}</span>
         </button>
       )}
       {menu}
@@ -207,7 +210,7 @@ const SearchResultList = ({
             <span className="flex items-center gap-2">
               <span className="text-sm font-medium text-foreground">{r.label}</span>
               <span className="rounded px-1 text-[10px] uppercase tracking-wider text-muted-foreground">
-                {TYPE_LABEL[r.type]}
+                {t(TYPE_LABEL[r.type])}
               </span>
             </span>
             <span className="block text-xs text-muted-foreground">{r.sublabel}</span>
@@ -220,6 +223,9 @@ const SearchResultList = ({
 
 export const Layout = () => {
   const { pathname } = useLocation();
+  // 语言切换时触发重渲染，所有 t() 即时刷新
+  const [, setLangTick] = useStateReact(0);
+  useEffectReact(() => onLangChange(() => setLangTick((n) => n + 1)), []);
 
   // 路由级 SEO：切页时更新 document.title 与 meta description
   useEffect(() => {
@@ -340,15 +346,18 @@ export const Layout = () => {
                 }
               >
                 <Icon className="h-5 w-5" strokeWidth={1.8} />
-                <span className="text-[10px] leading-none">{item.label}</span>
+                <span className="text-[10px] leading-none">{t(item.labelKey)}</span>
               </NavLink>
             );
           })}
         </nav>
 
-        {/* 账号：GitHub 登录 / 云同步（左侧栏底部） */}
+        {/* 语言切换 + 账号：左侧栏底部 */}
         <div className="border-t border-border/60 py-2">
-          <AuthSection />
+          <div className="flex flex-col items-center gap-1">
+            <LanguageSwitcher />
+            <AuthSection />
+          </div>
         </div>
       </aside>
 
@@ -358,21 +367,24 @@ export const Layout = () => {
           <Link to="/" className="flex shrink-0 items-center gap-2">
             <Shield className="h-5 w-5 text-primary" strokeWidth={2.2} />
             <span className="font-display text-base font-bold tracking-[0.15em] text-foreground">
-              雄性意志
+              {t('brand')}
             </span>
           </Link>
-          {/* 手机端搜索入口：桌面搜索框在 lg 以下断点被隐藏，这里补一个图标入口 */}
-          <button
-            type="button"
-            aria-label="搜索"
-            aria-expanded={mobileSearchOpen}
-            onClick={() => setMobileSearchOpen(true)}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/60 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-          >
-            <Search className="h-5 w-5" strokeWidth={1.8} />
-          </button>
-          {/* 账号：GitHub 登录 / 云同步（手机端） */}
-          <AuthSection compact />
+          <div className="flex shrink-0 items-center gap-2">
+            <LanguageSwitcher compact />
+            {/* 手机端搜索入口：桌面搜索框在 lg 以下断点被隐藏，这里补一个图标入口 */}
+            <button
+              type="button"
+              aria-label="搜索"
+              aria-expanded={mobileSearchOpen}
+              onClick={() => setMobileSearchOpen(true)}
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/60 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+            >
+              <Search className="h-5 w-5" strokeWidth={1.8} />
+            </button>
+            {/* 账号：GitHub 登录 / 云同步（手机端） */}
+            <AuthSection compact />
+          </div>
         </div>
         {/* 手机端导航横向滚动 */}
         <nav className="flex gap-1 overflow-x-auto px-3 pb-2">
@@ -390,7 +402,7 @@ export const Layout = () => {
                 )
               }
             >
-              {item.label}
+              {t(item.labelKey)}
             </NavLink>
           ))}
         </nav>
@@ -418,7 +430,7 @@ export const Layout = () => {
                 <Input
                   type="search"
                   autoFocus
-                  placeholder="搜索动作 / 食物 / 公式 / 讲解"
+                  placeholder={t('search_ph_mobile')}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   className="pl-9 border-white/12 bg-white/[0.06] text-white placeholder:text-neutral-500"
@@ -429,7 +441,7 @@ export const Layout = () => {
                 onClick={closeMobileSearch}
                 className="shrink-0 rounded-lg px-3 py-2 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
               >
-                取消
+                {t('cancel')}
               </button>
             </div>
             {results.length > 0 ? (
@@ -440,9 +452,7 @@ export const Layout = () => {
               />
             ) : (
               <p className="mt-3 px-1 text-xs leading-relaxed text-muted-foreground">
-                {query.trim()
-                  ? '没有找到匹配的内容，换个词试试，如「卧推」「牛里脊」「BMR」「蛋白粉」。'
-                  : '输入关键词，可搜动作、食物、公式与饮食讲解。'}
+                {query.trim() ? t('search_empty') : t('search_typing')}
               </p>
             )}
           </div>
@@ -458,7 +468,7 @@ export const Layout = () => {
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
             <Input
               type="search"
-              placeholder="搜索动作 / 食物 / 公式 / 讲解，如「卧推」「牛里脊」「BMR」"
+              placeholder={t('search_ph')}
               value={query}
               onChange={(e) => {
                 setQuery(e.target.value);
@@ -487,23 +497,17 @@ export const Layout = () => {
         <footer className="border-t border-border/30 bg-card/40 px-4 py-4 backdrop-blur-xl lg:px-8">
           <div className="max-w-4xl text-[11px] leading-relaxed text-muted-foreground">
             <p>
-              <b className="text-foreground">本站只提供健康自然的健身方式，不提供任何极端训练或药物方案；请遵守你所在国家 / 地区的法律法规。</b>
+              <b className="text-foreground">{t('disclaimer')}</b>
             </p>
             <p className="mt-2">
-              <b className="text-foreground">适合人群：</b>
-              本工具面向健康成年人的力量 / 体能训练与营养参考。
-              <b className="text-foreground">糖尿病、高血压、心脏病、肝肾疾病、痛风等慢性疾病患者，孕期 / 哺乳期女性、老年人、大病初愈者，以及任何有关节旧伤或长期服药者，开始训练或调整饮食前请优先遵从医嘱。</b>
-              本站只提供尽可能健康、安全的运动与营养思路，<b className="text-foreground">不建议任何用户逞强、冲超出技术水平的重量、或模仿未掌握的高阶动作</b>。出现头晕、胸痛、关节刺痛、异常气短时立即停止并就医。
+              <b className="text-foreground">{t('suitable')}</b>
             </p>
             <p className="mt-2 flex flex-wrap gap-3">
-              <a href="https://github.com/hf5060ti/xiongzhi-will/issues" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">反馈 / 提 Bug</a>
-              <a href="https://github.com/hf5060ti/xiongzhi-will" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">GitHub 仓库</a>
-              <Link to="/privacy" className="underline hover:text-foreground">隐私政策</Link>
-              <Link to="/sources" className="underline hover:text-foreground">内容来源与循证</Link>
-              <Link to="/faq" className="underline hover:text-foreground">关于 / FAQ</Link>
-            </p>
-            <p className="mt-2 border-t border-border/30 pt-2">
-              请遵守当地的法律法规；本站不支持偷抓偷猎等各种违法活动。
+              <a href="https://github.com/hf5060ti/xiongzhi-will/issues" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">{t('feedback')}</a>
+              <a href="https://github.com/hf5060ti/xiongzhi-will" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">{t('github')}</a>
+              <Link to="/privacy" className="underline hover:text-foreground">{t('privacy')}</Link>
+              <Link to="/sources" className="underline hover:text-foreground">{t('sources')}</Link>
+              <Link to="/faq" className="underline hover:text-foreground">{t('faq')}</Link>
             </p>
           </div>
         </footer>
