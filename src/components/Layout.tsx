@@ -335,7 +335,7 @@ export const Layout = () => {
                 key={item.path}
                 to={item.path}
                 end={item.end}
-                title={item.label}
+                title={t(item.labelKey)}
                 className={({ isActive }) =>
                   cn(
                     'flex w-14 flex-col items-center gap-1 rounded-xl py-2.5 transition-all',
