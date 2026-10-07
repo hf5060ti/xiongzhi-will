@@ -5,6 +5,8 @@ import { Search, Sparkles } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { FOODS, FOOD_CATEGORIES, getServings, type IFood, type FoodCategory } from '@/data/foods';
+import { FOOD_NAME_EN } from '@/data/foods/food-names-en';
+import { getLang } from '@/lib/i18n';
 import { smartMatch } from '@/lib/smart-search';
 import { getAbsorptionTips } from '@/lib/absorption';
 import { cn } from '@/lib/utils';
@@ -98,7 +100,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
               >
                 <span className="flex items-center justify-between gap-2">
                   <span className="font-display text-lg font-bold leading-none tracking-wide text-foreground">
-                    {food.name}
+                    {getLang() === 'zh' ? food.name : (FOOD_NAME_EN[food.name] || food.name)}
                   </span>
                   <span className="shrink-0 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
                     {FOOD_CATEGORIES.find((c) => c.id === food.cat)?.label}
