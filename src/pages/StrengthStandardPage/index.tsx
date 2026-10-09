@@ -23,7 +23,11 @@ import { ONE_RM_FORMULAS, REPS_ACCURACY_LIMIT, estimate1rm, estimateAll, isRepsU
 import { loadWeightKg } from '@/lib/store';
 
 const selectClass =
-  'h-9 w-full rounded-lg border border-white/12 bg-white/[0.06] px-3 text-sm text-foreground outline-none transition-colors focus:border-primary/60';
+  // 原生 <select> 展开后的面板由系统渲染（浅色/白底）。如果不显式指定颜色，
+  // 选项文字会继承页面的浅色前景色 → 变成"白底白字"完全看不见。
+  // 这里给选项强制白底黑字；收起状态则压暗底色配白字，保证两种状态都清晰。
+  'h-9 w-full rounded-lg border border-white/15 bg-black/45 px-3 text-sm font-medium text-white outline-none transition-colors focus:border-primary/60 ' +
+  '[&>option]:bg-white [&>option]:text-black [&>optgroup]:bg-neutral-100 [&>optgroup]:text-black [&>optgroup]:font-semibold';
 
 export default function StrengthStandardPage() {
   const [sex, setSex] = useState<Sex>('male');
