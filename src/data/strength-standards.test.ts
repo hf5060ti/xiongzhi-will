@@ -16,9 +16,19 @@ const bench = liftDefOf('bench')!;
 const ageFactor = (id: string) => AGE_GROUPS.find((a) => a.id === id)!.factor;
 
 describe('档位数据完整性', () => {
-  it('共 38 项动作，key 不重复', () => {
-    expect(LIFT_STANDARDS).toHaveLength(38);
-    expect(new Set(LIFT_STANDARDS.map((l) => l.key)).size).toBe(38);
+  it('动作条目齐全，key 不重复', () => {
+    expect(LIFT_STANDARDS).toHaveLength(39);
+    expect(new Set(LIFT_STANDARDS.map((l) => l.key)).size).toBe(LIFT_STANDARDS.length);
+  });
+
+  it('农夫行走按两侧合计重量判定，门槛与哑铃类动作同数量级', () => {
+    const farmer = liftDefOf('farmer_walk')!;
+    expect(farmer.group).toBe('dumbbell');
+    expect(farmer.male).toEqual([0.5, 0.75, 1.0, 1.3, 1.6]);
+    // 70kg 男性提 70kg（两侧合计）走完 → 熟练档
+    const r = judgeStrength(farmer, 'male', 1, 70, 70)!;
+    expect(r.tier).toBe(3);
+    expect(r.label).toBe('熟练');
   });
 
   it('每项都是五档，且门槛严格递增', () => {

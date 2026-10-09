@@ -104,6 +104,14 @@ export const LIFT_STANDARDS: LiftStandardDef[] = [
   { key: 'db_shrug', label: '哑铃耸肩', group: 'dumbbell', male: [0.5, 0.75, 1.0, 1.25, 1.5], femaleFactor: 0.6, note: '按两侧合计重量' },
   { key: 'db_lateral_raise', label: '哑铃侧平举', group: 'dumbbell', male: [0.08, 0.13, 0.18, 0.25, 0.32], femaleFactor: 0.6, note: '按两侧合计重量' },
   { key: 'db_front_raise', label: '哑铃前平举', group: 'dumbbell', male: [0.1, 0.16, 0.22, 0.3, 0.38], femaleFactor: 0.6, note: '按两侧合计重量' },
+  {
+    key: 'farmer_walk',
+    label: '农夫行走',
+    group: 'dumbbell',
+    male: [0.5, 0.75, 1.0, 1.3, 1.6],
+    femaleFactor: 0.65,
+    note: '按两侧合计重量（不含自身体重）；填你能提着走完目标距离的重量，次数填 1',
+  },
 
   // ── 固定器械 ──
   { key: 'leg_press', label: '腿举', group: 'machine', male: [1.4, 2.0, 2.7, 3.5, 4.3], femaleFactor: 0.68 },
