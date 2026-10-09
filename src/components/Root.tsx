@@ -4,7 +4,7 @@
 // 路由选择放在这里而不是入口 index.tsx：入口文件不带任何 export，
 // 在其中定义组件会让 react-refresh 失效（eslint react-refresh/only-export-components 报错）。
 import { useEffect, useState } from 'react';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary';
 import LoadingScreen from '@/components/LoadingScreen';
 import { ErrorFallback } from '@/components/ErrorFallback';
@@ -12,15 +12,12 @@ import { handleAuthCallback } from '@/lib/auth';
 import { initSyncIfLoggedIn } from '@/lib/sync';
 import App from '@/App';
 
-// 线上用 BrowserRouter：URL 是 /library、/plan 这样的真实路径，
-// sitemap.xml 才能被搜索引擎正常索引（GitHub Pages 由 404.html 回退到 index.html）。
-// 桌面离线版是 file:// 协议，history.pushState 会被浏览器拒绝（origin 为 null），
-// 只能继续用 HashRouter；两者由构建期注入的 XW_DESKTOP 区分。
-const Router = import.meta.env.XW_DESKTOP ? HashRouter : BrowserRouter;
-// basename 只在 BrowserRouter 下有意义；桌面版是 './'，不能用。
-const routerBasename = import.meta.env.XW_DESKTOP
-  ? undefined
-  : import.meta.env.MIAODA_CLIENT_BASE_PATH;
+// 线上与桌面统一使用 HashRouter：
+// 桌面版是 file:// 协议，history.pushState 会被浏览器拒绝（origin 为 null）；
+// 线上部署在 GitHub Pages / Gitee Pages 等静态托管时，子路由刷新服务端不会回退到
+// index.html（尤其 Gitee Pages 直接 404），BrowserRouter 会失效。HashRouter 把路由
+// 放进 # 之后，刷新永远只请求站点根，彻底规避该问题，且对本地双击打开同样兼容。
+const Router = HashRouter;
 
 // ── 稳定性兜底：chunk 加载失败 / 未捕获错误时自动刷新一次（防死循环） ──
 // 场景：vite HMR 后旧 chunk URL 失效、网络抖动导致 dynamic import 失败、CDN 抽风
@@ -80,7 +77,7 @@ export function Root() {
   }, []);
 
   return (
-    <Router basename={routerBasename}>
+    <Router>
       <ReactErrorBoundary FallbackComponent={ErrorFallback}>
         <LoadingScreen visible={!splashDone} />
         <App />
