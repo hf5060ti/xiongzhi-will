@@ -2,9 +2,9 @@
 
 > 给自然训练者的一套健身训练 + 营养 + 动作百科系统。免费、开源、无广告、无需登录。
 
-**在线体验：** https://hf5060ti.github.io/xiongzhi-will/ （GitHub Pages 直接打开，手机 / 电脑通用）
+**在线体验：** https://xiongzhi_project.gitee.io/masculine-consciousness/ （Gitee Pages，手机 / 电脑通用）
 
-**对外主页：** https://hf5060ti.github.io/xiongzhi-will/landing.html
+**对外主页：** https://xiongzhi_project.gitee.io/masculine-consciousness/landing.html
 
 ![雄性意志首页](docs/screenshots/show-home.png)
 
@@ -33,7 +33,7 @@
 - **5 类训练目标**：肌肥大 / 斗腕 / 大力士 / 综合体能 / 街头健身，每类含频率、分化、周安排、动作参数、进步法则
 - **经典计划模板**：新手全身 ×3、推拉腿 PPL ×6、上下肢 ×4、五分化 ×5、力量举 5×5、斗腕专项、徒手+等长适应、减脂 HIIT——每个含每周安排与动作清单（组 × 次）
 - **动作百科 /library**：**2428 个动作**，中英文搜索、8 大分类筛选（力量 / 大力士 / 举重 / 爆发力 / 拉伸 / 有氧 / 斗腕 / 全部）、部位 / 器械筛选；外站演示动图失败自动重试、回退静态图
-- **力量等级计算器 /strength**：**39 项动作**（含农夫行走、六角杠硬拉、臀举等），选性别 / 年龄 / 体重 + 动作，填重量 × 次数（或直接填 1RM），自动估算 1RM 并判定「入门 ★ → 精英 ★★★★★」五档，给出离下一档还差多少公斤，以及该动作五档对应的绝对重量表
+- **力量等级计算器 /strength**：**42 项动作**（含农夫行走、六角杠硬拉、臀举等），选性别 / 年龄 / 体重 + 动作，填重量 × 次数（或直接填 1RM），自动估算 1RM 并判定「入门 ★ → 精英 ★★★★★」五档，给出离下一档还差多少公斤，以及该动作五档对应的绝对重量表
 - **斗腕专项**：**84 个动作**——Rise 挺腕、Cup 杯握、Top Roll 翻腕、Hook 钩手、Back Pressure 后压力、肩旋内拉钩、尺偏专项、指屈闭合、桌面对抗等长等桌面力量体系
 - **等长训练页 /isometric**：**42 个动作**按 6 部位分组；**眼科 / 术后恢复四阶段方案**（不憋气、不低头、强度递进）+ 散步搭配
 
@@ -74,7 +74,7 @@
 - **React 19 + TypeScript**
 - **Vite 8** 构建
 - **Tailwind CSS 4** + shadcn/ui
-- **react-router-dom** 路由（BrowserRouter；桌面离线版因 `file://` 限制仍用 HashRouter）
+- **react-router-dom** 路由（线上与桌面统一使用 HashRouter，规避静态托管子页刷新 404）
 - **界面多语言**：简体中文 / English / Русский / Deutsch，切换即时生效（导航与界面文案；动作名、食物名保留原文，专有名词翻译反而更难查）
 - 所有数据存 **localStorage**，无需登录即可使用全部功能
 - 可选的本地 AI 后台：`node server/server.js`，把豆包 / Marvis / Ollama 统一代理给前端，**API Key 只留在本机**（也可在页面里填自己的硅基流动 Key 直连）
@@ -84,7 +84,7 @@
 ## 本地运行
 
 ```bash
-git clone https://github.com/hf5060ti/xiongzhi-will.git
+git clone https://gitee.com/xiongzhi_project/masculine-consciousness.git
 cd xiongzhi-will
 npm install
 npm run dev          # 开发：http://localhost:26666
@@ -102,9 +102,9 @@ npm run build        # 构建：产物在 dist/
 
 ## 在线部署
 
-打开 **https://hf5060ti.github.io/xiongzhi-will/** 即可使用，无需登录。
+打开 **https://xiongzhi_project.gitee.io/masculine-consciousness/** 即可使用，无需登录。
 
-自部署：fork 本仓库，GitHub Actions 在 push 到 main 时自动构建并部署到 Pages（产物 dist/client，已配置 404.html SPA 路由回退）；`docs/screenshots/` 为 README 与对外主页展示截图；也支持 Netlify / Vercel（已内置配置文件）。
+自部署：fork 本仓库，GitHub Actions 在 push 到 main 时自动构建并部署到 Pages（产物 dist/client；已统一使用 HashRouter，无需服务端 SPA 回退）；`docs/screenshots/` 为 README 与对外主页展示截图；也支持 Netlify / Vercel（已内置配置文件）。
 
 ---
 
