@@ -7,7 +7,7 @@
  * - 重点场景：眼部手术后不能加压时，搭配散步温和促进血液循环、保留肌肉
  * - 本页所有内容均为健身参考，术后运动务必先遵医嘱
  */
-import { Activity, AlertTriangle, Apple, Armchair, Bed, Clock, Dumbbell, Footprints, Hand, HeartPulse, Info, Leaf, Moon, Shield, ShieldCheck, Sparkles, Stethoscope, Tag, Timer, TrendingUp, Wind, Zap } from 'lucide-react';
+import { Activity, AlertTriangle, Apple, Armchair, Dumbbell, Footprints, Hand, HeartPulse, Info, Moon, Shield, ShieldCheck, Sparkles, Stethoscope, Tag, Timer, TrendingUp, Wind, Zap } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 

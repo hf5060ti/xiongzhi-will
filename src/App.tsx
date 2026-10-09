@@ -3,7 +3,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from '@/components/Layout';
-import ErrorBoundary from '@/components/ErrorBoundary';
 import PageFallback from '@/components/PageFallback';
 
 // 路由级代码分割：每个页面独立 chunk，按需加载，减小首屏体积
@@ -14,6 +13,7 @@ const BodyDataPage = lazy(() => import('@/pages/BodyDataPage'));
 const CardioPage = lazy(() => import('@/pages/CardioPage'));
 const BodyweightPage = lazy(() => import('@/pages/BodyweightPage'));
 const PhysiquePage = lazy(() => import('@/pages/PhysiquePage'));
+const StrengthStandardPage = lazy(() => import('@/pages/StrengthStandardPage'));
 const CoachPage = lazy(() => import('@/pages/CoachPage'));
 const ExerciseLibraryPage = lazy(() => import('@/pages/ExerciseLibraryPage'));
 const TrainingLogPage = lazy(() => import('@/pages/TrainingLogPage'));
@@ -47,6 +47,7 @@ export default function App() {
           <Route path="cardio" element={<CardioPage />} />
           <Route path="bodyweight" element={<BodyweightPage />} />
           <Route path="physique" element={<PhysiquePage />} />
+          <Route path="strength" element={<StrengthStandardPage />} />
           <Route path="coach" element={<CoachPage />} />
           <Route path="library" element={<ExerciseLibraryPage />} />
           <Route path="mind" element={<MindPage />} />

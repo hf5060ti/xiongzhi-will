@@ -1,7 +1,7 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 import { useState } from 'react';
-import { Calculator, Info, Leaf, Droplets, ShieldAlert, PlusCircle } from 'lucide-react';
+import { Info, Leaf, Droplets, ShieldAlert, PlusCircle } from 'lucide-react';
 import type { IFood } from '@/data/foods';
 import { getServings } from '@/data/foods';
 import { Input } from '@/components/ui/input';

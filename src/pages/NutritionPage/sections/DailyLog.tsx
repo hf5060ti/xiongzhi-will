@@ -1,6 +1,6 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { Trash2, Plus, Flame, Beef, Drumstick, Wheat, Info, ArrowRight } from 'lucide-react';
@@ -32,7 +32,7 @@ function defaultMeal(): string {
 }
 
 export default function DailyLog({ refreshKey }: { refreshKey: number }) {
-  const [entries, setEntries] = useState<LogEntry[]>([]);
+  const [entries, setEntries] = useState<LogEntry[]>(loadDailyLog);
   const [showAdd, setShowAdd] = useState(false);
   const [foodId, setFoodId] = useState('');
   const [q, setQ] = useState('');
@@ -40,9 +40,14 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
   const [meal, setMeal] = useState(defaultMeal);
   const [confirmClear, setConfirmClear] = useState(false);
 
-  useEffect(() => {
+  // 父组件改了 refreshKey = 外部写入了新记录，重新读一次。
+  // 在渲染期比对并同步（React 官方推荐的「props 变化时调整 state」），
+  // 比在 effect 里 setState 少一次渲染。
+  const [prevRefreshKey, setPrevRefreshKey] = useState(refreshKey);
+  if (refreshKey !== prevRefreshKey) {
+    setPrevRefreshKey(refreshKey);
     setEntries(loadDailyLog());
-  }, [refreshKey]);
+  }
 
   // 食物下拉：按 9 大分类分组全量展示（此前只取前 100 条，导致水果 / 坚果 / 零食选不到）
   const grouped = useMemo(() => {

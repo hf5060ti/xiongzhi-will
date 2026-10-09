@@ -10,6 +10,7 @@
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
+import { useNow } from '@/hooks/useNow';
 import { BarChart3, CalendarDays, Check, Clock, Dumbbell, Download, Eraser, Flame, HeartPulse, Medal, Moon, Pencil, Play, Plus, Save, Scale, Share2, SkipForward, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Badge } from '@/components/ui/badge';
@@ -317,9 +318,12 @@ export default function TrainingLogPage() {
     return { prev, pr };
   };
 
+  // 当前时间（每分钟刷新）：渲染期不能调 Date.now()，统一从 hook 取
+  const now = useNow();
+
   /** 距今天数差 */
   const daysAgo = (iso: string) => {
-    const d = Math.round((Date.now() - new Date(iso + 'T00:00:00').getTime()) / 86400000);
+    const d = Math.round((now - new Date(iso + 'T00:00:00').getTime()) / 86400000);
     return d <= 0 ? '今天' : d === 1 ? '昨天' : `${d} 天前`;
   };
   const weekVolume = week.reduce((sum, d) => sum + d.volume, 0);
@@ -341,7 +345,8 @@ export default function TrainingLogPage() {
     let streak = 0;
     if (dates.length > 0) {
       const set = new Set(dates);
-      let cur = new Date();
+      // cur 只做原地推进（setDate），不重新赋值，用 const
+      const cur = new Date();
       if (!set.has(isoOf(cur))) cur.setDate(cur.getDate() - 1);
       while (set.has(isoOf(cur))) {
         streak++;
@@ -1615,10 +1620,6 @@ export default function TrainingLogPage() {
   );
 }
 
-/** 删除提示里用的日期格式化（避免与组件内同名变量冲突） */
-function date0(log: TrainingLog): string {
-  return log.date;
-}
 
 interface RunnerEntry {
   exIdx: number;
@@ -1657,16 +1658,27 @@ function WorkoutRunner({
   const current = entries[idx];
   const restTotal = current.compound ? 180 : 120;
 
+  // 剩余秒数的镜像：interval 回调要读最新值，又不能把 restLeft 放进依赖（否则每秒重建定时器）
+  const restLeftRef = useRef(0);
+  useEffect(() => {
+    restLeftRef.current = restLeft;
+  }, [restLeft]);
+
+  // 定时器回调里要调最新的 goNext（它闭包着当前 idx / entries），统一走 ref
+  const goNextRef = useRef<() => void>(() => {});
+
   useEffect(() => {
     if (!resting) return;
     timerRef.current = window.setInterval(() => {
-      setRestLeft((s) => {
-        if (s <= 1) {
-          if (timerRef.current) window.clearInterval(timerRef.current);
-          return 0;
-        }
-        return s - 1;
-      });
+      const left = restLeftRef.current;
+      if (left <= 1) {
+        if (timerRef.current) window.clearInterval(timerRef.current);
+        setRestLeft(0);
+        // 倒计时归零直接进下一组：不再靠「effect 里监听 restLeft === 0 再 setState」触发
+        goNextRef.current();
+        return;
+      }
+      setRestLeft(left - 1);
     }, 1000);
     return () => {
       if (timerRef.current) window.clearInterval(timerRef.current);
@@ -1685,11 +1697,9 @@ function WorkoutRunner({
     setReps(entries[ni].suggestedReps);
   };
 
-  // 倒计时到 0 自动进入下一组
   useEffect(() => {
-    if (resting && restLeft === 0) goNext();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [restLeft, resting]);
+    goNextRef.current = goNext;
+  });
 
   const completeSet = () => {
     resultsRef.current.push({ exIdx: current.exIdx, setIdx: current.setIdx, weight, reps });

@@ -1,6 +1,9 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
-import { useEffect, useMemo, useRef, useState } from 'react';
+/* eslint-disable react-refresh/only-export-components --
+   本文件同时导出 PHYSIQUE_PARTS 数据与页面组件。数据只在页面内使用，
+   拆到 src/data/ 是独立重构；代价只是改这个文件时 HMR 会整页刷新而非局部热更新。 */
+import { useMemo, useRef, useState } from 'react';
 import { Camera, Trash2, ShieldAlert, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -301,12 +304,9 @@ export default function PhysiquePage() {
   const [typeId, setTypeId] = useState<string>('');
   const [note, setNote] = useState('');
   const [image, setImage] = useState<string>('');
-  const [entries, setEntries] = useState<Entry[]>([]);
+  // 惰性初始化：首次渲染直接读本地存档，不需要再挂 effect 去 setState
+  const [entries, setEntries] = useState<Entry[]>(load);
   const fileRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    setEntries(load());
-  }, []);
 
   const part = useMemo(() => PHYSIQUE_PARTS.find((p) => p.id === partId)!, [partId]);
   const history = useMemo(

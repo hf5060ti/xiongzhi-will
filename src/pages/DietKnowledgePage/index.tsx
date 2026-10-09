@@ -71,18 +71,26 @@ export default function DietKnowledgePage() {
   const [dietFilter, setDietFilter] = useState(dietParam);
   const [openIds, setOpenIds] = useState<string[]>(entryParam ? [entryParam] : []);
 
-  // 从方案页带 ?diet=xxx 跳转进来时按方案预筛选
-  useEffect(() => {
+  // 从方案页带 ?diet=xxx 跳转进来时按方案预筛选；
+  // 从搜索带 ?entry=xxx 跳转进来时展开对应条目。
+  // 这两处都是「URL 参数变化时同步 state」，在渲染期比对即可（React 官方推荐），
+  // 比写在 effect 里少一次渲染；滚动定位是纯副作用，仍留在下面的 effect 中。
+  const [prevDietParam, setPrevDietParam] = useState(dietParam);
+  if (dietParam !== prevDietParam) {
+    setPrevDietParam(dietParam);
     setDietFilter(dietParam);
-  }, [dietParam]);
+  }
+  const [prevEntryParam, setPrevEntryParam] = useState(entryParam);
+  if (entryParam && entryParam !== prevEntryParam) {
+    setPrevEntryParam(entryParam);
+    setOpenIds([entryParam]);
+  }
 
-  // 从搜索带 ?entry=xxx 跳转进来时展开对应条目并定位。
   // 跨路由首跳时页面高度尚未稳定（字体/图片回流 + 栅格重排），原来用 scrollIntoView({block:'center'})
   // 对「长于视口的展开卡片」会算出负的 top（实测 -14），标题被 108px 吸顶 header 盖住。
   // 现在：先即时（非平滑）对齐到 header 下沿，再在布局稳定后校正两次（幂等，未漂移时不动）。
   useEffect(() => {
     if (!entryParam) return;
-    setOpenIds([entryParam]);
     let raf1 = 0;
     let raf2 = 0;
     raf1 = window.requestAnimationFrame(() => {

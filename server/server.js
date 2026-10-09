@@ -1,5 +1,5 @@
 /**
- * 雄心意志 · 本地 AI 后台服务（零依赖，Node 原生 http）
+ * 雄性意志 · 本地 AI 后台服务（零依赖，Node 原生 http）
  *
  * 作用：把两路 OpenAI 兼容接口统一代理给前端，前端只认 provider 名字。
  *   - doubao：豆包（火山方舟，OpenAI 兼容）
@@ -199,8 +199,8 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, '127.0.0.1', () => {
   const ready = Object.values(PROVIDERS).filter(isReady).map((p) => p.label);
-  console.log(`[雄心意志] 本地 AI 后台已启动：http://127.0.0.1:${PORT}`);
+  console.log(`[雄性意志] 本地 AI 后台已启动：http://127.0.0.1:${PORT}`);
   console.log(
-    `[雄心意志] 已就绪模型：${ready.length ? ready.join('、') : '暂无（请在 server/.env 填写 API Key）'}`,
+    `[雄性意志] 已就绪模型：${ready.length ? ready.join('、') : '暂无（请在 server/.env 填写 API Key）'}`,
   );
 });

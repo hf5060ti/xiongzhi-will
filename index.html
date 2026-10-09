@@ -82,16 +82,5 @@
       })();
     </script>
     <script type="module" src="/src/index.tsx"></script>
-    <script>
-      // PWA：注册 Service Worker。file://（桌面版本地版）和 localhost 不注册，只在线上 https 生效。
-      // 作用：离线缓存，github.io 抽风时已打开过的页面仍可访问；可"添加到主屏幕"像 App 一样用。
-      if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-        window.addEventListener('load', function () {
-          navigator.serviceWorker.register('./sw.js').catch(function (e) {
-            console.warn('SW register failed:', e);
-          });
-        });
-      }
-    </script>
   </body>
 </html>

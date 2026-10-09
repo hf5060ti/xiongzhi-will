@@ -92,7 +92,8 @@ export default function AiFoodEstimator() {
   const [state, setState] = useState<AiState>('idle');
   const [err, setErr] = useState('');
   const [est, setEst] = useState<FoodEstimate>(EMPTY_EST);
-  const [rawAi, setRawAi] = useState('');
+  // 只写不读：AI 原文留给后续"查看原始返回"用，当前界面展示的是解析后的结果
+  const [, setRawAi] = useState('');
   const [grams, setGrams] = useState('');
   const [providerReady, setProviderReady] = useState<boolean | null>(null);
   const abortRef = useRef<AbortController | null>(null);

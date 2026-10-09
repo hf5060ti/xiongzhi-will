@@ -9,8 +9,7 @@ import { SUPPLEMENTS, SUPPLEMENT_CATEGORIES, type ISupplement, type SupplementCa
 import { smartMatch } from '@/lib/smart-search';
 import { cn } from '@/lib/utils';
 
-const CAT_ALL = 'all';
-type CatFilter = SupplementCategory | typeof CAT_ALL;
+type CatFilter = SupplementCategory | 'all';
 
 export default function SupplementLibrary({ initialId }: { initialId?: string }) {
   const [query, setQuery] = useState('');

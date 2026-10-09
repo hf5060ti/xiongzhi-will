@@ -90,3 +90,34 @@ docs/images/{5F76ACFE-F22D-4A75-8F77-2A23B7170209}
 scripts/
 
 devserver.log
+
+# ── 构建产物镜像（曾误提交，已用 git rm --cached 移出索引，磁盘文件保留）──
+# docs/ 只保留 screenshots/（README 与 landing 页引用的展示图），
+# 其余 index.html / assets / sw.js / images 都是旧部署镜像，由 CI 从 dist/client 重新生成
+docs/assets/
+docs/images/
+docs/index.html
+docs/404.html
+docs/sw.js
+docs/manifest.webmanifest
+docs/robots.txt
+docs/sitemap.xml
+docs/icons.svg
+docs/LICENSE
+docs/NOTICE
+
+# 桌面离线版整个目录都是构建产物（index.html + assets + images，每次构建都会变，
+# 曾产生几 MB 的巨型 diff）。构建后由 npm run build 的产物复制而来，
+# 用 GitHub Release 附件分发，不进仓库。
+桌面版/
+
+# Wrangler 本地状态
+.wrangler/
+
+# 临时排查文件
+preview*.log
+_verify_*.png
+*.zip
+
+# 历史源码归档（内容已在 git 历史里，不需要再存一份）
+雄性意志-最新源码.zip

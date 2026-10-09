@@ -1,6 +1,6 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -111,7 +111,7 @@ function parseShareLine(line: string): { title: string; author: string; url: str
     title = after || between;
   }
   if (!title) {
-    // 无链接时的降级：去掉“复制打开抖音”等平台话术
+    // 无链接时的降级：去掉"复制打开抖音"等平台话术
     title = line
       .replace(/^\d+(\.\d+)?\s*/, '')
       .replace(/复制打开抖音.*$/s, '')
@@ -164,13 +164,11 @@ function formatWeek(isoWeek: string): string {
 
 export default function CollectPage() {
   const [text, setText] = useState('');
-  const [items, setItems] = useState<CollectItem[]>([]);
+  // 惰性初始化：首次渲染直接从 localStorage 读，不必再挂一个 effect 去 setState
+  const [items, setItems] = useState<CollectItem[]>(loadItems);
   const [notice, setNotice] = useState('');
   const [onlyFitness, setOnlyFitness] = useState(true); // 默认只收健身相关
 
-  useEffect(() => {
-    setItems(loadItems());
-  }, []);
 
   const persist = (next: CollectItem[]) => {
     setItems(next);

@@ -1,6 +1,6 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Search, Dumbbell, ExternalLink, PlayCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -314,6 +314,17 @@ function matchTanVideos(ex: ExerciseView): CoachVideo[] {
   return hit.slice(0, 3);
 }
 
+// 肌群快捷分组（对应标签按钮）。
+// 放在组件外：它是常量，写在组件里会让 useMemo 的依赖数组每次渲染都变化。
+const MUSCLE_GROUPS: Record<string, string[]> = {
+  chest: ['chest'],
+  back: ['lats', 'middle back', 'lower back'],
+  shoulders: ['shoulders'],
+  arms: ['biceps', 'triceps', 'forearms'],
+  legs: ['quadriceps', 'hamstrings', 'glutes', 'calves', 'adductors', 'abductors'],
+  abs: ['abdominals'],
+};
+
 export default function ExerciseLibraryPage() {
   // 支持从计划页带 ?q=动作名 跳转过来时自动搜索
   const [params] = useSearchParams();
@@ -326,29 +337,17 @@ export default function ExerciseLibraryPage() {
   const [gifReady, setGifReady] = useState(false);
   const [gifTry, setGifTry] = useState(0);
   const [gifSrc, setGifSrc] = useState<string | undefined>(undefined);
-  useEffect(() => {
+  // 换动作时重置动图加载状态：在渲染期比对并同步，替代 effect 里的 setState
+  const [prevSelected, setPrevSelected] = useState<ExerciseView | null>(selected);
+  if (prevSelected !== selected) {
+    setPrevSelected(selected);
     setGifReady(false);
     setGifTry(0);
     setGifSrc(undefined);
-  }, [selected]);
-  const [hovered, setHovered] = useState<string | null>(null);
+  }
   const [visible, setVisible] = useState(PAGE_SIZE);
 
-  const muscles = useMemo(
-    () => ['all', ...new Set(ALL_EXERCISES.flatMap((e) => e.primaryMuscles))],
-    [],
-  );
   const equips = useMemo(() => ['all', ...new Set(ALL_EXERCISES.map((e) => e.equipment).filter(Boolean))], []);
-
-  // 肌群快捷分组（对应标签按钮）
-  const MUSCLE_GROUPS: Record<string, string[]> = {
-    chest: ['chest'],
-    back: ['lats', 'middle back', 'lower back'],
-    shoulders: ['shoulders'],
-    arms: ['biceps', 'triceps', 'forearms'],
-    legs: ['quadriceps', 'hamstrings', 'glutes', 'calves', 'adductors', 'abductors'],
-    abs: ['abdominals'],
-  };
 
   const filtered = useMemo(() => {
     return ALL_EXERCISES.filter((e) => {
@@ -384,10 +383,13 @@ export default function ExerciseLibraryPage() {
     });
   }, [query, muscle, equip, cat]);
 
-  // 筛选条件变化后回到首批
-  useEffect(() => {
+  // 筛选条件变化后回到首批：用组合 key 在渲染期比对，替代 effect 里的 setState
+  const filterKey = `${query}|${muscle}|${equip}|${cat}`;
+  const [prevFilterKey, setPrevFilterKey] = useState(filterKey);
+  if (filterKey !== prevFilterKey) {
+    setPrevFilterKey(filterKey);
     setVisible(PAGE_SIZE);
-  }, [query, muscle, equip, cat]);
+  }
 
   const shown = filtered.slice(0, visible);
 
@@ -484,8 +486,6 @@ export default function ExerciseLibraryPage() {
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') setSelected(ex);
               }}
-              onMouseEnter={() => setHovered(ex.id)}
-              onMouseLeave={() => setHovered(null)}
               className="group cursor-pointer overflow-hidden rounded-lg border border-border bg-card text-left transition-all hover:border-primary/50 hover:shadow-lg"
             >
               <div className="relative aspect-square overflow-hidden bg-muted/30">

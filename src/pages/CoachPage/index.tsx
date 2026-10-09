@@ -7,7 +7,6 @@ import {
   BedDouble,
   Bot,
   Camera,
-  ImagePlus,
   ShieldQuestion,
   X,
   HeartPulse,
@@ -136,7 +135,7 @@ function findRelatedVideos(text: string, max = 2): { video: CoachVideo; cue: str
   }
   return out;
 }
-function evaluate(sleepH: number, sickness: Sickness, energy: Energy, stress: Stress, diet: Diet): Advice {
+function evaluate(sleepH: number, sickness: Sickness, energy: Energy, stress: Stress, _diet: Diet): Advice {
   // 医疗红线：发烧 / 大病初愈 / 明显疼痛 → 停训
   if (sickness === 'fever') {
     return {

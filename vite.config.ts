@@ -121,6 +121,10 @@ export default defineConfig(({ command }) => ({
           ? './'
           : routerBasePath,
     ),
+    // 桌面离线版标记：file:// 下 history.pushState 会被浏览器拒绝（origin 为 null），
+    // 所以桌面版必须用 HashRouter，线上用 BrowserRouter。
+    // process.env 在客户端拿不到，只能在构建期注入。
+    'import.meta.env.XW_DESKTOP': JSON.stringify(process.env.DESKTOP_BUILD === '1'),
   },
   resolve: {
     alias: {

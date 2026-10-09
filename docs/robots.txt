@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://hf5060ti.github.io/xiongzhi-will/sitemap.xml

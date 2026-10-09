@@ -10,6 +10,11 @@ import { startSync, stopSync, flushSync } from '@/lib/sync';
 export const WORKER_URL = 'https://xiongzhi-auth.3163599272.workers.dev';
 const ENABLE_LOGIN = false;
 
+/** 登录入口是否对外开放：云同步后端对国内可访问之前，UI 不显示登录按钮 */
+export function isLoginEnabled(): boolean {
+  return ENABLE_LOGIN;
+}
+
 const TOKEN_KEY = 'xiongzhi-will:auth-token';
 const USER_KEY = 'xiongzhi-will:auth-user';
 
@@ -74,14 +79,12 @@ export function logout() {
 }
 
 /**
- * 处理登录回调：站点使用 HashRouter，token 位于 hash 查询里（形如 #/?token=xxx）。
+ * 处理登录回调：Worker 回跳到站点根并带上 ?token=xxx（线上是 BrowserRouter，
+ * token 走普通查询串；桌面离线版用 HashRouter 时 Worker 不会介入，不受影响）。
  * 落地会话、拉取用户信息、清理 URL、启动同步。返回 true 表示已处理回调。
  */
 export async function handleAuthCallback(): Promise<boolean> {
-  const hash = window.location.hash;
-  const qIdx = hash.indexOf('?');
-  if (qIdx < 0) return false;
-  const params = new URLSearchParams(hash.slice(qIdx + 1));
+  const params = new URLSearchParams(window.location.search);
   const token = params.get('token');
   if (!token) return false;
 
@@ -109,9 +112,8 @@ export async function handleAuthCallback(): Promise<boolean> {
     /* Worker 暂时不可用：会话已保存，同步稍后重试 */
   }
 
-  // 清掉 URL 里的 token，避免刷新后重复处理 / 泄露在地址栏
-  const clean = window.location.pathname + '#/';
-  window.history.replaceState(null, '', clean);
+  // 清掉 URL 里的 token，避免刷新后重复处理 / 泄露在地址栏（保留部署子路径，如 /xiongzhi-will/）
+  window.history.replaceState(null, '', window.location.pathname);
 
   // 开始同步（先上传本地再拉云端，保证不丢数据）
   startSync();

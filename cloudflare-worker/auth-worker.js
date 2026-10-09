@@ -22,10 +22,14 @@ const GITHUB_AUTHORIZE = 'https://github.com/login/oauth/authorize';
 const GITHUB_TOKEN = 'https://github.com/login/oauth/access_token';
 const GITHUB_USER = 'https://api.github.com/user';
 
+// 只允许本站调用：Worker 用的是 Bearer token（不是 Cookie），收窄来源可避免
+// 任意站点拿着用户 token 读写其云端数据
+const ALLOWED_ORIGIN = SITE_ORIGIN;
 const CORS = {
-  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Origin': ALLOWED_ORIGIN,
   'Access-Control-Allow-Methods': 'GET,POST,PUT,OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+  Vary: 'Origin',
 };
 
 // ── 工具：JSON 响应 ─────────────────────────────────────
@@ -95,6 +99,16 @@ function getBearer(request) {
   return m ? m[1].trim() : null;
 }
 
+/** 读取请求 Cookie */
+function readCookie(request, name) {
+  const jar = request.headers.get('Cookie') || '';
+  for (const part of jar.split(';')) {
+    const [k, v] = part.trim().split('=');
+    if (k === name) return decodeURIComponent(v || '');
+  }
+  return null;
+}
+
 // ── 路由 ───────────────────────────────────────────────
 export default {
   async fetch(request, env) {
@@ -116,17 +130,32 @@ export default {
     }
 
     // ── 登录：跳转 GitHub 授权 ──
+    // state 写进 Cookie（HttpOnly + SameSite=Lax），回调时比对，
+    // 防止攻击者把自己的授权码塞给受害者（登录 CSRF）
     if (url.pathname === '/login') {
       const state = crypto.randomUUID();
       const redirect = `${url.origin}/callback`;
       const authUrl = `${GITHUB_AUTHORIZE}?client_id=${encodeURIComponent(GITHUB_CLIENT_ID)}&redirect_uri=${encodeURIComponent(redirect)}&scope=read:user&state=${state}`;
-      return Response.redirect(authUrl, 302);
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: authUrl,
+          'Set-Cookie': `gh_oauth_state=${state}; Path=/; HttpOnly; SameSite=Lax; Secure; Max-Age=600`,
+        },
+      });
     }
 
     // ── 回调：换 token → 取用户 → 签发 JWT → 回跳站点 ──
     if (url.pathname === '/callback') {
       const code = url.searchParams.get('code');
       if (!code) return json({ error: '缺少 code' }, 400);
+
+      // 校验 state：与 /login 写入的 Cookie 必须一致
+      const state = url.searchParams.get('state') || '';
+      const cookieState = readCookie(request, 'gh_oauth_state');
+      if (!state || !cookieState || state !== cookieState) {
+        return json({ error: 'state 校验失败，请重新登录' }, 403);
+      }
 
       const tokenRes = await fetch(GITHUB_TOKEN, {
         method: 'POST',
@@ -157,8 +186,8 @@ export default {
         avatar: user.avatar_url || '',
       });
 
-      // 回跳站点（HashRouter），token 放 hash 查询里（不进服务器日志/历史）
-      return Response.redirect(`${SITE_ORIGIN}/#/?token=${encodeURIComponent(jwt)}`, 302);
+      // 回跳站点根路径，token 放查询串里（不进服务器日志/历史，前端读完立即从地址栏清掉）
+      return Response.redirect(`${SITE_ORIGIN}/?token=${encodeURIComponent(jwt)}`, 302);
     }
 
     // ── 会话校验中间件 ──

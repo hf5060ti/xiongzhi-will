@@ -59,14 +59,17 @@ export default function TodayPanel() {
   const lastLog = allLogs.length > 0 ? allLogs[allLogs.length - 1] : null;
   const lastLogDate = lastLog?.date ?? null;
   const lastDayLabel = lastLog?.dayLabel ?? null;
+  // 用「今天」而不是 Date.now()：渲染期调 Date.now() 是不纯的，
+  // 且按当天 0 点对齐计算天数差更准（不受时分秒影响）
+  const todayMs = new Date(today + 'T00:00:00').getTime();
   const daysSinceLast = lastLogDate
-    ? Math.round((Date.now() - new Date(lastLogDate + 'T00:00:00').getTime()) / 86400000)
+    ? Math.round((todayMs - new Date(lastLogDate + 'T00:00:00').getTime()) / 86400000)
     : 99;
   const recommendation = getTodayRecommendation(split, lastDayLabel, trainedToday ? 0 : daysSinceLast);
 
   // 减载周提醒：最近7天训练天数
   const recent7 = allLogs.filter((l) => {
-    const d = Math.round((Date.now() - new Date(l.date + 'T00:00:00').getTime()) / 86400000);
+    const d = Math.round((todayMs - new Date(l.date + 'T00:00:00').getTime()) / 86400000);
     return d >= 0 && d <= 6;
   }).length;
   const needsDeload = recent7 >= 6;
@@ -77,7 +80,6 @@ export default function TodayPanel() {
   if (!hasAnyData) return null;
 
   const kcalPct = targets.kcal > 0 ? Math.min(100, Math.round((totals.kcal / targets.kcal) * 100)) : 0;
-  const proteinPct = targets.protein > 0 ? Math.min(100, Math.round((totals.protein / targets.protein) * 100)) : 0;
   const weightDelta =
     latestWeight && prevWeight ? Math.round((latestWeight.weight - prevWeight.weight) * 10) / 10 : null;
 

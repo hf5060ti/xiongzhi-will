@@ -1,6 +1,6 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Activity, Check, Dumbbell, Flame, Info, Layers, Timer, Users, Weight, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -76,14 +76,17 @@ export default function BodyweightPage() {
   const [sets, setSets] = useState('4');
   const [repsPerSet, setRepsPerSet] = useState(() => String(defaultRepsPerSet(initialItem)));
 
-  // 搜索直达：地址栏 ?item=xxx 时切到对应动作
-  useEffect(() => {
-    if (!itemParam) return;
+  // 搜索直达：地址栏 ?item=xxx 时切到对应动作。
+  // 在渲染期比对参数变化并同步 state，替代原来的 effect + setState。
+  const [prevItemParam, setPrevItemParam] = useState(itemParam);
+  if (itemParam && itemParam !== prevItemParam) {
+    setPrevItemParam(itemParam);
     const next = BODYWEIGHT_ITEMS.find((i) => i.id === itemParam);
-    if (!next) return;
-    setItemId(next.id);
-    setRepsPerSet(String(defaultRepsPerSet(next)));
-  }, [itemParam]);
+    if (next) {
+      setItemId(next.id);
+      setRepsPerSet(String(defaultRepsPerSet(next)));
+    }
+  }
 
   const item = BODYWEIGHT_ITEMS.find((i) => i.id === itemId) ?? BODYWEIGHT_ITEMS[0];
   const list = groupFilter === '全部' ? BODYWEIGHT_ITEMS : BODYWEIGHT_ITEMS.filter((i) => i.group === groupFilter);

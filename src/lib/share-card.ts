@@ -81,7 +81,8 @@ export function buildShareCardData(): ShareCardData {
       const day = String(d.getDate()).padStart(2, '0');
       return `${d.getFullYear()}-${m}-${day}`;
     };
-    let cur = new Date();
+    // cur 只做原地推进（setDate），不重新赋值，用 const
+    const cur = new Date();
     if (!set.has(iso(cur))) cur.setDate(cur.getDate() - 1);
     while (set.has(iso(cur))) {
       streak++;

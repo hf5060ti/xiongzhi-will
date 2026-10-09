@@ -1,7 +1,7 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 import { Card, CardContent } from '@/components/ui/card';
-import { Briefcase, Target, Clock, TrendingUp, FileText } from 'lucide-react';
+import { Target, Clock, TrendingUp, FileText } from 'lucide-react';
 
 export default function CareerPage() {
   return (

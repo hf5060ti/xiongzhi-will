@@ -1,7 +1,7 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 import { useEffect, useRef, useState } from 'react';
 import { Globe, Check } from 'lucide-react';
-import { LANGS, getLang, setLang } from '@/lib/i18n';
+import { LANGS, getLang, setLang, t } from '@/lib/i18n';
 
 /** 语言切换按钮：Globe 图标，点开 4 个语言选项 */
 export default function LanguageSwitcher({ compact }: { compact?: boolean }) {
@@ -47,6 +47,7 @@ export default function LanguageSwitcher({ compact }: { compact?: boolean }) {
           }
         >
           <p className="px-2 py-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">Language</p>
+          <p className="px-2 pb-1.5 text-[10px] leading-relaxed text-muted-foreground">{t('lang_scope')}</p>
           {LANGS.map((l) => (
             <button
               key={l.code}

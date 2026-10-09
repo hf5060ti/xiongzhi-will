@@ -14,7 +14,7 @@ import {
   type PlannedMeal,
 } from '@/lib/meal-plan';
 import { loadBodyProfile, loadDietId, loadSplit } from '@/lib/store';
-import { PHASE_LABEL, LEVEL_LABEL } from '@/lib/body-math';
+
 import { DIETS } from '@/data/diets';
 
 const KIND_LABEL: Record<string, string> = {

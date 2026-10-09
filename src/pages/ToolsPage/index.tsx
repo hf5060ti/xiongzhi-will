@@ -5,6 +5,7 @@ import { Calculator, Info, TrendingUp, AlertTriangle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { estimate1rm } from '@/lib/one-rep-max';
 
 /**
  * 1RM / RPE / 做组重量计算器
@@ -15,9 +16,10 @@ import { Badge } from '@/components/ui/badge';
  * 输入次数 > 10 时误差快速放大，页面会给出警告。
  */
 
-const epley = (w: number, r: number) => w * (1 + r / 30);
-const brzycki = (w: number, r: number) => (w * 36) / (37 - r);
-const lombardi = (w: number, r: number) => w * Math.pow(r, 0.1);
+// 公式实现集中在 src/lib/one-rep-max.ts（力量等级页与本站其它页面共用同一套口径）
+const epley = (w: number, r: number) => estimate1rm(w, r, 'epley');
+const brzycki = (w: number, r: number) => estimate1rm(w, r, 'brzycki');
+const lombardi = (w: number, r: number) => estimate1rm(w, r, 'lombardi');
 
 interface PctRow {
   pct: number;

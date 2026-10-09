@@ -17,9 +17,7 @@ interface FoodLibraryProps {
   onSelect: (food: IFood, presetGrams?: string) => void;
 }
 
-const CAT_ALL = 'all';
-
-type CatFilter = FoodCategory | typeof CAT_ALL;
+type CatFilter = FoodCategory | 'all';
 
 export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) {
   const [query, setQuery] = useState('');

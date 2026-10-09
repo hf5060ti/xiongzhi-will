@@ -54,9 +54,15 @@ const loaders: Record<number, () => Promise<ChapterMod>> = {
 
 const ChapterBody = ({ id }: { id: number }) => {
   const [data, setData] = useState<ChapterMod | null>(null);
+  // 切章时立刻清空，避免短暂展示上一章内容。在渲染期比对并同步，
+  // 比在 effect 里 setState 少一次渲染；异步加载本身仍留在 effect 里。
+  const [loadedId, setLoadedId] = useState<number | null>(null);
+  if (loadedId !== id) {
+    setLoadedId(id);
+    setData(null);
+  }
   useEffect(() => {
     let alive = true;
-    setData(null);
     loaders[id]?.().then((m) => {
       if (alive) setData(m);
     });

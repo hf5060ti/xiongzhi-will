@@ -12,6 +12,7 @@ import GoalPicker from './sections/GoalPicker';
 import DietPicker from './sections/DietPicker';
 import TodayPanel from './sections/TodayPanel';
 import OverviewPanel from './sections/OverviewPanel';
+import { useNow } from '@/hooks/useNow';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
 import {
@@ -29,6 +30,8 @@ import {
 } from '@/lib/store';
 
 export default function HomePage() {
+  // 当前时间（每分钟刷新）：渲染期不能调 Date.now()，统一从 hook 拿
+  const now = useNow();
   const [goalId, setGoalId] = useState(loadGoalId);
   const [dietId, setDietId] = useState(loadDietId);
   const [weight, setWeight] = useState(() => {
@@ -47,7 +50,6 @@ export default function HomePage() {
     a.download = `雄性意志-备份-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    const now = Date.now();
     saveLastBackupAt(now);
     setLastBackupAt(now); // 顶部提醒条立即消失
     toast.success('数据已导出');
@@ -77,7 +79,7 @@ export default function HomePage() {
   // 备份提醒：距上次导出备份的天数（清缓存即丢数据，超 7 天给醒目提示）
   // 用 state 存时间戳，导出后立即重算，顶部提醒条随之消失
   const [lastBackupAt, setLastBackupAt] = useState<number | null>(loadLastBackupAt);
-  const backupDays = lastBackupAt ? Math.floor((Date.now() - lastBackupAt) / 86400000) : null;
+  const backupDays = lastBackupAt ? Math.floor((now - lastBackupAt) / 86400000) : null;
   const backupStale = backupDays == null || backupDays >= 7;
   const showBackupBanner = backupStale && hasAnyUserData();
 

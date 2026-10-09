@@ -4,6 +4,55 @@
 
 ---
 
+## v0.3.0 - 2026-10-09
+
+### 新增
+
+- **导航补全核心页面入口**：方案 / 动作百科 / 营养 / 身体数据 / AI 教练进入侧边导航，不再只能靠搜索撞见
+- **界面多语言**：中 / 英 / 俄 / 德切换（`src/lib/i18n.ts`，覆盖导航、按钮、搜索与页脚；动作名与食物名保留原文）
+- **力量等级计算器 `/strength`**：38 项动作，按性别 / 年龄 / 体重 + 重量 × 次数估算 1RM，
+  判定「入门 ★ → 精英 ★★★★★」五档并给出离下一档还差多少公斤；
+  复用站内 Epley 口径，1RM 公式抽到 `src/lib/one-rep-max.ts` 与工具页共用
+  （功能形态参考公开健身力量计算器的通用做法，档位数据由本站整理与折算，
+  不使用任何第三方站点的文案或数据表，页内已标注来源与折算项）
+- **`server/.env.example`**：本地 AI 后台配置模板
+- **GitHub 登录补 OAuth state 校验**（Cookie 存 state，回调比对），并把 Worker 的 CORS 由 `*` 收窄为本站来源
+- **单元测试**：引入 vitest，36 个用例覆盖 1RM 三公式、力量判级（性别 / 年龄 / 体重折算、
+  边界与封顶）、BMR 六公式与 TDEE、瘦体重与蛋白质；其中一条专门断言
+  `body-math` / `performance-standards` / `one-rep-max` 三处 Epley 实现结果完全一致，
+  防止页面之间算法悄悄漂移
+- **语言切换器标注翻译范围**：下拉里说明「界面文案已翻译，正文保留原文」，避免误以为全站已翻译
+
+### 修复
+
+- **用户菜单收不起来**：登录后浮层一直挂在页面上（`menuOpen` 定义了却没参与渲染判断）
+- **Service Worker 重复注册**：`index.html` 与 `src/index.tsx` 各写一份且判断条件不一致，已收敛到入口一处，并跳过桌面离线版（file://）
+- **动作百科 SEO 描述过期**：写着「876 个动作」，实际 2428 个
+- **`/light`（轻盈计划）缺 SEO 元信息**
+- **登录入口误导**：云同步后端未开放时不再显示登录按钮（此前点了只弹「即将上线」）
+- **入口文件混放组件**：`Root` 拆到 `src/components/Root.tsx`，react-refresh 恢复正常
+- 错别字：「雄心意志」→「雄性意志」（`server/server.js`、`启动网站.bat`）
+- **路由改为 BrowserRouter**：线上 URL 变成 `/library`、`/plan` 这样的真实路径，`sitemap.xml` 才对搜索引擎有效（原先 HashRouter 下这些地址全部落在首页）；GitHub Pages 由 `404.html` 回退，桌面离线版因 `file://` 限制仍用 HashRouter，由构建期 `XW_DESKTOP` 区分
+- **Service Worker 注册路径**：改用 `BASE_URL` 拼绝对路径，否则在 `/library` 这类子路由下会被解析成 `/xiongzhi-will/library/sw.js` 而注册失败
+- **eslint 清零**：19 个 error 全部修掉（effect 内 setState 改为渲染期同步 / `Date.now()` 收敛到新的 `useNow` hook / `prefer-const` / 入口文件混放组件）
+
+### 工程
+
+- **仓库瘦身**：`docs/` 里的旧部署镜像（1082 个历史 bundle、约 126 MB）、`桌面版/assets/` 打包产物、`.wrangler/` 与临时排查文件移出 git 索引并加 `.gitignore`（磁盘文件保留），追踪文件数由 1400+ 降到 327
+- 删除与 `public/landing.html` 重复的根目录 `landing.html`
+- 移除未使用的 import（`Home` / `BarChart3` / `isLoggedIn` / `getLang`）与重复的 React Hooks 导入
+- **CI 接入 lint 与测试**：`.github/workflows/ci.yml` 依次跑 `npm run lint`（typecheck + eslint）
+  与 `npm run test`；eslint 以 `--max-warnings=0` 运行，warning 同样会让 CI 失败
+- **eslint 全面清零**：清掉全部 18 个 warning（未使用的 `useEffect` 导入、`hovered`、`muscles`、
+  `proteinPct`、`date0`、`CAT_ALL` 常量等死代码；`MUSCLE_GROUPS` 移到组件外以修正 `useMemo` 依赖）
+- 新增 `src/hooks/useNow.ts`：统一提供「当前时间」，避免在渲染期调用 `Date.now()`
+- **仓库历史瘦身**：用 `git filter-repo` 从全部 222 个提交中清除曾误提交的构建产物
+  （`docs/assets`、`docs/images`、`桌面版/`）、`雄性意志-最新源码.zip`、未引用的背景视频与临时文件；
+  `.git` 由数百 MB 降到 44 MB。操作前已做完整备份（`git clone --mirror` + 工作区文件副本），
+  磁盘上的 `docs/`、`桌面版/` 文件均未删除，仍可本地双击使用
+
+---
+
 ## v0.2.0 - 2026-09-26
 
 ### 新增

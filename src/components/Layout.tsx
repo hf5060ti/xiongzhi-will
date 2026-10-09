@@ -2,21 +2,28 @@
 // See LICENSE / NOTICE for details.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, Home, BarChart3, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair, LogIn, LogOut, Hand } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair, LogIn, LogOut, Hand, CalendarDays, Utensils, Library, Activity, Trophy } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { searchEntries, type SearchEntry } from '@/lib/search-index';
 import { saveGoalId } from '@/lib/store';
-import { getUser, isLoggedIn, loginWithGithub, logout, type AuthUser } from '@/lib/auth';
+import { getUser, isLoginEnabled, loginWithGithub, logout, type AuthUser } from '@/lib/auth';
 import { cn } from '@/lib/utils';
 import VideoBackground from '@/components/VideoBackground';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import { t, onLangChange, getLang } from '@/lib/i18n';
-import { useEffect as useEffectReact, useState as useStateReact } from 'react';
+import { t, onLangChange } from '@/lib/i18n';
 
+// 前 7 项是训练主链路（选目标 → 出方案 → 查动作 → 记训练 → 算营养 → 看数据 → 问 AI），
+// 后面是心智 / 事业 / 荒野等延伸板块。核心页必须在导航里，否则用户只能靠搜索撞见。
 const NAV_ITEMS = [
   { path: '/', labelKey: 'nav_body', icon: Dumbbell, end: true },
+  { path: '/plan', labelKey: 'nav_plan', icon: CalendarDays, end: false },
+  { path: '/library', labelKey: 'nav_library', icon: Library, end: false },
+  { path: '/strength', labelKey: 'nav_strength', icon: Trophy, end: false },
   { path: '/training-logs', labelKey: 'nav_training', icon: ClipboardList, end: false },
+  { path: '/nutrition', labelKey: 'nav_nutrition', icon: Utensils, end: false },
+  { path: '/body', labelKey: 'nav_bodydata', icon: Activity, end: false },
+  { path: '/coach', labelKey: 'nav_coach', icon: Bot, end: false },
   { path: '/tools', labelKey: 'nav_tools', icon: Crosshair, end: false },
   { path: '/light', labelKey: 'nav_light', icon: TrendingDown, end: false },
   { path: '/stomach', labelKey: 'nav_stomach', icon: Soup, end: false },
@@ -30,7 +37,6 @@ const NAV_ITEMS = [
   { path: '/wild', labelKey: 'nav_wild', icon: Mountain, end: false },
   { path: '/life', labelKey: 'nav_life', icon: BookMarked, end: false },
   { path: '/collect', labelKey: 'nav_collect', icon: Bookmark, end: false },
-
 ];
 
 // 路由级 SEO：每个页面独立的 title / description（SPA 单页内切换时由 JS 更新）
@@ -42,8 +48,9 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/cardio': { title: '有氧与冷兵器 - 雄性意志', desc: '拳击、跳绳、跑步、球类与冷兵器训练的热量消耗参考（剑道 270 kcal/h，唐刀武士刀等 200–600 kcal/h）。' },
   '/bodyweight': { title: '自重训练 - 雄性意志', desc: '俯卧撑、引体、吊杠举腿等自重动作库与组次参考。' },
   '/physique': { title: '形体 - 雄性意志', desc: '胸型、臂型等各部位形态对照与知名人物参考，拍照记录体态变化。' },
+  '/strength': { title: '力量等级计算器 - 雄性意志', desc: '按性别、年龄、体重与动作，用重量×次数估算 1RM，判定从入门到精英五档力量等级，并给出下一档还差多少公斤。38 项动作。' },
   '/coach': { title: 'AI 教练 - 雄性意志', desc: 'AI 个性化训练与饮食建议。建议仅供参考，不构成医疗建议。' },
-  '/library': { title: '动作百科 - 雄性意志', desc: '876 个动作的演示动图、组次、要点、优缺点与名师教学视频。' },
+  '/library': { title: '动作百科 - 雄性意志', desc: '2428 个动作的演示动图、组次、要点、优缺点与名师教学视频，含斗腕专项与等长训练。' },
   '/mind': { title: '心智 - 雄性意志', desc: '压力管理、自律习惯、斯多葛哲学、日记复盘——意志的内核。' },
   '/career': { title: '事业 - 雄性意志', desc: '职业发展、副业、写作、编程、谈判、领导力。' },
   '/wealth': { title: '财富 - 雄性意志', desc: '赚钱、存钱、投资基础、风险管理、消费观。' },
@@ -55,6 +62,7 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/isometric': { title: '等长训练 - 雄性意志', desc: '等长式训练：术后恢复期、环境受限时的低压力保肌方案——动作库、眼部手术后分阶段恢复指南，搭配散步温和促进循环。' },
   '/diet-knowledge': { title: '饮食讲解 - 雄性意志', desc: '公开健身博主讲解整理：每条注明证据等级与来源链接，非医疗建议。' },
   '/training-logs': { title: '训练日志 - 雄性意志', desc: '近 7 天训练频次、周容量、力量与耐力追踪。' },
+  '/light': { title: '轻盈计划 - 雄性意志', desc: '减脂追踪台：定目标体重，每天记体重、打卡，趋势图与达成预估自动算。' },
   '/tools': { title: '力量计算器 - 雄性意志', desc: '1RM 估算（Epley/Brzycki/Lombardi 三公式对照）、按目标反推做组重量、RPE 主观强度标尺。' },
   '/sources': { title: '内容来源与循证 - 雄性意志', desc: '本站每个模块的内容来源、证据等级与免责边界。' },
   '/faq': { title: '关于与常见问题 - 雄性意志', desc: '项目初衷、公式方法论（BMR / TDEE / MET）、隐私与免责、免费开源说明。' },
@@ -91,7 +99,14 @@ function AuthSection({ compact }: { compact?: boolean }) {
     return () => document.removeEventListener('mousedown', onDoc);
   }, []);
 
-  const menu = user ? (
+  // 云同步后端还没对国内开放（见 lib/auth.ts 的 ENABLE_LOGIN），未登录时不显示登录按钮，
+  // 免得用户点下去只弹一句"即将上线"。已登录的会话照常显示，方便退出。
+  // 注意：必须放在所有 Hooks 之后，条件 return 出现在 Hook 之前会破坏 Hook 调用顺序。
+  if (!user && !isLoginEnabled()) return null;
+
+  // 菜单只有点开时才渲染：此前这里只判断 user，导致登录状态下浮层一直挂在页面上、
+  // 点击头像也收不起来（menuOpen 定义了却没被读取）
+  const menu = user && menuOpen ? (
     <div
       className={
         compact
@@ -224,8 +239,8 @@ const SearchResultList = ({
 export const Layout = () => {
   const { pathname } = useLocation();
   // 语言切换时触发重渲染，所有 t() 即时刷新
-  const [, setLangTick] = useStateReact(0);
-  useEffectReact(() => onLangChange(() => setLangTick((n) => n + 1)), []);
+  const [, setLangTick] = useState(0);
+  useEffect(() => onLangChange(() => setLangTick((n) => n + 1)), []);
 
   // 路由级 SEO：切页时更新 document.title 与 meta description
   useEffect(() => {
@@ -327,7 +342,8 @@ export const Layout = () => {
             雄性
           </span>
         </Link>
-        <nav className="flex flex-1 flex-col items-center gap-1 py-4">
+        {/* 导航项较多（20 项），矮屏放不下时允许侧栏内部滚动，避免把底部语言/账号区挤出去 */}
+        <nav className="flex flex-1 flex-col items-center gap-1 overflow-y-auto py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             return (

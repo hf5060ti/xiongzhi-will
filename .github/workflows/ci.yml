@@ -16,7 +16,9 @@ jobs:
           node-version: 20
           cache: 'npm'
       - run: npm ci
-      - run: npm run typecheck
+      # npm run lint = typecheck + eslint（eslint 以 --max-warnings=0 运行，warning 也会失败）
+      - run: npm run lint
+      - run: npm run test
       - run: npm run build
         env:
           MIAODA_CLIENT_BASE_PATH: /xiongzhi-will/

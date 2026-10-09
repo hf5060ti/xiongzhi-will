@@ -4,4 +4,6 @@
 
 interface ImportMetaEnv {
   readonly MIAODA_CLIENT_BASE_PATH: string;
+  /** 桌面离线版（file:// 双击打开）构建标记：true 时路由走 HashRouter */
+  readonly XW_DESKTOP: boolean;
 }

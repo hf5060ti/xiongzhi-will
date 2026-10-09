@@ -1,6 +1,6 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FoodLibrary from './sections/FoodLibrary';
 import SupplementLibrary from './sections/SupplementLibrary';
@@ -21,17 +21,18 @@ export default function NutritionPage() {
   const [weight, setWeight] = useState('');
   const [refreshLog, setRefreshLog] = useState(0);
 
-  // 全局搜索跳转过来时，按 ?foodId=xxx 自动选中
-  useEffect(() => {
-    const fid = searchParams.get('foodId');
-    if (fid) {
-      const f = FOODS.find((x) => x.id === fid);
-      if (f) {
-        setSelectedFood(f);
-        setWeight('');
-      }
+  // 全局搜索跳转过来时，按 ?foodId=xxx 自动选中。
+  // props/URL 变化时调整 state 在渲染期做（React 官方推荐），避免 effect 里 setState 造成的二次渲染。
+  const fid = searchParams.get('foodId');
+  const [prevFid, setPrevFid] = useState<string | null>(null);
+  if (fid && fid !== prevFid) {
+    setPrevFid(fid);
+    const f = FOODS.find((x) => x.id === fid);
+    if (f) {
+      setSelectedFood(f);
+      setWeight('');
     }
-  }, [searchParams]);
+  }
   const handleSelect = (food: IFood, presetGrams?: string) => {
     setSelectedFood(food);
     // 点了常见份量（如「1 个 50g」）就直接带入克数，营养值随即算出
