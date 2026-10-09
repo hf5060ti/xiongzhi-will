@@ -67,6 +67,44 @@ export interface LiftStandardDef {
   femaleFactor: number;
   /** 需要额外说明口径（如自重动作按附加负重） */
   note?: string;
+  /** 行走 / 携带类动作可选的距离（米）；有值时页面多一个距离选择 */
+  distances?: number[];
+  /**
+   * 自重动作中「自身体重参与负荷」的比例。
+   * 例如引体约 0.92（拉起的是几乎整个身体，扣除小臂），俯卧撑约 0.64。
+   * 有了它，纯自重（负重填 0）也能算出等级：
+   *   总负荷 = 系数 × 体重 + 附加负重 → Epley 估算 1RM → 减回系数 × 体重
+   *   = 折算出的「附加负重 1RM」，再与档位门槛比较。
+   * 该系数为**估算值**（不同身高 / 体型 / 动作幅度会有出入）。
+   */
+  bodyweightCoef?: number;
+}
+
+/** 自重动作：把「附加负重 + 次数」折算成用于判级的附加负重 1RM（可为 0 或负） */
+export function addedLoad1rm(
+  bodyweightCoef: number,
+  bodyweightKg: number,
+  addedKg: number,
+  reps: number,
+  epley: (w: number, r: number) => number,
+): number {
+  const base = bodyweightCoef * bodyweightKg;
+  const total = epley(base + addedKg, reps);
+  return Math.round((total - base) * 10) / 10;
+}
+
+// ---------- 行走类动作的距离 ----------
+/** 负重行走可选距离（米） */
+export const CARRY_DISTANCES = [10, 15] as const;
+
+/**
+ * 距离系数：同样的重量走得越远越难，因此走得更远时把门槛下调一点（更容易达标）。
+ * 10 米为基准 1.0，15 米 ×0.95 —— 该系数属**估算**，页面已标注。
+ */
+export function distanceFactor(distanceM?: number): number {
+  if (!distanceM) return 1;
+  if (distanceM >= 15) return 0.95;
+  return 1;
 }
 
 /** 38 项动作的力量标准（男性五档为体重倍数；女性按系数折算） */
@@ -88,6 +126,15 @@ export const LIFT_STANDARDS: LiftStandardDef[] = [
   { key: 'upright_row', label: '杠铃直立划船', group: 'barbell', male: [0.35, 0.5, 0.65, 0.85, 1.05], femaleFactor: 0.6 },
   { key: 'good_morning', label: '早安体前屈', group: 'barbell', male: [0.35, 0.5, 0.7, 0.9, 1.1], femaleFactor: 0.72 },
   { key: 'wrist_curl', label: '杠铃腕弯举', group: 'barbell', male: [0.15, 0.25, 0.35, 0.45, 0.55], femaleFactor: 0.6 },
+  {
+    key: 'barbell_farmer_walk',
+    label: '杠铃农夫行走',
+    group: 'barbell',
+    male: [0.5, 0.75, 1.0, 1.3, 1.6],
+    femaleFactor: 0.65,
+    note: '双手各持一根杠铃，按两侧合计重量（不含自身体重）',
+    distances: [10, 15],
+  },
 
   // ── 举重 ──
   { key: 'snatch', label: '抓举', group: 'olympic', male: [0.35, 0.55, 0.75, 0.95, 1.15], femaleFactor: 0.65 },
@@ -110,7 +157,8 @@ export const LIFT_STANDARDS: LiftStandardDef[] = [
     group: 'dumbbell',
     male: [0.5, 0.75, 1.0, 1.3, 1.6],
     femaleFactor: 0.65,
-    note: '按两侧合计重量（不含自身体重）；填你能提着走完目标距离的重量，次数填 1',
+    note: '按两侧合计重量（不含自身体重）；填你能提着走完所选距离的重量，次数填 1',
+    distances: [10, 15],
   },
 
   // ── 固定器械 ──
@@ -121,11 +169,22 @@ export const LIFT_STANDARDS: LiftStandardDef[] = [
   { key: 'seated_leg_curl', label: '坐姿腿弯举', group: 'machine', male: [0.3, 0.45, 0.6, 0.75, 0.9], femaleFactor: 0.68 },
   { key: 'lying_leg_curl', label: '俯身腿弯举', group: 'machine', male: [0.25, 0.4, 0.55, 0.7, 0.85], femaleFactor: 0.68 },
 
-  // ── 自重（按附加负重计算，不含自身体重）──
-  { key: 'pull_up', label: '引体向上', group: 'bodyweight', male: [0.0, 0.1, 0.25, 0.4, 0.55], femaleFactor: 0.55, note: '填附加负重（腰带挂片 / 握哑铃），不加负重填 0' },
-  { key: 'chin_up', label: '正手引体向上', group: 'bodyweight', male: [0.0, 0.08, 0.2, 0.35, 0.5], femaleFactor: 0.55, note: '同上，只填附加负重' },
-  { key: 'dip', label: '双杠臂屈伸', group: 'bodyweight', male: [0.05, 0.2, 0.35, 0.5, 0.7], femaleFactor: 0.55, note: '同上，只填附加负重' },
-  { key: 'push_up', label: '俯卧撑', group: 'bodyweight', male: [0.0, 0.1, 0.25, 0.4, 0.55], femaleFactor: 0.55, note: '同上，背上加重物时填附加重量' },
+  // ── 自重（按附加负重计算，不含自身体重；次数填你能完成的重复数）──
+  // 引体三种握法拆开：正手（正握，手心朝外）、反手（反握，手心朝自己）、对握（掌心相对）
+  { key: 'pull_up', label: '引体向上（正手 / 正握）', group: 'bodyweight', male: [0.0, 0.1, 0.25, 0.4, 0.55], femaleFactor: 0.55, bodyweightCoef: 0.92, note: '附加负重填腰带挂片 / 双腿夹的哑铃，不加负重填 0；次数填标准重复数' },
+  { key: 'chin_up', label: '反手引体向上（反握）', group: 'bodyweight', male: [0.0, 0.08, 0.2, 0.35, 0.5], femaleFactor: 0.55, bodyweightCoef: 0.92, note: '同上，只填附加负重' },
+  { key: 'neutral_pull_up', label: '对握引体向上（掌心相对）', group: 'bodyweight', male: [0.0, 0.1, 0.23, 0.38, 0.52], femaleFactor: 0.55, bodyweightCoef: 0.92, note: '同上，只填附加负重' },
+  { key: 'dip', label: '双杠臂屈伸（负重）', group: 'bodyweight', male: [0.05, 0.2, 0.35, 0.5, 0.7], femaleFactor: 0.55, bodyweightCoef: 0.9, note: '同上，只填附加负重' },
+  { key: 'push_up', label: '俯卧撑（负重）', group: 'bodyweight', male: [0.0, 0.1, 0.25, 0.4, 0.55], femaleFactor: 0.55, bodyweightCoef: 0.64, note: '同上，背上加重物时填附加重量' },
+  {
+    key: 'hyperextension',
+    label: '山羊挺身（负重）',
+    group: 'bodyweight',
+    male: [0.0, 0.15, 0.3, 0.5, 0.7],
+    femaleFactor: 0.55,
+    bodyweightCoef: 0.45,
+    note: '罗马椅背伸展；填抱在胸前的杠铃片重量（不加片填 0）',
+  },
 ];
 
 export type Sex = 'male' | 'female';
@@ -162,20 +221,30 @@ export interface StrengthResult {
   gapKg: number | null;
   /** 当前档区间内的完成度 0–100 */
   withinPct: number;
+  /** 行走类动作所选距离（米），非行走类为 undefined */
+  distanceM?: number;
 }
 
-/** 判级：oneRmKg 已由 1RM 公式估算得出（判级统一用 Epley，与站内其它页面口径一致） */
+/**
+ * 判级：oneRmKg 为「用于判级的 1RM」（器械 / 杠铃类就是负重 1RM；
+ * 自重类为折算后的附加负重 1RM，见 addedLoad1rm），统一由 Epley 估算。
+ * distanceM 仅对行走类动作生效（走得越远门槛越宽松）。
+ */
 export function judgeStrength(
   def: LiftStandardDef,
   sex: Sex,
   ageFactor: number,
   bodyweightKg: number,
   oneRmKg: number,
+  distanceM?: number,
 ): StrengthResult | null {
   const bw = bodyweightKg;
-  if (!(bw > 0) || !(oneRmKg > 0) || !Number.isFinite(oneRmKg)) return null;
+  if (!(bw > 0) || !Number.isFinite(oneRmKg)) return null;
+  // 自重动作允许 0 甚至负值（连一次标准自重都做不到 → 判「起步」）；
+  // 器械 / 杠铃类 1RM 为 0 视为没填数据
+  if (def.group !== 'bodyweight' && !(oneRmKg > 0)) return null;
 
-  const kg = weightThresholds(def, sex, bw, ageFactor);
+  const kg = weightThresholds(def, sex, bw, ageFactor * distanceFactor(distanceM));
   let tier = 0;
   for (const t of kg) {
     if (oneRmKg >= t) tier += 1;

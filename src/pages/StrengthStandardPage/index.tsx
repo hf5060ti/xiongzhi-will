@@ -15,6 +15,7 @@ import {
   LIFT_STANDARDS,
   STRENGTH_TIERS,
   TIER_UNRANKED,
+  addedLoad1rm,
   judgeStrength,
   liftDefOf,
   type Sex,
@@ -44,6 +45,8 @@ export default function StrengthStandardPage() {
   const [weight, setWeight] = useState('60');
   const [reps, setReps] = useState('5');
   const [oneRmDirect, setOneRmDirect] = useState('80');
+  // 行走类动作可选距离；切换动作时若当前选择不在该动作的距离集合内，自动回落到首选距离
+  const [carryDistance, setCarryDistance] = useState(10);
 
   const def = useMemo(() => liftDefOf(liftKey) ?? LIFT_STANDARDS[0], [liftKey]);
   const age = useMemo(() => AGE_GROUPS.find((a) => a.id === ageId) ?? AGE_GROUPS[2], [ageId]);
@@ -52,9 +55,21 @@ export default function StrengthStandardPage() {
   const wNum = parseFloat(weight) || 0;
   const rNum = parseFloat(reps) || 0;
 
-  const oneRm = mode === 'reps' ? estimate1rm(wNum, rNum) : parseFloat(oneRmDirect) || 0;
+  // 自重动作把「自体重 + 附加负重」一起算再减回，得到用于判级的附加负重 1RM；
+  // 行走类与普通动作直接按重量×次数估算。
+  const oneRm =
+    mode === 'direct'
+      ? parseFloat(oneRmDirect) || 0
+      : def.bodyweightCoef
+        ? addedLoad1rm(def.bodyweightCoef, bwNum, wNum, rNum, (w, r) => estimate1rm(w, r))
+        : estimate1rm(wNum, rNum);
   const formulas = mode === 'reps' ? estimateAll(wNum, rNum) : null;
-  const result = judgeStrength(def, sex, age.factor, bwNum, oneRm);
+  const distanceM = def.distances
+    ? def.distances.includes(carryDistance)
+      ? carryDistance
+      : def.distances[0]
+    : undefined;
+  const result = judgeStrength(def, sex, age.factor, bwNum, oneRm, distanceM);
   const repsWarn = mode === 'reps' && isRepsUnreliable(rNum);
 
   return (
@@ -146,6 +161,25 @@ export default function StrengthStandardPage() {
                 ))}
               </select>
               {def.note && <p className="mt-1.5 text-[11px] text-muted-foreground">{def.note}</p>}
+              {def.distances && (
+                <div className="mt-3">
+                  <label htmlFor="ss-dist" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+                    行走距离
+                  </label>
+                  <select
+                    id="ss-dist"
+                    value={carryDistance}
+                    onChange={(e) => setCarryDistance(Number(e.target.value))}
+                    className={selectClass}
+                  >
+                    {def.distances.map((d) => (
+                      <option key={d} value={d}>
+                        {d} 米
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
             </div>
 
             <div className="flex gap-2">
@@ -173,7 +207,7 @@ export default function StrengthStandardPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label htmlFor="ss-w" className="mb-1.5 block text-xs font-medium text-muted-foreground">
-                    重量（kg）
+                    {def.bodyweightCoef ? '附加负重（kg）' : '重量（kg）'}
                   </label>
                   <Input id="ss-w" type="number" min={0} value={weight} onChange={(e) => setWeight(e.target.value)} />
                 </div>
@@ -229,7 +263,7 @@ export default function StrengthStandardPage() {
                     <span className="font-display text-4xl font-extrabold text-primary">{result.label}</span>
                     <span className="text-2xl tracking-widest text-primary/90">{result.stars || '—'}</span>
                     <Badge variant="secondary" className="mb-1">
-                      1RM ≈ {oneRm} kg
+                      {def.bodyweightCoef ? `附加负重 1RM ≈ ${oneRm} kg` : `1RM ≈ ${oneRm} kg`}
                     </Badge>
                     <Badge variant="outline" className="mb-1">
                       {result.ratio} × 体重

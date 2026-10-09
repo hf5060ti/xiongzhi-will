@@ -6,6 +6,8 @@ import {
   LIFT_STANDARDS,
   STRENGTH_TIERS,
   TIER_UNRANKED,
+  addedLoad1rm,
+  distanceFactor,
   judgeStrength,
   liftDefOf,
   ratioThresholds,
@@ -17,7 +19,7 @@ const ageFactor = (id: string) => AGE_GROUPS.find((a) => a.id === id)!.factor;
 
 describe('档位数据完整性', () => {
   it('动作条目齐全，key 不重复', () => {
-    expect(LIFT_STANDARDS).toHaveLength(39);
+    expect(LIFT_STANDARDS).toHaveLength(42);
     expect(new Set(LIFT_STANDARDS.map((l) => l.key)).size).toBe(LIFT_STANDARDS.length);
   });
 
@@ -116,13 +118,29 @@ describe('判级', () => {
 });
 
 describe('自重动作', () => {
-  it('引体向上按附加负重判定：负重 0 也能达到入门', () => {
+  it('引体向上（自重）纯自重也判级：附加 0 → 入门，加负重即升档', () => {
     const pullUp = liftDefOf('pull_up')!;
-    const r = judgeStrength(pullUp, 'male', 1, 70, 0);
-    // 1RM 为 0 时不判级（不是"没负重就没等级"，而是没数据）
-    expect(r).toBeNull();
+    const bare = judgeStrength(pullUp, 'male', 1, 70, 0)!;
+    // 新口径：自重动作可折算自体重，纯自重（附加 0）判「入门」而非"没数据"
+    expect(bare).not.toBeNull();
+    expect(bare.tier).toBeGreaterThanOrEqual(1);
 
     const weighted = judgeStrength(pullUp, 'male', 1, 70, 7)!;
     expect(weighted.tier).toBeGreaterThanOrEqual(1);
+  });
+});
+
+describe('自重折算与行走距离', () => {
+  it('addedLoad1rm：纯自重折算出正值附加负重 1RM，且随附加增加而增大', () => {
+    const epley = (w: number, r: number) => w * (1 + r / 30);
+    const base = addedLoad1rm(0.92, 70, 0, 5, epley);
+    expect(base).toBeGreaterThan(0);
+    expect(addedLoad1rm(0.92, 70, 10, 5, epley)).toBeGreaterThan(base);
+  });
+
+  it('distanceFactor：默认与 10 米为基准 1.0，15 米更宽松', () => {
+    expect(distanceFactor()).toBe(1);
+    expect(distanceFactor(10)).toBe(1);
+    expect(distanceFactor(15)).toBeLessThan(1);
   });
 });
