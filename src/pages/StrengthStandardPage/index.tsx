@@ -27,7 +27,9 @@ const selectClass =
   // 选项文字会继承页面的浅色前景色 → 变成"白底白字"完全看不见。
   // 这里给选项强制白底黑字；收起状态则压暗底色配白字，保证两种状态都清晰。
   'h-9 w-full rounded-lg border border-white/15 bg-black/45 px-3 text-sm font-medium text-white outline-none transition-colors focus:border-primary/60 ' +
-  '[&>option]:bg-white [&>option]:text-black [&>optgroup]:bg-neutral-100 [&>optgroup]:text-black [&>optgroup]:font-semibold';
+  // 注意动作下拉的选项包在 <optgroup> 里，不是 select 的直接子级，
+  // 必须用后代选择器（&_option）才能命中，否则分组内的选项仍是白底白字
+  '[&_option]:bg-white [&_option]:text-black [&_optgroup]:bg-neutral-100 [&_optgroup]:text-black [&_optgroup]:font-semibold';
 
 export default function StrengthStandardPage() {
   const [sex, setSex] = useState<Sex>('male');
