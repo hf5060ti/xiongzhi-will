@@ -51,8 +51,23 @@ describe('restFor 复合 / 孤立判定', () => {
     expect(i.range).toBe('2–3 分钟');
   });
 
-  it('已知局限：仰卧臂屈伸其实是孤立动作，但命中「臂屈伸」被判成复合', () => {
-    // 记录在案，提醒后续改正则时一并处理；不是正确行为，只是当前行为
-    expect(restFor('仰卧臂屈伸').kind).toBe('compound');
+  it('俯卧撑系列判为复合（此前漏判，自重训练区 8 个变式全被按孤立给 2 分钟）', () => {
+    for (const name of ['标准俯卧撑', '钻石俯卧撑', '下斜俯卧撑', '宽距俯卧撑', '上斜俯卧撑']) {
+      expect(restFor(name).kind, name).toBe('compound');
+    }
+  });
+
+  it('箭步蹲与弓步蹲是同一动作的两个叫法，判定必须一致', () => {
+    expect(restFor('哑铃箭步蹲').kind).toBe('compound');
+    expect(restFor('哑铃弓步蹲').kind).toBe('compound');
+  });
+
+  it('仰卧臂屈伸判为孤立，双杠臂屈伸仍为复合', () => {
+    // 复合表里去掉裸「臂屈伸」后：过顶 / 仰卧 / 哑铃臂屈伸回归孤立，
+    // 而「双杠」这个复合词仍然保住了真正的复合项双杠臂屈伸。
+    expect(restFor('仰卧臂屈伸').kind).toBe('isolation');
+    expect(restFor('过顶臂屈伸').kind).toBe('isolation');
+    expect(restFor('双杠臂屈伸').kind).toBe('compound');
+    expect(restFor('负重双杠臂屈伸').kind).toBe('compound');
   });
 });

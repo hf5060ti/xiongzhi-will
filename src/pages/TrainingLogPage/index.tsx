@@ -13,6 +13,7 @@ import { toast } from 'sonner';
 import { useNow } from '@/hooks/useNow';
 import { playFinishChime } from '@/lib/chime';
 import { defaultRestSeconds } from '@/lib/rest-timer';
+import { restFor } from '@/lib/training-plan';
 import { BarChart3, CalendarDays, Check, Clock, Dumbbell, Download, Eraser, Flame, HeartPulse, Medal, Moon, Pencil, Play, Plus, Save, Scale, Share2, SkipForward, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Badge } from '@/components/ui/badge';
@@ -558,8 +559,11 @@ export default function TrainingLogPage() {
     const out: RunnerEntry[] = [];
     exs.forEach((ex, exIdx) => {
       if (!ex.name.trim()) return;
-      const lift = matchLift(ex.name);
-      const compound = Boolean(lift); // 深蹲/卧推/硬拉/推举/弯举等力量动作按复合时长
+      // 复合 / 孤立判定统一交给 restFor()，与工具页计时器、计划页共用同一套口径。
+      // 原先这里写成 Boolean(matchLift(...))，只认五大力量动作，会把引体向上、
+      // 杠铃划船、箭步蹲、双杠臂屈伸这些多关节复合动作误判成孤立，只给 2 分钟，
+      // 而 UI 还照着说「孤立动作 · 建议休息约 2 分钟」。
+      const compound = restFor(ex.name).kind === 'compound';
       ex.sets.forEach((set, setIdx) => {
         out.push({
           exIdx,
