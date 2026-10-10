@@ -46,7 +46,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               <p className="mt-2 text-sm text-muted-foreground">
                 页面加载时出错了。多数情况是网络抖动或资源加载失败，点「刷新重试」即可。
               </p>
-              <p className="mt-1 text-xs text-muted-foreground break-all">
+              <p className="mt-1 type-meta text-muted-foreground break-all">
                 {this.state.error?.message}
               </p>
               <div className="mt-4 flex gap-2 justify-center">
@@ -57,7 +57,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                   清空数据（慎用）
                 </Button>
               </div>
-              <p className="mt-3 text-xs text-muted-foreground">
+              <p className="mt-3 type-meta text-muted-foreground">
                 如果之前有导出过备份，导入备份即可恢复。
               </p>
             </CardContent>

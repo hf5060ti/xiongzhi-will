@@ -193,7 +193,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
 
         {/* 热量目标区间文案（进度条与三大宏量均按下限计） */}
         {targets.kcal > 0 && (
-          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+          <p className="mt-2 type-meta text-muted-foreground">
             {targets.kcalMax > targets.kcalMin ? (
               <>
                 热量目标区间{' '}
@@ -308,7 +308,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
             {/* 常见份量锚点：点一下直接折算克数 */}
             {selectedFood && servings.length > 0 && (
               <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-xs text-muted-foreground">常见份量：</span>
+                <span className="type-meta text-muted-foreground">常见份量：</span>
                 {servings.map((s) => {
                   const on = gramsValid && Math.abs(gramsNum - s.grams) < 0.01;
                   return (
@@ -354,7 +354,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
               if (mealEntries.length === 0) return null;
               return (
                 <div key={m}>
-                  <p className="mb-1.5 text-xs font-medium text-muted-foreground">{m}</p>
+                  <p className="mb-1.5 type-meta font-medium text-muted-foreground">{m}</p>
                   <div className="space-y-1">
                     {mealEntries.map((e, i) => (
                       <div
@@ -405,7 +405,7 @@ function StatCard({
       </div>
       <p className="mt-1 font-display text-lg font-bold leading-none text-foreground sm:text-2xl">
         {value}
-        <span className="ml-1 text-xs font-normal text-muted-foreground sm:text-xs">/ {goal} {unit}</span>
+        <span className="ml-1 type-meta font-normal text-muted-foreground sm:type-meta">/ {goal} {unit}</span>
       </p>
       <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted/40">
         <div

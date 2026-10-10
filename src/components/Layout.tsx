@@ -165,7 +165,7 @@ function AuthSection({ compact }: { compact?: boolean }) {
     >
       <p className="truncate text-sm font-medium text-foreground">{user.name}</p>
       <p className="truncate text-xs text-muted-foreground">@{user.login}</p>
-      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+      <p className="mt-2 type-meta text-muted-foreground">
         已开启云端同步：训练记录、身体数据、计划与收藏会跟随账号，换设备自动取回。
       </p>
       <button
@@ -277,7 +277,7 @@ const SearchResultList = ({
                 {t(TYPE_LABEL[r.type])}
               </span>
             </span>
-            <span className="block text-xs text-muted-foreground">{r.sublabel}</span>
+            <span className="block type-meta text-muted-foreground">{r.sublabel}</span>
           </span>
         </button>
       );
@@ -440,7 +440,7 @@ export const Layout = () => {
                   gi > 0 && 'mt-2 border-t border-border/60',
                 )}
               >
-                <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground/70">
+                <span className="type-meta font-medium uppercase tracking-widest text-muted-foreground/70">
                   {t(group.labelKey)}
                 </span>
               </div>
@@ -510,7 +510,7 @@ export const Layout = () => {
           {NAV_GROUPS.map((group, gi) => (
             <div key={group.key} className="flex shrink-0 items-center gap-1">
               {gi > 0 && <span className="mx-1 h-3.5 w-px shrink-0 bg-border/70" />}
-              <span className="shrink-0 text-xs font-medium text-muted-foreground/70">
+              <span className="shrink-0 type-meta font-medium text-muted-foreground/70">
                 {t(group.labelKey)}
               </span>
               {group.items.map((item) => (
@@ -623,7 +623,7 @@ export const Layout = () => {
         </div>
 
         <footer className="border-t border-border/30 bg-card/40 px-4 py-4 backdrop-blur-xl lg:px-8">
-          <div className="max-w-4xl text-xs leading-relaxed text-muted-foreground">
+          <div className="max-w-4xl type-meta text-muted-foreground">
             <p>
               <b className="text-foreground">{t('disclaimer')}</b>
             </p>

@@ -133,7 +133,7 @@ export default function BodyweightPage() {
             <Activity className="h-4 w-4 text-primary" />
             选择自重动作
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             共 {BODYWEIGHT_ITEMS.length} 个动作，含俯卧撑全变式；点进去即显示该动作的消耗公式与计算器。
           </p>
         </div>
@@ -152,7 +152,7 @@ export default function BodyweightPage() {
             >
               {g}
               {g !== '全部' && (
-                <span className="ml-1 text-xs text-muted-foreground">
+                <span className="ml-1 type-meta text-muted-foreground">
                   {BODYWEIGHT_ITEMS.filter((i) => i.group === g).length}
                 </span>
               )}
@@ -191,7 +191,7 @@ export default function BodyweightPage() {
                   </span>
                   <span className="text-xs uppercase tracking-wider">{it.en}</span>
                 </span>
-                <span className="mt-1 block text-xs text-muted-foreground">{it.tagline}</span>
+                <span className="mt-1 block type-meta text-muted-foreground">{it.tagline}</span>
                 <span className="mt-2 block text-xs font-medium text-primary/80">
                   {it.met} MET · 节奏 {it.rpm} 次/分 · 单次约{' '}
                   {round2(bodyweightKcalPerRep(it.met, BODYWEIGHT_REF_WEIGHT, it.rpm))} kcal（
@@ -210,7 +210,7 @@ export default function BodyweightPage() {
             <Flame className="h-4 w-4 text-primary" />
             {item.name} · 消耗公式
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             填入体重、组数与每组次数，实时算出这组训练烧掉多少热量。
           </p>
         </div>
@@ -231,26 +231,26 @@ export default function BodyweightPage() {
         {/* 动作强度档位 */}
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-md border border-primary/40 bg-primary/10 p-3">
-            <p className="text-xs text-muted-foreground">难度</p>
+            <p className="type-meta text-muted-foreground">难度</p>
             <p className="mt-0.5 font-display text-xl font-bold text-foreground">{item.level}</p>
           </div>
           <div className="rounded-md border border-border bg-muted/20 p-3">
-            <p className="text-xs text-muted-foreground">MET（强度）</p>
+            <p className="type-meta text-muted-foreground">MET（强度）</p>
             <p className="mt-0.5 font-display text-lg font-bold text-primary">{item.met}</p>
           </div>
           <div className="rounded-md border border-border bg-muted/20 p-3">
-            <p className="text-xs text-muted-foreground">节奏（次/分）</p>
+            <p className="type-meta text-muted-foreground">节奏（次/分）</p>
             <p className="mt-0.5 font-display text-xl font-bold text-foreground">{item.rpm}</p>
           </div>
           <div className="rounded-md border border-border bg-muted/20 p-3">
-            <p className="text-xs text-muted-foreground">单次消耗（{BODYWEIGHT_REF_WEIGHT}kg）</p>
+            <p className="type-meta text-muted-foreground">单次消耗（{BODYWEIGHT_REF_WEIGHT}kg）</p>
             <p className="mt-0.5 font-display text-xl font-bold text-foreground">
               {round2(bodyweightKcalPerRep(item.met, BODYWEIGHT_REF_WEIGHT, item.rpm))}
-              <span className="ml-1 text-xs text-muted-foreground">kcal</span>
+              <span className="ml-1 type-meta text-muted-foreground">kcal</span>
             </p>
           </div>
         </div>
-        <p className="text-xs leading-relaxed text-muted-foreground">{item.note}</p>
+        <p className="type-meta text-muted-foreground">{item.note}</p>
 
         {/* 体重 / 组数 / 每组次数 */}
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -361,16 +361,16 @@ export default function BodyweightPage() {
               {round0(kcal)}
               <span className="ml-2 text-base font-bold text-muted-foreground">kcal</span>
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               计算：{item.met} MET × {weightKg} kg × {hoursText(minutes)} h = {round0(kcal)} kcal
               （时长 = {round0(totalReps)} 次 ÷ {item.rpm} 次/分 = {round1(minutes)} 分钟）
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               折算：单次约 {round2(perRep)} kcal · 约 {round1(perMin)} kcal/分钟 · 每组约{' '}
               {round2(bodyweightKcal(item.met, weightKg, parseFloat(repsPerSet) || 0, item.rpm))} kcal
               （按你 {weightKg} kg 体重）。
             </p>
-            <p className="text-xs leading-relaxed text-muted-foreground/80">
+            <p className="type-meta text-muted-foreground/80">
               仅计动作本身，组间休息按静息处理、不计入额外消耗。
             </p>
           </div>
@@ -388,7 +388,7 @@ export default function BodyweightPage() {
             <Weight className="h-4 w-4 text-primary" />
             {item.name} · 不同体重下的消耗对照
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             消耗与体重成正比：同动作、同次数，体重越大消耗越高。下表按各组体重换算（节奏 {item.rpm} 次/分）。
           </p>
         </div>
@@ -434,7 +434,7 @@ export default function BodyweightPage() {
             })}
           </TableBody>
         </Table>
-        <p className="text-xs leading-relaxed text-muted-foreground/80">
+        <p className="type-meta text-muted-foreground/80">
           体重并不改变动作难度，只线性影响消耗：70 kg 的人做 1 次标准俯卧撑约 0.47 kcal，90 kg 的人同样一次约 0.60 kcal。
         </p>
       </section>
@@ -446,7 +446,7 @@ export default function BodyweightPage() {
             <Layers className="h-4 w-4 text-primary" />
             {item.group} · 各变式消耗对照
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             {BODYWEIGHT_GROUP_DESC[item.group]}
             {valid
               ? ` 下表按你 ${weightKg} kg 体重、同样做 ${round0(totalReps)} 次折算。`
@@ -496,7 +496,7 @@ export default function BodyweightPage() {
             <Info className="h-4 w-4 text-primary" />
             {item.name} · 注意事项
           </p>
-          <ul className="space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+          <ul className="space-y-1.5 type-meta text-muted-foreground">
             {item.cautions.map((t) => (
               <li key={t} className="flex items-start gap-1.5">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/70" />
@@ -505,7 +505,7 @@ export default function BodyweightPage() {
             ))}
           </ul>
         </div>
-        <p className="text-xs leading-relaxed text-muted-foreground/80">
+        <p className="type-meta text-muted-foreground/80">
           公式为估算值：MET 参考 Ainsworth《体力活动纲要》中 calisthenics（自重训练）条目（中等强度约 3.8、高强度约 8.0），各变式按动作难度（杠杆比、参与肌量、是否爆发）在基准上修正；节奏取常见组内自然节奏。实际消耗受动作幅度、速度、组间休息与个体代谢影响，误差约 ±15–25%，仅供估算，不作为医疗或营养处方依据。
         </p>
       </section>
@@ -517,7 +517,7 @@ export default function BodyweightPage() {
             <Dumbbell className="h-4 w-4 text-primary" />
             {item.name} · 优点、局限与适合人群
           </p>
-          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.desc}</p>
+          <p className="mt-1 type-meta text-muted-foreground">{item.desc}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
@@ -526,7 +526,7 @@ export default function BodyweightPage() {
               <Check className="h-4 w-4 text-primary" />
               优点
             </p>
-            <ul className="mt-2 space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+            <ul className="mt-2 space-y-1.5 type-meta text-muted-foreground">
               {item.pros.map((p) => (
                 <li key={p} className="flex items-start gap-1.5">
                   <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/70" />
@@ -540,7 +540,7 @@ export default function BodyweightPage() {
               <X className="h-4 w-4 text-muted-foreground" />
               缺点 / 局限
             </p>
-            <ul className="mt-2 space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+            <ul className="mt-2 space-y-1.5 type-meta text-muted-foreground">
               {item.cons.map((c) => (
                 <li key={c} className="flex items-start gap-1.5">
                   <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground/60" />
@@ -556,7 +556,7 @@ export default function BodyweightPage() {
             <Users className="h-4 w-4 text-primary" />
             适合人群
           </p>
-          <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{item.suitable}</p>
+          <p className="mt-1.5 type-meta text-muted-foreground">{item.suitable}</p>
         </div>
       </section>
     </div>

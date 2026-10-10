@@ -110,7 +110,7 @@ export default function TrainingArchitecture() {
                 )}
               >
                 <span className="font-display text-base font-bold text-foreground">{s.name}</span>
-                <span className="text-xs leading-relaxed text-muted-foreground">{s.desc}</span>
+                <span className="type-meta text-muted-foreground">{s.desc}</span>
                 <span className="text-xs text-primary/90">{s.suit}</span>
               </button>
             ))}
@@ -140,7 +140,7 @@ export default function TrainingArchitecture() {
                 )}
               >
                 <span className="font-display text-base font-bold text-foreground">{p.name}</span>
-                <span className="text-xs leading-relaxed text-muted-foreground">{p.desc}</span>
+                <span className="type-meta text-muted-foreground">{p.desc}</span>
               </button>
             ))}
           </div>
@@ -150,7 +150,7 @@ export default function TrainingArchitecture() {
               <p className="font-display text-sm font-bold text-foreground">
                 适用动作（点开看演示动图）
               </p>
-              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              <p className="mt-1 type-meta text-muted-foreground">
                 俄罗斯套装走的是极限耐力，选徒手、单杠、双杠这类能连续做次数、靠自重堆耐力的动作，不追大重量。
               </p>
               <div className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-7">

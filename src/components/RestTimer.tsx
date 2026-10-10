@@ -178,7 +178,7 @@ export function RestTimer({ exerciseName, className }: RestTimerProps) {
         ))}
       </div>
 
-      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{REST_KIND_NOTE[kind]}</p>
+      <p className="mt-2 type-meta text-muted-foreground">{REST_KIND_NOTE[kind]}</p>
 
       {/* 倒计时主体 */}
       <div className="mt-3 text-center">
@@ -191,7 +191,7 @@ export function RestTimer({ exerciseName, className }: RestTimerProps) {
           {remainingLabel}
         </p>
         <Progress value={progress} className="mt-3 h-1.5" />
-        <p className="mt-2 text-xs text-muted-foreground">
+        <p className="mt-2 type-meta text-muted-foreground">
           {finished ? (
             <span className="flex items-center justify-center gap-1 text-primary">
               <BellRing className="h-3.5 w-3.5" />

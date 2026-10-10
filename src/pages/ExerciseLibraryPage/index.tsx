@@ -462,7 +462,7 @@ export default function ExerciseLibraryPage() {
       </div>
 
       {/* 结果数 */}
-      <p className="text-xs text-muted-foreground">
+      <p className="type-meta text-muted-foreground">
         找到 {filtered.length} 个动作，已显示 {shown.length} 个
       </p>
 
@@ -560,7 +560,7 @@ export default function ExerciseLibraryPage() {
                   </span>
                 ) : (
                   <div className="mt-1 space-y-0.5">
-                    <p className="text-xs text-muted-foreground">站上暂无演示</p>
+                    <p className="type-meta text-muted-foreground">站上暂无演示</p>
                     <div className="flex flex-wrap items-center gap-x-2">
                       <a
                         href={SITE_SEARCH_URL}
@@ -678,7 +678,7 @@ export default function ExerciseLibraryPage() {
                           className="h-full w-full object-contain"
                         />
                       </div>
-                      <span className="text-center text-xs text-muted-foreground">动作演示视频</span>
+                      <span className="text-center type-meta text-muted-foreground">动作演示视频</span>
                     </div>
                   ) : (
                     selected.images.map((img, i) => (
@@ -714,13 +714,13 @@ export default function ExerciseLibraryPage() {
                     {!selected.gif && !selected.video && <Badge variant="outline">站上暂无演示</Badge>}
                   </div>
                   {selected.secondaryMuscles.length > 0 && (
-                    <div className="mt-2 text-xs text-muted-foreground">
+                    <div className="mt-2 type-meta text-muted-foreground">
                       <b className="text-foreground">协同肌群：</b>
                       {selected.secondaryMuscles.map((m) => MUSCLE_CN[m] || m).join('、')}
                     </div>
                   )}
                   {selected.tip && (
-                    <div className="mt-3 rounded-lg border border-primary/20 bg-primary/5 p-3 text-xs leading-relaxed text-foreground">
+                    <div className="mt-3 rounded-lg border border-primary/20 bg-primary/5 p-3 type-meta text-foreground">
                       <b className="text-primary">动作要点：</b>
                       {selected.tip}
                     </div>
@@ -732,7 +732,7 @@ export default function ExerciseLibraryPage() {
                         <Badge className="bg-primary/15 text-primary hover:bg-primary/15">
                           组间休息：{rest.range}
                         </Badge>
-                        <span className="text-xs text-muted-foreground">{rest.label}：自然训练者需充分恢复磷酸原系统</span>
+                        <span className="type-meta text-muted-foreground">{rest.label}：自然训练者需充分恢复磷酸原系统</span>
                       </div>
                     );
                   })()}
@@ -740,7 +740,7 @@ export default function ExerciseLibraryPage() {
                     const g = findGuidance(getCnName(selected) || '', selected.name);
                     if (!g) return null;
                     return (
-                      <div className="mt-3 space-y-2.5 rounded-lg border border-border bg-muted/30 p-3 text-xs">
+                      <div className="mt-3 space-y-2.5 rounded-lg border border-border bg-muted/30 p-3 type-meta">
                         <div>
                           <b className="text-foreground">动作要点：</b>
                           <ul className="mt-1 list-disc space-y-0.5 pl-4 text-muted-foreground">
@@ -763,13 +763,13 @@ export default function ExerciseLibraryPage() {
                           <p className="text-muted-foreground"><b className="text-foreground">进阶：</b>{g.progress}</p>
                         </div>
                         {g.volumeNote && (
-                          <p className="text-xs text-muted-foreground"><b className="text-foreground">容量提示：</b>{g.volumeNote}</p>
+                          <p className="type-meta text-muted-foreground"><b className="text-foreground">容量提示：</b>{g.volumeNote}</p>
                         )}
                       </div>
                     );
                   })()}
                   {selected.source && (
-                    <p className="mt-2 text-xs text-muted-foreground">
+                    <p className="mt-2 type-meta text-muted-foreground">
                       演示动图来源：{selected.source}
                     </p>
                   )}
@@ -777,7 +777,7 @@ export default function ExerciseLibraryPage() {
               </div>
 
               {selected.approx && (
-                <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-xs text-amber-700 dark:text-amber-300">
+                <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 type-meta text-amber-700 dark:text-amber-300">
                   <b>近似演示：</b>
                   动作百科站上没有收录这个动作的同名演示，此处展示的是站内最接近的
                   {selected.approxNote ? `「${selected.approxNote.replace(/^近似动作：/, '')}」` : '相关动作'}
@@ -786,14 +786,14 @@ export default function ExerciseLibraryPage() {
               )}
 
               {!selected.gif && !selected.video && (
-                <div className="rounded-md border border-border bg-muted/40 p-3 text-xs text-muted-foreground">
+                <div className="rounded-md border border-border bg-muted/40 p-3 type-meta text-muted-foreground">
                   <b className="text-foreground">站上暂无演示：</b>
                   动作百科（fitness.xingshuwen.com）站内暂无「{selected.name}」的演示动图，
                   可打开站内搜索并在搜索框粘贴英文名「{selected.name}」（站内支持英文原名检索），查看相关动作。
                 </div>
               )}
 
-              <div className="rounded-md border border-primary/20 bg-primary/5 p-3 text-xs text-primary">
+              <div className="rounded-md border border-primary/20 bg-primary/5 p-3 type-meta text-primary">
                 <b>安全提示：</b>在安全的范围内去运动。糖尿病、孕妇、老年人、大病初愈者优先遵从医嘱。出现头晕、关节刺痛、异常气短时立即停止。
               </div>
 
@@ -805,7 +805,7 @@ export default function ExerciseLibraryPage() {
                     <h3 className="mb-2 flex items-center gap-2 font-display text-base font-bold text-foreground">
                       <PlayCircle className="h-4 w-4 text-primary" />
                       名师教学视频 · 谭成义
-                      <span className="text-xs font-normal text-muted-foreground">（跳转原平台观看）</span>
+                      <span className="type-meta font-normal text-muted-foreground">（跳转原平台观看）</span>
                     </h3>
                     <div className="space-y-1.5">
                       {vids.map((v, vi) => (
@@ -822,14 +822,14 @@ export default function ExerciseLibraryPage() {
                               {v.title}
                             </span>
                             {v.note && (
-                              <span className="block text-xs text-muted-foreground">{v.note}</span>
+                              <span className="block type-meta text-muted-foreground">{v.note}</span>
                             )}
                           </span>
                           <Badge variant="outline" className="shrink-0">{v.platform}</Badge>
                         </a>
                       ))}
                     </div>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                    <p className="mt-2 type-meta text-muted-foreground">
                       视频版权归原作者谭成义所有，仅作学习参考。
                     </p>
                   </div>
@@ -898,10 +898,10 @@ export default function ExerciseLibraryPage() {
                     </ol>
                     {selected.instructions && selected.instructions.length > 0 && (
                       <details className="mt-3 rounded-md border border-border bg-muted/20 p-2">
-                        <summary className="cursor-pointer text-xs text-muted-foreground">英文原始步骤参考</summary>
+                        <summary className="cursor-pointer type-meta text-muted-foreground">英文原始步骤参考</summary>
                         <ol className="mt-2 space-y-1.5 pl-4">
                           {selected.instructions.map((step, i) => (
-                            <li key={i} className="text-xs leading-relaxed text-muted-foreground">{step}</li>
+                            <li key={i} className="type-meta text-muted-foreground">{step}</li>
                           ))}
                         </ol>
                       </details>

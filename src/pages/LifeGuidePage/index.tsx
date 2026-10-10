@@ -144,7 +144,7 @@ export default function LifeGuidePage() {
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
               {LIFE_SOURCE.intro}
             </p>
-            <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+            <p className="mt-3 type-meta text-muted-foreground">
               每条建议都标注了 <b className="text-foreground">成本（钱 / 时间 / 毅力）</b>、
               <b className="text-foreground">说人话</b>、<b className="text-foreground">收益</b>、
               <b className="text-foreground">证据等级（A / B / C）</b>与<b className="text-foreground">来源</b>，
@@ -185,7 +185,7 @@ export default function LifeGuidePage() {
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-medium text-foreground group-hover:text-primary">{name}</span>
-                <span className="block text-xs text-muted-foreground">第 {c.id} 章</span>
+                <span className="block type-meta text-muted-foreground">第 {c.id} 章</span>
               </span>
               <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
             </Link>
@@ -197,7 +197,7 @@ export default function LifeGuidePage() {
         <h2 className="mb-3 flex items-center gap-2 font-display text-base font-bold text-foreground">
           <Library className="h-4 w-4 text-primary" /> 附录 · 长文专题
         </h2>
-        <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
+        <p className="mb-4 type-meta text-muted-foreground">
           原项目 docs/ 目录下的延伸长文，与正文互引，一并收录。
         </p>
         <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
@@ -214,7 +214,7 @@ export default function LifeGuidePage() {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-medium text-foreground group-hover:text-primary">{name}</span>
-                  <span className="block text-xs text-muted-foreground">附录 {c.id - 100}</span>
+                  <span className="block type-meta text-muted-foreground">附录 {c.id - 100}</span>
                 </span>
                 <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
               </Link>

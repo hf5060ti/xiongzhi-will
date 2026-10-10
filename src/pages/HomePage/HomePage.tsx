@@ -129,7 +129,7 @@ export default function HomePage() {
                 当前设定：<span className="text-primary">{savedGoal.name}</span> ×{' '}
                 <span className="text-primary">{savedDiet.name}</span>
               </p>
-              <p className="mt-0.5 text-xs text-muted-foreground">方案已生成，重新选择会覆盖旧设定。</p>
+              <p className="mt-0.5 type-meta text-muted-foreground">方案已生成，重新选择会覆盖旧设定。</p>
             </div>
             <Button onClick={() => navigate('/plan')}>
               查看我的方案
@@ -152,7 +152,7 @@ export default function HomePage() {
                 <label htmlFor="weight-input" className="text-sm font-medium text-foreground">
                   当前体重（选填）
                 </label>
-                <p className="mt-0.5 text-xs text-muted-foreground">用于估算每日热量参考，单位 kg。</p>
+                <p className="mt-0.5 type-meta text-muted-foreground">用于估算每日热量参考，单位 kg。</p>
                 <Input
                   id="weight-input"
                   type="number"
@@ -182,7 +182,7 @@ export default function HomePage() {
                   <TrendingDown className="h-4 w-4 text-primary" />
                   轻盈计划
                 </h3>
-                <p className="mt-1 text-xs text-muted-foreground">
+                <p className="mt-1 type-meta text-muted-foreground">
                   减脂追踪台：定目标体重，每天记体重、打卡，趋势图与达成预估自动算。
                 </p>
               </div>
@@ -201,7 +201,7 @@ export default function HomePage() {
                   <Footprints className="h-4 w-4 text-primary" />
                   有氧运动
                 </h3>
-                <p className="mt-1 text-xs text-muted-foreground">
+                <p className="mt-1 type-meta text-muted-foreground">
                   散步等有氧项目按 kcal = MET × 体重(kg) × 时长(h) 折算消耗，输入体重与时长实时出结果。
                 </p>
               </div>
@@ -220,7 +220,7 @@ export default function HomePage() {
                   <Dumbbell className="h-4 w-4 text-primary" />
                   自重力量
                 </h3>
-                <p className="mt-1 text-xs text-muted-foreground">
+                <p className="mt-1 type-meta text-muted-foreground">
                   俯卧撑（含 8 种变式）、引体向上、自重深蹲按 kcal = MET × 体重(kg) × 时长(h) 折算消耗；次数按节奏换算成时长，输入体重与组次实时出结果。
                 </p>
               </div>
@@ -239,7 +239,7 @@ export default function HomePage() {
                   <Soup className="h-4 w-4 text-primary" />
                   胃部
                 </h3>
-                <p className="mt-1 text-xs text-muted-foreground">
+                <p className="mt-1 type-meta text-muted-foreground">
                   3 分练，7 分吃，90 分靠睡眠：肠漏成因、FODMAPs 排查与低 FODMAP 三阶段框架，对照腹胀、异常储水与增肌停滞的真实来源。
                 </p>
               </div>
@@ -254,7 +254,7 @@ export default function HomePage() {
           <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
             <CardContent className="p-5">
               <h3 className="font-display text-xl font-bold text-foreground">数据备份</h3>
-              <p className="mt-1 text-xs text-muted-foreground">
+              <p className="mt-1 type-meta text-muted-foreground">
                 所有数据存在你自己的浏览器里。换浏览器或清理缓存前，先导出备份。
               </p>
               {backupStale ? (
@@ -264,7 +264,7 @@ export default function HomePage() {
                     : `距上次备份已 ${backupDays} 天：数据越攒越多，建议尽快再导出一份。`}
                 </p>
               ) : (
-                <p className="mt-2 text-xs text-muted-foreground">
+                <p className="mt-2 type-meta text-muted-foreground">
                   {backupDays === 0 ? '今天已备份过，数据是新的。' : `距上次备份 ${backupDays} 天。`}
                 </p>
               )}

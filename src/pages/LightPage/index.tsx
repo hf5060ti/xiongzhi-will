@@ -290,7 +290,7 @@ export default function LightPage() {
               <Label htmlFor="target-w">目标体重（kg）</Label>
               <Input id="target-w" type="number" min={20} max={300} placeholder="如 68" value={targetW} onChange={(e) => setTargetW(e.target.value)} />
             </div>
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               健康减脂速度约每周 0.5–1 kg，别追求快。目标随时能改，记录不会丢。
             </p>
             <Button className="w-full" size="lg" onClick={handleSaveTarget}>
@@ -335,7 +335,7 @@ export default function LightPage() {
             <p className="mt-1.5 font-display text-2xl font-bold text-foreground">
               {current > 0 ? `${current.toFixed(1)} kg` : '—'}
             </p>
-            <p className="mt-0.5 text-xs text-muted-foreground">
+            <p className="mt-0.5 type-meta text-muted-foreground">
               {bmi > 0 ? `BMI ${bmi.toFixed(1)}` : latest ? `记录于 ${fmtDate(latest.date)}` : '还没有记录'}
             </p>
           </CardContent>
@@ -348,7 +348,7 @@ export default function LightPage() {
             <p className="mt-1.5 font-display text-2xl font-bold text-foreground">
               {stats && stats.done > 0 ? `${stats.done.toFixed(1)} kg` : '0 kg'}
             </p>
-            <p className="mt-0.5 text-xs text-muted-foreground">
+            <p className="mt-0.5 type-meta text-muted-foreground">
               {stats && stats.done < 0 ? '比起始还重，稳住别慌' : '每一斤都是胜利'}
             </p>
           </CardContent>
@@ -361,7 +361,7 @@ export default function LightPage() {
             <p className="mt-1.5 font-display text-2xl font-bold text-foreground">
               {stats && stats.left > 0 ? `${stats.left.toFixed(1)} kg` : '已达成'}
             </p>
-            <p className="mt-0.5 text-xs text-muted-foreground">目标 {target.targetWeight} kg</p>
+            <p className="mt-0.5 type-meta text-muted-foreground">目标 {target.targetWeight} kg</p>
           </CardContent>
         </Card>
         <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
@@ -370,7 +370,7 @@ export default function LightPage() {
               <CalendarCheck2 className="h-3.5 w-3.5 text-primary" /> 连续完美打卡
             </p>
             <p className="mt-1.5 font-display text-2xl font-bold text-foreground">{streak} 天</p>
-            <p className="mt-0.5 text-xs text-muted-foreground">三项全完成才算完美</p>
+            <p className="mt-0.5 type-meta text-muted-foreground">三项全完成才算完美</p>
           </CardContent>
         </Card>
       </div>
@@ -381,13 +381,13 @@ export default function LightPage() {
           <CardContent className="space-y-2 p-4 sm:p-5">
             <div className="flex items-center justify-between text-sm">
               <span className="font-medium text-foreground">总进度 {stats.pct.toFixed(0)}%</span>
-              <span className="text-xs text-muted-foreground">
+              <span className="type-meta text-muted-foreground">
                 {target.startWeight} → {current.toFixed(1)} → {target.targetWeight} kg
               </span>
             </div>
             <Progress value={stats.pct} className="h-2" />
             {achieved ? (
-              <p className="text-xs leading-relaxed text-muted-foreground">
+              <p className="type-meta text-muted-foreground">
                 {Math.abs(current - target.targetWeight) <= 1.5
                   ? `目标已达成。维持带 ${target.targetWeight} ± 1.5 kg，你正在带内——保持就是胜利。`
                   : current > target.targetWeight
@@ -395,7 +395,7 @@ export default function LightPage() {
                     : `比目标还轻 ${(target.targetWeight - current).toFixed(1)} kg，可以适当多吃一点，把代谢养回来。`}
               </p>
             ) : (
-              stats.etaText && <p className="text-xs leading-relaxed text-muted-foreground">{stats.etaText}</p>
+              stats.etaText && <p className="type-meta text-muted-foreground">{stats.etaText}</p>
             )}
           </CardContent>
         </Card>
@@ -416,7 +416,7 @@ export default function LightPage() {
                   </span>
                   <span className="ml-2 text-sm font-bold text-muted-foreground">/ 周</span>
                 </p>
-                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                <p className="mt-1.5 type-meta text-muted-foreground">
                   近 7 天均重 {weekly.thisAvg.toFixed(1)} kg，上 7 天 {weekly.prevAvg.toFixed(1)} kg。
                   {achieved
                     ? weekly.delta >= 0.3
@@ -451,7 +451,7 @@ export default function LightPage() {
                 <p className="mt-2 font-display text-3xl font-extrabold tracking-wide text-foreground">
                   {milestone.hit} <span className="text-sm font-bold text-muted-foreground">个已达成</span>
                 </p>
-                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                <p className="mt-1.5 type-meta text-muted-foreground">
                   {achieved
                     ? '目标线已踩过——从此每周稳住，就是新的胜利。'
                     : milestone.next != null
@@ -497,7 +497,7 @@ export default function LightPage() {
               </div>
             </div>
             <Button className="w-full" onClick={handleLog}>保存记录</Button>
-            <p className="text-xs text-muted-foreground">同一天重复记会覆盖旧值；建议每天早晨空腹、排便后称重。</p>
+            <p className="type-meta text-muted-foreground">同一天重复记会覆盖旧值；建议每天早晨空腹、排便后称重。</p>
           </CardContent>
         </Card>
 
@@ -532,11 +532,11 @@ export default function LightPage() {
                 );
               })}
             </div>
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               三项全绿 = 完美一天，连续完美天数计入上方。{CHECKIN_ITEMS.map((i) => i.hint).join('；')}。当日已有训练记录时，「完成训练」会自动打勾（无需重复点击），改训练内容请到「训练记录」页。
             </p>
             <div>
-              <p className="text-xs text-muted-foreground">近 14 天</p>
+              <p className="type-meta text-muted-foreground">近 14 天</p>
               <div className="mt-1.5 flex gap-1">
                 {heatDays.map((d) => (
                   <span
@@ -664,7 +664,7 @@ export default function LightPage() {
               <UtensilsCrossed className="h-4 w-4 text-primary" />
               减脂怎么吃？
             </h3>
-            <p className="mt-1 text-xs text-muted-foreground">
+            <p className="mt-1 type-meta text-muted-foreground">
               全食物热量表与蛋白质质量评级就在本站营养页，配好热量缺口，体重曲线自然会往下走。
             </p>
           </div>

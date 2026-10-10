@@ -88,7 +88,7 @@ function NumberField({
       {error ? (
         <p className="mt-1 text-xs leading-snug text-destructive">{error}</p>
       ) : (
-        hint && <p className="mt-1 text-xs leading-snug text-muted-foreground">{hint}</p>
+        hint && <p className="mt-1 type-meta text-muted-foreground">{hint}</p>
       )}
     </div>
   );

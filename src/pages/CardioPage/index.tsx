@@ -145,7 +145,7 @@ export default function CardioPage() {
             <Activity className="h-4 w-4 text-primary" />
             选择有氧项目
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             点进去即显示该项目的消耗公式与计算器。
           </p>
           <div className="relative mt-3 w-full sm:max-w-xs">
@@ -176,7 +176,7 @@ export default function CardioPage() {
                 <span className="flex items-center gap-2">
                   <Icon className="h-4 w-4 text-primary" />
                   <span className="font-display text-base font-bold text-foreground sm:text-lg">{it.name}</span>
-                  <span className="text-xs uppercase tracking-wider text-muted-foreground">
+                  <span className="type-meta uppercase tracking-wider text-muted-foreground">
                     {it.en}
                   </span>
                   {active && (
@@ -185,8 +185,8 @@ export default function CardioPage() {
                     </span>
                   )}
                 </span>
-                <span className="mt-1 block text-xs text-muted-foreground">{it.tagline}</span>
-                <span className="mt-2 block text-xs leading-relaxed text-muted-foreground">
+                <span className="mt-1 block type-meta text-muted-foreground">{it.tagline}</span>
+                <span className="mt-2 block type-meta text-muted-foreground">
                   {it.desc}
                 </span>
                 <span className="mt-2 block text-xs font-medium text-primary/80">
@@ -215,7 +215,7 @@ export default function CardioPage() {
             <Flame className="h-4 w-4 text-primary" />
             {item.name} · 消耗公式
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             填入体重与时长，选一个速度档位，实时算出消耗热量。
           </p>
         </div>
@@ -252,11 +252,11 @@ export default function CardioPage() {
                       {m.met} MET
                     </span>
                   </span>
-                  <span className="mt-0.5 block text-xs text-muted-foreground">{m.speed}</span>
+                  <span className="mt-0.5 block type-meta text-muted-foreground">{m.speed}</span>
                   <span className="mt-0.5 block text-xs text-primary/80">
                     参考 {Math.round(m.met * CARDIO_REF_WEIGHT)} kcal/小时（{CARDIO_REF_WEIGHT}kg）
                   </span>
-                  <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+                  <span className="mt-1 block type-meta text-muted-foreground">
                     {m.note}
                   </span>
                 </button>
@@ -337,10 +337,10 @@ export default function CardioPage() {
               {round0(kcal)}
               <span className="ml-2 text-base font-bold text-muted-foreground">kcal</span>
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               计算：{metRow.met} MET × {weightKg} kg × {hoursText(mins)} h = {round0(kcal)} kcal
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               折算：约 {round0(perHour)} kcal/小时 · {round1(perMin)} kcal/分钟（按你 {weightKg} kg 体重）。
             </p>
           </div>
@@ -357,7 +357,7 @@ export default function CardioPage() {
           <p className="text-sm font-medium text-foreground">
             {item.name}各档位消耗对照
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             {valid
               ? `按你 ${weightKg} kg 体重折算，其余档位同体重同用时长的消耗如下。`
               : '填入体重后，这里会按你的体重折算各档位消耗。'}
@@ -406,7 +406,7 @@ export default function CardioPage() {
             <Info className="h-4 w-4 text-primary" />
             {item.name} · 注意事项
           </p>
-          <ul className="space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+          <ul className="space-y-1.5 type-meta text-muted-foreground">
             {item.cautions.map((t) => (
               <li key={t} className="flex items-start gap-1.5">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/70" />
@@ -415,7 +415,7 @@ export default function CardioPage() {
             ))}
           </ul>
         </div>
-        <p className="text-xs leading-relaxed text-muted-foreground/80">
+        <p className="type-meta text-muted-foreground/80">
           公式为估算值：实际消耗还受坡度、地形、步幅与个体代谢影响，误差约 ±10–20%；结果为总消耗（含基础代谢），不是额外净支出。MET 取值参考 Ainsworth《体力活动纲要》(Compendium of Physical Activities, 2011) 及公开 MET 消耗对照表，按该项目常见强度区间取值，仅供估算。
         </p>
       </section>
@@ -427,7 +427,7 @@ export default function CardioPage() {
             <HeartPulse className="h-4 w-4 text-primary" />
             {item.name} · 优点、局限与适合人群
           </p>
-          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.desc}</p>
+          <p className="mt-1 type-meta text-muted-foreground">{item.desc}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
@@ -436,7 +436,7 @@ export default function CardioPage() {
               <Check className="h-4 w-4 text-primary" />
               优点
             </p>
-            <ul className="mt-2 space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+            <ul className="mt-2 space-y-1.5 type-meta text-muted-foreground">
               {item.pros.map((p) => (
                 <li key={p} className="flex items-start gap-1.5">
                   <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/70" />
@@ -450,7 +450,7 @@ export default function CardioPage() {
               <X className="h-4 w-4 text-muted-foreground" />
               缺点 / 局限
             </p>
-            <ul className="mt-2 space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+            <ul className="mt-2 space-y-1.5 type-meta text-muted-foreground">
               {item.cons.map((c) => (
                 <li key={c} className="flex items-start gap-1.5">
                   <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground/60" />
@@ -466,7 +466,7 @@ export default function CardioPage() {
             <Users className="h-4 w-4 text-primary" />
             适合人群
           </p>
-          <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{item.suitable}</p>
+          <p className="mt-1.5 type-meta text-muted-foreground">{item.suitable}</p>
         </div>
       </section>
 
@@ -478,7 +478,7 @@ export default function CardioPage() {
               <HeartPulse className="h-4 w-4 text-primary" />
               散步的功能与优点（深入说明）
             </p>
-            <p className="mt-1 text-xs text-muted-foreground">
+            <p className="mt-1 type-meta text-muted-foreground">
               想长期坚持、又不想给身体加负担时，散步是最容易落地的一项有氧。以下只讲它“为什么值得做”，不改变上面的公式与计算。
             </p>
           </div>
@@ -487,7 +487,7 @@ export default function CardioPage() {
             {WALK_BENEFITS.map((b) => (
               <div key={b.title} className="rounded-md border border-border bg-muted/20 p-3">
                 <p className="text-sm font-medium text-foreground">{b.title}</p>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{b.desc}</p>
+                <p className="mt-1 type-meta text-muted-foreground">{b.desc}</p>
               </div>
             ))}
           </div>
@@ -511,7 +511,7 @@ export default function CardioPage() {
                 糖原供能 ≈ 30%
               </span>
             </div>
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               走路时氧气供应充足，身体会优先动用脂肪：中低强度持续有氧的脂肪供能比例可达 60%–70%，散步这类低强度稳态运动正好落在这一区间，脂肪约占七成、糖原约占三成。
               但要记住“占比高 ≠ 总量大”——散步单位时间总消耗小，想靠它减脂，靠的是时长与频率的累积，而不是强度。
             </p>
@@ -520,7 +520,7 @@ export default function CardioPage() {
           {/* 强度越高，脂肪占比越低 */}
           <div className="space-y-2">
             <p className="text-sm font-medium text-foreground">强度越高，脂肪供能占比越低</p>
-            <p className="text-xs text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               同一段时长里，强度提上去总消耗会变大，但供能结构会从“脂肪为主”转向“糖原为主”。
             </p>
             <Table>
@@ -547,7 +547,7 @@ export default function CardioPage() {
                 ))}
               </TableBody>
             </Table>
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               所以慢走、中速是“练脂肪供能效率”，快走、快步是“把总消耗提上去”；散步的好处在于始终待在低强度这一段，几乎不会滑到糖原主导的高强度区。
             </p>
           </div>
@@ -555,7 +555,7 @@ export default function CardioPage() {
           {/* 适合谁 */}
           <div className="space-y-2 rounded-md border border-border bg-muted/20 p-3">
             <p className="text-sm font-medium text-foreground">尤其适合这些人</p>
-            <ul className="space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+            <ul className="space-y-1.5 type-meta text-muted-foreground">
               <li className="flex items-start gap-1.5">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/70" />
                 身体恢复期：受伤、生病或大强度训练之后，需要动一动但不想增加恢复负担。
@@ -575,7 +575,7 @@ export default function CardioPage() {
             </ul>
           </div>
 
-          <p className="text-xs leading-relaxed text-muted-foreground/80">
+          <p className="type-meta text-muted-foreground/80">
             供能比例为运动生理学常见参考区间（低强度稳态脂肪供能约 60%–70%，随强度升高而下降），实际数值受配速、坡度、体能水平、饮食与空腹状态影响，个体差异明显；以上为一般性说明，不作为医疗建议。
           </p>
         </section>

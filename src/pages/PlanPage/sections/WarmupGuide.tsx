@@ -48,7 +48,7 @@ export default function WarmupGuide() {
                     <b className="text-foreground">{step.order}. {step.name}</b>
                     <span className="text-primary">{step.detail}</span>
                   </div>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{step.cue}</p>
+                  <p className="mt-0.5 type-meta text-muted-foreground">{step.cue}</p>
                 </div>
               ))}
             </div>
@@ -80,7 +80,7 @@ export default function WarmupGuide() {
                     <b className="text-foreground">{step.name}</b>
                     <span className="text-primary">{step.detail}</span>
                   </div>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{step.cue}</p>
+                  <p className="mt-0.5 type-meta text-muted-foreground">{step.cue}</p>
                 </div>
               ))}
             </div>
@@ -116,11 +116,11 @@ export default function WarmupGuide() {
                     <b className="text-foreground">{step.order}. {step.name}</b>
                     <span className="text-primary">{step.detail}</span>
                   </div>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{step.cue}</p>
+                  <p className="mt-0.5 type-meta text-muted-foreground">{step.cue}</p>
                 </div>
               ))}
             </div>
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+            <p className="mt-2 type-meta text-muted-foreground">
               凯圣王原则：第一个动作充分热身（4-5组递增），后续动作轻重量过渡即可，不要每次都从头热。
             </p>
           </div>
@@ -140,7 +140,7 @@ export default function WarmupGuide() {
                 {WARMUP_MISTAKES.map((m, i) => (
                   <div key={i} className="rounded-md border border-border/50 bg-muted/20 p-2.5 text-xs">
                     <p className="font-semibold text-foreground">✗ {m.title}</p>
-                    <p className="mt-1 text-xs text-muted-foreground">错误做法：{m.wrong}</p>
+                    <p className="mt-1 type-meta text-muted-foreground">错误做法：{m.wrong}</p>
                     <p className="mt-0.5 text-xs text-primary">正确做法：{m.right}</p>
                   </div>
                 ))}

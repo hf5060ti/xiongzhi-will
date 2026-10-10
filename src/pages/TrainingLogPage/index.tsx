@@ -624,7 +624,7 @@ export default function TrainingLogPage() {
           <CalendarDays className="h-5 w-5 text-primary" />
           训练日志
         </h2>
-        <p className="text-xs leading-relaxed text-muted-foreground">
+        <p className="type-meta text-muted-foreground">
           像写日志一样记录每次训练：日期 + 训练日 + 动作逐组「重量 × 次数」+ 时长与感受。命中力量五动作（深蹲 / 卧推 / 硬拉 / 站姿推举 / 杠铃弯举）会用 Epley
           公式估算 1RM，可一键写入能力追踪。1RM 口径与能力追踪判级、身体数据页换算器一致。
         </p>
@@ -756,12 +756,12 @@ export default function TrainingLogPage() {
                       key={lift.key}
                       className="rounded-lg border border-border bg-card p-3 text-center"
                     >
-                      <p className="text-xs text-muted-foreground">{lift.label}</p>
+                      <p className="type-meta text-muted-foreground">{lift.label}</p>
                       <p className="mt-1 font-display text-2xl font-bold text-primary">
                         {Math.round(best!.oneRm)}
-                        <span className="ml-0.5 text-xs font-normal text-muted-foreground">kg</span>
+                        <span className="ml-0.5 type-meta font-normal text-muted-foreground">kg</span>
                       </p>
-                      <p className="mt-0.5 text-xs text-muted-foreground">
+                      <p className="mt-0.5 type-meta text-muted-foreground">
                         {best!.weightKg}kg × {best!.reps} 次 · {fmtDate(best!.date)}
                       </p>
                       {diff != null && diff > 0 ? (
@@ -769,13 +769,13 @@ export default function TrainingLogPage() {
                           +{Math.round(diff)} kg 新 PR
                         </p>
                       ) : (
-                        <p className="mt-1 text-xs text-muted-foreground">保持中</p>
+                        <p className="mt-1 type-meta text-muted-foreground">保持中</p>
                       )}
                     </div>
                   );
                 })}
               </div>
-              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+              <p className="mt-3 type-meta text-muted-foreground">
                 1RM 用 Epley 公式估算（重量 × (1 + 次数/30)），非真实极限试举。
                 PR 墙自动从训练日志里取每个力量动作的最高估算 1RM；想刷新纪录，就在训练里用更重的重量或同重量多做一次。
               </p>
@@ -794,9 +794,9 @@ export default function TrainingLogPage() {
             </p>
             <div className="mt-1.5 flex items-baseline gap-2">
               <span className="font-display text-2xl font-bold text-foreground">{weekSessions}</span>
-              <span className="text-xs text-muted-foreground">天有训练 · 共 {weekSets} 组</span>
+              <span className="type-meta text-muted-foreground">天有训练 · 共 {weekSets} 组</span>
             </div>
-            <p className="mt-1 text-xs text-muted-foreground">按记录条数统计，一天多条算同一天</p>
+            <p className="mt-1 type-meta text-muted-foreground">按记录条数统计，一天多条算同一天</p>
           </CardContent>
         </Card>
 
@@ -810,15 +810,15 @@ export default function TrainingLogPage() {
               <span className="font-display text-2xl font-bold text-foreground">
                 {weekVolume > 0 ? Math.round(weekVolume).toLocaleString() : '—'}
               </span>
-              <span className="text-xs text-muted-foreground">kg（重量 × 次数）</span>
+              <span className="type-meta text-muted-foreground">kg（重量 × 次数）</span>
             </div>
-            <p className="mt-1 text-xs text-muted-foreground">自重动作不计入容量</p>
+            <p className="mt-1 type-meta text-muted-foreground">自重动作不计入容量</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-4">
-            <p className="text-xs text-muted-foreground">近 7 天分布</p>
+            <p className="type-meta text-muted-foreground">近 7 天分布</p>
             <div className="mt-2 flex items-end gap-1.5">
               {week.map((d) => (
                 <div key={d.iso} className="flex flex-1 flex-col items-center gap-1">
@@ -830,7 +830,7 @@ export default function TrainingLogPage() {
                     style={{ height: d.count > 0 ? 26 : 10 }}
                     title={`${d.label}：${d.count} 条 · 容量 ${Math.round(d.volume)} kg`}
                   />
-                  <span className="text-xs text-muted-foreground">{d.label}</span>
+                  <span className="type-meta text-muted-foreground">{d.label}</span>
                 </div>
               ))}
             </div>
@@ -847,7 +847,7 @@ export default function TrainingLogPage() {
               训练容量趋势（近 8 周）
             </p>
             {weekVolume > 0 && (
-              <span className="text-xs text-muted-foreground">
+              <span className="type-meta text-muted-foreground">
                 本周 {weekVolume.toLocaleString()} kg · {weekSessions} 天
               </span>
             )}
@@ -887,7 +887,7 @@ export default function TrainingLogPage() {
                   </BarChart>
                 </ResponsiveContainer>
               </div>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              <p className="mt-2 type-meta text-muted-foreground">
                 容量 = 重量 × 次数 求和（自重动作不计入）。逐周对比能看出训练量是否在「渐进上升」；若连续 2–3
                 周下滑且伴疲劳，可能训练过度，考虑减载一周。
               </p>
@@ -1003,7 +1003,7 @@ export default function TrainingLogPage() {
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                <p className="mt-2 type-meta text-muted-foreground">
                   体重按天看会抖（水分、排便、碳水储存都影响），看周平均趋势才有意义。
                   增肌期体重缓慢上升 + 容量同步上升 = 有效；如果体重涨了但容量没涨，多半是脂肪。
                 </p>
@@ -1026,7 +1026,7 @@ export default function TrainingLogPage() {
                   <p className="text-sm font-medium text-yellow-300">
                     建议下周安排减载周
                   </p>
-                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  <p className="mt-1 type-meta text-muted-foreground">
                     {dl.reason}
                   </p>
                 </div>
@@ -1065,7 +1065,7 @@ export default function TrainingLogPage() {
           })()}
           <div className="grid grid-cols-3 gap-2">
             <div>
-              <Label className="text-xs text-muted-foreground">昨晚睡眠(h)</Label>
+              <Label className="type-meta text-muted-foreground">昨晚睡眠(h)</Label>
               <Input
                 inputMode="decimal"
                 placeholder="7.5"
@@ -1075,7 +1075,7 @@ export default function TrainingLogPage() {
               />
             </div>
             <div>
-              <Label className="text-xs text-muted-foreground">酸痛(1-5)</Label>
+              <Label className="type-meta text-muted-foreground">酸痛(1-5)</Label>
               <Input
                 inputMode="numeric"
                 placeholder="2"
@@ -1085,7 +1085,7 @@ export default function TrainingLogPage() {
               />
             </div>
             <div>
-              <Label className="text-xs text-muted-foreground">压力(1-5)</Label>
+              <Label className="type-meta text-muted-foreground">压力(1-5)</Label>
               <Input
                 inputMode="numeric"
                 placeholder="2"
@@ -1124,7 +1124,7 @@ export default function TrainingLogPage() {
             <Save className="mr-1 h-3.5 w-3.5" />
             记录今天
           </Button>
-          <p className="text-xs leading-relaxed text-muted-foreground">
+          <p className="type-meta text-muted-foreground">
             恢复状态只存你浏览器本地。连续 3 天睡眠 &lt; 6h 或压力 ≥ 4 时，这里会主动提示你今天减量或休息——硬冲 PR 的代价往往是下周躺平一周。
           </p>
         </CardContent>
@@ -1138,7 +1138,7 @@ export default function TrainingLogPage() {
               <p className="text-sm font-medium text-foreground">
                 {editingId ? '编辑训练记录' : '录入今天的训练'}
               </p>
-              <p className="mt-0.5 text-xs text-muted-foreground">
+              <p className="mt-0.5 type-meta text-muted-foreground">
                 {weightKg > 0
                   ? `体重快照：${weightKg} kg（写入能力追踪时按此折算倍数）`
                   : '尚未录入体重：力量动作仍可记录，但无法写入能力追踪（力量项按体重倍数判级）'}
@@ -1308,7 +1308,7 @@ export default function TrainingLogPage() {
                           </span>
                         )}
                         {tip && (
-                          <p className="mt-0.5 text-xs text-muted-foreground">{tip}</p>
+                          <p className="mt-0.5 type-meta text-muted-foreground">{tip}</p>
                         )}
                         {best && best.weightKg && best.reps && (() => {
                           const advice = getOverloadAdvice(ex.name, [[{ weightKg: best.weightKg, reps: best.reps }]]);
@@ -1326,7 +1326,7 @@ export default function TrainingLogPage() {
                   <div className="space-y-1.5">
                     {ex.sets.map((set, setIdx) => (
                       <div key={setIdx} className="flex flex-wrap items-center gap-2">
-                        <span className="w-10 text-xs text-muted-foreground">第 {setIdx + 1} 组</span>
+                        <span className="w-10 type-meta text-muted-foreground">第 {setIdx + 1} 组</span>
                         <Input
                           type="number"
                           min={0}
@@ -1363,7 +1363,7 @@ export default function TrainingLogPage() {
                       加一组
                     </Button>
                     {lift && best && (
-                      <span className="text-xs text-muted-foreground">
+                      <span className="type-meta text-muted-foreground">
                         估算 1RM {best.oneRm} kg（{best.weightKg} kg × {best.reps} 次 ·
                         {weightKg > 0 ? ` ${(Math.round((best.oneRm / weightKg) * 100) / 100).toFixed(2)}× 体重` : ' 填体重后算倍数'}）
                       </span>
@@ -1394,7 +1394,7 @@ export default function TrainingLogPage() {
               {editingId ? '保存修改' : '保存训练记录'}
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="type-meta text-muted-foreground">
             一组至少填「次数」；力量动作的重量越接近 1–8 次，1RM 估算越准。当天有训练记录后，轻盈计划「完成训练」会自动打勾。
           </p>
         </CardContent>
@@ -1406,7 +1406,7 @@ export default function TrainingLogPage() {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
               <p className="text-sm font-medium text-foreground">历史记录（{logs.length} 条）</p>
-              <p className="mt-0.5 text-xs text-muted-foreground">
+              <p className="mt-0.5 type-meta text-muted-foreground">
                 点铅笔载入表单修改，点垃圾桶按条删除；命中力量五动作的记录可一键写入 / 撤销能力追踪。
               </p>
             </div>
@@ -1450,9 +1450,9 @@ export default function TrainingLogPage() {
                         <span className="text-sm font-medium text-foreground">{fmtDate(log.date)}</span>
                         {log.dayLabel && <Badge variant="secondary">{log.dayLabel}</Badge>}
                         {sameDayCount > 1 && (
-                          <span className="text-xs text-muted-foreground">同日第 {sameDayIndex} 条</span>
+                          <span className="type-meta text-muted-foreground">同日第 {sameDayIndex} 条</span>
                         )}
-                        <span className="text-xs text-muted-foreground">
+                        <span className="type-meta text-muted-foreground">
                           {log.exercises.length} 个动作 · {setCount} 组
                           {volume > 0 ? ` · 容量 ${Math.round(volume).toLocaleString()} kg` : ' · 自重 / 无重量'}
                         </span>
@@ -1483,7 +1483,7 @@ export default function TrainingLogPage() {
                     </div>
 
                     {log.note && (
-                      <p className="mt-2 text-xs italic leading-relaxed text-muted-foreground">「{log.note}」</p>
+                      <p className="mt-2 type-meta italic text-muted-foreground">「{log.note}」</p>
                     )}
 
                     <div className="mt-2 space-y-1.5">
@@ -1740,16 +1740,16 @@ function WorkoutRunner({
         </button>
         {!resting ? (
           <>
-            <p className="text-center text-xs text-muted-foreground">
+            <p className="text-center type-meta text-muted-foreground">
               第 {idx + 1} / {entries.length} 组
             </p>
             <h3 className="mt-2 text-center font-display text-2xl font-bold text-foreground">{current.exerciseName}</h3>
-            <p className="mt-1 text-center text-xs text-muted-foreground">
+            <p className="mt-1 text-center type-meta text-muted-foreground">
               {current.compound ? '复合动作 · 建议休息约 3 分钟' : '孤立动作 · 建议休息约 2 分钟'}
             </p>
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs text-muted-foreground">重量 kg</label>
+                <label className="type-meta text-muted-foreground">重量 kg</label>
                 <input
                   value={weight}
                   onChange={(e) => setWeight(e.target.value)}
@@ -1759,7 +1759,7 @@ function WorkoutRunner({
                 />
               </div>
               <div>
-                <label className="text-xs text-muted-foreground">次数</label>
+                <label className="type-meta text-muted-foreground">次数</label>
                 <input
                   value={reps}
                   onChange={(e) => setReps(e.target.value)}
@@ -1775,7 +1775,7 @@ function WorkoutRunner({
             >
               完成本组
             </button>
-            <p className="mt-3 text-center text-xs text-muted-foreground">
+            <p className="mt-3 text-center type-meta text-muted-foreground">
               自然训练者需充分恢复磷酸原系统，避免下一组在疲劳状态下开始
             </p>
           </>
@@ -1805,7 +1805,7 @@ function WorkoutRunner({
                 <SkipForward className="h-4 w-4" /> 跳过休息
               </button>
             </div>
-            <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
+            <p className="mt-3 text-center type-meta text-muted-foreground">
               本组共 {(restSeconds / 60).toFixed(1)} 分钟 · 归零会响一声并自动进入下一组。
               锁屏或切到别的应用也不会走慢——剩余时间按真实时刻计算。
             </p>

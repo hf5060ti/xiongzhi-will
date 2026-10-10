@@ -118,7 +118,7 @@ export default function NutritionPage() {
           <h2 className="font-display text-xl font-extrabold text-foreground">营养素吸收率指南</h2>
           <Badge variant="outline" className="px-2 py-0.5 text-xs">吃进去 ≠ 吸收进去</Badge>
         </div>
-        <p className="mb-1 text-xs leading-relaxed text-muted-foreground">
+        <p className="mb-1 type-meta text-muted-foreground">
           同样一份食物，会吃的人吸收率高一截。掌握这些搭配原则，营养利用率立竿见影。
         </p>
         <p className="mb-4 rounded-md border border-primary/30 bg-primary/5 px-3 py-2 text-xs leading-relaxed text-primary/90">
@@ -133,7 +133,7 @@ export default function NutritionPage() {
                 <span className="font-display text-base font-bold text-foreground">{g.title}</span>
                 <Badge variant="outline" className="px-1.5 py-0 text-xs">{g.badge}</Badge>
               </div>
-              <p className="text-xs leading-relaxed text-muted-foreground">{g.body}</p>
+              <p className="type-meta text-muted-foreground">{g.body}</p>
               <ul className="mt-2 space-y-1">
                 {g.tips.map((t) => (
                   <li key={t} className="flex items-start gap-1.5 text-xs leading-snug text-foreground/80">
@@ -145,7 +145,7 @@ export default function NutritionPage() {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-3 type-meta text-muted-foreground">
           吸收率因人而异（消化系统、年龄、疾病都会影响）；孕妇、老年人、大病初愈者、糖尿病及相关疾病人群，优先遵从医嘱。
         </p>
       </div>
@@ -158,7 +158,7 @@ export default function NutritionPage() {
             3HFIT / SNC 运动营养咨询师
           </span>
         </div>
-        <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
+        <p className="mb-4 type-meta text-muted-foreground">
           关于蛋白质、碳水、脂肪、维生素怎么吃，与其自己猜，不如看专业营养师的讲解。
           以下视频由陈石老师讲解，点击跳转抖音观看（视频版权归原作者所有）。
         </p>

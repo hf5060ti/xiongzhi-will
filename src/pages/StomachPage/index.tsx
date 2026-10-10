@@ -51,7 +51,7 @@ export default function StomachPage() {
         <p className="mt-2 text-sm text-muted-foreground">
           练得够狠、吃得够「干净」，却还是腹胀、疲惫、肌肉停滞——问题往往不在训练计划，而在消化道屏障与代谢底盘。
         </p>
-        <p className="mt-2 text-xs text-muted-foreground">
+        <p className="mt-2 type-meta text-muted-foreground">
           本页内容依据 ALEX 律师《健身人群肠漏成因与影响》《FODMAPs 健身饮食排查表格》两份资料整理。
         </p>
       </header>
@@ -121,12 +121,12 @@ export default function StomachPage() {
                     <TableRow key={g.category}>
                       <TableCell className="whitespace-nowrap align-top">
                         <span className="block text-xs font-medium text-foreground">{g.cn}</span>
-                        <span className="block text-xs uppercase tracking-wider text-muted-foreground">
+                        <span className="block type-meta uppercase tracking-wider text-muted-foreground">
                           {g.category}
                         </span>
                       </TableCell>
                       <TableCell className="align-top text-xs text-foreground/90">{g.items}</TableCell>
-                      <TableCell className="align-top text-xs text-muted-foreground">{g.sources}</TableCell>
+                      <TableCell className="align-top type-meta text-muted-foreground">{g.sources}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -169,15 +169,15 @@ export default function StomachPage() {
                     {p.name}
                   </h3>
                 </div>
-                <p className="mt-2 text-xs text-muted-foreground">
+                <p className="mt-2 type-meta text-muted-foreground">
                   <b className="text-foreground/90">周期：</b>
                   {p.duration}
                 </p>
-                <p className="mt-1.5 text-xs leading-snug text-muted-foreground">
+                <p className="mt-1.5 type-meta text-muted-foreground">
                   <b className="text-foreground/90">操作原则：</b>
                   {p.principle}
                 </p>
-                <p className="mt-1.5 text-xs leading-snug text-muted-foreground">
+                <p className="mt-1.5 type-meta text-muted-foreground">
                   <b className="text-foreground/90">核心目的：</b>
                   {p.goal}
                 </p>
@@ -206,7 +206,7 @@ export default function StomachPage() {
                 <div className="flex flex-wrap items-baseline justify-between gap-1">
                   <h3 className="font-display text-sm font-bold text-foreground">{row.category}</h3>
                   {row.note && (
-                    <p className="text-xs leading-snug text-muted-foreground">{row.note}</p>
+                    <p className="type-meta text-muted-foreground">{row.note}</p>
                   )}
                 </div>
                 <div className="mt-2 grid gap-2 sm:grid-cols-2">
@@ -291,7 +291,7 @@ export default function StomachPage() {
                   </span>
                   <span>
                     <b className="text-sm text-foreground">{a.title}</b>
-                    <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">
+                    <span className="mt-0.5 block type-meta text-muted-foreground">
                       {a.detail}
                     </span>
                   </span>
@@ -307,7 +307,7 @@ export default function StomachPage() {
         <CardContent className="p-4 sm:p-5">
           <h2 className="font-display text-base font-bold text-foreground">免责声明</h2>
           {GUT_DISCLAIMER.map((t) => (
-            <p key={t} className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+            <p key={t} className="mt-1.5 type-meta text-muted-foreground">
               {t}
             </p>
           ))}
@@ -332,7 +332,7 @@ function SectionTitle({
         <span className="shrink-0 text-primary">{icon}</span>
         {title}
       </h2>
-      {desc && <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{desc}</p>}
+      {desc && <p className="mt-1 type-meta text-muted-foreground">{desc}</p>}
     </div>
   );
 }

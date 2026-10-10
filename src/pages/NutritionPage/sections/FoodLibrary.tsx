@@ -100,7 +100,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                   <span className="font-display text-lg font-bold leading-none tracking-wide text-foreground">
                     {getLang() === 'zh' ? food.name : (FOOD_NAME_EN[food.name] || food.name)}
                   </span>
-                  <span className="shrink-0 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  <span className="shrink-0 type-meta font-medium uppercase tracking-wider text-muted-foreground">
                     {FOOD_CATEGORIES.find((c) => c.id === food.cat)?.label}
                   </span>
                 </span>
@@ -130,7 +130,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                   </span>
                 )}
                 {(food.vitFat.length > 0 || food.vitWater.length > 0 || (food.minerals?.length ?? 0) > 0) && (
-                  <span className="text-xs leading-snug text-muted-foreground">
+                  <span className="type-meta text-muted-foreground">
                     维生素 {[...food.vitFat, ...food.vitWater].join('、') || '—'}
                     {food.minerals && food.minerals.length > 0 && ` · 矿物质 ${food.minerals.join('、')}`}
                   </span>
@@ -158,7 +158,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
           })}
         </div>
       )}
-      <p className="text-xs text-muted-foreground">
+      <p className="type-meta text-muted-foreground">
         营养值为每 100g 参考值：生鲜食材为生重 / 可食部，「家常菜熟食」为常见做法熟重估算（随做法、调料浮动），实际以包装标注为准；
         卡片上的「1 个 / 1 碗」标签为常见份量锚点，点它即可按份量折算克数并直接算出营养。
       </p>

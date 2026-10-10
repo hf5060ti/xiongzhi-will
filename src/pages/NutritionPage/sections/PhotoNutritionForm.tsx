@@ -147,7 +147,7 @@ export default function PhotoNutritionForm() {
             <span className="text-sm font-medium text-foreground">
               拍照或选择营养表图片
             </span>
-            <span className="text-xs text-muted-foreground">
+            <span className="type-meta text-muted-foreground">
               手机可直接调起相机，电脑选择图片文件
             </span>
             <input
@@ -176,7 +176,7 @@ export default function PhotoNutritionForm() {
                   正在识别文字…{progress}%
                 </p>
                 <Progress value={progress} />
-                <p className="text-xs text-muted-foreground">
+                <p className="type-meta text-muted-foreground">
                   首次识别需下载约 20MB 中文识别模型（免费开源，浏览器本地运行），之后有缓存。
                 </p>
               </div>
@@ -225,7 +225,7 @@ export default function PhotoNutritionForm() {
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label htmlFor="base-grams" className="text-xs text-muted-foreground">
+          <label htmlFor="base-grams" className="type-meta text-muted-foreground">
             营养表基准（g）：默认 100；若标注「每份 30g」请改为 30
           </label>
           <Input
@@ -238,7 +238,7 @@ export default function PhotoNutritionForm() {
           />
         </div>
         <div>
-          <label htmlFor="actual-grams" className="text-xs text-muted-foreground">
+          <label htmlFor="actual-grams" className="type-meta text-muted-foreground">
             实际吃了多少（g）
           </label>
           <Input
@@ -262,16 +262,16 @@ export default function PhotoNutritionForm() {
             {resultRows.map((row) => (
               <div key={row.label} className="rounded-md border border-border bg-muted/40 p-2.5 text-center">
                 <p className="font-display text-base font-bold leading-none text-foreground">{row.value}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{row.label}</p>
+                <p className="mt-1 type-meta text-muted-foreground">{row.label}</p>
               </div>
             ))}
           </div>
-          <p className="mt-2 text-xs text-muted-foreground">
+          <p className="mt-2 type-meta text-muted-foreground">
             结果基于你填写的数值按比例换算，仅供参考；包装数值以实物标注为准。
           </p>
         </div>
       ) : (
-        <p className="text-xs text-muted-foreground">
+        <p className="type-meta text-muted-foreground">
           填写数值与实际克数后，这里会给出对应的热量与营养估算。
         </p>
       )}
@@ -288,7 +288,7 @@ interface NumberFieldProps {
 function NumberField({ label, value, onChange }: NumberFieldProps) {
   return (
     <div>
-      <label className="text-xs text-muted-foreground">{label}</label>
+      <label className="type-meta text-muted-foreground">{label}</label>
       <Input type="number" min={0} value={value} onChange={onChange} className="mt-1" />
     </div>
   );

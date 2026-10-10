@@ -290,13 +290,13 @@ function SteelCard({ name, hard, cons, best }: { name: string; hard: string; con
   return (
     <div className="rounded-xl border border-border/50 bg-background/40 p-3">
       <h4 className="font-display text-base font-bold text-primary">{name}</h4>
-      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+      <p className="mt-2 type-meta text-muted-foreground">
         <b className="text-foreground">特点：</b>{hard}
       </p>
-      <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+      <p className="mt-1 type-meta text-muted-foreground">
         <b className="text-foreground">缺点：</b>{cons}
       </p>
-      <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+      <p className="mt-1 type-meta text-muted-foreground">
         <b className="text-foreground">适合：</b>{best}
       </p>
     </div>

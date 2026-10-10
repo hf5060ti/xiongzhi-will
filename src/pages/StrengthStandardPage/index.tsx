@@ -96,7 +96,7 @@ export default function StrengthStandardPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="mb-1.5 block text-xs font-medium text-muted-foreground">性别</label>
+              <label className="mb-1.5 block type-meta font-medium text-muted-foreground">性别</label>
               <div className="flex gap-2">
                 {(['male', 'female'] as Sex[]).map((s) => (
                   <Button
@@ -115,7 +115,7 @@ export default function StrengthStandardPage() {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label htmlFor="ss-age" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+                <label htmlFor="ss-age" className="mb-1.5 block type-meta font-medium text-muted-foreground">
                   年龄
                 </label>
                 <select
@@ -132,7 +132,7 @@ export default function StrengthStandardPage() {
                 </select>
               </div>
               <div>
-                <label htmlFor="ss-bw" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+                <label htmlFor="ss-bw" className="mb-1.5 block type-meta font-medium text-muted-foreground">
                   体重（kg）
                 </label>
                 <Input
@@ -147,7 +147,7 @@ export default function StrengthStandardPage() {
             </div>
 
             <div>
-              <label htmlFor="ss-lift" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+              <label htmlFor="ss-lift" className="mb-1.5 block type-meta font-medium text-muted-foreground">
                 训练动作（共 {LIFT_STANDARDS.length} 项）
               </label>
               <select id="ss-lift" value={liftKey} onChange={(e) => setLiftKey(e.target.value)} className={selectClass}>
@@ -161,10 +161,10 @@ export default function StrengthStandardPage() {
                   </optgroup>
                 ))}
               </select>
-              {def.note && <p className="mt-1.5 text-xs text-muted-foreground">{def.note}</p>}
+              {def.note && <p className="mt-1.5 type-meta text-muted-foreground">{def.note}</p>}
               {def.distances && (
                 <div className="mt-3">
-                  <label htmlFor="ss-dist" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+                  <label htmlFor="ss-dist" className="mb-1.5 block type-meta font-medium text-muted-foreground">
                     行走距离
                   </label>
                   <select
@@ -207,13 +207,13 @@ export default function StrengthStandardPage() {
             {mode === 'reps' ? (
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label htmlFor="ss-w" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+                  <label htmlFor="ss-w" className="mb-1.5 block type-meta font-medium text-muted-foreground">
                     {def.bodyweightCoef ? '附加负重（kg）' : '重量（kg）'}
                   </label>
                   <Input id="ss-w" type="number" min={0} value={weight} onChange={(e) => setWeight(e.target.value)} />
                 </div>
                 <div>
-                  <label htmlFor="ss-r" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+                  <label htmlFor="ss-r" className="mb-1.5 block type-meta font-medium text-muted-foreground">
                     重复次数
                   </label>
                   <Input id="ss-r" type="number" min={1} max={36} value={reps} onChange={(e) => setReps(e.target.value)} />
@@ -221,7 +221,7 @@ export default function StrengthStandardPage() {
               </div>
             ) : (
               <div>
-                <label htmlFor="ss-1rm" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+                <label htmlFor="ss-1rm" className="mb-1.5 block type-meta font-medium text-muted-foreground">
                   已知 1RM（kg）
                 </label>
                 <Input
@@ -284,7 +284,7 @@ export default function StrengthStandardPage() {
                         style={{ width: `${result.withinPct}%` }}
                       />
                     </div>
-                    <p className="mt-2 text-xs text-muted-foreground">
+                    <p className="mt-2 type-meta text-muted-foreground">
                       {result.gapKg != null && result.nextLabel
                         ? `再 +${result.gapKg} kg（${def.label} 1RM）进入「${result.nextLabel}」`
                         : '已达最高档，剩下的对手只有自己。'}
@@ -293,7 +293,7 @@ export default function StrengthStandardPage() {
 
                   {formulas && (
                     <div className="rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2">
-                      <p className="mb-1 text-xs font-medium text-muted-foreground">三个公式对照（判级统一用 Epley）</p>
+                      <p className="mb-1 type-meta font-medium text-muted-foreground">三个公式对照（判级统一用 Epley）</p>
                       <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
                         {ONE_RM_FORMULAS.map((f) => (
                           <span key={f.id}>
@@ -319,7 +319,7 @@ export default function StrengthStandardPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-white/10 text-left text-xs text-muted-foreground">
+                    <tr className="border-b border-white/10 text-left type-meta text-muted-foreground">
                       <th className="py-2 pr-4">档位</th>
                       <th className="py-2 pr-4">需要 1RM</th>
                       <th className="py-2">状态</th>
@@ -372,7 +372,7 @@ export default function StrengthStandardPage() {
             档位怎么来的、哪些是估算
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-2 text-xs leading-relaxed text-muted-foreground">
+        <CardContent className="space-y-2 type-meta text-muted-foreground">
           <p>
             <b className="text-foreground">原始表：</b>
             深蹲 / 卧推 / 硬拉 / 站姿推举 / 杠铃弯举这 5 项沿用本站既有档位（出处：fitnesscalcs.com

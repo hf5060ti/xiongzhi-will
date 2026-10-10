@@ -192,7 +192,7 @@ export default function AiFoodEstimator() {
         <h2 className="font-display text-xl font-extrabold text-foreground">AI 热量估算</h2>
         <Badge variant="outline" className="px-2 py-0.5 text-xs">描述食物 → 自动算</Badge>
       </div>
-      <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
+      <p className="mb-4 type-meta text-muted-foreground">
         用一句话描述你吃的东西（尽量带上做法与大致份量，如「一碗蛋炒饭大概 200 克」），
         AI 会按《中国食物成分表》口径估算每 100g 的营养数据；你再填实际吃了多少克，系统自动换算成你的实际摄入。
       </p>
@@ -262,7 +262,7 @@ export default function AiFoodEstimator() {
           </div>
 
           <div className="max-w-xs">
-            <label htmlFor="ai-grams" className="text-xs text-muted-foreground">
+            <label htmlFor="ai-grams" className="type-meta text-muted-foreground">
               实际吃了多少克
             </label>
             <Input
@@ -288,16 +288,16 @@ export default function AiFoodEstimator() {
                     <p className="font-display text-base font-bold leading-none text-foreground">
                       {row.has ? `${round1(row.v * ratio)} ${row.unit}` : '—'}
                     </p>
-                    <p className="mt-1 text-xs text-muted-foreground">{row.label}</p>
+                    <p className="mt-1 type-meta text-muted-foreground">{row.label}</p>
                   </div>
                 ))}
               </div>
-              <p className="mt-2 text-xs text-muted-foreground">
+              <p className="mt-2 type-meta text-muted-foreground">
                 AI 估算仅供参考，不是精确值；有包装以实物营养表为准，有秤尽量上秤。
               </p>
             </div>
           ) : (
-            <p className="text-xs text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               填写实际克数后，这里自动给出换算好的热量与营养。
             </p>
           )}
@@ -316,7 +316,7 @@ interface EstFieldProps {
 function EstField({ label, value, onChange }: EstFieldProps) {
   return (
     <div>
-      <label className="text-xs text-muted-foreground">{label}</label>
+      <label className="type-meta text-muted-foreground">{label}</label>
       <Input type="number" min={0} value={value} onChange={onChange} className="mt-1" />
     </div>
   );

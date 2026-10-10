@@ -102,7 +102,7 @@ function TemplateCard({
                   <span className="shrink-0 font-display text-xs font-bold text-primary">
                     {d.day}
                   </span>
-                  <span className="text-xs leading-relaxed text-muted-foreground">
+                  <span className="type-meta text-muted-foreground">
                     <b className="text-foreground">{d.focus}：</b>
                     {d.detail}
                   </span>
@@ -133,7 +133,7 @@ function TemplateCard({
                     <span className="text-xs font-medium text-primary">{b.set}</span>
                   </div>
                   {b.note && (
-                    <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{b.note}</p>
+                    <p className="mt-0.5 type-meta text-muted-foreground">{b.note}</p>
                   )}
                 </div>
               ))}

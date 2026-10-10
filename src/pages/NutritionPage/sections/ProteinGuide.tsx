@@ -51,7 +51,7 @@ export default function ProteinGuide() {
             </TableBody>
           </Table>
         </div>
-        <p className="text-xs leading-relaxed text-muted-foreground">
+        <p className="type-meta text-muted-foreground">
           动物蛋白（肉、蛋、乳清）系数 1.0。植物蛋白按上表打折：同样吃 20g 燕麦蛋白，实际只有约
           10–14g 被身体利用——所以植物餐一定要搭动物蛋白。
         </p>
@@ -89,7 +89,7 @@ export default function ProteinGuide() {
                     >
                       {row.score.toFixed(1)}
                     </span>
-                    <span className="text-xs text-muted-foreground"> /10</span>
+                    <span className="type-meta text-muted-foreground"> /10</span>
                   </TableCell>
                 </TableRow>
               ))}

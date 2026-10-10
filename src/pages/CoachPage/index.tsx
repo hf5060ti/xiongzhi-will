@@ -366,7 +366,7 @@ export default function CoachPage() {
       </div>
 
       {/* 专业边界说明：AI 不是真人认证教练，什么情况该找真人 */}
-      <div className="rounded-lg border border-border/60 bg-card/60 p-3 text-xs leading-relaxed text-muted-foreground backdrop-blur-xl">
+      <div className="rounded-lg border border-border/60 bg-card/60 p-3 type-meta text-muted-foreground backdrop-blur-xl">
         <p className="flex items-center gap-1.5 font-medium text-foreground">
           <Stethoscope className="h-4 w-4 text-primary" />
           这个「教练」的边界：什么时候该找真人
@@ -401,7 +401,7 @@ export default function CoachPage() {
           <CardContent className="space-y-2">
             <Label htmlFor="sleep" className="text-sm">睡眠时长（小时）</Label>
             <Input id="sleep" type="number" min={0} max={16} step={0.5} value={sleep} onChange={(e) => setSleep(e.target.value)} />
-            <p className="text-xs text-muted-foreground">成年人 7–9h 最佳；少于 6h 力量下降、受伤风险上升。</p>
+            <p className="type-meta text-muted-foreground">成年人 7–9h 最佳；少于 6h 力量下降、受伤风险上升。</p>
           </CardContent>
         </Card>
 
@@ -418,7 +418,7 @@ export default function CoachPage() {
                 <NativeSelectOption key={v} value={v}>{l}</NativeSelectOption>
               ))}
             </NativeSelect>
-            <p className="text-xs text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               <b className="text-foreground">发烧 / 大病初愈：直接停训。</b>不要带病训练。
             </p>
           </CardContent>
@@ -448,7 +448,7 @@ export default function CoachPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
-            <Label className="text-xs text-muted-foreground">压力水平</Label>
+            <Label className="type-meta text-muted-foreground">压力水平</Label>
             <div className="flex gap-1.5">
               {(['low', 'normal', 'high'] as Stress[]).map((s) => (
                 <Badge
@@ -461,7 +461,7 @@ export default function CoachPage() {
                 </Badge>
               ))}
             </div>
-            <Label className="mt-2 block text-xs text-muted-foreground">饮食</Label>
+            <Label className="mt-2 block type-meta text-muted-foreground">饮食</Label>
             <div className="flex flex-wrap gap-1.5">
               {([
                 { v: 'normal', l: '正常' },
@@ -524,7 +524,7 @@ export default function CoachPage() {
         </Card>
       )}
 
-      <p className="text-xs leading-relaxed text-muted-foreground">
+      <p className="type-meta text-muted-foreground">
         本"AI 教练"基于运动医学通用原则做规则判断，不是真正的 AI 对话模型。它的价值在于<b className="text-foreground">把"生病就停训"这条红线写死</b>——很多人带病训练反而练得更差。真正的个性化追踪、周期化调整，还是要靠你自己按周观察体重、力量、睡眠。
       </p>
 
@@ -849,7 +849,7 @@ function AIChatPanel() {
         <CardTitle className="flex flex-wrap items-center gap-2 text-base">
           <Bot className="h-4 w-4 text-primary" />
           AI 教练对话
-          <span className="text-xs font-normal text-muted-foreground">（本地后台，可切换模型）</span>
+          <span className="type-meta font-normal text-muted-foreground">（本地后台，可切换模型）</span>
           <span className="ml-auto flex items-center gap-1.5">
             {busy && <Loader2 className="h-3.5 w-3.5 animate-spin text-muted-foreground" />}
             {providers.map((p) => (
@@ -877,7 +877,7 @@ function AIChatPanel() {
             <Bot className="h-4 w-4 shrink-0" />
             AI 对话需要一个 Key（免费，2 分钟搞定）
           </p>
-          <div className="space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+          <div className="space-y-1.5 type-meta text-muted-foreground">
             <p>
               这个功能直连<strong className="text-foreground">硅基流动 SiliconFlow</strong>，
               新用户注册就送 14 元额度（够聊几千条），不用绑信用卡。
@@ -916,7 +916,7 @@ function AIChatPanel() {
               保存并启用
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground/80">
+          <p className="type-meta text-muted-foreground/80">
             已有 Key？直接粘进来就行。想换模型或清除 Key，点下面的「修改 Key」。
           </p>
         </div>
@@ -928,7 +928,7 @@ function AIChatPanel() {
               <Unplug className="h-4 w-4 shrink-0" />
               本地后台未连接
             </p>
-            <div className="space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+            <div className="space-y-1.5 type-meta text-muted-foreground">
               <p>
                 这个对话面板要靠你自己电脑上跑的后台服务（<code className="rounded bg-muted px-1">server/server.js</code>）转发请求：
                 <b className="text-foreground">API Key 只存在你本机的 server/.env 里，不会上传到公网</b>。
@@ -970,7 +970,7 @@ function AIChatPanel() {
                 <RefreshCw className="h-3.5 w-3.5" />
                 重试连接
               </Button>
-              {offlineDetail && <span className="text-xs text-muted-foreground/80">诊断：{offlineDetail}</span>}
+              {offlineDetail && <span className="type-meta text-muted-foreground/80">诊断：{offlineDetail}</span>}
             </div>
           </div>
         )}
@@ -1003,7 +1003,7 @@ function AIChatPanel() {
         )}
 
         {current && (
-          <p className="text-xs text-muted-foreground">
+          <p className="type-meta text-muted-foreground">
             当前模型：<b className="text-foreground">{current.model || '未填写 MODEL'}</b>
             {!current.configured && <span className="text-warning"> · 尚未配置，去 server/.env 填 Key</span>}
           </p>
@@ -1025,7 +1025,7 @@ function AIChatPanel() {
                   m.role === 'user' ? 'bg-primary/10 text-foreground' : 'bg-background text-foreground/90',
                 )}
               >
-                <span className="mb-0.5 block text-xs uppercase tracking-wide text-muted-foreground">
+                <span className="mb-0.5 block type-meta uppercase tracking-wide text-muted-foreground">
                   {m.role === 'user' ? '我' : (current?.label ?? 'AI')}
                 </span>
                 {m.image && (
@@ -1134,7 +1134,7 @@ function AIChatPanel() {
               <ShieldQuestion className="h-5 w-5 text-[#F7E7CE]" />
               <h3 className="text-base font-semibold text-foreground">动作照片上传权限</h3>
             </div>
-            <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
+            <p className="mb-4 type-meta text-muted-foreground">
               你可以拍一张动作照片发给 AI 教练，让它判断动作是否标准。
               照片只会在你本次对话中发送到你配置的模型端点（如硅基流动 Qwen2.5-VL），
               不会上传到本站服务器，也不会被保存。请选择权限：
@@ -1146,7 +1146,7 @@ function AIChatPanel() {
                 className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#F7E7CE]"
               >
                 <div className="font-medium">完全访问</div>
-                <div className="mt-0.5 text-xs text-muted-foreground">以后直接上传，不再询问（推荐）</div>
+                <div className="mt-0.5 type-meta text-muted-foreground">以后直接上传，不再询问（推荐）</div>
               </button>
               <button
                 type="button"
@@ -1154,7 +1154,7 @@ function AIChatPanel() {
                 className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#F7E7CE]"
               >
                 <div className="font-medium">每次使用都询问</div>
-                <div className="mt-0.5 text-xs text-muted-foreground">每次上传前都会弹确认，可随时取消</div>
+                <div className="mt-0.5 type-meta text-muted-foreground">每次上传前都会弹确认，可随时取消</div>
               </button>
               <button
                 type="button"
@@ -1162,7 +1162,7 @@ function AIChatPanel() {
                 className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-destructive"
               >
                 <div className="font-medium text-destructive">完全禁止</div>
-                <div className="mt-0.5 text-xs text-muted-foreground">禁用相机按钮，只用文字对话</div>
+                <div className="mt-0.5 type-meta text-muted-foreground">禁用相机按钮，只用文字对话</div>
               </button>
             </div>
             <button

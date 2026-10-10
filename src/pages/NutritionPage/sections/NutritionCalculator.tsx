@@ -135,9 +135,9 @@ export default function NutritionCalculator({
                     <h2 className="mt-4 text-center font-display text-xl font-bold tracking-wide text-foreground sm:text-2xl">
                       {selectedFood.name}
                     </h2>
-                    <p className="mt-1 text-xs text-muted-foreground">每 100g 生重参考值</p>
+                    <p className="mt-1 type-meta text-muted-foreground">每 100g 生重参考值</p>
                     <div className="mt-4 w-full max-w-[240px]">
-                      <label htmlFor="food-weight" className="text-xs text-muted-foreground">
+                      <label htmlFor="food-weight" className="type-meta text-muted-foreground">
                         吃了多少（g，按实际称重填）
                       </label>
                       <Input
@@ -156,7 +156,7 @@ export default function NutritionCalculator({
                       )}
                       {servings.length > 0 && (
                         <div className="mt-2">
-                          <p className="text-xs text-muted-foreground">或按常见份量快速填入</p>
+                          <p className="type-meta text-muted-foreground">或按常见份量快速填入</p>
                           <div className="mt-1 flex flex-wrap justify-center gap-1.5">
                             {servings.map((s) => {
                               const on = matchedServing?.label === s.label;
@@ -338,7 +338,7 @@ export default function NutritionCalculator({
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl border border-border/50 bg-background/40 p-3 backdrop-blur-sm">
-      <p className="text-xs text-muted-foreground">{label}</p>
+      <p className="type-meta text-muted-foreground">{label}</p>
       <p className="mt-1 font-display text-xl font-bold leading-none text-foreground">{value}</p>
     </div>
   );
@@ -348,7 +348,7 @@ function ResultCell({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-lg border border-primary/20 bg-primary/10 p-2 text-center">
       <p className="font-display text-base font-bold leading-none text-primary">{value}</p>
-      <p className="mt-0.5 text-xs text-muted-foreground">{label}</p>
+      <p className="mt-0.5 type-meta text-muted-foreground">{label}</p>
     </div>
   );
 }

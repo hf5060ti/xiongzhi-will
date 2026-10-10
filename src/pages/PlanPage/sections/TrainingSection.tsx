@@ -97,7 +97,7 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
               <Images className="h-4 w-4 text-primary" />
               专项计划图
             </CardTitle>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            <p className="mt-1 type-meta text-muted-foreground">
               焚诀原图按部位挂图，点开可看大图；下方「按部位训练计划」为公开资料整理的组次参数，两者并存。
             </p>
           </CardHeader>
@@ -123,7 +123,7 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
                     <span className="font-display text-sm font-bold tracking-wide text-foreground">
                       {p.part}
                     </span>
-                    <span className="text-xs text-muted-foreground transition-colors group-hover:text-primary">
+                    <span className="type-meta text-muted-foreground transition-colors group-hover:text-primary">
                       查看大图
                     </span>
                   </span>
@@ -141,7 +141,7 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
               <ClipboardList className="h-4 w-4 text-primary" />
               按部位训练计划
             </CardTitle>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            <p className="mt-1 type-meta text-muted-foreground">
               与上方焚诀计划图并存、互为参考：图是原图，这里是按公开经典方案整理的组次参数；按自己的器械与恢复情况取用，冲突时以身体反馈为准。
             </p>
           </CardHeader>
@@ -152,9 +152,9 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
                   <span className="font-display text-base font-bold tracking-wide text-foreground">
                     {p.part}
                   </span>
-                  <span className="text-xs text-muted-foreground">来源：{p.source}</span>
+                  <span className="type-meta text-muted-foreground">来源：{p.source}</span>
                 </div>
-                <p className="mt-1 text-xs text-muted-foreground">{p.frequency}</p>
+                <p className="mt-1 type-meta text-muted-foreground">{p.frequency}</p>
                 <div className="mt-2 space-y-1.5">
                   {p.blocks.map((b) => (
                     <div key={b.name} className="rounded-md border border-border bg-card p-2.5">
@@ -163,7 +163,7 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
                         <span className="text-xs font-medium text-primary">{b.set}</span>
                       </div>
                       {b.note && (
-                        <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{b.note}</p>
+                        <p className="mt-0.5 type-meta text-muted-foreground">{b.note}</p>
                       )}
                     </div>
                   ))}
@@ -178,7 +178,7 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
                 </ul>
               </div>
             ))}
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               计划参数整理自公开经典方案的通用版本：StrongLifts 5×5、Push / Pull / Legs 分化、Wendler 5/3/1、German Volume Training (GVT 10×10)、PHUL。动作可依器械与关节状况替换，但建议保留原计划的组次结构与频率逻辑。
             </p>
           </CardContent>
@@ -192,7 +192,7 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
             <ShieldAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
             在安全的范围内去运动：以下动作均为参考，重量与次数按自己当前能力取，动作变形、关节刺痛或头晕恶心时立即停止；新重量先做 1–2 组热身，不冲超出技术水平的极限。
           </p>
-          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             每个动作的「优点 / 缺点 / 训练要点 / 适合人群」为通用训练常识与公开资料整理，用于挑选与替换动作时参考。
           </p>
         </CardHeader>
@@ -211,7 +211,7 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
                   <TableCell className="whitespace-nowrap align-top font-medium text-foreground">
                     {m.name}
                     {m.tip && (
-                      <span className="mt-1 block whitespace-normal text-xs font-normal leading-snug text-muted-foreground">
+                      <span className="mt-1 block whitespace-normal type-meta font-normal text-muted-foreground">
                         <b className="font-semibold text-foreground/80">动作要点：</b>
                         {m.tip}
                       </span>
@@ -223,19 +223,19 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
                       </span>
                     )}
                     {m.cons && m.cons.length > 0 && (
-                      <span className="mt-1 block whitespace-normal text-xs font-normal leading-snug text-muted-foreground">
+                      <span className="mt-1 block whitespace-normal type-meta font-normal text-muted-foreground">
                         <b className="font-semibold text-foreground/80">缺点：</b>
                         {m.cons.map((s) => s.replace(/[。；]$/, '')).join('；')}。
                       </span>
                     )}
                     {m.focus && m.focus.length > 0 && (
-                      <span className="mt-1 block whitespace-normal text-xs font-normal leading-snug text-muted-foreground">
+                      <span className="mt-1 block whitespace-normal type-meta font-normal text-muted-foreground">
                         <b className="font-semibold text-foreground/80">训练要点：</b>
                         {m.focus.map((s) => s.replace(/[。；]$/, '')).join('；')}。
                       </span>
                     )}
                     {m.suitable && (
-                      <span className="mt-1 block whitespace-normal text-xs font-normal leading-snug text-muted-foreground">
+                      <span className="mt-1 block whitespace-normal type-meta font-normal text-muted-foreground">
                         <b className="font-semibold text-foreground/80">适合人群：</b>
                         {m.suitable}
                       </span>
@@ -271,7 +271,7 @@ export default function TrainingSection({ goal }: TrainingSectionProps) {
                         观看
                       </a>
                     ) : (
-                      <span className="text-xs text-muted-foreground">—</span>
+                      <span className="type-meta text-muted-foreground">—</span>
                     )}
                   </TableCell>
                 </TableRow>

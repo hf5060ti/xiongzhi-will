@@ -313,7 +313,7 @@ export default function CollectPage() {
             </Button>
             {notice && <span className="text-xs text-primary">{notice}</span>}
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="type-meta text-muted-foreground">
             说明：本站不做自动爬取收藏（官方无个人收藏接口，非官方抓取有风险且不合规）。
             手动粘贴一样能获得分类与总结；已导入数据可随时导出备份。
           </p>
@@ -393,7 +393,7 @@ export default function CollectPage() {
                         <Link2 className="h-3 w-3" /> 打开原视频
                       </a>
                     ) : (
-                      <p className="text-xs text-muted-foreground">无链接</p>
+                      <p className="type-meta text-muted-foreground">无链接</p>
                     )}
                   </CardContent>
                 </Card>

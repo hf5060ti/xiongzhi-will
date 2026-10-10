@@ -487,7 +487,7 @@ export default function IsometricPage() {
             <CardContent className="p-4">
               <Icon className="mb-2 h-5 w-5 text-primary" />
               <p className="text-sm font-semibold text-foreground">{t}</p>
-              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{d}</p>
+              <p className="mt-1 type-meta text-muted-foreground">{d}</p>
             </CardContent>
           </Card>
         ))}
@@ -522,7 +522,7 @@ export default function IsometricPage() {
                           </div>
                           <Badge variant="secondary" className="text-xs">{target}</Badge>
                         </div>
-                        <p className="text-xs leading-relaxed text-muted-foreground">{how}</p>
+                        <p className="type-meta text-muted-foreground">{how}</p>
                         <p className="mt-2 flex items-center gap-1 text-xs font-medium text-primary">
                           <Timer className="h-3 w-3" />
                           {dose}
@@ -581,7 +581,7 @@ export default function IsometricPage() {
           </div>
           <div className="space-y-1">
             <p className="text-sm font-semibold text-foreground">散步是等长的最佳搭档</p>
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               散步本身热量不高，但它温和促进全身血液循环、帮助术后恢复与代谢维持。搭配原则：心率控制在「能轻松说话」的强度；
               术后早期戴护目镜防风吹防异物；从 10–15 分钟起步，每周加 5 分钟；环境允许就户外，全程匀速不追求速度。
               等长训练负责「肌肉」，散步负责「循环与心情」，两者互补。

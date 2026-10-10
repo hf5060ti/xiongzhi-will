@@ -112,7 +112,7 @@ export default function DietSection({ diet }: DietSectionProps) {
                       >
                         {c.value}
                       </p>
-                      <p className="mt-1 text-xs text-muted-foreground sm:text-xs">
+                      <p className="mt-1 type-meta text-muted-foreground sm:type-meta">
                         {c.label}
                         {c.unit && <span className="ml-0.5 opacity-70">{c.unit}</span>}
                       </p>
@@ -120,7 +120,7 @@ export default function DietSection({ diet }: DietSectionProps) {
                   ))}
                 </div>
                 {targets.kcalMax > targets.kcalMin && (
-                  <p className="text-xs leading-relaxed text-muted-foreground">
+                  <p className="type-meta text-muted-foreground">
                     热量目标区间{' '}
                     <span className="font-semibold text-foreground">
                       {targets.kcalRangeText} kcal
@@ -221,7 +221,7 @@ export default function DietSection({ diet }: DietSectionProps) {
           维生素吸收优化
         </p>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{diet.absorbNote}</p>
-        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-3 type-meta text-muted-foreground">
           通用原则：脂溶性维生素（A / D / E / K，常见于胡萝卜、菠菜、蛋黄、坚果、深海鱼）需要脂肪同餐帮助吸收，同餐搭配 1–2g
           油脂即可；水溶性维生素（B 族 / C，常见于紫包菜、柑橘、全谷物）随水排出，保证饮水、避免长时间水煮。
         </p>
@@ -282,7 +282,7 @@ export default function DietSection({ diet }: DietSectionProps) {
               <BookOpen className="h-4 w-4 shrink-0 text-primary" />
               这套方案的边界与常见误区
             </span>
-            <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+            <span className="mt-1 block type-meta text-muted-foreground">
               来自公开讲解与公开文献的原创整理，共 {knowledgeCount} 条，逐条标注证据等级与来源链接。
             </span>
           </span>
