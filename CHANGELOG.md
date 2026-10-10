@@ -4,6 +4,15 @@
 
 ---
 
+## v0.4.1 - 2026-10-10
+
+### 工程
+
+- **桌面离线版重新构建并打包**：以 `DESKTOP_BUILD=1` 产出 IIFE 单 bundle（懒加载页面内联，规避 file:// 下动态 import 的 CORS 限制），`scripts/sync-desktop.mjs` 转为经典 `<script src>` 后双击 `桌面版/index.html` 即离线可用；产物打包为 `雄性意志-桌面离线版-v0.4.1.zip`
+- **Gitee Pages 重新部署**：以 `MIAODA_CLIENT_BASE_PATH=/masculine-consciousness/` 重建并推送 `gitee-pages` 分支（HashRouter，无需服务端 SPA 回退）
+
+---
+
 ## v0.4.0 - 2026-10-09
 
 ### 新增
