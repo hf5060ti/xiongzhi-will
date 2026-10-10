@@ -25,12 +25,17 @@ export default function VideoBackground() {
       />
 
       {/* 动态视频层：缓慢推近，弱化循环接口的跳变 */}
+      {/* preload 用 metadata 而不是 auto：背景视频本体约 0.92 MB，
+          auto 会让它在首屏就整段开下，与 JS / CSS 争带宽；
+          poster 已经提供了完整视觉兜底，视频迟几百毫秒进场用户察觉不到，
+          而省电模式（禁用自动播放）和弱网下则直接省掉这 0.92 MB。
+          要进一步推迟可在空闲后再挂载本节点，当前先取这个无感知的默认值。 */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         poster={POSTER}
         className="bg-drift bg-video-motion absolute inset-0 h-full w-full object-cover object-center opacity-80"
       >
