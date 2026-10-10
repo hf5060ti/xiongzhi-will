@@ -75,7 +75,7 @@ const ChapterBody = ({ id }: { id: number }) => {
 };
 
 const SourceNote = () => (
-  <p className="rounded-xl border border-border/40 bg-white/[0.02] px-4 py-3 text-[11px] leading-relaxed text-muted-foreground">
+  <p className="rounded-xl border border-border/40 bg-white/[0.02] px-4 py-3 text-xs leading-relaxed text-muted-foreground">
     内容来源：《高性价比人生指南》开源项目（
     <a href={LIFE_SOURCE.repo} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2">GitHub 仓库</a>，
     MIT 协议）。雄性意志收录仅供学习参考；健康与法律等专业问题请咨询执业人士，本站不构成医疗建议或法律意见。
@@ -94,7 +94,7 @@ const ChapterView = ({ id }: { id: number }) => {
         <Link to="/life" className="inline-flex items-center gap-1.5 rounded-lg border border-border/50 bg-card/60 px-3 py-1.5 text-xs text-muted-foreground backdrop-blur-xl transition-colors hover:bg-accent/60 hover:text-foreground">
           <ArrowLeft className="h-3.5 w-3.5" /> 返回目录
         </Link>
-        <span className="rounded-full border border-primary/25 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary">
+        <span className="rounded-full border border-primary/25 bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
           {isAppendix ? `附录 ${id - 100} / ${total}` : `第 ${id} / ${total} 章`}
         </span>
       </div>
@@ -150,7 +150,7 @@ export default function LifeGuidePage() {
               <b className="text-foreground">证据等级（A / B / C）</b>与<b className="text-foreground">来源</b>，
               按自己的处境取舍，不盲从。
             </p>
-            <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px]">
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
               <span className="inline-flex items-center gap-1 rounded-full border border-primary/25 bg-primary/10 px-2.5 py-1 text-primary">
                 <Library className="h-3 w-3" /> 开源内容（MIT 协议）
               </span>
@@ -185,7 +185,7 @@ export default function LifeGuidePage() {
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-medium text-foreground group-hover:text-primary">{name}</span>
-                <span className="block text-[11px] text-muted-foreground">第 {c.id} 章</span>
+                <span className="block text-xs text-muted-foreground">第 {c.id} 章</span>
               </span>
               <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
             </Link>
@@ -214,7 +214,7 @@ export default function LifeGuidePage() {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-medium text-foreground group-hover:text-primary">{name}</span>
-                  <span className="block text-[11px] text-muted-foreground">附录 {c.id - 100}</span>
+                  <span className="block text-xs text-muted-foreground">附录 {c.id - 100}</span>
                 </span>
                 <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
               </Link>

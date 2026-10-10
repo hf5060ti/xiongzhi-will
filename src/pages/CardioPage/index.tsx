@@ -129,6 +129,7 @@ export default function CardioPage() {
         <p className="font-display text-sm font-bold uppercase tracking-[0.3em] text-primary">
           Cardio
         </p>
+        <p className="type-eyebrow text-primary/80">Cardio</p>
         <h1 className="font-display text-3xl font-extrabold tracking-wide text-foreground">
           有氧运动
         </h1>
@@ -179,7 +180,7 @@ export default function CardioPage() {
                     {it.en}
                   </span>
                   {active && (
-                    <span className="ml-auto text-[10px] uppercase tracking-wider text-primary">
+                    <span className="ml-auto text-xs uppercase tracking-wider text-primary">
                       当前
                     </span>
                   )}
@@ -195,7 +196,7 @@ export default function CardioPage() {
                   {it.metRows.map((m) => (
                     <span
                       key={m.id}
-                      className="rounded-md border border-border px-1.5 py-0.5 text-[11px] text-muted-foreground"
+                      className="rounded-md border border-border px-1.5 py-0.5 text-xs text-muted-foreground"
                     >
                       {m.label} · {m.met} MET
                     </span>
@@ -252,10 +253,10 @@ export default function CardioPage() {
                     </span>
                   </span>
                   <span className="mt-0.5 block text-xs text-muted-foreground">{m.speed}</span>
-                  <span className="mt-0.5 block text-[11px] text-primary/80">
+                  <span className="mt-0.5 block text-xs text-primary/80">
                     参考 {Math.round(m.met * CARDIO_REF_WEIGHT)} kcal/小时（{CARDIO_REF_WEIGHT}kg）
                   </span>
-                  <span className="mt-1 block text-[11px] leading-relaxed text-muted-foreground">
+                  <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
                     {m.note}
                   </span>
                 </button>
@@ -382,7 +383,7 @@ export default function CardioPage() {
                   <TableCell className="whitespace-nowrap font-medium text-foreground">
                     {m.label}
                     {active && (
-                      <span className="ml-1.5 text-[10px] uppercase tracking-wider text-primary">
+                      <span className="ml-1.5 text-xs uppercase tracking-wider text-primary">
                         当前
                       </span>
                     )}
@@ -414,7 +415,7 @@ export default function CardioPage() {
             ))}
           </ul>
         </div>
-        <p className="text-[11px] leading-relaxed text-muted-foreground/80">
+        <p className="text-xs leading-relaxed text-muted-foreground/80">
           公式为估算值：实际消耗还受坡度、地形、步幅与个体代谢影响，误差约 ±10–20%；结果为总消耗（含基础代谢），不是额外净支出。MET 取值参考 Ainsworth《体力活动纲要》(Compendium of Physical Activities, 2011) 及公开 MET 消耗对照表，按该项目常见强度区间取值，仅供估算。
         </p>
       </section>
@@ -574,7 +575,7 @@ export default function CardioPage() {
             </ul>
           </div>
 
-          <p className="text-[11px] leading-relaxed text-muted-foreground/80">
+          <p className="text-xs leading-relaxed text-muted-foreground/80">
             供能比例为运动生理学常见参考区间（低强度稳态脂肪供能约 60%–70%，随强度升高而下降），实际数值受配速、坡度、体能水平、饮食与空腹状态影响，个体差异明显；以上为一般性说明，不作为医疗建议。
           </p>
         </section>

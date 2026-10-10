@@ -80,7 +80,7 @@ export default function DietSection({ diet }: DietSectionProps) {
                   <p className="font-display text-base font-bold leading-none text-foreground sm:text-2xl">
                     {diet.macro[m.key]}%
                   </p>
-                  <p className="mt-1 flex flex-col items-center justify-center gap-0.5 text-[10px] text-muted-foreground sm:flex-row sm:gap-1.5 sm:text-xs">
+                  <p className="mt-1 flex flex-col items-center justify-center gap-0.5 text-xs text-muted-foreground sm:flex-row sm:gap-1.5 sm:text-xs">
                     <span className={cn('h-2 w-2 rounded-full', m.className)} />
                     {m.label}
                   </p>
@@ -112,7 +112,7 @@ export default function DietSection({ diet }: DietSectionProps) {
                       >
                         {c.value}
                       </p>
-                      <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">
+                      <p className="mt-1 text-xs text-muted-foreground sm:text-xs">
                         {c.label}
                         {c.unit && <span className="ml-0.5 opacity-70">{c.unit}</span>}
                       </p>
@@ -120,7 +120,7 @@ export default function DietSection({ diet }: DietSectionProps) {
                   ))}
                 </div>
                 {targets.kcalMax > targets.kcalMin && (
-                  <p className="text-[11px] leading-relaxed text-muted-foreground">
+                  <p className="text-xs leading-relaxed text-muted-foreground">
                     热量目标区间{' '}
                     <span className="font-semibold text-foreground">
                       {targets.kcalRangeText} kcal
@@ -129,7 +129,7 @@ export default function DietSection({ diet }: DietSectionProps) {
                     {targets.kcal} kcal 计算。
                   </p>
                 )}
-                <p className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[11px] leading-relaxed text-muted-foreground">
+                <p className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs leading-relaxed text-muted-foreground">
                   <Info
                     className={cn(
                       'h-3.5 w-3.5 shrink-0',

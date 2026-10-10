@@ -30,11 +30,13 @@ export default function HeroSection() {
             <br />
             决定你的练法。
           </h1>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-foreground/80">
+          <p className="mt-5 max-w-md text-lg leading-relaxed text-foreground/85">
             选定训练目标与饮食方案，雄性意志为你生成对应的训练计划与饮食建议。像格斯穿过尸山血海一样，目标明确，执行彻底。
           </p>
-          <p className="mt-4 max-w-md rounded-xl border border-primary/40 bg-primary/10 px-3.5 py-2.5 text-xs leading-relaxed text-primary-foreground/95 backdrop-blur-md">
-            <b className="font-semibold">本站只提供健康自然的健身方式</b>，不提供任何极端训练或药物方案；请遵守你所在国家 / 地区的法律法规。
+          {/* 免责卡：加粗成句 + 提到 14px，这是必须被读到的一段，不能让它在小字里沉掉 */}
+          <p className="mt-4 max-w-md rounded-xl border border-primary/40 bg-primary/10 px-4 py-3 text-sm leading-relaxed text-primary-foreground/95 backdrop-blur-md">
+            <b className="font-semibold text-primary">本站只提供健康自然的健身方式</b>
+            <span className="text-foreground/85">，不提供任何极端训练或药物方案；请遵守你所在国家 / 地区的法律法规。</span>
           </p>
 
           {/* AI 健身小助手入口：免责卡下方、核心理念上方，一键进对话 */}
@@ -55,20 +57,23 @@ export default function HeroSection() {
           </button>
 
           {/* 核心理念 */}
-          <div className="glass mt-5 max-w-lg space-y-2.5 rounded-2xl p-4 sm:p-5">
-            <p className="text-sm leading-relaxed text-foreground/90">
-              健身只是生活的调味剂。<b className="text-primary">一切运动健身，都是为了服务于更好的生活，而不是被健身绑架。</b>
+          <div className="glass mt-5 max-w-lg space-y-3 rounded-2xl p-5 sm:p-6">
+            <p className="type-eyebrow text-primary/70">Core belief</p>
+            <p className="text-base leading-relaxed text-foreground/90">
+              健身只是生活的调味剂。
+              <b className="text-primary">一切运动健身，都是为了服务于更好的生活，而不是被健身绑架。</b>
             </p>
-            <p className="text-sm leading-relaxed text-foreground/90">
+            <p className="text-base leading-relaxed text-foreground/85">
               别熬夜——熬夜升高皮质醇，压制雄性激素，练了也白练。
             </p>
-            <p className="text-sm leading-relaxed text-foreground/90">
+            <p className="text-base leading-relaxed text-foreground/85">
               真正的力量，不是你多能打、肌肉多大。
             </p>
-            <p className="font-display text-base font-bold leading-relaxed text-primary">
+            {/* 收尾这句是全站的精神落点，单独放大并留出上下呼吸空间 */}
+            <p className="font-display text-xl font-bold leading-snug text-primary">
               是你面对生活的压力，能否被击倒再站起来。
             </p>
-            <p className="text-sm leading-relaxed text-foreground/90">
+            <p className="text-base leading-relaxed text-foreground/85">
               像一个斗志昂扬的战士一样，去面对，去承担。
             </p>
           </div>

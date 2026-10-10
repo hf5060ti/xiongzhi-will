@@ -49,11 +49,11 @@ export default function GoalPicker({ selected, onSelect }: GoalPickerProps) {
                 <span className="block font-display text-base font-bold leading-tight tracking-wide text-foreground">
                   {goal.name}
                 </span>
-                <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-[0.06em] text-muted-foreground">
+                <span className="mt-0.5 block text-xs font-medium uppercase tracking-[0.06em] text-muted-foreground">
                   {goal.en}
                 </span>
               </span>
-              <span className="block text-[11px] leading-snug text-muted-foreground">{goal.tagline}</span>
+              <span className="block text-xs leading-snug text-muted-foreground">{goal.tagline}</span>
             </button>
           );
         })}

@@ -91,7 +91,7 @@ export default function FaqPage() {
 
       {/* FAQ 折叠列表 */}
       <section className="space-y-3">
-        <h2 className="flex items-center gap-2 font-display text-lg font-bold text-foreground sm:text-xl">
+        <h2 className="flex items-center gap-2 font-display text-xl font-bold text-foreground sm:text-xl">
           <HelpCircle className="h-4 w-4 text-primary" />
           常见问题
         </h2>
@@ -100,7 +100,7 @@ export default function FaqPage() {
             <Card key={i} className="border-border/50 bg-card/60 backdrop-blur-xl">
               <CardContent className="p-3 sm:p-5">
                 <div className="flex items-start gap-2.5">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[11px] font-bold text-primary">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-xs font-bold text-primary">
                     {i + 1}
                   </span>
                   <div>

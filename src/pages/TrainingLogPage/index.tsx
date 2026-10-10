@@ -11,6 +11,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { useNow } from '@/hooks/useNow';
+import { playFinishChime } from '@/lib/chime';
+import { defaultRestSeconds } from '@/lib/rest-timer';
 import { BarChart3, CalendarDays, Check, Clock, Dumbbell, Download, Eraser, Flame, HeartPulse, Medal, Moon, Pencil, Play, Plus, Save, Scale, Share2, SkipForward, Trash2, TrendingUp, Undo2, X } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Badge } from '@/components/ui/badge';
@@ -625,7 +627,7 @@ export default function TrainingLogPage() {
       </div>
 
       {/* 自动保存提示（游戏存档式：数据只存在本机，关页面不丢） */}
-      <div className="flex flex-wrap items-center gap-2 rounded-md border border-primary/25 bg-primary/5 px-3 py-2 text-[11px] text-muted-foreground">
+      <div className="flex flex-wrap items-center gap-2 rounded-md border border-primary/25 bg-primary/5 px-3 py-2 text-xs text-muted-foreground">
         <Save className="h-3.5 w-3.5 shrink-0 text-primary" />
         <span>
           每条日志保存后自动写入本机浏览器（localStorage），刷新、关页面、重启都不会丢；换设备或清理浏览器前，去首页「数据备份」导出一次即可随身带走。
@@ -643,7 +645,7 @@ export default function TrainingLogPage() {
             type="button"
             variant="outline"
             size="sm"
-            className="h-7 gap-1.5 px-2.5 text-[11px]"
+            className="h-7 gap-1.5 px-2.5 text-xs"
             onClick={() => {
               const url = generateShareCard();
               if (!url) {
@@ -659,50 +661,50 @@ export default function TrainingLogPage() {
         </div>
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
           <Card>
-            <CardContent className="p-3">
-              <p className="text-[10px] text-muted-foreground">总训练次数</p>
-              <p className="mt-0.5 font-display text-lg font-bold text-foreground">{stats.totalSessions}</p>
-              <p className="text-[10px] text-muted-foreground">条日志</p>
+            <CardContent className="p-3.5">
+              <p className="type-eyebrow text-muted-foreground">总训练次数</p>
+              <p className="mt-1.5 font-display text-3xl font-bold leading-none text-foreground tabular-nums">{stats.totalSessions}</p>
+              <p className="type-meta mt-1 text-muted-foreground">条日志</p>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-3">
-              <p className="text-[10px] text-muted-foreground">累计容量</p>
-              <p className="mt-0.5 font-display text-lg font-bold text-foreground">
+            <CardContent className="p-3.5">
+              <p className="type-eyebrow text-muted-foreground">累计容量</p>
+              <p className="mt-1.5 font-display text-3xl font-bold leading-none text-foreground tabular-nums">
                 {stats.totalVolume > 0 ? Math.round(stats.totalVolume).toLocaleString() : '—'}
               </p>
-              <p className="text-[10px] text-muted-foreground">kg · 总吨位</p>
+              <p className="type-meta mt-1 text-muted-foreground">kg · 总吨位</p>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-3">
-              <p className="text-[10px] text-muted-foreground">累计组数</p>
-              <p className="mt-0.5 font-display text-lg font-bold text-foreground">{stats.totalSets}</p>
-              <p className="text-[10px] text-muted-foreground">有效组</p>
+            <CardContent className="p-3.5">
+              <p className="type-eyebrow text-muted-foreground">累计组数</p>
+              <p className="mt-1.5 font-display text-3xl font-bold leading-none text-foreground tabular-nums">{stats.totalSets}</p>
+              <p className="type-meta mt-1 text-muted-foreground">有效组</p>
             </CardContent>
           </Card>
           <Card className="border-primary/30">
-            <CardContent className="p-3">
-              <p className="text-[10px] text-muted-foreground">连续训练</p>
-              <p className="mt-0.5 font-display text-lg font-bold text-primary">{stats.streak}</p>
-              <p className="text-[10px] text-muted-foreground">天 · 当前连击</p>
+            <CardContent className="p-3.5">
+              <p className="type-eyebrow text-muted-foreground">连续训练</p>
+              <p className="mt-1.5 font-display text-3xl font-bold leading-none text-primary tabular-nums">{stats.streak}</p>
+              <p className="type-meta mt-1 text-muted-foreground">天 · 当前连击</p>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-3">
-              <p className="text-[10px] text-muted-foreground">最长连续</p>
-              <p className="mt-0.5 font-display text-lg font-bold text-foreground">{stats.longest}</p>
-              <p className="text-[10px] text-muted-foreground">天 · 生涯纪录</p>
+            <CardContent className="p-3.5">
+              <p className="type-eyebrow text-muted-foreground">最长连续</p>
+              <p className="mt-1.5 font-display text-3xl font-bold leading-none text-foreground tabular-nums">{stats.longest}</p>
+              <p className="type-meta mt-1 text-muted-foreground">天 · 生涯纪录</p>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-3">
-              <p className="text-[10px] text-muted-foreground">动作 PR</p>
-              <p className="mt-0.5 flex items-center gap-1 font-display text-lg font-bold text-foreground">
+            <CardContent className="p-3.5">
+              <p className="type-eyebrow text-muted-foreground">动作 PR</p>
+              <p className="mt-1.5 flex items-center gap-1 font-display text-3xl font-bold leading-none text-foreground tabular-nums">
                 <Medal className="h-4 w-4 text-primary" />
                 {stats.prCount}
               </p>
-              <p className="text-[10px] text-muted-foreground">个动作留过最佳 1RM</p>
+              <p className="type-meta mt-1 text-muted-foreground">个动作留过最佳 1RM</p>
             </CardContent>
           </Card>
         </div>
@@ -750,26 +752,26 @@ export default function TrainingLogPage() {
                       key={lift.key}
                       className="rounded-lg border border-border bg-card p-3 text-center"
                     >
-                      <p className="text-[11px] text-muted-foreground">{lift.label}</p>
+                      <p className="text-xs text-muted-foreground">{lift.label}</p>
                       <p className="mt-1 font-display text-2xl font-bold text-primary">
                         {Math.round(best!.oneRm)}
                         <span className="ml-0.5 text-xs font-normal text-muted-foreground">kg</span>
                       </p>
-                      <p className="mt-0.5 text-[10px] text-muted-foreground">
+                      <p className="mt-0.5 text-xs text-muted-foreground">
                         {best!.weightKg}kg × {best!.reps} 次 · {fmtDate(best!.date)}
                       </p>
                       {diff != null && diff > 0 ? (
-                        <p className="mt-1 inline-block rounded bg-green-500/15 px-1.5 py-0.5 text-[10px] text-green-400">
+                        <p className="mt-1 inline-block rounded bg-green-500/15 px-1.5 py-0.5 text-xs text-green-400">
                           +{Math.round(diff)} kg 新 PR
                         </p>
                       ) : (
-                        <p className="mt-1 text-[10px] text-muted-foreground">保持中</p>
+                        <p className="mt-1 text-xs text-muted-foreground">保持中</p>
                       )}
                     </div>
                   );
                 })}
               </div>
-              <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
                 1RM 用 Epley 公式估算（重量 × (1 + 次数/30)），非真实极限试举。
                 PR 墙自动从训练日志里取每个力量动作的最高估算 1RM；想刷新纪录，就在训练里用更重的重量或同重量多做一次。
               </p>
@@ -790,7 +792,7 @@ export default function TrainingLogPage() {
               <span className="font-display text-2xl font-bold text-foreground">{weekSessions}</span>
               <span className="text-xs text-muted-foreground">天有训练 · 共 {weekSets} 组</span>
             </div>
-            <p className="mt-1 text-[11px] text-muted-foreground">按记录条数统计，一天多条算同一天</p>
+            <p className="mt-1 text-xs text-muted-foreground">按记录条数统计，一天多条算同一天</p>
           </CardContent>
         </Card>
 
@@ -806,7 +808,7 @@ export default function TrainingLogPage() {
               </span>
               <span className="text-xs text-muted-foreground">kg（重量 × 次数）</span>
             </div>
-            <p className="mt-1 text-[11px] text-muted-foreground">自重动作不计入容量</p>
+            <p className="mt-1 text-xs text-muted-foreground">自重动作不计入容量</p>
           </CardContent>
         </Card>
 
@@ -824,7 +826,7 @@ export default function TrainingLogPage() {
                     style={{ height: d.count > 0 ? 26 : 10 }}
                     title={`${d.label}：${d.count} 条 · 容量 ${Math.round(d.volume)} kg`}
                   />
-                  <span className="text-[10px] text-muted-foreground">{d.label}</span>
+                  <span className="text-xs text-muted-foreground">{d.label}</span>
                 </div>
               ))}
             </div>
@@ -841,7 +843,7 @@ export default function TrainingLogPage() {
               训练容量趋势（近 8 周）
             </p>
             {weekVolume > 0 && (
-              <span className="text-[11px] text-muted-foreground">
+              <span className="text-xs text-muted-foreground">
                 本周 {weekVolume.toLocaleString()} kg · {weekSessions} 天
               </span>
             )}
@@ -881,7 +883,7 @@ export default function TrainingLogPage() {
                   </BarChart>
                 </ResponsiveContainer>
               </div>
-              <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 容量 = 重量 × 次数 求和（自重动作不计入）。逐周对比能看出训练量是否在「渐进上升」；若连续 2–3
                 周下滑且伴疲劳，可能训练过度，考虑减载一周。
               </p>
@@ -911,7 +913,7 @@ export default function TrainingLogPage() {
               const sign = diff > 0 ? '+' : '';
               const color = diff > 0.3 ? 'text-red-400' : diff < -0.3 ? 'text-green-400' : 'text-muted-foreground';
               return (
-                <span className={cn('text-[11px]', color)}>
+                <span className={cn('text-xs', color)}>
                   {first.weight} → {last.weight} kg（{sign}{diff} kg）
                 </span>
               );
@@ -997,7 +999,7 @@ export default function TrainingLogPage() {
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
-                <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                   体重按天看会抖（水分、排便、碳水储存都影响），看周平均趋势才有意义。
                   增肌期体重缓慢上升 + 容量同步上升 = 有效；如果体重涨了但容量没涨，多半是脂肪。
                 </p>
@@ -1059,7 +1061,7 @@ export default function TrainingLogPage() {
           })()}
           <div className="grid grid-cols-3 gap-2">
             <div>
-              <Label className="text-[11px] text-muted-foreground">昨晚睡眠(h)</Label>
+              <Label className="text-xs text-muted-foreground">昨晚睡眠(h)</Label>
               <Input
                 inputMode="decimal"
                 placeholder="7.5"
@@ -1069,7 +1071,7 @@ export default function TrainingLogPage() {
               />
             </div>
             <div>
-              <Label className="text-[11px] text-muted-foreground">酸痛(1-5)</Label>
+              <Label className="text-xs text-muted-foreground">酸痛(1-5)</Label>
               <Input
                 inputMode="numeric"
                 placeholder="2"
@@ -1079,7 +1081,7 @@ export default function TrainingLogPage() {
               />
             </div>
             <div>
-              <Label className="text-[11px] text-muted-foreground">压力(1-5)</Label>
+              <Label className="text-xs text-muted-foreground">压力(1-5)</Label>
               <Input
                 inputMode="numeric"
                 placeholder="2"
@@ -1118,7 +1120,7 @@ export default function TrainingLogPage() {
             <Save className="mr-1 h-3.5 w-3.5" />
             记录今天
           </Button>
-          <p className="text-[11px] leading-relaxed text-muted-foreground">
+          <p className="text-xs leading-relaxed text-muted-foreground">
             恢复状态只存你浏览器本地。连续 3 天睡眠 &lt; 6h 或压力 ≥ 4 时，这里会主动提示你今天减量或休息——硬冲 PR 的代价往往是下周躺平一周。
           </p>
         </CardContent>
@@ -1132,7 +1134,7 @@ export default function TrainingLogPage() {
               <p className="text-sm font-medium text-foreground">
                 {editingId ? '编辑训练记录' : '录入今天的训练'}
               </p>
-              <p className="mt-0.5 text-[11px] text-muted-foreground">
+              <p className="mt-0.5 text-xs text-muted-foreground">
                 {weightKg > 0
                   ? `体重快照：${weightKg} kg（写入能力追踪时按此折算倍数）`
                   : '尚未录入体重：力量动作仍可记录，但无法写入能力追踪（力量项按体重倍数判级）'}
@@ -1240,7 +1242,7 @@ export default function TrainingLogPage() {
                               >
                                 <span className="text-foreground">{m.name}</span>
                                 {m.alias && m.alias !== m.name && (
-                                  <span className="truncate text-[11px] text-muted-foreground">{m.alias}</span>
+                                  <span className="truncate text-xs text-muted-foreground">{m.alias}</span>
                                 )}
                               </button>
                             </li>
@@ -1283,7 +1285,7 @@ export default function TrainingLogPage() {
                     return (
                       <div
                         className={cn(
-                          'rounded-md border px-2.5 py-1.5 text-[11px]',
+                          'rounded-md border px-2.5 py-1.5 text-xs',
                           progressed
                             ? 'border-primary/30 bg-primary/10 text-primary'
                             : sameAsPrev && prevTwoSame
@@ -1302,13 +1304,13 @@ export default function TrainingLogPage() {
                           </span>
                         )}
                         {tip && (
-                          <p className="mt-0.5 text-[11px] text-muted-foreground">{tip}</p>
+                          <p className="mt-0.5 text-xs text-muted-foreground">{tip}</p>
                         )}
                         {best && best.weightKg && best.reps && (() => {
                           const advice = getOverloadAdvice(ex.name, [[{ weightKg: best.weightKg, reps: best.reps }]]);
                           if (!advice || !advice.nextWeightKg) return null;
                           return (
-                            <p className="mt-1 text-[11px] font-medium text-primary">
+                            <p className="mt-1 text-xs font-medium text-primary">
                               下次建议：{advice.nextWeightKg}kg × {advice.nextReps} 次
                             </p>
                           );
@@ -1320,7 +1322,7 @@ export default function TrainingLogPage() {
                   <div className="space-y-1.5">
                     {ex.sets.map((set, setIdx) => (
                       <div key={setIdx} className="flex flex-wrap items-center gap-2">
-                        <span className="w-10 text-[11px] text-muted-foreground">第 {setIdx + 1} 组</span>
+                        <span className="w-10 text-xs text-muted-foreground">第 {setIdx + 1} 组</span>
                         <Input
                           type="number"
                           min={0}
@@ -1357,7 +1359,7 @@ export default function TrainingLogPage() {
                       加一组
                     </Button>
                     {lift && best && (
-                      <span className="text-[11px] text-muted-foreground">
+                      <span className="text-xs text-muted-foreground">
                         估算 1RM {best.oneRm} kg（{best.weightKg} kg × {best.reps} 次 ·
                         {weightKg > 0 ? ` ${(Math.round((best.oneRm / weightKg) * 100) / 100).toFixed(2)}× 体重` : ' 填体重后算倍数'}）
                       </span>
@@ -1388,7 +1390,7 @@ export default function TrainingLogPage() {
               {editingId ? '保存修改' : '保存训练记录'}
             </Button>
           </div>
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             一组至少填「次数」；力量动作的重量越接近 1–8 次，1RM 估算越准。当天有训练记录后，轻盈计划「完成训练」会自动打勾。
           </p>
         </CardContent>
@@ -1400,7 +1402,7 @@ export default function TrainingLogPage() {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
               <p className="text-sm font-medium text-foreground">历史记录（{logs.length} 条）</p>
-              <p className="mt-0.5 text-[11px] text-muted-foreground">
+              <p className="mt-0.5 text-xs text-muted-foreground">
                 点铅笔载入表单修改，点垃圾桶按条删除；命中力量五动作的记录可一键写入 / 撤销能力追踪。
               </p>
             </div>
@@ -1444,14 +1446,14 @@ export default function TrainingLogPage() {
                         <span className="text-sm font-medium text-foreground">{fmtDate(log.date)}</span>
                         {log.dayLabel && <Badge variant="secondary">{log.dayLabel}</Badge>}
                         {sameDayCount > 1 && (
-                          <span className="text-[11px] text-muted-foreground">同日第 {sameDayIndex} 条</span>
+                          <span className="text-xs text-muted-foreground">同日第 {sameDayIndex} 条</span>
                         )}
-                        <span className="text-[11px] text-muted-foreground">
+                        <span className="text-xs text-muted-foreground">
                           {log.exercises.length} 个动作 · {setCount} 组
                           {volume > 0 ? ` · 容量 ${Math.round(volume).toLocaleString()} kg` : ' · 自重 / 无重量'}
                         </span>
                         {log.durationMin != null && (
-                          <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                          <span className="flex items-center gap-1 text-xs text-muted-foreground">
                             <Clock className="h-3 w-3" /> {log.durationMin} 分钟
                           </span>
                         )}
@@ -1477,7 +1479,7 @@ export default function TrainingLogPage() {
                     </div>
 
                     {log.note && (
-                      <p className="mt-2 text-[11px] italic leading-relaxed text-muted-foreground">「{log.note}」</p>
+                      <p className="mt-2 text-xs italic leading-relaxed text-muted-foreground">「{log.note}」</p>
                     )}
 
                     <div className="mt-2 space-y-1.5">
@@ -1505,7 +1507,7 @@ export default function TrainingLogPage() {
                               {vsPrev && (
                                 <span
                                   className={cn(
-                                    'rounded-md border px-1.5 py-0.5 text-[10px]',
+                                    'rounded-md border px-1.5 py-0.5 text-xs',
                                     vsPrev.tone === 'good'
                                       ? 'border-primary/50 bg-primary/10 text-primary'
                                       : vsPrev.tone === 'flat'
@@ -1525,7 +1527,7 @@ export default function TrainingLogPage() {
                               )}
                             </div>
                             {lift && best && (
-                              <div className="flex flex-wrap items-center gap-2 text-[11px]">
+                              <div className="flex flex-wrap items-center gap-2 text-xs">
                                 <span className="text-muted-foreground">
                                   1RM {best.oneRm} kg
                                   {weightKg > 0
@@ -1549,7 +1551,7 @@ export default function TrainingLogPage() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    className="h-6 px-2 text-[11px]"
+                                    className="h-6 px-2 text-xs"
                                     onClick={() => writeToTracker(log, lift.label, best.oneRm, best.reps)}
                                   >
                                     写入能力追踪
@@ -1650,43 +1652,41 @@ function WorkoutRunner({
   const [idx, setIdx] = useState(0);
   const [weight, setWeight] = useState(entries[0]?.suggestedWeight ?? '');
   const [reps, setReps] = useState(entries[0]?.suggestedReps ?? '');
-  const [resting, setResting] = useState(false);
-  const [restLeft, setRestLeft] = useState(0);
+  // 休息以「结束时间戳」为准，而不是每秒累减：
+  // 手机锁屏、切到后台时浏览器的 setInterval 会被节流甚至整个暂停，累减会越走越慢，
+  // 结果是「说好休息 3 分钟，回来看已经过去 5 分钟」，休息时长完全失控。
+  // 存 endsAt 再拿当前时间相减，无论中间被节流多久，读到的都是真实剩余量。
+  const [restEndsAt, setRestEndsAt] = useState<number | null>(null);
+  const [restSeconds, setRestSeconds] = useState(0);
+  const [now, setNow] = useState(() => Date.now());
   const resultsRef = useRef<RunnerResult[]>([]);
-  const timerRef = useRef<number | null>(null);
 
   const current = entries[idx];
-  const restTotal = current.compound ? 180 : 120;
-
-  // 剩余秒数的镜像：interval 回调要读最新值，又不能把 restLeft 放进依赖（否则每秒重建定时器）
-  const restLeftRef = useRef(0);
-  useEffect(() => {
-    restLeftRef.current = restLeft;
-  }, [restLeft]);
+  const resting = restEndsAt !== null;
+  const restLeft = resting ? Math.max(0, Math.ceil((restEndsAt - now) / 1000)) : 0;
 
   // 定时器回调里要调最新的 goNext（它闭包着当前 idx / entries），统一走 ref
   const goNextRef = useRef<() => void>(() => {});
 
+  // 只在休息期间起 tick：250ms 让「剩余 1 秒」不会卡住一整秒不动。
+  // 归零收尾放在定时器回调里（先响一声再进下一组，原先是静默跳组），
+  // effect 体内同步 setState 会触发级联渲染，项目 lint 是 --max-warnings=0。
   useEffect(() => {
-    if (!resting) return;
-    timerRef.current = window.setInterval(() => {
-      const left = restLeftRef.current;
-      if (left <= 1) {
-        if (timerRef.current) window.clearInterval(timerRef.current);
-        setRestLeft(0);
-        // 倒计时归零直接进下一组：不再靠「effect 里监听 restLeft === 0 再 setState」触发
-        goNextRef.current();
-        return;
-      }
-      setRestLeft(left - 1);
-    }, 1000);
-    return () => {
-      if (timerRef.current) window.clearInterval(timerRef.current);
-    };
-  }, [resting]);
+    if (restEndsAt === null) return;
+    const id = window.setInterval(() => {
+      const t = Date.now();
+      setNow(t);
+      if (t < restEndsAt) return;
+      window.clearInterval(id);
+      setRestEndsAt(null);
+      playFinishChime();
+      goNextRef.current();
+    }, 250);
+    return () => window.clearInterval(id);
+  }, [restEndsAt]);
 
   const goNext = () => {
-    setResting(false);
+    setRestEndsAt(null);
     const ni = idx + 1;
     if (ni >= entries.length) {
       onFinish(resultsRef.current);
@@ -1707,8 +1707,18 @@ function WorkoutRunner({
       onFinish(resultsRef.current);
       return;
     }
-    setRestLeft(restTotal);
-    setResting(true);
+    // 与工具页的独立计时器共用同一套口径（复合 3 分 / 孤立 2 分起步）
+    const secs = defaultRestSeconds(current.compound ? 'compound' : 'isolation');
+    setRestSeconds(secs);
+    setNow(Date.now());
+    setRestEndsAt(Date.now() + secs * 1000);
+  };
+
+  /** 临时加时：今天状态差、或刚被人搭话打断，多歇一会 */
+  const addRest = (sec: number) => {
+    setRestEndsAt((v) => (v === null ? v : v + sec * 1000));
+    setRestSeconds((v) => v + sec);
+    setNow(Date.now());
   };
 
   const mm = String(Math.floor(restLeft / 60)).padStart(2, '0');
@@ -1730,12 +1740,12 @@ function WorkoutRunner({
               第 {idx + 1} / {entries.length} 组
             </p>
             <h3 className="mt-2 text-center font-display text-2xl font-bold text-foreground">{current.exerciseName}</h3>
-            <p className="mt-1 text-center text-[11px] text-muted-foreground">
+            <p className="mt-1 text-center text-xs text-muted-foreground">
               {current.compound ? '复合动作 · 建议休息约 3 分钟' : '孤立动作 · 建议休息约 2 分钟'}
             </p>
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div>
-                <label className="text-[11px] text-muted-foreground">重量 kg</label>
+                <label className="text-xs text-muted-foreground">重量 kg</label>
                 <input
                   value={weight}
                   onChange={(e) => setWeight(e.target.value)}
@@ -1745,7 +1755,7 @@ function WorkoutRunner({
                 />
               </div>
               <div>
-                <label className="text-[11px] text-muted-foreground">次数</label>
+                <label className="text-xs text-muted-foreground">次数</label>
                 <input
                   value={reps}
                   onChange={(e) => setReps(e.target.value)}
@@ -1761,7 +1771,7 @@ function WorkoutRunner({
             >
               完成本组
             </button>
-            <p className="mt-3 text-center text-[10px] text-muted-foreground">
+            <p className="mt-3 text-center text-xs text-muted-foreground">
               自然训练者需充分恢复磷酸原系统，避免下一组在疲劳状态下开始
             </p>
           </>
@@ -1771,16 +1781,30 @@ function WorkoutRunner({
               <Check className="h-10 w-10 text-[#EF4444]" />
             </div>
             <h3 className="mt-4 font-display text-3xl font-bold text-[#EF4444]">完成！</h3>
-            <p className="mt-2 text-sm text-muted-foreground">休息一下，准备下一组</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {current.compound ? '复合动作，休息 3 分钟起步' : '孤立动作，休息 2 分钟起步'}
+            </p>
             <p className="mt-4 font-display text-5xl font-bold tabular-nums text-foreground">
               {mm}:{ss}
             </p>
-            <button
-              onClick={goNext}
-              className="mt-6 inline-flex items-center gap-1.5 rounded-xl border border-border px-4 py-2.5 text-sm text-foreground transition-colors hover:bg-accent"
-            >
-              <SkipForward className="h-4 w-4" /> 跳过休息，下一组
-            </button>
+            <div className="mt-5 flex items-center justify-center gap-2">
+              <button
+                onClick={() => addRest(30)}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-border px-4 py-2.5 text-sm text-foreground transition-colors hover:bg-accent"
+              >
+                <Plus className="h-4 w-4" /> 加 30 秒
+              </button>
+              <button
+                onClick={goNext}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-border px-4 py-2.5 text-sm text-foreground transition-colors hover:bg-accent"
+              >
+                <SkipForward className="h-4 w-4" /> 跳过休息
+              </button>
+            </div>
+            <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
+              本组共 {(restSeconds / 60).toFixed(1)} 分钟 · 归零会响一声并自动进入下一组。
+              锁屏或切到别的应用也不会走慢——剩余时间按真实时刻计算。
+            </p>
           </div>
         )}
       </div>

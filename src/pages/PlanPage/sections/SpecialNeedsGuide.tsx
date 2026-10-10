@@ -73,7 +73,7 @@ export default function SpecialNeedsGuide() {
         </p>
       </div>
 
-      <p className="flex items-start gap-2 rounded-xl border border-warning/40 bg-warning/5 p-3 text-[11px] leading-relaxed text-muted-foreground">
+      <p className="flex items-start gap-2 rounded-xl border border-warning/40 bg-warning/5 p-3 text-xs leading-relaxed text-muted-foreground">
         <ShieldAlert className="mt-0.5 h-3.5 w-3.5 shrink-0 text-warning" />
         <span>
           以上为通用建议。具体训练方案请咨询医生、物理治疗师或康复教练。有伤病时，先治伤再训练。

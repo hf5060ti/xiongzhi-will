@@ -178,7 +178,7 @@ export default function HomePage() {
           <Card className="border-primary/30 bg-primary/5 backdrop-blur-xl">
             <CardContent className="flex flex-col gap-3 p-4 sm:p-5">
               <div>
-                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
+                <h3 className="flex items-center gap-2 font-display text-xl font-bold text-foreground">
                   <TrendingDown className="h-4 w-4 text-primary" />
                   轻盈计划
                 </h3>
@@ -197,7 +197,7 @@ export default function HomePage() {
           <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
             <CardContent className="flex flex-col gap-3 p-4 sm:p-5">
               <div>
-                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
+                <h3 className="flex items-center gap-2 font-display text-xl font-bold text-foreground">
                   <Footprints className="h-4 w-4 text-primary" />
                   有氧运动
                 </h3>
@@ -216,7 +216,7 @@ export default function HomePage() {
           <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
             <CardContent className="flex flex-col gap-3 p-4 sm:p-5">
               <div>
-                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
+                <h3 className="flex items-center gap-2 font-display text-xl font-bold text-foreground">
                   <Dumbbell className="h-4 w-4 text-primary" />
                   自重力量
                 </h3>
@@ -235,7 +235,7 @@ export default function HomePage() {
           <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
             <CardContent className="flex flex-col gap-3 p-4 sm:p-5">
               <div>
-                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
+                <h3 className="flex items-center gap-2 font-display text-xl font-bold text-foreground">
                   <Soup className="h-4 w-4 text-primary" />
                   胃部
                 </h3>
@@ -253,18 +253,18 @@ export default function HomePage() {
           {/* 数据备份 */}
           <Card className="border-border/50 bg-card/60 backdrop-blur-xl">
             <CardContent className="p-5">
-              <h3 className="font-display text-lg font-bold text-foreground">数据备份</h3>
+              <h3 className="font-display text-xl font-bold text-foreground">数据备份</h3>
               <p className="mt-1 text-xs text-muted-foreground">
                 所有数据存在你自己的浏览器里。换浏览器或清理缓存前，先导出备份。
               </p>
               {backupStale ? (
-                <p className="mt-2 rounded-md border border-warning/50 bg-warning/5 px-2.5 py-1.5 text-[11px] leading-relaxed text-warning">
+                <p className="mt-2 rounded-md border border-warning/50 bg-warning/5 px-2.5 py-1.5 text-xs leading-relaxed text-warning">
                   {backupDays == null
                     ? '还没导出过备份：清一次浏览器缓存数据就全没了，建议现在就导出一份。'
                     : `距上次备份已 ${backupDays} 天：数据越攒越多，建议尽快再导出一份。`}
                 </p>
               ) : (
-                <p className="mt-2 text-[11px] text-muted-foreground">
+                <p className="mt-2 text-xs text-muted-foreground">
                   {backupDays === 0 ? '今天已备份过，数据是新的。' : `距上次备份 ${backupDays} 天。`}
                 </p>
               )}

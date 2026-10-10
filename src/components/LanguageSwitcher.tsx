@@ -36,7 +36,7 @@ export default function LanguageSwitcher({ compact }: { compact?: boolean }) {
         }
       >
         <Globe className={compact ? 'h-5 w-5' : 'h-5 w-5'} strokeWidth={1.8} />
-        {!compact && <span className="text-[10px] leading-none">语言</span>}
+        {!compact && <span className="text-xs leading-none">语言</span>}
       </button>
       {open && (
         <div
@@ -46,8 +46,8 @@ export default function LanguageSwitcher({ compact }: { compact?: boolean }) {
               : 'absolute left-full top-0 z-50 ml-3 w-44 rounded-xl border border-border/60 bg-popover/95 p-1.5 shadow-2xl backdrop-blur-2xl'
           }
         >
-          <p className="px-2 py-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">Language</p>
-          <p className="px-2 pb-1.5 text-[10px] leading-relaxed text-muted-foreground">{t('lang_scope')}</p>
+          <p className="px-2 py-1.5 text-xs uppercase tracking-wider text-muted-foreground">Language</p>
+          <p className="px-2 pb-1.5 text-xs leading-relaxed text-muted-foreground">{t('lang_scope')}</p>
           {LANGS.map((l) => (
             <button
               key={l.code}

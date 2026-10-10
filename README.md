@@ -85,7 +85,7 @@
 
 ```bash
 git clone https://gitee.com/xiongzhi_project/masculine-consciousness.git
-cd xiongzhi-will
+cd masculine-consciousness
 npm install
 npm run dev          # 开发：http://localhost:26666
 npm run typecheck    # 类型检查

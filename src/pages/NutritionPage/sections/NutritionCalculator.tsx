@@ -150,13 +150,13 @@ export default function NutritionCalculator({
                         className="mt-1 bg-background/50"
                       />
                       {matchedServing && (
-                        <p className="mt-1 text-[11px] text-primary">
+                        <p className="mt-1 text-xs text-primary">
                           = {matchedServing.label}（{matchedServing.grams}g）
                         </p>
                       )}
                       {servings.length > 0 && (
                         <div className="mt-2">
-                          <p className="text-[11px] text-muted-foreground">或按常见份量快速填入</p>
+                          <p className="text-xs text-muted-foreground">或按常见份量快速填入</p>
                           <div className="mt-1 flex flex-wrap justify-center gap-1.5">
                             {servings.map((s) => {
                               const on = matchedServing?.label === s.label;
@@ -166,7 +166,7 @@ export default function NutritionCalculator({
                                   type="button"
                                   onClick={() => onWeightChange(String(s.grams))}
                                   className={cn(
-                                    'rounded-full border px-2 py-0.5 text-[11px] font-medium transition-colors',
+                                    'rounded-full border px-2 py-0.5 text-xs font-medium transition-colors',
                                     on
                                       ? 'border-primary bg-primary/15 text-primary'
                                       : 'border-border/60 bg-background/40 text-muted-foreground hover:border-primary/40 hover:text-foreground',
@@ -254,7 +254,7 @@ export default function NutritionCalculator({
               </div>
 
               {/* 免责声明 */}
-              <p className="flex items-start gap-2 rounded-xl border border-warning/40 bg-warning/5 p-3 text-[11px] leading-relaxed text-muted-foreground">
+              <p className="flex items-start gap-2 rounded-xl border border-warning/40 bg-warning/5 p-3 text-xs leading-relaxed text-muted-foreground">
                 <ShieldAlert className="mt-0.5 h-3.5 w-3.5 shrink-0 text-warning" />
                 <span>
                   <b className="font-semibold text-foreground">免责声明：</b>
@@ -348,7 +348,7 @@ function ResultCell({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-lg border border-primary/20 bg-primary/10 p-2 text-center">
       <p className="font-display text-base font-bold leading-none text-primary">{value}</p>
-      <p className="mt-0.5 text-[10px] text-muted-foreground">{label}</p>
+      <p className="mt-0.5 text-xs text-muted-foreground">{label}</p>
     </div>
   );
 }

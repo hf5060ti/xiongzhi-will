@@ -518,18 +518,18 @@ export default function ExerciseLibraryPage() {
                   </div>
                 )}
                 {ex.gif && (
-                  <span className="absolute right-1 top-1 inline-flex items-center gap-0.5 rounded bg-black/60 px-1 py-0.5 text-[9px] font-medium text-white">
+                  <span className="absolute right-1 top-1 inline-flex items-center gap-0.5 rounded bg-black/60 px-1 py-0.5 text-xs font-medium text-white">
                     <PlayCircle className="h-2.5 w-2.5" />
                     动图
                   </span>
                 )}
                 {ex.approx && (
-                  <span className="absolute left-1 top-1 rounded bg-amber-500/90 px-1 py-0.5 text-[9px] font-bold text-white">
+                  <span className="absolute left-1 top-1 rounded bg-amber-500/90 px-1 py-0.5 text-xs font-bold text-white">
                     近似演示
                   </span>
                 )}
                 {!ex.gif && !ex.video && (
-                  <span className="absolute left-1 top-1 rounded bg-black/50 px-1 py-0.5 text-[9px] font-medium text-white">
+                  <span className="absolute left-1 top-1 rounded bg-black/50 px-1 py-0.5 text-xs font-medium text-white">
                     站上暂无演示
                   </span>
                 )}
@@ -539,35 +539,35 @@ export default function ExerciseLibraryPage() {
                   {titleName}
                 </p>
                 {getLang() === 'zh' && (
-                  <p className="truncate text-[10px] text-muted-foreground">{ex.name}</p>
+                  <p className="truncate text-xs text-muted-foreground">{ex.name}</p>
                 )}
                 <div className="mt-1 flex flex-wrap gap-0.5">
                   {ex.primaryMuscles.slice(0, 2).map((m) => (
-                    <Badge key={m} variant="outline" className="px-1 py-0 text-[9px]">
+                    <Badge key={m} variant="outline" className="px-1 py-0 text-xs">
                       {MUSCLE_CN[m] || m}
                     </Badge>
                   ))}
                 </div>
                 {ex.gif ? (
-                  <span className="mt-1 inline-flex items-center gap-0.5 text-[10px] font-medium text-primary">
+                  <span className="mt-1 inline-flex items-center gap-0.5 text-xs font-medium text-primary">
                     <PlayCircle className="h-3 w-3" />
                     {ex.approx ? '近似演示·自动播放' : '演示自动播放'}
                   </span>
                 ) : ex.video ? (
-                  <span className="mt-1 inline-flex items-center gap-0.5 text-[10px] font-medium text-primary">
+                  <span className="mt-1 inline-flex items-center gap-0.5 text-xs font-medium text-primary">
                     <PlayCircle className="h-3 w-3" />
                     演示视频
                   </span>
                 ) : (
                   <div className="mt-1 space-y-0.5">
-                    <p className="text-[10px] text-muted-foreground">站上暂无演示</p>
+                    <p className="text-xs text-muted-foreground">站上暂无演示</p>
                     <div className="flex flex-wrap items-center gap-x-2">
                       <a
                         href={SITE_SEARCH_URL}
                         target="_blank"
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-0.5 text-[10px] font-medium text-primary hover:underline"
+                        className="inline-flex items-center gap-0.5 text-xs font-medium text-primary hover:underline"
                       >
                         <ExternalLink className="h-3 w-3" />
                         站内搜索
@@ -577,7 +577,7 @@ export default function ExerciseLibraryPage() {
                         target="_blank"
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-0.5 text-[10px] font-medium text-muted-foreground hover:underline"
+                        className="inline-flex items-center gap-0.5 text-xs font-medium text-muted-foreground hover:underline"
                       >
                         <ExternalLink className="h-3 w-3" />
                         B 站
@@ -651,7 +651,7 @@ export default function ExerciseLibraryPage() {
                         {(() => {
                           const cue = findGuidance(getCnName(selected) || '', selected.name)?.cues?.[0];
                           return cue ? (
-                            <div className="absolute inset-x-2 bottom-2 rounded-md bg-black/65 px-2 py-1.5 text-center text-[11px] font-semibold leading-snug text-[#F7E7CE]">
+                            <div className="absolute inset-x-2 bottom-2 rounded-md bg-black/65 px-2 py-1.5 text-center text-xs font-semibold leading-snug text-[#F7E7CE]">
                               {cue}
                             </div>
                           ) : null;
@@ -660,8 +660,8 @@ export default function ExerciseLibraryPage() {
                       <span
                         className={
                           selected.approx
-                            ? 'rounded bg-amber-500/90 px-1.5 py-0.5 text-center text-[10px] font-bold text-white'
-                            : 'text-center text-[10px] text-muted-foreground'
+                            ? 'rounded bg-amber-500/90 px-1.5 py-0.5 text-center text-xs font-bold text-white'
+                            : 'text-center text-xs text-muted-foreground'
                         }
                       >
                         {selected.approx ? '近似演示' : '动作演示'}
@@ -678,7 +678,7 @@ export default function ExerciseLibraryPage() {
                           className="h-full w-full object-contain"
                         />
                       </div>
-                      <span className="text-center text-[10px] text-muted-foreground">动作演示视频</span>
+                      <span className="text-center text-xs text-muted-foreground">动作演示视频</span>
                     </div>
                   ) : (
                     selected.images.map((img, i) => (
@@ -732,7 +732,7 @@ export default function ExerciseLibraryPage() {
                         <Badge className="bg-primary/15 text-primary hover:bg-primary/15">
                           组间休息：{rest.range}
                         </Badge>
-                        <span className="text-[10px] text-muted-foreground">{rest.label}：自然训练者需充分恢复磷酸原系统</span>
+                        <span className="text-xs text-muted-foreground">{rest.label}：自然训练者需充分恢复磷酸原系统</span>
                       </div>
                     );
                   })()}
@@ -763,13 +763,13 @@ export default function ExerciseLibraryPage() {
                           <p className="text-muted-foreground"><b className="text-foreground">进阶：</b>{g.progress}</p>
                         </div>
                         {g.volumeNote && (
-                          <p className="text-[11px] text-muted-foreground"><b className="text-foreground">容量提示：</b>{g.volumeNote}</p>
+                          <p className="text-xs text-muted-foreground"><b className="text-foreground">容量提示：</b>{g.volumeNote}</p>
                         )}
                       </div>
                     );
                   })()}
                   {selected.source && (
-                    <p className="mt-2 text-[11px] text-muted-foreground">
+                    <p className="mt-2 text-xs text-muted-foreground">
                       演示动图来源：{selected.source}
                     </p>
                   )}
@@ -805,7 +805,7 @@ export default function ExerciseLibraryPage() {
                     <h3 className="mb-2 flex items-center gap-2 font-display text-base font-bold text-foreground">
                       <PlayCircle className="h-4 w-4 text-primary" />
                       名师教学视频 · 谭成义
-                      <span className="text-[10px] font-normal text-muted-foreground">（跳转原平台观看）</span>
+                      <span className="text-xs font-normal text-muted-foreground">（跳转原平台观看）</span>
                     </h3>
                     <div className="space-y-1.5">
                       {vids.map((v, vi) => (
@@ -822,14 +822,14 @@ export default function ExerciseLibraryPage() {
                               {v.title}
                             </span>
                             {v.note && (
-                              <span className="block text-[11px] text-muted-foreground">{v.note}</span>
+                              <span className="block text-xs text-muted-foreground">{v.note}</span>
                             )}
                           </span>
                           <Badge variant="outline" className="shrink-0">{v.platform}</Badge>
                         </a>
                       ))}
                     </div>
-                    <p className="mt-2 text-[10px] leading-relaxed text-muted-foreground">
+                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                       视频版权归原作者谭成义所有，仅作学习参考。
                     </p>
                   </div>
@@ -880,7 +880,7 @@ export default function ExerciseLibraryPage() {
               </div>
 
               <div>
-                <h3 className="mb-2 flex items-center gap-2 font-display text-lg font-bold text-foreground">
+                <h3 className="mb-2 flex items-center gap-2 font-display text-xl font-bold text-foreground">
                   <Dumbbell className="h-4 w-4 text-primary" />
                   动作步骤
                 </h3>
@@ -889,7 +889,7 @@ export default function ExerciseLibraryPage() {
                     <ol className="space-y-2">
                       {selected.zhSteps.map((step, i) => (
                         <li key={i} className="flex gap-2 text-sm leading-relaxed text-foreground">
-                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">
+                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-xs font-bold text-primary">
                             {i + 1}
                           </span>
                           <span>{step}</span>
@@ -912,7 +912,7 @@ export default function ExerciseLibraryPage() {
                     <ol className="space-y-2">
                       {selected.instructions.map((step, i) => (
                         <li key={i} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
-                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">
+                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-xs font-bold text-primary">
                             {i + 1}
                           </span>
                           <span>{step}</span>

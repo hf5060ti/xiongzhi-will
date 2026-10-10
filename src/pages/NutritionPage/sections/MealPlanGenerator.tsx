@@ -81,18 +81,18 @@ export default function MealPlanGenerator() {
       <div className="flex flex-wrap items-center gap-2">
         <ClipboardList className="h-5 w-5 text-primary" />
         <h2 className="font-display text-xl font-extrabold text-foreground">一日三餐方案</h2>
-        <Badge variant="outline" className="px-2 py-0.5 text-[11px]">{dietName}</Badge>
+        <Badge variant="outline" className="px-2 py-0.5 text-xs">{dietName}</Badge>
       </div>
 
       {/* 每日目标 */}
       <div className="rounded-lg border border-border bg-muted/30 p-3.5">
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           <DailyMetric icon={<Flame className="h-4 w-4 text-orange-500" />} label="每日热量" value={`${daily.calories} kcal`} sub={`基础 TDEE ${daily.tdee} kcal`} />
-          <DailyMetric icon={<span className="text-[11px] font-bold text-blue-500">蛋</span>} label="蛋白质" value={`${daily.proteinG} g`} sub={`占 ${Math.round((daily.proteinG * 4 / daily.calories) * 100)}%`} />
-          <DailyMetric icon={<span className="text-[11px] font-bold text-amber-500">碳</span>} label="碳水化合物" value={`${daily.carbG} g`} sub={`占 ${Math.round((daily.carbG * 4 / daily.calories) * 100)}%`} />
-          <DailyMetric icon={<span className="text-[11px] font-bold text-rose-500">脂</span>} label="脂肪" value={`${daily.fatG} g`} sub={`占 ${Math.round((daily.fatG * 9 / daily.calories) * 100)}%`} />
+          <DailyMetric icon={<span className="text-xs font-bold text-blue-500">蛋</span>} label="蛋白质" value={`${daily.proteinG} g`} sub={`占 ${Math.round((daily.proteinG * 4 / daily.calories) * 100)}%`} />
+          <DailyMetric icon={<span className="text-xs font-bold text-amber-500">碳</span>} label="碳水化合物" value={`${daily.carbG} g`} sub={`占 ${Math.round((daily.carbG * 4 / daily.calories) * 100)}%`} />
+          <DailyMetric icon={<span className="text-xs font-bold text-rose-500">脂</span>} label="脂肪" value={`${daily.fatG} g`} sub={`占 ${Math.round((daily.fatG * 9 / daily.calories) * 100)}%`} />
         </div>
-        <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
           按你的身体数据实时计算（Katch BMR × 活动系数 × 食物热效应 + 阶段调整），
           蛋白质按瘦体重 × 阶段系数；新手蛋白质建议 1.6–1.8g/kg 体重即可，无需硬撑高蛋白。
         </p>
@@ -113,12 +113,12 @@ export default function MealPlanGenerator() {
       </div>
 
       {/* 吸收率提示 */}
-      <p className="rounded-md border border-primary/20 bg-primary/5 p-2.5 text-[11px] leading-relaxed text-foreground/80">
+      <p className="rounded-md border border-primary/20 bg-primary/5 p-2.5 text-xs leading-relaxed text-foreground/80">
         <b className="text-foreground">吸收率提示：</b>
         {dietAbsorbNote(diet.id)}
       </p>
 
-      <p className="text-[10px] leading-relaxed text-muted-foreground">
+      <p className="text-xs leading-relaxed text-muted-foreground">
         方案为营养模板，克数按每餐碳蛋脂目标换算；同一食材请以食物库（营养库）实际数据为准。一周为试用期：
         体重与视觉效果符合预期就沿用，不满意再按体重上下浮动微调 5–10% 热量。
         糖尿病、孕妇、老年人、大病初愈者优先遵从医嘱，本站只提供健康自然的饮食思路。
@@ -138,13 +138,13 @@ function MealCard({ meal }: { meal: PlannedMeal }) {
           <h3 className="flex items-center gap-1.5 font-display text-base font-bold text-foreground">
             <Salad className="h-4 w-4 text-primary" />
             {meal.slot}
-            <span className="text-[11px] font-normal text-muted-foreground">约 {meal.pct}% 热量</span>
+            <span className="text-xs font-normal text-muted-foreground">约 {meal.pct}% 热量</span>
           </h3>
-          <Badge variant="secondary" className="text-[11px]">
+          <Badge variant="secondary" className="text-xs">
             {meal.calories} kcal
           </Badge>
         </div>
-        <p className="mb-2 text-[11px] text-muted-foreground">
+        <p className="mb-2 text-xs text-muted-foreground">
           蛋白 {meal.proteinG}g · 碳水 {meal.carbG}g · 脂肪 {meal.fatG}g
         </p>
         <div className="space-y-2">
@@ -158,7 +158,7 @@ function MealCard({ meal }: { meal: PlannedMeal }) {
                 {opt.items.map((it, ii) => (
                   <li key={ii} className="flex items-center justify-between text-xs text-foreground/80">
                     <span>
-                      <Badge variant="outline" className="mr-1.5 px-1 py-0 text-[9px]">{KIND_LABEL[it.kind]}</Badge>
+                      <Badge variant="outline" className="mr-1.5 px-1 py-0 text-xs">{KIND_LABEL[it.kind]}</Badge>
                       {it.name}
                       {it.note ? <span className="text-muted-foreground">（{it.note}）</span> : null}
                     </span>
@@ -185,10 +185,10 @@ function WeekPlanView({ input }: { input: MealPlanInput }) {
     <div className="mt-2 rounded-xl border border-border/80 bg-muted/10 p-3.5 sm:p-4">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <CalendarRange className="h-5 w-5 text-primary" />
-        <h3 className="font-display text-lg font-bold text-foreground">本周菜单</h3>
-        <Badge variant="outline" className="text-[11px]">{SPLIT_LABEL[splitId] ?? '按训练分化'}</Badge>
+        <h3 className="font-display text-xl font-bold text-foreground">本周菜单</h3>
+        <Badge variant="outline" className="text-xs">{SPLIT_LABEL[splitId] ?? '按训练分化'}</Badge>
       </div>
-      <p className="mb-3 text-[11px] text-muted-foreground">
+      <p className="mb-3 text-xs text-muted-foreground">
         按你选的训练分化自动排布训练日 / 休息日（训练日碳水足、休息日适度减碳），点日期切换当天四餐；
         实际操作按个人恢复情况调整，训练日 / 休息日不是死规矩。
       </p>
@@ -206,8 +206,8 @@ function WeekPlanView({ input }: { input: MealPlanInput }) {
                 : 'border-border bg-card/40 text-muted-foreground hover:bg-card/80'
             }`}
           >
-            <span className="block text-[11px] font-semibold">{d.label}</span>
-            <span className={`mt-0.5 block text-[9px] ${d.isTrainDay ? 'text-primary' : 'text-muted-foreground'}`}>
+            <span className="block text-xs font-semibold">{d.label}</span>
+            <span className={`mt-0.5 block text-xs ${d.isTrainDay ? 'text-primary' : 'text-muted-foreground'}`}>
               {d.isTrainDay ? '训练日' : '休息日'}
             </span>
           </button>
@@ -217,11 +217,11 @@ function WeekPlanView({ input }: { input: MealPlanInput }) {
       {/* 当天详情 */}
       <div className="space-y-2">
         <div className="flex flex-wrap items-center gap-1.5">
-          <Badge className={`text-[11px] ${cur.isTrainDay ? '' : 'bg-muted text-muted-foreground'}`}>
+          <Badge className={`text-xs ${cur.isTrainDay ? '' : 'bg-muted text-muted-foreground'}`}>
             {cur.label} · {cur.isTrainDay ? '训练日' : '休息日'}
           </Badge>
-          <Badge variant="secondary" className="text-[11px]">{cur.dietName}</Badge>
-          <span className="text-[11px] text-muted-foreground">
+          <Badge variant="secondary" className="text-xs">{cur.dietName}</Badge>
+          <span className="text-xs text-muted-foreground">
             {cur.plan.daily.calories} kcal · 蛋白 {cur.plan.daily.proteinG}g · 碳水 {cur.plan.daily.carbG}g · 脂肪 {cur.plan.daily.fatG}g
           </span>
         </div>
@@ -231,17 +231,17 @@ function WeekPlanView({ input }: { input: MealPlanInput }) {
           ))}
         </div>
         {cur.plan.warn && (
-          <p className="text-[11px] text-amber-700 dark:text-amber-300">{cur.plan.warn}</p>
+          <p className="text-xs text-amber-700 dark:text-amber-300">{cur.plan.warn}</p>
         )}
         {input.dietId === 'carb-cycle' && !cur.isTrainDay && (
-          <p className="flex items-start gap-1 rounded-md border border-primary/20 bg-primary/5 p-2 text-[11px] text-foreground/80">
+          <p className="flex items-start gap-1 rounded-md border border-primary/20 bg-primary/5 p-2 text-xs text-foreground/80">
             <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
             碳循环休息日已自动按「低碳日」口径排布（碳水≈25%，蛋白质不降）；如果休息日你仍有训练后的酸痛恢复需求，可手动回到训练日方案。
           </p>
         )}
       </div>
 
-      <p className="mt-3 flex items-start gap-1 text-[10px] leading-relaxed text-muted-foreground">
+      <p className="mt-3 flex items-start gap-1 text-xs leading-relaxed text-muted-foreground">
         <Dumbbell className="mt-0.5 h-3.5 w-3.5 shrink-0" />
         单次训练建议控制在 70 分钟左右（超过多为垃圾容量，只影响恢复；长跑等耐力有氧除外），睡眠 8–9 小时因人而异；
         饮食上多吃肉蛋奶、蔬菜，脂肪碳水适度，按个人消化系统微调。
@@ -258,7 +258,7 @@ function DailyMetric({ icon, label, value, sub }: { icon: React.ReactNode; label
         {label}
       </div>
       <p className="mt-0.5 font-display text-lg font-bold leading-none text-foreground">{value}</p>
-      <p className="mt-1 text-[10px] text-muted-foreground">{sub}</p>
+      <p className="mt-1 text-xs text-muted-foreground">{sub}</p>
     </div>
   );
 }

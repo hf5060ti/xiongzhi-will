@@ -466,6 +466,7 @@ export default function IsometricPage() {
           <Hand className="h-4 w-4" />
           等长训练 · Isometric Training
         </div>
+        <p className="type-eyebrow text-primary/80">Isometric</p>
         <h1 className="font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           低压力保肌：等长式训练
         </h1>
@@ -505,7 +506,7 @@ export default function IsometricPage() {
             if (items.length === 0) return null;
             return (
               <div key={g} className="space-y-2">
-                <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-primary">
+                <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary">
                   <span className="h-px w-4 bg-primary/40" />
                   {g}
                   <span className="font-normal text-muted-foreground/60">{items.length}</span>
@@ -519,14 +520,14 @@ export default function IsometricPage() {
                             <Icon className="h-4 w-4 text-primary" />
                             <p className="text-sm font-semibold text-foreground">{name}</p>
                           </div>
-                          <Badge variant="secondary" className="text-[10px]">{target}</Badge>
+                          <Badge variant="secondary" className="text-xs">{target}</Badge>
                         </div>
                         <p className="text-xs leading-relaxed text-muted-foreground">{how}</p>
-                        <p className="mt-2 flex items-center gap-1 text-[11px] font-medium text-primary">
+                        <p className="mt-2 flex items-center gap-1 text-xs font-medium text-primary">
                           <Timer className="h-3 w-3" />
                           {dose}
                         </p>
-                        <p className="mt-1 flex items-start gap-1 text-[11px] leading-relaxed text-muted-foreground">
+                        <p className="mt-1 flex items-start gap-1 text-xs leading-relaxed text-muted-foreground">
                           <Info className="mt-0.5 h-3 w-3 shrink-0" />
                           {note}
                         </p>
@@ -635,7 +636,7 @@ export default function IsometricPage() {
         </ul>
       </div>
 
-      <p className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+      <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
         <Apple className="h-3 w-3" />
         本站所有内容仅供健身参考，不构成医疗建议；术后运动方案请以主治医生意见为准。
       </p>

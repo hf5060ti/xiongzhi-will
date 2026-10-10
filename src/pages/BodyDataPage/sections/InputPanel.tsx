@@ -86,9 +86,9 @@ function NumberField({
         </span>
       </div>
       {error ? (
-        <p className="mt-1 text-[11px] leading-snug text-destructive">{error}</p>
+        <p className="mt-1 text-xs leading-snug text-destructive">{error}</p>
       ) : (
-        hint && <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{hint}</p>
+        hint && <p className="mt-1 text-xs leading-snug text-muted-foreground">{hint}</p>
       )}
     </div>
   );

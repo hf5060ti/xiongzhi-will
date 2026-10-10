@@ -1,7 +1,7 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 import { Link } from 'react-router-dom';
-import { ArrowRight, CalendarCheck2, Dumbbell, Scale, UtensilsCrossed } from 'lucide-react';
+import { AlertTriangle, ArrowRight, CalendarCheck2, Dumbbell, Scale, UtensilsCrossed } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   hasTrainingOn,
@@ -87,70 +87,76 @@ export default function TodayPanel() {
     <Card className="border-primary/30 bg-primary/5 backdrop-blur-xl">
       <CardContent className="p-4 sm:p-5">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
-            <CalendarCheck2 className="h-4 w-4 text-primary" />
-            今日概览
-          </h3>
-          <p className="text-xs text-muted-foreground">
+          <div>
+            {/* 眉标签：小号大写字距拉开，和参考图的 NUTRITION / 谭成义 同一手法 */}
+            <p className="type-eyebrow text-primary/80">Today</p>
+            <h3 className="mt-1 flex items-center gap-2 font-display text-2xl font-bold text-foreground">
+              <CalendarCheck2 className="h-5 w-5 text-primary" />
+              今日概览
+            </h3>
+          </div>
+          <p className="type-meta text-muted-foreground">
             {new Date().toLocaleDateString('zh-CN', { month: 'long', day: 'numeric', weekday: 'long' })}
           </p>
         </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {/* 今日饮食 */}
-          <div className="rounded-xl border border-border/50 bg-background/40 p-3">
-            <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
+            <p className="flex items-center gap-1.5 type-eyebrow text-muted-foreground">
               <UtensilsCrossed className="h-3.5 w-3.5 text-primary" />
               今日饮食
             </p>
             {entries.length > 0 ? (
               <>
-                <p className="mt-1.5 font-display text-xl font-bold text-foreground">
+                {/* 主数字放大：一天摄入多少热量是这一栏唯一要传达的事 */}
+                <p className="mt-2 font-display text-3xl font-bold leading-none text-foreground tabular-nums">
                   {Math.round(totals.kcal)}
-                  <span className="ml-1 text-[10px] font-normal text-muted-foreground">
+                  <span className="ml-1.5 text-sm font-normal text-muted-foreground">
                     / {targets.kcal > 0 ? targets.kcal : '—'} kcal
                   </span>
                 </p>
-                <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-muted/40">
+                <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-muted/40">
                   <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${kcalPct}%` }} />
                 </div>
-                <p className="mt-1 text-[11px] text-muted-foreground">
-                  蛋白 {Math.round(totals.protein)}g{targets.protein > 0 ? ` / ${targets.protein}g` : ''} · {entries.length} 条记录
+                <p className="type-meta mt-2 text-muted-foreground">
+                  蛋白 <b className="font-semibold text-foreground">{Math.round(totals.protein)}g</b>
+                  {targets.protein > 0 ? ` / ${targets.protein}g` : ''} · {entries.length} 条记录
                 </p>
               </>
             ) : (
-              <p className="mt-1.5 text-xs text-muted-foreground">今天还没记录饮食</p>
+              <p className="type-meta mt-2 text-muted-foreground">今天还没记录饮食</p>
             )}
-            <Link to="/nutrition" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline">
-              去记录 <ArrowRight className="h-3 w-3" />
+            <Link to="/nutrition" className="type-meta mt-2.5 inline-flex items-center gap-0.5 font-medium text-primary hover:underline">
+              去记录 <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
           {/* 今日训练 */}
-          <div className="rounded-xl border border-border/50 bg-background/40 p-3">
-            <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
+            <p className="flex items-center gap-1.5 type-eyebrow text-muted-foreground">
               <Dumbbell className="h-3.5 w-3.5 text-primary" />
               今日训练
             </p>
             {trainedToday ? (
               <>
-                <p className="mt-1.5 font-display text-xl font-bold text-primary">已练 ✓</p>
-                <p className="mt-1 text-[11px] text-muted-foreground">
+                <p className="mt-2 font-display text-3xl font-bold leading-none text-primary">已练</p>
+                <p className="type-meta mt-2 text-muted-foreground">
                   {todayMoves > 0 ? `${todayMoves} 个动作 · ${todaySets} 组` : '当天有训练记录'}
                 </p>
               </>
             ) : (
               <>
-                <p className="mt-1.5 font-display text-xl font-bold text-foreground">
+                <p className="mt-2 font-display text-3xl font-bold leading-none text-foreground">
                   {recommendation.isRest ? '休息日' : recommendation.dayTitle}
                 </p>
-                <p className="mt-1 text-[11px] text-muted-foreground">
+                <p className="type-meta mt-2 text-muted-foreground">
                   {recommendation.muscles || recommendation.message}
                 </p>
                 {/* 上次训练提醒：让用户一眼看到上次练了什么 */}
                 {lastLog && !recommendation.isRest && (
-                  <p className="mt-1.5 border-t border-border/40 pt-1.5 text-[11px] text-muted-foreground">
-                    <span className="font-medium text-foreground">上次练：</span>
+                  <p className="type-meta mt-2 border-t border-border/40 pt-2 text-muted-foreground">
+                    <b className="font-semibold text-foreground">上次练：</b>
                     {lastDayLabel ? `${lastDayLabel} · ` : ''}
                     {lastLog.exercises.slice(0, 3).map((e) => e.name).join('、')}
                     {lastLog.exercises.length > 3 ? ` 等${lastLog.exercises.length}个动作` : ''}
@@ -161,30 +167,30 @@ export default function TodayPanel() {
                 )}
               </>
             )}
-            <Link to="/training-logs" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline">
-              {trainedToday ? '查看记录' : '去训练'} <ArrowRight className="h-3 w-3" />
+            <Link to="/training-logs" className="type-meta mt-2.5 inline-flex items-center gap-0.5 font-medium text-primary hover:underline">
+              {trainedToday ? '查看记录' : '去训练'} <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
           {/* 今日打卡 */}
-          <div className="rounded-xl border border-border/50 bg-background/40 p-3">
-            <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
+            <p className="flex items-center gap-1.5 type-eyebrow text-muted-foreground">
               <CalendarCheck2 className="h-3.5 w-3.5 text-primary" />
               今日打卡
             </p>
-            <p className="mt-1.5 font-display text-xl font-bold text-foreground">
+            <p className="mt-2 font-display text-3xl font-bold leading-none text-foreground tabular-nums">
               {displayDone}
-              <span className="ml-1 text-[10px] font-normal text-muted-foreground">/ {CHECKIN_LABELS.length} 项</span>
+              <span className="ml-1.5 text-sm font-normal text-muted-foreground">/ {CHECKIN_LABELS.length} 项</span>
             </p>
-            <div className="mt-1.5 flex flex-wrap gap-1">
+            <div className="mt-2.5 flex flex-wrap gap-1.5">
               {CHECKIN_LABELS.map((c) => {
                 const done = c.key === 'training' ? checkins.training || trainedToday : Boolean(checkins[c.key]);
                 return (
                   <span
                     key={c.key}
                     className={cn(
-                      'rounded-full border px-1.5 py-0.5 text-[10px]',
-                      done ? 'border-primary/50 bg-primary/15 text-primary' : 'border-border/60 text-muted-foreground',
+                      'rounded-full border px-2 py-0.5 text-xs',
+                      done ? 'border-primary/50 bg-primary/15 font-medium text-primary' : 'border-border/60 text-muted-foreground',
                     )}
                   >
                     {c.label}
@@ -192,44 +198,59 @@ export default function TodayPanel() {
                 );
               })}
             </div>
-            <Link to="/light" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline">
-              去打卡 <ArrowRight className="h-3 w-3" />
+            <Link to="/light" className="type-meta mt-2.5 inline-flex items-center gap-0.5 font-medium text-primary hover:underline">
+              去打卡 <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
           {/* 体重 */}
-          <div className="rounded-xl border border-border/50 bg-background/40 p-3">
-            <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
+            <p className="flex items-center gap-1.5 type-eyebrow text-muted-foreground">
               <Scale className="h-3.5 w-3.5 text-primary" />
               最近体重
             </p>
             {latestWeight ? (
               <>
-                <p className="mt-1.5 font-display text-xl font-bold text-foreground">
+                <p className="mt-2 font-display text-3xl font-bold leading-none text-foreground tabular-nums">
                   {latestWeight.weight}
-                  <span className="ml-1 text-[10px] font-normal text-muted-foreground">kg</span>
+                  <span className="ml-1.5 text-sm font-normal text-muted-foreground">kg</span>
                 </p>
-                <p className="mt-1 text-[11px] text-muted-foreground">
-                  {weightDelta != null && weightDelta !== 0
-                    ? `较上次 ${weightDelta > 0 ? '+' : ''}${weightDelta} kg · `
-                    : '与上次持平 · '}
+                <p className="type-meta mt-2 text-muted-foreground">
+                  {weightDelta != null && weightDelta !== 0 ? (
+                    <>
+                      较上次{' '}
+                      <b className={cn('font-semibold', weightDelta > 0 ? 'text-amber-400' : 'text-emerald-400')}>
+                        {weightDelta > 0 ? '+' : ''}
+                        {weightDelta} kg
+                      </b>{' '}
+                      ·{' '}
+                    </>
+                  ) : (
+                    '与上次持平 · '
+                  )}
                   {lightTarget ? `目标 ${lightTarget.targetWeight} kg` : '未设减脂目标'}
                 </p>
               </>
             ) : (
-              <p className="mt-1.5 text-xs text-muted-foreground">还没有体重记录</p>
+              <p className="type-meta mt-2 text-muted-foreground">还没有体重记录</p>
             )}
-            <Link to="/light" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline">
-              去记录 <ArrowRight className="h-3 w-3" />
+            <Link to="/light" className="type-meta mt-2.5 inline-flex items-center gap-0.5 font-medium text-primary hover:underline">
+              去记录 <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
 
-        {/* 减载周提醒：最近7天练了6天以上 */}
+        {/* 减载周提醒：最近7天练了6天以上。用 14px 正文 + 加粗标题，这是需要被认真读的一段 */}
         {needsDeload && (
-          <div className="mt-4 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-2.5 text-xs leading-relaxed text-amber-600 dark:text-amber-400">
-            <b>⚠ 减载提醒：</b>
-            最近7天你训练了 {recent7} 天。自然训练者恢复能力有限，连续高强度训练会导致皮质醇升高、睾酮下降、动作质量变差。建议明天安排主动恢复（散步/拉伸/完全休息），下一周训练量减到 50-60%，让身体超量恢复。
+          <div className="mt-5 rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-3.5">
+            <p className="flex items-center gap-2 font-display text-sm font-bold text-amber-400">
+              <AlertTriangle className="h-4 w-4 shrink-0" />
+              减载提醒：最近 7 天你训练了 {recent7} 天
+            </p>
+            <p className="type-body mt-1.5 text-amber-200/90">
+              自然训练者恢复能力有限，连续高强度训练会导致皮质醇升高、睾酮下降、动作质量变差。
+              建议明天安排主动恢复（散步 / 拉伸 / 完全休息），下一周训练量减到 50–60%，让身体超量恢复。
+            </p>
           </div>
         )}
       </CardContent>
