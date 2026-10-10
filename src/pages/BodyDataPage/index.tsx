@@ -213,7 +213,7 @@ export default function BodyDataPage() {
                 <span className="mx-2 text-border">|</span>
                 基准 {d.protein.perKgLbm} g / kg 瘦体重
               </p>
-              <p className="mt-1 text-xs text-muted-foreground">
+              <p className="mt-1 type-meta text-muted-foreground">
                 {d.phase === 'cut' && '减脂期基准 = 瘦体重 × 2.3（你定的规则），保住肌肉的关键。'}
                 {d.phase === 'bulk' && '增肌期基准 = 瘦体重 × 2.2，吃够才有盈余合成。'}
                 {d.phase === 'maintain' && '维持期基准 = 瘦体重 × 1.8，稳住现有肌肉。'}
@@ -263,7 +263,7 @@ export default function BodyDataPage() {
                 {d.phase === 'maintain' &&
                   `维持：吃回含 TEF 的 TDEE（${round0(d.kcalAnchor)} kcal），蛋白质按维持基准。`}
               </p>
-              <p className="mt-1 text-xs text-muted-foreground">
+              <p className="mt-1 type-meta text-muted-foreground">
                 与「营养页 · 今日饮食记录」同一口径（基数与区间数值完全一致）。
               </p>
             </>
@@ -286,7 +286,7 @@ export default function BodyDataPage() {
                 含食物热效应后。当前方案「{d.diet ? d.diet.name : '通用'}」加权 ≈ {round1(d.tefVal)}%
                 {!d.diet && '（未设饮食，按 10% 通用估）'}
               </p>
-              <p className="mt-1 text-xs text-muted-foreground">
+              <p className="mt-1 type-meta text-muted-foreground">
                 蛋白 20–25% · 碳水 5–10% · 脂肪 1–5%；不想细算就按 10% 直接加。
               </p>
             </>
@@ -308,7 +308,7 @@ export default function BodyDataPage() {
       {/* 目标与饮食联动 */}
       <section className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-2">
         <div className="rounded-lg border border-border bg-card p-3 sm:p-4">
-          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">当前训练目标</p>
+          <p className="type-meta font-medium uppercase tracking-wider text-muted-foreground">当前训练目标</p>
           {d.goal ? (
             <>
               <p className="mt-1 font-display text-lg font-bold tracking-wide text-foreground">{d.goal.name}</p>
@@ -323,7 +323,7 @@ export default function BodyDataPage() {
           )}
         </div>
         <div className="rounded-lg border border-border bg-card p-3 sm:p-4">
-          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">当前饮食方案</p>
+          <p className="type-meta font-medium uppercase tracking-wider text-muted-foreground">当前饮食方案</p>
           {d.diet ? (
             <>
               <p className="mt-1 font-display text-lg font-bold tracking-wide text-foreground">{d.diet.name}</p>
@@ -389,7 +389,7 @@ export default function BodyDataPage() {
             </TableRow>
           </TableBody>
         </Table>
-        <p className="text-xs leading-relaxed text-muted-foreground">
+        <p className="type-meta text-muted-foreground">
           上限是"自然、无药物"的统计边界，个体骨架差异 ±10–15%。距离当前瘦体重的数值为正 = 还有增长空间。
         </p>
       </section>
@@ -442,7 +442,7 @@ export default function BodyDataPage() {
                 </TableRow>
               </TableBody>
             </Table>
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               自然健身者优先看 Katch-McArdle 与 Cunningham——它们基于瘦体重，更贴近真实肌肉量。
             </p>
           </>
@@ -461,7 +461,7 @@ export default function BodyDataPage() {
             <Swords className="h-4 w-4 text-primary" />
             冷兵器 / 剑道训练消耗速查
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             选武器 + 时长，按你当前体重自动折算。剑道基准 270 kcal/h；唐刀 / 武士刀 / 苗刀 / 长枪 200–600 kcal/h；重兵器按重量上浮。
           </p>
         </div>
@@ -502,7 +502,7 @@ export default function BodyDataPage() {
             <Dumbbell className="h-4 w-4 text-primary" />
             1RM 最大筋力换算
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             输入你能标准做完某重量的次数与重量，反推最大单次重量；再列出各次数的建议训练重量。估算统一采用 Epley 公式（重量 ×（1 + 次数 ÷ 30）），与「训练记录 / 能力追踪」同一口径；下表「占 1RM」列为经典百分比表参考值。
           </p>
         </div>
@@ -570,7 +570,7 @@ export default function BodyDataPage() {
                 </TableBody>
               </Table>
             </div>
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               1–5 次（85% 以上 1RM）= 神经募集 / 最大力量训练：3–5 组、组间休息 2–3
               分钟，放在训练最开头、精力最充沛时做；动作质量永远优先于重量。
             </p>
@@ -589,7 +589,7 @@ export default function BodyDataPage() {
             <Dumbbell className="h-4 w-4 text-primary" />
             力量等级对照表（IPF 系数 · {profile.sex === 'male' ? '男性' : '女性'}）
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             按你当前体重段高亮。数字为「该项 / 体重」的倍数；三项总重 = 深蹲 + 卧推 + 硬拉。
           </p>
         </div>
@@ -598,7 +598,7 @@ export default function BodyDataPage() {
           activeBand={d.hasCore ? matchWeightBand(profile.sex, d.weight) : null}
           bodyWeight={d.weight}
         />
-        <p className="text-xs leading-relaxed text-muted-foreground">
+        <p className="type-meta text-muted-foreground">
           未训练 = 基本没进过健身房；初学者 = 规律训练半年到一年；中级 = 2–3 年规律训练；高级 = 4–6 年；精英级 ≈ 业余赛水平；大师级以上接近竞技。
         </p>
       </section>
@@ -610,12 +610,12 @@ export default function BodyDataPage() {
             <Dumbbell className="h-4 w-4 text-primary" />
             卧推 1–10RM 重量查表
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             第一列是你预估的 1RM；横向是不同次数下建议使用的重量。上方估算出 1RM 后会自动高亮对应行。
           </p>
         </div>
         <BenchRmTable highlightOneRm={oneRm} />
-        <p className="text-xs leading-relaxed text-muted-foreground">
+        <p className="type-meta text-muted-foreground">
           原表个别印刷误差（如 40kg × 9次、180kg × 5次、200kg × 7次、220kg 行）已按相邻行规律修正；实际训练以动作标准为先。
         </p>
       </section>
@@ -639,7 +639,7 @@ export default function BodyDataPage() {
         </section>
       )}
 
-      <p className="rounded-md border border-border bg-muted/40 p-3 text-xs leading-relaxed text-muted-foreground">
+      <p className="rounded-md border border-border bg-muted/40 p-3 type-meta text-muted-foreground">
         以上均为估算模型，误差常见 ±10–15%。自然训练、无药物前提；骨骼、激素与训练年限都会让个体偏离均值。数据只存在当前浏览器本地。
       </p>
     </div>
@@ -707,7 +707,7 @@ function StrengthTable({
         </TableBody>
       </Table>
       {activeBand && bodyWeight > 0 && (
-        <p className="mt-2 text-xs text-muted-foreground">
+        <p className="mt-2 type-meta text-muted-foreground">
           你当前体重 {bodyWeight} kg，落在「{activeBand}」档。把深蹲 / 卧推 / 硬拉的最好成绩除体重，对照上表即可知道自己处于哪个等级。
         </p>
       )}
@@ -774,10 +774,10 @@ function WeaponResult({ weaponId, minutes, weightKg }: { weaponId: string; minut
         {low}–{high}
         <span className="ml-2 text-base font-bold text-muted-foreground">kcal</span>
       </p>
-      <p className="text-xs text-muted-foreground">
+      <p className="type-meta text-muted-foreground">
         {min} 分钟 · 按你 {weightKg > 0 ? (weightKg + " kg") : "70 kg 参考"} 体重折算。
       </p>
-      {w.note && <p className="text-xs leading-relaxed text-muted-foreground">{w.note}</p>}
+      {w.note && <p className="type-meta text-muted-foreground">{w.note}</p>}
     </div>
   );
 }

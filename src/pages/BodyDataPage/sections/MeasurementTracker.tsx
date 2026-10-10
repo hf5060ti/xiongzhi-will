@@ -142,7 +142,7 @@ export default function MeasurementTracker() {
             <Ruler className="h-4 w-4 text-primary" />
             围度追踪
           </p>
-          <p className="text-xs leading-relaxed text-muted-foreground">
+          <p className="type-meta text-muted-foreground">
             胸 / 腰 / 臀 / 臂 / 大腿围，单位 cm。同一时间口径（建议早晨空腹、站立放松）固定测量才有可比性；减脂期腰围是金标准——体重会因水分波动，腰围不会说谎。
           </p>
         </div>
@@ -164,7 +164,7 @@ export default function MeasurementTracker() {
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
               {MEASURE_KEYS.map((k) => (
                 <div key={k} className="space-y-1">
-                  <Label htmlFor={`measure-${k}`} className="text-xs text-muted-foreground">
+                  <Label htmlFor={`measure-${k}`} className="type-meta text-muted-foreground">
                     {MEASURE_META[k].label}
                   </Label>
                   <Input
@@ -184,7 +184,7 @@ export default function MeasurementTracker() {
             </div>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="text-xs text-muted-foreground">
+            <p className="type-meta text-muted-foreground">
               输入框里的灰色数字是各部位最近一次的值；只填想更新的部位即可，同一天重复保存会覆盖。
             </p>
             <Button size="sm" className="h-8 px-3 text-xs" onClick={save}>
@@ -209,7 +209,7 @@ export default function MeasurementTracker() {
           )}
           <div className="grid gap-3 lg:grid-cols-[1.6fr_1fr]">
             <div className="rounded-lg border border-border bg-background/30 p-3">
-              <p className="text-xs font-medium text-muted-foreground">围度趋势（cm）</p>
+              <p className="type-meta font-medium text-muted-foreground">围度趋势（cm）</p>
               {chartKeys.length > 0 ? (
                 <div className="mt-2 h-52">
                   <ResponsiveContainer width="100%" height="100%">
@@ -250,7 +250,7 @@ export default function MeasurementTracker() {
                   </ResponsiveContainer>
                 </div>
               ) : (
-                <p className="mt-2 text-xs text-muted-foreground">同一部位记两次以上才会画出趋势线。</p>
+                <p className="mt-2 type-meta text-muted-foreground">同一部位记两次以上才会画出趋势线。</p>
               )}
             </div>
 
@@ -265,7 +265,7 @@ export default function MeasurementTracker() {
                     {waistLatest.values.waist}
                     <span className="ml-1.5 text-sm font-bold text-muted-foreground">cm</span>
                   </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
+                  <p className="mt-1 type-meta text-muted-foreground">
                     最近一次 {waistLatest.date === todayStr() ? '今天' : fmtDate(waistLatest.date)} 测得
                   </p>
                   {waistDelta != null && (
@@ -274,10 +274,10 @@ export default function MeasurementTracker() {
                       （首次 {fmtDate(waistFirst!.date)}）
                     </p>
                   )}
-                  {waistDelta == null && <p className="mt-1.5 text-xs text-muted-foreground">多记几次即可看到腰围变化。</p>}
+                  {waistDelta == null && <p className="mt-1.5 type-meta text-muted-foreground">多记几次即可看到腰围变化。</p>}
                 </>
               ) : (
-                <p className="mt-2 text-xs text-muted-foreground">还没有腰围记录。</p>
+                <p className="mt-2 type-meta text-muted-foreground">还没有腰围记录。</p>
               )}
             </div>
           </div>
@@ -307,7 +307,7 @@ export default function MeasurementTracker() {
                   </span>
                 ))}
               </div>
-              <p className="mt-1.5 text-xs leading-snug text-muted-foreground">
+              <p className="mt-1.5 type-meta text-muted-foreground">
                 腰 / 大腿缩小、胸 / 臂增大是增肌减脂同时发生的理想形态；同向变大要警惕脂肪增长。
               </p>
             </div>
@@ -318,7 +318,7 @@ export default function MeasurementTracker() {
         {/* 历史 */}
         {entries.length > 0 && (
           <div className="space-y-2">
-            <p className="text-xs font-medium text-muted-foreground">历史记录（{entries.length} 天）</p>
+            <p className="type-meta font-medium text-muted-foreground">历史记录（{entries.length} 天）</p>
             <ul className="space-y-1.5">
               {history.map((e) => (
                 <li

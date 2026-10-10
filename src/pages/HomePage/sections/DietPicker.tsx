@@ -46,11 +46,11 @@ export default function DietPicker({ selected, onSelect }: DietPickerProps) {
                 <span className="block font-display text-base font-bold leading-tight tracking-wide text-foreground">
                   {diet.name}
                 </span>
-                <span className="mt-0.5 block text-xs font-medium uppercase tracking-[0.06em] text-muted-foreground">
+                <span className="mt-0.5 block type-meta font-medium uppercase tracking-[0.06em] text-muted-foreground">
                   {diet.en}
                 </span>
               </span>
-              <span className="block text-xs leading-snug text-muted-foreground">{diet.tagline}</span>
+              <span className="block type-meta text-muted-foreground">{diet.tagline}</span>
               <span className="mt-auto space-y-2">
                 <span className="flex h-1.5 w-full overflow-hidden rounded-full bg-muted">
                   {MACRO_META.map((m) => (

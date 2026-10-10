@@ -155,7 +155,7 @@ export default function TrainingRules() {
                   desc="肌肉接近上限、需要极致保留肌肉时才吃到这个量。普通人别照搬。"
                 />
               </div>
-              <div className="mt-4 rounded-xl border border-warning/40 bg-warning/5 p-3 text-xs leading-relaxed text-muted-foreground">
+              <div className="mt-4 rounded-xl border border-warning/40 bg-warning/5 p-3 type-meta text-muted-foreground">
                 <b className="text-foreground">例子：</b>
                 体重 80kg、体脂 25% → 瘦体重 60kg。
                 新手吃 60×1.5 = 90g；中级吃 60×1.8 = 108g；高级吃 60×2.4 = 144g。

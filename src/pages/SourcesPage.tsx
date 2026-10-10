@@ -81,7 +81,7 @@ export default function SourcesPage() {
             <Library className="h-4 w-4 text-primary" />
             内容来源总览
           </CardTitle>
-          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+          <p className="mt-1 type-meta text-muted-foreground">
             证据等级口径与「饮食讲解」页一致：<b>原话</b>（可查原文）、<b>AI 章节要点</b>（平台摘要，非逐句）、
             <b>文献整理</b>（公开学术 / 官方文献）、<b>计算</b>（公式推导）、<b>素材</b>（演示动图等第三方素材）、
             <b>AI 生成</b>（用户自配模型实时产出）。
@@ -187,7 +187,7 @@ export default function SourcesPage() {
             <Award className="h-4 w-4 text-primary" />
             为什么可以信
           </p>
-          <ul className="mt-2 space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+          <ul className="mt-2 space-y-1.5 type-meta text-muted-foreground">
             <li>· 每个数字都能追溯到出处（公开资料 / 公式 / 用户给定）</li>
             <li>· 无法核实的部分明确标注「估算 / 近似 / 未逐句核对」</li>
             <li>· 演示动图没有同名动作时明确标注「近似演示」，不冒充</li>
@@ -199,7 +199,7 @@ export default function SourcesPage() {
             <HeartPulse className="h-4 w-4 text-primary" />
             边界与免责
           </p>
-          <ul className="mt-2 space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+          <ul className="mt-2 space-y-1.5 type-meta text-muted-foreground">
             <li>· 本站不构成医疗建议，不诊断、不治疗、不预防任何疾病</li>
             <li>· 未登录时数据只存本地浏览器；GitHub 登录后可开启云端同步（数据存储在你自己的账号下）</li>
             <li>· 特殊人群（慢性病 / 孕产 / 老年 / 大病初愈）请以医嘱为准</li>

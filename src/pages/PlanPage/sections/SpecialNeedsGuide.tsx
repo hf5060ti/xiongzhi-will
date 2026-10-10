@@ -68,7 +68,7 @@ export default function SpecialNeedsGuide() {
         <p className="font-display text-lg font-bold italic text-primary">
           「上帝只是嫉妒完整的你，害怕完整的你。」
         </p>
-        <p className="mt-1 text-xs text-muted-foreground">
+        <p className="mt-1 type-meta text-muted-foreground">
           身体的残缺不是限制——它只是让你用另一种方式变强。
         </p>
       </div>
@@ -91,7 +91,7 @@ function SpecialCard({ title, suitable, avoid }: { title: string; suitable: stri
         <p className="mt-2 text-xs leading-relaxed text-foreground/90">
           <b className="text-primary">推荐：</b>{suitable}
         </p>
-        <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-1.5 type-meta text-muted-foreground">
           <b className="text-warning">避免：</b>{avoid}
         </p>
       </CardContent>

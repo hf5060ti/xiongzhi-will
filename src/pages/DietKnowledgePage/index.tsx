@@ -150,7 +150,7 @@ export default function DietKnowledgePage() {
         <p className="mt-2 text-sm text-muted-foreground">
           四套方案给的是比例与清单，这一页讲的是背后的逻辑：把「为什么这么吃」讲明白，剩下的执行才有依据。
         </p>
-        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-2 type-meta text-muted-foreground">
           内容来自公开讲解与公开文献的原创简要整理，非医疗建议，也不参与站内任何热量计算；每条注明证据等级与来源链接，
           来源归原作者，本站仅作整理引用。
         </p>
@@ -165,7 +165,7 @@ export default function DietKnowledgePage() {
           </p>
           <ul className="mt-2 grid gap-1.5 sm:grid-cols-2 lg:grid-cols-4">
             {EVIDENCE_LEVELS.map((l) => (
-              <li key={l.label} className="text-xs leading-relaxed text-muted-foreground">
+              <li key={l.label} className="type-meta text-muted-foreground">
                 <span className="mr-1.5 rounded bg-muted px-1.5 py-0.5 text-xs text-foreground/80">
                   {l.label}
                 </span>
@@ -179,7 +179,7 @@ export default function DietKnowledgePage() {
       {/* 筛选栏：作者 + 方案 */}
       <div className="space-y-2.5">
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="mr-1 text-xs text-muted-foreground">作者</span>
+          <span className="mr-1 type-meta text-muted-foreground">作者</span>
           {['all', ...KNOWLEDGE_AUTHORS].map((a) => (
             <button
               key={a}
@@ -213,7 +213,7 @@ export default function DietKnowledgePage() {
         )}
       </div>
 
-      <p className="text-xs text-muted-foreground">
+      <p className="type-meta text-muted-foreground">
         共 {DIET_KNOWLEDGE.length} 条讲解，当前显示 {list.length} 条
       </p>
 
@@ -300,7 +300,7 @@ export default function DietKnowledgePage() {
                   )}
                 >
                   <div className="min-h-0 overflow-hidden px-4 pb-4 sm:px-5 sm:pb-5">
-                    <p className="mt-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                    <p className="mt-3 type-meta text-muted-foreground sm:text-sm">
                       {entry.summary}
                     </p>
                     <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
@@ -354,7 +354,7 @@ export default function DietKnowledgePage() {
                     </div>
 
                     {entry.relatedDiets && entry.relatedDiets.length > 0 && (
-                      <p className="mt-3 text-xs text-muted-foreground">
+                      <p className="mt-3 type-meta text-muted-foreground">
                         关联方案：{' '}
                         {entry.relatedDiets
                           .map((id) => DIETS.find((d) => d.id === id)?.name ?? id)
@@ -375,7 +375,7 @@ export default function DietKnowledgePage() {
             <Quote className="h-4 w-4 text-primary" />
             关于来源与版权
           </p>
-          <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+          <p className="mt-1.5 type-meta text-muted-foreground">
             本页条目依据公开来源整理：多数来自创作者公开发布的视频内容，生酮一条依据公开学术 / 官方文献（三位博主的素材未覆盖生酮）。
             仅保留简要概括与公开链接，不搬运完整转写、不嵌入视频、不转载截图。
             观点与结论归原作者；平台 AI 生成的章节要点一律标注为「AI 章节要点 / 未逐句核对」，文献条目标注为「文献整理」，均不作为原话引用。

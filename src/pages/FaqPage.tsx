@@ -83,7 +83,7 @@ export default function FaqPage() {
             <CardContent className="p-3 sm:p-4">
               <span className="text-primary">{c.icon}</span>
               <h3 className="mt-1.5 font-display text-sm font-bold text-foreground">{c.title}</h3>
-              <p className="mt-1 text-xs leading-snug text-muted-foreground">{c.desc}</p>
+              <p className="mt-1 type-meta text-muted-foreground">{c.desc}</p>
             </CardContent>
           </Card>
         ))}
@@ -108,7 +108,7 @@ export default function FaqPage() {
                       <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
                       {f.q}
                     </h3>
-                    <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{f.a}</p>
+                    <p className="mt-1.5 type-meta text-muted-foreground">{f.a}</p>
                   </div>
                 </div>
               </CardContent>
@@ -136,7 +136,7 @@ export default function FaqPage() {
         ))}
       </section>
 
-      <div className="rounded-md border border-border bg-muted/30 p-3 text-xs leading-relaxed text-muted-foreground">
+      <div className="rounded-md border border-border bg-muted/30 p-3 type-meta text-muted-foreground">
         <Badge variant="outline" className="mr-2 border-primary/40 text-primary">
           免责声明
         </Badge>

@@ -389,7 +389,7 @@ export default function PhysiquePage() {
             <Sparkles className="h-4 w-4 text-primary" />
             {part.name}的常见形态
           </CardTitle>
-          <p className="text-xs text-muted-foreground">拍摄建议：{part.hint}</p>
+          <p className="type-meta text-muted-foreground">拍摄建议：{part.hint}</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-3">
           {part.types.map((t) => {
@@ -409,7 +409,7 @@ export default function PhysiquePage() {
                 <span className="font-display text-lg font-bold tracking-wide text-foreground">
                   {t.name}
                 </span>
-                <span className="text-xs leading-relaxed text-muted-foreground">{t.trait}</span>
+                <span className="type-meta text-muted-foreground">{t.trait}</span>
                 {t.iconPerson && (
                   <span className="mt-0.5 inline-flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs">
                     <span className="rounded bg-primary/10 px-1.5 py-0.5 font-medium text-primary">
@@ -464,7 +464,7 @@ export default function PhysiquePage() {
               {image ? (
                 <img src={image} alt="预览" className="mt-2 w-full rounded-md border border-border object-cover" />
               ) : (
-                <p className="mt-2 text-xs text-muted-foreground">照片存在本机浏览器，不上传服务器。</p>
+                <p className="mt-2 type-meta text-muted-foreground">照片存在本机浏览器，不上传服务器。</p>
               )}
             </div>
             <div className="flex-1 space-y-2">
@@ -495,7 +495,7 @@ export default function PhysiquePage() {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-base">{part.name}的历史记录</CardTitle>
-            <p className="text-xs text-muted-foreground">按时间倒序，越新的越靠前。</p>
+            <p className="type-meta text-muted-foreground">按时间倒序，越新的越靠前。</p>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
@@ -522,10 +522,10 @@ export default function PhysiquePage() {
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>
                       </div>
-                      <p className="mt-0.5 text-xs text-muted-foreground">
+                      <p className="mt-0.5 type-meta text-muted-foreground">
                         {new Date(e.date).toLocaleString('zh-CN')}
                       </p>
-                      {e.note && <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{e.note}</p>}
+                      {e.note && <p className="mt-1 type-meta text-muted-foreground">{e.note}</p>}
                     </div>
                   </div>
                 );

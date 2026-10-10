@@ -74,7 +74,7 @@ function WarmupCalculator() {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="max-w-xs">
-          <label className="mb-1.5 block text-xs font-medium text-muted-foreground">
+          <label className="mb-1.5 block type-meta font-medium text-muted-foreground">
             今日正式组重量（kg）
           </label>
           <Input
@@ -93,11 +93,11 @@ function WarmupCalculator() {
               return (
                 <div key={row.pct} className="rounded-xl border border-border/40 bg-accent/20 p-3">
                   <div className="flex items-baseline justify-between">
-                    <p className="text-xs text-muted-foreground">{row.label}</p>
+                    <p className="type-meta text-muted-foreground">{row.label}</p>
                     <p className="font-mono text-lg font-bold text-foreground">{kg} kg</p>
                   </div>
-                  <p className="mt-1 text-xs text-muted-foreground">{row.reps} 次 · 休 {row.rest}</p>
-                  <p className="mt-1 text-xs leading-snug text-muted-foreground/80">{row.note}</p>
+                  <p className="mt-1 type-meta text-muted-foreground">{row.reps} 次 · 休 {row.rest}</p>
+                  <p className="mt-1 type-meta text-muted-foreground/80">{row.note}</p>
                 </div>
               );
             })}
@@ -184,12 +184,12 @@ function WarmupRoutineGuide() {
               </span>
               <div>
                 <p className="text-sm font-medium text-foreground">{item.t}</p>
-                <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{item.d}</p>
+                <p className="mt-0.5 type-meta text-muted-foreground">{item.d}</p>
               </div>
             </li>
           ))}
         </ol>
-        <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-4 type-meta text-muted-foreground">
           热身不是训练前的"浪费时间"，而是让目标肌在正式组第一组就进入状态。
           跳过热身直接上重量，要么动作变形，要么第一组还在找感觉——那组就白练了。
         </p>
@@ -246,7 +246,7 @@ export default function ToolsPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="mb-1.5 block text-xs font-medium text-muted-foreground">
+              <label className="mb-1.5 block type-meta font-medium text-muted-foreground">
                 重量（kg）
               </label>
               <Input
@@ -259,7 +259,7 @@ export default function ToolsPage() {
               />
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-medium text-muted-foreground">
+              <label className="mb-1.5 block type-meta font-medium text-muted-foreground">
                 完成次数（严格动作）
               </label>
               <Input
@@ -278,7 +278,7 @@ export default function ToolsPage() {
               </p>
             )}
             {invalid && (
-              <p className="rounded-lg border border-border/40 bg-accent/20 p-3 text-xs text-muted-foreground">
+              <p className="rounded-lg border border-border/40 bg-accent/20 p-3 type-meta text-muted-foreground">
                 输入有效重量和次数后，自动出结果。
               </p>
             )}
@@ -298,7 +298,7 @@ export default function ToolsPage() {
             {results ? (
               <div className="space-y-3">
                 <div className="rounded-xl border border-primary/30 bg-primary/10 p-4 text-center">
-                  <p className="text-xs text-muted-foreground">参考 1RM（三公式平均）</p>
+                  <p className="type-meta text-muted-foreground">参考 1RM（三公式平均）</p>
                   <p className="mt-1 font-display text-4xl font-extrabold text-primary">
                     {results.avg.toFixed(1)}
                     <span className="ml-1 text-base font-medium text-muted-foreground">kg</span>
@@ -318,7 +318,7 @@ export default function ToolsPage() {
                     <p className="mt-0.5 font-mono text-base text-foreground">{results.l.toFixed(1)}</p>
                   </div>
                 </div>
-                <p className="text-xs leading-relaxed text-muted-foreground">
+                <p className="type-meta text-muted-foreground">
                   Epley 最常用，Brzycki 在低次数区间偏低，Lombardi 在高次数区间偏高；三者平均更稳。
                   这是推算值，不是真去冲 1RM。自然训练者不建议频繁测极限，技术和恢复代价都很大。
                 </p>
@@ -352,7 +352,7 @@ export default function ToolsPage() {
                       <Badge className={row.color}>{row.label}</Badge>
                       <span className="font-mono text-base font-bold text-foreground">{kg.toFixed(1)} kg</span>
                     </div>
-                    <p className="mt-1.5 text-xs leading-snug text-muted-foreground">{row.use}</p>
+                    <p className="mt-1.5 type-meta text-muted-foreground">{row.use}</p>
                   </div>
                 );
               })}
@@ -382,11 +382,11 @@ export default function ToolsPage() {
             {RPE_ROWS.map((row) => (
               <div key={row.rpe} className="rounded-xl border border-border/40 bg-accent/20 p-3">
                 <p className="font-display text-base font-bold text-primary">{row.label}</p>
-                <p className="mt-1 text-xs leading-snug text-muted-foreground">{row.note}</p>
+                <p className="mt-1 type-meta text-muted-foreground">{row.note}</p>
               </div>
             ))}
           </div>
-          <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+          <p className="mt-4 type-meta text-muted-foreground">
             增肌 ≈ RPE 7–8（留 2–3 次余量）；力量 ≈ RPE 8–9；减载周 ≈ RPE 5–6。
             自然训练者几乎不需要每周都做到 RPE 10，留几次余量反而长得更久。
           </p>
@@ -403,7 +403,7 @@ export default function ToolsPage() {
       <WarmupRoutineGuide />
 
       {/* 免责 */}
-      <p className="rounded-xl border border-border/40 bg-accent/10 p-3 text-xs leading-relaxed text-muted-foreground">
+      <p className="rounded-xl border border-border/40 bg-accent/10 p-3 type-meta text-muted-foreground">
         本计算器基于广泛使用的经验公式，仅作训练规划参考。动作技术不标准、借力、疲劳状态下测出的重量，
         推算出的 1RM 会偏高。糖尿病、心血管疾病、关节旧伤者，冲大重量前请遵从医嘱。
       </p>

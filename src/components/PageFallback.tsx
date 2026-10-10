@@ -10,7 +10,7 @@ export default function PageFallback() {
         </span>
       </div>
       <p className="max-w-md text-sm text-muted-foreground">正在加载内容……</p>
-      <p className="max-w-md text-xs text-muted-foreground/70">
+      <p className="max-w-md type-meta text-muted-foreground/70">
         本站只提供健康自然的健身方式，不提供任何极端和药物，请遵守当地法律法规。
       </p>
     </div>

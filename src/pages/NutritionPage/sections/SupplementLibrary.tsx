@@ -44,7 +44,7 @@ export default function SupplementLibrary({ initialId }: { initialId?: string })
         <div className="flex items-center gap-2">
           <FlaskConical className="h-4 w-4 text-primary" />
           <h2 className="font-display text-lg font-bold tracking-wide text-foreground">健身补剂库</h2>
-          <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          <span className="type-meta font-medium uppercase tracking-wider text-muted-foreground">
             {SUPPLEMENTS.length} 种 · 按作用与剂量说明，不按热量
           </span>
         </div>
@@ -102,14 +102,14 @@ export default function SupplementLibrary({ initialId }: { initialId?: string })
                       {s.name}
                     </span>
                     <span className="flex shrink-0 items-center gap-1.5">
-                      <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                      <span className="type-meta font-medium uppercase tracking-wider text-muted-foreground">
                         {SUPPLEMENT_CATEGORIES.find((c) => c.id === s.cat)?.label}
                       </span>
                       <ChevronDown className={cn('h-3.5 w-3.5 text-muted-foreground transition-transform', active && 'rotate-180')} />
                     </span>
                   </span>
-                  <span className="text-xs font-medium text-muted-foreground">{s.nameEn}</span>
-                  <span className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">{s.role}</span>
+                  <span className="type-meta font-medium text-muted-foreground">{s.nameEn}</span>
+                  <span className="line-clamp-2 type-meta text-muted-foreground">{s.role}</span>
                   {s.forms && s.forms.length > 0 && (
                     <span className="flex flex-wrap gap-1">
                       {s.forms.slice(0, 3).map((f) => (
@@ -164,7 +164,7 @@ export default function SupplementLibrary({ initialId }: { initialId?: string })
                     {s.evidence && (
                       <div>
                         <p className="text-xs font-bold uppercase tracking-wider text-primary">循证参考</p>
-                        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.evidence}</p>
+                        <p className="mt-1 type-meta text-muted-foreground">{s.evidence}</p>
                       </div>
                     )}
                     <p className="rounded bg-muted/60 px-2.5 py-1.5 text-xs leading-relaxed text-muted-foreground">

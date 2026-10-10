@@ -92,7 +92,7 @@ export default function MealPlanGenerator() {
           <DailyMetric icon={<span className="text-xs font-bold text-amber-500">碳</span>} label="碳水化合物" value={`${daily.carbG} g`} sub={`占 ${Math.round((daily.carbG * 4 / daily.calories) * 100)}%`} />
           <DailyMetric icon={<span className="text-xs font-bold text-rose-500">脂</span>} label="脂肪" value={`${daily.fatG} g`} sub={`占 ${Math.round((daily.fatG * 9 / daily.calories) * 100)}%`} />
         </div>
-        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-2 type-meta text-muted-foreground">
           按你的身体数据实时计算（Katch BMR × 活动系数 × 食物热效应 + 阶段调整），
           蛋白质按瘦体重 × 阶段系数；新手蛋白质建议 1.6–1.8g/kg 体重即可，无需硬撑高蛋白。
         </p>
@@ -118,7 +118,7 @@ export default function MealPlanGenerator() {
         {dietAbsorbNote(diet.id)}
       </p>
 
-      <p className="text-xs leading-relaxed text-muted-foreground">
+      <p className="type-meta text-muted-foreground">
         方案为营养模板，克数按每餐碳蛋脂目标换算；同一食材请以食物库（营养库）实际数据为准。一周为试用期：
         体重与视觉效果符合预期就沿用，不满意再按体重上下浮动微调 5–10% 热量。
         糖尿病、孕妇、老年人、大病初愈者优先遵从医嘱，本站只提供健康自然的饮食思路。
@@ -138,13 +138,13 @@ function MealCard({ meal }: { meal: PlannedMeal }) {
           <h3 className="flex items-center gap-1.5 font-display text-base font-bold text-foreground">
             <Salad className="h-4 w-4 text-primary" />
             {meal.slot}
-            <span className="text-xs font-normal text-muted-foreground">约 {meal.pct}% 热量</span>
+            <span className="type-meta font-normal text-muted-foreground">约 {meal.pct}% 热量</span>
           </h3>
           <Badge variant="secondary" className="text-xs">
             {meal.calories} kcal
           </Badge>
         </div>
-        <p className="mb-2 text-xs text-muted-foreground">
+        <p className="mb-2 type-meta text-muted-foreground">
           蛋白 {meal.proteinG}g · 碳水 {meal.carbG}g · 脂肪 {meal.fatG}g
         </p>
         <div className="space-y-2">
@@ -188,7 +188,7 @@ function WeekPlanView({ input }: { input: MealPlanInput }) {
         <h3 className="font-display text-xl font-bold text-foreground">本周菜单</h3>
         <Badge variant="outline" className="text-xs">{SPLIT_LABEL[splitId] ?? '按训练分化'}</Badge>
       </div>
-      <p className="mb-3 text-xs text-muted-foreground">
+      <p className="mb-3 type-meta text-muted-foreground">
         按你选的训练分化自动排布训练日 / 休息日（训练日碳水足、休息日适度减碳），点日期切换当天四餐；
         实际操作按个人恢复情况调整，训练日 / 休息日不是死规矩。
       </p>
@@ -207,7 +207,7 @@ function WeekPlanView({ input }: { input: MealPlanInput }) {
             }`}
           >
             <span className="block text-xs font-semibold">{d.label}</span>
-            <span className={`mt-0.5 block text-xs ${d.isTrainDay ? 'text-primary' : 'text-muted-foreground'}`}>
+            <span className={`mt-0.5 block type-meta ${d.isTrainDay ? 'text-primary' : 'text-muted-foreground'}`}>
               {d.isTrainDay ? '训练日' : '休息日'}
             </span>
           </button>
@@ -217,11 +217,11 @@ function WeekPlanView({ input }: { input: MealPlanInput }) {
       {/* 当天详情 */}
       <div className="space-y-2">
         <div className="flex flex-wrap items-center gap-1.5">
-          <Badge className={`text-xs ${cur.isTrainDay ? '' : 'bg-muted text-muted-foreground'}`}>
+          <Badge className={`type-meta ${cur.isTrainDay ? '' : 'bg-muted text-muted-foreground'}`}>
             {cur.label} · {cur.isTrainDay ? '训练日' : '休息日'}
           </Badge>
           <Badge variant="secondary" className="text-xs">{cur.dietName}</Badge>
-          <span className="text-xs text-muted-foreground">
+          <span className="type-meta text-muted-foreground">
             {cur.plan.daily.calories} kcal · 蛋白 {cur.plan.daily.proteinG}g · 碳水 {cur.plan.daily.carbG}g · 脂肪 {cur.plan.daily.fatG}g
           </span>
         </div>
@@ -258,7 +258,7 @@ function DailyMetric({ icon, label, value, sub }: { icon: React.ReactNode; label
         {label}
       </div>
       <p className="mt-0.5 font-display text-lg font-bold leading-none text-foreground">{value}</p>
-      <p className="mt-1 text-xs text-muted-foreground">{sub}</p>
+      <p className="mt-1 type-meta text-muted-foreground">{sub}</p>
     </div>
   );
 }

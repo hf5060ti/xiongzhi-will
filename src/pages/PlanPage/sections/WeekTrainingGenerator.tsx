@@ -51,7 +51,7 @@ export default function WeekTrainingGenerator() {
           <Badge variant="outline" className="text-xs">{week.splitName}</Badge>
           <Badge variant="secondary" className="text-xs">{goal.name}</Badge>
         </div>
-        <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
+        <p className="mb-3 type-meta text-muted-foreground">
           按你的训练目标自动生成 7 天排布：每天练哪些部位、做哪些动作、组次怎么安排，动作带视频链接可直接点开学。
           分化与强度方式随时可改，下方计划会跟着变——动作本身不变，变的只是哪一天练什么。
         </p>
@@ -111,7 +111,7 @@ export default function WeekTrainingGenerator() {
               )}
             >
               <span className="block text-xs font-semibold">{d.label}</span>
-              <span className={cn('mt-0.5 block text-xs', d.isTrainDay ? 'text-primary' : 'text-muted-foreground')}>
+              <span className={cn('mt-0.5 block type-meta', d.isTrainDay ? 'text-primary' : 'text-muted-foreground')}>
                 {d.isTrainDay ? '训练日' : '休息日'}
               </span>
             </button>
@@ -121,7 +121,7 @@ export default function WeekTrainingGenerator() {
         {/* 当天详情 */}
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-1.5">
-            <Badge className={cn('text-xs', !cur.isTrainDay && 'bg-muted text-muted-foreground')}>
+            <Badge className={cn('type-meta', !cur.isTrainDay && 'bg-muted text-muted-foreground')}>
               {cur.label} · {cur.isTrainDay ? cur.title : '休息日'}
             </Badge>
             {cur.isTrainDay && <Badge variant="secondary" className="text-xs">{cur.muscles}</Badge>}
@@ -197,7 +197,7 @@ export default function WeekTrainingGenerator() {
                       );
                     })()}
                   </div>
-                  {m.tip && <p className="text-xs leading-relaxed text-muted-foreground">{m.tip}</p>}
+                  {m.tip && <p className="type-meta text-muted-foreground">{m.tip}</p>}
                 </div>
               ))}
             </div>

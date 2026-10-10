@@ -92,7 +92,7 @@ export default function MindPage() {
             <p><b>第 3 周：</b>拒绝一次不想做的社交 + 独处 30 分钟</p>
             <p><b>第 4 周：</b>回顾 30 天，写下什么改变了、什么没改变</p>
           </div>
-          <p className="mt-4 text-xs text-muted-foreground">
+          <p className="mt-4 type-meta text-muted-foreground">
             不需要全做到。做多少算多少。比 30 天前的自己好一点就行。
           </p>
         </CardContent>
