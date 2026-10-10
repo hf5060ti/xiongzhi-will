@@ -60,20 +60,20 @@ function TemplateCard({
             <h3 className="font-display text-lg font-extrabold tracking-wide text-foreground">
               {tpl.name}
             </h3>
-            <Badge variant="outline" className="text-[10px] uppercase tracking-wider">
+            <Badge variant="outline" className="text-xs uppercase tracking-wider">
               {tpl.en}
             </Badge>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">{tpl.tagline}</p>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-1">
               <UserCheck className="h-3 w-3 text-primary" />
               {tpl.audience}
             </span>
           </div>
           <div className="flex flex-wrap gap-1.5 pt-0.5">
-            <Badge variant="secondary" className="text-[10px]">{tpl.frequency}</Badge>
-            <Badge variant="secondary" className="text-[10px]">{tpl.split}</Badge>
+            <Badge variant="secondary" className="text-xs">{tpl.frequency}</Badge>
+            <Badge variant="secondary" className="text-xs">{tpl.split}</Badge>
           </div>
         </div>
         <ChevronDown
@@ -125,7 +125,7 @@ function TemplateCard({
                 >
                   <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
                     <span className="inline-flex items-center gap-1.5 text-sm">
-                      <span className="inline-flex h-4 w-4 items-center justify-center rounded bg-primary/15 text-[10px] font-bold text-primary">
+                      <span className="inline-flex h-4 w-4 items-center justify-center rounded bg-primary/15 text-xs font-bold text-primary">
                         {i + 1}
                       </span>
                       <ExerciseLink name={b.name} />
@@ -173,7 +173,7 @@ function TemplateCard({
           </div>
 
           {/* 来源 */}
-          <p className="flex items-start gap-1.5 text-[11px] leading-relaxed text-muted-foreground">
+          <p className="flex items-start gap-1.5 text-xs leading-relaxed text-muted-foreground">
             <Quote className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
             {tpl.source}
           </p>
@@ -214,7 +214,7 @@ export default function PlanTemplates() {
       </div>
 
       {/* 免责声明：沿用全站惯例 */}
-      <p className="flex items-start gap-1.5 rounded-md border border-amber-500/25 bg-amber-500/10 p-3 text-[11px] leading-relaxed text-amber-700 dark:text-amber-300">
+      <p className="flex items-start gap-1.5 rounded-md border border-amber-500/25 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-700 dark:text-amber-300">
         <ShieldAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
         <span>
           以上计划模板整理自公开健身资料，仅作训练参考，不构成医疗建议。重量、次数与分组按你当前能力取，

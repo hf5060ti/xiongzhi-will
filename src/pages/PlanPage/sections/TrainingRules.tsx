@@ -213,7 +213,7 @@ export default function TrainingRules() {
         </TabsContent>
       </Tabs>
 
-      <p className="flex items-start gap-2 rounded-xl border border-warning/40 bg-warning/5 p-3 text-[11px] leading-relaxed text-muted-foreground">
+      <p className="flex items-start gap-2 rounded-xl border border-warning/40 bg-warning/5 p-3 text-xs leading-relaxed text-muted-foreground">
         <ShieldAlert className="mt-0.5 h-3.5 w-3.5 shrink-0 text-warning" />
         <span>
           以上策略为进阶选项，基础计划已经足够绝大多数人增肌。如果你不确定自己适不适合，先按基础计划练 3 个月，再考虑叠加这些。

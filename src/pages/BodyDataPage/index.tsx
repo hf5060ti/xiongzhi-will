@@ -650,6 +650,7 @@ function Header() {
   return (
     <header>
       <p className="font-display text-sm font-bold uppercase tracking-[0.3em] text-primary">Body Data</p>
+      <p className="type-eyebrow text-primary/80">Body data</p>
       <h1 className="font-display text-3xl font-extrabold tracking-wide text-foreground">身体数据公式库</h1>
       <p className="mt-1 text-sm text-muted-foreground">
         填入身体数据，自动计算瘦体重、每日蛋白质、肌肉量上限、基础代谢与热量目标；下方可追踪力量 / 耐力 / 运动能力，看档位与曲线。
@@ -693,7 +694,7 @@ function StrengthTable({
               <TableRow key={`${r.weightBand}-${r.level}`} className={active ? 'bg-primary/10' : ''}>
                 <TableCell className="whitespace-nowrap text-muted-foreground">
                   {r.weightBand}
-                  {active && <span className="ml-1.5 text-[10px] uppercase tracking-wider text-primary">你</span>}
+                  {active && <span className="ml-1.5 text-xs uppercase tracking-wider text-primary">你</span>}
                 </TableCell>
                 <TableCell className="font-medium text-foreground">{STRENGTH_LEVEL_LABEL[r.level]}</TableCell>
                 <TableCell className="text-right text-muted-foreground">× {r.total.toFixed(2)}</TableCell>
@@ -737,7 +738,7 @@ function BenchRmTable({ highlightOneRm }: { highlightOneRm: number }) {
               <TableCell className="whitespace-nowrap font-medium text-foreground">
                 {row.oneRm} kg
                 {row.oneRm === nearest.oneRm && highlightOneRm > 0 && (
-                  <span className="ml-1.5 text-[10px] uppercase tracking-wider text-primary">你</span>
+                  <span className="ml-1.5 text-xs uppercase tracking-wider text-primary">你</span>
                 )}
               </TableCell>
               {row.reps.map((w, i) => (

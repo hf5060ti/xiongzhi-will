@@ -411,7 +411,7 @@ export default function PhysiquePage() {
                 </span>
                 <span className="text-xs leading-relaxed text-muted-foreground">{t.trait}</span>
                 {t.iconPerson && (
-                  <span className="mt-0.5 inline-flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px]">
+                  <span className="mt-0.5 inline-flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs">
                     <span className="rounded bg-primary/10 px-1.5 py-0.5 font-medium text-primary">
                       代表：{t.iconPerson}
                     </span>
@@ -522,7 +522,7 @@ export default function PhysiquePage() {
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>
                       </div>
-                      <p className="mt-0.5 text-[11px] text-muted-foreground">
+                      <p className="mt-0.5 text-xs text-muted-foreground">
                         {new Date(e.date).toLocaleString('zh-CN')}
                       </p>
                       {e.note && <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{e.note}</p>}
@@ -535,7 +535,7 @@ export default function PhysiquePage() {
         </Card>
       )}
 
-      <p className="flex items-start gap-2 rounded-md border border-warning/40 bg-warning/5 p-3 text-[11px] leading-relaxed text-muted-foreground">
+      <p className="flex items-start gap-2 rounded-md border border-warning/40 bg-warning/5 p-3 text-xs leading-relaxed text-muted-foreground">
         <ShieldAlert className="mt-0.5 h-3.5 w-3.5 shrink-0 text-warning" />
         <span>
           <b className="font-semibold text-foreground">说明：</b>

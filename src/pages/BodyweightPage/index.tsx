@@ -152,7 +152,7 @@ export default function BodyweightPage() {
             >
               {g}
               {g !== '全部' && (
-                <span className="ml-1 text-[10px] text-muted-foreground">
+                <span className="ml-1 text-xs text-muted-foreground">
                   {BODYWEIGHT_ITEMS.filter((i) => i.group === g).length}
                 </span>
               )}
@@ -177,19 +177,19 @@ export default function BodyweightPage() {
                   <Icon className="h-4 w-4 text-primary" />
                   <span className="font-display text-base font-bold text-foreground sm:text-lg">{it.name}</span>
                   {active && (
-                    <span className="ml-auto text-[10px] uppercase tracking-wider text-primary">
+                    <span className="ml-auto text-xs uppercase tracking-wider text-primary">
                       当前
                     </span>
                   )}
                 </span>
                 <span className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-                  <span className="rounded-md border border-border px-1.5 py-0.5 text-[11px]">
+                  <span className="rounded-md border border-border px-1.5 py-0.5 text-xs">
                     {it.group}
                   </span>
-                  <span className="rounded-md border border-border px-1.5 py-0.5 text-[11px]">
+                  <span className="rounded-md border border-border px-1.5 py-0.5 text-xs">
                     {it.level}
                   </span>
-                  <span className="text-[11px] uppercase tracking-wider">{it.en}</span>
+                  <span className="text-xs uppercase tracking-wider">{it.en}</span>
                 </span>
                 <span className="mt-1 block text-xs text-muted-foreground">{it.tagline}</span>
                 <span className="mt-2 block text-xs font-medium text-primary/80">
@@ -232,7 +232,7 @@ export default function BodyweightPage() {
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-md border border-primary/40 bg-primary/10 p-3">
             <p className="text-xs text-muted-foreground">难度</p>
-            <p className="mt-0.5 font-display text-lg font-bold text-foreground">{item.level}</p>
+            <p className="mt-0.5 font-display text-xl font-bold text-foreground">{item.level}</p>
           </div>
           <div className="rounded-md border border-border bg-muted/20 p-3">
             <p className="text-xs text-muted-foreground">MET（强度）</p>
@@ -240,11 +240,11 @@ export default function BodyweightPage() {
           </div>
           <div className="rounded-md border border-border bg-muted/20 p-3">
             <p className="text-xs text-muted-foreground">节奏（次/分）</p>
-            <p className="mt-0.5 font-display text-lg font-bold text-foreground">{item.rpm}</p>
+            <p className="mt-0.5 font-display text-xl font-bold text-foreground">{item.rpm}</p>
           </div>
           <div className="rounded-md border border-border bg-muted/20 p-3">
             <p className="text-xs text-muted-foreground">单次消耗（{BODYWEIGHT_REF_WEIGHT}kg）</p>
-            <p className="mt-0.5 font-display text-lg font-bold text-foreground">
+            <p className="mt-0.5 font-display text-xl font-bold text-foreground">
               {round2(bodyweightKcalPerRep(item.met, BODYWEIGHT_REF_WEIGHT, item.rpm))}
               <span className="ml-1 text-xs text-muted-foreground">kcal</span>
             </p>
@@ -370,7 +370,7 @@ export default function BodyweightPage() {
               {round2(bodyweightKcal(item.met, weightKg, parseFloat(repsPerSet) || 0, item.rpm))} kcal
               （按你 {weightKg} kg 体重）。
             </p>
-            <p className="text-[11px] leading-relaxed text-muted-foreground/80">
+            <p className="text-xs leading-relaxed text-muted-foreground/80">
               仅计动作本身，组间休息按静息处理、不计入额外消耗。
             </p>
           </div>
@@ -415,7 +415,7 @@ export default function BodyweightPage() {
                   <TableCell className="whitespace-nowrap font-medium text-foreground">
                     {w} kg
                     {active && (
-                      <span className="ml-1.5 text-[10px] uppercase tracking-wider text-primary">
+                      <span className="ml-1.5 text-xs uppercase tracking-wider text-primary">
                         当前
                       </span>
                     )}
@@ -434,7 +434,7 @@ export default function BodyweightPage() {
             })}
           </TableBody>
         </Table>
-        <p className="text-[11px] leading-relaxed text-muted-foreground/80">
+        <p className="text-xs leading-relaxed text-muted-foreground/80">
           体重并不改变动作难度，只线性影响消耗：70 kg 的人做 1 次标准俯卧撑约 0.47 kcal，90 kg 的人同样一次约 0.60 kcal。
         </p>
       </section>
@@ -472,7 +472,7 @@ export default function BodyweightPage() {
                   <TableCell className="whitespace-nowrap font-medium text-foreground">
                     {s.name}
                     {active && (
-                      <span className="ml-1.5 text-[10px] uppercase tracking-wider text-primary">
+                      <span className="ml-1.5 text-xs uppercase tracking-wider text-primary">
                         当前
                       </span>
                     )}
@@ -505,7 +505,7 @@ export default function BodyweightPage() {
             ))}
           </ul>
         </div>
-        <p className="text-[11px] leading-relaxed text-muted-foreground/80">
+        <p className="text-xs leading-relaxed text-muted-foreground/80">
           公式为估算值：MET 参考 Ainsworth《体力活动纲要》中 calisthenics（自重训练）条目（中等强度约 3.8、高强度约 8.0），各变式按动作难度（杠杆比、参与肌量、是否爆发）在基准上修正；节奏取常见组内自然节奏。实际消耗受动作幅度、速度、组间休息与个体代谢影响，误差约 ±15–25%，仅供估算，不作为医疗或营养处方依据。
         </p>
       </section>

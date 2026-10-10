@@ -121,7 +121,7 @@ export default function StomachPage() {
                     <TableRow key={g.category}>
                       <TableCell className="whitespace-nowrap align-top">
                         <span className="block text-xs font-medium text-foreground">{g.cn}</span>
-                        <span className="block text-[10px] uppercase tracking-wider text-muted-foreground">
+                        <span className="block text-xs uppercase tracking-wider text-muted-foreground">
                           {g.category}
                         </span>
                       </TableCell>
@@ -162,7 +162,7 @@ export default function StomachPage() {
             <Card key={p.step} className="border-border/50 bg-card/60 backdrop-blur-xl">
               <CardContent className="p-3 sm:p-5">
                 <div className="flex items-center gap-1.5">
-                  <span className="rounded bg-primary/15 px-1.5 py-0.5 text-[10px] font-medium text-primary">
+                  <span className="rounded bg-primary/15 px-1.5 py-0.5 text-xs font-medium text-primary">
                     {p.step}
                   </span>
                   <h3 className="font-display text-sm font-bold leading-tight text-foreground sm:text-base">
@@ -182,7 +182,7 @@ export default function StomachPage() {
                   {p.goal}
                 </p>
                 {p.warning && (
-                  <p className="mt-2 rounded-md border border-destructive/30 bg-destructive/10 px-2 py-1.5 text-[11px] leading-snug text-foreground/90">
+                  <p className="mt-2 rounded-md border border-destructive/30 bg-destructive/10 px-2 py-1.5 text-xs leading-snug text-foreground/90">
                     警示：{p.warning}
                   </p>
                 )}
@@ -206,17 +206,17 @@ export default function StomachPage() {
                 <div className="flex flex-wrap items-baseline justify-between gap-1">
                   <h3 className="font-display text-sm font-bold text-foreground">{row.category}</h3>
                   {row.note && (
-                    <p className="text-[11px] leading-snug text-muted-foreground">{row.note}</p>
+                    <p className="text-xs leading-snug text-muted-foreground">{row.note}</p>
                   )}
                 </div>
                 <div className="mt-2 grid gap-2 sm:grid-cols-2">
                   <div className="rounded-md border border-emerald-500/20 bg-emerald-500/5 p-2.5">
-                    <p className="text-[11px] font-medium text-emerald-600">优先吃（低 FODMAP）</p>
+                    <p className="text-xs font-medium text-emerald-600">优先吃（低 FODMAP）</p>
                     <div className="mt-1 flex flex-wrap gap-1">
                       {row.low.map((f) => (
                         <span
                           key={f}
-                          className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[11px] text-emerald-700"
+                          className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-xs text-emerald-700"
                         >
                           {f}
                         </span>
@@ -224,12 +224,12 @@ export default function StomachPage() {
                     </div>
                   </div>
                   <div className="rounded-md border border-destructive/20 bg-destructive/5 p-2.5">
-                    <p className="text-[11px] font-medium text-destructive">先别碰（高 FODMAP）</p>
+                    <p className="text-xs font-medium text-destructive">先别碰（高 FODMAP）</p>
                     <div className="mt-1 flex flex-wrap gap-1">
                       {row.high.map((f) => (
                         <span
                           key={f}
-                          className="rounded bg-destructive/10 px-1.5 py-0.5 text-[11px] text-foreground/80"
+                          className="rounded bg-destructive/10 px-1.5 py-0.5 text-xs text-foreground/80"
                         >
                           {f}
                         </span>
@@ -241,7 +241,7 @@ export default function StomachPage() {
             </Card>
           ))}
         </div>
-        <p className="rounded-md border border-border bg-muted/30 px-3 py-2 text-[11px] leading-snug text-muted-foreground">
+        <p className="rounded-md border border-border bg-muted/30 px-3 py-2 text-xs leading-snug text-muted-foreground">
           注意「剂量累积」：低列食物大量同餐叠加也可能跨过耐受阈值；个体差异大，第二阶段务必一次只测一组。
         </p>
       </section>
@@ -286,7 +286,7 @@ export default function StomachPage() {
             <ol className="space-y-2.5">
               {GUT_ACTION_LIST.map((a, i) => (
                 <li key={a.title} className="flex gap-2.5">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[11px] font-bold text-primary">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-xs font-bold text-primary">
                     {i + 1}
                   </span>
                   <span>
@@ -328,7 +328,7 @@ function SectionTitle({
 }) {
   return (
     <div>
-      <h2 className="flex items-center gap-2 font-display text-lg font-bold text-foreground sm:text-xl">
+      <h2 className="flex items-center gap-2 font-display text-xl font-bold text-foreground sm:text-xl">
         <span className="shrink-0 text-primary">{icon}</span>
         {title}
       </h2>

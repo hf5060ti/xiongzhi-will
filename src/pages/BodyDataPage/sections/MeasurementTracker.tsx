@@ -164,7 +164,7 @@ export default function MeasurementTracker() {
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
               {MEASURE_KEYS.map((k) => (
                 <div key={k} className="space-y-1">
-                  <Label htmlFor={`measure-${k}`} className="text-[11px] text-muted-foreground">
+                  <Label htmlFor={`measure-${k}`} className="text-xs text-muted-foreground">
                     {MEASURE_META[k].label}
                   </Label>
                   <Input
@@ -184,7 +184,7 @@ export default function MeasurementTracker() {
             </div>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-xs text-muted-foreground">
               输入框里的灰色数字是各部位最近一次的值；只填想更新的部位即可，同一天重复保存会覆盖。
             </p>
             <Button size="sm" className="h-8 px-3 text-xs" onClick={save}>
@@ -293,7 +293,7 @@ export default function MeasurementTracker() {
                 {progress.map((p) => (
                   <span
                     key={p.key}
-                    className="rounded-md border border-border/60 bg-card/60 px-2 py-1 text-[11px] text-muted-foreground"
+                    className="rounded-md border border-border/60 bg-card/60 px-2 py-1 text-xs text-muted-foreground"
                   >
                     {MEASURE_META[p.key].label}
                     <b className="ml-1 text-foreground">{p.first}→{p.latest}cm</b>
@@ -307,7 +307,7 @@ export default function MeasurementTracker() {
                   </span>
                 ))}
               </div>
-              <p className="mt-1.5 text-[11px] leading-snug text-muted-foreground">
+              <p className="mt-1.5 text-xs leading-snug text-muted-foreground">
                 腰 / 大腿缩小、胸 / 臂增大是增肌减脂同时发生的理想形态；同向变大要警惕脂肪增长。
               </p>
             </div>

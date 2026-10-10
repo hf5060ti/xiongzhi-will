@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { estimate1rm } from '@/lib/one-rep-max';
+import { RestTimer } from '@/components/RestTimer';
 
 /**
  * 1RM / RPE / 做组重量计算器
@@ -92,17 +93,17 @@ function WarmupCalculator() {
               return (
                 <div key={row.pct} className="rounded-xl border border-border/40 bg-accent/20 p-3">
                   <div className="flex items-baseline justify-between">
-                    <p className="text-[11px] text-muted-foreground">{row.label}</p>
+                    <p className="text-xs text-muted-foreground">{row.label}</p>
                     <p className="font-mono text-lg font-bold text-foreground">{kg} kg</p>
                   </div>
-                  <p className="mt-1 text-[11px] text-muted-foreground">{row.reps} 次 · 休 {row.rest}</p>
-                  <p className="mt-1 text-[10px] leading-snug text-muted-foreground/80">{row.note}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{row.reps} 次 · 休 {row.rest}</p>
+                  <p className="mt-1 text-xs leading-snug text-muted-foreground/80">{row.note}</p>
                 </div>
               );
             })}
           </div>
         )}
-        <p className="flex items-start gap-2 text-[11px] leading-relaxed text-muted-foreground">
+        <p className="flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
           <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           重量跳法：早期跳大一点（空杆→40%→60%），越接近正式组跳越小（60%→80%→90%）。
           孤立动作（弯举、侧平举）不需要这么完整的热身链，2 组轻重量过渡即可。
@@ -178,17 +179,17 @@ function WarmupRoutineGuide() {
         <ol className="space-y-2.5">
           {content[tab].map((item, i) => (
             <li key={i} className="flex gap-2.5 rounded-lg border border-border/40 bg-accent/20 p-3">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-[11px] text-primary">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-xs text-primary">
                 {i + 1}
               </span>
               <div>
                 <p className="text-sm font-medium text-foreground">{item.t}</p>
-                <p className="mt-0.5 text-[11px] leading-relaxed text-muted-foreground">{item.d}</p>
+                <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{item.d}</p>
               </div>
             </li>
           ))}
         </ol>
-        <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground">
+        <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
           热身不是训练前的"浪费时间"，而是让目标肌在正式组第一组就进入状态。
           跳过热身直接上重量，要么动作变形，要么第一组还在找感觉——那组就白练了。
         </p>
@@ -317,7 +318,7 @@ export default function ToolsPage() {
                     <p className="mt-0.5 font-mono text-base text-foreground">{results.l.toFixed(1)}</p>
                   </div>
                 </div>
-                <p className="text-[11px] leading-relaxed text-muted-foreground">
+                <p className="text-xs leading-relaxed text-muted-foreground">
                   Epley 最常用，Brzycki 在低次数区间偏低，Lombardi 在高次数区间偏高；三者平均更稳。
                   这是推算值，不是真去冲 1RM。自然训练者不建议频繁测极限，技术和恢复代价都很大。
                 </p>
@@ -351,12 +352,12 @@ export default function ToolsPage() {
                       <Badge className={row.color}>{row.label}</Badge>
                       <span className="font-mono text-base font-bold text-foreground">{kg.toFixed(1)} kg</span>
                     </div>
-                    <p className="mt-1.5 text-[11px] leading-snug text-muted-foreground">{row.use}</p>
+                    <p className="mt-1.5 text-xs leading-snug text-muted-foreground">{row.use}</p>
                   </div>
                 );
               })}
             </div>
-            <p className="mt-4 flex items-start gap-2 text-[11px] leading-relaxed text-muted-foreground">
+            <p className="mt-4 flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
               <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
               自然训练者主力增肌区间落在 70–80%、RPE 7–8；不要每周都顶到 90% 以上，恢复不过来反而掉肌肉。
               下肢（深蹲/硬拉）通常比上肢（卧推/推举）能承受更高次数和更大百分比。
@@ -381,16 +382,19 @@ export default function ToolsPage() {
             {RPE_ROWS.map((row) => (
               <div key={row.rpe} className="rounded-xl border border-border/40 bg-accent/20 p-3">
                 <p className="font-display text-base font-bold text-primary">{row.label}</p>
-                <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{row.note}</p>
+                <p className="mt-1 text-xs leading-snug text-muted-foreground">{row.note}</p>
               </div>
             ))}
           </div>
-          <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
             增肌 ≈ RPE 7–8（留 2–3 次余量）；力量 ≈ RPE 8–9；减载周 ≈ RPE 5–6。
             自然训练者几乎不需要每周都做到 RPE 10，留几次余量反而长得更久。
           </p>
         </CardContent>
       </Card>
+
+      {/* 组间休息计时：本站一直标注「复合 3–5 分 / 孤立 2–3 分」，这里给一个能直接按开始的工具 */}
+      <RestTimer />
 
       {/* 主项热身组计算器 */}
       <WarmupCalculator />
@@ -399,7 +403,7 @@ export default function ToolsPage() {
       <WarmupRoutineGuide />
 
       {/* 免责 */}
-      <p className="rounded-xl border border-border/40 bg-accent/10 p-3 text-[11px] leading-relaxed text-muted-foreground">
+      <p className="rounded-xl border border-border/40 bg-accent/10 p-3 text-xs leading-relaxed text-muted-foreground">
         本计算器基于广泛使用的经验公式，仅作训练规划参考。动作技术不标准、借力、疲劳状态下测出的重量，
         推算出的 1RM 会偏高。糖尿病、心血管疾病、关节旧伤者，冲大重量前请遵从医嘱。
       </p>

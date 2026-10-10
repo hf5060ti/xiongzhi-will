@@ -46,11 +46,11 @@ export default function DietPicker({ selected, onSelect }: DietPickerProps) {
                 <span className="block font-display text-base font-bold leading-tight tracking-wide text-foreground">
                   {diet.name}
                 </span>
-                <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-[0.06em] text-muted-foreground">
+                <span className="mt-0.5 block text-xs font-medium uppercase tracking-[0.06em] text-muted-foreground">
                   {diet.en}
                 </span>
               </span>
-              <span className="block text-[11px] leading-snug text-muted-foreground">{diet.tagline}</span>
+              <span className="block text-xs leading-snug text-muted-foreground">{diet.tagline}</span>
               <span className="mt-auto space-y-2">
                 <span className="flex h-1.5 w-full overflow-hidden rounded-full bg-muted">
                   {MACRO_META.map((m) => (
@@ -61,7 +61,7 @@ export default function DietPicker({ selected, onSelect }: DietPickerProps) {
                     />
                   ))}
                 </span>
-                <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-muted-foreground">
+                <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-muted-foreground">
                   {MACRO_META.map((m) => (
                     <span key={m.key} className="flex items-center gap-1">
                       <span className={cn('h-1.5 w-1.5 rounded-full', m.className)} />

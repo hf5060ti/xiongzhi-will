@@ -48,10 +48,10 @@ export default function WeekTrainingGenerator() {
         <div className="mb-1 flex flex-wrap items-center gap-2">
           <CalendarRange className="h-5 w-5 text-primary" />
           <h2 className="font-display text-xl font-extrabold text-foreground">本周训练计划</h2>
-          <Badge variant="outline" className="text-[11px]">{week.splitName}</Badge>
-          <Badge variant="secondary" className="text-[11px]">{goal.name}</Badge>
+          <Badge variant="outline" className="text-xs">{week.splitName}</Badge>
+          <Badge variant="secondary" className="text-xs">{goal.name}</Badge>
         </div>
-        <p className="mb-3 text-[11px] leading-relaxed text-muted-foreground">
+        <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
           按你的训练目标自动生成 7 天排布：每天练哪些部位、做哪些动作、组次怎么安排，动作带视频链接可直接点开学。
           分化与强度方式随时可改，下方计划会跟着变——动作本身不变，变的只是哪一天练什么。
         </p>
@@ -59,14 +59,14 @@ export default function WeekTrainingGenerator() {
         {/* 分化 + 金字塔 快捷选择 */}
         <div className="mb-3 space-y-2">
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[11px] font-semibold text-foreground">分化</span>
+            <span className="text-xs font-semibold text-foreground">分化</span>
             {SPLIT_CHOICES.map((s) => (
               <button
                 key={s.id}
                 type="button"
                 onClick={() => onSplit(s.id)}
                 className={cn(
-                  'rounded-full border px-2.5 py-0.5 text-[11px] transition-colors',
+                  'rounded-full border px-2.5 py-0.5 text-xs transition-colors',
                   s.id === split
                     ? 'border-primary bg-primary/15 font-semibold text-foreground'
                     : 'border-border bg-card text-muted-foreground hover:bg-accent',
@@ -77,14 +77,14 @@ export default function WeekTrainingGenerator() {
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[11px] font-semibold text-foreground">强度</span>
+            <span className="text-xs font-semibold text-foreground">强度</span>
             {PYRAMID_CHOICES.map((p) => (
               <button
                 key={p.id}
                 type="button"
                 onClick={() => onPyramid(p.id)}
                 className={cn(
-                  'rounded-full border px-2.5 py-0.5 text-[11px] transition-colors',
+                  'rounded-full border px-2.5 py-0.5 text-xs transition-colors',
                   p.id === pyramid
                     ? 'border-primary bg-primary/15 font-semibold text-foreground'
                     : 'border-border bg-card text-muted-foreground hover:bg-accent',
@@ -110,8 +110,8 @@ export default function WeekTrainingGenerator() {
                   : 'border-border bg-card/40 text-muted-foreground hover:bg-card/80',
               )}
             >
-              <span className="block text-[11px] font-semibold">{d.label}</span>
-              <span className={cn('mt-0.5 block text-[9px]', d.isTrainDay ? 'text-primary' : 'text-muted-foreground')}>
+              <span className="block text-xs font-semibold">{d.label}</span>
+              <span className={cn('mt-0.5 block text-xs', d.isTrainDay ? 'text-primary' : 'text-muted-foreground')}>
                 {d.isTrainDay ? '训练日' : '休息日'}
               </span>
             </button>
@@ -121,14 +121,14 @@ export default function WeekTrainingGenerator() {
         {/* 当天详情 */}
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-1.5">
-            <Badge className={cn('text-[11px]', !cur.isTrainDay && 'bg-muted text-muted-foreground')}>
+            <Badge className={cn('text-xs', !cur.isTrainDay && 'bg-muted text-muted-foreground')}>
               {cur.label} · {cur.isTrainDay ? cur.title : '休息日'}
             </Badge>
-            {cur.isTrainDay && <Badge variant="secondary" className="text-[11px]">{cur.muscles}</Badge>}
+            {cur.isTrainDay && <Badge variant="secondary" className="text-xs">{cur.muscles}</Badge>}
           </div>
 
           {!cur.isTrainDay ? (
-            <p className="flex items-start gap-1.5 rounded-md border border-border bg-muted/20 p-3 text-[11px] leading-relaxed text-muted-foreground">
+            <p className="flex items-start gap-1.5 rounded-md border border-border bg-muted/20 p-3 text-xs leading-relaxed text-muted-foreground">
               <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
               休息日不等于躺平：散步、拉伸、呼吸训练都算主动恢复；练一休一的好处是给中枢神经和关节肌腱留足修复时间，肌肉在休息时生长。
               睡眠尽量保证 8–9 小时（因人而异），熬夜会升高皮质醇、压制雄性激素，直接影响训练效果。
@@ -139,7 +139,7 @@ export default function WeekTrainingGenerator() {
                 <div key={`${m.name}-${i}`} className="rounded-lg border border-border bg-muted/20 p-3">
                   <div className="mb-1 flex flex-wrap items-center justify-between gap-1.5">
                     <p className="text-sm font-semibold text-foreground">
-                      <span className="mr-1.5 inline-flex h-5 w-5 items-center justify-center rounded bg-primary/15 text-[11px] font-bold text-primary">
+                      <span className="mr-1.5 inline-flex h-5 w-5 items-center justify-center rounded bg-primary/15 text-xs font-bold text-primary">
                         {i + 1}
                       </span>
                       {m.name}
@@ -160,7 +160,7 @@ export default function WeekTrainingGenerator() {
                           onError={(ev) => { ev.currentTarget.style.display = 'none'; }}
                           className="h-10 w-10 rounded-md border border-border bg-muted/30 object-contain transition-transform hover:scale-110"
                         />
-                        <span className="flex items-center gap-1 text-[11px] text-primary hover:underline">
+                        <span className="flex items-center gap-1 text-xs text-primary hover:underline">
                           <PlayCircle className="h-3.5 w-3.5" />
                           演示
                         </span>
@@ -170,7 +170,7 @@ export default function WeekTrainingGenerator() {
                         href={m.videoUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex items-center gap-1 text-[11px] text-primary hover:underline"
+                        className="flex items-center gap-1 text-xs text-primary hover:underline"
                       >
                         <PlayCircle className="h-3.5 w-3.5" />
                         视频演示
@@ -178,13 +178,13 @@ export default function WeekTrainingGenerator() {
                     ) : null}
                   </div>
                   <div className="mb-1 flex flex-wrap items-center gap-1.5">
-                    <p className="text-[11px] font-medium text-primary/90">{m.set.replace(/[，,]?\s*组间歇\s*\d+\s*s/g, '')}</p>
+                    <p className="text-xs font-medium text-primary/90">{m.set.replace(/[，,]?\s*组间歇\s*\d+\s*s/g, '')}</p>
                     {(() => {
                       const r = restFor(m.name);
                       return (
                         <span
                           className={cn(
-                            'inline-flex items-center gap-1 rounded-full border px-1.5 py-0.5 text-[10px] font-medium',
+                            'inline-flex items-center gap-1 rounded-full border px-1.5 py-0.5 text-xs font-medium',
                             r.kind === 'compound'
                               ? 'border-primary/40 bg-primary/10 text-primary'
                               : 'border-border bg-muted/40 text-muted-foreground',
@@ -197,21 +197,21 @@ export default function WeekTrainingGenerator() {
                       );
                     })()}
                   </div>
-                  {m.tip && <p className="text-[11px] leading-relaxed text-muted-foreground">{m.tip}</p>}
+                  {m.tip && <p className="text-xs leading-relaxed text-muted-foreground">{m.tip}</p>}
                 </div>
               ))}
             </div>
           )}
 
           <div className="space-y-2">
-            <p className="flex items-start gap-1.5 rounded-md border border-primary/20 bg-primary/5 p-2.5 text-[11px] leading-relaxed text-foreground/85">
+            <p className="flex items-start gap-1.5 rounded-md border border-primary/20 bg-primary/5 p-2.5 text-xs leading-relaxed text-foreground/85">
               <TrendingUp className="mt-0.5 h-3.5 w-3.5 shrink-0" />
               <span>
                 <b className="text-foreground">强度策略：</b>
                 {week.pyramidNote}
               </span>
             </p>
-            <p className="flex items-start gap-1.5 rounded-md border border-primary/20 bg-primary/5 p-2.5 text-[11px] leading-relaxed text-foreground/85">
+            <p className="flex items-start gap-1.5 rounded-md border border-primary/20 bg-primary/5 p-2.5 text-xs leading-relaxed text-foreground/85">
               <Dumbbell className="mt-0.5 h-3.5 w-3.5 shrink-0" />
               <span>
                 <b className="text-foreground">容量参考（{LEVEL_LABEL.beginner}起步）：</b>
@@ -224,7 +224,7 @@ export default function WeekTrainingGenerator() {
               <button
                 type="button"
                 onClick={() => setRestOpen((v) => !v)}
-                className="flex w-full items-center justify-between gap-2 p-2.5 text-left text-[11px] font-medium text-foreground"
+                className="flex w-full items-center justify-between gap-2 p-2.5 text-left text-xs font-medium text-foreground"
               >
                 <span className="flex items-center gap-1.5">
                   <Coffee className="h-3.5 w-3.5 text-primary" />
@@ -233,7 +233,7 @@ export default function WeekTrainingGenerator() {
                 <ChevronDown className={cn('h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform', restOpen && 'rotate-180')} />
               </button>
               {restOpen && (
-                <div className="space-y-1.5 border-t border-border px-2.5 py-2 text-[11px] leading-relaxed text-muted-foreground">
+                <div className="space-y-1.5 border-t border-border px-2.5 py-2 text-xs leading-relaxed text-muted-foreground">
                   <p>
                     <b className="text-foreground">这不是"为休息而休息"。</b>自然训练者（无药物）恢复磷酸原系统、清除组间乳酸、让中枢神经回稳，
                     在大重量复合动作上普遍需要 3–5 分钟；少于这个时间，下一组往往是"带着疲劳硬做"——重量掉、动作变形、力还没发够就做完了，
@@ -251,7 +251,7 @@ export default function WeekTrainingGenerator() {
             </div>
           </div>
 
-          <p className="flex items-start gap-1.5 rounded-md border border-amber-500/25 bg-amber-500/10 p-2.5 text-[11px] leading-relaxed text-amber-700 dark:text-amber-300">
+          <p className="flex items-start gap-1.5 rounded-md border border-amber-500/25 bg-amber-500/10 p-2.5 text-xs leading-relaxed text-amber-700 dark:text-amber-300">
             <ShieldAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
             <span>
               在安全的范围内去运动：单次训练建议控制在 70 分钟左右（超过多为垃圾容量，只影响恢复；长跑等耐力有氧除外），一天两练可以但不建议天天如此，以恢复为准。

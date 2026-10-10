@@ -62,7 +62,7 @@ export default function NutritionPage() {
       {/* 烟酒警示横幅 */}
       <div className="rounded-xl border border-red-500/40 bg-red-500/5 p-4 sm:p-5">
         <div className="flex flex-wrap items-start gap-2">
-          <span className="rounded-md bg-red-500/15 px-2 py-0.5 text-[11px] font-bold text-red-300">⚠ 烟酒警示</span>
+          <span className="rounded-md bg-red-500/15 px-2 py-0.5 text-xs font-bold text-red-300">⚠ 烟酒警示</span>
           <p className="min-w-0 flex-1 text-xs leading-relaxed text-red-200/90">
             吸烟有害健康，可致肺癌等多种癌症与心脑血管疾病，本站不提供任何烟草数据、也不鼓励吸烟。
             酒精是「空热量」——1g 乙醇约 7kcal，过量饮酒伤肝（脂肪肝/肝硬化）、升高血压与尿酸、抑制肌肉蛋白合成与深睡眠，
@@ -74,7 +74,7 @@ export default function NutritionPage() {
       {/* 药食同源免责声明 */}
       <div className="rounded-xl border border-amber-500/40 bg-amber-500/5 p-4 sm:p-5">
         <div className="flex flex-wrap items-start gap-2">
-          <span className="rounded-md bg-amber-500/15 px-2 py-0.5 text-[11px] font-bold text-amber-300">ℹ 药食同源声明</span>
+          <span className="rounded-md bg-amber-500/15 px-2 py-0.5 text-xs font-bold text-amber-300">ℹ 药食同源声明</span>
           <p className="min-w-0 flex-1 text-xs leading-relaxed text-amber-200/90">
             本库收录的枸杞、红枣、桂圆、莲子、银耳、茯苓、芡实、葛根、山药、薏苡仁、赤小豆、百合、陈皮、山楂、罗汉果、决明子、菊花、蜂蜜、黑芝麻、核桃、杏仁、白果、乌梅、桑葚、五味子、甘草、生姜、干辣椒等，
             均为国家药食同源目录中的<strong>常见食物/汤料/茶饮</strong>，仅作为健身营养参考。
@@ -112,8 +112,11 @@ export default function NutritionPage() {
       {/* 营养素吸收率指南 */}
       <div className="rounded-xl border border-border bg-card p-5 sm:p-6">
         <div className="mb-1 flex flex-wrap items-center gap-2">
+          
+          <p className="type-eyebrow text-primary/80">Nutrition</p>
+
           <h2 className="font-display text-xl font-extrabold text-foreground">营养素吸收率指南</h2>
-          <Badge variant="outline" className="px-2 py-0.5 text-[11px]">吃进去 ≠ 吸收进去</Badge>
+          <Badge variant="outline" className="px-2 py-0.5 text-xs">吃进去 ≠ 吸收进去</Badge>
         </div>
         <p className="mb-1 text-xs leading-relaxed text-muted-foreground">
           同样一份食物，会吃的人吸收率高一截。掌握这些搭配原则，营养利用率立竿见影。
@@ -128,12 +131,12 @@ export default function NutritionPage() {
               <div className="mb-1 flex flex-wrap items-center gap-2">
                 <UtensilsCrossed className="h-4 w-4 text-primary" />
                 <span className="font-display text-base font-bold text-foreground">{g.title}</span>
-                <Badge variant="outline" className="px-1.5 py-0 text-[10px]">{g.badge}</Badge>
+                <Badge variant="outline" className="px-1.5 py-0 text-xs">{g.badge}</Badge>
               </div>
               <p className="text-xs leading-relaxed text-muted-foreground">{g.body}</p>
               <ul className="mt-2 space-y-1">
                 {g.tips.map((t) => (
-                  <li key={t} className="flex items-start gap-1.5 text-[11px] leading-snug text-foreground/80">
+                  <li key={t} className="flex items-start gap-1.5 text-xs leading-snug text-foreground/80">
                     <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/70" />
                     {t}
                   </li>
@@ -142,7 +145,7 @@ export default function NutritionPage() {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
+        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
           吸收率因人而异（消化系统、年龄、疾病都会影响）；孕妇、老年人、大病初愈者、糖尿病及相关疾病人群，优先遵从医嘱。
         </p>
       </div>
@@ -151,7 +154,7 @@ export default function NutritionPage() {
       <div className="rounded-xl border border-border bg-card p-5 sm:p-6">
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <h2 className="font-display text-xl font-extrabold text-foreground">营养课堂 · 陈石</h2>
-          <span className="rounded bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary">
+          <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
             3HFIT / SNC 运动营养咨询师
           </span>
         </div>
@@ -174,9 +177,9 @@ export default function NutritionPage() {
                   {v.title}
                 </span>
                 <span className="mt-0.5 flex items-center gap-1.5">
-                  <Badge variant="outline" className="px-1.5 py-0 text-[10px]">{v.topic}</Badge>
+                  <Badge variant="outline" className="px-1.5 py-0 text-xs">{v.topic}</Badge>
                   {v.note && (
-                    <span className="truncate text-[11px] text-muted-foreground">{v.note}</span>
+                    <span className="truncate text-xs text-muted-foreground">{v.note}</span>
                   )}
                 </span>
               </span>

@@ -2,10 +2,32 @@
 // See LICENSE / NOTICE for details.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair, LogIn, LogOut, Hand, CalendarDays, Utensils, Library, Activity, Trophy } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair, LogIn, LogOut, Hand, CalendarDays, Utensils, Library, Activity, Trophy, type LucideIcon } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { searchEntries, type SearchEntry } from '@/lib/search-index';
+// 搜索索引属于「按需加载」：它内部会在模块顶层把动作 / 食物 / 补剂 / 自重 / 饮食知识
+// 全站数据摊平成一条大数组（约 176 KB 源数据）。若在此处以值导入的形式静态引用，
+// 这段数据就会被打进首屏主 chunk（实测 index chunk 达 759 kB）。
+// 因此这里只做「类型导入」，真正的实现首次需要时（空闲阶段预取）才动态 import，
+// 让 Vite 把索引与其数据单独切成一个 chunk，首屏不必为其付费。
+import type { SearchEntry } from '@/lib/search-index';
+
+/** 已加载的搜索索引 API；null = 尚未加载完成 */
+type SearchIndexApi = { searchEntries: (query: string, limit?: number) => SearchEntry[] };
+
+let searchIndexPromise: Promise<SearchIndexApi> | null = null;
+
+/**
+ * 加载搜索索引（模块内单例，重复调用复用同一个 Promise，不会重复请求）。
+ * 放在组件外是为了让缓存作用于整个模块而不是单个组件实例。
+ */
+function loadSearchIndex(): Promise<SearchIndexApi> {
+  searchIndexPromise ??= import('@/lib/search-index').then((mod) => ({
+    searchEntries: mod.searchEntries,
+  }));
+  return searchIndexPromise;
+}
 import { saveGoalId } from '@/lib/store';
+import { EXERCISE_COUNT, STRENGTH_LIFT_COUNT } from '@/data/counts';
 import { getUser, isLoginEnabled, loginWithGithub, logout, type AuthUser } from '@/lib/auth';
 import { cn } from '@/lib/utils';
 import VideoBackground from '@/components/VideoBackground';
@@ -13,30 +35,57 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { t, onLangChange } from '@/lib/i18n';
 
-// 前 7 项是训练主链路（选目标 → 出方案 → 查动作 → 记训练 → 算营养 → 看数据 → 问 AI），
-// 后面是心智 / 事业 / 荒野等延伸板块。核心页必须在导航里，否则用户只能靠搜索撞见。
-const NAV_ITEMS = [
-  { path: '/', labelKey: 'nav_body', icon: Dumbbell, end: true },
-  { path: '/plan', labelKey: 'nav_plan', icon: CalendarDays, end: false },
-  { path: '/library', labelKey: 'nav_library', icon: Library, end: false },
-  { path: '/strength', labelKey: 'nav_strength', icon: Trophy, end: false },
-  { path: '/training-logs', labelKey: 'nav_training', icon: ClipboardList, end: false },
-  { path: '/nutrition', labelKey: 'nav_nutrition', icon: Utensils, end: false },
-  { path: '/body', labelKey: 'nav_bodydata', icon: Activity, end: false },
-  { path: '/coach', labelKey: 'nav_coach', icon: Bot, end: false },
-  { path: '/tools', labelKey: 'nav_tools', icon: Crosshair, end: false },
-  { path: '/light', labelKey: 'nav_light', icon: TrendingDown, end: false },
-  { path: '/stomach', labelKey: 'nav_stomach', icon: Soup, end: false },
-  { path: '/isometric', labelKey: 'nav_isometric', icon: Hand, end: false },
-  { path: '/diet-knowledge', labelKey: 'nav_diet', icon: BookOpen, end: false },
-  { path: '/mind', labelKey: 'nav_mind', icon: Brain, end: false },
-  { path: '/career', labelKey: 'nav_career', icon: Briefcase, end: false },
-  { path: '/wealth', labelKey: 'nav_wealth', icon: Coins, end: false },
-  { path: '/relation', labelKey: 'nav_relation', icon: Heart, end: false },
-  { path: '/skills', labelKey: 'nav_skills', icon: Wrench, end: false },
-  { path: '/wild', labelKey: 'nav_wild', icon: Mountain, end: false },
-  { path: '/life', labelKey: 'nav_life', icon: BookMarked, end: false },
-  { path: '/collect', labelKey: 'nav_collect', icon: Bookmark, end: false },
+interface NavItem {
+  path: string;
+  labelKey: string;
+  icon: LucideIcon;
+  end: boolean;
+}
+
+// 导航按板块分组：21 项平铺成一列时，「营养」和「人生」挨在一起，
+// 找功能全靠逐个扫读。分组后每组是一块语义完整的入口，扫一眼就能定位。
+// 组一 = 训练主链路（选目标 → 出方案 → 查动作 → 记训练 → 算营养 → 看数据 → 问 AI），
+// 组二 = 专项（减脂 / 肠胃 / 等长 / 饮食讲解），组三 = 心智 / 事业 / 荒野等延伸板块。
+const NAV_GROUPS: { key: string; labelKey: string; items: NavItem[] }[] = [
+  {
+    key: 'train',
+    labelKey: 'nav_group_train',
+    items: [
+      { path: '/', labelKey: 'nav_body', icon: Dumbbell, end: true },
+      { path: '/plan', labelKey: 'nav_plan', icon: CalendarDays, end: false },
+      { path: '/library', labelKey: 'nav_library', icon: Library, end: false },
+      { path: '/strength', labelKey: 'nav_strength', icon: Trophy, end: false },
+      { path: '/training-logs', labelKey: 'nav_training', icon: ClipboardList, end: false },
+      { path: '/nutrition', labelKey: 'nav_nutrition', icon: Utensils, end: false },
+      { path: '/body', labelKey: 'nav_bodydata', icon: Activity, end: false },
+      { path: '/coach', labelKey: 'nav_coach', icon: Bot, end: false },
+      { path: '/tools', labelKey: 'nav_tools', icon: Crosshair, end: false },
+    ],
+  },
+  {
+    key: 'special',
+    labelKey: 'nav_group_special',
+    items: [
+      { path: '/light', labelKey: 'nav_light', icon: TrendingDown, end: false },
+      { path: '/stomach', labelKey: 'nav_stomach', icon: Soup, end: false },
+      { path: '/isometric', labelKey: 'nav_isometric', icon: Hand, end: false },
+      { path: '/diet-knowledge', labelKey: 'nav_diet', icon: BookOpen, end: false },
+    ],
+  },
+  {
+    key: 'life',
+    labelKey: 'nav_group_life',
+    items: [
+      { path: '/mind', labelKey: 'nav_mind', icon: Brain, end: false },
+      { path: '/career', labelKey: 'nav_career', icon: Briefcase, end: false },
+      { path: '/wealth', labelKey: 'nav_wealth', icon: Coins, end: false },
+      { path: '/relation', labelKey: 'nav_relation', icon: Heart, end: false },
+      { path: '/skills', labelKey: 'nav_skills', icon: Wrench, end: false },
+      { path: '/wild', labelKey: 'nav_wild', icon: Mountain, end: false },
+      { path: '/life', labelKey: 'nav_life', icon: BookMarked, end: false },
+      { path: '/collect', labelKey: 'nav_collect', icon: Bookmark, end: false },
+    ],
+  },
 ];
 
 // 路由级 SEO：每个页面独立的 title / description（SPA 单页内切换时由 JS 更新）
@@ -48,9 +97,9 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/cardio': { title: '有氧与冷兵器 - 雄性意志', desc: '拳击、跳绳、跑步、球类与冷兵器训练的热量消耗参考（剑道 270 kcal/h，唐刀武士刀等 200–600 kcal/h）。' },
   '/bodyweight': { title: '自重训练 - 雄性意志', desc: '俯卧撑、引体、吊杠举腿等自重动作库与组次参考。' },
   '/physique': { title: '形体 - 雄性意志', desc: '胸型、臂型等各部位形态对照与知名人物参考，拍照记录体态变化。' },
-  '/strength': { title: '力量等级计算器 - 雄性意志', desc: '按性别、年龄、体重与动作，用重量×次数估算 1RM，判定从入门到精英五档力量等级，并给出下一档还差多少公斤。39 项动作。' },
+  '/strength': { title: '力量等级计算器 - 雄性意志', desc: `按性别、年龄、体重与动作，用重量×次数估算 1RM，判定从入门到精英五档力量等级，并给出下一档还差多少公斤。${STRENGTH_LIFT_COUNT} 项动作，含自重与行走类。` },
   '/coach': { title: 'AI 教练 - 雄性意志', desc: 'AI 个性化训练与饮食建议。建议仅供参考，不构成医疗建议。' },
-  '/library': { title: '动作百科 - 雄性意志', desc: '2428 个动作的演示动图、组次、要点、优缺点与名师教学视频，含斗腕专项与等长训练。' },
+  '/library': { title: '动作百科 - 雄性意志', desc: `${EXERCISE_COUNT} 个动作的演示动图、组次、要点、优缺点与名师教学视频，含斗腕专项与等长训练。` },
   '/mind': { title: '心智 - 雄性意志', desc: '压力管理、自律习惯、斯多葛哲学、日记复盘——意志的内核。' },
   '/career': { title: '事业 - 雄性意志', desc: '职业发展、副业、写作、编程、谈判、领导力。' },
   '/wealth': { title: '财富 - 雄性意志', desc: '赚钱、存钱、投资基础、风险管理、消费观。' },
@@ -116,7 +165,7 @@ function AuthSection({ compact }: { compact?: boolean }) {
     >
       <p className="truncate text-sm font-medium text-foreground">{user.name}</p>
       <p className="truncate text-xs text-muted-foreground">@{user.login}</p>
-      <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
         已开启云端同步：训练记录、身体数据、计划与收藏会跟随账号，换设备自动取回。
       </p>
       <button
@@ -180,7 +229,7 @@ function AuthSection({ compact }: { compact?: boolean }) {
           ) : (
             <User className="h-5 w-5 text-muted-foreground" strokeWidth={1.8} />
           )}
-          <span className="max-w-full truncate text-[10px] leading-none text-muted-foreground">
+          <span className="max-w-full truncate text-xs leading-none text-muted-foreground">
             {user.login}
           </span>
         </button>
@@ -192,7 +241,7 @@ function AuthSection({ compact }: { compact?: boolean }) {
           className="flex w-14 flex-col items-center gap-1 rounded-xl py-2.5 text-muted-foreground transition-all hover:bg-accent/50 hover:text-foreground"
         >
           <LogIn className="h-5 w-5" strokeWidth={1.8} />
-          <span className="text-[10px] leading-none">{t('login')}</span>
+          <span className="text-xs leading-none">{t('login')}</span>
         </button>
       )}
       {menu}
@@ -224,7 +273,7 @@ const SearchResultList = ({
           <span className="flex-1">
             <span className="flex items-center gap-2">
               <span className="text-sm font-medium text-foreground">{r.label}</span>
-              <span className="rounded px-1 text-[10px] uppercase tracking-wider text-muted-foreground">
+              <span className="rounded px-1 text-xs uppercase tracking-wider text-muted-foreground">
                 {t(TYPE_LABEL[r.type])}
               </span>
             </span>
@@ -269,6 +318,37 @@ export const Layout = () => {
   /** 手机端搜索面板（lg 以下断点使用，桌面端仍用内容区顶部搜索框） */
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  /** 动态加载进来的搜索索引；未就绪时搜索面板保持可用，只是没有结果 */
+  const [searchApi, setSearchApi] = useState<SearchIndexApi | null>(null);
+
+  // 空闲预取：趁浏览器空闲把索引 chunk 拉下来，等用户真正敲字时通常已就绪。
+  // setState 发生在异步回调里（不在 effect 同步体内），因此不会触发额外渲染。
+  useEffect(() => {
+    let alive = true;
+    const kick = () => {
+      loadSearchIndex().then(
+        (api) => {
+          if (alive) setSearchApi(api);
+        },
+        () => {
+          /* 索引加载失败不应影响导航使用，搜索静默降级（由 AllowEmptySearch 兜底） */
+        },
+      );
+    };
+    if (typeof requestIdleCallback === 'function') {
+      const id = requestIdleCallback(kick, { timeout: 2000 });
+      return () => {
+        alive = false;
+        cancelIdleCallback(id);
+      };
+    }
+    // 不支持 requestIdleCallback 的浏览器（Safari 旧版本）退化为普通异步预取
+    const timer = setTimeout(kick, 0);
+    return () => {
+      alive = false;
+      clearTimeout(timer);
+    };
+  }, []);
 
   // 搜索防抖：用户停止输入 200ms 后才真正搜索，避免每次按键都触发
   useEffect(() => {
@@ -276,7 +356,14 @@ export const Layout = () => {
     return () => clearTimeout(timer);
   }, [query]);
 
-  const results = useMemo(() => searchEntries(debouncedQuery), [debouncedQuery]);
+  // 索引未就绪时返回空数组（行为等同于「无匹配」），加载完成前后 alve 行为一致，
+  // 不会出现搜索框卡住；真正的 UI 差异由下方 resultsPending 给出轻量状态提示。
+  const results = useMemo(
+    () => (searchApi && debouncedQuery.trim() ? searchApi.searchEntries(debouncedQuery) : []),
+    [searchApi, debouncedQuery],
+  );
+  /** 用户已输入内容、但索引 chunk 还没到：用于显示「正在加载」而不是「无结果」 */
+  const resultsPending = Boolean(debouncedQuery.trim()) && !searchApi;
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
@@ -338,34 +425,50 @@ export const Layout = () => {
       <aside className="fixed left-0 top-0 z-40 hidden h-screen w-20 flex-col border-r border-border/60 bg-card/70 backdrop-blur-2xl lg:flex">
         <Link to="/" className="flex flex-col items-center gap-1 py-5">
           <Shield className="h-7 w-7 text-primary" strokeWidth={2.2} />
-          <span className="font-display text-[10px] font-bold tracking-[0.2em] text-foreground">
+          <span className="font-display text-xs font-bold tracking-[0.2em] text-foreground">
             雄性
           </span>
         </Link>
         {/* 导航项较多（20 项），矮屏放不下时允许侧栏内部滚动，避免把底部语言/账号区挤出去 */}
         <nav className="flex flex-1 flex-col items-center gap-1 overflow-y-auto py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {NAV_ITEMS.map((item) => {
-            const Icon = item.icon;
-            return (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                end={item.end}
-                title={t(item.labelKey)}
-                className={({ isActive }) =>
-                  cn(
-                    'flex w-14 flex-col items-center gap-1 rounded-xl py-2.5 transition-all',
-                    isActive
-                      ? 'bg-primary/15 text-primary'
-                      : 'text-muted-foreground hover:bg-accent/50 hover:text-foreground',
-                  )
-                }
+          {NAV_GROUPS.map((group, gi) => (
+            <div key={group.key} className="flex w-full flex-col items-center">
+              {/* 组间分隔线 + 组名：80px 宽的侧栏里，分组比再多的分隔空间都管用 */}
+              <div
+                className={cn(
+                  'flex w-14 items-center gap-1.5 pt-1',
+                  gi > 0 && 'mt-2 border-t border-border/60',
+                )}
               >
-                <Icon className="h-5 w-5" strokeWidth={1.8} />
-                <span className="text-[10px] leading-none">{t(item.labelKey)}</span>
-              </NavLink>
-            );
-          })}
+                <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground/70">
+                  {t(group.labelKey)}
+                </span>
+              </div>
+              {group.items.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    end={item.end}
+                    title={t(item.labelKey)}
+                    className={({ isActive }) =>
+                      cn(
+                        'flex w-14 flex-col items-center gap-1 rounded-xl py-2.5 transition-all',
+                        isActive
+                          ? 'bg-primary/15 text-primary'
+                          : 'text-muted-foreground hover:bg-accent/50 hover:text-foreground',
+                      )
+                    }
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={1.8} />
+                    {/* 侧栏只有 56px 宽：俄语「Упражнения」这类长词会撑破，统一截断 */}
+                    <span className="max-w-full truncate text-xs leading-none">{t(item.labelKey)}</span>
+                  </NavLink>
+                );
+              })}
+            </div>
+          ))}
         </nav>
 
         {/* 语言切换 + 账号：左侧栏底部 */}
@@ -402,24 +505,32 @@ export const Layout = () => {
             <AuthSection compact />
           </div>
         </div>
-        {/* 手机端导航横向滚动 */}
-        <nav className="flex gap-1 overflow-x-auto px-3 pb-2">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.end}
-              className={({ isActive }) =>
-                cn(
-                  'shrink-0 rounded-md px-3 py-1.5 text-xs transition-colors',
-                  isActive
-                    ? 'bg-primary/15 font-medium text-primary'
-                    : 'text-muted-foreground hover:bg-accent hover:text-foreground',
-                )
-              }
-            >
-              {t(item.labelKey)}
-            </NavLink>
+        {/* 手机端导航横向滚动（同样按组分段，组名与竖线随内容一起滚） */}
+        <nav className="flex items-center gap-1 overflow-x-auto px-3 pb-2">
+          {NAV_GROUPS.map((group, gi) => (
+            <div key={group.key} className="flex shrink-0 items-center gap-1">
+              {gi > 0 && <span className="mx-1 h-3.5 w-px shrink-0 bg-border/70" />}
+              <span className="shrink-0 text-xs font-medium text-muted-foreground/70">
+                {t(group.labelKey)}
+              </span>
+              {group.items.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  end={item.end}
+                  className={({ isActive }) =>
+                    cn(
+                      'shrink-0 rounded-md px-3 py-1.5 text-xs transition-colors',
+                      isActive
+                        ? 'bg-primary/15 font-medium text-primary'
+                        : 'text-muted-foreground hover:bg-accent hover:text-foreground',
+                    )
+                  }
+                >
+                  {t(item.labelKey)}
+                </NavLink>
+              ))}
+            </div>
           ))}
         </nav>
       </header>
@@ -467,8 +578,9 @@ export const Layout = () => {
                 className="mt-2 max-h-[60vh] overflow-auto rounded-xl border border-border/60 bg-card/60"
               />
             ) : (
-              <p className="mt-3 px-1 text-xs leading-relaxed text-muted-foreground">
-                {query.trim() ? t('search_empty') : t('search_typing')}
+              <p className="mt-3 px-1 type-meta leading-relaxed text-muted-foreground">
+                {/* 索引 chunk 还没到就显示「无结果」会误导用户，这里先给出加载态 */}
+                {resultsPending ? t('search_loading') : query.trim() ? t('search_empty') : t('search_typing')}
               </p>
             )}
           </div>
@@ -511,7 +623,7 @@ export const Layout = () => {
         </div>
 
         <footer className="border-t border-border/30 bg-card/40 px-4 py-4 backdrop-blur-xl lg:px-8">
-          <div className="max-w-4xl text-[11px] leading-relaxed text-muted-foreground">
+          <div className="max-w-4xl text-xs leading-relaxed text-muted-foreground">
             <p>
               <b className="text-foreground">{t('disclaimer')}</b>
             </p>

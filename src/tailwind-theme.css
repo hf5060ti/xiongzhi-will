@@ -27,7 +27,9 @@
   --secondary: rgba(255,255,255,0.06);
   --secondary-foreground: hsl(45 10% 88%);
   --muted: rgba(255,255,255,0.05);
-  --muted-foreground: hsl(40 10% 62%);
+  /* 次要文字色。原为 62%，在墨黑 + 玻璃模糊的背景上虽已过 WCAG AA（6.78:1），
+     但小字号 + 模糊叠加后实际观感偏灰。提到 68%（8.04:1）拉开层次又不抢主体。 */
+  --muted-foreground: hsl(40 10% 68%);
   --accent: rgba(247,231,206,0.10);
   --accent-foreground: #F7E7CE;
   --info: hsl(210 70% 60%);

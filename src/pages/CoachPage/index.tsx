@@ -916,7 +916,7 @@ function AIChatPanel() {
               保存并启用
             </Button>
           </div>
-          <p className="text-[11px] text-muted-foreground/80">
+          <p className="text-xs text-muted-foreground/80">
             已有 Key？直接粘进来就行。想换模型或清除 Key，点下面的「修改 Key」。
           </p>
         </div>
@@ -944,7 +944,7 @@ function AIChatPanel() {
                 </li>
                 <li>把后台地址填到下面，点「连接」</li>
               </ol>
-              <p className="text-[11px]">
+              <p className="text-xs">
                 直连本机地址（<code className="rounded bg-muted px-1">http://127.0.0.1:8787</code>）在 Chrome / Edge / Firefox 可用；
                 若被浏览器拦截，回到本机用 <code className="rounded bg-muted px-1">npm run dev</code> 打开
                 <code className="rounded bg-muted px-1">http://localhost:26666</code> 即可，功能完全一样。
@@ -970,13 +970,13 @@ function AIChatPanel() {
                 <RefreshCw className="h-3.5 w-3.5" />
                 重试连接
               </Button>
-              {offlineDetail && <span className="text-[11px] text-muted-foreground/80">诊断：{offlineDetail}</span>}
+              {offlineDetail && <span className="text-xs text-muted-foreground/80">诊断：{offlineDetail}</span>}
             </div>
           </div>
         )}
 
         {backend === 'ready' && (
-          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-muted-foreground">
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
             <span>
               后台地址：<b className="font-normal text-foreground">{apiBase || '同源 /api（本地开发代理）'}</b>
               {customBase && ' · 自定义'}
@@ -1025,7 +1025,7 @@ function AIChatPanel() {
                   m.role === 'user' ? 'bg-primary/10 text-foreground' : 'bg-background text-foreground/90',
                 )}
               >
-                <span className="mb-0.5 block text-[10px] uppercase tracking-wide text-muted-foreground">
+                <span className="mb-0.5 block text-xs uppercase tracking-wide text-muted-foreground">
                   {m.role === 'user' ? '我' : (current?.label ?? 'AI')}
                 </span>
                 {m.image && (
@@ -1043,11 +1043,11 @@ function AIChatPanel() {
                               <svg viewBox="0 0 24 24" className="h-5 w-5 translate-x-0.5 fill-white"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                           </div>
-                          <div className="absolute bottom-0 left-0 right-0 bg-[#F7E7CE] px-1.5 py-1 text-[10px] font-medium leading-tight text-black">
+                          <div className="absolute bottom-0 left-0 right-0 bg-[#F7E7CE] px-1.5 py-1 text-xs font-medium leading-tight text-black">
                             {cue}
                           </div>
                         </div>
-                        <div className="bg-[#1A1D1B] px-1.5 py-1 text-[9px] leading-tight text-muted-foreground">{video.title}</div>
+                        <div className="bg-[#1A1D1B] px-1.5 py-1 text-xs leading-tight text-muted-foreground">{video.title}</div>
                       </a>
                     ))}
                   </div>
@@ -1068,7 +1068,7 @@ function AIChatPanel() {
             <img src={pendingImage} alt="待发送的动作照片" className="h-14 w-14 rounded border border-border object-cover" />
             <div className="flex-1 text-xs text-muted-foreground">
               动作照片已附上。可在下方补一句「这个卧推/深蹲动作标准吗？」再发送。
-              <div className="mt-0.5 text-[10px]">需在模型下拉里选 Qwen2.5-VL-72B 才能真正看图。</div>
+              <div className="mt-0.5 text-xs">需在模型下拉里选 Qwen2.5-VL-72B 才能真正看图。</div>
             </div>
             <Button type="button" variant="outline" size="icon" onClick={() => setPendingImage(null)} title="移除图片">
               <X className="h-4 w-4" />

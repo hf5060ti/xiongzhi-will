@@ -44,7 +44,7 @@ export default function SupplementLibrary({ initialId }: { initialId?: string })
         <div className="flex items-center gap-2">
           <FlaskConical className="h-4 w-4 text-primary" />
           <h2 className="font-display text-lg font-bold tracking-wide text-foreground">健身补剂库</h2>
-          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+          <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
             {SUPPLEMENTS.length} 种 · 按作用与剂量说明，不按热量
           </span>
         </div>
@@ -102,18 +102,18 @@ export default function SupplementLibrary({ initialId }: { initialId?: string })
                       {s.name}
                     </span>
                     <span className="flex shrink-0 items-center gap-1.5">
-                      <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                      <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                         {SUPPLEMENT_CATEGORIES.find((c) => c.id === s.cat)?.label}
                       </span>
                       <ChevronDown className={cn('h-3.5 w-3.5 text-muted-foreground transition-transform', active && 'rotate-180')} />
                     </span>
                   </span>
-                  <span className="text-[11px] font-medium text-muted-foreground">{s.nameEn}</span>
+                  <span className="text-xs font-medium text-muted-foreground">{s.nameEn}</span>
                   <span className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">{s.role}</span>
                   {s.forms && s.forms.length > 0 && (
                     <span className="flex flex-wrap gap-1">
                       {s.forms.slice(0, 3).map((f) => (
-                        <span key={f} className="rounded bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground">
+                        <span key={f} className="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
                           {f}
                         </span>
                       ))}
@@ -124,22 +124,22 @@ export default function SupplementLibrary({ initialId }: { initialId?: string })
                 {active && (
                   <div className="space-y-3 border-t border-border px-3 py-3.5 sm:px-3.5">
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-primary">作用</p>
+                      <p className="text-xs font-bold uppercase tracking-wider text-primary">作用</p>
                       <p className="mt-1 text-xs leading-relaxed text-foreground/90">{s.role}</p>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-primary">常见剂量</p>
+                        <p className="text-xs font-bold uppercase tracking-wider text-primary">常见剂量</p>
                         <p className="mt-1 text-xs leading-relaxed text-foreground/90">{s.dosage}</p>
                       </div>
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-primary">使用时机</p>
+                        <p className="text-xs font-bold uppercase tracking-wider text-primary">使用时机</p>
                         <p className="mt-1 text-xs leading-relaxed text-foreground/90">{s.timing}</p>
                       </div>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">
                       <div className="rounded-lg border border-emerald-500/25 bg-emerald-500/5 p-2.5">
-                        <p className="text-[11px] font-bold text-emerald-300">优点</p>
+                        <p className="text-xs font-bold text-emerald-300">优点</p>
                         <ul className="mt-1 list-disc space-y-1 pl-4 text-xs leading-relaxed text-foreground/85">
                           {s.pros.map((p) => (
                             <li key={p}>{p}</li>
@@ -147,7 +147,7 @@ export default function SupplementLibrary({ initialId }: { initialId?: string })
                         </ul>
                       </div>
                       <div className="rounded-lg border border-red-500/25 bg-red-500/5 p-2.5">
-                        <p className="text-[11px] font-bold text-red-300">缺点 / 注意</p>
+                        <p className="text-xs font-bold text-red-300">缺点 / 注意</p>
                         <ul className="mt-1 list-disc space-y-1 pl-4 text-xs leading-relaxed text-foreground/85">
                           {s.cons.map((c) => (
                             <li key={c}>{c}</li>
@@ -157,17 +157,17 @@ export default function SupplementLibrary({ initialId }: { initialId?: string })
                     </div>
                     {s.cautions && (
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-primary">注意事项</p>
+                        <p className="text-xs font-bold uppercase tracking-wider text-primary">注意事项</p>
                         <p className="mt-1 text-xs leading-relaxed text-foreground/90">{s.cautions}</p>
                       </div>
                     )}
                     {s.evidence && (
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-primary">循证参考</p>
+                        <p className="text-xs font-bold uppercase tracking-wider text-primary">循证参考</p>
                         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.evidence}</p>
                       </div>
                     )}
-                    <p className="rounded bg-muted/60 px-2.5 py-1.5 text-[10px] leading-relaxed text-muted-foreground">
+                    <p className="rounded bg-muted/60 px-2.5 py-1.5 text-xs leading-relaxed text-muted-foreground">
                       剂量为常见成人参考范围，个体差异大；孕妇、哺乳期、未成年人、慢性病患者、服药者请先咨询医生或注册营养师。
                     </p>
                   </div>

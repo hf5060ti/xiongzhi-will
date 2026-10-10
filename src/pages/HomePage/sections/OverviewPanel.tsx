@@ -68,103 +68,104 @@ export default function OverviewPanel() {
   return (
     <Card className="border-border/60 bg-card/60 backdrop-blur-xl">
       <CardContent className="p-4 sm:p-5">
-        <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
-          <Activity className="h-4 w-4 text-primary" />
+        <p className="type-eyebrow text-primary/80">Stats</p>
+        <h3 className="mt-1 flex items-center gap-2 font-display text-2xl font-bold text-foreground">
+          <Activity className="h-5 w-5 text-primary" />
           我的数据
         </h3>
-        <p className="mt-1 text-xs text-muted-foreground">训练总量、每日消耗估算与身体趋势，一屏掌握。</p>
+        <p className="type-meta mt-1.5 text-muted-foreground">训练总量、每日消耗估算与身体趋势，一屏掌握。</p>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {/* 本周训练 */}
-          <div className="rounded-xl border border-border/50 bg-background/40 p-3">
-            <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
+            <p className="flex items-center gap-1.5 type-eyebrow text-muted-foreground">
               <CalendarRange className="h-3.5 w-3.5 text-primary" />
               本周训练
             </p>
             {totalSessions > 0 ? (
               <>
-                <p className="mt-1.5 font-display text-xl font-bold text-foreground">
+                <p className="mt-2 font-display text-3xl font-bold leading-none text-foreground tabular-nums">
                   {weekDays}
-                  <span className="ml-1 text-[10px] font-normal text-muted-foreground">天</span>
+                  <span className="ml-1.5 text-sm font-normal text-muted-foreground">天</span>
                 </p>
-                <p className="mt-1 text-[11px] text-muted-foreground">累计 {totalSessions} 次训练记录</p>
+                <p className="type-meta mt-2 text-muted-foreground">累计 {totalSessions} 次训练记录</p>
               </>
             ) : (
-              <p className="mt-1.5 text-xs text-muted-foreground">还没有训练记录</p>
+              <p className="type-meta mt-2 text-muted-foreground">还没有训练记录</p>
             )}
-            <Link to="/training-logs" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline">
+            <Link to="/training-logs" className="type-meta mt-2.5 inline-flex items-center gap-0.5 font-medium text-primary hover:underline">
               去记录 <span aria-hidden="true">→</span>
             </Link>
           </div>
 
           {/* 每日消耗估算 */}
-          <div className="rounded-xl border border-border/50 bg-background/40 p-3">
-            <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
+            <p className="flex items-center gap-1.5 type-eyebrow text-muted-foreground">
               <Flame className="h-3.5 w-3.5 text-primary" />
               每日消耗估算
             </p>
             {hasBody ? (
               <>
-                <p className="mt-1.5 font-display text-xl font-bold text-foreground">
+                <p className="mt-2 font-display text-3xl font-bold leading-none text-foreground tabular-nums">
                   {tdeeVal}
-                  <span className="ml-1 text-[10px] font-normal text-muted-foreground">kcal/天</span>
+                  <span className="ml-1.5 text-sm font-normal text-muted-foreground">kcal/天</span>
                 </p>
-                <p className="mt-1 text-[11px] text-muted-foreground">
+                <p className="type-meta mt-2 text-muted-foreground">
                   TDEE（BMR {bmr} × {activityLabel || '活动系数'}）
                 </p>
               </>
             ) : (
-              <p className="mt-1.5 text-xs text-muted-foreground">填身高体重年龄即可估算</p>
+              <p className="type-meta mt-2 text-muted-foreground">填身高体重年龄即可估算</p>
             )}
-            <Link to="/body" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline">
+            <Link to="/body" className="type-meta mt-2.5 inline-flex items-center gap-0.5 font-medium text-primary hover:underline">
               {hasBody ? '调整身体数据' : '去填写'} <span aria-hidden="true">→</span>
             </Link>
           </div>
 
           {/* 当前体重 */}
-          <div className="rounded-xl border border-border/50 bg-background/40 p-3">
-            <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
+            <p className="flex items-center gap-1.5 type-eyebrow text-muted-foreground">
               <Activity className="h-3.5 w-3.5 text-primary" />
               当前体重
             </p>
             {weightKg > 0 || bw > 0 ? (
               <>
-                <p className="mt-1.5 font-display text-xl font-bold text-foreground">
+                <p className="mt-2 font-display text-3xl font-bold leading-none text-foreground tabular-nums">
                   {bw > 0 ? bw : weightKg}
-                  <span className="ml-1 text-[10px] font-normal text-muted-foreground">kg</span>
+                  <span className="ml-1.5 text-sm font-normal text-muted-foreground">kg</span>
                 </p>
-                <p className="mt-1 text-[11px] text-muted-foreground">用于热量与营养估算</p>
+                <p className="type-meta mt-2 text-muted-foreground">用于热量与营养估算</p>
               </>
             ) : (
-              <p className="mt-1.5 text-xs text-muted-foreground">还没有体重数据</p>
+              <p className="type-meta mt-2 text-muted-foreground">还没有体重数据</p>
             )}
-            <Link to="/light" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline">
+            <Link to="/light" className="type-meta mt-2.5 inline-flex items-center gap-0.5 font-medium text-primary hover:underline">
               去记录 <span aria-hidden="true">→</span>
             </Link>
           </div>
 
           {/* 围度趋势 */}
-          <div className="rounded-xl border border-border/50 bg-background/40 p-3">
-            <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
+            <p className="flex items-center gap-1.5 type-eyebrow text-muted-foreground">
               <Ruler className="h-3.5 w-3.5 text-primary" />
               围度变化
             </p>
             {deltas.length > 0 ? (
               <>
-                <p className="mt-1.5 font-display text-xl font-bold text-foreground">
+                <p className="mt-2 font-display text-3xl font-bold leading-none text-foreground tabular-nums">
                   {deltas.length}
-                  <span className="ml-1 text-[10px] font-normal text-muted-foreground">个部位有记录</span>
+                  <span className="ml-1.5 text-sm font-normal text-muted-foreground">个部位有记录</span>
                 </p>
-                <p className="mt-1 text-[11px] text-muted-foreground">
+                <p className="type-meta mt-2 text-muted-foreground">
                   {deltas
                     .map((d) => `${MEASURE_META[d.key].label} ${d.delta > 0 ? '+' : ''}${d.delta}cm`)
                     .join(' · ')}
                 </p>
               </>
             ) : (
-              <p className="mt-1.5 text-xs text-muted-foreground">还没有围度记录</p>
+              <p className="type-meta mt-2 text-muted-foreground">还没有围度记录</p>
             )}
-            <Link to="/body" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline">
+            <Link to="/body" className="type-meta mt-2.5 inline-flex items-center gap-0.5 font-medium text-primary hover:underline">
               去记录 <span aria-hidden="true">→</span>
             </Link>
           </div>

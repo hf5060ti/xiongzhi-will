@@ -84,6 +84,48 @@
   to { opacity: 1; }
 }
 
+/* ── 文字层级（type scale）───────────────────────────────
+ * 此前全站 245 处 text-[11px]、95 处 text-[10px]、10 处 text-[9px]，
+ * 小字承担了太多「次要信息」的职责。深色背景 + 40px 玻璃模糊会让小字发虚，
+ * 中文笔画又比拉丁字母密，9–10px 基本是「存在但读不出」。
+ * 这里定义一组语义类，把字号收敛到 4 档，并把下限抬到 11px。
+ * 用法：眉标签 → .type-eyebrow，次要说明 → .type-meta，正文 → .type-body
+ */
+.type-eyebrow {
+  font-size: 0.75rem;   /* 12px */
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.type-meta {
+  font-size: 0.75rem;   /* 12px，原 10/11px */
+  line-height: 1.6;
+}
+.type-body {
+  font-size: 0.875rem;  /* 14px */
+  line-height: 1.7;
+}
+/* 数据展示：比正文更大、字重更重，用于「一眼要看到的那个数」 */
+.type-stat {
+  font-size: 1.75rem;
+  line-height: 1.1;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.type-stat-lg {
+  font-size: 2.5rem;
+  line-height: 1.05;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 分段小标题：压在正文上方的金色竖线，替代原来纯色的小字 */
+.section-rule {
+  border-left: 2px solid var(--primary);
+  padding-left: 0.625rem;
+}
+
 /* ── 无障碍：键盘焦点可见样式（A11y）────────────────────── */
 :focus-visible {
   outline: 2px solid #F7E7CE;

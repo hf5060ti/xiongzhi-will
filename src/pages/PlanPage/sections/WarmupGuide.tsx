@@ -48,7 +48,7 @@ export default function WarmupGuide() {
                     <b className="text-foreground">{step.order}. {step.name}</b>
                     <span className="text-primary">{step.detail}</span>
                   </div>
-                  <p className="mt-0.5 text-[11px] text-muted-foreground">{step.cue}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{step.cue}</p>
                 </div>
               ))}
             </div>
@@ -80,7 +80,7 @@ export default function WarmupGuide() {
                     <b className="text-foreground">{step.name}</b>
                     <span className="text-primary">{step.detail}</span>
                   </div>
-                  <p className="mt-0.5 text-[11px] text-muted-foreground">{step.cue}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{step.cue}</p>
                 </div>
               ))}
             </div>
@@ -90,7 +90,7 @@ export default function WarmupGuide() {
           <div>
             <div className="mb-2 flex items-center justify-between">
               <p className="text-xs font-semibold text-muted-foreground">第三阶段：第一个正式动作递增组</p>
-              <label className="flex items-center gap-1 text-[11px] text-muted-foreground">
+              <label className="flex items-center gap-1 text-xs text-muted-foreground">
                 工作重量
                 <input
                   type="number"
@@ -116,11 +116,11 @@ export default function WarmupGuide() {
                     <b className="text-foreground">{step.order}. {step.name}</b>
                     <span className="text-primary">{step.detail}</span>
                   </div>
-                  <p className="mt-0.5 text-[11px] text-muted-foreground">{step.cue}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{step.cue}</p>
                 </div>
               ))}
             </div>
-            <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
               凯圣王原则：第一个动作充分热身（4-5组递增），后续动作轻重量过渡即可，不要每次都从头热。
             </p>
           </div>
@@ -140,8 +140,8 @@ export default function WarmupGuide() {
                 {WARMUP_MISTAKES.map((m, i) => (
                   <div key={i} className="rounded-md border border-border/50 bg-muted/20 p-2.5 text-xs">
                     <p className="font-semibold text-foreground">✗ {m.title}</p>
-                    <p className="mt-1 text-[11px] text-muted-foreground">错误做法：{m.wrong}</p>
-                    <p className="mt-0.5 text-[11px] text-primary">正确做法：{m.right}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">错误做法：{m.wrong}</p>
+                    <p className="mt-0.5 text-xs text-primary">正确做法：{m.right}</p>
                   </div>
                 ))}
               </div>
@@ -156,7 +156,7 @@ export default function WarmupGuide() {
             </p>
             <div className="space-y-1.5">
               {WARMUP_ADJUSTMENTS.map((a, i) => (
-                <div key={i} className="text-[11px] leading-relaxed">
+                <div key={i} className="text-xs leading-relaxed">
                   <b className="text-foreground">{a.situation}：</b>
                   <span className="text-muted-foreground">{a.advice}</span>
                 </div>

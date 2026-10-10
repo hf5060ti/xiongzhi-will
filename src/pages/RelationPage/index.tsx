@@ -82,7 +82,7 @@ function RelationCard({ icon, title, points }: { icon: React.ReactNode; title: s
       <CardContent className="p-5">
         <div className="flex items-center gap-2">
           <span className="text-primary">{icon}</span>
-          <h3 className="font-display text-lg font-bold text-foreground">{title}</h3>
+          <h3 className="font-display text-xl font-bold text-foreground">{title}</h3>
         </div>
         <ul className="mt-3 space-y-1.5">
           {points.map((p, i) => (

@@ -190,7 +190,7 @@ export default function AiFoodEstimator() {
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <Bot className="h-5 w-5 text-primary" />
         <h2 className="font-display text-xl font-extrabold text-foreground">AI 热量估算</h2>
-        <Badge variant="outline" className="px-2 py-0.5 text-[11px]">描述食物 → 自动算</Badge>
+        <Badge variant="outline" className="px-2 py-0.5 text-xs">描述食物 → 自动算</Badge>
       </div>
       <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
         用一句话描述你吃的东西（尽量带上做法与大致份量，如「一碗蛋炒饭大概 200 克」），

@@ -482,17 +482,17 @@ export default function PerformanceTracker({
         </button>
         {showSources && (
           <div className="space-y-3 border-t border-border px-3 py-3">
-            <p className="text-[11px] leading-relaxed text-muted-foreground">
+            <p className="text-xs leading-relaxed text-muted-foreground">
               三板块统一档位术语：入门 / 进阶 / 熟练 / 优秀 / 精英（耐力沿用原五档名作英文副标，运动能力为国标四项，无第五档）。各档线为大众训练者参考线，不是体检或医学结论。
             </p>
             {STANDARD_SOURCES.map((note) => (
               <div key={note.section} className="space-y-1.5">
                 <p className="text-xs font-medium text-foreground">{note.title}</p>
-                <p className="text-[11px] leading-relaxed text-muted-foreground">档位表：{note.source}</p>
-                <p className="text-[11px] leading-relaxed text-muted-foreground">档数：{note.levels}</p>
+                <p className="text-xs leading-relaxed text-muted-foreground">档位表：{note.source}</p>
+                <p className="text-xs leading-relaxed text-muted-foreground">档数：{note.levels}</p>
                 <ul className="space-y-1">
                   {note.derived.map((line) => (
-                    <li key={line} className="text-[11px] leading-relaxed text-muted-foreground">
+                    <li key={line} className="text-xs leading-relaxed text-muted-foreground">
                       · {line}
                     </li>
                   ))}
@@ -523,7 +523,7 @@ export default function PerformanceTracker({
               <div className="mt-2">
                 <AbilityBar progress={item.score ?? 0} color={tierColor(item.tier ?? -1)} />
               </div>
-              <p className="mt-1.5 text-[11px] text-muted-foreground">
+              <p className="mt-1.5 text-xs text-muted-foreground">
                 {meta.desc} · 已录 {item.count} 条 / {item.metrics} 项
               </p>
             </div>
@@ -538,11 +538,11 @@ export default function PerformanceTracker({
             </span>
             {overall.score != null && <span className="text-xs text-muted-foreground">加权 {overall.score}/100</span>}
           </div>
-          <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">
+          <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
             力量 {sectionLabel(strengthTier, STRENGTH_LEVELS)} · 耐力 {sectionLabel(enduranceTier, ENDURANCE_METRICS[0].levels)} · 运动能力{' '}
             {sectionLabel(athleticTier, ATHLETIC_METRICS[0].levels)}
           </p>
-          <p className="mt-1 text-[11px] text-muted-foreground">
+          <p className="mt-1 text-xs text-muted-foreground">
             权重：力量 {Math.round(OVERALL_WEIGHTS.strength * 100)}% / 耐力 {Math.round(OVERALL_WEIGHTS.endurance * 100)}% / 运动能力{' '}
             {Math.round(OVERALL_WEIGHTS.athletic * 100)}%
           </p>
@@ -588,7 +588,7 @@ export default function PerformanceTracker({
               保存
             </Button>
           </div>
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             1RM 用 Epley 公式估算：重量 ×（1 + 次数 ÷ 30）；建议填 1–8 次的组，估算更接近真实极限。
           </p>
 
@@ -603,13 +603,13 @@ export default function PerformanceTracker({
                   <span className="font-display text-xl font-bold text-foreground">
                     {row.last ? row.last.oneRm.toFixed(1) : '—'}
                   </span>
-                  <span className="text-[11px] text-muted-foreground">{row.last ? 'kg 1RM' : '待录入'}</span>
+                  <span className="text-xs text-muted-foreground">{row.last ? 'kg 1RM' : '待录入'}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">
                   {row.ratio != null ? `体重倍数 ${row.ratio.toFixed(2)}×` : weightKg > 0 ? '填体重后算倍数' : '待录体重'}
                 </p>
                 {row.last && (
-                  <p className="text-[11px] leading-relaxed text-muted-foreground">
+                  <p className="text-xs leading-relaxed text-muted-foreground">
                     {row.last.snapshotKg != null
                       ? `按记录时体重快照 ${row.last.snapshotKg} kg 判级，以后改体重也不变`
                       : row.baseKg != null
@@ -622,11 +622,11 @@ export default function PerformanceTracker({
                 </div>
                 <AbilityBar progress={row.progress} color={row.grade.color} />
                 {row.levelProgress && (
-                  <p className="text-[11px] leading-relaxed text-muted-foreground">
+                  <p className="text-xs leading-relaxed text-muted-foreground">
                     {levelProgressText(row.levelProgress, (v) => `${v.toFixed(2)}×`)}
                   </p>
                 )}
-                <p className="text-[11px] leading-relaxed text-muted-foreground">
+                <p className="text-xs leading-relaxed text-muted-foreground">
                   {row.grade.tier === -1
                     ? row.startKg != null
                       ? `${STRENGTH_LEVELS[0]}目标 ≈ ${row.startKg} kg（体重 × ${LIFT_STANDARDS[row.lift.key][sex][0]}）`
@@ -634,7 +634,7 @@ export default function PerformanceTracker({
                     : liftGapText(row.gapKg, row.grade.nextLabel) ?? `已是最高档（${row.grade.label}）`}
                 </p>
                 {row.entries.length > 1 && row.last && (
-                  <p className="text-[11px] text-muted-foreground">
+                  <p className="text-xs text-muted-foreground">
                     最近 {fmtDate(row.last.date)} · 历史最高 1RM {row.best.toFixed(1)} kg
                   </p>
                 )}
@@ -718,7 +718,7 @@ export default function PerformanceTracker({
                   保存
                 </Button>
               </div>
-              <p className="text-[11px] text-muted-foreground">
+              <p className="text-xs text-muted-foreground">
                 {metrics.find((m) => m.key === form.metric)?.hint}
                 {metrics.find((m) => m.key === form.metric)?.isTime && '（用时支持 4:50 或 4′50″ 写法，也可只填秒数）'}
                 {metrics.find((m) => m.key === form.metric)?.maleOnly && sex === 'female' && '（该表为男生标准，女生按同表参考）'}
@@ -736,16 +736,16 @@ export default function PerformanceTracker({
                         {row.last ? formatMetricValue(row.metric, row.last.value) : '—'}
                       </span>
                       {row.best != null && row.entries.length > 1 && (
-                        <span className="text-[11px] text-muted-foreground">最佳 {formatMetricValue(row.metric, row.best)}</span>
+                        <span className="text-xs text-muted-foreground">最佳 {formatMetricValue(row.metric, row.best)}</span>
                       )}
                     </div>
                     <AbilityBar progress={row.progress} color={row.grade.color} />
                     {row.levelProgress && (
-                      <p className="text-[11px] leading-relaxed text-muted-foreground">
+                      <p className="text-xs leading-relaxed text-muted-foreground">
                         {levelProgressText(row.levelProgress, (v) => formatMetricValue(row.metric, v))}
                       </p>
                     )}
-                    <p className="text-[11px] leading-relaxed text-muted-foreground">
+                    <p className="text-xs leading-relaxed text-muted-foreground">
                       {row.grade.tier === -1
                         ? `起手目标 ${formatMetricValue(row.metric, row.startTarget)}（${row.metric.levels[0]}）`
                         : gapText(row.metric, row.grade) ?? `已是最高档（${row.grade.label}）`}
@@ -757,7 +757,7 @@ export default function PerformanceTracker({
                           <span
                             key={lv}
                             className={cn(
-                              'rounded border px-1.5 py-0.5 text-[10px]',
+                              'rounded border px-1.5 py-0.5 text-xs',
                               row.grade.tier >= i + 1 ? 'text-foreground' : 'text-muted-foreground',
                             )}
                             style={{ borderColor: row.grade.tier >= i + 1 ? row.grade.color : 'var(--border)' }}
@@ -837,7 +837,7 @@ export default function PerformanceTracker({
           <div className="flex flex-wrap items-start justify-between gap-2">
             <div>
               <p className="text-sm font-medium text-foreground">最近记录</p>
-              <p className="mt-0.5 text-[11px] text-muted-foreground">
+              <p className="mt-0.5 text-xs text-muted-foreground">
                 每条最多列最近 30 条。同一指标同一天允许多条（会标注「同日第 n 条」）：点铅笔改日期 / 重量 / 次数 / 数值，点垃圾桶即时删除，均按条定位；编辑不改动力量项的体重快照。
               </p>
             </div>
@@ -921,7 +921,7 @@ export default function PerformanceTracker({
                                 <X className="h-4 w-4" />
                               </button>
                             </div>
-                            <p className="text-[10px] leading-relaxed text-muted-foreground">
+                            <p className="text-xs leading-relaxed text-muted-foreground">
                               {metricLabelOf(log.metric)}
                               {section === 'strength'
                                 ? ` · 体重快照 ${log.weightKg != null ? `${log.weightKg} kg` : '无（按当前体重）'}`

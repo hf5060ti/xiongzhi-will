@@ -75,6 +75,7 @@ export default function StrengthStandardPage() {
   return (
     <div className="space-y-6">
       <header className="space-y-2">
+        <p className="type-eyebrow text-primary/80">Strength</p>
         <h1 className="flex items-center gap-2 font-display text-3xl font-extrabold tracking-wide text-foreground">
           <Trophy className="h-7 w-7 text-primary" />
           力量等级计算器
@@ -160,7 +161,7 @@ export default function StrengthStandardPage() {
                   </optgroup>
                 ))}
               </select>
-              {def.note && <p className="mt-1.5 text-[11px] text-muted-foreground">{def.note}</p>}
+              {def.note && <p className="mt-1.5 text-xs text-muted-foreground">{def.note}</p>}
               {def.distances && (
                 <div className="mt-3">
                   <label htmlFor="ss-dist" className="mb-1.5 block text-xs font-medium text-muted-foreground">
@@ -234,7 +235,7 @@ export default function StrengthStandardPage() {
             )}
 
             {repsWarn && (
-              <p className="flex items-start gap-1.5 rounded-md border border-warning/50 bg-warning/5 px-2.5 py-2 text-[11px] leading-relaxed text-warning">
+              <p className="flex items-start gap-1.5 rounded-md border border-warning/50 bg-warning/5 px-2.5 py-2 text-xs leading-relaxed text-warning">
                 <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
                 次数超过 {REPS_ACCURACY_LIMIT} 次后，1RM 公式误差会快速放大。想算准，最好用 1–8 次能做到力竭的重量。
               </p>
@@ -271,7 +272,7 @@ export default function StrengthStandardPage() {
                   </div>
 
                   <div>
-                    <div className="mb-1 flex items-center justify-between text-[11px] text-muted-foreground">
+                    <div className="mb-1 flex items-center justify-between text-xs text-muted-foreground">
                       <span>
                         {result.tier === 0 ? `${TIER_UNRANKED} → ${STRENGTH_TIERS[0].label}` : `${result.label} → ${result.nextLabel ?? '已封顶'}`}
                       </span>
@@ -292,8 +293,8 @@ export default function StrengthStandardPage() {
 
                   {formulas && (
                     <div className="rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2">
-                      <p className="mb-1 text-[11px] font-medium text-muted-foreground">三个公式对照（判级统一用 Epley）</p>
-                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
+                      <p className="mb-1 text-xs font-medium text-muted-foreground">三个公式对照（判级统一用 Epley）</p>
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
                         {ONE_RM_FORMULAS.map((f) => (
                           <span key={f.id}>
                             {f.label}：<b className="text-foreground">{formulas[f.id]}</b> kg
@@ -371,7 +372,7 @@ export default function StrengthStandardPage() {
             档位怎么来的、哪些是估算
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-2 text-[11px] leading-relaxed text-muted-foreground">
+        <CardContent className="space-y-2 text-xs leading-relaxed text-muted-foreground">
           <p>
             <b className="text-foreground">原始表：</b>
             深蹲 / 卧推 / 硬拉 / 站姿推举 / 杠铃弯举这 5 项沿用本站既有档位（出处：fitnesscalcs.com

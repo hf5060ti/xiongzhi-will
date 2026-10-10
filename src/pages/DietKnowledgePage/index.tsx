@@ -166,7 +166,7 @@ export default function DietKnowledgePage() {
           <ul className="mt-2 grid gap-1.5 sm:grid-cols-2 lg:grid-cols-4">
             {EVIDENCE_LEVELS.map((l) => (
               <li key={l.label} className="text-xs leading-relaxed text-muted-foreground">
-                <span className="mr-1.5 rounded bg-muted px-1.5 py-0.5 text-[10px] text-foreground/80">
+                <span className="mr-1.5 rounded bg-muted px-1.5 py-0.5 text-xs text-foreground/80">
                   {l.label}
                 </span>
                 {l.desc}
@@ -255,7 +255,7 @@ export default function DietKnowledgePage() {
                           <span className="font-display text-base font-bold leading-tight text-foreground sm:text-lg">
                             {entry.title}
                           </span>
-                          <Badge variant="outline" className="text-[10px] uppercase tracking-wider">
+                          <Badge variant="outline" className="text-xs uppercase tracking-wider">
                             {entry.topic}
                           </Badge>
                         </span>
@@ -267,10 +267,10 @@ export default function DietKnowledgePage() {
                       <span className="line-clamp-2 w-full font-display text-sm font-bold leading-snug text-foreground">
                         {entry.title}
                       </span>
-                      <span className="rounded-full border border-border/60 bg-muted/30 px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                      <span className="rounded-full border border-border/60 bg-muted/30 px-2 py-0.5 text-xs uppercase tracking-wider text-muted-foreground">
                         {entry.topic}
                       </span>
-                      <span className="flex w-full items-center justify-center gap-1.5 text-[10px] leading-none text-muted-foreground">
+                      <span className="flex w-full items-center justify-center gap-1.5 text-xs leading-none text-muted-foreground">
                         <span className="max-w-[58%] truncate text-primary/90" title={entry.author}>
                           {entry.author}
                         </span>
@@ -303,7 +303,7 @@ export default function DietKnowledgePage() {
                     <p className="mt-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                       {entry.summary}
                     </p>
-                    <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-muted-foreground">
+                    <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
                       <span className="text-primary">{entry.author}</span>
                       <span>·</span>
                       <span>{entry.date}</span>
@@ -339,12 +339,12 @@ export default function DietKnowledgePage() {
                           </a>
                           <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
                             {s.timeRange && (
-                              <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] text-foreground/80">
+                              <span className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground/80">
                                 {s.timeRange}
                               </span>
                             )}
                             {s.note && (
-                              <span className="rounded border border-warning/40 bg-warning/10 px-1.5 py-0.5 text-[10px] text-foreground/80">
+                              <span className="rounded border border-warning/40 bg-warning/10 px-1.5 py-0.5 text-xs text-foreground/80">
                                 {s.note}
                               </span>
                             )}
@@ -354,7 +354,7 @@ export default function DietKnowledgePage() {
                     </div>
 
                     {entry.relatedDiets && entry.relatedDiets.length > 0 && (
-                      <p className="mt-3 text-[11px] text-muted-foreground">
+                      <p className="mt-3 text-xs text-muted-foreground">
                         关联方案：{' '}
                         {entry.relatedDiets
                           .map((id) => DIETS.find((d) => d.id === id)?.name ?? id)
@@ -407,7 +407,7 @@ function BodyRow({
         !accent && !warning && 'border-border/60 bg-muted/20',
       )}
     >
-      <dt className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+      <dt className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
         {label}
       </dt>
       <dd className="mt-1 text-xs leading-relaxed text-foreground/90 sm:text-sm">{text}</dd>

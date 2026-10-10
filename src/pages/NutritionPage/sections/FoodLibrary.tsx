@@ -100,7 +100,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                   <span className="font-display text-lg font-bold leading-none tracking-wide text-foreground">
                     {getLang() === 'zh' ? food.name : (FOOD_NAME_EN[food.name] || food.name)}
                   </span>
-                  <span className="shrink-0 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                  <span className="shrink-0 text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     {FOOD_CATEGORIES.find((c) => c.id === food.cat)?.label}
                   </span>
                 </span>
@@ -122,7 +122,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                           onSelect(food, String(s.grams));
                         }}
                         title={`按「${s.label}」折算 ${s.grams}g 并自动换算营养`}
-                        className="cursor-pointer rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 text-[11px] font-medium text-primary transition-colors hover:bg-primary/15"
+                        className="cursor-pointer rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 text-xs font-medium text-primary transition-colors hover:bg-primary/15"
                       >
                         {s.label} {s.grams}g ≈ {Math.round((food.kcal * s.grams) / 100)} kcal
                       </span>
@@ -130,16 +130,16 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                   </span>
                 )}
                 {(food.vitFat.length > 0 || food.vitWater.length > 0 || (food.minerals?.length ?? 0) > 0) && (
-                  <span className="text-[11px] leading-snug text-muted-foreground">
+                  <span className="text-xs leading-snug text-muted-foreground">
                     维生素 {[...food.vitFat, ...food.vitWater].join('、') || '—'}
                     {food.minerals && food.minerals.length > 0 && ` · 矿物质 ${food.minerals.join('、')}`}
                   </span>
                 )}
                 {food.note && (
-                  <span className="text-[11px] leading-snug text-warning/90">{food.note}</span>
+                  <span className="text-xs leading-snug text-warning/90">{food.note}</span>
                 )}
                 {food.phytochem && food.phytochem.length > 0 && (
-                  <span className="block text-[11px] leading-snug text-primary/90">
+                  <span className="block text-xs leading-snug text-primary/90">
                     🌿 {food.phytochem[0].split('：')[0]}
                     {food.phytochem.length > 1 && ` 等 ${food.phytochem.length} 种活性成分`}
                   </span>
@@ -147,7 +147,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                 {getAbsorptionTips(food).slice(0, 2).map((t) => (
                   <span
                     key={t}
-                    className="flex items-start gap-1 text-[11px] leading-snug text-emerald-600/90 dark:text-emerald-400/90"
+                    className="flex items-start gap-1 text-xs leading-snug text-emerald-600/90 dark:text-emerald-400/90"
                   >
                     <Sparkles className="mt-0.5 h-3 w-3 shrink-0" />
                     {t}

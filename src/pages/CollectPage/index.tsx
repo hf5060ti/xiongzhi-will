@@ -313,7 +313,7 @@ export default function CollectPage() {
             </Button>
             {notice && <span className="text-xs text-primary">{notice}</span>}
           </div>
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             说明：本站不做自动爬取收藏（官方无个人收藏接口，非官方抓取有风险且不合规）。
             手动粘贴一样能获得分类与总结；已导入数据可随时导出备份。
           </p>
@@ -365,7 +365,7 @@ export default function CollectPage() {
                 <Card key={it.id} className="group">
                   <CardContent className="space-y-2 p-3">
                     <div className="flex items-start justify-between gap-2">
-                      <Badge variant="secondary" className="shrink-0 text-[10px]">
+                      <Badge variant="secondary" className="shrink-0 text-xs">
                         {CATEGORY_FALLBACK[it.category] || '其他'}
                       </Badge>
                       <button
@@ -379,7 +379,7 @@ export default function CollectPage() {
                     </div>
                     <p className="text-sm font-medium text-foreground">{it.title}</p>
                     {it.author && (
-                      <p className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                      <p className="flex items-center gap-1 text-xs text-muted-foreground">
                         <User className="h-3 w-3" /> {it.author}
                       </p>
                     )}
@@ -388,12 +388,12 @@ export default function CollectPage() {
                         href={it.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-[11px] text-primary underline-offset-2 hover:underline"
+                        className="flex items-center gap-1 text-xs text-primary underline-offset-2 hover:underline"
                       >
                         <Link2 className="h-3 w-3" /> 打开原视频
                       </a>
                     ) : (
-                      <p className="text-[11px] text-muted-foreground">无链接</p>
+                      <p className="text-xs text-muted-foreground">无链接</p>
                     )}
                   </CardContent>
                 </Card>

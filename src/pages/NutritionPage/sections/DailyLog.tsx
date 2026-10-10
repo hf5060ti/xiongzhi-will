@@ -193,7 +193,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
 
         {/* 热量目标区间文案（进度条与三大宏量均按下限计） */}
         {targets.kcal > 0 && (
-          <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
             {targets.kcalMax > targets.kcalMin ? (
               <>
                 热量目标区间{' '}
@@ -217,7 +217,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
 
         {/* 目标来源说明（按身体数据实时计算 / 兜底提示） */}
         {targets.kcal > 0 ? (
-          <p className="mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[11px] leading-relaxed text-muted-foreground">
+          <p className="mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs leading-relaxed text-muted-foreground">
             <Info
               className={cn(
                 'h-3.5 w-3.5 shrink-0',
@@ -235,7 +235,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
           </p>
         ) : (
           <div className="mt-3 rounded-xl border border-dashed border-warning/50 bg-warning/5 p-3">
-            <p className="flex items-start gap-2 text-[11px] leading-relaxed text-muted-foreground">
+            <p className="flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
               <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-warning" />
               <span>
                 {targets.basis}
@@ -308,7 +308,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
             {/* 常见份量锚点：点一下直接折算克数 */}
             {selectedFood && servings.length > 0 && (
               <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-[11px] text-muted-foreground">常见份量：</span>
+                <span className="text-xs text-muted-foreground">常见份量：</span>
                 {servings.map((s) => {
                   const on = gramsValid && Math.abs(gramsNum - s.grams) < 0.01;
                   return (
@@ -317,7 +317,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
                       type="button"
                       onClick={() => setGrams(String(s.grams))}
                       className={cn(
-                        'rounded-full border px-2 py-0.5 text-[11px] font-medium transition-colors',
+                        'rounded-full border px-2 py-0.5 text-xs font-medium transition-colors',
                         on
                           ? 'border-primary bg-primary/15 text-primary'
                           : 'border-border/60 bg-background/40 text-muted-foreground hover:border-primary/40 hover:text-foreground',
@@ -332,7 +332,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
 
             {/* 实时换算预览 */}
             {selectedFood && gramsValid && (
-              <p className="text-[11px] text-primary">
+              <p className="text-xs text-primary">
                 「{selectedFood.name}」{gramsNum}g ≈ {Math.round((selectedFood.kcal * gramsNum) / 100)} kcal ·
                 蛋白 {Math.round(selectedFood.protein * gramsNum) / 100}g · 脂肪{' '}
                 {Math.round(selectedFood.fat * gramsNum) / 100}g · 碳水{' '}
@@ -399,13 +399,13 @@ function StatCard({
   const pct = goal > 0 ? Math.min(100, (value / goal) * 100) : 0;
   return (
     <div className="rounded-xl border border-border/50 bg-background/40 p-2.5 sm:p-3">
-      <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground sm:text-xs">
+      <div className="flex items-center gap-1.5 text-xs text-muted-foreground sm:text-xs">
         <span className={color}>{icon}</span>
         {label}
       </div>
       <p className="mt-1 font-display text-lg font-bold leading-none text-foreground sm:text-2xl">
         {value}
-        <span className="ml-1 text-[10px] font-normal text-muted-foreground sm:text-xs">/ {goal} {unit}</span>
+        <span className="ml-1 text-xs font-normal text-muted-foreground sm:text-xs">/ {goal} {unit}</span>
       </p>
       <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted/40">
         <div
