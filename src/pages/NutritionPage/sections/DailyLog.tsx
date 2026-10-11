@@ -264,6 +264,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
               />
               <select
                 value={foodId}
+                aria-label="选择食物"
                 onChange={(e) => {
                   const id = e.target.value;
                   setFoodId(id);
@@ -294,6 +295,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
               <select
                 value={meal}
                 onChange={(e) => setMeal(e.target.value)}
+                aria-label="餐次"
                 className="h-9 rounded-md border border-border bg-background px-2 text-sm"
               >
                 {MEALS.map((m) => (

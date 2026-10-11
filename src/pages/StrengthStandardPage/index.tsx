@@ -96,8 +96,12 @@ export default function StrengthStandardPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="mb-1.5 block type-meta font-medium text-muted-foreground">性别</label>
-              <div className="flex gap-2">
+              {/* 性别是两个切换按钮而非表单控件，用 <label> 会指向空对象。
+                  改为 group + aria-labelledby 提供分组语境，按钮自身用 aria-pressed 表达选中态 */}
+              <p id="ss-sex-label" className="mb-1.5 block type-meta font-medium text-muted-foreground">
+                性别
+              </p>
+              <div role="group" aria-labelledby="ss-sex-label" className="flex gap-2">
                 {(['male', 'female'] as Sex[]).map((s) => (
                   <Button
                     key={s}
@@ -105,6 +109,8 @@ export default function StrengthStandardPage() {
                     variant={sex === s ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setSex(s)}
+                    aria-label={s === 'male' ? '男性' : '女性'}
+                    aria-pressed={sex === s}
                     className="flex-1"
                   >
                     {s === 'male' ? '男' : '女'}
