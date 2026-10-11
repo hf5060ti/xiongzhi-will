@@ -4,6 +4,39 @@
 
 ---
 
+## Unreleased
+
+### 新增
+
+- **社交分享卡片（Open Graph / Twitter Card）**：`index.html` 与两份 `landing.html`
+  补全 `og:type` / `og:locale=zh_CN` / `og:site_name` / `og:image` / `twitter:image`
+  （封面 1200×630，随 `vite.config.ts` 的 `base` 走相对路径，GitHub Pages 与 Gitee Pages
+  任意子路径均可正确拉到图）；封面由 `scripts/gen-og-cover.py`（numpy 高斯光晕 + 独立 RGBA
+  水印层，避免 banding）一次性生成，非运行依赖
+
+### 修复
+
+- **`public/sitemap.xml` 遗漏 `/strength` 路由**：逐条比对 `ROUTE_META`（27 条）与
+  sitemap（26 条），仅缺 `/strength`，已补 `<loc>…/strength</loc><priority>0.8</priority>`；
+  无多余 / 失效项
+
+### 工程
+
+- **判级引擎补 33 项单测**：`src/lib/performance-standards.test.ts` 覆盖门槛判定方向、
+  档位进度 / 配色 / 中位档、0.5/0.3/0.2 加权与缺板块归一化、`estimate1RM`、时长解析 /
+  格式化、五动作男女各 5 档门槛严格递增且男 ≥ 女。全站单测 **62 → 95 项**
+- **核心纯逻辑补 54 项单测（合计 95 → 149 项）**：覆盖此前零测试的模块——
+  `warmup`（递增组档位与神经激活提示）、`progressive-overload`（加/减重量与自重进阶）、
+  `recovery`（睡眠/压力/酸痛三档判定与减载周判断）、`smart-search`（同义词/拼音/多词 AND）、
+  `today-recommendation`（分化推演）、`meal-plan`（每日目标与四餐占比）、
+  `absorption`（吸收提示推导）、`utils`（类名合并）。用例全部手算期望值
+- **热身 `isUpper` 正则移除裸「拉」**：原先 `/推|拉|…/` 的裸 `拉` 会把「硬拉」误判为上肢，
+  导致神经激活提示错写成「空杆推/拉」；现已改回「硬拉启动」（下拉/引体/划船等仍按显式词命中）
+- **恢复评估纳入酸痛信号**：`highSoreness` 此前算出却未被任何判定分支使用，
+  酸痛偏高（≥4/5）现在会给出 `warn` 而非被静默忽略成 `good`
+
+---
+
 ## v0.4.2 - 2026-10-10
 
 ### 新增

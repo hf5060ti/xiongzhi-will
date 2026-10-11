@@ -86,7 +86,7 @@ export function assessRecovery(log: RecoveryEntry[]): RecoveryVerdict | null {
       detail: `近3天平均睡眠 ${avgSleep.toFixed(1)}h，压力/酸痛偏高。自然训练者睡眠 < 6h 时皮质醇升高、睾酮下降，硬冲大重量只会掉肌肉。今天改练技术或散步，别上 PR。`,
     };
   }
-  if (badSleep || highStress) {
+  if (badSleep || highStress || highSoreness) {
     return {
       level: 'warn',
       title: '恢复一般 · 控制今天强度',

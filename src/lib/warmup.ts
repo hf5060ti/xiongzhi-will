@@ -142,7 +142,7 @@ export function getFirstSetWarmup(
   workingWeightKg: number,
 ): WarmupStep[] {
   const steps: WarmupStep[] = [];
-  const isUpper = /推|拉|卧推|推举|划船|引体|下拉|弯举|臂屈伸/.test(exerciseName);
+  const isUpper = /推|卧推|推举|划船|引体|下拉|弯举|臂屈伸/.test(exerciseName);
   const isSquat = /蹲|深蹲|颈前蹲|腿举/.test(exerciseName);
   const isDeadlift = /硬拉|罗马尼亚硬拉|相扑硬拉/.test(exerciseName);
 
@@ -193,7 +193,7 @@ export function getFirstSetWarmup(
     order: steps.length + 1,
     phase: 'neural',
     name: '神经激活（快速动作）',
-    detail: isUpper ? '3次最快速度空杆推/拉' : isSquat ? '3次最快速度半蹲' : '3次最快速度硬拉启动',
+    detail: isUpper ? '3次最快速度空杆推/拉' : isSquat ? '3次最快速度半蹲' : isDeadlift ? '3次最快速度硬拉启动' : '3次最快速度自重/空杆激活',
     cue: '谭成义强调：热身最后做几组快速动作，让神经系统进入兴奋状态。这是"唤醒"神经，不是练力量。',
   });
 
