@@ -79,12 +79,12 @@ export const GOALS: IGoal[] = [
     ],
     // 焚诀专项计划图（原图入库，按部位挂图；图片文件见 public/images）
     plans: [
-      { part: '胸', image: '焚诀-胸.png' },
-      { part: '背', image: '焚诀-背.png' },
-      { part: '肩', image: '焚诀-肩.png' },
-      { part: '腹', image: '焚诀-腹.png' },
-      { part: '手臂', image: '焚诀-手臂.png' },
-      { part: '腿', image: '焚诀-腿.png' },
+      { part: '胸', image: '焚诀-胸.webp' },
+      { part: '背', image: '焚诀-背.webp' },
+      { part: '肩', image: '焚诀-肩.webp' },
+      { part: '腹', image: '焚诀-腹.webp' },
+      { part: '手臂', image: '焚诀-手臂.webp' },
+      { part: '腿', image: '焚诀-腿.webp' },
     ],
     // 按部位训练计划：整理自公开经典方案的通用参数，与上方焚诀计划图并存互为参考
     partPlans: [

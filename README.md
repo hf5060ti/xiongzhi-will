@@ -6,7 +6,7 @@
 
 **对外主页：** https://xiongzhi_project.gitee.io/masculine-consciousness/landing.html
 
-![雄性意志首页](docs/screenshots/show-home.png)
+![雄性意志首页](docs/screenshots/show-home.webp)
 
 ---
 
@@ -23,7 +23,7 @@
 | 营养 | 200+ 食物营养表 + **24 种健身补剂库**（独立分类，不混热量） | 收费会员 |
 | 收费 | **免费开源**（Apache-2.0） | 订阅制为主 |
 
-![训练计划页（经典计划模板）](docs/screenshots/show-plan.png)
+![训练计划页（经典计划模板）](docs/screenshots/show-plan.webp)
 
 ---
 
@@ -37,7 +37,7 @@
 - **斗腕专项**：**84 个动作**——Rise 挺腕、Cup 杯握、Top Roll 翻腕、Hook 钩手、Back Pressure 后压力、肩旋内拉钩、尺偏专项、指屈闭合、桌面对抗等长等桌面力量体系
 - **等长训练页 /isometric**：**42 个动作**按 6 部位分组；**眼科 / 术后恢复四阶段方案**（不憋气、不低头、强度递进）+ 散步搭配
 
-![动作百科：2428 个动作](docs/screenshots/show-library.png)
+![动作百科：2428 个动作](docs/screenshots/show-library.webp)
 
 ### 营养
 - **食物营养库**：200+ 常见食物，12 大分类，每 100g 热量 / 蛋白质 / 脂肪 / 碳水 / 纤维 / 钠 / 维生素 / 矿物质 / 活性成分；嘌呤特别提醒（海鲜、动物内脏）
@@ -47,7 +47,7 @@
 - **AI 热量估算**：拍照 / 描述食物自动估算每百克营养
 - **营养素吸收提示**：脂溶性维生素、血红素铁、草酸抑制钙吸收等
 
-![营养库与健身补剂库](docs/screenshots/show-nutrition.png)
+![营养库与健身补剂库](docs/screenshots/show-nutrition.webp)
 
 ### 身体数据与工具
 - **身体数据**：BMR（4 公式）、TDEE、FFMI 肌肉量上限、IPF 力量等级、1RM 换算、蛋白质按训练年限分级
@@ -56,7 +56,7 @@
 - **冷兵器消耗**：剑道 / 唐刀 / 苗刀 / 长枪等每小时热量估算
 - **饮食讲解**：低碳 / 生酮 / 碳循环等主题的循证科普
 
-![等长训练页（42 动作 + 术后恢复）](docs/screenshots/show-isometric.png)
+![等长训练页（42 动作 + 术后恢复）](docs/screenshots/show-isometric.webp)
 
 ---
 
