@@ -578,7 +578,7 @@ export const Layout = () => {
                 className="mt-2 max-h-[60vh] overflow-auto rounded-xl border border-border/60 bg-card/60"
               />
             ) : (
-              <p className="mt-3 px-1 type-meta leading-relaxed text-muted-foreground">
+              <p className="mt-3 px-1 type-meta text-muted-foreground">
                 {/* 索引 chunk 还没到就显示「无结果」会误导用户，这里先给出加载态 */}
                 {resultsPending ? t('search_loading') : query.trim() ? t('search_empty') : t('search_typing')}
               </p>
