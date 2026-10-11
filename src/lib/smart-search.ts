@@ -152,6 +152,19 @@ export function smartMatch(query: string, texts: string[]): boolean {
     }
   }
 
+  // 3b. 反向：查询词本身是英文同义词（bench / chest / squat / row / deadlift …）
+  //      → 命中含对应中文别名的候选。补全此前只支持「中文别名 → 英文候选」的单向展开，
+  //      让搜索框直接输入英文动作名也能命中（全局搜索与动作/食物/补剂库共用本函数）
+  if (q.length >= 2) {
+    for (const [alias, synonyms] of Object.entries(SEARCH_ALIASES)) {
+      const hit = synonyms.some((s) => {
+        const sl = s.toLowerCase();
+        return q === sl || q.includes(sl) || sl.includes(q);
+      });
+      if (hit && joined.includes(alias.toLowerCase())) return true;
+    }
+  }
+
   // 4. 拼音首字母缩写：把查询拆成每个汉字首字母，与候选拼音拼接匹配
   // 例如输入 "wotui" → 匹配 "卧推"
   if (/^[a-z]+$/.test(q)) {

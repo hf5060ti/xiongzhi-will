@@ -21,6 +21,14 @@ describe('smartMatch', () => {
     expect(smartMatch('深蹲', ['squat'])).toBe(true);
   });
 
+  it('反向：英文同义词可命中中文候选（补全单向展开）', () => {
+    expect(smartMatch('bench', ['杠铃卧推'])).toBe(true);
+    expect(smartMatch('chest', ['胸肌'])).toBe(true);
+    expect(smartMatch('squat', ['杠铃深蹲'])).toBe(true);
+    expect(smartMatch('deadlift', ['硬拉'])).toBe(true);
+    expect(smartMatch('row', ['杠铃划船'])).toBe(true);
+  });
+
   it('拼音首字母（单字）可命中', () => {
     expect(smartMatch('w', ['卧推'])).toBe(true);
   });
