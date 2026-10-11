@@ -121,7 +121,7 @@ export default function WeekTrainingGenerator() {
         {/* 当天详情 */}
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-1.5">
-            <Badge className={cn('type-meta', !cur.isTrainDay && 'bg-muted text-muted-foreground')}>
+            <Badge className={cn('text-xs', !cur.isTrainDay && 'bg-muted text-muted-foreground')}>
               {cur.label} · {cur.isTrainDay ? cur.title : '休息日'}
             </Badge>
             {cur.isTrainDay && <Badge variant="secondary" className="text-xs">{cur.muscles}</Badge>}

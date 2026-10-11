@@ -300,7 +300,7 @@ export default function DietKnowledgePage() {
                   )}
                 >
                   <div className="min-h-0 overflow-hidden px-4 pb-4 sm:px-5 sm:pb-5">
-                    <p className="mt-3 type-meta text-muted-foreground sm:text-sm">
+                    <p className="mt-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                       {entry.summary}
                     </p>
                     <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">

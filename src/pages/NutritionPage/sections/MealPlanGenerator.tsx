@@ -217,7 +217,7 @@ function WeekPlanView({ input }: { input: MealPlanInput }) {
       {/* 当天详情 */}
       <div className="space-y-2">
         <div className="flex flex-wrap items-center gap-1.5">
-          <Badge className={`type-meta ${cur.isTrainDay ? '' : 'bg-muted text-muted-foreground'}`}>
+          <Badge className={`text-xs ${cur.isTrainDay ? '' : 'bg-muted text-muted-foreground'}`}>
             {cur.label} · {cur.isTrainDay ? '训练日' : '休息日'}
           </Badge>
           <Badge variant="secondary" className="text-xs">{cur.dietName}</Badge>
