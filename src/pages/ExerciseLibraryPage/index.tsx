@@ -443,6 +443,7 @@ export default function ExerciseLibraryPage() {
         <select
           value={cat}
           onChange={(e) => setCat(e.target.value)}
+          aria-label="训练类型"
           className="h-10 rounded-md border border-border bg-background px-3 text-sm text-foreground"
         >
           {CAT_OPTIONS.map((c) => (
@@ -452,6 +453,7 @@ export default function ExerciseLibraryPage() {
         <select
           value={equip}
           onChange={(e) => setEquip(e.target.value)}
+          aria-label="器械"
           className="h-10 rounded-md border border-border bg-background px-3 text-sm text-foreground"
         >
           <option value="all">全部器械</option>

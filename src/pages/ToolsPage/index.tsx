@@ -74,10 +74,11 @@ function WarmupCalculator() {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="max-w-xs">
-          <label className="mb-1.5 block type-meta font-medium text-muted-foreground">
+          <label htmlFor="tools-work-weight" className="mb-1.5 block type-meta font-medium text-muted-foreground">
             今日正式组重量（kg）
           </label>
           <Input
+            id="tools-work-weight"
             type="number"
             inputMode="decimal"
             value={workWeight}
@@ -246,10 +247,11 @@ export default function ToolsPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="mb-1.5 block type-meta font-medium text-muted-foreground">
+              <label htmlFor="tools-weight" className="mb-1.5 block type-meta font-medium text-muted-foreground">
                 重量（kg）
               </label>
               <Input
+                id="tools-weight"
                 type="number"
                 inputMode="decimal"
                 value={weight}
@@ -259,10 +261,11 @@ export default function ToolsPage() {
               />
             </div>
             <div>
-              <label className="mb-1.5 block type-meta font-medium text-muted-foreground">
+              <label htmlFor="tools-reps" className="mb-1.5 block type-meta font-medium text-muted-foreground">
                 完成次数（严格动作）
               </label>
               <Input
+                id="tools-reps"
                 type="number"
                 inputMode="numeric"
                 value={reps}

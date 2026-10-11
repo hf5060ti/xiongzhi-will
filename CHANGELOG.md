@@ -81,6 +81,23 @@
   - 原始 PNG **全部保留未删除**，HTML 无需 `<picture>` 兜底即可回退；转换遍及 `src/data/goals.ts`、
     `README.md`、两份 `landing.html`，共 23 处引用（含桌面版副本自包含性核对，
     确认其自带的 `images/` 与 `screenshots/` 副本不受影响）
+- **表单标签与控件未关联（10 处）：既是无障碍缺陷，也是能用的功能性 bug**：
+  页面上明明写了可见标签，但 `<label>` 没有 `htmlFor`、控件也没有 `id`，
+  两者在 DOM 里互不相识。后果有两个：读屏软件只会念「编辑框」而不知道要填什么；
+  **点标签也不会聚焦输入框** —— 后者在手机上的影响尤其明显，
+  训练日志里「重量 kg / 次数」是 56px 高的大号数字框，点标签本应直接唤起键盘
+  - 可复用的子组件（`EstField` / `NumberField`）会在同一画面渲染多份，
+    用 React `useId()` 生成唯一 id，避免多个实例共享同一个 id 导致关联错乱
+  - 单实例处补显式 id + `htmlFor`：`tools-work-weight` / `tools-weight` / `tools-reps` /
+    `tl-rest-weight` / `tl-rest-reps` / `pn-ocr-text`
+  - 全仓核对：静态 id 共 49 个，**重复 0**；`<label>` 未关联的剩余 **0 处**
+- **力量等级页「性别」按钮组错用 `<label>`**：`<label>` 天然要指向一个表单控件，
+  而它下面是一对切换按钮，于是标签指向空对象。改为 `role="group"` +
+  `aria-labelledby` 提供「性别」这一分组语境，按钮本身用 `aria-pressed` 表达选中态，
+  并补 `aria-label="男性 / 女性"`（原文只有一个「男」「女」字，读屏听不出指的是性别）
+- **筛选类 `<select>` 缺无障碍名称**：动作百科的两个筛选下拉、饮食记录的「选择食物 / 餐次」，
+  读屏只会念成「组合框」，不知道筛的是什么。补 `aria-label`
+  （与页面既有做法一致 —— `NutritionCalculator` 里本就有 `aria-label="餐次"`）
 - **背景视频 `preload="auto"` 改为 `metadata`**：背景视频本体约 0.92 MB，
   `auto` 会让它在首屏整段开下并与 JS / CSS 争带宽。`poster` 静态海报已提供
   完整视觉兜底（原注释写明），视频迟几百毫秒进场用户察觉不到，

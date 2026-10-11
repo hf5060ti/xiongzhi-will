@@ -1749,8 +1749,9 @@ function WorkoutRunner({
             </p>
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div>
-                <label className="type-meta text-muted-foreground">重量 kg</label>
+                <label htmlFor="tl-rest-weight" className="type-meta text-muted-foreground">重量 kg</label>
                 <input
+                  id="tl-rest-weight"
                   value={weight}
                   onChange={(e) => setWeight(e.target.value)}
                   inputMode="decimal"
@@ -1759,8 +1760,9 @@ function WorkoutRunner({
                 />
               </div>
               <div>
-                <label className="type-meta text-muted-foreground">次数</label>
+                <label htmlFor="tl-rest-reps" className="type-meta text-muted-foreground">次数</label>
                 <input
+                  id="tl-rest-reps"
                   value={reps}
                   onChange={(e) => setReps(e.target.value)}
                   inputMode="numeric"

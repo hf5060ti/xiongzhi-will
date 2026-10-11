@@ -1,6 +1,6 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
-import { useRef, useState, type FormEvent } from 'react';
+import { useId, useRef, useState, type FormEvent } from 'react';
 import { Bot, Calculator, Loader2, RefreshCw, Sparkles, Wand2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -313,11 +313,15 @@ interface EstFieldProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+// 可复用子组件会被渲染多份，用 useId 生成唯一 id，避免 id 重复导致 label 关联错乱
 function EstField({ label, value, onChange }: EstFieldProps) {
+  const id = useId();
   return (
     <div>
-      <label className="type-meta text-muted-foreground">{label}</label>
-      <Input type="number" min={0} value={value} onChange={onChange} className="mt-1" />
+      <label htmlFor={id} className="type-meta text-muted-foreground">
+        {label}
+      </label>
+      <Input id={id} type="number" min={0} value={value} onChange={onChange} className="mt-1" />
     </div>
   );
 }

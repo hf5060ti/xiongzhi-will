@@ -1,6 +1,6 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
-import { useEffect, useState, type ChangeEvent } from 'react';
+import { useEffect, useId, useState, type ChangeEvent } from 'react';
 import { Camera, ScanText } from 'lucide-react';
 import { createWorker } from 'tesseract.js';
 import { Button } from '@/components/ui/button';
@@ -201,8 +201,11 @@ export default function PhotoNutritionForm() {
 
           {previewUrl && (
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-foreground">识别文本（可编辑）</label>
+              <label htmlFor="pn-ocr-text" className="text-xs font-medium text-foreground">
+                识别文本（可编辑）
+              </label>
               <Textarea
+                id="pn-ocr-text"
                 rows={5}
                 value={ocrText}
                 onChange={(e) => setOcrText(e.target.value)}
@@ -285,11 +288,15 @@ interface NumberFieldProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
+// 同一份组件在画面里会出现多次，用 useId 保证 label 与 input 一一对应
 function NumberField({ label, value, onChange }: NumberFieldProps) {
+  const id = useId();
   return (
     <div>
-      <label className="type-meta text-muted-foreground">{label}</label>
-      <Input type="number" min={0} value={value} onChange={onChange} className="mt-1" />
+      <label htmlFor={id} className="type-meta text-muted-foreground">
+        {label}
+      </label>
+      <Input id={id} type="number" min={0} value={value} onChange={onChange} className="mt-1" />
     </div>
   );
 }
