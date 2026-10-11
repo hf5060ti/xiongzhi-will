@@ -17,6 +17,7 @@
   帮助搜索引擎识别站点与站内搜索入口（目标指向 HashRouter 的 `#/library?q=`；与 sitemap/robots 同源 GitHub Pages）
 - **PWA iOS 适配元信息**：补齐 `apple-mobile-web-app-capable` / `mobile-web-app-capable` /
   `apple-mobile-web-app-status-bar-style` / `apple-mobile-web-app-title`，提升 iOS「添加到主屏幕」体验
+  （`index.html` 与两份 `landing.html` 副本同步）
 
 ### 修复
 
