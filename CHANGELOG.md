@@ -13,6 +13,10 @@
   （封面 1200×630，随 `vite.config.ts` 的 `base` 走相对路径，GitHub Pages 与 Gitee Pages
   任意子路径均可正确拉到图）；封面由 `scripts/gen-og-cover.py`（numpy 高斯光晕 + 独立 RGBA
   水印层，避免 banding）一次性生成，非运行依赖
+- **结构化数据（JSON-LD）**：`index.html` 注入 `WebSite` + `SearchAction`，
+  帮助搜索引擎识别站点与站内搜索入口（目标指向 HashRouter 的 `#/library?q=`；与 sitemap/robots 同源 GitHub Pages）
+- **PWA iOS 适配元信息**：补齐 `apple-mobile-web-app-capable` / `mobile-web-app-capable` /
+  `apple-mobile-web-app-status-bar-style` / `apple-mobile-web-app-title`，提升 iOS「添加到主屏幕」体验
 
 ### 修复
 
