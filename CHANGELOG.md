@@ -14,7 +14,10 @@
   任意子路径均可正确拉到图）；封面由 `scripts/gen-og-cover.py`（numpy 高斯光晕 + 独立 RGBA
   水印层，避免 banding）一次性生成，非运行依赖
 - **结构化数据（JSON-LD）**：`index.html` 注入 `WebSite` + `SearchAction`，
-  帮助搜索引擎识别站点与站内搜索入口（目标指向 HashRouter 的 `#/library?q=`；与 sitemap/robots 同源 GitHub Pages）
+  帮助搜索引擎识别站点与站内搜索入口（目标指向 HashRouter 的 `#/library?q=`；官网 URL 指向 Gitee Pages，国内可访问）
+- **规范链接 `canonical` 与 `og:url`**：`index.html` 与两份 `landing.html` 补全
+  `rel=canonical` 与 `og:url`，统一指向 Gitee Pages
+  （`xiongzhi_project.gitee.io/masculine-consciousness`），避免搜索引擎收录被墙的 `github.io` 地址
 - **PWA iOS 适配元信息**：补齐 `apple-mobile-web-app-capable` / `mobile-web-app-capable` /
   `apple-mobile-web-app-status-bar-style` / `apple-mobile-web-app-title`，提升 iOS「添加到主屏幕」体验
   （`index.html` 与两份 `landing.html` 副本同步）
