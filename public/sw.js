@@ -5,8 +5,28 @@
  *   - JS/CSS chunk 如果 404（发版后旧 hash 失效），自动清缓存并刷新
  * 缓存名带版本，发版时 bump 即清旧缓存。
  */
-const CACHE = 'xiongzhi-will-v4';
+const CACHE = 'xiongzhi-will-v5';
 const CORE = ['./', './index.html', './manifest.webmanifest', './images/icon-192.png', './images/icon-512.png'];
+
+// 第三方动作演示图独立缓存：与主缓存分开，发版 bump 主缓存时不会连带清掉已缓存的图
+const IMG_CACHE = 'xiongzhi-will-img-v1';
+const IMG_CACHE_MAX = 500; // 上限，避免移动端占用过多存储
+const IMG_HOSTS = [
+  'fitness.xingshuwen.com',   // 动作百科演示图/动图
+  'fitwill.app',              // fitwill 静态图
+  's3.us-east-005.backblazeb2.com', // fitwill 演示视频
+  'raw.githubusercontent.com',      // 英文动作库原图
+];
+
+async function trimImageCache() {
+  try {
+    const c = await caches.open(IMG_CACHE);
+    const keys = await c.keys();
+    if (keys.length > IMG_CACHE_MAX) {
+      await Promise.all(keys.slice(0, keys.length - IMG_CACHE_MAX).map((k) => c.delete(k)));
+    }
+  } catch (e) { /* ignore */ }
+}
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -17,7 +37,8 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))),
+      // 注意：IMG_CACHE 要保留，否则每次发版都会清掉已缓存的动作演示图，首屏又要重新拉一遍
+      Promise.all(keys.filter((k) => k !== CACHE && k !== IMG_CACHE).map((k) => caches.delete(k))),
     ).then(() => self.clients.claim()),
   );
 });
@@ -26,6 +47,32 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
+
+  // 第三方动作演示素材：cache-first。
+  // 首访联网拉取并缓存，之后直接命中缓存秒开；图床抖动或临时挂掉时仍能正常显示，
+  // 这对手机弱网/地铁等场景的可用性提升最明显。
+  const isImageReq =
+    req.destination === 'image' || /\.(png|jpe?g|gif|webp|avif|svg)(\?|$)/i.test(url.pathname);
+  if (isImageReq && IMG_HOSTS.some((h) => url.hostname === h || url.hostname.endsWith('.' + h))) {
+    event.respondWith(
+      caches.open(IMG_CACHE).then((c) =>
+        c.match(req).then((cached) => {
+          if (cached) return cached;
+          return fetch(req)
+            .then((res) => {
+              if (res && (res.ok || res.type === 'opaque')) {
+                c.put(req, res.clone()).catch(() => {});
+                trimImageCache();
+              }
+              return res;
+            })
+            .catch(() => cached || Response.error());
+        }),
+      ),
+    );
+    return;
+  }
+
   if (url.origin !== self.location.origin) return;
 
   // 导航请求：network-first，离线时回退缓存的 index.html

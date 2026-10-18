@@ -183,8 +183,15 @@ function TemplateCard({
   );
 }
 
+/** 分组筛选项；「全部」不参与过滤 */
+const GROUP_FILTERS = ['全部', '入门', '增肌', '力量', '减脂', '场景'] as const;
+
 export default function PlanTemplates() {
   const [openId, setOpenId] = useState<string | null>(PLAN_TEMPLATES[0]?.id ?? null);
+  const [group, setGroup] = useState<string>('全部');
+
+  const shown =
+    group === '全部' ? PLAN_TEMPLATES : PLAN_TEMPLATES.filter((t) => t.group === group);
 
   return (
     <section className="space-y-4">
@@ -197,13 +204,37 @@ export default function PlanTemplates() {
             经典计划模板
           </h2>
           <p className="mt-0.5 text-sm text-muted-foreground">
-            8 套经过长期检验的成熟分化路线，与上方按目标生成的方案互补：选一套适合你时间与器械的，直接照着练。
+            {PLAN_TEMPLATES.length} 套经过长期检验的成熟分化路线，与上方按目标生成的方案互补：
+            按目标或场景挑一套适合你时间与器械的，直接照着练。
           </p>
         </div>
       </div>
 
+      <div className="flex flex-wrap gap-2">
+        {GROUP_FILTERS.map((g) => (
+          <button
+            key={g}
+            type="button"
+            onClick={() => setGroup(g)}
+            className={
+              'rounded-full border px-3 py-1 text-xs font-medium transition-colors ' +
+              (group === g
+                ? 'border-primary bg-primary text-primary-foreground'
+                : 'border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground')
+            }
+          >
+            {g}
+            {g !== '全部' && (
+              <span className="ml-1 opacity-70">
+                {PLAN_TEMPLATES.filter((t) => t.group === g).length}
+              </span>
+            )}
+          </button>
+        ))}
+      </div>
+
       <div className="grid gap-3 lg:grid-cols-2">
-        {PLAN_TEMPLATES.map((tpl) => (
+        {shown.map((tpl) => (
           <TemplateCard
             key={tpl.id}
             tpl={tpl}

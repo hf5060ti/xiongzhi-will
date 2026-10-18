@@ -121,3 +121,7 @@ _verify_*.png
 
 # 历史源码归档（内容已在 git 历史里，不需要再存一份）
 雄性意志-最新源码.zip
+
+# 数据修复脚本产出的备份（本地留档用，不进仓库）
+scripts/_backup_before_enrich/
+scripts/_backup_before_fix/

@@ -117,9 +117,26 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
       () => (supportWebp() ? 'webp' : undefined),
       [],
     );
+    const [imgFailed, setImgFailed] = React.useState(false);
 
     // 当 src 不在白名单时，直接渲染原生 img，保留所有原生属性
+    // （动作演示图多为第三方图床，可能超时/改路径/防盗链）
     if (typeof src !== 'string' || !isTargetSrc(src)) {
+      if (imgFailed) {
+        return (
+          <div
+            role="img"
+            aria-label="演示图暂不可用"
+            className={cn(
+              'flex items-center justify-center bg-muted/40 text-[11px] text-muted-foreground',
+              className,
+            )}
+            style={{ width: width ?? '100%', height: height ?? '100%' }}
+          >
+            演示图暂不可用
+          </div>
+        );
+      }
       return (
         <img
           {...rest}
@@ -135,6 +152,7 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
           )}
           loading={loading}
           decoding={decoding}
+          onError={() => setImgFailed(true)}
         />
       );
     }

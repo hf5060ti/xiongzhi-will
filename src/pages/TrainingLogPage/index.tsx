@@ -54,6 +54,9 @@ import {
 } from '@/lib/recovery';
 import { getOverloadAdvice } from '@/lib/progressive-overload';
 import { generateShareCard } from '@/lib/share-card';
+import { TrainingCalendarHeatmap } from '@/components/TrainingCalendarHeatmap';
+import { MuscleHeatmap } from '@/components/MuscleHeatmap';
+import VolumeDashboard from '@/components/VolumeDashboard';
 
 interface DraftSet {
   weight: string;
@@ -899,6 +902,15 @@ export default function TrainingLogPage() {
           )}
         </CardContent>
       </Card>
+
+      {/* 年度训练日历热力图（借鉴 openGym 年度日历思路，自研实现） */}
+      <TrainingCalendarHeatmap logs={logs} />
+
+      {/* 肌肉覆盖热力图 + 结构平衡（借鉴 openGym 分析可视化，自研实现） */}
+      <MuscleHeatmap logs={logs} />
+
+      {/* 周容量 / 疲劳 / 减载提示 */}
+      <VolumeDashboard logs={logs} />
 
       {/* 体重趋势（近 12 周） */}
       <Card>

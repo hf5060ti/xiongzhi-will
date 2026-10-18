@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { estimate1rm } from '@/lib/one-rep-max';
 import { RestTimer } from '@/components/RestTimer';
+import { computePlates } from '@/lib/plate-calculator';
 
 /**
  * 1RM / RPE / 做组重量计算器
@@ -193,6 +194,96 @@ function WarmupRoutineGuide() {
         <p className="mt-4 type-meta text-muted-foreground">
           热身不是训练前的"浪费时间"，而是让目标肌在正式组第一组就进入状态。
           跳过热身直接上重量，要么动作变形，要么第一组还在找感觉——那组就白练了。
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
+/** 杠铃片计算器：输入目标总重与杠铃杆重，算出每侧需要上哪些片。思路来自常见健身 App 的 plate calculator，自研实现。 */
+function PlateCalculator() {
+  const [target, setTarget] = useState<string>('100');
+  const [bar, setBar] = useState<string>('20');
+  const t = parseFloat(target) || 0;
+  const b = parseFloat(bar) || 0;
+  const result = useMemo(() => (t > 0 ? computePlates(t, b) : null), [t, b]);
+  const tooLight = result != null && !result.exact && result.perSide.length === 0;
+  return (
+    <Card className="border-white/10 bg-card/60 backdrop-blur-xl">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2 text-lg">
+          <Calculator className="h-5 w-5 text-primary" />
+          杠铃片计算器
+        </CardTitle>
+        <CardDescription>
+          输入想蹲 / 推 / 拉的总重量（含杆），自动算出每侧该上哪些片。标准片库：25/20/15/10/5/2.5/1.25 kg。
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div>
+            <label htmlFor="plate-target" className="mb-1.5 block type-meta font-medium text-muted-foreground">
+              目标总重（kg，含杆）
+            </label>
+            <Input
+              id="plate-target"
+              type="number"
+              inputMode="decimal"
+              value={target}
+              onChange={(e) => setTarget(e.target.value)}
+              placeholder="如 100"
+              className="border-white/12 bg-white/[0.06] text-lg"
+            />
+          </div>
+          <div>
+            <label htmlFor="plate-bar" className="mb-1.5 block type-meta font-medium text-muted-foreground">
+              杠铃杆重（kg）
+            </label>
+            <Input
+              id="plate-bar"
+              type="number"
+              inputMode="decimal"
+              value={bar}
+              onChange={(e) => setBar(e.target.value)}
+              placeholder="男杆 20 / 女杆 15"
+              className="border-white/12 bg-white/[0.06] text-lg"
+            />
+          </div>
+        </div>
+
+        {result ? (
+          <div className="rounded-xl border border-primary/30 bg-primary/10 p-4">
+            <div className="flex items-baseline justify-between gap-2">
+              <p className="shrink-0 type-meta text-muted-foreground">每侧需要</p>
+              <p className="text-right font-display text-2xl font-bold text-primary">
+                {result.perSide.length > 0 ? result.perSide.join(' + ') : '（只上杆，无需加片）'}
+                <span className="ml-1.5 text-sm font-medium text-muted-foreground">kg / 侧</span>
+              </p>
+            </div>
+            <p className="mt-2 type-meta text-muted-foreground">
+              实际总重 <b className="text-foreground">{result.actualKg} kg</b>
+              {result.exact
+                ? ' · 精确匹配'
+                : ` · 与目标相差 ${result.diffKg > 0 ? '+' : ''}${result.diffKg} kg`}
+              （左右对称，两侧相同）
+            </p>
+          </div>
+        ) : (
+          <p className="rounded-lg border border-border/40 bg-accent/20 p-3 type-meta text-muted-foreground">
+            输入有效总重后，自动出每侧片组合。
+          </p>
+        )}
+
+        {tooLight && (
+          <p className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-200">
+            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+            目标总重低于或等于杠铃杆重，无法仅靠加片实现——说明这组的「重量」其实是自重或器械重量，杠铃片计算器只算自由重量部分。
+          </p>
+        )}
+
+        <p className="flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
+          <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+          家里片不够时（比如没有 1.25kg 小片），实际能上的最小重量会偏大，按「最接近且不超过目标」的原则取。本计算器默认每侧片源充足。
         </p>
       </CardContent>
     </Card>
@@ -398,6 +489,9 @@ export default function ToolsPage() {
 
       {/* 组间休息计时：本站一直标注「复合 3–5 分 / 孤立 2–3 分」，这里给一个能直接按开始的工具 */}
       <RestTimer />
+
+      {/* 杠铃片计算器：借鉴常见健身 App 的 plate calculator，自研实现（不复制任何 AGPL 代码） */}
+      <PlateCalculator />
 
       {/* 主项热身组计算器 */}
       <WarmupCalculator />
