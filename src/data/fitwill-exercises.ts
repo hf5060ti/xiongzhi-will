@@ -31,6 +31,12 @@ export interface FitwillExercise {
   gif?: string;          // 素材站同名动图
   tip: string;           // 本站自写要点
   source: string;
+  /** 难度：beginner | intermediate | expert（启发式补齐，待抽检） */
+  level?: string;
+  /** 发力：push | pull | static */
+  force?: string;
+  /** 复合/孤立：compound | isolation */
+  mechanic?: string;
 }
 
 export const FITWILL_EXERCISES: FitwillExercise[] = 
@@ -45,12 +51,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10878?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10878.mp4",
     "tip": "整套动作里始终双脚踩稳、膝盖不动，别让腿部参与代偿卷腹",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10871",
@@ -62,12 +73,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10871?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10871.mp4",
     "tip": "不要猛拉头部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8780",
@@ -79,12 +95,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8780?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8780.mp4",
     "tip": "整套动作里始终平稳呼吸：卷腹和传递时向心收缩时吐气，下放时回位时吸气，绝不憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0600",
@@ -96,12 +117,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0600?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0600.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4330",
@@ -113,11 +139,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4330?w=1024&h=576",
     "tip": "保持呼吸平稳，踢腿时向心收缩时吐气，膝盖收回时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10403",
@@ -129,12 +160,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10403?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10403.mp4",
     "tip": "不要用手把头往前拽；向上转体时用力向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8527",
@@ -146,12 +182,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8527?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8527.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3886",
@@ -163,11 +204,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3886?w=1024&h=576",
     "tip": "在平板支撑时，收下颚，颈部保持伸展",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-5884",
@@ -179,12 +225,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5884?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5884.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11563",
@@ -196,12 +247,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/11563?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11563.mp4",
     "tip": "向上弯举时向心收缩时吐气,下放时回位时吸气；整套动作里始终肩膀沉重放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10121",
@@ -218,7 +274,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/10121?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10121.mp4",
     "tip": "脚跟向上顶时向心收缩时吐气，下放回位时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10683",
@@ -230,12 +289,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10683?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10683.mp4",
     "tip": "画圈要保持缓慢、直径均匀",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10395",
@@ -247,12 +311,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10395?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10395.mp4",
     "tip": "整套动作里始终髋部和下背部平贴地面",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-2152",
@@ -264,11 +333,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2152?w=1024&h=576",
     "tip": "在每次重复前收紧核心；别让过快完成离心阶段",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3789",
@@ -280,11 +355,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3789?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4414",
@@ -296,11 +377,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4414?w=1024&h=576",
     "tip": "不要让杠铃在胸部反弹",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2974",
@@ -312,11 +399,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2974?w=1024&h=576",
     "tip": "有控制地回落把手，直到手肘回到负荷预备姿势，并保持胸部受控",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5576",
@@ -328,12 +421,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5576?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5576.mp4",
     "tip": "保持手腕和小臂垂直对齐",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4371",
@@ -345,11 +444,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4371?w=1024&h=576",
     "tip": "推举时向心收缩时吐气，回到预备姿势时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3101",
@@ -361,12 +466,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3101?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3101.mp4",
     "tip": "保持器械轨迹受控，别让手柄上升时下背部拱起；推举时向心收缩时吐气，回位时回位时吸气，按计划次数重复",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4174",
@@ -378,11 +488,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4174?w=1024&h=576",
     "tip": "推举时向心收缩时吐气，保持肩膀下沉，肩膀下沉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10763",
@@ -394,12 +509,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10763?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10763.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-8604",
@@ -411,12 +532,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8604?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8604.mp4",
     "tip": "大重量时别让在顶端把腿完全伸直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3609",
@@ -428,12 +555,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3609?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3609.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-5883",
@@ -445,12 +578,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5883?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5883.mp4",
     "tip": "不要将弯举变成髋部晃动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-10080",
@@ -462,12 +600,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10080?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10080.mp4",
     "tip": "保持杠铃片紧贴上胸部；两次重复之间别让完全放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-2481",
@@ -479,12 +622,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/2481?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2481.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-9776",
@@ -496,12 +644,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9776?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9776.mp4",
     "tip": "向后踢并前推时向心收缩时吐气，每次重复回到预备姿势时回位时吸气；整套动作里始终两侧髋部朝向正前方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-11561",
@@ -513,12 +667,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/11561?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11561.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-7979",
@@ -530,12 +689,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7979?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7979.mp4",
     "tip": "收紧核心，下背部压向地面；整套动作里始终把手固定在头后",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3987",
@@ -547,11 +711,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/3987?w=1024&h=576",
     "tip": "保持上臂垂直且静止",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10416",
@@ -563,12 +732,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10416?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10416.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10844",
@@ -580,12 +755,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10844?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10844.mp4",
     "tip": "整套动作里始终稳定的呼吸：杠铃片后放时回位时吸气，回拉时向心收缩时吐气，缓慢重复8到12次；保持骨盆水平，臀部轻微向心收缩",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10710",
@@ -597,12 +778,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10710?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10710.mp4",
     "tip": "不要用力把头往前拽；过度固定会让髋屈肌接管向心收缩，减少腹肌的工作量",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10431",
@@ -614,12 +800,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10431?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10431.mp4",
     "tip": "在顶端用力收紧腹斜肌,停顿一拍再下放；不要让杠铃片离开胸口",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7573",
@@ -631,12 +822,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/7573?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7573.mp4",
     "tip": "前屈时保持脊柱拉长；不要用手把膝盖往下压",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2099",
@@ -648,11 +845,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/2099?w=1024&h=576",
     "tip": "保持终点位置，不要弹动；让交叉腿的膝盖自然打开",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9657",
@@ -664,12 +867,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9657?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9657.mp4",
     "tip": "整个过程保持动作流畅,别让骨盆出现任何摆动或弹跳；在顶端位置整套动作里始终脚尖主动勾起",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10450",
@@ -681,12 +889,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10450?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10450.mp4",
     "tip": "回落时别让让下背部砸在垫上弹起；臀部抬起时用力向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8564",
@@ -698,12 +911,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8564?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8564.mp4",
     "tip": "不要用手按压上方的膝盖",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3478",
@@ -715,11 +934,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/3478?w=1024&h=576",
     "tip": "让向心收缩时吐气加深扭转",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3602",
@@ -731,12 +956,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/3602?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3602.mp4",
     "tip": "向上弯举时向心收缩时吐气，放下回到预备姿势时回位时吸气；保持上臂紧贴长凳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3280",
@@ -748,11 +978,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3280?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-2201",
@@ -764,11 +999,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/2201?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7737",
@@ -780,12 +1021,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7737?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7737.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3474",
@@ -797,12 +1043,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/3474?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3474.mp4",
     "tip": "后侧臀部应保持活跃",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-5032",
@@ -814,12 +1066,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5032?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5032.mp4",
     "tip": "保持骨盆垂直，别让向后翻转或让肩部塌陷；不要用上侧手拉扯头部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3331",
@@ -831,12 +1088,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3331?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3331.mp4",
     "tip": "让侧腰主动向心收缩抬起",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9155",
@@ -848,12 +1110,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9155?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9155.mp4",
     "tip": "双手保持放松；向下卷腹的过程中用力向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4159",
@@ -869,7 +1136,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/4159?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2897",
@@ -881,12 +1151,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2897?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2897.mp4",
     "tip": "在每次重复前收紧核心；别让仓促完成离心阶段",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3652",
@@ -898,12 +1173,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3652?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3652.mp4",
     "tip": "下放时回位时吸气，起身站立时向心收缩时吐气；将后腿仅视为平衡支撑",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4842",
@@ -915,12 +1196,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4842?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4842.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-10865",
@@ -932,12 +1219,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10865?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10865.mp4",
     "tip": "俯身下放时用口向心收缩时吐气，起身向心收缩时用鼻回位时吸气，整套动作里始终呼吸平稳；保持髋部朝向正前方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3583",
@@ -949,11 +1242,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3583?w=1024&h=576",
     "tip": "保持肋骨与骨盆对齐",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4331",
@@ -965,11 +1264,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4331?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3514",
@@ -981,12 +1285,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3514?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3514.mp4",
     "tip": "在弯举的最高点收紧臀部，不要拱起下背部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4791",
@@ -998,11 +1308,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4791?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3475",
@@ -1014,11 +1330,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/3475?w=1024&h=576",
     "tip": "保持动作平稳，别让在末端位置弹动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9883",
@@ -1030,12 +1352,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9883?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9883.mp4",
     "tip": "上升阶段用力向心收缩时吐气,帮助腹肌充分收缩,并别让在顶端停顿时憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3472",
@@ -1047,12 +1374,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/3472?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3472.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-0268",
@@ -1064,12 +1397,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0268?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0268.mp4",
     "tip": "收紧腹部，保持颈部放松；在受控状态下有控制地回落，不要直接掉落",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-2344",
@@ -1081,11 +1419,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2344?w=1024&h=576",
     "tip": "在每次重复前收紧核心；别让仓促完成离心阶段",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8910",
@@ -1097,12 +1440,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8910?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8910.mp4",
     "tip": "放腿复位时回位时吸气,每次提膝向上时向心收缩时吐气；不要急着放回",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4787",
@@ -1114,11 +1462,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4787?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10879",
@@ -1130,12 +1483,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10879?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10879.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7980",
@@ -1147,12 +1505,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7980?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7980.mp4",
     "tip": "让双腿并拢悬垂，膝盖略松；在顶端收紧腰侧一拍，然后再开始下放",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8232",
@@ -1164,12 +1527,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8232?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8232.mp4",
     "tip": "收膝卷起时向心收缩时吐气；伸腿下放时缓慢回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8462",
@@ -1181,12 +1549,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8462?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8462.mp4",
     "tip": "手臂伸直时别让耸肩；目视正前方,别仰脖子看手",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10972",
@@ -1198,12 +1571,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10972?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10972.mp4",
     "tip": "向上弯举时向心收缩时吐气，放下重量时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8799",
@@ -1215,12 +1593,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8799?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8799.mp4",
     "tip": "俯身下放时有控制地向心收缩时吐气，回到站立时回位时吸气；站立腿保持膝盖略松，但不要把动作变成深蹲",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11438",
@@ -1232,12 +1616,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11438?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11438.mp4",
     "tip": "手腕位置应保持中立",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4733",
@@ -1249,12 +1638,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4733?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4733.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-9693",
@@ -1266,12 +1661,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9693?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9693.mp4",
     "tip": "向上蹬起并推举时向心收缩时吐气；下蹲和把哑铃收回时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10186",
@@ -1283,12 +1684,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10186?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10186.mp4",
     "tip": "向上推举哑铃至锁定时向心收缩时吐气，向头顶扫回时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11070",
@@ -1300,12 +1707,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11070?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11070.mp4",
     "tip": "抬腿时向心收缩时吐气，放腿时缓慢回位时吸气，整套动作里始终肋骨下压",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-7471",
@@ -1317,12 +1729,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7471?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7471.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1550",
@@ -1334,11 +1751,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1550?w=1024&h=576",
     "tip": "保持哑铃在身体两侧平稳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6136",
@@ -1350,12 +1773,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6136?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6136.mp4",
     "tip": "追求平滑的顶点收紧，而不是猛烈的抽动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1556",
@@ -1367,11 +1795,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1556?w=1024&h=576",
     "tip": "膝盖只需微屈",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7474",
@@ -1383,12 +1817,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7474?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7474.mp4",
     "tip": "拉起时向心收缩时吐气，下放时回位时吸气，保持稳定的节奏，别全程憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7479",
@@ -1400,12 +1840,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7479?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7479.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-7478",
@@ -1417,12 +1862,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7478?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7478.mp4",
     "tip": "上举哑铃时向心收缩时吐气,下放时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-11075",
@@ -1439,7 +1889,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/11075?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11075.mp4",
     "tip": "疲劳时不要让膝盖弯曲",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10647",
@@ -1451,12 +1904,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10647?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10647.mp4",
     "tip": "抬起和推举时向心收缩时吐气，在两个下放阶段缓慢回位时吸气；不要让哑铃在头顶相碰",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0409",
@@ -1473,7 +1931,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/0409?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0409.mp4",
     "tip": "在顶部稍作停留，收紧小腿肌肉，然后有控制地回位",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7567",
@@ -1485,12 +1946,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7567?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7567.mp4",
     "tip": "保持髋部朝正前方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1178",
@@ -1506,7 +1973,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "category": "strength",
     "image": "https://fitwill.app/api/image/1178?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9754",
@@ -1518,12 +1988,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9754?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9754.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9752",
@@ -1535,12 +2011,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9752?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9752.mp4",
     "tip": "下放铰链时在控制下向心收缩时吐气，在底部回位时吸气，向上站起时再次向心收缩时吐气；不要追求幅度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4291",
@@ -1552,12 +2034,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4291?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4291.mp4",
     "tip": "每次重复动作时，下降回位时吸气，向上桥接时向心收缩时吐气；悬空腿应保持伸直且静止",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11029",
@@ -1569,12 +2057,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11029?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11029.mp4",
     "tip": "下放臀部时回位时吸气，通过工作腿向上向心收缩时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2686",
@@ -1586,11 +2080,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/2686?w=1024&h=576",
     "tip": "向上弯举时向心收缩时吐气，下放时回位时吸气；保持前臂紧贴大腿",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4624",
@@ -1602,11 +2101,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4624?w=1024&h=576",
     "tip": "保持双腿垂直；不要追求肩膀的高度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4629",
@@ -1618,11 +2122,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4629?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7647",
@@ -1634,12 +2144,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7647?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7647.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7653",
@@ -1651,12 +2167,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7653?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7653.mp4",
     "tip": "顶起臀桥并推起时向心收缩时吐气，下放重量和髋部时回位时吸气；不要让手肘外展到九十度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10096",
@@ -1668,12 +2190,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10096?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10096.mp4",
     "tip": "从蹲位向心收缩站起并向上推举哑铃时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0397",
@@ -1685,12 +2213,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/0397?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0397.mp4",
     "tip": "保持肩膀放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-6802",
@@ -1702,12 +2235,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6802?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6802.mp4",
     "tip": "保持较小的后倾角度；不要让脚摆动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-0401",
@@ -1719,12 +2257,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/0401?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0401.mp4",
     "tip": "有控制地回落哑铃，直到手腕再次伸展；将手腕置于膝盖外侧",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-6801",
@@ -1736,12 +2279,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6801?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6801.mp4",
     "tip": "推举和收腿时向心收缩时吐气，放下和伸展时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4628",
@@ -1753,11 +2301,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4628?w=1024&h=576",
     "tip": "在扭转的顶点收紧腹肌，并保持收腹姿势紧凑；让肋骨带动扭转",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4626",
@@ -1769,11 +2322,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4626?w=1024&h=576",
     "tip": "保持动作紧凑",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4908",
@@ -1785,11 +2343,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/4908?w=1024&h=576",
     "tip": "在动作顶点稍作收紧，同时保持前臂在垫上不动；重复预定的次数，抬起时向心收缩时吐气，回位时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-8329",
@@ -1801,12 +2364,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8329?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8329.mp4",
     "tip": "保持掌心相对；缓慢地把身体放到球上",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7652",
@@ -1818,12 +2386,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7652?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7652.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2630",
@@ -1835,12 +2409,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/2630?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2630.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-9341",
@@ -1852,12 +2431,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9341?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9341.mp4",
     "tip": "传递哑铃时向心收缩时吐气，下放俯卧撑时回位时吸气，推起时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7476",
@@ -1869,12 +2453,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7476?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7476.mp4",
     "tip": "拉起哑铃时向心收缩时吐气，放下时回位时吸气，整组保持平稳呼吸，别全程憋气做完；不要急着做底部的动作",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3347",
@@ -1886,12 +2476,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3347?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3347.mp4",
     "tip": "弯举和推举时向心收缩时吐气，放下哑铃时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-10400",
@@ -1903,12 +2498,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10400?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10400.mp4",
     "tip": "保持全脚掌贴地，用脚跟向心收缩",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11445",
@@ -1920,12 +2521,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11445?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11445.mp4",
     "tip": "全程让哑铃贴住胸口",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3707",
@@ -1937,12 +2544,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3707?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3707.mp4",
     "tip": "当手臂伸展时，意念集中在肋骨叠放在骨盆上方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6800",
@@ -1954,12 +2567,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6800?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6800.mp4",
     "tip": "确保动作整套动作里始终规范",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0369",
@@ -1971,12 +2589,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/0369?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0369.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4563",
@@ -1993,7 +2616,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/4563?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4563.mp4",
     "tip": "保持在较小的深蹲范围内；在最高点关节别完全锁死膝盖",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "static"
   },
   {
     "id": "fw-7329",
@@ -2005,11 +2631,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7329?w=1024&h=576",
     "tip": "回位时吸气并收紧躯干，然后收下颚，开始前屈；关节别完全锁死膝盖",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4736",
@@ -2021,12 +2653,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4736?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4736.mp4",
     "tip": "在开始第一次重复之前，夹紧臀肌，下压肋骨，保持颈部中立",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11487",
@@ -2038,12 +2676,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11487?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11487.mp4",
     "tip": "站起和推举时用力向心收缩时吐气，在顶端或下蹲时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10185",
@@ -2055,12 +2699,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10185?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10185.mp4",
     "tip": "整套动作里始终平稳呼吸：拉起哑铃时向心收缩时吐气，放下时回位时吸气，别让连续几次动作都憋气；悬空才是迫使核心真正向心收缩的关键",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4248",
@@ -2072,12 +2722,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4248?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4248.mp4",
     "tip": "不要将其向脸部摆动；髋部应保持在地面上不动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0435",
@@ -2089,11 +2744,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0435?w=1024&h=576",
     "tip": "通过脚后跟和脚掌中部向心收缩站起，回到顶部时夹紧臀肌",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5232",
@@ -2105,11 +2766,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5232?w=1024&h=576",
     "tip": "在动作顶点收紧肩胛骨，肩膀下沉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11200",
@@ -2121,12 +2788,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11200?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11200.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3713",
@@ -2143,7 +2816,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/3713?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3713.mp4",
     "tip": "保持右脚跟垂直上下移动；不要让哑铃晃动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-6362",
@@ -2155,12 +2831,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/6362?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6362.mp4",
     "tip": "保持肘部内收",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-8649",
@@ -2172,12 +2853,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8649?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8649.mp4",
     "tip": "向上向外推起时向心收缩时吐气，沿弧线下放哑铃时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11562",
@@ -2189,12 +2875,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/11562?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11562.mp4",
     "tip": "整组训练别全程憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10157",
@@ -2206,12 +2897,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10157?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10157.mp4",
     "tip": "每次传递过程中平稳向心收缩时吐气；当哑铃经过身后时，别让憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7472",
@@ -2223,12 +2919,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7472?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7472.mp4",
     "tip": "划船时和站起时向心收缩时吐气；在顶点回位时吸气，再开始下一次重复",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4749",
@@ -2240,11 +2942,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4749?w=1024&h=576",
     "tip": "划船或站起时向心收缩时吐气，向下铰链时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9484",
@@ -2256,12 +2964,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9484?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9484.mp4",
     "tip": "不需要让哑铃碰到地面",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4822",
@@ -2273,11 +2987,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/4822?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1445",
@@ -2289,11 +3009,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1445?w=1024&h=576",
     "tip": "让哑铃垂直悬挂，别晃身子、扭转或远离你站立的腿；保持重量靠近小腿",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1611",
@@ -2305,12 +3031,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1611?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1611.mp4",
     "tip": "在手指弯举的顶点收紧片刻，然后反向进行动作；重复计划的次数，弯举时向心收缩时吐气，下放时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-6161",
@@ -2322,12 +3053,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6161?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6161.mp4",
     "tip": "保持髋部紧贴凳面；让膝盖活动，而不是脊柱",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-7470",
@@ -2339,12 +3076,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7470?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7470.mp4",
     "tip": "让颈部在垫子上保持放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7994",
@@ -2356,12 +3098,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7994?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7994.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-7651",
@@ -2373,12 +3121,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7651?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7651.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11017",
@@ -2390,12 +3144,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11017?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11017.mp4",
     "tip": "上推时向心收缩时吐气，下放时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10081",
@@ -2407,12 +3166,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10081?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10081.mp4",
     "tip": "起身时向心收缩时吐气，回落时回位时吸气，动作中途别全程憋气；意念集中在让肋笼朝膝盖方向转动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-11058",
@@ -2424,12 +3188,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11058?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11058.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4738",
@@ -2441,11 +3211,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4738?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7469",
@@ -2457,12 +3233,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7469?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7469.mp4",
     "tip": "整个训练过程中，下蹲时回位时吸气，站起并踮起脚尖时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2276",
@@ -2474,12 +3256,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2276?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2276.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10037",
@@ -2491,12 +3278,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10037?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10037.mp4",
     "tip": "下放时向心收缩时吐气，回到顶部时回位时吸气；别让在最低点弓起下背部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4427",
@@ -2508,12 +3301,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4427?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4427.mp4",
     "tip": "保持非工作腿伸直且静止",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-2223",
@@ -2525,12 +3324,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2223?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2223.mp4",
     "tip": "保持骨盆紧贴长凳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-1579",
@@ -2542,12 +3347,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1579?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1579.mp4",
     "tip": "保持非工作腿静止；不要在底部利用惯性反弹",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2345",
@@ -2559,11 +3370,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2345?w=1024&h=576",
     "tip": "别让过快完成离心阶段；在用力阶段向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1586",
@@ -2575,12 +3392,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1586?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1586.mp4",
     "tip": "不要猛地完全伸展",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10076",
@@ -2597,7 +3420,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/10076?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10076.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10113",
@@ -2609,12 +3435,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10113?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10113.mp4",
     "tip": "起始重量比你意念集中在的要轻",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "static"
   },
   {
     "id": "fw-11226",
@@ -2626,12 +3458,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/11226?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11226.mp4",
     "tip": "别让屈膝侧的臀部从地面抬起",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9338",
@@ -2643,12 +3481,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9338?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9338.mp4",
     "tip": "不要用手臂把膝盖拽进来",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3978",
@@ -2660,12 +3503,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3978?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3978.mp4",
     "tip": "在摆动最困难的部分向心收缩时吐气，并在经过中心位置时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10463",
@@ -2677,12 +3525,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10463?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10463.mp4",
     "tip": "不要靠塌腰来加深拉伸",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9174",
@@ -2694,12 +3548,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/9174?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9174.mp4",
     "tip": "应收紧核心，从胸骨向上提；保持颈部延展、目光平视",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-5553",
@@ -2711,12 +3571,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5553?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5553.mp4",
     "tip": "在划船动作末端收紧背阔肌，肩膀下沉或让肘部向外张开；保持把手轨迹较低",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1919",
@@ -2728,11 +3594,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1919?w=1024&h=576",
     "tip": "不要用力拉脚",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-11008",
@@ -2744,12 +3616,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/11008?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11008.mp4",
     "tip": "整套动作里始终躯干直立；别让肋骨向上外翻",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4022",
@@ -2761,12 +3639,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4022?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4022.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7467",
@@ -2778,12 +3661,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7467?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7467.mp4",
     "tip": "双腿上举时向心收缩时吐气，下放时回位时吸气；意念集中在用髋部向心收缩，而不是只用双脚",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-11076",
@@ -2800,7 +3688,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/11076?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11076.mp4",
     "tip": "不要把体重靠向墙壁；别让在拉伸最低点出现弹跳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10561",
@@ -2812,12 +3703,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10561?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10561.mp4",
     "tip": "屈髋向下和换手时向心收缩时吐气，在最低点回位时吸气，起身向心收缩时再次向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4518",
@@ -2829,11 +3726,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/4518?w=1024&h=576",
     "tip": "在架位时，让壶铃紧贴前臂；不要通过过早的手臂向心收缩将动作变成借力推举",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11688",
@@ -2845,12 +3747,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/11688?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11688.mp4",
     "tip": "手指握壶柄保持适度放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3522",
@@ -2862,12 +3769,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3522?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3522.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9840",
@@ -2879,12 +3792,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9840?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9840.mp4",
     "tip": "全脚掌向心收缩站直，躯干保持垂直，别让向远离壶铃的一侧倾斜",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8328",
@@ -2896,12 +3815,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8328?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8328.mp4",
     "tip": "保持肘部微屈",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3734",
@@ -2913,12 +3837,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3734?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3734.mp4",
     "tip": "保持前脚平放，后腿放松；保持壶铃靠近大腿和胫骨",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3580",
@@ -2930,12 +3860,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3580?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3580.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11598",
@@ -2947,12 +3883,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11598?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11598.mp4",
     "tip": "在每次重复的底部或顶部回位时吸气，然后在推举时用力向心收缩时吐气；每次重复前，意念集中在手臂稍稍向内夹紧肋骨",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11693",
@@ -2964,12 +3905,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11693?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11693.mp4",
     "tip": "保持膝盖角度不变",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9485",
@@ -2981,12 +3928,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9485?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9485.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11240",
@@ -2998,12 +3951,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11240?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11240.mp4",
     "tip": "保持弧线紧凑；意念集中在壶铃刚好滚过你的锁骨线",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5862",
@@ -3015,12 +3973,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/5862?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5862.mp4",
     "tip": "不要让肘部离开大腿",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3330",
@@ -3032,11 +3995,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3330?w=1024&h=576",
     "tip": "侧腰收缩时向心收缩时吐气，缓慢回到地面时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8032",
@@ -3048,12 +4016,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8032?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8032.mp4",
     "tip": "别让在顶端锁死膝盖",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0482",
@@ -3065,11 +4039,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0482?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-2961",
@@ -3086,7 +4065,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/2961?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2961.mp4",
     "tip": "保持肋骨叠放在骨盆上方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8138",
@@ -3098,12 +4080,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8138?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8138.mp4",
     "tip": "不要追求大幅度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4083",
@@ -3115,12 +4102,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4083?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4083.mp4",
     "tip": "不要用手臂拉扯弹力带",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4076",
@@ -3132,12 +4124,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4076?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4076.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4088",
@@ -3149,12 +4147,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4088?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4088.mp4",
     "tip": "在顶部短暂收紧二头肌，肩膀下沉，保持颈部伸展，肩部下沉；重复预定次数，弯举时向心收缩时吐气，手柄回程时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3324",
@@ -3166,11 +4169,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3324?w=1024&h=576",
     "tip": "不要让转体来自下背部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10184",
@@ -3182,12 +4191,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10184?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10184.mp4",
     "tip": "双手整套动作里始终在胸骨高度；让胸腔叠在骨盆正上方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-2166",
@@ -3199,11 +4213,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2166?w=1024&h=576",
     "tip": "保持骨盆与地面平行",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4074",
@@ -3215,12 +4235,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4074?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4074.mp4",
     "tip": "推举结束时收紧胸肌，肩膀下沉，也不要将肘部完全锁死",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3793",
@@ -3236,7 +4262,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/3793?w=1024&h=576",
     "tip": "轻柔落地，膝盖略松，重心位于双脚之间；将肩胛骨向后向下收紧，不要扭转躯干或耸肩",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9306",
@@ -3248,12 +4277,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9306?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9306.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3781",
@@ -3265,11 +4300,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/3781?w=1024&h=576",
     "tip": "划船时向心收缩时吐气，回位时回位时吸气，按计划次数重复",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-0919",
@@ -3281,11 +4322,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0919?w=1024&h=576",
     "tip": "按计划次数重复，站起时向心收缩时吐气，下放时回位时吸气；支撑膝保持微屈",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8107",
@@ -3297,12 +4344,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8107?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8107.mp4",
     "tip": "向上推时向心收缩时吐气，下放把手时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3974",
@@ -3319,7 +4371,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/3974?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3974.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-6419",
@@ -3331,12 +4386,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6419?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6419.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4184",
@@ -3348,11 +4408,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4184?w=1024&h=576",
     "tip": "保持上背部紧贴长凳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3508",
@@ -3364,11 +4430,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3508?w=1024&h=576",
     "tip": "脚后跟弯举时向心收缩时吐气，腿部伸展回位时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10335",
@@ -3385,7 +4457,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/10335?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10335.mp4",
     "tip": "保持下背部延展",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2162",
@@ -3397,11 +4472,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2162?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10728",
@@ -3413,12 +4494,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10728?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10728.mp4",
     "tip": "弯举和推举时向心收缩时吐气，下放推举和弯举回到预备姿势时回位时吸气；弯举整套动作里始终手腕中立",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3524",
@@ -3430,11 +4516,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3524?w=1024&h=576",
     "tip": "通过脚掌中部向心收缩站起，整套动作里始终推举动作稳定；保持弹力带线路水平",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4683",
@@ -3446,11 +4538,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4683?w=1024&h=576",
     "tip": "保持全脚掌着地；过早向心收缩时吐气可能会导致胸部塌陷",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3786",
@@ -3462,11 +4560,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3786?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3770",
@@ -3478,11 +4582,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3770?w=1024&h=576",
     "tip": "不要让躯干向固定点扭转；胸廓应保持对齐，不要外翻",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11727",
@@ -3494,12 +4604,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11727?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11727.mp4",
     "tip": "站起和推举时向心收缩时吐气，下蹲时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1846",
@@ -3511,12 +4627,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1846?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1846.mp4",
     "tip": "向心收缩时吐气并受控地将双手放回预备姿势，然后重复所需的次数",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3845",
@@ -3528,12 +4650,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3845?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3845.mp4",
     "tip": "保持脚后跟抵住弹力带，别让躯干晃动以完成拉动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-0930",
@@ -3545,11 +4672,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0930?w=1024&h=576",
     "tip": "顶部肩膀下沉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3771",
@@ -3561,11 +4693,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3771?w=1024&h=576",
     "tip": "让髋部启动动作；站立和划船时向心收缩时吐气，在受控铰链回位时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4079",
@@ -3577,12 +4715,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4079?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4079.mp4",
     "tip": "在伸展位置稍作停顿，肩膀下沉或身体前倾；保持肩胛骨稳定",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10820",
@@ -3594,12 +4738,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10820?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10820.mp4",
     "tip": "抬腿向外时向心收缩时吐气，收腿回位时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5608",
@@ -3611,11 +4761,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5608?w=1024&h=576",
     "tip": "推举时向心收缩时吐气，控制回程时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5203",
@@ -3627,11 +4783,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5203?w=1024&h=576",
     "tip": "将肋骨向下收向骨盆，膝盖略松，保持颈部伸展，收下颚；向下卷腹时向心收缩时吐气，回到站立姿势时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-11059",
@@ -3643,12 +4804,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11059?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11059.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8472",
@@ -3660,12 +4827,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/8472?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8472.mp4",
     "tip": "在顶点稍作停顿，收紧前臂掌侧的肌肉；保持双肩端正对准平凳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-5206",
@@ -3677,11 +4849,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5206?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-5202",
@@ -3693,11 +4870,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5202?w=1024&h=576",
     "tip": "保持双手靠近头部，别让用手臂拉动弹力带；让弹力带缓慢地将你拉回",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4985",
@@ -3709,11 +4891,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4985?w=1024&h=576",
     "tip": "意念集中在保持从膝盖到头部的直线；仅在底部让双手触地",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4204",
@@ -3725,12 +4913,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4204?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4204.mp4",
     "tip": "保持髋部伸展",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3772",
@@ -3742,11 +4936,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3772?w=1024&h=576",
     "tip": "在划船和站起时向心收缩时吐气，在回到分腿姿势时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-10651",
@@ -3758,12 +4958,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10651?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10651.mp4",
     "tip": "让工作腿的脚尖保持朝前；跟随动作呼吸，别全程憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1506",
@@ -3775,11 +4981,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1506?w=1024&h=576",
     "tip": "肩膀应保持放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-8749",
@@ -3791,12 +5002,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8749?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8749.mp4",
     "tip": "弯举和向后伸展时向心收缩时吐气，手臂回位到预备姿势时回位时吸气；一秒弯举加两秒回位，才能让徒手版本真正有效",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3185",
@@ -3808,11 +5024,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3185?w=1024&h=576",
     "tip": "保持手腕位于肘部上方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3186",
@@ -3824,12 +5046,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3186?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3186.mp4",
     "tip": "在开始第一次重复前，夹紧臀肌，收紧核心，并保持肋骨下压；在前架位置保持前臂垂直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1126",
@@ -3841,12 +5068,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1126?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1126.mp4",
     "tip": "保持两个手柄水平对齐",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4095",
@@ -3858,12 +5091,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4095?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4095.mp4",
     "tip": "保持双腿静止；卷起时向心收缩时吐气，放下时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1102",
@@ -3875,12 +5113,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1102?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1102.mp4",
     "tip": "弯举时不要让肋骨外翻",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-5514",
@@ -3892,12 +5136,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5514?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5514.mp4",
     "tip": "在顶部保持短暂的收紧，肋骨旋转，腹肌完全收缩；保持动作小而干脆",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0819",
@@ -3909,12 +5158,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0819?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0819.mp4",
     "tip": "保持抬起幅度小且受控",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1953",
@@ -3926,11 +5180,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1953?w=1024&h=576",
     "tip": "支撑手保持轻扶",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10786",
@@ -3942,12 +5202,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10786?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10786.mp4",
     "tip": "后拉时向心收缩时吐气，手臂向前伸展时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3097",
@@ -3959,12 +5225,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3097?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3097.mp4",
     "tip": "膝盖略松，让手臂自然下垂指向把手；在顶点稍作停顿并收紧肩胛骨，肩膀下沉或向后仰",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4899",
@@ -3976,11 +5248,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4899?w=1024&h=576",
     "tip": "保持躯干角度稳定",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4215",
@@ -3992,12 +5270,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4215?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4215.mp4",
     "tip": "划船时向心收缩时吐气，回到预备姿势时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-0589",
@@ -4009,11 +5293,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0589?w=1024&h=576",
     "tip": "意念集中在将肘部拉向后口袋",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9862",
@@ -4025,12 +5314,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9862?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9862.mp4",
     "tip": "别让在拉长位置反弹借力",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0590",
@@ -4042,12 +5336,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0590?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0590.mp4",
     "tip": "保持手腕叠放在肘部上方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1041",
@@ -4059,12 +5358,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1041?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1041.mp4",
     "tip": "保持肘部轨迹自然；在放下阶段回位时吸气，在向上推起手柄时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8805",
@@ -4076,12 +5381,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8805?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8805.mp4",
     "tip": "由于杠杆臂会放大惯性，别让在底部反弹借力",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11524",
@@ -4093,12 +5403,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11524?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11524.mp4",
     "tip": "拉回握把时向心收缩时吐气，回到拉伸位置时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8846",
@@ -4110,12 +5426,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8846?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8846.mp4",
     "tip": "上推时向心收缩时吐气，下放重量时缓慢回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10952",
@@ -4132,7 +5454,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/10952?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10952.mp4",
     "tip": "向上蹬起时向心收缩时吐气,下放时回位时吸气；不要让脚跟在底部猛砸",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-11209",
@@ -4144,12 +5469,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11209?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11209.mp4",
     "tip": "拉回把手时向心收缩时吐气，把手向前回位时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4378",
@@ -4161,12 +5492,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4378?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4378.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11056",
@@ -4178,12 +5515,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11056?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11056.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11028",
@@ -4200,7 +5543,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/11028?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11028.mp4",
     "tip": "向上踮起时向心收缩时吐气，脚跟下降进入拉伸时回位时吸气；保持肋骨下沉、腰腹绷紧",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8710",
@@ -4212,12 +5558,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8710?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8710.mp4",
     "tip": "在顶点让脚尖略微上勾；别让在底部完全放松休息",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0581",
@@ -4229,12 +5581,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0581?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0581.mp4",
     "tip": "保持胸部紧贴垫子",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-0603",
@@ -4246,11 +5603,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0603?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0606",
@@ -4262,12 +5624,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0606?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0606.mp4",
     "tip": "在动作顶点收紧肩胛骨，不要向后过度倾斜；划船时向心收缩时吐气，重量回到预备姿势时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3200",
@@ -4279,12 +5646,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3200?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3200.mp4",
     "tip": "下放时回位时吸气，划船时向心收缩时吐气；保持铰链姿势固定",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8715",
@@ -4296,12 +5668,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8715?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8715.mp4",
     "tip": "不要让膝盖内扣；别让在弧线底部猛撞止位",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2660",
@@ -4313,12 +5691,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2660?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2660.mp4",
     "tip": "不要用肩膀去追逐顶部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0604",
@@ -4330,12 +5713,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0604?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0604.mp4",
     "tip": "不要画圈滚动肩膀",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3102",
@@ -4347,11 +5735,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3102?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8712",
@@ -4363,12 +5757,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8712?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8712.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-10067",
@@ -4380,12 +5780,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10067?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10067.mp4",
     "tip": "推起时向心收缩时吐气，放下握把时回位时吸气；保持头部中立、目视前方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10821",
@@ -4397,12 +5802,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10821?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10821.mp4",
     "tip": "推过动作最难的那一段时向心收缩时吐气，杠铃回落时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0097",
@@ -4414,12 +5824,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0097?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0097.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10371",
@@ -4431,12 +5847,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10371?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10371.mp4",
     "tip": "别让杠铃左右漂移；让髋部跟手臂一起移动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9694",
@@ -4448,12 +5869,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9694?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9694.mp4",
     "tip": "推举时全身保持安静",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10047",
@@ -4465,12 +5891,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10047?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10047.mp4",
     "tip": "两侧髋部朝向正前方，别让后侧髋部朝后脚方向打开；不要一味追求深度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0068",
@@ -4482,12 +5914,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0068?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0068.mp4",
     "tip": "别让过度依赖后腿向心收缩",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10169",
@@ -4504,7 +5942,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/10169?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10169.mp4",
     "tip": "工作腿的膝盖要伸直但关节别完全锁死",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1497",
@@ -4516,11 +5957,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1497?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2683",
@@ -4532,12 +5979,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/2683?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2683.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3328",
@@ -4549,11 +6001,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3328?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1544",
@@ -4565,11 +6023,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1544?w=1024&h=576",
     "tip": "让膝盖保持微屈",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-10603",
@@ -4581,12 +6045,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10603?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10603.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9932",
@@ -4598,12 +6068,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9932?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9932.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-7620",
@@ -4615,12 +6091,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7620?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7620.mp4",
     "tip": "随着疲劳出现,别让把肘部完全向两侧打开；向上向心收缩时不要让臀部离开卧推凳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4203",
@@ -4632,11 +6114,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4203?w=1024&h=576",
     "tip": "膝盖应随脚尖方向打开",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3530",
@@ -4648,11 +6135,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3530?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4061",
@@ -4664,12 +6157,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4061?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4061.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4173",
@@ -4681,11 +6180,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4173?w=1024&h=576",
     "tip": "在顶部夹紧臀肌站直，不要后仰或耸肩；保持杠铃贴近大腿和胫骨",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4841",
@@ -4697,12 +6202,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4841?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4841.mp4",
     "tip": "保持杠铃擦着胫骨和大腿；不要过早猛地伸展髋部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4686",
@@ -4714,11 +6225,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4686?w=1024&h=576",
     "tip": "重置肩部位置，回位时吸气，并重复计划的次数；不要将推举变成站姿后弯",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4011",
@@ -4730,11 +6246,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4011?w=1024&h=576",
     "tip": "在顶部短暂收紧肩胛骨，不要站起来或耸肩；保持躯干角度固定",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1541",
@@ -4746,11 +6268,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1541?w=1024&h=576",
     "tip": "保持杠铃贴近大腿和胫骨",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3860",
@@ -4762,12 +6290,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3860?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3860.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-2361",
@@ -4779,11 +6313,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2361?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9808",
@@ -4795,12 +6335,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9808?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9808.mp4",
     "tip": "上推时向心收缩时吐气，下放时回位时吸气；通过双脚向地面向心收缩有助于稳定胸廓，别让动作变成以肩部为主导",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11243",
@@ -4812,12 +6358,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11243?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11243.mp4",
     "tip": "向上推时向心收缩时吐气，向下放回预备姿势时回位时吸气；整套动作里始终背部贴住靠垫",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6698",
@@ -4829,12 +6380,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6698?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6698.mp4",
     "tip": "保持肩膀稳定",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10189",
@@ -4846,12 +6402,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10189?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10189.mp4",
     "tip": "从箭步蹲向心收缩站起时向心收缩时吐气；拿片时膝盖保持微弯",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-0116",
@@ -4863,12 +6424,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0116?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0116.mp4",
     "tip": "站直身体并夹紧臀肌，不要向后倾斜；不要在底部利用杠铃反弹",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1542",
@@ -4880,12 +6447,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1542?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1542.mp4",
     "tip": "双脚完全踩在凳面上，别让向边缘偏移，以免平衡不稳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-6263",
@@ -4897,12 +6470,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/6263?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6263.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-11555",
@@ -4914,12 +6492,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/11555?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11555.mp4",
     "tip": "保持动作只发生在手腕",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-7482",
@@ -4931,12 +6514,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7482?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7482.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-5632",
@@ -4948,11 +6537,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5632?w=1024&h=576",
     "tip": "保持握距在肩宽左右；在肩部感到收紧前停止拉举",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1610",
@@ -4964,12 +6558,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1610?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1610.mp4",
     "tip": "在动作顶点收紧肌肉，不要弯曲肘部或耸肩；保持呼吸平稳，向上弯举时向心收缩时吐气，向下回位时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-11341",
@@ -4981,12 +6580,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11341?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11341.mp4",
     "tip": "轻微收紧核心,别让重量把躯干向后拉；减轻重量,更用力收紧腹肌",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-5663",
@@ -4998,11 +6602,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5663?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3730",
@@ -5014,12 +6624,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3730?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3730.mp4",
     "tip": "保持杠铃靠近腿部后侧；不要弯曲肘部来完成动作",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0125",
@@ -5031,12 +6646,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/0125?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0125.mp4",
     "tip": "让手腕轻微伸展，使杠铃回落至舒适的拉伸位置；在顶部稍作停顿，收紧前臂内侧肌肉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10492",
@@ -5048,12 +6668,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10492?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10492.mp4",
     "tip": "不要用手指拉扯后脑；保持手肘打开、胸腔展开",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-2811",
@@ -5065,12 +6690,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2811?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2811.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10480",
@@ -5082,12 +6712,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10480?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10480.mp4",
     "tip": "保持手腕中立、拳头放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1980",
@@ -5099,12 +6734,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1980?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1980.mp4",
     "tip": "保持拉伸侧的肩膀下沉，肩膀下沉向耳朵靠拢；保持该姿势并缓慢向心收缩时吐气，让肩部在拉伸中放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9150",
@@ -5116,12 +6756,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9150?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9150.mp4",
     "tip": "不要在底部弹起",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10932",
@@ -5133,12 +6778,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10932?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10932.mp4",
     "tip": "下方手的手腕保持放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3567",
@@ -5150,12 +6800,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/3567?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3567.mp4",
     "tip": "保持交叉的脚放松；在沉入更深位置时缓慢向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8344",
@@ -5167,12 +6823,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8344?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8344.mp4",
     "tip": "杠铃片扫过身体中线时向心收缩时吐气，向弧线外侧移动时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10545",
@@ -5184,12 +6845,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10545?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10545.mp4",
     "tip": "不要靠摆动腿部借力",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1045",
@@ -5201,12 +6868,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1045?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1045.mp4",
     "tip": "推举时保持肋骨下压",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3606",
@@ -5218,12 +6890,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3606?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3606.mp4",
     "tip": "在动作最困难的部分向心收缩时吐气，以帮助躯干保持支撑",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9047",
@@ -5235,12 +6913,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9047?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9047.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0269",
@@ -5252,12 +6936,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0269?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0269.mp4",
     "tip": "收紧腹部，保持颈部放松；整套动作里始终下背部舒适",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9010",
@@ -5269,12 +6958,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9010?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9010.mp4",
     "tip": "整套动作里始终臀肌收紧",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9199",
@@ -5286,12 +6980,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9199?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9199.mp4",
     "tip": "轻微夹紧臀肌，绷紧腹壁，让躯干保持直立，别让下背弓起；向上推起时向心收缩时吐气，向头后下放重量时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0273",
@@ -5303,12 +7002,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0273?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0273.mp4",
     "tip": "收紧腹部并保持颈部放松；有控制地回位，不要直接回落",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8520",
@@ -5320,12 +7024,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8520?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8520.mp4",
     "tip": "不要拉扯颈部；支撑腿的膝盖保持微屈",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4574",
@@ -5337,11 +7046,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4574?w=1024&h=576",
     "tip": "不要利用髋部向心收缩来向上甩动重量",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9682",
@@ -5353,12 +7067,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/9682?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9682.mp4",
     "tip": "别让膝盖锁死",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-6964",
@@ -5370,12 +7090,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6964?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6964.mp4",
     "tip": "推举时向心收缩时吐气，别让下背部拱起或肋骨上顶；有控制地回落哑铃，耗时两到三秒",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0920",
@@ -5387,12 +7113,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0920?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0920.mp4",
     "tip": "向前推时向心收缩时吐气，把手收回胸前时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1946",
@@ -5404,11 +7136,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1946?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4317",
@@ -5420,12 +7158,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/4317?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4317.mp4",
     "tip": "在末端位置缓慢向心收缩时吐气，并保持规定的时间；保持髋部朝前",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1896",
@@ -5437,12 +7181,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1896?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1896.mp4",
     "tip": "让向心收缩时吐气缓慢而长；这通常会将拉伸变成扭转",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1225",
@@ -5454,12 +7204,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1225?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1225.mp4",
     "tip": "躯干应保持堆叠且静止；当杠铃片远离胸部时向心收缩时吐气，在受控回程时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6360",
@@ -5471,12 +7226,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/6360?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6360.mp4",
     "tip": "在顶点保持一秒的收紧感，有助于感受前臂屈肌的向心收缩；有控制地回落横杆",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-1879",
@@ -5488,11 +7248,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1879?w=1024&h=576",
     "tip": "仅将椅子用于平衡；在进入姿势时向心收缩时吐气，底部不要弹动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-6363",
@@ -5504,12 +7270,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/6363?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6363.mp4",
     "tip": "在顶部稍作停顿，肩膀下沉或摆动；保持肘部固定在躯干旁",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-9073",
@@ -5521,12 +7292,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9073?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9073.mp4",
     "tip": "腿在每次摆动和抬起时向心收缩时吐气，在受控制的下放阶段回位时吸气；别让用快速甩动的惯性",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0148",
@@ -5538,11 +7315,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0148?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9804",
@@ -5554,12 +7336,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9804?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9804.mp4",
     "tip": "保持大腿本身稳定且垂直；脚跟下弯时向心收缩时吐气，向上伸直时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-8875",
@@ -5571,12 +7359,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8875?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8875.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8876",
@@ -5588,12 +7382,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8876?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8876.mp4",
     "tip": "膝盖拉近时向心收缩时吐气,放回起点时回位时吸气；保持上背和手臂贴地,让向心收缩集中在髋部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5814",
@@ -5605,12 +7405,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5814?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5814.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11471",
@@ -5622,12 +7428,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11471?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11471.mp4",
     "tip": "弯举上抬时向心收缩时吐气,下放时回位时吸气；别让绷脚尖,那会把向心收缩转移到小腿",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10860",
@@ -5639,12 +7451,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10860?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10860.mp4",
     "tip": "向外踢出时向心收缩时吐气，腿收回身后时回位时吸气；不要让支撑腿膝盖向内扣",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4106",
@@ -5656,12 +7474,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4106?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4106.mp4",
     "tip": "将滑轮设置在胸骨高度；推举时向心收缩时吐气，有助于防止肋骨架外翻",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11275",
@@ -5673,12 +7496,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11275?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11275.mp4",
     "tip": "拉回把手时向心收缩时吐气，放回时回位时吸气，全程平稳呼吸，别全程憋气完成整组",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7564",
@@ -5690,12 +7519,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7564?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7564.mp4",
     "tip": "拉回把手时向心收缩时吐气，手臂回到伸直位置时回位时吸气；在拉到顶端时不要耸起向心收缩侧肩膀",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-6512",
@@ -5707,12 +7542,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6512?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6512.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-6511",
@@ -5724,12 +7565,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6511?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6511.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4163",
@@ -5741,11 +7588,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/4163?w=1024&h=576",
     "tip": "不要将其变成肘部弯举",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4197",
@@ -5757,11 +7609,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4197?w=1024&h=576",
     "tip": "推举时向心收缩时吐气，收回时回位时吸气，保持呼吸平稳自然",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2886",
@@ -5773,11 +7630,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2886?w=1024&h=576",
     "tip": "在每次重复前收紧核心；保持每次重复的呼吸一致",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1800",
@@ -5789,12 +7651,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1800?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1800.mp4",
     "tip": "保持肘部柔和但伸长；不要向耳朵方向耸肩",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7811",
@@ -5806,12 +7674,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7811?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7811.mp4",
     "tip": "髋部保持正对凳子",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2324",
@@ -5823,12 +7697,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/2324?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2324.mp4",
     "tip": "整套动作里始终膝盖略松；当身体站直且臀部收紧时停止上升阶段",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8339",
@@ -5840,12 +7720,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8339?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8339.mp4",
     "tip": "不要追求抬腿高度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-11272",
@@ -5857,12 +7743,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11272?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11272.mp4",
     "tip": "弯举和推起时向心收缩时吐气，下放和反向旋转时回位时吸气；保持头部中立，别让下巴朝手柄方向探出去",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-2744",
@@ -5874,12 +7765,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2744?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2744.mp4",
     "tip": "站直并夹紧臀肌，膝盖伸直但关节别完全锁死，同时保持绳索受控；保持把手靠近身体中心线",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9792",
@@ -5891,12 +7788,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9792?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9792.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2088",
@@ -5908,11 +7810,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/2088?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7866",
@@ -5924,12 +7831,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/7866?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7866.mp4",
     "tip": "别让把上方的肩膀耸向耳朵；加深拉伸时缓慢向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9426",
@@ -5941,12 +7853,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/9426?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9426.mp4",
     "tip": "头部保持不动；手臂上抬时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8663",
@@ -5958,12 +7876,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/8663?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8663.mp4",
     "tip": "在顶端位置停顿一拍，肩膀下沉让肩膀靠近耳朵",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7887",
@@ -5975,12 +7898,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/7887?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7887.mp4",
     "tip": "整套动作里始终稳定的呼吸；肩膀下沉时向心收缩时吐气，让每次向心收缩时吐气帮助你再下沉一点点",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7597",
@@ -5992,12 +7921,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7597?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7597.mp4",
     "tip": "拉回把手时向心收缩时吐气，有控制地伸展回去时回位时吸气；整套动作里始终手腕中立",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-6146",
@@ -6009,12 +7944,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6146?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6146.mp4",
     "tip": "在动作顶部收紧肩胛骨向后向下，肩膀下沉、扭转或让胸部抬起",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7587",
@@ -6026,12 +7967,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7587?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7587.mp4",
     "tip": "拉动时向心收缩时吐气，手臂回到预备姿势时回位时吸气；每次顶点都要让肩胛骨充分前伸",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9699",
@@ -6043,12 +7990,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9699?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9699.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-2340",
@@ -6060,11 +8013,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2340?w=1024&h=576",
     "tip": "防止肘部过度外展，别让杠铃向颈部或脸部偏移",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3963",
@@ -6076,11 +8035,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3963?w=1024&h=576",
     "tip": "保持上臂静止；保持胸部紧贴靠垫",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-5661",
@@ -6092,11 +8056,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5661?w=1024&h=576",
     "tip": "保持臀部紧贴长凳支撑",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3988",
@@ -6108,11 +8078,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3988?w=1024&h=576",
     "tip": "在每次重复前收紧核心；别让仓促完成离心阶段",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-9332",
@@ -6124,12 +8099,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9332?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9332.mp4",
     "tip": "不要用手推地面",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1693",
@@ -6141,11 +8122,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1693?w=1024&h=576",
     "tip": "在每次重复前收紧核心；保持每次重复的呼吸一致",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4253",
@@ -6157,11 +8144,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4253?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-11701",
@@ -6173,12 +8165,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11701?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11701.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11621",
@@ -6190,12 +8188,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11621?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11621.mp4",
     "tip": "蹬地起立推举时用力向心收缩时吐气,放球下蹲时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10079",
@@ -6207,12 +8211,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10079?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10079.mp4",
     "tip": "髋部、下背部和双脚整套动作里始终贴紧地面",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9797",
@@ -6224,12 +8233,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9797?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9797.mp4",
     "tip": "用支撑手臂把地板推离，别让肩膀下沉；不要靠甩腿借力",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8017",
@@ -6241,12 +8256,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8017?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8017.mp4",
     "tip": "抬起的腿保持放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10097",
@@ -6258,12 +8279,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10097?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10097.mp4",
     "tip": "在开始向上向心收缩前先收紧核心；向上向心收缩并举起杠铃片时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10636",
@@ -6275,12 +8302,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10636?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10636.mp4",
     "tip": "缓慢将杠铃片下放回体侧预备姿势，回落时回位时吸气，并在整个回落过程中保持捏紧",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3876",
@@ -6292,11 +8324,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/3876?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6559",
@@ -6313,7 +8351,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/6559?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6559.mp4",
     "tip": "如果膝盖开始参与向心收缩，说明重量太重了",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-8823",
@@ -6325,12 +8366,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8823?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8823.mp4",
     "tip": "不要让前膝向内扣；保持前膝弯曲角度恒定",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4101",
@@ -6342,11 +8389,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4101?w=1024&h=576",
     "tip": "保持收下颚，这样颈部就不会主导动作；向上伸展时向心收缩时吐气，回到地面时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10580",
@@ -6358,12 +8410,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10580?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10580.mp4",
     "tip": "下蹲时注意站立腿的膝盖；不要把踢出的腿完全锁直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0836",
@@ -6375,12 +8433,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0836?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0836.mp4",
     "tip": "不要猛拉头部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3236",
@@ -6392,12 +8455,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3236?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3236.mp4",
     "tip": "保持弹力带在骨盆低位；髋部向前移动时向心收缩时吐气，回到预备姿势并重新对齐躯干时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9623",
@@ -6409,12 +8478,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9623?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9623.mp4",
     "tip": "保持收下颚，眼睛看向垫子；抬升和下拉时向心收缩时吐气，回落到垫子时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0193",
@@ -6426,11 +8501,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0193?w=1024&h=576",
     "tip": "在收紧处稍作停顿，肩膀下沉或扭转身体；保持肘部驱动动作",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-5821",
@@ -6442,12 +8523,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5821?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5821.mp4",
     "tip": "保持滑轮靠近肩部高度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8989",
@@ -6459,12 +8546,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8989?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8989.mp4",
     "tip": "向外旋转打开时向心收缩时吐气，回到中间时回位时吸气，整套动作里始终呼吸缓慢而连贯；轻微收紧核心，意念集中在骨盆被粘在膝盖正上方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2751",
@@ -6476,11 +8569,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2751?w=1024&h=576",
     "tip": "保持壶铃在骨盆下方居中",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2836",
@@ -6492,12 +8591,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2836?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2836.mp4",
     "tip": "最后夹紧臀肌，不要向后倾斜或耸肩；在顶部短暂收紧即可",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-2750",
@@ -6509,11 +8614,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2750?w=1024&h=576",
     "tip": "在每次重复前收紧核心；保持每次重复的呼吸一致",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1931",
@@ -6525,12 +8636,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1931?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1931.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-11276",
@@ -6542,12 +8659,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11276?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11276.mp4",
     "tip": "每次下放到底时别让用力锁死膝盖",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0221",
@@ -6559,11 +8682,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0221?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-6361",
@@ -6575,12 +8703,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/6361?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6361.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-6358",
@@ -6592,12 +8725,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/6358?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6358.mp4",
     "tip": "有控制地回落杠铃，直到手腕回到拉伸的预备姿势；不要让肘部向前滑动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4068",
@@ -6609,11 +8747,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4068?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1983",
@@ -6625,11 +8769,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1983?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4768",
@@ -6641,11 +8791,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4768?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9698",
@@ -6657,12 +8813,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9698?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9698.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3682",
@@ -6674,12 +8836,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3682?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3682.mp4",
     "tip": "保持上臂固定，别让哑铃上升时肘部向前移动；顶部肩膀下沉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0322",
@@ -6691,12 +8858,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0322?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0322.mp4",
     "tip": "在顶部附近短暂保持，肩膀下沉或让肘部向前偏移；别让进入疼痛的底部范围",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-6218",
@@ -6708,12 +8880,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6218?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6218.mp4",
     "tip": "保持呼吸平稳，推举时向心收缩时吐气，下放时回位时吸气；推举时让旋转自然发生",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3938",
@@ -6725,12 +8903,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3938?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3938.mp4",
     "tip": "保持肘部伸直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0320",
@@ -6742,12 +8925,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0320?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0320.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0321",
@@ -6759,12 +8947,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0321?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0321.mp4",
     "tip": "保持哑铃水平，别让一侧领先于另一侧",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1845",
@@ -6776,12 +8970,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1845?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1845.mp4",
     "tip": "髋部卷起时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3438",
@@ -6793,12 +8992,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3438?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3438.mp4",
     "tip": "意念集中在将骨盆向肋骨方向卷曲；髋部卷起时向心收缩时吐气，双腿受控下降时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8183",
@@ -6810,12 +9014,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8183?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8183.mp4",
     "tip": "全程稳住节奏；提膝时用力向心收缩时吐气，回位时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10811",
@@ -6827,12 +9036,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10811?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10811.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7855",
@@ -6844,12 +9058,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7855?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7855.mp4",
     "tip": "组间不要让双脚落地；整组过程中保持头部贴地",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1793",
@@ -6861,11 +9080,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1793?w=1024&h=576",
     "tip": "别让强行拉伸至无痛范围之外；保持动作缓慢且深思熟虑",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-0265",
@@ -6877,12 +9102,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/0265?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0265.mp4",
     "tip": "收紧跪地一侧的臀肌；保持姿势并平稳呼吸",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-0263",
@@ -6894,12 +9125,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0263?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0263.mp4",
     "tip": "收紧腹部并保持颈部放松；在受控状态下回位，不要直接回落",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4354",
@@ -6911,12 +9147,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4354?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4354.mp4",
     "tip": "保持卷腹幅度较小；不要让膝盖向胸部靠拢",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7432",
@@ -6928,12 +9169,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7432?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7432.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8866",
@@ -6945,12 +9192,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8866?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8866.mp4",
     "tip": "每次提膝向上时向心收缩时吐气,脚落下时回位时吸气,整套动作里始终呼吸平稳；整套动作里始终躯干挺直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8985",
@@ -6962,12 +9215,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8985?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8985.mp4",
     "tip": "腿抬起时向心收缩时吐气，放回时回位时吸气；整套动作里始终躯干直立",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9061",
@@ -6979,12 +9238,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/9061?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9061.mp4",
     "tip": "整套动作里始终平稳呼吸，手掌向上扫时回位时吸气，向下旋转时向心收缩时吐气，别让憋气；整套动作里始终工作侧手臂在肩部高度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4437",
@@ -7001,7 +9265,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/4437?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4437.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-7496",
@@ -7013,12 +9280,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7496?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7496.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7431",
@@ -7030,12 +9302,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7431?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7431.mp4",
     "tip": "每条腿抬起时向心收缩时吐气，回落时回位时吸气，保持呼吸平稳，别全程憋气；整套动作里始终工作膝弯曲约九十度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8263",
@@ -7047,12 +9325,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8263?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8263.mp4",
     "tip": "保持20到30秒，呼吸平稳；保持20到30秒",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3243",
@@ -7064,12 +9348,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/3243?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3243.mp4",
     "tip": "保持肩膀沉在垫子上；将双手作为引导而非杠杆",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8933",
@@ -7081,12 +9371,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8933?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8933.mp4",
     "tip": "每次抬腿时向心收缩时吐气，回落时回位时吸气，保持呼吸平稳，别全程憋气；抬起的腿保持伸直但关节别完全锁死",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9887",
@@ -7098,12 +9393,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9887?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9887.mp4",
     "tip": "手肘不需要碰到膝盖；回位时吸气,缓慢放回预备姿势,别让头部和肩膀重重砸下",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10103",
@@ -7115,12 +9415,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10103?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10103.mp4",
     "tip": "每次膝盖向上提时向心收缩时吐气，向下放时回位时吸气；保持连续呼吸，别全程憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7376",
@@ -7132,12 +9437,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7376?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7376.mp4",
     "tip": "双手只用于保持平衡；保持对角线路径的准确",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10520",
@@ -7149,12 +9459,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10520?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10520.mp4",
     "tip": "不要让下巴使劲贴近胸口；起身时用力向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9024",
@@ -7166,12 +9481,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9024?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9024.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3831",
@@ -7183,12 +9503,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3831?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3831.mp4",
     "tip": "仰卧在垫子上，将毛巾绕在向心收缩腿的脚上；在顶端稍作停顿，肩膀下沉或让手腕向后折叠",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-8525",
@@ -7200,12 +9525,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8525?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8525.mp4",
     "tip": "抬膝时向心收缩时吐气，回落时回位时吸气，保持呼吸连续，别全程憋气；不要强行把膝盖开得更大",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10913",
@@ -7217,12 +9548,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10913?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10913.mp4",
     "tip": "每次开始前先把膝盖锁直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1776",
@@ -7234,11 +9571,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1776?w=1024&h=576",
     "tip": "在每次重复前收紧核心；别让过快完成离心阶段",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8976",
@@ -7250,12 +9593,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8976?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8976.mp4",
     "tip": "髋部抬起的瞬间用力向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3752",
@@ -7267,12 +9615,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3752?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3752.mp4",
     "tip": "向上弯举时向心收缩时吐气，下放时回位时吸气；保持手腕与前臂成一直线",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3830",
@@ -7284,12 +9637,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3830?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3830.mp4",
     "tip": "整套动作里始终中立握法；不要让肘部向外张开",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-9296",
@@ -7301,12 +9659,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9296?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9296.mp4",
     "tip": "在最高点停顿一拍，收紧腹肌和转体一侧的腹斜肌",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0617",
@@ -7318,12 +9681,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0617?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0617.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4929",
@@ -7340,7 +9709,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/4929?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4929.mp4",
     "tip": "膝盖伸直时侧重于腓肠肌",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3242",
@@ -7352,12 +9724,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/3242?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3242.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3477",
@@ -7369,11 +9747,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/3477?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3476",
@@ -7385,12 +9769,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/3476?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3476.mp4",
     "tip": "保持对侧肩膀紧贴垫子；不要强行将膝盖拉过身体",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7853",
@@ -7402,12 +9792,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7853?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7853.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-11010",
@@ -7419,12 +9814,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11010?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11010.mp4",
     "tip": "整套动作里始终双腿垂直；绝不要用手把髋部向上推",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10127",
@@ -7436,12 +9836,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10127?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10127.mp4",
     "tip": "别全程憋气或过度用力下压；不要瞬间加到全力",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2396",
@@ -7453,12 +9859,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2396?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2396.mp4",
     "tip": "保持手腕中立，弯举时向心收缩时吐气，回位时回位时吸气并保持控制",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4224",
@@ -7470,11 +9881,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4224?w=1024&h=576",
     "tip": "推举时向心收缩时吐气，返回时回位时吸气，整套动作里始终绳索处于张力状态；不要让肘部向外张开",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4350",
@@ -7486,11 +9902,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4350?w=1024&h=576",
     "tip": "缓慢将手柄放回预备姿势，同时保持绳索张力；保持手腕与前臂对齐",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0183",
@@ -7502,12 +9923,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0183?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0183.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4226",
@@ -7519,11 +9945,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4226?w=1024&h=576",
     "tip": "保持躯干固定在平凳上",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3539",
@@ -7535,12 +9966,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/3539?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3539.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8566",
@@ -7552,12 +9989,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8566?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8566.mp4",
     "tip": "不要用手或肘下压膝盖",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-6752",
@@ -7569,12 +10012,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6752?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6752.mp4",
     "tip": "在顶部暂停片刻进行收紧，不要拉扯颈部或晃动躯干；意念集中在将肋骨向骨盆方向卷曲",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-5250",
@@ -7586,12 +10034,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5250?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5250.mp4",
     "tip": "扭转时向心收缩时吐气，通过动作中心时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7735",
@@ -7603,12 +10057,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7735?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7735.mp4",
     "tip": "让指尖轻放在头骨上,意念集中在用胸骨向上提起；保持双脚脚掌紧贴",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1939",
@@ -7620,11 +10079,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1939?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1932",
@@ -7636,11 +10101,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1932?w=1024&h=576",
     "tip": "让同伴逐渐增加压力",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-0616",
@@ -7652,11 +10123,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/0616?w=1024&h=576",
     "tip": "保持拉伸平稳静止，别晃身子膝盖靠近胸部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7442",
@@ -7668,12 +10145,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7442?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7442.mp4",
     "tip": "让支撑脚的脚趾轻轻抓地",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9799",
@@ -7690,7 +10172,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/9799?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9799.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9798",
@@ -7707,7 +10192,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/9798?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9798.mp4",
     "tip": "踮脚上蹬时向心收缩时吐气，放下脚跟时回位时吸气，整套动作里始终呼吸平稳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0719",
@@ -7719,12 +10207,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0719?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0719.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0708",
@@ -7736,12 +10229,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0708?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0708.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4884",
@@ -7753,12 +10251,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4884?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4884.mp4",
     "tip": "保持髋部垂直堆叠；在膝盖打开和开始抬腿时向心收缩时吐气，在受控返回时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4990",
@@ -7770,12 +10274,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4990?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4990.mp4",
     "tip": "不要用上方手猛拉头部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1577",
@@ -7787,11 +10296,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1577?w=1024&h=576",
     "tip": "缓慢呼吸，保持拉伸姿势，别晃身子；保持上侧膝盖基本朝下",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8289",
@@ -7803,12 +10318,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8289?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8289.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-0707",
@@ -7820,12 +10341,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0707?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0707.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4788",
@@ -7837,11 +10363,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4788?w=1024&h=576",
     "tip": "不要在底部利用惯性反弹",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0721",
@@ -7853,12 +10385,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/0721?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0721.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7827",
@@ -7870,12 +10407,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7827?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7827.mp4",
     "tip": "在最高点短暂收紧卷腹，感受腰侧的收缩；意念集中在把下肋往髋骨方向带过去",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7753",
@@ -7887,12 +10429,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7753?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7753.mp4",
     "tip": "上抬髋部时向心收缩时吐气，下放时回位时吸气，保持呼吸平稳，别全程憋气；不要用上侧的手拉扯头部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1802",
@@ -7904,12 +10451,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1802?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1802.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4334",
@@ -7921,11 +10474,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4334?w=1024&h=576",
     "tip": "不要让颈部主导动作",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3503",
@@ -7937,12 +10495,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3503?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3503.mp4",
     "tip": "不要用上侧手猛拉头部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1495",
@@ -7954,12 +10517,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1495?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1495.mp4",
     "tip": "保持脑后的支撑手轻盈；肋骨闭合时向心收缩时吐气，下放时回位时吸气，以保持动作平稳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3936",
@@ -7971,12 +10539,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3936?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3936.mp4",
     "tip": "保持肘部在肩部正下方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-6022",
@@ -7988,12 +10562,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6022?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6022.mp4",
     "tip": "保持颈部放松，每次抬腿时向心收缩时吐气，放下腿时回位时吸气；保持抬腿幅度较小",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1179",
@@ -8005,12 +10585,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1179?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1179.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4779",
@@ -8022,11 +10608,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4779?w=1024&h=576",
     "tip": "保持踢腿幅度较小",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4125",
@@ -8038,12 +10630,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4125?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4125.mp4",
     "tip": "开始时重量要比你意念集中在的轻；保持额头和颈部放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2895",
@@ -8055,11 +10652,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2895?w=1024&h=576",
     "tip": "在每次重复前收紧核心；保持每次重复呼吸一致",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4961",
@@ -8071,12 +10673,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4961?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4961.mp4",
     "tip": "哑铃移动时保持上臂静止；在顶部收紧肱三头肌并稍作停顿，肩膀下沉或拱起下背部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8627",
@@ -8088,12 +10695,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "cardio",
     "image": "https://fitwill.app/api/image/8627?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8627.mp4",
     "tip": "用前脚掌轻柔落地，膝盖略松，然后立即衔接下一次动作",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "static"
   },
   {
     "id": "fw-6537",
@@ -8105,12 +10718,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/6537?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6537.mp4",
     "tip": "推起和拉伸时向心收缩时吐气，下沉和触碰时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-5378",
@@ -8122,12 +10741,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/5378?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5378.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3209",
@@ -8139,11 +10764,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3209?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9038",
@@ -8155,12 +10786,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9038?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9038.mp4",
     "tip": "手肘向下向后拉时向心收缩时吐气，手臂伸回头顶时回位时吸气；不要让下巴朝天花板抬起",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-6023",
@@ -8172,12 +10809,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6023?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6023.mp4",
     "tip": "最高点应该感觉到臀部收紧，而不是腘绳肌抽筋或腰部收紧",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1790",
@@ -8189,11 +10832,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1790?w=1024&h=576",
     "tip": "助手应缓慢增加活动范围",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1055",
@@ -8205,12 +10854,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1055?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1055.mp4",
     "tip": "保持骨盆前侧贴在垫子上",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8546",
@@ -8222,12 +10876,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8546?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8546.mp4",
     "tip": "全程平稳呼吸,抬起时向心收缩时吐气,手臂回落时回位时吸气,任何时候都别全程憋气；注意Y形阶段肩膀下沉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-2343",
@@ -8239,11 +10898,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2343?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9895",
@@ -8255,12 +10920,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/9895?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9895.mp4",
     "tip": "别让在末端范围弹动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8896",
@@ -8272,12 +10942,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8896?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8896.mp4",
     "tip": "不要弓着背进入前屈然后整套动作里始终弓背",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9805",
@@ -8289,12 +10965,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9805?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9805.mp4",
     "tip": "一开始不要加额外负重",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8503",
@@ -8306,12 +10987,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8503?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8503.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10962",
@@ -8323,12 +11010,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10962?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10962.mp4",
     "tip": "让头部沉沉地靠在垫子上",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1340",
@@ -8340,11 +11032,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1340?w=1024&h=576",
     "tip": "指尖保持轻微的伸展感",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9814",
@@ -8356,12 +11054,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9814?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9814.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1681",
@@ -8373,11 +11077,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1681?w=1024&h=576",
     "tip": "在最高点附近进行短暂收紧，不要后仰或耸肩；保持肘部靠近身体两侧",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3690",
@@ -8389,11 +11098,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3690?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2469",
@@ -8405,11 +11119,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2469?w=1024&h=576",
     "tip": "卷腹时，双腿持续收紧健身球，使其保持在原位",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-5036",
@@ -8421,12 +11140,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5036?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5036.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4104",
@@ -8438,12 +11163,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4104?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4104.mp4",
     "tip": "保持躯干角度固定",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8481",
@@ -8455,12 +11186,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8481?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8481.mp4",
     "tip": "整套动作里始终平稳呼吸：卷起时向心收缩时吐气，控制下放时回位时吸气；不要用手拉扯头部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-5304",
@@ -8472,12 +11208,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5304?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5304.mp4",
     "tip": "让膝盖向前移动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4105",
@@ -8489,12 +11231,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4105?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4105.mp4",
     "tip": "意念集中在推开平台而不是猛拉把手",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4103",
@@ -8506,12 +11254,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4103?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4103.mp4",
     "tip": "不要在顶部转动肩膀",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-7287",
@@ -8523,11 +11277,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7287?w=1024&h=576",
     "tip": "在开始推举前，收紧核心，收紧臀部，并保持肋骨下压；将肋骨外翻视为警告信号",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8016",
@@ -8539,12 +11298,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8016?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8016.mp4",
     "tip": "向上蹬起时向心收缩时吐气，下放时回位时吸气，别让整组动作都憋着气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10819",
@@ -8561,7 +11326,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/10819?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10819.mp4",
     "tip": "前脚掌保持完全贴平；用前脚掌撑起时向心收缩时吐气，脚跟回落时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8111",
@@ -8573,12 +11341,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8111?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8111.mp4",
     "tip": "不要让动作变成自由落体",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-7645",
@@ -8590,12 +11364,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/7645?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7645.mp4",
     "tip": "起跳时向心收缩时吐气，而不是落地时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8960",
@@ -8607,12 +11387,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8960?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8960.mp4",
     "tip": "保持体重分布稳定",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1903",
@@ -8624,11 +11410,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1903?w=1024&h=576",
     "tip": "保持骨盆主要指向前方；在每次保持的底部尝试长向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1794",
@@ -8640,11 +11432,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1794?w=1024&h=576",
     "tip": "别让强行拉伸至无痛范围之外；保持动作缓慢且刻意",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8952",
@@ -8656,12 +11454,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8952?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8952.mp4",
     "tip": "别让在最底部锁死膝盖；让重力来抬起手臂",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2896",
@@ -8673,12 +11477,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2896?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2896.mp4",
     "tip": "在每次重复前收紧核心；保持每次重复的呼吸一致",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2890",
@@ -8690,12 +11499,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2890?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2890.mp4",
     "tip": "保持推举平稳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2898",
@@ -8707,12 +11521,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2898?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2898.mp4",
     "tip": "别让锁死肘部或耸肩",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7784",
@@ -8724,12 +11543,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7784?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7784.mp4",
     "tip": "每次下蹲时回位时吸气，向上站起时向心收缩时吐气；不要在拉伸位借力弹起",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11034",
@@ -8741,12 +11566,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11034?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11034.mp4",
     "tip": "轻轻把肩胛骨下沉后收，别让壶铃把你前后拉扯；不要让后膝重重砸向地面",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6013",
@@ -8763,7 +11594,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/6013?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6013.mp4",
     "tip": "保持支撑膝盖略松但不要过度弯曲；不要将膝盖猛然锁死",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10957",
@@ -8775,12 +11609,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10957?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10957.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7845",
@@ -8792,12 +11631,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/7845?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7845.mp4",
     "tip": "整套动作里始终头部和胸口朝前",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8299",
@@ -8809,12 +11654,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8299?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8299.mp4",
     "tip": "拉动把手时向心收缩时吐气，控制回放时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-6761",
@@ -8826,12 +11677,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/6761?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6761.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2935",
@@ -8843,11 +11700,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/2935?w=1024&h=576",
     "tip": "受控地将PVC管带回预备姿势，返回时保持肋骨不外翻",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4070",
@@ -8859,12 +11722,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4070?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4070.mp4",
     "tip": "不要从木板上弹起；下放前回位时吸气，在木板上绷紧腰腹稳住躯干，推起通过粘滞点时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1925",
@@ -8880,7 +11749,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1925?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10924",
@@ -8892,12 +11764,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10924?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10924.mp4",
     "tip": "整套动作里始终躯干前倾角度不变",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4690",
@@ -8909,12 +11787,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4690?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4690.mp4",
     "tip": "别让让交叉的膝盖向外漂移",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3493",
@@ -8926,12 +11810,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3493?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3493.mp4",
     "tip": "最后夹紧臀肌并伸直髋关节和膝关节，但关节别完全锁死",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6001",
@@ -8943,12 +11833,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6001?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6001.mp4",
     "tip": "保持伸直的腿长且静止；保持骨盆水平",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4790",
@@ -8960,11 +11856,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4790?w=1024&h=576",
     "tip": "不要重重地坐在座椅上；保持双臂平直且静止",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2473",
@@ -8976,12 +11878,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2473?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2473.mp4",
     "tip": "在顶部用力收紧臀部，不要过度拱起下背部；保持悬空的腿弯曲并抬起",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5052",
@@ -8998,7 +11906,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/5052?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5052.mp4",
     "tip": "在顶部收紧片刻，同时保持脚踝挺直；每次重复动作时，上升向心收缩时吐气，回落回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8467",
@@ -9010,12 +11921,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8467?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8467.mp4",
     "tip": "不要让跪地的膝盖向外翻",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1578",
@@ -9027,12 +11944,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1578?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1578.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4364",
@@ -9044,12 +11967,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4364?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4364.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5167",
@@ -9061,12 +11989,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5167?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5167.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4931",
@@ -9083,7 +12017,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/4931?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4931.mp4",
     "tip": "在保持姿势时向心收缩时吐气，以减少小腿的紧张感",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2475",
@@ -9095,12 +12032,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2475?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2475.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1906",
@@ -9112,12 +12055,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1906?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1906.mp4",
     "tip": "保持骨盆基本端正；在底部不要弹动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4168",
@@ -9134,7 +12083,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/4168?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4168.mp4",
     "tip": "下蹲时回位时吸气，从地面向心收缩跳跃时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "expert",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0667",
@@ -9146,12 +12098,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0667?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0667.mp4",
     "tip": "保持抬起的腿伸直并用力；不要让肘部直接向外张开",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4044",
@@ -9163,12 +12121,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4044?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4044.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10754",
@@ -9185,7 +12149,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/10754?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10754.mp4",
     "tip": "保持组数短而利落",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0732",
@@ -9197,12 +12164,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0732?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0732.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "expert",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2375",
@@ -9214,12 +12187,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2375?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2375.mp4",
     "tip": "保持悬空腿在身前",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4794",
@@ -9235,7 +12214,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/4794?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3435",
@@ -9247,11 +12229,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3435?w=1024&h=576",
     "tip": "保持两侧髋骨朝上",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3585",
@@ -9263,12 +12251,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3585?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3585.mp4",
     "tip": "保持髋部水平",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-5198",
@@ -9280,12 +12273,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5198?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5198.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3494",
@@ -9297,12 +12296,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3494?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3494.mp4",
     "tip": "通过脚后跟和脚掌中部向心收缩站起，在顶部收紧臀部，但不要向后倾斜",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4792",
@@ -9314,12 +12319,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4792?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4792.mp4",
     "tip": "在顶部稍作停顿，收紧向心收缩侧的臀部；顶部不要过度拱背",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9359",
@@ -9331,12 +12342,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9359?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9359.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10312",
@@ -9348,12 +12365,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10312?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10312.mp4",
     "tip": "先重新收紧骨盆、收紧后侧臀部，再把手臂举起来",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1203",
@@ -9365,12 +12388,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1203?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1203.mp4",
     "tip": "弯举时向心收缩时吐气，回到预备姿势时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-5096",
@@ -9382,12 +12410,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5096?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5096.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0189",
@@ -9399,12 +12433,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0189?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0189.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7888",
@@ -9416,12 +12456,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7888?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7888.mp4",
     "tip": "推地和旋转时向心收缩时吐气，肩胛骨回落时回位时吸气；如果是手臂在向心收缩，肩胛骨就没有在工作",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1976",
@@ -9433,11 +12478,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1976?w=1024&h=576",
     "tip": "保持胸骨稳定",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2656",
@@ -9449,12 +12499,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2656?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2656.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-1801",
@@ -9466,11 +12521,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1801?w=1024&h=576",
     "tip": "别让强行拉伸至无痛范围之外；保持动作缓慢且刻意",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4332",
@@ -9482,12 +12543,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4332?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4332.mp4",
     "tip": "保持长凳支撑是被动的；下背部应保持靠近地面",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9054",
@@ -9499,12 +12565,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9054?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9054.mp4",
     "tip": "注意抬膝时身体不要后仰",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11633",
@@ -9516,12 +12588,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11633?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11633.mp4",
     "tip": "整套动作里始终原地不动；把球拉回来，重新收紧腹肌",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8400",
@@ -9533,12 +12611,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8400?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8400-front-pov.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-1501",
@@ -9550,11 +12634,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1501?w=1024&h=576",
     "tip": "使用比你意念集中在中更轻的弹力带张力",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "static"
   },
   {
     "id": "fw-2534",
@@ -9566,12 +12656,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2534?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2534.mp4",
     "tip": "在每次重复前收紧核心；保持每次重复的呼吸一致",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9841",
@@ -9583,12 +12678,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9841?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9841.mp4",
     "tip": "手腕应保持中立；保持目光向前或微微向上",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9843",
@@ -9600,12 +12701,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9843?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9843.mp4",
     "tip": "推起时向心收缩时吐气，在顶端或回落阶段回位时吸气，让躯干整套动作里始终紧绷；推举时用力夹紧臀肌和股四头肌",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9382",
@@ -9617,12 +12723,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9382?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9382.mp4",
     "tip": "全程呼吸平稳，保持一致的回位时吸气和向心收缩时吐气节奏，别全程憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4069",
@@ -9634,11 +12746,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4069?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4775",
@@ -9650,11 +12768,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4775?w=1024&h=576",
     "tip": "不要在底部利用惯性反弹",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5477",
@@ -9666,11 +12790,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5477?w=1024&h=576",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1989",
@@ -9682,11 +12812,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1989?w=1024&h=576",
     "tip": "防止肋骨外翻，别让将动作变成下背部反弓",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10101",
@@ -9698,12 +12834,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10101?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10101.mp4",
     "tip": "在折叠的最高点稍作停顿，收紧下腹部；别让把下巴拉向胸口",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1500",
@@ -9715,12 +12856,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1500?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1500.mp4",
     "tip": "每次重复动作时，拉起时向心收缩时吐气，放下时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8491",
@@ -9732,12 +12878,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8491?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8491.mp4",
     "tip": "双腿打开时向心收缩时吐气，收回时保持平稳呼吸；别让在最深的位置憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8439",
@@ -9749,12 +12901,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8439?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8439.mp4",
     "tip": "后仰姿势中保持颈部中立",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2472",
@@ -9766,12 +12924,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2472?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2472.mp4",
     "tip": "在开始第一次重复前，收下颚，收紧腹部，保持肋骨对齐",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3850",
@@ -9783,12 +12947,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3850?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3850.mp4",
     "tip": "保持手腕平直，弯举时向心收缩时吐气，放下时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3851",
@@ -9800,12 +12969,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3851?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3851.mp4",
     "tip": "全程使用中立的锤式握法；不要让下背部成为向心收缩点",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10519",
@@ -9817,12 +12991,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10519?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10519.mp4",
     "tip": "向前踢时向心收缩时吐气，收腿时回位时吸气，保持呼吸平稳，别全程憋气；注意支撑脚不要向外侧翻",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1799",
@@ -9834,11 +13014,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1799?w=1024&h=576",
     "tip": "别让强行拉伸至无痛范围之外；保持动作缓慢且深思熟虑",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4727",
@@ -9850,12 +13036,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4727?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4727.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4097",
@@ -9867,11 +13058,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4097?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4019",
@@ -9883,12 +13079,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4019?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4019.mp4",
     "tip": "缓慢降低双腿",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4778",
@@ -9900,11 +13101,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4778?w=1024&h=576",
     "tip": "膝盖内收时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1782",
@@ -9916,11 +13122,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1782?w=1024&h=576",
     "tip": "别让强行拉伸至无痛范围之外；保持动作缓慢且深思熟虑",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10317",
@@ -9932,12 +13144,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10317?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10317.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1971",
@@ -9949,11 +13167,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1971?w=1024&h=576",
     "tip": "保持支撑侧在地面上稳定，别让肩部向耳朵方向耸起；不要让颈部向前伸",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8804",
@@ -9965,12 +13188,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8804?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8804.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0886",
@@ -9982,11 +13211,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0886?w=1024&h=576",
     "tip": "工作腿保持轻微弯曲；保持手臂伸直且放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-5225",
@@ -9998,12 +13233,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5225?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5225.mp4",
     "tip": "杠铃下放时回位时吸气，向上驱动双肩时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-11217",
@@ -10015,12 +13255,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11217?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11217.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7710",
@@ -10032,12 +13278,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7710?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7710.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0466",
@@ -10049,12 +13301,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0466?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0466.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7709",
@@ -10066,12 +13324,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7709?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7709.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4820",
@@ -10083,12 +13347,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4820?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4820.mp4",
     "tip": "在向外伸展时缓慢移动；在收缩过程中平稳向心收缩时吐气，有助于防止肋骨外翻",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7872",
@@ -10100,12 +13369,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7872?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7872.mp4",
     "tip": "在开始动作之前，收紧腹部，收紧训练腿一侧的臀部；离心阶段别全程憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10661",
@@ -10117,12 +13392,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10661?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10661.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4819",
@@ -10134,12 +13415,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4819?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4819.mp4",
     "tip": "不要让肋骨在顶点弹出",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-7871",
@@ -10151,12 +13438,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/7871?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7871.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4912",
@@ -10168,11 +13461,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4912?w=1024&h=576",
     "tip": "保持吊环水平",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-7875",
@@ -10184,12 +13483,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7875?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7875.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4270",
@@ -10201,12 +13506,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/4270?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4270.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8855",
@@ -10218,12 +13528,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8855?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8855.mp4",
     "tip": "在触踝点停顿一秒，双脚整套动作里始终悬空；前卷时保持颈部中立",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8027",
@@ -10235,12 +13550,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8027?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8027.mp4",
     "tip": "膝盖和手肘靠近时向心收缩时吐气，放脚回落时回位时吸气；支撑腿膝盖整套动作里始终微屈",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7659",
@@ -10252,12 +13572,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/7659?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7659.mp4",
     "tip": "保持前侧膝盖放松微屈；向拉伸位置牵拉时向心收缩时吐气,并保持呼吸的节奏",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7433",
@@ -10269,12 +13594,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7433?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7433.mp4",
     "tip": "向上蹬起和后踢时向心收缩时吐气，向下回到箭步蹲时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0676",
@@ -10286,12 +13617,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0676?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0676.mp4",
     "tip": "通过前脚跟和脚掌中部向心收缩站起，起身时收紧支撑腿的臀部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8459",
@@ -10303,12 +13640,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8459?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8459.mp4",
     "tip": "每次侧向跨步时向心收缩时吐气，双脚收回并拢时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4674",
@@ -10320,12 +13663,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/4674?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4674.mp4",
     "tip": "整套动作里始终后侧臀部激活",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9644",
@@ -10337,12 +13686,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9644?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9644.mp4",
     "tip": "向后踢腿并伸手碰脚跟时向心收缩时吐气，回到站立时回位时吸气；让脚跟贴近臀部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0146",
@@ -10354,12 +13708,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0146?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0146.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1797",
@@ -10371,11 +13731,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1797?w=1024&h=576",
     "tip": "别让强行拉伸至无痛范围之外；保持动作缓慢且刻意",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8003",
@@ -10387,12 +13753,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8003?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8003.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9929",
@@ -10404,12 +13776,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9929?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9929.mp4",
     "tip": "把手握力保持轻到中等",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4743",
@@ -10421,11 +13799,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4743?w=1024&h=576",
     "tip": "在顶部短暂收紧二头肌，肩膀下沉；弯举时向心收缩时吐气，下放时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3764",
@@ -10437,12 +13820,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3764?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3764.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-11407",
@@ -10454,12 +13842,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11407?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11407.mp4",
     "tip": "哑铃下放时回位时吸气，每次拉起时平稳向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4071",
@@ -10471,11 +13865,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4071?w=1024&h=576",
     "tip": "在顶部稍作停顿，肩膀下沉或更用力地压向凳子；手臂抬起时向心收缩时吐气，受控下降时回位时吸气，以保持躯干收紧",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4744",
@@ -10487,11 +13886,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4744?w=1024&h=576",
     "tip": "头部只需保持轻微压力",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11593",
@@ -10503,12 +13908,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11593?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11593.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0317",
@@ -10520,12 +13931,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0317?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0317.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-5067",
@@ -10537,12 +13953,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5067?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5067.mp4",
     "tip": "选择六角哑铃或其他在收紧时保持稳定的形状；保持手腕挺直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10604",
@@ -10554,12 +13976,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10604?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10604.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4015",
@@ -10571,12 +13999,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4015?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4015.mp4",
     "tip": "保持手腕中立，推举时向心收缩时吐气，下放至下一次动作时回位时吸气；下放阶段保持肘部内收",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2452",
@@ -10588,12 +14021,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2452?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2452.mp4",
     "tip": "在每次重复前收紧核心；保持每次重复的呼吸一致",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11588",
@@ -10605,12 +14044,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11588?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11588.mp4",
     "tip": "别让在顶端让铃头相撞",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8004",
@@ -10622,12 +14067,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8004?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8004.mp4",
     "tip": "不要把肘部完全外展到90度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11336",
@@ -10639,12 +14090,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11336?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11336.mp4",
     "tip": "在顶点短暂停顿，用力收紧肱二头肌，然后再开始下放；哑铃上升时肩膀下沉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-9197",
@@ -10656,12 +14112,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9197?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9197.mp4",
     "tip": "保持手腕伸直放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4914",
@@ -10673,11 +14134,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4914?w=1024&h=576",
     "tip": "意念集中在用双脚蹬地",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-0294",
@@ -10689,12 +14156,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0294?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0294.mp4",
     "tip": "在顶部稍作停顿并收紧二头肌，肩膀下沉或向后倾斜以完成重复；保持手腕位于前臂上方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10199",
@@ -10706,12 +14178,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10199?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10199.mp4",
     "tip": "下探时回位时吸气，起身回到站姿时向心收缩时吐气；别让站立腿膝盖向内扣",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-2646",
@@ -10723,12 +14201,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2646?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2646.mp4",
     "tip": "双脚站开约约与肩宽，膝盖略松，保持肋骨位于骨盆正上方；受控地将哑铃降回预备姿势，直到手臂再次伸直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-1196",
@@ -10740,12 +14223,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1196?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1196.mp4",
     "tip": "在顶点短暂收紧，肩膀下沉或让肘部向前漂移；让上臂保持近乎垂直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-3695",
@@ -10757,12 +14245,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3695?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3695.mp4",
     "tip": "保持呼吸平稳，下放时回位时吸气，推起哑铃至顶部时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2983",
@@ -10774,12 +14268,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2983?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2983.mp4",
     "tip": "在每次重复前收紧核心；保持每次重复的呼吸一致",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3972",
@@ -10791,12 +14291,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3972?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3972.mp4",
     "tip": "让哑铃有控制地回落，而不是直接掉回架位",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6147",
@@ -10808,12 +14313,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6147?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6147.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0313",
@@ -10825,12 +14335,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0313?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0313.mp4",
     "tip": "在顶部稍作停顿，然后有控制地回落哑铃，直到手臂几乎伸直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4067",
@@ -10842,11 +14357,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4067?w=1024&h=576",
     "tip": "保持稳定的预备姿势可以使训练更严格且平衡",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4757",
@@ -10858,12 +14378,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4757?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4757.mp4",
     "tip": "保持后脚轻盈；整个过程中保持前膝微屈",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-6891",
@@ -10875,12 +14401,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6891?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6891.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6799",
@@ -10892,12 +14423,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6799?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6799.mp4",
     "tip": "保持哑铃在肩部上方，别让让重量摆动到身体中线；折叠时向心收缩时吐气，放下时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0342",
@@ -10909,11 +14445,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0342?w=1024&h=576",
     "tip": "保持推举侧肩膀下沉；不要让哑铃触地反弹",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0343",
@@ -10925,12 +14467,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0343?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0343.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-7428",
@@ -10942,12 +14490,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7428?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7428.mp4",
     "tip": "在顶端稍作停顿，收紧胸部；推起时向心收缩时吐气，放下哑铃时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11072",
@@ -10959,12 +14513,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11072?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11072.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10042",
@@ -10976,12 +14536,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10042?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10042.mp4",
     "tip": "形状不规则的铃片会让收紧更难保持",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9198",
@@ -10993,12 +14559,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9198?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9198.mp4",
     "tip": "伸肘时向心收缩时吐气，下放哑铃时回位时吸气；保持上臂垂直，把肘部意念集中在成固定不动的铰链",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-2738",
@@ -11010,12 +14581,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2738?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2738.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10153",
@@ -11027,12 +14603,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10153?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10153.mp4",
     "tip": "把哑铃转回顶端时向心收缩时吐气，向下放到拉伸位置时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9336",
@@ -11044,12 +14625,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9336?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9336.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6328",
@@ -11061,12 +14647,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6328?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6328.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5108",
@@ -11078,12 +14670,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5108?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5108.mp4",
     "tip": "在伐木动作最吃力的部分向心收缩时吐气，回到顶部时回位时吸气；手臂伸直移动重量，别让将动作变成推举或弯举",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0439",
@@ -11095,12 +14692,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0439?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0439.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10144",
@@ -11112,12 +14714,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10144?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10144.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-5816",
@@ -11129,12 +14736,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5816?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5816.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4752",
@@ -11146,11 +14759,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4752?w=1024&h=576",
     "tip": "离心阶段应整套动作里始终平稳直到触碰凳面",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8221",
@@ -11162,12 +14781,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8221?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8221.mp4",
     "tip": "整套动作里始终稳定的呼吸：抬起时向心收缩时吐气，下放时回位时吸气，绷紧核心时别全程憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10953",
@@ -11179,12 +14803,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10953?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10953.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7473",
@@ -11196,12 +14825,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7473?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7473.mp4",
     "tip": "举起重物时向心收缩时吐气，放下时回位时吸气，整套动作里始终平稳呼吸而不是憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10041",
@@ -11213,12 +14847,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10041?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10041.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-11074",
@@ -11230,12 +14869,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/11074?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11074.mp4",
     "tip": "整套动作里始终平稳呼吸：抬髋开膝时向心收缩时吐气，回到预备姿势时回位时吸气；全程让双脚紧紧贴在一起",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1553",
@@ -11247,11 +14892,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1553?w=1024&h=576",
     "tip": "保持非向心收缩腿伸直且脚后跟落地",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4753",
@@ -11263,11 +14914,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4753?w=1024&h=576",
     "tip": "弓步时回位时吸气，站起和推举时向心收缩时吐气；不要在弓步底部进行推举",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9340",
@@ -11279,12 +14936,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9340?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9340.mp4",
     "tip": "上推时向心收缩时吐气,下放和转体时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4625",
@@ -11296,12 +14958,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4625?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4625.mp4",
     "tip": "推举时保持肘部内收",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10641",
@@ -11313,12 +14980,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10641?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10641.mp4",
     "tip": "拉起哑铃时向心收缩时吐气，放下时回位时吸气，保持稳定的节奏，别全程憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8795",
@@ -11330,12 +15003,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8795?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8795.mp4",
     "tip": "不要急于完成旋转",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-10640",
@@ -11347,12 +15025,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10640?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10640.mp4",
     "tip": "开始下一次拉动时回位时吸气，在顶点向心收缩时吐气；不要把哑铃拉向胸口",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3993",
@@ -11364,11 +15048,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3993?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4426",
@@ -11380,11 +15070,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4426?w=1024&h=576",
     "tip": "保持胸部紧贴垫子",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-2482",
@@ -11396,12 +15092,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2482?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2482.mp4",
     "tip": "向上划船时向心收缩时吐气，下放时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-5697",
@@ -11413,11 +15115,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5697?w=1024&h=576",
     "tip": "保持颈部放松，划船时向心收缩时吐气，哑铃回到悬垂位置时回位时吸气；保持胸部紧贴垫子",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4730",
@@ -11429,11 +15137,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4730?w=1024&h=576",
     "tip": "在顶部短暂收紧背部，不要扭转躯干或耸肩",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4425",
@@ -11445,11 +15159,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4425?w=1024&h=576",
     "tip": "重新调整肩膀，拉动时向心收缩时吐气，并按计划次数重复；保持肘部内收",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9399",
@@ -11461,12 +15181,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9399?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9399.mp4",
     "tip": "在顶端将肩胛骨向中间收紧，短暂停顿一拍，同时肩膀下沉把哑铃拉近耳朵",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9183",
@@ -11478,12 +15204,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9183?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9183.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3799",
@@ -11495,12 +15227,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3799?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3799.mp4",
     "tip": "向后并向下收紧肩胛骨，在顶部稍作停顿，肩膀下沉；保持胸部朝向地面",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7475",
@@ -11512,12 +15250,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7475?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7475.mp4",
     "tip": "在飞鸟的最高点短暂停顿，收紧三角肌后束和肩胛骨；飞鸟整套动作里始终肘部微弯可以保护肘关节",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-7625",
@@ -11529,12 +15272,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7625?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7625.mp4",
     "tip": "在顶端短暂停顿，用力收紧肱二头肌，不要让重量反弹",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-2325",
@@ -11546,12 +15294,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2325?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2325.mp4",
     "tip": "在每次重复前收紧核心；保持每次重复的呼吸一致",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9407",
@@ -11563,12 +15316,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9407?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9407.mp4",
     "tip": "向上拉起并旋转时向心收缩时吐气，下放重量时回位时吸气；别让在动作顶部转动手腕",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-10329",
@@ -11580,12 +15339,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10329?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10329.mp4",
     "tip": "不要让哑铃漂向腋下",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-2431",
@@ -11597,12 +15362,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2431?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2431.mp4",
     "tip": "双脚向心收缩站起，在顶部夹紧臀肌，但不要向后倾斜",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9998",
@@ -11614,12 +15385,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/9998?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9998.mp4",
     "tip": "全程平稳呼吸，用鼻子回位时吸气和向心收缩时吐气，不要屏住呼吸；要让握把牢牢压在掌心",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-2217",
@@ -11631,12 +15407,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2217?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2217.mp4",
     "tip": "将长凳视为触碰点；保持脚后跟落地",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11413",
@@ -11648,12 +15430,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11413?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11413.mp4",
     "tip": "不要一味往下沉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1554",
@@ -11670,7 +15457,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/1554?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1554.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2959",
@@ -11682,12 +15472,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2959?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2959.mp4",
     "tip": "向心收缩时吐气，通过前脚向心收缩站起，不要反弹或扭动身体",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10457",
@@ -11699,12 +15495,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10457?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10457.mp4",
     "tip": "不要把它做成划船；别让在顶端向后转肩",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0292",
@@ -11716,12 +15517,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0292?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0292.mp4",
     "tip": "完成划船动作时收紧背部，不要将肩膀耸向耳朵；意念集中在将肘部拉向髋部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4627",
@@ -11733,12 +15539,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4627?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4627.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4622",
@@ -11750,12 +15561,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4622?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4622.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10117",
@@ -11767,12 +15583,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10117?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10117.mp4",
     "tip": "推起时向心收缩时吐气，回落时回位时吸气，别让在整个动作序列中憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4577",
@@ -11784,12 +15605,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4577?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4577.mp4",
     "tip": "保持前脚完全着地",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11016",
@@ -11801,12 +15627,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11016?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11016.mp4",
     "tip": "不要让哑铃在锁定时前移",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8502",
@@ -11818,12 +15649,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8502?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8502.mp4",
     "tip": "上推时向心收缩时吐气，下放时回位时吸气，保持呼吸平稳，别全程憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10093",
@@ -11835,12 +15671,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10093?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10093.mp4",
     "tip": "不要把它做成手臂上举；给跪地的膝盖垫好护垫",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-6123",
@@ -11852,12 +15693,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6123?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6123.mp4",
     "tip": "使用的哑铃重量要比你意念集中在的更轻；保持哑铃在大腿侧面",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4821",
@@ -11869,11 +15715,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4821?w=1024&h=576",
     "tip": "在受控状态下有控制地回落，直到非工作脚轻轻触地；保持哑铃在身体两侧静止",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10575",
@@ -11885,12 +15737,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10575?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10575.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0410",
@@ -11902,12 +15760,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0410?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0410.mp4",
     "tip": "保持哑铃静止；将后脚视为支撑架，而不是向心收缩腿",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2925",
@@ -11919,12 +15783,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2925?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2925.mp4",
     "tip": "在顶部稍作停顿，向心收缩腿完全伸展，哑铃保持静止；保持哑铃在身体两侧静止",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5097",
@@ -11936,12 +15806,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5097?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5097.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8075",
@@ -11953,12 +15829,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8075?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8075.mp4",
     "tip": "向上推起时向心收缩时吐气，下放时回位时吸气；注意髋部保持正对天花板",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11659",
@@ -11970,12 +15852,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11659?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11659.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4837",
@@ -11987,12 +15875,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4837?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4837.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-5093",
@@ -12004,12 +15898,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5093?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5093.mp4",
     "tip": "向上推举哑铃时向心收缩时吐气，保持肘部不要过度外展；让地板设定你的底部范围",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3333",
@@ -12021,12 +15921,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3333?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3333.mp4",
     "tip": "不要利用胸部反弹哑铃",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4540",
@@ -12038,11 +15944,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4540?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1236",
@@ -12054,12 +15966,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1236?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1236.mp4",
     "tip": "在顶点稍作停顿，然后有控制地回落哑铃，直到手臂完全伸展；保持哑铃轨迹紧贴躯干",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3084",
@@ -12071,12 +15988,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3084?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3084.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-8298",
@@ -12088,12 +16010,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8298?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8298.mp4",
     "tip": "推举向上向心收缩时用力向心收缩时吐气；不要把翻举做成弯举",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2381",
@@ -12105,12 +16032,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2381?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2381.mp4",
     "tip": "在顶部别让过度耸肩",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10901",
@@ -12122,12 +16054,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10901?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10901.mp4",
     "tip": "随着组次变难，别让躯干向负重对侧旋转；保持头部中立、目视前方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-0362",
@@ -12139,12 +16076,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0362?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0362.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-11505",
@@ -12156,12 +16098,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11505?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11505.mp4",
     "tip": "不要在推举中途用力向心收缩时吐气，那会让躯干姿势塌掉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8267",
@@ -12173,12 +16120,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8267?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8267.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2980",
@@ -12190,12 +16142,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2980?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2980.mp4",
     "tip": "在每次重复前收紧核心；别让过快完成离心阶段",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-6151",
@@ -12207,12 +16165,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6151?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6151.mp4",
     "tip": "不要让头部先触碰地面；通过哑铃手柄向心收缩，平稳向心收缩时吐气并将身体推回原位",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2511",
@@ -12224,12 +16187,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2511?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2511.mp4",
     "tip": "意念集中在将肘部拉向后口袋",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-0382",
@@ -12241,12 +16210,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0382?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0382.mp4",
     "tip": "保持手腕中立",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-2327",
@@ -12258,12 +16232,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2327?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2327.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8222",
@@ -12275,12 +16254,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8222?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8222.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4836",
@@ -12292,11 +16277,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4836?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9812",
@@ -12308,12 +16298,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9812?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9812.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8225",
@@ -12325,12 +16321,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8225?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8225.mp4",
     "tip": "不要低头或抬头去看前方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-2136",
@@ -12342,12 +16343,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2136?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2136.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4048",
@@ -12359,11 +16365,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4048?w=1024&h=576",
     "tip": "向上推起时向心收缩时吐气，下蹲前回位时吸气，以防核心失去支撑",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0299",
@@ -12375,11 +16387,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0299?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4758",
@@ -12391,11 +16408,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4758?w=1024&h=576",
     "tip": "保持髋部端正，别让在划船时扭曲躯干或耸肩；不要从后腿用力蹬地",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3755",
@@ -12407,12 +16430,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3755?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3755.mp4",
     "tip": "在顶部收紧并短暂暂停，肩膀下沉、扭转身体或猛拉哑铃；在顶部进行短暂的收紧，而不是长时间保持",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-10435",
@@ -12424,12 +16453,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10435?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10435.mp4",
     "tip": "下蹲弓步和弯举时向心收缩时吐气，下放哑铃并回到站立时回位时吸气；别让在哑铃上升时躯干向后仰",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11024",
@@ -12441,12 +16476,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11024?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11024.mp4",
     "tip": "不要追求高度",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7566",
@@ -12458,12 +16498,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7566?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7566.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4732",
@@ -12475,12 +16521,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4732?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4732.mp4",
     "tip": "保持哑铃在胸骨高位；不要将动作变成前屈",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3668",
@@ -12492,12 +16544,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3668?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3668.mp4",
     "tip": "让上臂轻轻接触地板；保持手腕叠放在前臂上方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11610",
@@ -12509,12 +16567,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11610?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11610.mp4",
     "tip": "收紧核心，眼睛盯住哑铃；桥式抬起髋部时，别让让哑铃漂到头后方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "expert",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3319",
@@ -12526,12 +16589,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3319?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3319.mp4",
     "tip": "让地面设定底部位置；推举时保持肋骨下压",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10516",
@@ -12543,12 +16612,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10516?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10516.mp4",
     "tip": "让手肘紧贴肋骨",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-4235",
@@ -12560,12 +16634,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4235?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4235.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-4157",
@@ -12577,11 +16656,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4157?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6150",
@@ -12593,12 +16677,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6150?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6150.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-6142",
@@ -12610,12 +16699,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6142?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6142.mp4",
     "tip": "向上推举时向心收缩时吐气，放下时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4183",
@@ -12627,12 +16721,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4183?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4183.mp4",
     "tip": "保持颈部伸长，推举时向心收缩时吐气，放下时回位时吸气；别让靠在长凳上",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5001",
@@ -12644,11 +16743,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/5001?w=1024&h=576",
     "tip": "保持手腕中立，向上旋转时向心收缩时吐气，返回时回位时吸气；保持弧线紧凑并贴近大腿",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9397",
@@ -12660,12 +16764,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9397?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9397.mp4",
     "tip": "别让用惯性甩起重量",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7892",
@@ -12677,12 +16787,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7892?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7892.mp4",
     "tip": "上推时向心收缩时吐气，下放哑铃到头后时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10515",
@@ -12694,12 +16809,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/10515?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10515.mp4",
     "tip": "两只哑铃应该整套动作里始终平行移动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7550",
@@ -12711,12 +16831,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7550?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7550.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9389",
@@ -12728,12 +16854,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9389?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9389.mp4",
     "tip": "底部不要让手肘向内塌；保持头部中立、目视前方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11697",
@@ -12745,12 +16876,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11697?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11697.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11066",
@@ -12762,12 +16899,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11066?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11066.mp4",
     "tip": "让哑铃始终贴紧胸骨",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8005",
@@ -12779,12 +16922,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8005?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8005.mp4",
     "tip": "别让肘部完全向外打开；不要急着下放",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4741",
@@ -12796,12 +16945,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4741?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4741.mp4",
     "tip": "保持前额接触轻柔",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-7598",
@@ -12813,12 +16968,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7598?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7598.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-7406",
@@ -12830,12 +16991,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7406?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7406.mp4",
     "tip": "下放时回位时吸气，上推时平稳地向心收缩时吐气；别让从拉伸位置弹起哑铃",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11496",
@@ -12847,12 +17013,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11496?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11496.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10425",
@@ -12864,12 +17035,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10425?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10425.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-7545",
@@ -12881,12 +17058,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "cardio",
     "image": "https://fitwill.app/api/image/7545?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7545.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-6558",
@@ -12898,12 +17080,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6558?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6558.mp4",
     "tip": "保持哑铃在身体两侧静止",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4164",
@@ -12920,7 +17108,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/4164?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4164.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8337",
@@ -12932,12 +17123,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/8337?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8337.mp4",
     "tip": "向心收缩并推举时用力向心收缩时吐气；在悬垂位置回位时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10817",
@@ -12949,12 +17145,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/10817?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10817.mp4",
     "tip": "整套动作里始终平稳呼吸，逆重力转动时向心收缩时吐气，回转时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-6272",
@@ -12966,12 +17167,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6272?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6272.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4030",
@@ -12983,12 +17190,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4030?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4030.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5422",
@@ -13000,12 +17213,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/5422?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5422.mp4",
     "tip": "保持泡沫轴远离脊柱本身",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1491",
@@ -13017,12 +17236,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1491?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1491.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-3528",
@@ -13034,11 +17258,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3528?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11089",
@@ -13050,12 +17280,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11089?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11089.mp4",
     "tip": "停在肩胛骨位置即可；双手只做引导，不要当拐杖",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10454",
@@ -13067,12 +17303,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10454?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10454.mp4",
     "tip": "不要沉进肩膀；沉入拉伸时缓慢向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9077",
@@ -13084,12 +17326,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9077?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9077.mp4",
     "tip": "整套动作里始终90度的手肘弯曲不要变形",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1803",
@@ -13101,11 +17349,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1803?w=1024&h=576",
     "tip": "首先考虑将骨盆向后倾斜；底部不要弹动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9245",
@@ -13117,12 +17371,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9245?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9245.mp4",
     "tip": "弓背阶段把向心收缩时吐气做充分",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9961",
@@ -13134,12 +17393,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9961?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9961.mp4",
     "tip": "向每侧旋转时向心收缩时吐气，壶铃回到中间时回位时吸气；手臂保持伸直放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-8217",
@@ -13151,12 +17415,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8217?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8217.mp4",
     "tip": "全程配合呼吸：拱背对折时向心收缩时吐气，向前返回时回位时吸气；返回时别让把全部体重压在手腕上",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-10853",
@@ -13168,12 +17438,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10853?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10853.mp4",
     "tip": "不要用力把腿压过头顶；保持颈部中立、下颌放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9124",
@@ -13185,12 +17460,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/9124?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9124.mp4",
     "tip": "让脊柱来完成动作；千万不要用手把头往前拉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-4236",
@@ -13202,11 +17482,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4236?w=1024&h=576",
     "tip": "保持长凳倾斜度适中",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-11349",
@@ -13218,12 +17503,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11349?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11349.mp4",
     "tip": "举起时向心收缩时吐气，下放时回位时吸气，保持呼吸平稳，别全程憋气；别让在顶端用力收紧肩胛骨",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9461",
@@ -13235,12 +17525,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/9461?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9461.mp4",
     "tip": "前倾时缓慢向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-0494",
@@ -13252,12 +17548,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0494?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0494.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3694",
@@ -13269,12 +17571,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3694?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3694.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-6162",
@@ -13286,12 +17593,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/6162?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6162.mp4",
     "tip": "保持肘部角度几乎固定；在顶部短暂收紧就足够了",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7231",
@@ -13303,12 +17616,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7231?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7231.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-3967",
@@ -13320,11 +17638,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3967?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1467",
@@ -13336,12 +17659,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1467?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/1467.mp4",
     "tip": "保持前臂支撑在肩膀下方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6880",
@@ -13353,11 +17681,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/6880?w=1024&h=576",
     "tip": "意念集中在通过前臂将地板推开",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-0486",
@@ -13369,12 +17702,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0486?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0486.mp4",
     "tip": "保持双脚着地并动作从容",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-2765",
@@ -13386,12 +17724,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2765?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2765.mp4",
     "tip": "保持肘部紧贴肋骨；如果手腕或肘部感到收紧，请在到达末端范围前停止",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-2766",
@@ -13403,12 +17746,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "biceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2766?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2766.mp4",
     "tip": "旋转至旋后位时向心收缩时吐气，回到预备姿势时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-1815",
@@ -13420,11 +17768,16 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1815?w=1024&h=576",
     "tip": "在保持拉伸前放松握力",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-0331",
@@ -13436,12 +17789,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/0331?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0331.mp4",
     "tip": "不要将其变成推举动作；下放时回位时吸气，将哑铃带回时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10692",
@@ -13453,12 +17812,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10692?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10692.mp4",
     "tip": "掌心向上旋转时向心收缩时吐气，回到预备姿势时回位时吸气；旋转到达顶端时别让耸肩",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-2941",
@@ -13470,12 +17834,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2941?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/2941.mp4",
     "tip": "保持肋骨下压",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-8246",
@@ -13487,12 +17857,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/8246?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8246.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-6763",
@@ -13504,12 +17879,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/6763?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6763.mp4",
     "tip": "在达到动作终点时向心收缩时吐气，保持颈部伸长，肩膀下沉；保持肘部伸直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9894",
@@ -13521,12 +17901,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/9894?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9894.mp4",
     "tip": "保持肩部放松下沉——肩膀下沉把肩膀抬向耳朵；保持手指放松并微微弯曲",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8245",
@@ -13538,12 +17923,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8245?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8245.mp4",
     "tip": "不要把肘部锁死；屈腕要保持在前后平面上",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-11382",
@@ -13555,12 +17945,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "forearms"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/11382?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11382.mp4",
     "tip": "手指保持柔软放松；在终点位置保持20到30秒，整套动作里始终肘部伸直，呼吸平稳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1798",
@@ -13572,11 +17967,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1798?w=1024&h=576",
     "tip": "保持颈部放松，别让下巴用力向胸部收紧",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9064",
@@ -13588,12 +17989,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "chest"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9064?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9064.mp4",
     "tip": "快速恢复身体直线，短促向心收缩时吐气，接着推起下一次重复",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0563",
@@ -13609,7 +18016,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/0563?w=1024&h=576",
     "tip": "落地时膝盖略松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10827",
@@ -13621,12 +18031,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/10827?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10827.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0567",
@@ -13643,7 +18059,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/0567?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0567.mp4",
     "tip": "保持转体幅度小且协调",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10532",
@@ -13655,12 +18074,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/10532?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10532.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3863",
@@ -13672,12 +18097,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/3863?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3863.mp4",
     "tip": "下蹲时回位时吸气，向上爆发时用力向心收缩时吐气；如果后髋部感到收紧，说明长凳太高了",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5166",
@@ -13694,7 +18125,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/5166?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5166.mp4",
     "tip": "蓄力时让躯干稍微前倾",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5148",
@@ -13711,7 +18145,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/5148?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5148.mp4",
     "tip": "下降时回位时吸气，跳跃和落地时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-5482",
@@ -13728,7 +18165,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/5482?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5482.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-9514",
@@ -13740,12 +18180,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/9514?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9514.mp4",
     "tip": "不要倾斜、扭转或伸手；不要在下蹲底部停顿",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10988",
@@ -13757,12 +18203,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/10988?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10988.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-10987",
@@ -13774,12 +18226,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/10987?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10987.mp4",
     "tip": "落地时不要让膝盖内扣",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4118",
@@ -13795,7 +18253,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "category": "plyometrics",
     "image": "https://fitwill.app/api/image/4118?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8695",
@@ -13807,12 +18268,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8695?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8695.mp4",
     "tip": "不要十指交扣用力拉；不要追求抬得高",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8696",
@@ -13824,12 +18290,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8696?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8696.mp4",
     "tip": "不要用头先向心收缩；双腿保持拉长但关节别完全锁死",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10656",
@@ -13841,12 +18312,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10656?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10656.mp4",
     "tip": "膝盖伸展时不要向外打开",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8699",
@@ -13858,12 +18335,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8699?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8699.mp4",
     "tip": "不要急着摇摆；起始时保持脚背贴地",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10655",
@@ -13875,12 +18358,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10655?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10655.mp4",
     "tip": "腿蹬出时向心收缩时吐气；整套动作里始终脊柱稳定、骨盆中立",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-8697",
@@ -13892,12 +18381,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8697?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8697.mp4",
     "tip": "整套动作里始终稳定的节奏：翻上去时向心收缩时吐气，顶端回位时吸气，回落时向心收缩时吐气；保持头部不动、面部放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10657",
@@ -13914,7 +18408,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "image": "https://fitwill.app/api/image/10657?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10657.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10654",
@@ -13926,12 +18423,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10654?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10654.mp4",
     "tip": "脚跟保持抬起且稳定",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10847",
@@ -13943,12 +18446,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10847?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10847.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10848",
@@ -13960,12 +18469,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10848?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10848.mp4",
     "tip": "放慢弯曲的动作，让向心收缩时吐气带动收腿",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10850",
@@ -13977,12 +18492,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10850?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10850.mp4",
     "tip": "双腿打开时向心收缩时吐气，合拢时回位时吸气，保持呼吸平稳，别全程憋气；双腿打开时不要垂下手臂",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10849",
@@ -13994,12 +18515,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10849?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10849.mp4",
     "tip": "别让在顶点把肋骨向天花板外翻；在长直线位置关节别完全锁死或过度伸展膝盖",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10852",
@@ -14011,12 +18538,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10852?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10852.mp4",
     "tip": "不要让髋部向外旋转打开",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10851",
@@ -14028,12 +18561,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10851?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10851.mp4",
     "tip": "下蹲时回位时吸气，站起时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10854",
@@ -14045,12 +18584,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10854?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10854.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-0529",
@@ -14062,12 +18606,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/0529?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0529.mp4",
     "tip": "开始时重量要比你意念集中在的轻；在锁定位置，肩膀应感到向心收缩，但肩膀下沉至耳朵处",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "expert",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6152",
@@ -14079,12 +18628,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/6152?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6152.mp4",
     "tip": "让髋部产生速度；结束时肋骨下压，不要外翻",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "expert",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-10044",
@@ -14096,12 +18650,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/10044?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10044.mp4",
     "tip": "在悬垂位回位时吸气，拉起过程中绷紧腰腹稳住躯干，站起至过顶完成位时向心收缩时吐气；别让在顶部过度伸展下背部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "expert",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4389",
@@ -14113,12 +18672,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/4389?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4389.mp4",
     "tip": "在开始下蹲前，收紧躯干，收紧臀部，保持胸部挺拔；保持下蹲幅度浅且垂直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-4210",
@@ -14134,7 +18698,10 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/4210?w=1024&h=576",
     "tip": "分腿姿势不要跨度过大",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "expert",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-11703",
@@ -14146,12 +18713,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/11703?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11703.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0538",
@@ -14163,12 +18735,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/0538?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0538.mp4",
     "tip": "保持下蹲幅度较浅且垂直",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-0537",
@@ -14180,12 +18757,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/0537?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0537.mp4",
     "tip": "翻转时保持壶铃靠近身体",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0542",
@@ -14197,12 +18779,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/0542?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0542.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "expert",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-0527",
@@ -14214,12 +18801,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/0527?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/0527.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-7468",
@@ -14231,12 +18823,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/7468?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7468.mp4",
     "tip": "后摆时回位时吸气，伸髋向心收缩并抓举过头时短促向心收缩时吐气，壶铃回落时再次回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "expert",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4532",
@@ -14248,12 +18846,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/4532?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4532.mp4",
     "tip": "屈髋，膝盖略松，单手握住把手，同时腰背打直和胸部挺起",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "expert",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11704",
@@ -14265,12 +18868,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "olympic weightlifting",
     "image": "https://fitwill.app/api/image/11704?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11704.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-10283",
@@ -14282,12 +18890,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "triceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/10283?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10283.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-1795",
@@ -14299,11 +18912,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/1795?w=1024&h=576",
     "tip": "别让强行超过无痛伸展的范围；保持动作缓慢且深思熟虑",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-3566",
@@ -14315,12 +18934,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3566?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3566.mp4",
     "tip": "滚动或回到预备姿势时向心收缩时吐气，保持动作平稳且受控；收下颚，使颈部保持伸展和放松",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-11230",
@@ -14332,12 +18957,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "shoulders"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11230?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11230.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9210",
@@ -14349,12 +18979,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9210?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9210.mp4",
     "tip": "抬头耸肩时向心收缩时吐气，下放回位时回位时吸气；再往上会让向心收缩转移到下背部和颈前部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-2940",
@@ -14366,11 +19001,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/2940?w=1024&h=576",
     "tip": "专注于肩胛骨先动",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-9292",
@@ -14382,12 +19023,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9292?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9292.mp4",
     "tip": "抬起并向后压的时候向心收缩时吐气，回到俯卧姿势时回位时吸气；不要赶着回到预备姿势",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8733",
@@ -14399,12 +19045,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/8733?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8733.mp4",
     "tip": "头部保持在胸腔正上方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-9117",
@@ -14416,12 +19068,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9117?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9117.mp4",
     "tip": "向下拉肘时向心收缩时吐气，手臂回到预备姿势时回位时吸气；双手保持张开，不要握拳",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-6774",
@@ -14433,12 +19091,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/6774?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6774.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9209",
@@ -14450,12 +19114,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "traps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9209?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9209.mp4",
     "tip": "向前推时向心收缩时吐气，回位到预备姿势时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-4490",
@@ -14467,12 +19136,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/4490?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/4490.mp4",
     "tip": "在按压酸痛点时缓慢向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-1153",
@@ -14484,11 +19158,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1153?w=1024&h=576",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-1791",
@@ -14500,11 +19180,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/1791?w=1024&h=576",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-11281",
@@ -14516,12 +19202,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "lats"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/11281?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/11281.mp4",
     "tip": "在收缩位置保持一秒；拉动把手时向心收缩时吐气，回到拉伸位置时回位时吸气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-9718",
@@ -14533,12 +19225,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9718?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9718.mp4",
     "tip": "下蹲进入弓步时回位时吸气，蹬起踢腿时向心收缩时吐气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-9632",
@@ -14550,12 +19248,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9632?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9632.mp4",
     "tip": "整只脚向心收缩站起，起身时向心收缩时吐气，在膝盖即将锁死前停下",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-3480",
@@ -14567,12 +19271,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/3480?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/3480.mp4",
     "tip": "全程在控制下降低身体",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8970",
@@ -14584,12 +19294,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8970?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8970.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-5893",
@@ -14601,12 +19317,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/5893?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/5893.mp4",
     "tip": "全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-9670",
@@ -14618,12 +19339,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/9670?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/9670.mp4",
     "tip": "动作匀速有控制，离心阶段别放松，意念集中在发力肌群。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-6009",
@@ -14635,12 +19362,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/6009?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6009.mp4",
     "tip": "保持前脚跟落地",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-10353",
@@ -14652,12 +19384,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/10353?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/10353.mp4",
     "tip": "保持躯干挺直、胸腔打开；前膝保持在脚踝正上方",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-6618",
@@ -14669,12 +19407,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "glutes"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "hamstrings",
+      "quadriceps"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/6618?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/6618.mp4",
     "tip": "缓慢向心收缩时吐气有助于髋部下沉",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7906",
@@ -14686,12 +19430,17 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "abdominals"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "lower back"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7906?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7906.mp4",
     "tip": "后腿要保持做功；不要勉强颈部",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   {
     "id": "fw-8868",
@@ -14703,12 +19452,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "hamstrings"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "category": "stretching",
     "image": "https://fitwill.app/api/image/8868?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/8868.mp4",
     "tip": "先摆好姿势再加重，宁轻勿假，关节保持中立位。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-7702",
@@ -14720,12 +19475,18 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "primaryMuscles": [
       "quadriceps"
     ],
-    "secondaryMuscles": [],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
     "category": "strength",
     "image": "https://fitwill.app/api/image/7702?w=1024&h=576",
     "video": "https://s3.us-east-005.backblazeb2.com/fitwill/videos/web/7702.mp4",
     "tip": "向侧弓步回落时向心收缩时吐气,起身时回位时吸气,保持呼吸平稳,别全程憋气",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push"
   },
   // ============================================================================
   // 斗腕专项动作（#/library 斗腕分类追加；id 前缀 fw-aw-）
@@ -14739,13 +19500,20 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "bodyPart": "前臂",
     "equipment": "dumbbell",
     "equipmentCn": "哑铃",
-    "primaryMuscles": ["forearms"],
-    "secondaryMuscles": ["biceps"],
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/1412?w=1024&h=576",
     "gif": "https://fitness.xingshuwen.com/videos/1412-SJAA2IQ.gif",
     "tip": "前臂放平，手腕从中立位向上挺起至极限再控回，幅度小、控制慢；斗腕立腕力量的核心，高位手位的根基。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-aw-cup",
@@ -14754,70 +19522,108 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "bodyPart": "前臂",
     "equipment": "dumbbell",
     "equipmentCn": "哑铃",
-    "primaryMuscles": ["forearms"],
-    "secondaryMuscles": [],
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/1412?w=1024&h=576",
     "gif": "https://fitness.xingshuwen.com/videos/1412-SJAA2IQ.gif",
     "tip": "哑铃横握（握杯姿势），手腕向掌心侧屈把哑铃一端扣向自己身体；发力想象把对手手背压向自己掌心。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-aw-toproll",
     "name": "top roll band",
     "nameZh": "Top Roll 翻腕滚压",
     "bodyPart": "前臂",
-    "equipment": "band",
+    "equipment": "bands",
     "equipmentCn": "弹力带",
-    "primaryMuscles": ["forearms"],
-    "secondaryMuscles": ["biceps", "lats"],
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "lats"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/1412?w=1024&h=576",
     "tip": "弹力带固定低处，握拳模拟斗腕握法，先立腕（rise）再顺势旋后翻腕并向后拉，一气呵成；重点是「翻」的动作链不是拉重。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-aw-hook",
     "name": "hook pull band",
     "nameZh": "Hook 钩手训练",
     "bodyPart": "前臂",
-    "equipment": "band",
+    "equipment": "bands",
     "equipmentCn": "弹力带",
-    "primaryMuscles": ["forearms"],
-    "secondaryMuscles": ["biceps", "shoulders"],
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "shoulders"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/1412?w=1024&h=576",
     "tip": "弹力带固定前上方，掌心朝自己握拳，屈腕钩住后内旋并把肘拉向身体；模拟钩手战术的钩住+内压+回收三段发力。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-aw-backpressure",
     "name": "back pressure pull",
     "nameZh": "Back Pressure 后压力",
     "bodyPart": "手臂",
-    "equipment": "band",
+    "equipment": "bands",
     "equipmentCn": "弹力带",
-    "primaryMuscles": ["biceps"],
-    "secondaryMuscles": ["lats", "middle back"],
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "lats",
+      "middle back"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/2380?w=1024&h=576",
     "gif": "https://fitness.xingshuwen.com/videos/2380-JYfT90s.gif",
     "tip": "弹力带固定前方，握拳屈肘向后拉，肩胛后收、肘贴身体；决定你能不能把对手拉出中心线。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull"
   },
   {
     "id": "fw-aw-internal-rot",
     "name": "internal rotation band",
     "nameZh": "肩旋内拉钩",
     "bodyPart": "肩部",
-    "equipment": "band",
+    "equipment": "bands",
     "equipmentCn": "弹力带",
-    "primaryMuscles": ["shoulders"],
-    "secondaryMuscles": ["forearms"],
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/1412?w=1024&h=576",
     "tip": "弹力带固定体侧，屈肘90度大臂贴身，前臂向内旋转拉弹力带；钩手战术的「内旋」主要靠这条链。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-aw-shrug-lock",
@@ -14826,13 +19632,20 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "bodyPart": "肩部",
     "equipment": "dumbbell",
     "equipmentCn": "哑铃",
-    "primaryMuscles": ["traps"],
-    "secondaryMuscles": ["shoulders"],
+    "primaryMuscles": [
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/1404?w=1024&h=576",
     "gif": "https://fitness.xingshuwen.com/videos/1404-RVJz3AT.gif",
     "tip": "持重物于体侧，耸肩并让肩胛后缩下沉，顶端停1-2秒；高位对拉时肩带锁住是防被压翻的最后一层。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-aw-ulnar-deviation",
@@ -14841,13 +19654,20 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "bodyPart": "前臂",
     "equipment": "dumbbell",
     "equipmentCn": "哑铃",
-    "primaryMuscles": ["forearms"],
-    "secondaryMuscles": [],
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/0310?w=1024&h=576",
     "gif": "https://fitness.xingshuwen.com/videos/0310-KUzvbgR.gif",
     "tip": "哑铃握手中，只做手腕向小指侧偏移（尺偏），幅度小控制慢；斗腕桌面力线的核心，手腕没力常是尺偏链弱。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-aw-wrist-extension",
@@ -14856,13 +19676,20 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "bodyPart": "前臂",
     "equipment": "dumbbell",
     "equipmentCn": "哑铃",
-    "primaryMuscles": ["forearms"],
-    "secondaryMuscles": [],
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/1412?w=1024&h=576",
     "gif": "https://fitness.xingshuwen.com/videos/1412-SJAA2IQ.gif",
     "tip": "反手（掌心向下）腕弯举或手腕背伸对抗；rise的「立腕」需要伸腕链配合，别只练屈腕。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "push"
   },
   {
     "id": "fw-aw-finger-close",
@@ -14871,12 +19698,19 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "bodyPart": "前臂",
     "equipment": "other",
     "equipmentCn": "握力器",
-    "primaryMuscles": ["forearms"],
-    "secondaryMuscles": [],
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/1412?w=1024&h=576",
     "tip": "握力器/捏力球做手指完全闭合的握压；指力决定你能不能包住对手拇指侧，闭合力量比单纯握力更重要。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull"
   },
   {
     "id": "fw-aw-table-iso",
@@ -14885,25 +19719,40 @@ export const FITWILL_EXERCISES: FitwillExercise[] =
     "bodyPart": "前臂",
     "equipment": "body only",
     "equipmentCn": "自身体重",
-    "primaryMuscles": ["forearms"],
-    "secondaryMuscles": ["biceps", "shoulders"],
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "shoulders"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/1412?w=1024&h=576",
     "tip": "桌面或与搭子对握：一方施压一方顶住，各方向（立腕位/钩手位/翻腕位）分别做10-15秒等长；把力量翻译到桌面上的最快方式。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   },
   {
     "id": "fw-aw-ulnar-iso",
     "name": "ulnar deviation isometric",
     "nameZh": "尺偏侧链等长",
     "bodyPart": "前臂",
-    "equipment": "band",
+    "equipment": "bands",
     "equipmentCn": "弹力带",
-    "primaryMuscles": ["forearms"],
-    "secondaryMuscles": [],
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
     "category": "armwrest",
     "image": "https://fitwill.app/api/image/1412?w=1024&h=576",
     "tip": "手腕保持中立位，侧偏到极限后等长收缩10-15秒，可用弹力带或手腕负重完成。",
-    "source": "fitwill"
+    "source": "fitwill",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static"
   }
 ];

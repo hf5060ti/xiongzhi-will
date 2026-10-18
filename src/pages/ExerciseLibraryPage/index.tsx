@@ -16,6 +16,8 @@ import { findGuidance } from '@/data/exercise-guidance';
 import { restFor } from '@/lib/training-plan';
 import { smartMatch, buildMuscleAliases } from '@/lib/smart-search';
 import { getLang } from '@/lib/i18n';
+import { pickSrc, nextSrc, markHostFailed, isHostDown } from '@/lib/img-guard';
+import { findSubstitutes } from '@/lib/exercise-substitute';
 
 /** 显示名：中文环境显示中文名，其他语言显示英文名（数据里本来就有） */
 function displayName(ex: ExerciseView): string {
@@ -55,6 +57,12 @@ interface ExtExercise {
   gif: string;
   page: string;
   source: string;
+  /** 难度：beginner | intermediate | expert（启发式补齐，待抽检） */
+  level?: string;
+  /** 复合/孤立：compound | isolation */
+  mechanic?: string;
+  /** 发力：push | pull | static */
+  force?: string;
 }
 
 // 页面统一视图模型
@@ -70,6 +78,8 @@ interface ExerciseView {
   zhSteps?: string[];
   level: string;
   mechanic: string;
+  /** 发力：push | pull | static（启发式补齐） */
+  force?: string;
   images: string[];
   gif?: string;
   page?: string;
@@ -194,6 +204,7 @@ const ALL_EXERCISES: ExerciseView[] = [
       zhSteps: (zhStepsData as Record<string, {zh: string; steps: string[]}>)[e.id]?.steps,
       level: e.level,
       mechanic: e.mechanic,
+      force: e.force,
       images: e.images.map((i) => IMG_BASE + i),
       gif: media?.gif,
       page: media?.page,
@@ -214,8 +225,10 @@ const ALL_EXERCISES: ExerciseView[] = [
     primaryMuscles: normMuscles(e.primaryMuscles || []),
     secondaryMuscles: normMuscles(e.secondaryMuscles || []),
     instructions: e.instructions,
-    level: '',
-    mechanic: '',
+    // 原为写死空串，导致按难度/复合-孤立筛选时整批中文动作被排除；改为读取真实字段
+    level: e.level || '',
+    mechanic: e.mechanic || '',
+    force: e.force || '',
     images: [e.image],
     gif: e.gif,
     page: e.page,
@@ -231,8 +244,10 @@ const ALL_EXERCISES: ExerciseView[] = [
     primaryMuscles: normMuscles(e.primaryMuscles),
     secondaryMuscles: normMuscles(e.secondaryMuscles || []),
     instructions: [] as string[],
-    level: '',
-    mechanic: '',
+    // 同上：改为读取真实字段，让 fitwill 动作也能参与难度/复合-孤立筛选
+    level: e.level || '',
+    mechanic: e.mechanic || '',
+    force: e.force || '',
     images: [e.image],
     gif: e.gif,
     video: e.video,
@@ -274,8 +289,17 @@ function matchCategory(ex: ExerciseView, cat: string): boolean {
   return ex.category === cat;
 }
 
-// 每次渲染的卡片数量，避免一次性渲染全部 1500+ 张卡片
+// 每次渲染的卡片数量，避免一次性渲染全部 2300+ 张卡片
 const PAGE_SIZE = 120;
+// 手机端一次铺 120 张卡片太重（DOM 节点多 + 图片解码吃 CPU），首屏降到 36，滚到底再加载。
+// 桌面端保持 120，滚动体验更连贯。
+const PAGE_SIZE_MOBILE = 36;
+
+function pageSize(): number {
+  return typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+    ? PAGE_SIZE_MOBILE
+    : PAGE_SIZE;
+}
 
 function getCnName(ex: ExerciseView): string {
   return ex.nameZh || NAME_CN[ex.name] || '';
@@ -325,6 +349,48 @@ const MUSCLE_GROUPS: Record<string, string[]> = {
   abs: ['abdominals'],
 };
 
+/**
+ * 卡片缩略图：按优先级挑一个「当前网络下可用」的图源，加载失败就换下一个，全挂才显示占位。
+ *   桌面：动图优先（动作百科图床，国内可达）
+ *   手机：静态图优先（省流量、少解码），但若静态图所在图床已被熔断
+ *        （典型是 raw.githubusercontent.com 在国内不可达），自动改用动图，不再整屏空白。
+ * 熔断状态由 lib/img-guard 维护，跨卡片、跨会话生效。
+ */
+function ExerciseThumb({ ex, alt }: { ex: ExerciseView; alt: string }) {
+  const isDesktop =
+    typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
+  const candidates = isDesktop
+    ? [ex.gif, ex.images?.[0]]
+    : [ex.images?.[0], ex.gif];
+  const [src, setSrc] = useState<string>(() => pickSrc(candidates));
+  const [dead, setDead] = useState(false);
+
+  if (!src || dead) {
+    return (
+      <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
+        <Dumbbell className="h-8 w-8" />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      onError={() => {
+        // 记一次失败；同一图床累计失败达阈值后，其余卡片会直接跳过它
+        markHostFailed(src);
+        const nxt = nextSrc(candidates, src);
+        if (nxt && nxt !== src) setSrc(nxt);
+        else setDead(true);
+      }}
+      className="h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105"
+    />
+  );
+}
+
 export default function ExerciseLibraryPage() {
   // 支持从计划页带 ?q=动作名 跳转过来时自动搜索
   const [params] = useSearchParams();
@@ -345,7 +411,7 @@ export default function ExerciseLibraryPage() {
     setGifTry(0);
     setGifSrc(undefined);
   }
-  const [visible, setVisible] = useState(PAGE_SIZE);
+  const [visible, setVisible] = useState(pageSize);
 
   const equips = useMemo(() => ['all', ...new Set(ALL_EXERCISES.map((e) => e.equipment).filter(Boolean))], []);
 
@@ -388,10 +454,22 @@ export default function ExerciseLibraryPage() {
   const [prevFilterKey, setPrevFilterKey] = useState(filterKey);
   if (filterKey !== prevFilterKey) {
     setPrevFilterKey(filterKey);
-    setVisible(PAGE_SIZE);
+    setVisible(pageSize());
   }
 
   const shown = filtered.slice(0, visible);
+
+  // 替代动作：换器械优先（器械被占 / 家里没有），实在没有同肌群的换器械动作时，
+  // 退回同器械的不同变式（关节不适想换角度的场景）
+  const substitutes = useMemo(() => {
+    if (!selected) return [];
+    const hit = findSubstitutes(selected, ALL_EXERCISES, { limit: 6 });
+    if (hit.length > 0) return hit;
+    return findSubstitutes(selected, ALL_EXERCISES, {
+      limit: 6,
+      mustSwitchEquipment: false,
+    });
+  }, [selected]);
 
   return (
     <div className="space-y-6">
@@ -472,12 +550,6 @@ export default function ExerciseLibraryPage() {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {shown.map((ex) => {
           const cnName = getCnName(ex);
-          // 动图策略：桌面端（≥768px）卡片直接加载 gif，hover 微放大；
-          // 手机端一屏十几个 gif 同时解码播放会卡 CPU，列表只显示静态图，点进详情再看动图。
-          const isDesktop = typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
-          const src = isDesktop
-            ? (ex.gif || ex.images[0] || '')
-            : (ex.images[0] || ex.gif || '');
           const titleName = displayName(ex);
           return (
             <div
@@ -491,34 +563,7 @@ export default function ExerciseLibraryPage() {
               className="group cursor-pointer overflow-hidden rounded-lg border border-border bg-card text-left transition-all hover:border-primary/50 hover:shadow-lg"
             >
               <div className="relative aspect-square overflow-hidden bg-muted/30">
-                <img
-                  src={src}
-                  alt={cnName || ex.name}
-                  loading="lazy"
-                  decoding="async"
-                  onError={(ev) => {
-                    const el = ev.currentTarget;
-                    // 外站动图偶发失败：带参数重试一次
-                    if (ex.gif && !el.dataset.rt) {
-                      el.dataset.rt = '1';
-                      el.src = ex.gif + '?retry=1';
-                      return;
-                    }
-                    // 仍失败：回退到本地静态图（而不是整块消失）
-                    if (ex.gif && ex.images[0] && !el.dataset.fb) {
-                      el.dataset.fb = '1';
-                      el.src = ex.images[0];
-                      return;
-                    }
-                    el.style.display = 'none';
-                  }}
-                  className="h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105"
-                />
-                {!src && (
-                  <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
-                    <Dumbbell className="h-8 w-8" />
-                  </div>
-                )}
+                <ExerciseThumb ex={ex} alt={cnName || ex.name} />
                 {ex.gif && (
                   <span className="absolute right-1 top-1 inline-flex items-center gap-0.5 rounded bg-black/60 px-1 py-0.5 text-xs font-medium text-white">
                     <PlayCircle className="h-2.5 w-2.5" />
@@ -598,7 +643,7 @@ export default function ExerciseLibraryPage() {
         <div className="flex justify-center">
           <button
             type="button"
-            onClick={() => setVisible((v) => v + PAGE_SIZE)}
+            onClick={() => setVisible((v) => v + pageSize())}
             className="rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/50"
           >
             加载更多（剩余 {filtered.length - shown.length} 个）
@@ -683,15 +728,33 @@ export default function ExerciseLibraryPage() {
                       <span className="text-center type-meta text-muted-foreground">动作演示视频</span>
                     </div>
                   ) : (
-                    selected.images.map((img, i) => (
-                      <img
-                        key={i}
-                        src={img}
-                        alt={`${selected.name} ${i + 1}`}
-                        onError={(ev) => { ev.currentTarget.style.display = 'none'; }}
-                        className="h-32 w-32 rounded-lg border border-border bg-muted/30 object-contain"
-                      />
-                    ))
+                    // 静态图同样可能来自已熔断的图床（如 raw.githubusercontent.com 不可达），
+                    // 先过滤掉不可用的源；全部不可用则给占位 + 站外搜索入口，而不是留一片空白
+                    (() => {
+                      const usable = selected.images.filter((u) => u && !isHostDown(u));
+                      if (usable.length === 0) {
+                        return (
+                          <div className="flex h-32 w-32 flex-col items-center justify-center gap-1 rounded-lg border border-border bg-muted/30">
+                            <Dumbbell className="h-7 w-7 text-muted-foreground/40" />
+                            <span className="text-center text-xs text-muted-foreground">演示图暂不可用</span>
+                          </div>
+                        );
+                      }
+                      return usable.map((img, i) => (
+                        <img
+                          key={i}
+                          src={img}
+                          alt={`${selected.name} ${i + 1}`}
+                          loading="lazy"
+                          decoding="async"
+                          onError={(ev) => {
+                            markHostFailed(img);
+                            ev.currentTarget.style.display = 'none';
+                          }}
+                          className="h-32 w-32 rounded-lg border border-border bg-muted/30 object-contain"
+                        />
+                      ));
+                    })()
                   )}
                 </div>
                 <div className="flex-1">
@@ -928,6 +991,42 @@ export default function ExerciseLibraryPage() {
                   )
                 )}
               </div>
+
+              {/* 替代动作：器械被占 / 关节不适 / 家里没这器械时的直接换法 */}
+              {substitutes.length > 0 && (
+                <div>
+                  <h3 className="mb-2 flex items-center gap-2 font-display text-xl font-bold text-foreground">
+                    <Dumbbell className="h-4 w-4 text-primary" />
+                    替代动作
+                  </h3>
+                  <p className="mb-2 type-meta text-muted-foreground">
+                    器械被占、关节不舒服或家里没这个器械时，可以换成下面这些同肌群动作。
+                  </p>
+                  <ul className="space-y-1.5">
+                    {substitutes.map((sub) => (
+                      <li key={sub.id}>
+                        <button
+                          type="button"
+                          onClick={() => setSelected(ALL_EXERCISES.find((e) => e.id === sub.id) ?? null)}
+                          className="w-full rounded-md border border-border bg-card px-3 py-2 text-left transition-colors hover:border-primary/50 hover:bg-muted/30"
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="truncate text-sm font-medium text-foreground">
+                              {sub.nameZh || sub.name}
+                            </span>
+                            <Badge variant="outline" className="shrink-0 px-1 py-0 text-xs">
+                              {EQUIP_CN[sub.equipment] || sub.equipment}
+                            </Badge>
+                          </div>
+                          <p className="mt-0.5 truncate type-meta text-muted-foreground">
+                            {sub.reasons.join(' · ')}
+                          </p>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>
