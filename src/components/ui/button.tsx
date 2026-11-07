@@ -10,7 +10,7 @@ const buttonVariants = cva(
   // Base button styles with elevate system for hover/active states.
   // hover-elevate: applies subtle dark overlay on hover
   // active-elevate-2: applies stronger dark overlay when pressed
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-elevate active-elevate-2",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 touch-action-manipulation select-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-elevate active-elevate-2",
   {
     variants: {
       variant: {
@@ -33,11 +33,12 @@ const buttonVariants = cva(
       // Heights are set as "min" heights, because sometimes AI will place large amount of content
       // inside buttons. With a min-height they will look appropriate with small amounts of content,
       // but will expand to fit large amounts of content.
+      // 移动端触控：基础高度提到 44px（min-h-11），iOS 推荐最小可点区域；lg / icon 同步放大。
       size: {
-        default: "min-h-9 px-4 py-2",
-        sm: "min-h-8 rounded-md px-3 text-xs",
-        lg: "min-h-10 rounded-md px-8",
-        icon: "h-9 w-9",
+        default: "min-h-11 px-4 py-2.5",
+        sm: "min-h-9 rounded-md px-3 text-xs",
+        lg: "min-h-12 rounded-md px-8",
+        icon: "h-11 w-11",
       },
     },
     defaultVariants: {

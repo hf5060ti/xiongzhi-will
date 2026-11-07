@@ -9,29 +9,35 @@ export default function HeroSection() {
     <section className="relative -mx-3 mb-6 overflow-hidden rounded-b-2xl border-b border-border sm:-mx-4 sm:mb-8 lg:-mx-8 lg:mb-10">
       {/* 背景层：动态视频由站点级 VideoBackground 提供，这里只叠加压暗与光线特效 */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* 横向渐变压暗：左侧重、右侧轻，保证标题可读 */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/10" />
+        {/* 横向渐变压暗：左侧重、右侧轻，保证标题可读；明亮模式下换成浅底压暗 */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/10 light:from-background/85 light:via-background/40 light:to-transparent" />
         {/* 顶部 / 底部渐隐，与页面其余部分自然衔接 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-background/85" />
-        {/* 呼吸光晕：右上角缓慢明暗 */}
-        <div className="animate-glow pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-background/85 light:from-background/55" />
+        {/* 呼吸光晕：右上角缓慢明暗，比之前更大更亮，强化视觉焦点 */}
+        <div className="animate-glow pointer-events-none absolute -right-24 -top-24 h-[28rem] w-[28rem] rounded-full bg-primary/30 blur-3xl" />
+        {/* 中央聚光：在标题左侧补一团暖光，把视线吸到 Slogan */}
+        <div className="animate-glow pointer-events-none absolute -left-16 top-1/3 h-72 w-72 rounded-full bg-primary/12 blur-3xl" />
         {/* 光线扫过：从左到右缓慢移动的光斑 */}
-        <div className="animate-light-sweep pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="animate-light-sweep pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent light:via-black/5" />
       </div>
 
       {/* 文字层 */}
-      <div className="relative z-10 px-5 py-10 sm:px-6 sm:py-16 md:px-12 md:py-24">
+      <div className="relative z-10 px-5 py-12 sm:px-6 sm:py-18 md:px-12 md:py-28">
         <div className="animate-hero-rise max-w-xl">
-          <p className="mb-4 font-display text-sm font-semibold uppercase tracking-[0.35em] text-primary">
+          <p className="mb-4 flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.35em] text-primary">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
             Berserk · 雄性意志
           </p>
-          <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-foreground md:text-7xl">
-            你的目标，
+          {/* 力量感 Slogan：放大字号、收紧字距，「雄性意志」以金色点睛，瞬间抓住眼球 */}
+          <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+            记录你的
             <br />
-            决定你的练法。
+            <span className="text-primary">雄性意志</span>。
           </h1>
+          {/* 细金线分隔，强化标题与正文层次 */}
+          <div className="mt-5 h-0.5 w-16 rounded-full bg-primary/70" />
           <p className="mt-5 max-w-md text-lg leading-relaxed text-foreground/85">
-            选定训练目标与饮食方案，雄性意志为你生成对应的训练计划与饮食建议。像格斯穿过尸山血海一样，目标明确，执行彻底。
+            把每一次训练、每一餐、每一份坚持都记录下来。雄性意志为你生成对应的训练计划与饮食方案，让你看得见自己的成长。
           </p>
           {/* 免责卡：加粗成句 + 提到 14px，这是必须被读到的一段，不能让它在小字里沉掉 */}
           <p className="mt-4 max-w-md rounded-xl border border-primary/40 bg-primary/10 px-4 py-3 text-sm leading-relaxed text-primary-foreground/95 backdrop-blur-md">

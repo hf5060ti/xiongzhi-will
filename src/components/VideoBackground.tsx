@@ -48,6 +48,8 @@ export default function VideoBackground() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/15 to-black/75" />
       {/* 遮罩 3：四角暗角，突出中央玻璃卡片 */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(0,0,0,0.55)_100%)]" />
+      {/* 亮色遮罩：仅在明亮模式下启用，把暗色视频压到近白底，避免深色视频在浅色 UI 上发灰发脏 */}
+      <div className="absolute inset-0 light:bg-background/90" />
     </div>
   );
 }

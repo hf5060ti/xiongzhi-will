@@ -33,6 +33,7 @@ import { cn } from '@/lib/utils';
 import VideoBackground from '@/components/VideoBackground';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import ThemeToggle from '@/components/ThemeToggle';
 import { t, onLangChange } from '@/lib/i18n';
 
 interface NavItem {
@@ -471,9 +472,10 @@ export const Layout = () => {
           ))}
         </nav>
 
-        {/* 语言切换 + 账号：左侧栏底部 */}
+        {/* 主题切换 + 语言切换 + 账号：左侧栏底部 */}
         <div className="border-t border-border/60 py-2">
           <div className="flex flex-col items-center gap-1">
+            <ThemeToggle />
             <LanguageSwitcher />
             <AuthSection />
           </div>
@@ -490,6 +492,7 @@ export const Layout = () => {
             </span>
           </Link>
           <div className="flex shrink-0 items-center gap-2">
+            <ThemeToggle compact />
             <LanguageSwitcher compact />
             {/* 手机端搜索入口：桌面搜索框在 lg 以下断点被隐藏，这里补一个图标入口 */}
             <button
@@ -560,7 +563,7 @@ export const Layout = () => {
                   placeholder={t('search_ph_mobile')}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="pl-9 border-white/12 bg-white/[0.06] text-white placeholder:text-neutral-500"
+                  className="pl-9 border-border bg-background/50 text-foreground placeholder:text-muted-foreground"
                 />
               </div>
               <button
@@ -603,7 +606,7 @@ export const Layout = () => {
                 setOpen(true);
               }}
               onFocus={() => setOpen(true)}
-              className="pl-9 border-white/12 bg-white/[0.06] text-white backdrop-blur-xl placeholder:text-neutral-500"
+              className="pl-9 border-border bg-background/50 text-foreground backdrop-blur-xl placeholder:text-muted-foreground"
             />
             {open && results.length > 0 && (
               <SearchResultList

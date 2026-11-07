@@ -3,6 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 首屏防闪：在解析 body 之前根据 localStorage 设定 data-theme，避免主题闪烁 -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('xy-theme');
+          if (t !== 'light' && t !== 'dark') t = 'dark';
+          var d = document.documentElement;
+          d.setAttribute('data-theme', t);
+          d.style.colorScheme = t;
+        } catch (e) {}
+      })();
+    </script>
     <meta name="theme-color" content="#0a0a0a" />
 
     <!-- 提前与动作素材图床握手（DNS + TLS），减少首次加载图片的等待 -->
@@ -60,6 +72,8 @@
       /* 首屏骨架屏：JS 加载完成前显示，避免白屏 */
       @keyframes xy-spin { to { transform: rotate(360deg); } }
       @keyframes xy-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+      :root { --xy-splash-bg: #0F1110; --xy-splash-fg: #F5F7F5; }
+      :root[data-theme="light"] { --xy-splash-bg: #F4F1EA; --xy-splash-fg: #2A2418; }
       #xy-splash {
         min-height: 100vh;
         display: flex;
@@ -69,8 +83,8 @@
         gap: 18px;
         padding: 24px;
         text-align: center;
-        background: #0F1110;
-        color: #F5F7F5;
+        background: var(--xy-splash-bg);
+        color: var(--xy-splash-fg);
         font-family: system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif;
       }
       #xy-splash .spinner {
