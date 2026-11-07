@@ -9,6 +9,7 @@ import { FOOD_NAME_EN } from '@/data/foods/food-names-en';
 import { getLang } from '@/lib/i18n';
 import { smartMatch } from '@/lib/smart-search';
 import { getAbsorptionTips } from '@/lib/absorption';
+import { getFatComposition } from '@/lib/fat-composition';
 import { cn } from '@/lib/utils';
 
 interface FoodLibraryProps {
@@ -112,6 +113,19 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                   <span>脂肪 {food.fat}g</span>
                   <span>碳水 {food.carb}g</span>
                 </span>
+                {food.fat > 0 &&
+                  (() => {
+                    const c = getFatComposition(food);
+                    const t = c.sat + c.mono + c.poly + c.trans;
+                    if (t <= 0) return null;
+                    const p = (v: number) => Math.round((v / t) * 100);
+                    return (
+                      <span className="type-meta text-muted-foreground">
+                        脂肪比 饱和{p(c.sat)}% · 单{p(c.mono)}% · 多{p(c.poly)}%
+                        {c.trans > 0 ? ` · 反式${p(c.trans)}%` : ''}
+                      </span>
+                    );
+                  })()}
                 {servings.length > 0 && (
                   <span className="flex flex-wrap gap-1.5">
                     {servings.slice(0, 2).map((s) => (

@@ -4,8 +4,11 @@ import { useState } from 'react';
 import { Info, Leaf, Droplets, ShieldAlert, PlusCircle } from 'lucide-react';
 import type { IFood } from '@/data/foods';
 import { getServings } from '@/data/foods';
+import { getFatComposition } from '@/lib/fat-composition';
+import { FatRatioBar } from '@/components/FatRatioBar';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { loadDailyLog, saveDailyLog } from '@/lib/store';
 import { cn } from '@/lib/utils';
@@ -192,6 +195,25 @@ export default function NutritionCalculator({
                       <InfoRow label="膳食纤维" value={`${selectedFood.fiber} g`} />
                       <InfoRow label="钠" value={`${selectedFood.sodium} mg`} />
                     </div>
+
+                    {/* 脂肪比（脂肪构成）大区：每 100g 构成 + 实际摄入换算 */}
+                    {selectedFood.fat > 0 && (() => {
+                      const comp = getFatComposition(selectedFood);
+                      return (
+                        <div className="rounded-xl border border-border/50 bg-background/40 p-4 backdrop-blur-sm">
+                          <div className="mb-2 flex flex-wrap items-center gap-2">
+                            <Droplets className="h-4 w-4 text-primary" />
+                            <p className="text-sm font-medium text-foreground">脂肪比（脂肪构成）</p>
+                            <Badge variant="outline" className="px-1.5 py-0 text-xs">每 100g</Badge>
+                          </div>
+                          <FatRatioBar comp={comp} intakeGrams={valid ? grams : undefined} showHints />
+                          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                            数值为按食物类别推导的典型参考值，部分常见油 / 坚果 / 鱼类已单独校准；不同品种、产地与烹饪差异较大，具体以检测或包装标注为准。
+                            饱和脂肪占比越高越不利心血管，单 / 多不饱和更友好，反式脂肪建议尽量为 0。
+                          </p>
+                        </div>
+                      );
+                    })()}
 
                     {valid && (
                       <div className="rounded-xl border border-primary/20 bg-primary/5 p-3">

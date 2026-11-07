@@ -1,6 +1,6 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
-// EXPORTS: FoodCategory, IFood, FOOD_CATEGORIES
+// EXPORTS: FoodCategory, IFood, FOOD_CATEGORIES, FatComposition
 // 食物营养库类型定义：12 大分类，营养字段统一为每 100g 生重/可食部参考值
 export type FoodCategory =
   | 'meat'
@@ -15,6 +15,14 @@ export type FoodCategory =
   | 'cooked' // 家常菜 / 熟食
   | 'condiment' // 酱料 / 调味
   | 'drink'; // 饮料（每 100ml 参考值）
+
+/** 脂肪构成：饱和 / 单不饱和 / 多不饱和 / 反式，单位 g/100g（与 fat 同口径） */
+export interface FatComposition {
+  sat: number; // 饱和脂肪
+  mono: number; // 单不饱和脂肪酸
+  poly: number; // 多不饱和脂肪酸
+  trans: number; // 反式脂肪
+}
 
 export interface IFood {
   id: string;
@@ -31,6 +39,9 @@ export interface IFood {
   minerals?: string[]; // 主要矿物质
   phytochem?: string[]; // 植物化学物 / 活性成分（如花青素、番茄红素、萝卜硫素）
   note?: string; // 嘌呤等特别提醒
+  /** 脂肪构成（饱和/单不饱和/多不饱和/反式），单位 g/100g。
+   *  缺省时由 getFatComposition() 按食物类别推导典型参考值。 */
+  fatComp?: FatComposition;
 }
 
 export const FOOD_CATEGORIES: { id: FoodCategory; label: string }[] = [
