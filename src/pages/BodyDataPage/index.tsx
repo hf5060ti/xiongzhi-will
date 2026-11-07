@@ -10,6 +10,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import InputPanel from './sections/InputPanel';
 import PerformanceTracker from './sections/PerformanceTracker';
 import MeasurementTracker from './sections/MeasurementTracker';
+import ActionDietPyramid from './sections/ActionDietPyramid';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
 import { loadBodyProfile, saveBodyProfile, loadGoalId, loadDietId, type BodyProfile } from '@/lib/store';
@@ -295,6 +296,9 @@ export default function BodyDataPage() {
           )}
         </div>
       </section>
+
+      {/* 行动导向：由每日热量与三大营养素目标直接生成简易饮食框架（金字塔） */}
+      <ActionDietPyramid />
 
       {/* 运动能力追踪：力量 / 耐力 / 运动能力三板块，力量按记录时体重快照判级 + 判级性别口径可选 */}
       <PerformanceTracker profile={profile} onSexChange={(s) => patch({ sex: s })} />
