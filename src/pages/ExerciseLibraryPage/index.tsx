@@ -789,6 +789,7 @@ export default function ExerciseLibraryPage() {
                   <AnatomyFigure
                     primaryMuscles={selected.primaryMuscles}
                     secondaryMuscles={selected.secondaryMuscles}
+                    exerciseName={`${getCnName(selected) || ''} ${selected.name}`}
                   />
                   {selected.tip && (
                     <div className="mt-3 rounded-lg border border-primary/20 bg-primary/5 p-3 type-meta text-foreground">
