@@ -18,6 +18,8 @@ import { smartMatch, buildMuscleAliases } from '@/lib/smart-search';
 import { getLang } from '@/lib/i18n';
 import { pickSrc, nextSrc, markHostFailed, isHostDown } from '@/lib/img-guard';
 import { findSubstitutes } from '@/lib/exercise-substitute';
+import AnatomyFigure from '@/components/AnatomyFigure';
+import ExercisePRBox from './ExercisePRBox';
 
 /** 显示名：中文环境显示中文名，其他语言显示英文名（数据里本来就有） */
 function displayName(ex: ExerciseView): string {
@@ -784,6 +786,10 @@ export default function ExerciseLibraryPage() {
                       {selected.secondaryMuscles.map((m) => MUSCLE_CN[m] || m).join('、')}
                     </div>
                   )}
+                  <AnatomyFigure
+                    primaryMuscles={selected.primaryMuscles}
+                    secondaryMuscles={selected.secondaryMuscles}
+                  />
                   {selected.tip && (
                     <div className="mt-3 rounded-lg border border-primary/20 bg-primary/5 p-3 type-meta text-foreground">
                       <b className="text-primary">动作要点：</b>
@@ -838,6 +844,7 @@ export default function ExerciseLibraryPage() {
                       演示动图来源：{selected.source}
                     </p>
                   )}
+                  <ExercisePRBox id={selected.id} />
                 </div>
               </div>
 
