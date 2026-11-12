@@ -1,7 +1,7 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // EXPORTS: FoodCategory, IFood, FOOD_CATEGORIES, FatComposition
-// 食物营养库类型定义：12 大分类，营养字段统一为每 100g 生重/可食部参考值
+// 食物营养库类型定义：13 大分类，营养字段统一为每 100g 生重/可食部参考值
 export type FoodCategory =
   | 'meat'
   | 'seafood'
@@ -13,6 +13,7 @@ export type FoodCategory =
   | 'nuts'
   | 'snack'
   | 'cooked' // 家常菜 / 熟食
+  | 'cuisine' // 各国菜系（印尼 / 西班牙 / 墨西哥 / 法国 / 意大利）
   | 'condiment' // 酱料 / 调味
   | 'drink'; // 饮料（每 100ml 参考值）
 
@@ -55,6 +56,7 @@ export const FOOD_CATEGORIES: { id: FoodCategory; label: string }[] = [
   { id: 'nuts', label: '坚果油脂' },
   { id: 'snack', label: '零食加工' },
   { id: 'cooked', label: '家常菜熟食' },
+  { id: 'cuisine', label: '各国菜系' },
   { id: 'condiment', label: '酱料调味' },
   { id: 'drink', label: '饮料' },
 ];

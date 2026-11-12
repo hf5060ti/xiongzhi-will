@@ -172,9 +172,21 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
           })}
         </div>
       )}
+      {cat === 'cuisine' && (
+        <p className="rounded-lg border border-amber-500/40 bg-amber-500/5 px-3 py-2 text-xs leading-relaxed text-amber-200/90">
+          🍽 各国菜系按<strong>餐厅与家庭常见做法</strong>估算，咖喱、椰浆、奶酪、黄油、油炸类一律<strong>偏高一档取值</strong>，
+          宁可高估不低估；同一道菜不同店家可差 ±30%，减脂期按此表记账更安全。
+        </p>
+      )}
+
       <p className="type-meta text-muted-foreground">
         营养值为每 100g 参考值：生鲜食材为生重 / 可食部，「家常菜熟食」为常见做法熟重估算（随做法、调料浮动），实际以包装标注为准；
         卡片上的「1 个 / 1 碗」标签为常见份量锚点，点它即可按份量折算克数并直接算出营养。
+      </p>
+      <p className="type-meta rounded-md border border-border bg-muted/30 px-3 py-2 text-muted-foreground">
+        ℹ <strong className="text-foreground">本网站收录的所有食物（含各国菜系）仅作为参考</strong>：
+        数值为公开食物成分表与常见做法的估算，不是精确测量值，也不是膳食处方；品种、产地、油盐用量不同差异可达 ±20–30%，
+        有包装请以实物营养成分表为准。如有肾脏疾病、痛风、糖尿病、食物过敏、孕期 / 哺乳期等情况，请遵医嘱并咨询注册营养师。
       </p>
     </section>
   );

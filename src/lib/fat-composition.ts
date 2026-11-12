@@ -14,7 +14,7 @@ export interface FatProfile {
   trans: number; // 反式
 }
 
-// 12 大类的典型脂肪酸构成比例（百分比）。油/坚果/鱼等大宗项在 override 里再单独校准。
+// 13 大类的典型脂肪酸构成比例（百分比）。油/坚果/鱼等大宗项在 override 里再单独校准。
 const CATEGORY_PROFILE: Record<FoodCategory, FatProfile> = {
   // 红肉/禽肉混合：饱和偏高，含少量天然反式
   meat: { sat: 40, mono: 45, poly: 13, trans: 2 },
@@ -36,6 +36,8 @@ const CATEGORY_PROFILE: Record<FoodCategory, FatProfile> = {
   snack: { sat: 40, mono: 40, poly: 15, trans: 5 },
   // 家常菜熟食：取决于用油，折中
   cooked: { sat: 35, mono: 45, poly: 18, trans: 2 },
+  // 各国菜系：橄榄油 / 黄油 / 椰浆 / 奶酪 / 油炸混合，饱和略高于家常菜
+  cuisine: { sat: 38, mono: 42, poly: 17, trans: 3 },
   // 酱料调味：多为植物油基底
   condiment: { sat: 22, mono: 55, poly: 20, trans: 3 },
   // 饮料：多数几乎无脂；含脂者近似乳制品
