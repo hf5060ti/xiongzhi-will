@@ -20,45 +20,48 @@ import App from '@/App';
 const Router = HashRouter;
 
 // ── 稳定性兜底：chunk 加载失败 / 未捕获错误时自动刷新一次（防死循环） ──
-// 场景：vite HMR 后旧 chunk URL 失效、网络抖动导致 dynamic import 失败、CDN 抽风
-// 用 sessionStorage 标记本次刷新已执行过一次，避免刷新死循环
+// 场景：发版后旧 hash chunk 失效、网络抖动导致 dynamic import 失败、静态托管把
+// 404 回退成 index.html 让浏览器把 HTML 当 JS 解析（"Unexpected token '<'"）。
+//
+// 这里原先在 window 'load' 时无条件清掉保护标记 —— 但 load 只代表 HTML 与初始资源
+// 下载完，React 之后照样可能崩；于是「刷新 → load 清标记 → 又崩 → 再刷新」会无限循环，
+// 用户看到的就是页面一直闪、永远打不开。改成时间戳冷却 + 只在 React 真正挂载稳定后解除。
+const RECOVERY_KEY = 'xiongzhi-will:crash-recovery-at';
+const RECOVERY_COOLDOWN = 60 * 1000;
+const CHUNK_ERROR = /Importing a module|Failed to fetch|Loading chunk|dynamically imported module|error loading dynamically|Unexpected token/i;
+let recoveredThisLoad = false;
+
 function installCrashRecovery() {
-  const KEY = 'xiongzhi-will:crash-recovered';
   const recover = (reason: string) => {
     try {
-      if (sessionStorage.getItem(KEY) === '1') {
-        // 已经刷新过一次还是挂了，不要再刷，让 ErrorBoundary 显示
-        return;
-      }
-      sessionStorage.setItem(KEY, '1');
-      console.warn('[雄性意志] 检测到异常，自动刷新一次：', reason);
+      const last = Number(sessionStorage.getItem(RECOVERY_KEY) || 0);
+      // 60 秒内已自动刷新过一次，就不再刷：交给 ErrorBoundary 显示可读的错误页，
+      // 由用户手动点「刷新重试」。持续坏掉的资源不会再造成无限刷新。
+      if (Date.now() - last < RECOVERY_COOLDOWN) return;
+      sessionStorage.setItem(RECOVERY_KEY, String(Date.now()));
+      recoveredThisLoad = true;
+      console.warn('[雄性意志] 检测到资源加载异常，自动刷新一次：', reason);
       window.location.reload();
     } catch {
-      /* 隐私模式 */
+      /* 隐私模式 / 禁用存储：静默降级为不自动刷新 */
     }
   };
-  // chunk load 失败：dynamic import() reject 时常见 'Importing a module script failed' / 'Failed to fetch'
   window.addEventListener('unhandledrejection', (e) => {
     const msg = String(e.reason?.message || e.reason || '');
-    if (
-      /Importing a module|Failed to fetch|Loading chunk|dynamically imported module|error loading dynamically/i.test(msg)
-    ) {
-      recover('chunk-load: ' + msg);
-    }
+    if (CHUNK_ERROR.test(msg)) recover('chunk-load: ' + msg);
   });
-  // 同步脚本错误
   window.addEventListener('error', (e) => {
     const msg = String(e.message || '');
-    if (/Loading chunk|error loading dynamically|Importing a module/i.test(msg)) {
-      recover('sync-error: ' + msg);
-    }
-  });
-  // 正常加载成功后清除标记，下次崩溃允许再自动刷新
-  window.addEventListener('load', () => {
-    try { sessionStorage.removeItem(KEY); } catch { /* ignore */ }
+    if (CHUNK_ERROR.test(msg)) recover('sync-error: ' + msg);
   });
 }
 installCrashRecovery();
+
+/** React 挂载并稳定运行 3 秒后才解除保护；本页刚做过自动恢复时一律不解除 */
+function markAppHealthy() {
+  if (recoveredThisLoad) return;
+  try { sessionStorage.removeItem(RECOVERY_KEY); } catch { /* ignore */ }
+}
 
 /** 启动加载动画：刷新 / 首次进入时先展示动画，随后淡出进入主界面 */
 export function Root() {
@@ -66,7 +69,9 @@ export function Root() {
   useEffect(() => {
     // 动画时长缩短到 1.6 秒：视频首帧 poster 已足够建立品牌感，不等完整视频加载
     const t = setTimeout(() => setSplashDone(true), 1600);
-    return () => clearTimeout(t);
+    // 只有组件真的挂载并稳定运行后才算「这次加载成功」
+    const healthy = setTimeout(markAppHealthy, 3000);
+    return () => { clearTimeout(t); clearTimeout(healthy); };
   }, []);
 
   // 账号系统初始化：处理 GitHub 登录回调（落地会话 + 拉取云端数据），

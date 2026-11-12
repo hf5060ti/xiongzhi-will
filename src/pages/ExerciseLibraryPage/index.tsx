@@ -405,6 +405,8 @@ export default function ExerciseLibraryPage() {
   const [gifReady, setGifReady] = useState(false);
   const [gifTry, setGifTry] = useState(0);
   const [gifSrc, setGifSrc] = useState<string | undefined>(undefined);
+  // 演示图与静态兜底图全部加载失败：显示占位，避免详情页一直挂一张破图
+  const [demoFailed, setDemoFailed] = useState(false);
   // 换动作时重置动图加载状态：在渲染期比对并同步，替代 effect 里的 setState
   const [prevSelected, setPrevSelected] = useState<ExerciseView | null>(selected);
   if (prevSelected !== selected) {
@@ -412,6 +414,7 @@ export default function ExerciseLibraryPage() {
     setGifReady(false);
     setGifTry(0);
     setGifSrc(undefined);
+    setDemoFailed(false);
   }
   const [visible, setVisible] = useState(pageSize);
 
@@ -675,21 +678,36 @@ export default function ExerciseLibraryPage() {
                           src={gifReady ? (gifSrc || selected.gif) : (selected.images[0] || selected.gif)}
                           alt={`${getCnName(selected) || selected.name}${selected.approx ? '（近似演示）' : ''} 演示`}
                           decoding="async"
+                          style={demoFailed ? { display: 'none' } : undefined}
                           onLoad={() => { if (!gifReady) setGifReady(true); }}
                           onError={() => {
+                            const failedSrc = gifReady
+                              ? (gifSrc || selected.gif)
+                              : (selected.images[0] || selected.gif);
+                            // 让整站其他卡片也尽快跳过这个挂掉的图床（img-guard 熔断）
+                            markHostFailed(failedSrc);
                             // gif 已接管画面但外站偶发失败：带参数强制重载一次
                             if (gifReady && gifTry === 0 && selected.gif) {
                               setGifTry(1);
                               setGifSrc(selected.gif + '?retry=1');
                               return;
                             }
-                            // 仍失败：固定回退到本地静态图
-                            if (selected.images[0]) {
-                              setGifReady(false);
+                            // 静态兜底图先挂了但还有 gif：改试 gif，别直接判失败
+                            if (!gifReady && selected.gif && failedSrc !== selected.gif) {
+                              setGifReady(true);
+                              return;
                             }
+                            // 图床整体不可用：固定显示占位，不留破图、不反复请求
+                            setDemoFailed(true);
                           }}
                           className="h-full w-full animate-[fadeIn_.3s_ease-out] object-contain"
                         />
+                        {demoFailed && (
+                          <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-black/60 text-muted-foreground/70">
+                            <Dumbbell className="h-7 w-7" />
+                            <span className="text-center text-xs">演示图暂不可用</span>
+                          </div>
+                        )}
                         {!gifReady && (
                           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black/45 backdrop-blur-sm">

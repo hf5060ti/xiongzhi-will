@@ -2,9 +2,23 @@
 
 > 给自然训练者的一套健身训练 + 营养 + 动作百科系统。免费、开源、无广告、无需登录。
 
-**在线体验：** https://xiongzhi_project.gitee.io/masculine-consciousness/ （Gitee Pages，手机 / 电脑通用）
+**在线体验（主入口）：** https://hf5060ti.github.io/xiongzhi-will/ （GitHub Pages，由 `deploy.yml` 在 push 到 main 时自动部署，实测可访问）
 
-**对外主页：** https://xiongzhi_project.gitee.io/masculine-consciousness/landing.html
+**备用入口：** https://xiongzhi_project.gitee.io/masculine-consciousness/ （Gitee Pages，国内线路；免费版需手动重新部署，当前整站 404）
+
+**对外主页：** https://hf5060ti.github.io/xiongzhi-will/landing.html
+
+**完全离线：** `桌面版/`（双击 `index.html` 即用，不依赖任何服务器）
+
+> ⚠️ 主入口选 GitHub Pages 是因为它实测返回 200 且随 push 自动部署；
+> `canonical` / `og:url` / `sitemap.xml` / `robots.txt` 已统一指向该域名，避免规范地址指向 404 页面。
+> Gitee Pages 免费版需在仓库后台「服务 → Gitee Pages」手动点一次「更新 / 重新部署」才会同步，
+> 长时间不更新会整站 404。若想改回 Gitee 当主站：先重新部署并确认返回 200，再把
+> `index.html`、`public/landing.html` 的 canonical / og:url 以及 sitemap、robots 和本段说明一并改回 Gitee 地址。
+>
+> 页面一直转圈打不开时：等 8 秒后骨架屏会显示「清除缓存并重载」按钮，点它会注销
+> Service Worker、清空本站缓存再重载（**不会删除训练记录 / 身体数据 / 饮食记录**）。
+> 这类问题多数是发版后旧缓存还指着已失效的 JS chunk 造成的。
 
 ![雄性意志首页](docs/screenshots/show-home.webp)
 
@@ -40,7 +54,8 @@
 ![动作百科：2428 个动作](docs/screenshots/show-library.webp)
 
 ### 营养
-- **食物营养库**：200+ 常见食物，12 大分类，每 100g 热量 / 蛋白质 / 脂肪 / 碳水 / 纤维 / 钠 / 维生素 / 矿物质 / 活性成分；嘌呤特别提醒（海鲜、动物内脏）
+- **食物营养库**：1300+ 常见食物，13 大分类，每 100g 热量 / 蛋白质 / 脂肪 / 碳水 / 纤维 / 钠 / 维生素 / 矿物质 / 活性成分；嘌呤特别提醒（海鲜、动物内脏）
+- **各国菜系（65 道）**：印尼（炒饭 / 巴东牛肉 / 沙嗲 / 天贝）、西班牙（海鲜饭 / 伊比利亚火腿 / 冷汤）、墨西哥（塔可 / 卷饼 / 牛油果酱）、法国（红酒炖牛肉 / 洛林咸派 / 可颂）、意大利（披萨 / 肉酱面 / 千层面）；按餐厅常见做法**偏高一档**估算，减脂记账更安全，页脚已注明「仅作参考」
 - **健身补剂库（独立分类）**：**24 种补剂**——肌酸、咖啡因、乳清蛋白、钙（液体钙 / 固体钙）、镁、锌、维生素 D3、鱼油、氨糖、甜菜根粉、辅酶 Q10、番茄红素等，每种含作用 / 常见剂型 / 剂量 / 时机 / 优缺点 / 注意事项 / 循证强度，**不按食物热量计算**
 - **今日饮食记录**：选食物 + 克数自动统计热量与三大营养素，按餐次分组
 - **一日三餐方案**：按身体数据 + 目标 + 饮食方案生成每日目标与四餐搭配，精确到克
@@ -102,7 +117,8 @@ npm run build        # 构建：产物在 dist/
 
 ## 在线部署
 
-打开 **https://xiongzhi_project.gitee.io/masculine-consciousness/** 即可使用，无需登录。
+打开 **https://hf5060ti.github.io/xiongzhi-will/** 即可使用，无需登录（主入口，随 GitHub Actions 自动部署）。
+国内备用地址 **https://xiongzhi_project.gitee.io/masculine-consciousness/** 需在 Gitee 仓库后台手动「更新 / 重新部署」后才可访问。
 
 自部署：fork 本仓库，GitHub Actions 在 push 到 main 时自动构建并部署到 Pages（产物 dist/client；已统一使用 HashRouter，无需服务端 SPA 回退）；`docs/screenshots/` 为 README 与对外主页展示截图；也支持 Netlify / Vercel（已内置配置文件）。
 

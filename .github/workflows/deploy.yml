@@ -29,6 +29,18 @@ jobs:
           SKIP_MIAODA: "1"
       # SPA 路由回退：GitHub Pages 用 404.html
       - run: cp dist/client/index.html dist/client/404.html
+      # 每次部署把 commit 短 SHA 写进 SW 缓存名：新版 SW 激活后自动清掉旧主缓存，
+      # 杜绝「缓存着旧 index.html，却去请求已经不存在的旧 hash chunk」导致的白屏。
+      # 第三方动作演示图缓存不在清理范围内，跨发版继续秒开。
+      - name: Stamp service worker cache version
+        run: |
+          SHA=$(echo "${GITHUB_SHA}" | cut -c1-8)
+          sed -i "s/__XW_BUILD__/${SHA}/g" dist/client/sw.js
+          if grep -q "__XW_BUILD__" dist/client/sw.js; then
+            echo "::error::sw.js 缓存版本占位符未被替换"
+            exit 1
+          fi
+          echo "SW cache = xiongzhi-will-${SHA}"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist/client

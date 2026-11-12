@@ -80,6 +80,12 @@ export function markHostFailed(url: string | undefined | null): boolean {
   if (!host) return false;
   const store = load();
   const rec = store[host] || { fails: 0, until: 0 };
+  // 熔断已过期的记录要重新计数：否则 fails 会一直 >= FAIL_LIMIT，
+  // 网络刚恢复时只要再失败 1 次就立刻重新熔断（与「再给 3 次机会」的设计不符）。
+  if (rec.until && rec.until <= Date.now()) {
+    rec.fails = 0;
+    rec.until = 0;
+  }
   rec.fails += 1;
   if (rec.fails >= FAIL_LIMIT) rec.until = Date.now() + DOWN_TTL;
   store[host] = rec;

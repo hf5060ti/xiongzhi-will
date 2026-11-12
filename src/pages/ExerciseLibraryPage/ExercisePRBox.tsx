@@ -5,7 +5,6 @@
 import { useState } from 'react';
 import { Trophy, Pencil, Trash2, Check } from 'lucide-react';
 import { getExercisePR, setExercisePR, clearExercisePR, type ExercisePR } from '@/lib/exercise-pr';
-import { estimateOneRm } from '@/lib/body-math';
 
 function today(): string {
   return new Date().toISOString().slice(0, 10);

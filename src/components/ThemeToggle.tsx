@@ -5,7 +5,8 @@ import { Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const STORAGE_KEY = 'xy-theme';
-export type Theme = 'dark' | 'light';
+// 只导出默认组件：同文件里再导出函数/常量会让 react-refresh 规则报错（CI 里 --max-warnings=0 会直接红）
+type Theme = 'dark' | 'light';
 
 /** 读取当前主题：优先取 <html data-theme>（首屏内联脚本已设好），否则默认暗色 */
 function readTheme(): Theme {
@@ -14,7 +15,7 @@ function readTheme(): Theme {
 }
 
 /** 切换主题并持久化：写 <html data-theme> + localStorage + 同步 theme-color 与 color-scheme */
-export function applyTheme(theme: Theme) {
+function applyTheme(theme: Theme) {
   const root = document.documentElement;
   root.setAttribute('data-theme', theme);
   root.style.colorScheme = theme;

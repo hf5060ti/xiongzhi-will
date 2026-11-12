@@ -29,32 +29,33 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:site_name" content="雄性意志" />
-    <!-- 分享卡片：相对路径，随页面 URL 解析，兼容 Gitee Pages / GitHub Pages 子路径部署 -->
-    <meta property="og:image" content="images/og-cover.png" />
+    <!-- 分享卡片：抓取器要求绝对 URL，统一指向实测可访问的主站 -->
+    <meta property="og:image" content="https://hf5060ti.github.io/xiongzhi-will/images/og-cover.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="雄性意志 —— 自然健身训练与营养定制系统" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="雄性意志 - 自然健身系统" />
     <meta name="twitter:description" content="自然健身训练与营养定制系统。目标设定、动作百科、营养库、BMR/TDEE计算、AI教练。" />
-    <meta name="twitter:image" content="images/og-cover.png" />
+    <meta name="twitter:image" content="https://hf5060ti.github.io/xiongzhi-will/images/og-cover.png" />
     <meta name="twitter:image:alt" content="雄性意志 —— 自然健身训练与营养定制系统" />
-    <!-- 规范链接 / 社交分享 URL：统一指向 Gitee Pages（国内可访问），避免搜索引擎收录被墙的 github.io 地址 -->
-    <link rel="canonical" href="https://xiongzhi_project.gitee.io/masculine-consciousness/" />
-    <meta property="og:url" content="https://xiongzhi_project.gitee.io/masculine-consciousness/" />
-    <!-- 结构化数据：帮助搜索引擎识别站点与站内搜索入口（官网指向 Gitee Pages） -->
+    <!-- 规范链接 / 社交分享 URL：与 sitemap、robots 统一到实测 200 的主站。
+         Gitee Pages 免费版需在后台手动重新部署，当前整站 404，暂降为备用入口。 -->
+    <link rel="canonical" href="https://hf5060ti.github.io/xiongzhi-will/" />
+    <meta property="og:url" content="https://hf5060ti.github.io/xiongzhi-will/" />
+    <!-- 结构化数据：帮助搜索引擎识别站点与站内搜索入口（与主站一致） -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "雄性意志",
         "alternateName": "XiongZhi Will",
-        "url": "https://xiongzhi_project.gitee.io/masculine-consciousness/",
+        "url": "https://hf5060ti.github.io/xiongzhi-will/",
         "description": "自然健身训练与营养定制系统：目标设定、动作百科、营养库、BMR/TDEE 计算与 AI 教练。",
         "inLanguage": "zh-CN",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://xiongzhi_project.gitee.io/masculine-consciousness/#/library?q={search_term_string}",
+          "target": "https://hf5060ti.github.io/xiongzhi-will/#/library?q={search_term_string}",
           "query-input": "required name=search_term_string"
         }
       }
@@ -123,19 +124,43 @@
       </div>
     </div>
     <script>
-      // JS 加载失败兜底：10 秒后 React 仍未挂载（root 里还有骨架屏），说明 chunk 没加载出来
-      // 此时把转圈换成"加载失败，点此刷新"，避免用户以为白屏/卡死
+      // JS 加载失败兜底：8 秒后 React 仍未挂载（root 里还有骨架屏），说明 chunk 没加载出来。
+      // 除了普通刷新，再给一个「清除缓存并重载」：发版后旧 Service Worker / 旧缓存
+      // 卡住主脚本是最常见的打不开原因，普通刷新往往刷不掉，用户会一直卡在转圈。
       (function () {
+        window.__xwHardReload = function () {
+          var fired = false;
+          var done = function () { if (!fired) { fired = true; location.reload(); } };
+          var jobs = [];
+          try {
+            if ('caches' in window) {
+              jobs.push(caches.keys().then(function (ks) {
+                return Promise.all(ks.map(function (k) { return caches.delete(k); }));
+              }).catch(function () {}));
+            }
+            if ('serviceWorker' in navigator) {
+              jobs.push(navigator.serviceWorker.getRegistrations().then(function (rs) {
+                return Promise.all(rs.map(function (r) { return r.unregister(); }));
+              }).catch(function () {}));
+            }
+          } catch (e) { /* 不支持缓存 API 时直接重载 */ }
+          Promise.all(jobs).then(done, done);
+          setTimeout(done, 3000); // 缓存 API 卡住也不能把用户困在这里
+        };
         var splash = document.getElementById('xy-splash');
         setTimeout(function () {
           // React 挂载后会清空 #root，骨架屏就被移除了
           if (!document.body.contains(splash)) return;
+          var btn = 'display:inline-block;margin:6px;padding:8px 16px;border:1px solid #FACC15;' +
+            'border-radius:6px;background:transparent;color:#FACC15;font:inherit;cursor:pointer';
           splash.innerHTML =
             '<div class="spinner" style="border-top-color:#EF4444"></div>' +
             '<div class="brand" style="font-size:18px">加载失败</div>' +
-            '<div class="motto">可能是网络问题导致核心脚本没下载完成。<br/><br/>' +
-            '<a href="javascript:location.reload()" style="color:#FACC15;text-decoration:underline;cursor:pointer">点此刷新重试</a></div>';
-        }, 10000);
+            '<div class="motto">可能是网络问题或旧缓存导致核心脚本没下载完成。<br/>' +
+            '先试普通刷新；还不行就清除本站缓存再重载（不会删除训练记录）。<br/><br/>' +
+            '<button type="button" style="' + btn + '" onclick="location.reload()">刷新重试</button>' +
+            '<button type="button" style="' + btn + '" onclick="__xwHardReload()">清除缓存并重载</button></div>';
+        }, 8000);
       })();
     </script>
     <script type="module" src="/src/index.tsx"></script>
