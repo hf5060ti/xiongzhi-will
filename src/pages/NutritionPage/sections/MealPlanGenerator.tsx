@@ -87,10 +87,10 @@ export default function MealPlanGenerator() {
       {/* 每日目标 */}
       <div className="rounded-lg border border-border bg-muted/30 p-3.5">
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-          <DailyMetric icon={<Flame className="h-4 w-4 text-orange-500" />} label="每日热量" value={`${daily.calories} kcal`} sub={`基础 TDEE ${daily.tdee} kcal`} />
-          <DailyMetric icon={<span className="text-xs font-bold text-blue-500">蛋</span>} label="蛋白质" value={`${daily.proteinG} g`} sub={`占 ${Math.round((daily.proteinG * 4 / daily.calories) * 100)}%`} />
-          <DailyMetric icon={<span className="text-xs font-bold text-amber-500">碳</span>} label="碳水化合物" value={`${daily.carbG} g`} sub={`占 ${Math.round((daily.carbG * 4 / daily.calories) * 100)}%`} />
-          <DailyMetric icon={<span className="text-xs font-bold text-rose-500">脂</span>} label="脂肪" value={`${daily.fatG} g`} sub={`占 ${Math.round((daily.fatG * 9 / daily.calories) * 100)}%`} />
+          <DailyMetric icon={<Flame className="h-4 w-4 text-primary" />} label="每日热量" value={`${daily.calories} kcal`} sub={`基础 TDEE ${daily.tdee} kcal`} />
+          <DailyMetric icon={<span className="text-xs font-bold text-[#FF7A85]">蛋</span>} label="蛋白质" value={`${daily.proteinG} g`} sub={`占 ${Math.round((daily.proteinG * 4 / daily.calories) * 100)}%`} />
+          <DailyMetric icon={<span className="text-xs font-bold text-foreground/70">碳</span>} label="碳水化合物" value={`${daily.carbG} g`} sub={`占 ${Math.round((daily.carbG * 4 / daily.calories) * 100)}%`} />
+          <DailyMetric icon={<span className="text-xs font-bold text-[#FFB3B9]">脂</span>} label="脂肪" value={`${daily.fatG} g`} sub={`占 ${Math.round((daily.fatG * 9 / daily.calories) * 100)}%`} />
         </div>
         <p className="mt-2 type-meta text-muted-foreground">
           按你的身体数据实时计算（Katch BMR × 活动系数 × 食物热效应 + 阶段调整），
@@ -99,7 +99,7 @@ export default function MealPlanGenerator() {
       </div>
 
       {warn && (
-        <p className="flex items-start gap-1.5 rounded-md border border-amber-500/30 bg-amber-500/10 p-2.5 text-xs text-amber-700 dark:text-amber-300">
+        <p className="flex items-start gap-1.5 rounded-md border border-primary/30 bg-primary/10 p-2.5 text-xs text-foreground/85">
           <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           {warn}
         </p>
@@ -231,7 +231,7 @@ function WeekPlanView({ input }: { input: MealPlanInput }) {
           ))}
         </div>
         {cur.plan.warn && (
-          <p className="text-xs text-amber-700 dark:text-amber-300">{cur.plan.warn}</p>
+          <p className="text-xs text-foreground/75">{cur.plan.warn}</p>
         )}
         {input.dietId === 'carb-cycle' && !cur.isTrainDay && (
           <p className="flex items-start gap-1 rounded-md border border-primary/20 bg-primary/5 p-2 text-xs text-foreground/80">

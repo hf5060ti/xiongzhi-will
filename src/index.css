@@ -3,6 +3,18 @@
 @import "tw-animate-css";
 @import "./tailwind-theme.css";
 @import "./typography.css";
+
+/* ── 全局基准字号 ────────────────────────────────────
+ * 默认 18px（16 → 17 → 18 两轮抬档）：全站 rem 单位（文字/间距）等比放大。
+ * 深色背景 + 玻璃模糊下小字容易发虚、费眼，整体抬一档比逐个组件改字号更稳。
+ * 用户还可用侧栏/顶栏的「字号」调节器（A−/A+，14–22px）自主调整，
+ * 选择会写入 localStorage('xy-font-size')，首屏内联脚本读取后直接改写
+ * 这里的默认值（内联 style 优先级更高），不会出现先小后大的闪动。
+ */
+html {
+  font-size: 18px;
+}
+
 /* ── 全屏动态视频背景 ───────────────────────────────── */
 /* 极缓慢推近：让画面有呼吸感，同时掩盖视频循环接口的跳变 */
 @keyframes bg-drift {
@@ -16,6 +28,259 @@
   will-change: transform;
 }
 
+/* ── 黑红氛围：警戒红光（右缘）+ 人物血色轮廓 ────────────────
+ * 原则：黑就是黑，红不整片洗色（那样会发灰发脏），只做「光」——
+ * 从屏幕边缘压进来、从人物轮廓里透出来，黑多红少，红色才是活的。
+ */
+.xw-alert-glow {
+  /* 右缘警戒红光：像画框外有一盏红色警戒灯，缓慢涨落（压迫感/警戒感） */
+  /* 三层叠出"雾"：最外一道炽亮的边缘光 + 中间一团厚雾 + 上方一缕薄雾。
+     单个大椭圆会像一块红色渐变板，多瓣叠加才有空气感、有厚度。 */
+  background:
+    radial-gradient(ellipse 13% 92% at 104% 46%, rgba(255, 56, 66, 0.52) 0%, rgba(255, 30, 44, 0.18) 52%, transparent 78%),
+    radial-gradient(ellipse 48% 126% at 97% 64%, rgba(226, 10, 30, 0.24) 0%, rgba(178, 6, 22, 0.09) 54%, transparent 78%),
+    radial-gradient(ellipse 42% 86% at 86% 16%, rgba(255, 26, 42, 0.15) 0%, rgba(200, 8, 26, 0.05) 56%, transparent 74%);
+  mix-blend-mode: screen;
+  animation: xw-alert 7.6s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+@keyframes xw-alert {
+  0%, 100% { opacity: 0.6; transform: translate3d(0, 0, 0) scale(1.03); }
+  46% { opacity: 1; transform: translate3d(-1.4%, -0.6%, 0) scale(1.07); }
+}
+/* 人物轮廓的血色氛围：挂在视频 cover 盒上（46%/46.5%），随 drift 一起动。
+   极淡的一圈红，让人物从纯黑里"浮"出来 —— 存在感，但不糊成一团。 */
+.xw-figure-aura {
+  position: absolute;
+  left: 46%;
+  top: 46.5%;
+  width: 46cqw;
+  height: 44cqh;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 26, 44, 0.11) 0%,
+    rgba(255, 26, 44, 0.05) 46%,
+    transparent 72%
+  );
+  mix-blend-mode: screen;
+  animation: xw-aura 9.2s ease-in-out infinite;
+  will-change: opacity;
+}
+@keyframes xw-aura {
+  0%, 100% { opacity: 0.72; }
+  50% { opacity: 1; }
+}
+
+/* ── 人物左眼「血瞳」：盔甲缝隙里透出来的光 ────────────────
+ * 素材里人物戴的是狂战士盔甲，眼睛并没有裸露 —— 只有甲片之间一道
+ * 上宽下尖的窄缝（视频内约 46.0% / 46.5%）漏出一点原来的白光。
+ * 所以这里不做「贴在脸上的红球」，而是让红变成从甲缝里渗出来的光：
+ *   1) 先用一圈暗影把原有白光压黑 —— 被甲片挡住的部位必须是黑的；
+ *   2) 再沿缝隙形状（楔形，上宽下尖、约 -7° 倾斜）叠一层深血红，
+ *      只留极小一点炽亮，边缘向黑收，做出宝石/血玉透过甲缝的质感；
+ *   3) 两道甲片压在光上，把光切成断开的几段 —— 遮挡感就来自这里；
+ *   4) 辉光只用紧贴缝形的 drop-shadow，不外扩成大雾，避免塑料玩具感。
+ */
+.xw-eye-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+/* 用 max() 精确复刻视频 object-cover 的显示盒；眼睛按视频内百分比定位，
+   因此无论窗口多大、怎么裁切，都严格压在人物左眼上 */
+.xw-eye-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100vw, calc(100vh * 1280 / 680));
+  height: max(100vh, calc(100vw * 680 / 1280));
+  transform: translate(-50%, -50%);
+  container-type: size;
+}
+/* 定位锚点：整只「眼」的坐标系，尺寸随视频显示盒等比缩放（约等于素材里的甲缝大小） */
+.xw-eye-rig {
+  position: absolute;
+  left: 46%;
+  top: 46.5%;
+  /* 兜底尺寸：不支持容器查询单位时用 vmin；支持时用 cqw 随显示盒等比缩放 */
+  width: clamp(17px, 2vmin, 40px);
+  height: clamp(30px, 3.5vmin, 70px);
+  width: 1.5cqw;
+  height: 2.75cqw;
+  transform: translate(-50%, -50%) rotate(-7deg);
+  animation: xw-eye-throb 5.6s ease-in-out infinite;
+  will-change: opacity;
+}
+.xw-eye-rig > span {
+  position: absolute;
+  pointer-events: none;
+}
+/* 甲缝周围的暗影：把原有的白色高光与近处甲片压黑，
+   让后面的红是「从黑暗的缝隙里透出来」，而不是浮在亮脸上 */
+.xw-eye-socket {
+  inset: -80% -130%;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(1, 1, 2, 0.97) 0%,
+    rgba(1, 1, 2, 0.9) 38%,
+    rgba(1, 1, 2, 0.52) 64%,
+    rgba(1, 1, 2, 0.14) 84%,
+    transparent 100%
+  );
+  filter: blur(1px);
+}
+/* 紧贴缝形的微弱血雾：只在缝隙边缘外一点点，不外扩 */
+.xw-eye-halo {
+  inset: -40% -56%;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 52, 62, 0.34) 0%,
+    rgba(208, 14, 32, 0.22) 38%,
+    rgba(118, 6, 18, 0.09) 62%,
+    transparent 82%
+  );
+  filter: blur(4px);
+  mix-blend-mode: screen;
+  animation: xw-eye-halo 5.6s ease-in-out infinite;
+}
+/* 缝隙底部"遮黑"：素材原本在缝里有一点白光，若不先压黑，
+   红色用 screen 叠上去会变成粉白 —— 这里只在缝形内把底光吃掉，
+   保证红色是饱和的血红，而不是被白光冲淡的粉色。 */
+.xw-eye-blackout {
+  inset: -2% -2%;
+  clip-path: polygon(22% 9%, 46% 0%, 72% 5%, 90% 17%, 83% 41%, 65% 65%, 49% 84%, 35% 100%, 21% 78%, 9% 51%, 7% 23%);
+  background: #000;
+  opacity: 0.93;
+  filter: blur(0.6px);
+}
+/* 甲缝里的血玉本体：上宽下尖的楔形。上端最亮（光从这里进），
+   向下压成深血红，靠 screen 只留下「光」的部分。
+   颜色偏纯红而非砖红，避免糊成一片褐色。 */
+.xw-eye-leak {
+  inset: 0;
+  clip-path: polygon(22% 9%, 46% 0%, 72% 5%, 90% 17%, 83% 41%, 65% 65%, 49% 84%, 35% 100%, 21% 78%, 9% 51%, 7% 23%);
+  background: radial-gradient(
+    ellipse 34% 66% at 46% 28%,
+    #ffffff 0%,
+    #ff9c9c 5%,
+    #ff2134 17%,
+    #f00019 34%,
+    #c00014 54%,
+    #840010 76%,
+    #3d0007 100%
+  );
+  filter: drop-shadow(0 0 1px rgba(255, 74, 78, 0.9)) drop-shadow(0 0 5px rgba(214, 10, 26, 0.5));
+  mix-blend-mode: screen;
+  opacity: 0.93;
+  animation: xw-eye-flicker 7.4s linear infinite;
+}
+/* 缝隙中心的一道更亮的核心光：像血玉内部的光沿着缝隙往下淌 */
+.xw-eye-core {
+  inset: 0;
+  clip-path: polygon(22% 9%, 46% 0%, 72% 5%, 90% 17%, 83% 41%, 65% 65%, 49% 84%, 35% 100%, 21% 78%, 9% 51%, 7% 23%);
+  background: radial-gradient(
+    ellipse 11% 52% at 48% 30%,
+    rgba(255, 244, 240, 0.92) 0%,
+    rgba(255, 96, 96, 0.62) 26%,
+    rgba(220, 0, 22, 0.30) 56%,
+    transparent 76%
+  );
+  filter: blur(1px);
+  mix-blend-mode: screen;
+}
+/* 内缘暗边：贴着缝壁把边缘压暗，做出血玉的厚度（只在缝内生效） */
+.xw-eye-rim {
+  inset: 0;
+  clip-path: polygon(22% 9%, 46% 0%, 72% 5%, 90% 17%, 83% 41%, 65% 65%, 49% 84%, 35% 100%, 21% 78%, 9% 51%, 7% 23%);
+  background: radial-gradient(
+    ellipse 62% 78% at 47% 32%,
+    transparent 46%,
+    rgba(40, 0, 4, 0.55) 78%,
+    rgba(26, 0, 3, 0.92) 100%
+  );
+  mix-blend-mode: multiply;
+}
+/* 缝隙里缓慢下渗的一道反光：像光在甲片背后移动，给机械/活物的暧昧感 */
+.xw-eye-sheen {
+  inset: 0;
+  clip-path: polygon(22% 9%, 46% 0%, 72% 5%, 90% 17%, 83% 41%, 65% 65%, 49% 84%, 35% 100%, 21% 78%, 9% 51%, 7% 23%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 236, 232, 0) 34%,
+    rgba(255, 208, 202, 0.22) 50%,
+    rgba(255, 120, 120, 0) 66%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+  filter: blur(1.1px);
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: xw-eye-seep 6.8s ease-in-out infinite;
+}
+/* 甲片遮挡：两道近乎全黑的窄条压在光上，把缝隙里的光切断成几段。
+   黑叠黑看不见，只「吃掉」红光 —— 这就是被盔甲挡住的效果。
+   两端用 mask 渐隐，避免在脸甲上出现生硬的黑矩形边。 */
+.xw-eye-plate {
+  /* 上沿留一点金属反光，下面纯黑 —— 读起来是甲片边缘，而不是一块污渍 */
+  background: linear-gradient(180deg, #161020 0%, #080510 20%, #030206 100%);
+  opacity: 0.97;
+  -webkit-mask: linear-gradient(90deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
+          mask: linear-gradient(90deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
+}
+.xw-eye-plate-a {
+  inset: 38% -18% 56% -18%;
+  transform: rotate(-4deg);
+}
+.xw-eye-plate-b {
+  inset: 74% -18% -6% -18%;
+  transform: rotate(3deg);
+}
+/* 缝隙上端的一点炽亮：血玉的高光，只闪不扩 */
+.xw-eye-ember {
+  left: 28%;
+  top: 6%;
+  right: 40%;
+  bottom: 68%;
+  background: radial-gradient(closest-side, rgba(255, 248, 246, 0.72), rgba(255, 110, 110, 0) 76%);
+  mix-blend-mode: screen;
+  filter: blur(0.7px);
+  animation: xw-eye-ember 5.6s ease-in-out infinite;
+}
+/* 浅色主题：血瞳是深色视频的产物，浅色模式下整体隐藏，保持干净 */
+:root[data-theme="light"] .xw-eye-layer {
+  display: none;
+}
+@keyframes xw-eye-throb {
+  0%, 100% { opacity: 0.86; }
+  50% { opacity: 1; }
+}
+@keyframes xw-eye-halo {
+  0%, 100% { opacity: 0.55; transform: scale(0.97); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+@keyframes xw-eye-flicker {
+  0%, 36% { opacity: 1; }
+  38% { opacity: 0.62; }   /* 极短的压暗：像甲片后方的光被遮了一下 */
+  40%, 68% { opacity: 1; }
+  70% { opacity: 0.8; }
+  72%, 100% { opacity: 1; }
+}
+@keyframes xw-eye-seep {
+  0% { opacity: 0; background-position: 0 -50%; }
+  18% { opacity: 0.85; }
+  55% { opacity: 0.35; }
+  72% { opacity: 0; background-position: 0 120%; }
+  100% { opacity: 0; background-position: 0 120%; }
+}
+@keyframes xw-eye-ember {
+  0%, 100% { opacity: 0.6; }
+  46% { opacity: 1; }
+}
+
 /* ── 玻璃拟态（glassmorphism）────────────────────────────
  * 半透明灰黑玻璃面板：背景模糊 + 高光描边 + 深阴影
  */
@@ -23,13 +288,80 @@
   background: var(--glass-bg);
   border: 1px solid var(--card-border);
   box-shadow: var(--glass-shadow);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(200%) brightness(1.12);
-  backdrop-filter: blur(var(--glass-blur)) saturate(200%) brightness(1.12);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(170%) brightness(1.06);
+  backdrop-filter: blur(var(--glass-blur)) saturate(170%) brightness(1.06);
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 .glass:hover {
-  border-color: rgba(255,255,255,0.30);
-  box-shadow: 0 36px 90px -36px rgba(0,0,0,0.95), 0 14px 36px -18px rgba(0,0,0,0.65), inset 0 1px 0 0 rgba(255,255,255,0.22);
+  border-color: rgba(255,59,74,0.34);
+  box-shadow: 0 36px 90px -36px rgba(0,0,0,0.95), 0 14px 36px -18px rgba(0,0,0,0.70), inset 0 1px 0 0 rgba(255,255,255,0.18), 0 0 32px -12px rgba(255,59,74,0.35);
+}
+
+/* ── 模块卡（参考图：暗色艺术封面 + 玻璃信息层）────────────
+ * .module-card 负责封面图与暗角；.module-card__body 是压在封面上的烟玻璃层。
+ * 封面图缺失时由 .module-art 的红色渐变兜底，离线也不会出现破图。
+ */
+.module-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255,59,74,0.16);
+  background-color: #0c0c0d;
+  box-shadow: 0 24px 60px -28px rgba(0,0,0,0.95), inset 0 1px 0 0 rgba(255,255,255,0.08);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.module-card:hover {
+  border-color: rgba(255,59,74,0.55);
+  transform: translateY(-3px);
+  box-shadow: 0 34px 80px -28px rgba(0,0,0,1), 0 0 40px -14px rgba(255,59,74,0.55), inset 0 1px 0 0 rgba(255,255,255,0.14);
+}
+.module-card__art {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(120% 90% at 78% 18%, rgba(255,59,74,0.30) 0%, rgba(255,59,74,0.05) 42%, transparent 68%),
+    radial-gradient(90% 80% at 12% 92%, rgba(200,16,46,0.22) 0%, transparent 60%),
+    linear-gradient(150deg, #1a1114 0%, #0b0b0c 55%, #170a0d 100%);
+}
+.module-card__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.85;
+  filter: saturate(0.75) contrast(1.08);
+}
+.module-card__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgba(6,6,7,0.96) 0%, rgba(6,6,7,0.72) 38%, rgba(6,6,7,0.18) 72%, rgba(6,6,7,0.34) 100%),
+    linear-gradient(to right, rgba(6,6,7,0.65) 0%, transparent 65%);
+}
+.module-card__body {
+  background: linear-gradient(180deg, rgba(18,14,15,0.10) 0%, rgba(12,10,11,0.55) 100%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  backdrop-filter: blur(14px) saturate(150%);
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+/* 封面上的纵向扫描线：给暗部一点质感，避免大片纯黑发闷 */
+.module-card__scan {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.30;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.045) 0px,
+    rgba(255,255,255,0.045) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
 }
 
 /* 所有使用卡片 / 弹层底色的表面统一补上背景模糊，保证全站玻璃质感一致 */
@@ -44,8 +376,16 @@
 /* 系统开启「减少动态效果」时关闭动效，只保留静态背景 */
 @media (prefers-reduced-motion: reduce) {
   .bg-drift,
+  .xw-alert-glow,
+  .xw-figure-aura,
   .animate-glow,
-  .animate-light-sweep {
+  .animate-light-sweep,
+  .xw-eye-rig,
+  .xw-eye-halo,
+  .xw-eye-leak,
+  .xw-eye-core,
+  .xw-eye-sheen,
+  .xw-eye-ember {
     animation: none;
   }
   .bg-video-motion {
@@ -128,7 +468,7 @@
 
 /* ── 无障碍：键盘焦点可见样式（A11y）────────────────────── */
 :focus-visible {
-  outline: 2px solid #F7E7CE;
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: 4px;
 }

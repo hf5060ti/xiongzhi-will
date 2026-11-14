@@ -219,7 +219,7 @@ export default function TodayPanel() {
                   {weightDelta != null && weightDelta !== 0 ? (
                     <>
                       较上次{' '}
-                      <b className={cn('font-semibold', weightDelta > 0 ? 'text-amber-400' : 'text-emerald-400')}>
+                      <b className={cn('font-semibold', weightDelta > 0 ? 'text-primary' : 'text-foreground/70')}>
                         {weightDelta > 0 ? '+' : ''}
                         {weightDelta} kg
                       </b>{' '}
@@ -242,12 +242,12 @@ export default function TodayPanel() {
 
         {/* 减载周提醒：最近7天练了6天以上。用 14px 正文 + 加粗标题，这是需要被认真读的一段 */}
         {needsDeload && (
-          <div className="mt-5 rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-3.5">
-            <p className="flex items-center gap-2 font-display text-sm font-bold text-amber-400">
+          <div className="mt-5 rounded-xl border border-primary/40 bg-primary/10 px-4 py-3.5">
+            <p className="flex items-center gap-2 font-display text-sm font-bold text-primary">
               <AlertTriangle className="h-4 w-4 shrink-0" />
               减载提醒：最近 7 天你训练了 {recent7} 天
             </p>
-            <p className="type-body mt-1.5 text-amber-200/90">
+            <p className="type-body mt-1.5 text-foreground/80">
               自然训练者恢复能力有限，连续高强度训练会导致皮质醇升高、睾酮下降、动作质量变差。
               建议明天安排主动恢复（散步 / 拉伸 / 完全休息），下一周训练量减到 50–60%，让身体超量恢复。
             </p>

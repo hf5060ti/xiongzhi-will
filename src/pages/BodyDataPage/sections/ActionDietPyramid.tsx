@@ -164,7 +164,7 @@ export default function ActionDietPyramid() {
                         {layer.title}
                         <span className="ml-1.5 text-xs font-bold opacity-70">{layer.grams(t)}</span>
                       </p>
-                      <p className="text-[11px] leading-tight opacity-80">{layer.foods}</p>
+                      <p className="text-[0.65rem] leading-tight opacity-80">{layer.foods}</p>
                     </div>
                   </div>
                 );
@@ -196,7 +196,7 @@ export default function ActionDietPyramid() {
                   <div key={m.name} className="rounded-md border border-border bg-background/40 p-2.5">
                     <div className="flex items-baseline justify-between">
                       <p className="text-sm font-semibold text-foreground">{m.name}</p>
-                      <span className="text-[11px] text-muted-foreground">
+                      <span className="text-[0.65rem] text-muted-foreground">
                         约 {Math.round(t.kcal * m.share)} kcal
                       </span>
                     </div>
@@ -210,7 +210,7 @@ export default function ActionDietPyramid() {
                   </div>
                 ))}
               </div>
-              <p className="mt-2 text-[11px] text-muted-foreground">
+              <p className="mt-2 text-[0.65rem] text-muted-foreground">
                 蛋白 / 碳水克数按你当天目标拆分；粉剂与肌酸补在训练后，正餐优先水煮肉与彩虹蔬菜。
               </p>
             </div>
@@ -238,7 +238,7 @@ function Stat({
 }) {
   return (
     <div className="rounded-md border border-border bg-background/40 p-2.5 text-center">
-      <p className="text-[11px] text-muted-foreground">{label}</p>
+      <p className="text-[0.65rem] text-muted-foreground">{label}</p>
       <p className={`mt-1 font-display text-xl font-extrabold ${accent ? 'text-primary' : 'text-foreground'}`}>
         {value}
         <span className="ml-1 text-xs font-bold text-muted-foreground">{unit}</span>

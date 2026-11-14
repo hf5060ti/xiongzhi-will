@@ -20,16 +20,16 @@ import { resolveMuscles } from '@/lib/muscle-map';
 import type { TrainingLog } from '@/lib/store';
 
 const LEVEL_META = {
-  low: { label: '恢复余量充足', color: 'text-emerald-600 dark:text-emerald-400', bar: '#10b981' },
-  moderate: { label: '状态正常', color: 'text-sky-600 dark:text-sky-400', bar: '#0ea5e9' },
-  high: { label: '疲劳偏高', color: 'text-amber-600 dark:text-amber-400', bar: '#f59e0b' },
-  veryHigh: { label: '建议减载', color: 'text-red-600 dark:text-red-400', bar: '#ef4444' },
+  low: { label: '恢复余量充足', color: 'text-foreground/75', bar: '#E8E8E8' },
+  moderate: { label: '状态正常', color: 'text-[#FFB3B9]', bar: '#FF8A94' },
+  high: { label: '疲劳偏高', color: 'text-primary', bar: '#FF3B4A' },
+  veryHigh: { label: '建议减载', color: 'text-primary', bar: '#C8102E' },
 } as const;
 
 const STATUS_META = {
-  low: { label: '偏少', cls: 'border-sky-500/40 bg-sky-500/10 text-sky-700 dark:text-sky-300' },
-  ok: { label: '合理', cls: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300' },
-  high: { label: '偏多', cls: 'border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300' },
+  low: { label: '偏少', cls: 'border-white/25 bg-white/5 text-foreground/80' },
+  ok: { label: '合理', cls: 'border-primary/25 bg-primary/5 text-primary' },
+  high: { label: '偏多', cls: 'border-primary/45 bg-primary/15 text-primary' },
 } as const;
 
 export default function VolumeDashboard({ logs }: { logs: TrainingLog[] }) {

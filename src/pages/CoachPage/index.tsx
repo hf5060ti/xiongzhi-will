@@ -253,7 +253,7 @@ const LEVEL_STYLE: Record<Advice['level'], { label: string; cls: string; icon: t
   stop: { label: '停训', cls: 'bg-destructive/15 text-destructive border-destructive/30', icon: ShieldAlert },
   light: { label: '减量', cls: 'bg-warning/15 text-warning border-warning/30', icon: TrendingUp },
   normal: { label: '正常', cls: 'bg-primary/15 text-primary border-primary/30', icon: Activity },
-  push: { label: '冲一冲', cls: 'bg-emerald-500/15 text-emerald-600 border-emerald-500/30', icon: Zap },
+  push: { label: '冲一冲', cls: 'bg-primary/15 text-primary border-primary/30', icon: Zap },
 };
 
 // ── 食物热量速算：从用户输入里提取「克数 + 食物名」，在本站营养库中匹配并换算 ──
@@ -356,7 +356,7 @@ export default function CoachPage() {
       </header>
 
       {/* UI 级免责声明 */}
-      <div className="flex items-start gap-2 rounded-lg border border-yellow-500/30 bg-yellow-500/10 p-3 text-xs leading-relaxed text-yellow-700 dark:text-yellow-400">
+      <div className="flex items-start gap-2 rounded-lg border border-primary/30 bg-primary/10 p-3 text-xs leading-relaxed text-foreground/85">
         <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" />
         <p>
           本工具提供的所有建议仅供一般健身参考，<b>不构成医疗诊断、治疗或处方</b>。
@@ -1043,7 +1043,7 @@ function AIChatPanel() {
                               <svg viewBox="0 0 24 24" className="h-5 w-5 translate-x-0.5 fill-white"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                           </div>
-                          <div className="absolute bottom-0 left-0 right-0 bg-[#F7E7CE] px-1.5 py-1 text-xs font-medium leading-tight text-black">
+                          <div className="absolute bottom-0 left-0 right-0 bg-[#FF3B4A] px-1.5 py-1 text-xs font-medium leading-tight text-black">
                             {cue}
                           </div>
                         </div>
@@ -1131,7 +1131,7 @@ function AIChatPanel() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
           <div className="w-full max-w-md rounded-lg border border-border bg-[#1A1D1B] p-5 shadow-2xl">
             <div className="mb-2 flex items-center gap-2">
-              <ShieldQuestion className="h-5 w-5 text-[#F7E7CE]" />
+              <ShieldQuestion className="h-5 w-5 text-[#FF3B4A]" />
               <h3 className="text-base font-semibold text-foreground">动作照片上传权限</h3>
             </div>
             <p className="mb-4 type-meta text-muted-foreground">
@@ -1143,7 +1143,7 @@ function AIChatPanel() {
               <button
                 type="button"
                 onClick={() => confirmPerm('allow')}
-                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#F7E7CE]"
+                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#FF3B4A]"
               >
                 <div className="font-medium">完全访问</div>
                 <div className="mt-0.5 type-meta text-muted-foreground">以后直接上传，不再询问（推荐）</div>
@@ -1151,7 +1151,7 @@ function AIChatPanel() {
               <button
                 type="button"
                 onClick={() => confirmPerm('ask')}
-                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#F7E7CE]"
+                className="rounded-md border border-border bg-background px-3 py-2.5 text-left text-sm text-foreground hover:border-[#FF3B4A]"
               >
                 <div className="font-medium">每次使用都询问</div>
                 <div className="mt-0.5 type-meta text-muted-foreground">每次上传前都会弹确认，可随时取消</div>

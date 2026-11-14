@@ -31,14 +31,14 @@ interface PctRow {
 }
 
 const PCT_TABLE: PctRow[] = [
-  { pct: 60, label: '60%', use: '热身 / 耐力', color: 'bg-sky-500/15 text-sky-300' },
-  { pct: 70, label: '70%', use: '肌肥大基础组（8-12次）', color: 'bg-emerald-500/15 text-emerald-300' },
-  { pct: 75, label: '75%', use: '肌肥大主力组（6-10次）', color: 'bg-emerald-500/15 text-emerald-300' },
-  { pct: 80, label: '80%', use: '力量耐力（5-8次）', color: 'bg-amber-500/15 text-amber-300' },
-  { pct: 85, label: '85%', use: '力量基础（3-5次）', color: 'bg-orange-500/15 text-orange-300' },
-  { pct: 90, label: '90%', use: '神经募集 / 力量（2-3次）', color: 'bg-red-500/15 text-red-300' },
-  { pct: 95, label: '95%', use: '极限测试（1-2次）', color: 'bg-red-600/20 text-red-400' },
-  { pct: 100, label: '100%', use: '最大单次（谨慎）', color: 'bg-red-700/25 text-red-300' },
+  { pct: 60, label: '60%', use: '热身 / 耐力', color: 'bg-white/10 text-foreground/80' },
+  { pct: 70, label: '70%', use: '肌肥大基础组（8-12次）', color: 'bg-[#FFB3B9]/12 text-[#FFB3B9]' },
+  { pct: 75, label: '75%', use: '肌肥大主力组（6-10次）', color: 'bg-[#FFB3B9]/12 text-[#FFB3B9]' },
+  { pct: 80, label: '80%', use: '力量耐力（5-8次）', color: 'bg-[#FF7A85]/15 text-[#FF7A85]' },
+  { pct: 85, label: '85%', use: '力量基础（3-5次）', color: 'bg-[#FF7A85]/20 text-[#FF7A85]' },
+  { pct: 90, label: '90%', use: '神经募集 / 力量（2-3次）', color: 'bg-primary/15 text-primary' },
+  { pct: 95, label: '95%', use: '极限测试（1-2次）', color: 'bg-primary/20 text-primary' },
+  { pct: 100, label: '100%', use: '最大单次（谨慎）', color: 'bg-primary/25 text-primary' },
 ];
 
 const RPE_ROWS = [
@@ -275,7 +275,7 @@ function PlateCalculator() {
         )}
 
         {tooLight && (
-          <p className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-200">
+          <p className="flex items-start gap-2 rounded-lg border border-primary/35 bg-primary/10 p-3 text-xs leading-relaxed text-foreground/85">
             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
             目标总重低于或等于杠铃杆重，无法仅靠加片实现——说明这组的「重量」其实是自重或器械重量，杠铃片计算器只算自由重量部分。
           </p>
@@ -366,7 +366,7 @@ export default function ToolsPage() {
               />
             </div>
             {highRepsWarning && !invalid && (
-              <p className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-200">
+              <p className="flex items-start gap-2 rounded-lg border border-primary/35 bg-primary/10 p-3 text-xs leading-relaxed text-foreground/85">
                 <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
                 次数超过 10 次后，公式推算的 1RM 误差会明显放大。建议用 1–10 次、接近力竭但不摔的那一组。
               </p>

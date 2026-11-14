@@ -25,9 +25,9 @@ function volumeClass(ratio: number): string {
 
 function freshnessClass(gap: number | null): string {
   if (gap == null) return 'bg-muted/40 border-border';
-  if (gap < 7) return 'bg-emerald-500/20 border-emerald-500/30';
-  if (gap <= NEGLECT_DAYS) return 'bg-amber-500/20 border-amber-500/30';
-  return 'bg-red-500/20 border-red-500/30';
+  if (gap < 7) return 'bg-white/10 border-white/25';
+  if (gap <= NEGLECT_DAYS) return 'bg-primary/20 border-primary/40';
+  return 'bg-primary/50 border-primary/70';
 }
 
 export function MuscleHeatmap({ logs }: { logs: TrainingLog[] }) {
@@ -62,7 +62,7 @@ export function MuscleHeatmap({ logs }: { logs: TrainingLog[] }) {
           <div className="flex items-center justify-between gap-2">
             <span className="text-sm font-medium text-foreground">{getMuscleLabel(m)}</span>
             {mode === 'freshness' && gap != null && gap > NEGLECT_DAYS && (
-              <Badge variant="destructive" className="text-[10px]">
+              <Badge variant="destructive" className="text-[0.6rem]">
                 需关注
               </Badge>
             )}
@@ -105,7 +105,7 @@ export function MuscleHeatmap({ logs }: { logs: TrainingLog[] }) {
           <TabsContent value="freshness">
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">{muscleCells('freshness')}</div>
             <p className="mt-3 type-meta text-muted-foreground">
-              新鲜度：绿 = 7 天内练过，黄 = 7–21 天，红 = 超过 {NEGLECT_DAYS} 天没练（标「需关注」）。长期红色说明该肌群被计划遗忘。
+              新鲜度：白 = 7 天内练过，浅红 = 7–21 天，深红 = 超过 {NEGLECT_DAYS} 天没练（标「需关注」）。长期深红说明该肌群被计划遗忘。
             </p>
           </TabsContent>
         </Tabs>
@@ -119,9 +119,9 @@ export function MuscleHeatmap({ logs }: { logs: TrainingLog[] }) {
             {balance.map((r) => {
               const statusBadge =
                 r.status === 'balanced' ? (
-                  <Badge className="bg-emerald-500/20 text-emerald-400">平衡</Badge>
+                  <Badge className="bg-white/12 text-foreground">平衡</Badge>
                 ) : r.status === 'slight' ? (
-                  <Badge className="bg-amber-500/20 text-amber-400">略偏</Badge>
+                  <Badge className="bg-primary/20 text-primary">略偏</Badge>
                 ) : (
                   <Badge variant="destructive">失衡</Badge>
                 );

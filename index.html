@@ -3,15 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 首屏防闪：在解析 body 之前根据 localStorage 设定 data-theme，避免主题闪烁 -->
+    <!-- 首屏防闪：在解析 body 之前根据 localStorage 设定 data-theme 与字号，
+         避免主题闪烁和「先 18px 后用户字号」的跳变 -->
     <script>
       (function () {
+        var d = document.documentElement;
         try {
           var t = localStorage.getItem('xy-theme');
           if (t !== 'light' && t !== 'dark') t = 'dark';
-          var d = document.documentElement;
           d.setAttribute('data-theme', t);
           d.style.colorScheme = t;
+        } catch (e) {}
+        try {
+          var fs = parseInt(localStorage.getItem('xy-font-size'), 10);
+          if (fs >= 14 && fs <= 22) d.style.fontSize = fs + 'px';
         } catch (e) {}
       })();
     </script>
@@ -148,19 +153,35 @@
           setTimeout(done, 3000); // 缓存 API 卡住也不能把用户困在这里
         };
         var splash = document.getElementById('xy-splash');
-        setTimeout(function () {
-          // React 挂载后会清空 #root，骨架屏就被移除了
-          if (!document.body.contains(splash)) return;
-          var btn = 'display:inline-block;margin:6px;padding:8px 16px;border:1px solid #FACC15;' +
-            'border-radius:6px;background:transparent;color:#FACC15;font:inherit;cursor:pointer';
+        var btn = 'display:inline-block;margin:6px;padding:8px 16px;border:1px solid #FACC15;' +
+          'border-radius:6px;background:transparent;color:#FACC15;font:inherit;cursor:pointer';
+        /*XW_FILE_GUIDE_START*/
+        // file:// 直接双击打开根 index.html 时：它是 Vite 开发入口（/src/index.tsx），
+        // file:// 协议下浏览器会因 CORS / 绝对路径无法加载该模块脚本，必然一直转圈直至「加载失败」。
+        // 这里立即引导用户打开同目录的「桌面版/index.html」离线单文件版，避免反复看到加载失败。
+        // （桌面离线版构建时会整体移除本段，因为它自身也是 file:// 打开，不能误触发引导。）
+        if (location.protocol === 'file:') {
           splash.innerHTML =
-            '<div class="spinner" style="border-top-color:#EF4444"></div>' +
-            '<div class="brand" style="font-size:18px">加载失败</div>' +
-            '<div class="motto">可能是网络问题或旧缓存导致核心脚本没下载完成。<br/>' +
-            '先试普通刷新；还不行就清除本站缓存再重载（不会删除训练记录）。<br/><br/>' +
-            '<button type="button" style="' + btn + '" onclick="location.reload()">刷新重试</button>' +
-            '<button type="button" style="' + btn + '" onclick="__xwHardReload()">清除缓存并重载</button></div>';
-        }, 8000);
+            '<div class="brand" style="font-size:20px">请打开离线桌面版</div>' +
+            '<div class="motto">本文件是开发入口，不能在本地直接双击打开。<br/>' +
+            '请打开同目录下的 <b>桌面版 / index.html</b> 即可正常使用。<br/>' +
+            '（找不到文件夹？重新解压项目压缩包，桌面版就在其中）<br/><br/>' +
+            '<button type="button" style="' + btn + '" onclick="location.href=\'桌面版/index.html\'">打开离线桌面版</button></div>';
+        } else
+        /*XW_FILE_GUIDE_END*/
+        {
+          setTimeout(function () {
+            // React 挂载后会清空 #root，骨架屏就被移除了
+            if (!document.body.contains(splash)) return;
+            splash.innerHTML =
+              '<div class="spinner" style="border-top-color:#EF4444"></div>' +
+              '<div class="brand" style="font-size:18px">加载失败</div>' +
+              '<div class="motto">可能是网络问题或旧缓存导致核心脚本没下载完成。<br/>' +
+              '先试普通刷新；还不行就清除本站缓存再重载（不会删除训练记录）。<br/><br/>' +
+              '<button type="button" style="' + btn + '" onclick="location.reload()">刷新重试</button>' +
+              '<button type="button" style="' + btn + '" onclick="__xwHardReload()">清除缓存并重载</button></div>';
+          }, 8000);
+        }
       })();
     </script>
     <script type="module" src="/src/index.tsx"></script>

@@ -245,7 +245,7 @@ export default function PlanTemplates() {
       </div>
 
       {/* 免责声明：沿用全站惯例 */}
-      <p className="flex items-start gap-1.5 rounded-md border border-amber-500/25 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-700 dark:text-amber-300">
+      <p className="flex items-start gap-1.5 rounded-md border border-primary/25 bg-primary/10 p-3 text-xs leading-relaxed text-foreground/85">
         <ShieldAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
         <span>
           以上计划模板整理自公开健身资料，仅作训练参考，不构成医疗建议。重量、次数与分组按你当前能力取，

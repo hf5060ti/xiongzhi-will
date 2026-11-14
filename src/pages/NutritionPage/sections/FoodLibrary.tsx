@@ -1,8 +1,7 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 import { useMemo, useState } from 'react';
-import { Search, Sparkles } from 'lucide-react';
-import { Input } from '@/components/ui/input';
+import { Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { FOODS, FOOD_CATEGORIES, getServings, type IFood, type FoodCategory } from '@/data/foods';
 import { FOOD_NAME_EN } from '@/data/foods/food-names-en';
@@ -13,6 +12,7 @@ import { getFatComposition } from '@/lib/fat-composition';
 import { cn } from '@/lib/utils';
 
 interface FoodLibraryProps {
+  query: string;
   selectedId: string;
   /** presetGrams：按常见份量（如「1 个 50g」）点选时直接带入克数 */
   onSelect: (food: IFood, presetGrams?: string) => void;
@@ -20,8 +20,7 @@ interface FoodLibraryProps {
 
 type CatFilter = FoodCategory | 'all';
 
-export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) {
-  const [query, setQuery] = useState('');
+export default function FoodLibrary({ query, selectedId, onSelect }: FoodLibraryProps) {
   const [cat, setCat] = useState<CatFilter>('all');
 
   const filtered = useMemo(() => {
@@ -45,16 +44,6 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
   return (
     <section className="space-y-4">
       <div className="flex flex-col gap-3">
-        <div className="relative w-full sm:max-w-xs">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="搜索食物，如「牛里脊」「菠菜」「香蕉」"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="pl-9"
-          />
-        </div>
         <div className="flex flex-wrap gap-1.5">
           <Badge
             variant={cat === 'all' ? 'default' : 'outline'}
@@ -161,7 +150,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
                 {getAbsorptionTips(food).slice(0, 2).map((t) => (
                   <span
                     key={t}
-                    className="flex items-start gap-1 text-xs leading-snug text-emerald-600/90 dark:text-emerald-400/90"
+                    className="flex items-start gap-1 text-xs leading-snug text-primary/90"
                   >
                     <Sparkles className="mt-0.5 h-3 w-3 shrink-0" />
                     {t}
@@ -173,7 +162,7 @@ export default function FoodLibrary({ selectedId, onSelect }: FoodLibraryProps) 
         </div>
       )}
       {cat === 'cuisine' && (
-        <p className="rounded-lg border border-amber-500/40 bg-amber-500/5 px-3 py-2 text-xs leading-relaxed text-amber-200/90">
+        <p className="rounded-lg border border-primary/40 bg-primary/5 px-3 py-2 text-xs leading-relaxed text-foreground/80">
           🍽 各国菜系按<strong>餐厅与家庭常见做法</strong>估算，咖喱、椰浆、奶酪、黄油、油炸类一律<strong>偏高一档取值</strong>，
           宁可高估不低估；同一道菜不同店家可差 ±30%，减脂期按此表记账更安全。
         </p>

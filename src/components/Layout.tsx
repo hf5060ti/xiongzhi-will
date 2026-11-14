@@ -34,6 +34,7 @@ import VideoBackground from '@/components/VideoBackground';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeToggle from '@/components/ThemeToggle';
+import FontSizeControl from '@/components/FontSizeControl';
 import { t, onLangChange } from '@/lib/i18n';
 
 interface NavItem {
@@ -472,28 +473,33 @@ export const Layout = () => {
           ))}
         </nav>
 
-        {/* 主题切换 + 语言切换 + 账号：左侧栏底部 */}
+        {/* 主题切换 + 语言切换 + 字号调节 + 账号：左侧栏底部 */}
         <div className="border-t border-border/60 py-2">
           <div className="flex flex-col items-center gap-1">
             <ThemeToggle />
             <LanguageSwitcher />
+            <FontSizeControl />
             <AuthSection />
           </div>
         </div>
       </aside>
 
-      {/* 手机端顶部导航 */}
+      {/* 手机端顶部导航：整行左右对调（右手持机时按钮更顺手）。
+          用 flex-row-reverse 只翻转视觉顺序、不动 DOM 顺序，读屏/键盘 Tab 顺序仍是品牌在前 */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-card/70 backdrop-blur-2xl lg:hidden">
-        <div className="flex h-14 items-center justify-between gap-2 px-3">
-          <Link to="/" className="flex shrink-0 items-center gap-2">
-            <Shield className="h-5 w-5 text-primary" strokeWidth={2.2} />
-            <span className="font-display text-base font-bold tracking-[0.15em] text-foreground">
+        <div className="flex h-14 flex-row-reverse items-center justify-between gap-2 px-3">
+          <Link to="/" className="flex min-w-0 items-center gap-2">
+            <Shield className="h-5 w-5 shrink-0 text-primary" strokeWidth={2.2} />
+            <span className="truncate font-display text-base font-bold tracking-[0.15em] text-foreground">
               {t('brand')}
             </span>
           </Link>
-          <div className="flex shrink-0 items-center gap-2">
+          {/* gap-1.5：字号调节器加入后顶栏共 5 个按钮，间距收一档才能留住品牌名 */}
+          <div className="flex shrink-0 items-center gap-1.5">
             <ThemeToggle compact />
             <LanguageSwitcher compact />
+            {/* 字号调节：A− / A+，随根字号等比缩放全站，localStorage 记忆 */}
+            <FontSizeControl compact />
             {/* 手机端搜索入口：桌面搜索框在 lg 以下断点被隐藏，这里补一个图标入口 */}
             <button
               type="button"

@@ -29,14 +29,14 @@
 <meta name="apple-mobile-web-app-title" content="雄性意志" />
 <style>
   :root{
-    --bg:#141414;
-    --bg2:#1C1C1C;
-    --card:#222222;
-    --gold:#F7E7CE;
-    --gold-dim:#c9b28a;
-    --text:#EDE6D8;
-    --muted:#9a9182;
-    --line:rgba(247,231,206,.14);
+    --bg:#0B0B0C;
+    --bg2:#141416;
+    --card:#17171A;
+    --gold:#FF3B4A;
+    --gold-dim:#C8102E;
+    --text:#F2F2F4;
+    --muted:#9A9AA2;
+    --line:rgba(255,59,74,.16);
     --radius:14px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -44,7 +44,7 @@
   body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:var(--gold);text-decoration:none}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-  header{position:sticky;top:0;z-index:50;background:rgba(20,20,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,11,12,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.12em;color:var(--gold);font-size:15px}
   .brand b{font-weight:800}
@@ -52,7 +52,7 @@
   .nav-links a:hover{color:var(--gold)}
   @media(max-width:640px){.nav-links{display:none}}
   .hero{padding:88px 0 64px;text-align:center;position:relative;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 50% -40px, rgba(247,231,206,.07), transparent 70%)}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 50% -40px, rgba(255,59,74,.12), transparent 70%)}
   .hero .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 16px;font-size:12px;color:var(--gold-dim);letter-spacing:.22em;margin-bottom:22px}
   .hero h1{font-size:clamp(34px,6vw,54px);font-weight:900;letter-spacing:.04em;line-height:1.15}
   .hero h1 span{color:var(--gold)}
@@ -62,7 +62,7 @@
   .stat span{font-size:12px;color:var(--muted);letter-spacing:.1em}
   .cta{display:flex;gap:14px;justify-content:center;margin-top:40px;flex-wrap:wrap}
   .btn{display:inline-block;padding:13px 34px;border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.06em;transition:.2s}
-  .btn-gold{background:var(--gold);color:#1a1a1a}
+  .btn-gold{background:var(--gold);color:#120607}
   .btn-gold:hover{background:#fff;transform:translateY(-1px)}
   .btn-ghost{border:1px solid var(--line);color:var(--text)}
   .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
@@ -72,8 +72,8 @@
   .sec-head h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;letter-spacing:.02em}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:.2s}
-  .card:hover{border-color:rgba(247,231,206,.4);transform:translateY(-2px)}
-  .card .ic{width:40px;height:40px;border-radius:10px;background:rgba(247,231,206,.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:14px}
+  .card:hover{border-color:rgba(255,59,74,.5);transform:translateY(-2px)}
+  .card .ic{width:40px;height:40px;border-radius:10px;background:rgba(255,59,74,.10);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:14px}
   .card h3{font-size:16px;font-weight:700;margin-bottom:8px}
   .card p{font-size:13px;color:var(--muted)}
   .card .num{font-size:11px;color:var(--gold);letter-spacing:.12em;margin-top:12px;display:block}

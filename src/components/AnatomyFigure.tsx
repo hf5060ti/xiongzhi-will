@@ -246,7 +246,7 @@ export default function AnatomyFigure({
         </div>
       )}
 
-      <p className="mt-2 text-center text-[11px] text-muted-foreground">
+      <p className="mt-2 text-center text-[0.65rem] text-muted-foreground">
         {tab === 'overview'
           ? '按当前动作把目标部位涂黑区分 · 左为正面、右为背面'
           : '精细标注图：可对照查阅各肌群名称与分区'}

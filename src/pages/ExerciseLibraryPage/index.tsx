@@ -397,7 +397,7 @@ export default function ExerciseLibraryPage() {
   // 支持从计划页带 ?q=动作名 跳转过来时自动搜索
   const [params] = useSearchParams();
   const [query, setQuery] = useState(params.get('q') ?? '');
-  const [muscle, setMuscle] = useState('all');
+  const [muscle, setMuscle] = useState(params.get('m') ?? 'all');
   const [equip, setEquip] = useState('all');
   const [cat, setCat] = useState('all');
   const [selected, setSelected] = useState<ExerciseView | null>(null);
@@ -417,6 +417,19 @@ export default function ExerciseLibraryPage() {
     setDemoFailed(false);
   }
   const [visible, setVisible] = useState(pageSize);
+
+  // 深链：?e=动作id 直接打开该动作详情（首页「点哪练哪」人体导航跳转用）。
+  // 与上面 prevSelected / prevFilterKey 同款「渲染期比对」写法，避免 effect 里 setState。
+  const openId = params.get('e');
+  // 初始值必须是 null 而不是 openId：否则首帧「无变化」，从首页带 ?e= 进来时打不开详情
+  const [prevOpenId, setPrevOpenId] = useState<string | null>(null);
+  if (openId !== prevOpenId) {
+    setPrevOpenId(openId);
+    if (openId) {
+      const found = ALL_EXERCISES.find((x) => x.id === openId);
+      if (found) setSelected(found);
+    }
+  }
 
   const equips = useMemo(() => ['all', ...new Set(ALL_EXERCISES.map((e) => e.equipment).filter(Boolean))], []);
 
@@ -576,7 +589,7 @@ export default function ExerciseLibraryPage() {
                   </span>
                 )}
                 {ex.approx && (
-                  <span className="absolute left-1 top-1 rounded bg-amber-500/90 px-1 py-0.5 text-xs font-bold text-white">
+                  <span className="absolute left-1 top-1 rounded bg-primary px-1 py-0.5 text-xs font-bold text-primary-foreground">
                     近似演示
                   </span>
                 )}
@@ -718,7 +731,7 @@ export default function ExerciseLibraryPage() {
                         {(() => {
                           const cue = findGuidance(getCnName(selected) || '', selected.name)?.cues?.[0];
                           return cue ? (
-                            <div className="absolute inset-x-2 bottom-2 rounded-md bg-black/65 px-2 py-1.5 text-center text-xs font-semibold leading-snug text-[#F7E7CE]">
+                            <div className="absolute inset-x-2 bottom-2 rounded-md bg-black/65 px-2 py-1.5 text-center text-xs font-semibold leading-snug text-[#FF3B4A]">
                               {cue}
                             </div>
                           ) : null;
@@ -727,7 +740,7 @@ export default function ExerciseLibraryPage() {
                       <span
                         className={
                           selected.approx
-                            ? 'rounded bg-amber-500/90 px-1.5 py-0.5 text-center text-xs font-bold text-white'
+                            ? 'rounded bg-primary px-1.5 py-0.5 text-center text-xs font-bold text-primary-foreground'
                             : 'text-center text-xs text-muted-foreground'
                         }
                       >
@@ -794,7 +807,7 @@ export default function ExerciseLibraryPage() {
                       <Badge variant="outline">{MECHANIC_CN[selected.mechanic] || selected.mechanic}</Badge>
                     )}
                     {selected.approx && (
-                      <Badge className="bg-amber-500 text-white hover:bg-amber-500">近似演示</Badge>
+                      <Badge className="bg-primary text-primary-foreground hover:bg-primary">近似演示</Badge>
                     )}
                     {!selected.gif && !selected.video && <Badge variant="outline">站上暂无演示</Badge>}
                   </div>
@@ -842,7 +855,7 @@ export default function ExerciseLibraryPage() {
                           <ul className="mt-1 list-disc space-y-0.5 pl-4">
                             {g.mistakes.map((m, i) => (
                               <li key={i}>
-                                <span className="text-amber-600 dark:text-amber-400">{m.mistake}</span>
+                                <span className="text-primary">{m.mistake}</span>
                                 <span className="text-muted-foreground">——{m.consequence}</span>
                               </li>
                             ))}
@@ -868,7 +881,7 @@ export default function ExerciseLibraryPage() {
               </div>
 
               {selected.approx && (
-                <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 type-meta text-amber-700 dark:text-amber-300">
+                <div className="rounded-md border border-primary/40 bg-primary/10 p-3 type-meta text-foreground/85">
                   <b>近似演示：</b>
                   动作百科站上没有收录这个动作的同名演示，此处展示的是站内最接近的
                   {selected.approxNote ? `「${selected.approxNote.replace(/^近似动作：/, '')}」` : '相关动作'}

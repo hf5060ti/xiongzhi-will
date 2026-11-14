@@ -210,13 +210,13 @@ export default function StomachPage() {
                   )}
                 </div>
                 <div className="mt-2 grid gap-2 sm:grid-cols-2">
-                  <div className="rounded-md border border-emerald-500/20 bg-emerald-500/5 p-2.5">
-                    <p className="text-xs font-medium text-emerald-600">优先吃（低 FODMAP）</p>
+                  <div className="rounded-md border border-white/20 bg-white/5 p-2.5">
+                    <p className="text-xs font-medium text-foreground">优先吃（低 FODMAP）</p>
                     <div className="mt-1 flex flex-wrap gap-1">
                       {row.low.map((f) => (
                         <span
                           key={f}
-                          className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-xs text-emerald-700"
+                          className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-foreground/80"
                         >
                           {f}
                         </span>

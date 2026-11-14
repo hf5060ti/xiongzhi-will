@@ -348,7 +348,7 @@ export default function StrengthStandardPage() {
                           {row.current ? (
                             <span className="text-primary">当前档位</span>
                           ) : row.passed ? (
-                            <span className="text-emerald-400">已达成</span>
+                            <span className="text-primary">已达成</span>
                           ) : (
                             <span className="text-muted-foreground">还差 {Math.max(0, Math.round((row.kg - oneRm) * 10) / 10)} kg</span>
                           )}

@@ -2,6 +2,7 @@
 // See LICENSE / NOTICE for details.
 import { useNavigate } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
+import MusclePicker from '@/components/MusclePicker';
 
 export default function HeroSection() {
   const navigate = useNavigate();
@@ -21,26 +22,31 @@ export default function HeroSection() {
         <div className="animate-light-sweep pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent light:via-black/5" />
       </div>
 
-      {/* 文字层 */}
-      <div className="relative z-10 px-5 py-12 sm:px-6 sm:py-18 md:px-12 md:py-28">
-        <div className="animate-hero-rise max-w-xl">
+      {/* 文字层 + 右侧「点哪练哪」人体导航（大屏并排，小屏堆叠） */}
+      <div className="relative z-10 px-5 py-12 sm:px-6 sm:py-18 md:px-12 md:py-28 lg:flex lg:items-start lg:gap-10">
+        {/* [container-type:inline-size] 让大标题能用 cqw 量自身容器宽度（见下） */}
+        <div className="animate-hero-rise max-w-xl flex-1 [container-type:inline-size]">
           <p className="mb-4 flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.35em] text-primary">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
             Berserk · 雄性意志
           </p>
-          {/* 力量感 Slogan：放大字号、收紧字距，「雄性意志」以金色点睛，瞬间抓住眼球 */}
-          <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+          {/* 力量感 Slogan：放大字号、收紧字距，「雄性意志」以猩红点睛，瞬间抓住眼球。
+              大屏字号用 cqw（随容器宽度）而非 rem（随根字号）：默认 18px 档时约 141px，
+              与原 144px 几乎无差；但用户把「字号」调到 22px 时，侧栏/内边距/间距的 rem
+              也会变宽、正文容器缩到 ~697px，rem 版标题会涨到 176px/字，「雄性意志。」
+              需要 880px 从而被迫断行（"志。"落单）。cqw 版按容器等比收放，任何档位都一行。 */}
+          <h1 className="font-display text-[54px] font-extrabold leading-[0.95] tracking-tight text-foreground sm:text-[72px] md:text-[108px] lg:text-[min(144px,18.4cqw)]">
             记录你的
             <br />
             <span className="text-primary">雄性意志</span>。
           </h1>
-          {/* 细金线分隔，强化标题与正文层次 */}
+          {/* 细红线分隔，强化标题与正文层次 */}
           <div className="mt-5 h-0.5 w-16 rounded-full bg-primary/70" />
           <p className="mt-5 max-w-md text-lg leading-relaxed text-foreground/85">
             把每一次训练、每一餐、每一份坚持都记录下来。雄性意志为你生成对应的训练计划与饮食方案，让你看得见自己的成长。
           </p>
           {/* 免责卡：加粗成句 + 提到 14px，这是必须被读到的一段，不能让它在小字里沉掉 */}
-          <p className="mt-4 max-w-md rounded-xl border border-primary/40 bg-primary/10 px-4 py-3 text-sm leading-relaxed text-primary-foreground/95 backdrop-blur-md">
+          <p className="mt-4 max-w-md rounded-xl border border-primary/40 bg-primary/10 px-4 py-3 text-sm leading-relaxed text-foreground/85 backdrop-blur-md">
             <b className="font-semibold text-primary">本站只提供健康自然的健身方式</b>
             <span className="text-foreground/85">，不提供任何极端训练或药物方案；请遵守你所在国家 / 地区的法律法规。</span>
           </p>
@@ -83,6 +89,11 @@ export default function HeroSection() {
               像一个斗志昂扬的战士一样，去面对，去承担。
             </p>
           </div>
+        </div>
+
+        {/* 右侧：点哪练哪 · 人体导航 */}
+        <div className="mt-10 w-full max-w-md shrink-0 lg:mt-0 lg:w-[330px] xl:w-[360px]">
+          <MusclePicker />
         </div>
       </div>
     </section>

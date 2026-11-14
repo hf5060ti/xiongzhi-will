@@ -11,56 +11,55 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  /* 玻璃拟态（glassmorphism）统一参数：墨黑玻璃 + 顶部高光描边 + 深阴影 */
+  /* 玻璃拟态（glassmorphism）统一参数：墨黑烟玻璃 + 顶部高光 + 品红边缘反光 + 深阴影 */
   --glass-blur: 40px;
-  --glass-bg: linear-gradient(135deg, rgba(44,44,44,0.25) 0%, rgba(26,26,26,0.16) 100%);
-  --glass-shadow: 0 32px 80px -32px rgba(0,0,0,0.9), 0 12px 32px -16px rgba(0,0,0,0.6), inset 0 1px 0 0 rgba(255,255,255,0.18);
-  --glass-highlight: inset 0 1px 0 0 rgba(255,255,255,0.20), inset 0 -1px 0 0 rgba(255,255,255,0.06);
+  --glass-bg: linear-gradient(135deg, rgba(34,15,18,0.44) 0%, rgba(10,10,11,0.30) 58%, rgba(42,8,13,0.40) 100%);
+  --glass-shadow: 0 32px 80px -32px rgba(0,0,0,0.95), 0 12px 32px -16px rgba(0,0,0,0.70), inset 0 1px 0 0 rgba(255,255,255,0.14), inset 0 0 24px -8px rgba(255,59,74,0.10);
+  --glass-highlight: inset 0 1px 0 0 rgba(255,255,255,0.16), inset 0 -1px 0 0 rgba(255,59,74,0.10);
 
-  --background: #1C1C1C;          /* 墨黑 */
-  --foreground: hsl(45 12% 96%);  /* 暖白 */
-  --card: rgba(42,42,42,0.28);
-  --card-foreground: hsl(45 12% 96%);
-  --card-border: rgba(247,231,206,0.15);
-  --popover: rgba(20,20,20,0.94);
-  --popover-foreground: hsl(45 12% 96%);
-  --primary: #F7E7CE;             /* 香槟金 */
-  --primary-foreground: #1C1C1C;
+  --background: #0B0B0C;          /* 墨黑（比原来更深一档，托住玻璃与红光） */
+  --foreground: hsl(0 0% 96%);    /* 冷白 */
+  --card: rgba(22,20,22,0.42);
+  --card-foreground: hsl(0 0% 96%);
+  --card-border: rgba(255,59,74,0.16);
+  --popover: rgba(14,13,14,0.95);
+  --popover-foreground: hsl(0 0% 96%);
+  --primary: #FF3B4A;             /* 猩红 */
+  --primary-foreground: #120607;
   --secondary: rgba(255,255,255,0.06);
-  --secondary-foreground: hsl(45 10% 88%);
+  --secondary-foreground: hsl(0 0% 88%);
   --muted: rgba(255,255,255,0.05);
-  /* 次要文字色。原为 62%，在墨黑 + 玻璃模糊的背景上虽已过 WCAG AA（6.78:1），
-     但小字号 + 模糊叠加后实际观感偏灰。提到 68%（8.04:1）拉开层次又不抢主体。 */
-  --muted-foreground: hsl(40 10% 68%);
-  --accent: rgba(247,231,206,0.10);
-  --accent-foreground: #F7E7CE;
-  --info: hsl(210 70% 60%);
-  --info-foreground: hsl(0 0% 98%);
-  --destructive: hsl(0 75% 50%);
+  /* 次要文字色：中性灰，避免在黑色玻璃上偏蓝或发脏 */
+  --muted-foreground: hsl(0 0% 68%);
+  --accent: rgba(255,59,74,0.12);
+  --accent-foreground: #FF6B75;
+  --info: #FF6B75;
+  --info-foreground: hsl(0 0% 6%);
+  --destructive: #D81022;
   --destructive-foreground: hsl(0 0% 100%);
-  --success: hsl(142 71% 45%);
-  --success-foreground: hsl(140 40% 98%);
-  --warning: hsl(16 100% 56%);
-  --warning-foreground: hsl(16 100% 96%);
-  --border: rgba(247,231,206,0.14);
-  --input: rgba(247,231,206,0.14);
-  --ring: #F7E7CE;
-  --chart-1: #F7E7CE;
-  --chart-2: #FF5A1F;
-  --chart-3: #22C55E;
-  --chart-4: #60A5FA;
-  --chart-5: #C084FC;
-  --sidebar: rgba(22,22,22,0.86);
-  --sidebar-foreground: hsl(45 12% 95%);
-  --sidebar-primary: #F7E7CE;
-  --sidebar-primary-foreground: #1C1C1C;
-  --sidebar-accent: hsl(0 0% 16%);
-  --sidebar-accent-foreground: #F7E7CE;
-  --sidebar-border: rgba(247,231,206,0.10);
-  --sidebar-ring: #F7E7CE;
+  --success: hsl(0 0% 92%);       /* 全站两色原则：正向状态用高亮白，不再引入绿 */
+  --success-foreground: hsl(0 0% 6%);
+  --warning: #FF3B4A;
+  --warning-foreground: hsl(0 0% 100%);
+  --border: rgba(255,59,74,0.14);
+  --input: rgba(255,59,74,0.16);
+  --ring: #FF3B4A;
+  --chart-1: #FF3B4A;
+  --chart-2: #FF7A85;
+  --chart-3: #C8102E;
+  --chart-4: #8E1220;
+  --chart-5: #FFB3B9;
+  --sidebar: rgba(10,10,11,0.88);
+  --sidebar-foreground: hsl(0 0% 95%);
+  --sidebar-primary: #FF3B4A;
+  --sidebar-primary-foreground: #120607;
+  --sidebar-accent: hsl(0 0% 14%);
+  --sidebar-accent-foreground: #FF6B75;
+  --sidebar-border: rgba(255,59,74,0.12);
+  --sidebar-ring: #FF3B4A;
 
   /* Computed borders using hsl relative color syntax */
-  --primary-border: hsl(from hsl(38 73% 89%) h s calc(l + var(--opaque-button-border-intensity)));
+  --primary-border: hsl(from hsl(357 100% 62%) h s calc(l + var(--opaque-button-border-intensity)));
   --secondary-border: hsl(from hsl(220 10% 13%) h s calc(l + var(--opaque-button-border-intensity)));
   --destructive-border: hsl(from hsl(0 75% 50%) h s calc(l + var(--opaque-button-border-intensity)));
   --accent-border: hsl(from hsl(220 10% 14%) h s calc(l + var(--opaque-button-border-intensity)));
@@ -118,58 +117,58 @@
   --elevate-1: rgba(0,0,0, .04);
   --elevate-2: rgba(0,0,0, .08);
 
-  /* 亮色玻璃：浅白磨砂 + 暖白高光描边 + 柔和暖灰投影，避免暗投影在浅底上发脏 */
+  /* 亮色玻璃：浅白磨砂 + 冷白高光描边 + 淡红反光，避免暗投影在浅底上发脏 */
   --glass-blur: 40px;
-  --glass-bg: linear-gradient(135deg, rgba(255,255,255,0.55) 0%, rgba(255,253,248,0.38) 100%);
-  --glass-shadow: 0 32px 80px -32px rgba(80,60,20,0.22), 0 12px 32px -16px rgba(80,60,20,0.16), inset 0 1px 0 0 rgba(255,255,255,0.85);
-  --glass-highlight: inset 0 1px 0 0 rgba(255,255,255,0.75), inset 0 -1px 0 0 rgba(120,100,60,0.10);
+  --glass-bg: linear-gradient(135deg, rgba(255,255,255,0.58) 0%, rgba(255,250,250,0.40) 100%);
+  --glass-shadow: 0 32px 80px -32px rgba(90,20,26,0.18), 0 12px 32px -16px rgba(90,20,26,0.14), inset 0 1px 0 0 rgba(255,255,255,0.85);
+  --glass-highlight: inset 0 1px 0 0 rgba(255,255,255,0.75), inset 0 -1px 0 0 rgba(200,16,46,0.12);
 
-  --background: #F6F3EC;          /* 暖白纸 */
-  --foreground: hsl(38 14% 14%);  /* 近黑 */
-  --card: rgba(255,253,248,0.72);
-  --card-foreground: hsl(38 14% 16%);
-  --card-border: rgba(70,58,35,0.16);
+  --background: #F7F4F3;          /* 冷白纸 */
+  --foreground: hsl(0 6% 12%);    /* 近黑 */
+  --card: rgba(255,252,252,0.72);
+  --card-foreground: hsl(0 6% 14%);
+  --card-border: rgba(160,24,36,0.18);
   --popover: rgba(255,255,255,0.96);
-  --popover-foreground: hsl(38 14% 16%);
-  --primary: #8A6A12;             /* 深金（亮底上仍可读） */
-  --primary-foreground: #FFFDF6;
-  --secondary: rgba(60,48,28,0.05);
-  --secondary-foreground: hsl(38 12% 26%);
-  --muted: rgba(60,48,28,0.04);
-  --muted-foreground: hsl(34 10% 40%);
-  --accent: rgba(138,106,18,0.12);
-  --accent-foreground: #8A6A12;
-  --info: hsl(212 70% 42%);
+  --popover-foreground: hsl(0 6% 14%);
+  --primary: #C8102E;             /* 深红（亮底上仍可读） */
+  --primary-foreground: #FFFFFF;
+  --secondary: rgba(80,20,24,0.05);
+  --secondary-foreground: hsl(0 8% 26%);
+  --muted: rgba(80,20,24,0.04);
+  --muted-foreground: hsl(0 6% 38%);
+  --accent: rgba(200,16,46,0.10);
+  --accent-foreground: #A50D25;
+  --info: #A50D25;
   --info-foreground: hsl(0 0% 100%);
-  --destructive: hsl(0 72% 45%);
+  --destructive: #C8102E;
   --destructive-foreground: hsl(0 0% 100%);
-  --success: hsl(142 58% 32%);
-  --success-foreground: hsl(140 40% 98%);
-  --warning: hsl(16 90% 44%);
-  --warning-foreground: hsl(16 100% 96%);
-  --border: rgba(70,58,35,0.18);
-  --input: rgba(70,58,35,0.22);
-  --ring: #8A6A12;
-  --chart-1: #8A6A12;
-  --chart-2: #E0531B;
-  --chart-3: #1E9E54;
-  --chart-4: #2E6FB8;
-  --chart-5: #8A4FC0;
-  --sidebar: rgba(250,248,242,0.85);
-  --sidebar-foreground: hsl(38 14% 18%);
-  --sidebar-primary: #8A6A12;
-  --sidebar-primary-foreground: #FFFDF6;
-  --sidebar-accent: hsl(40 30% 90%);
-  --sidebar-accent-foreground: #8A6A12;
-  --sidebar-border: rgba(70,58,35,0.14);
-  --sidebar-ring: #8A6A12;
+  --success: hsl(0 0% 18%);
+  --success-foreground: hsl(0 0% 98%);
+  --warning: #C8102E;
+  --warning-foreground: hsl(0 0% 100%);
+  --border: rgba(160,24,36,0.18);
+  --input: rgba(160,24,36,0.22);
+  --ring: #C8102E;
+  --chart-1: #C8102E;
+  --chart-2: #E85563;
+  --chart-3: #8E1220;
+  --chart-4: #F19AA2;
+  --chart-5: #5C0D12;
+  --sidebar: rgba(255,252,252,0.85);
+  --sidebar-foreground: hsl(0 6% 16%);
+  --sidebar-primary: #C8102E;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: hsl(0 24% 92%);
+  --sidebar-accent-foreground: #A50D25;
+  --sidebar-border: rgba(160,24,36,0.14);
+  --sidebar-ring: #C8102E;
 
-  /* 亮色下按钮边框需更深，否则金/浅色描边在浅底上消失 */
-  --primary-border: hsl(42 62% 28%);
-  --secondary-border: hsl(40 20% 80%);
-  --destructive-border: hsl(0 70% 38%);
-  --accent-border: hsl(40 20% 80%);
-  --muted-border: hsl(40 20% 80%);
+  /* 亮色下按钮边框需更深，否则浅色描边在浅底上消失 */
+  --primary-border: hsl(352 85% 30%);
+  --secondary-border: hsl(0 14% 80%);
+  --destructive-border: hsl(352 85% 30%);
+  --accent-border: hsl(0 14% 80%);
+  --muted-border: hsl(0 14% 80%);
 
   /* 投影在浅底上改用暖灰、降低浓度，避免脏重 */
   --shadow-2xs: 0px 2px 10px 0px hsl(40 30% 20% / 0.10);

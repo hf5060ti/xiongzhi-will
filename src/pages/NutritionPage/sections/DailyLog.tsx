@@ -31,11 +31,10 @@ function defaultMeal(): string {
   return '加餐';
 }
 
-export default function DailyLog({ refreshKey }: { refreshKey: number }) {
+export default function DailyLog({ refreshKey, query }: { refreshKey: number; query: string }) {
   const [entries, setEntries] = useState<LogEntry[]>(loadDailyLog);
   const [showAdd, setShowAdd] = useState(false);
   const [foodId, setFoodId] = useState('');
-  const [q, setQ] = useState('');
   const [grams, setGrams] = useState('100');
   const [meal, setMeal] = useState(defaultMeal);
   const [confirmClear, setConfirmClear] = useState(false);
@@ -51,12 +50,12 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
 
   // 食物下拉：按 9 大分类分组全量展示（此前只取前 100 条，导致水果 / 坚果 / 零食选不到）
   const grouped = useMemo(() => {
-    const kw = q.trim().toLowerCase();
+    const kw = query.trim().toLowerCase();
     return FOOD_CATEGORIES.map((c) => ({
       ...c,
       items: FOODS.filter((f) => f.cat === c.id && (kw === '' || f.name.toLowerCase().includes(kw))),
     })).filter((g) => g.items.length > 0);
-  }, [q]);
+  }, [query]);
 
   const selectedFood: IFood | null = useMemo(
     () => FOODS.find((f) => f.id === foodId) ?? null,
@@ -163,7 +162,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
             value={Math.round(totals.kcal)}
             goal={targets.kcal}
             unit="kcal"
-            color="text-orange-400"
+            color="text-primary"
           />
           <StatCard
             icon={<Beef className="h-4 w-4" />}
@@ -171,7 +170,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
             value={Math.round(totals.protein)}
             goal={targets.protein}
             unit="g"
-            color="text-red-400"
+            color="text-[#FF7A85]"
           />
           <StatCard
             icon={<Drumstick className="h-4 w-4" />}
@@ -179,7 +178,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
             value={Math.round(totals.fat)}
             goal={targets.fat}
             unit="g"
-            color="text-yellow-400"
+            color="text-[#FFB3B9]"
           />
           <StatCard
             icon={<Wheat className="h-4 w-4" />}
@@ -187,7 +186,7 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
             value={Math.round(totals.carb)}
             goal={targets.carb}
             unit="g"
-            color="text-green-400"
+            color="text-foreground/70"
           />
         </div>
 
@@ -255,13 +254,6 @@ export default function DailyLog({ refreshKey }: { refreshKey: number }) {
         {showAdd && (
           <div className="mt-4 space-y-2.5 rounded-xl border border-border/50 bg-background/40 p-3">
             <div className="flex flex-wrap gap-2">
-              <Input
-                type="search"
-                placeholder="筛选食物"
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-                className="h-9 w-full bg-background/50 sm:w-36"
-              />
               <select
                 value={foodId}
                 aria-label="选择食物"

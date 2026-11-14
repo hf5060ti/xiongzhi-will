@@ -6,9 +6,9 @@ import type { FatComposition } from '@/data/foods/types';
 import { cn } from '@/lib/utils';
 
 const SEGMENTS: { key: keyof FatComposition; label: string; cls: string; hint: string }[] = [
-  { key: 'sat', label: '饱和', cls: 'bg-red-500', hint: '升 LDL 胆固醇，过量不利心血管，宜控量' },
-  { key: 'mono', label: '单不饱和', cls: 'bg-emerald-500', hint: '橄榄油为代表，较友好，可优先选择' },
-  { key: 'poly', label: '多不饱和', cls: 'bg-sky-500', hint: '含 ω-3/ω-6 等必需脂肪酸，注意抗氧化' },
+  { key: 'sat', label: '饱和', cls: 'bg-primary', hint: '升 LDL 胆固醇，过量不利心血管，宜控量' },
+  { key: 'mono', label: '单不饱和', cls: 'bg-foreground/80', hint: '橄榄油为代表，较友好，可优先选择' },
+  { key: 'poly', label: '多不饱和', cls: 'bg-[#FF7A85]', hint: '含 ω-3/ω-6 等必需脂肪酸，注意抗氧化' },
   { key: 'trans', label: '反式', cls: 'bg-zinc-500', hint: '尽量为 0，对心血管最不利，加工食品需警惕' },
 ];
 

@@ -93,18 +93,18 @@ export default function ExercisePRBox({ id }: { id: string }) {
       {!editing && pr ? (
         <div className="mt-2 grid grid-cols-3 gap-2 text-center">
           <div className="rounded-md border border-primary/30 bg-primary/5 p-2">
-            <p className="text-[11px] text-muted-foreground">最佳组</p>
+            <p className="text-[0.65rem] text-muted-foreground">最佳组</p>
             <p className="font-display text-lg font-extrabold text-foreground">
               {pr.weightKg}
               <span className="ml-0.5 text-xs font-bold text-muted-foreground">kg×{pr.reps}</span>
             </p>
           </div>
           <div className="rounded-md border border-border bg-background/40 p-2">
-            <p className="text-[11px] text-muted-foreground">估算 1RM</p>
+            <p className="text-[0.65rem] text-muted-foreground">估算 1RM</p>
             <p className="font-display text-lg font-extrabold text-primary">{pr.oneRmKg}</p>
           </div>
           <div className="rounded-md border border-border bg-background/40 p-2">
-            <p className="text-[11px] text-muted-foreground">达成日期</p>
+            <p className="text-[0.65rem] text-muted-foreground">达成日期</p>
             <p className="font-display text-base font-bold text-foreground">{pr.date.slice(5)}</p>
           </div>
         </div>
@@ -149,7 +149,7 @@ export default function ExercisePRBox({ id }: { id: string }) {
               />
             </div>
           </div>
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-[0.65rem] text-muted-foreground">
             按 Epley 公式（重量 ×（1 + 次数÷30））估算 1RM；只有新 1RM 高于旧值才会刷新纪录。
           </p>
           <div className="flex items-center gap-2">

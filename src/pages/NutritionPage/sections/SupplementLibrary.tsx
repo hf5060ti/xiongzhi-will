@@ -2,8 +2,7 @@
 // See LICENSE / NOTICE for details.
 // 补剂库：独立于食物库——补剂按「剂型 / 剂量 / 作用」说明，不按热量计算。
 import { useMemo, useState } from 'react';
-import { Search, FlaskConical, ChevronDown } from 'lucide-react';
-import { Input } from '@/components/ui/input';
+import { FlaskConical, ChevronDown } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { SUPPLEMENTS, SUPPLEMENT_CATEGORIES, type ISupplement, type SupplementCategory } from '@/data/supplements';
 import { smartMatch } from '@/lib/smart-search';
@@ -11,8 +10,12 @@ import { cn } from '@/lib/utils';
 
 type CatFilter = SupplementCategory | 'all';
 
-export default function SupplementLibrary({ initialId }: { initialId?: string }) {
-  const [query, setQuery] = useState('');
+interface Props {
+  initialId?: string;
+  query: string;
+}
+
+export default function SupplementLibrary({ initialId, query }: Props) {
   const [cat, setCat] = useState<CatFilter>('all');
   const [selected, setSelected] = useState<ISupplement | null>(
     initialId ? SUPPLEMENTS.find((s) => s.id === initialId) ?? null : null,
@@ -47,16 +50,6 @@ export default function SupplementLibrary({ initialId }: { initialId?: string })
           <span className="type-meta font-medium uppercase tracking-wider text-muted-foreground">
             {SUPPLEMENTS.length} 种 · 按作用与剂量说明，不按热量
           </span>
-        </div>
-        <div className="relative w-full sm:max-w-xs">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="搜索补剂，如「肌酸」「咖啡因」「液体钙」"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="pl-9"
-          />
         </div>
         <div className="flex flex-wrap gap-1.5">
           <Badge
@@ -138,16 +131,16 @@ export default function SupplementLibrary({ initialId }: { initialId?: string })
                       </div>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">
-                      <div className="rounded-lg border border-emerald-500/25 bg-emerald-500/5 p-2.5">
-                        <p className="text-xs font-bold text-emerald-300">优点</p>
+                      <div className="rounded-lg border border-white/15 bg-white/[0.04] p-2.5">
+                        <p className="text-xs font-bold text-foreground">优点</p>
                         <ul className="mt-1 list-disc space-y-1 pl-4 text-xs leading-relaxed text-foreground/85">
                           {s.pros.map((p) => (
                             <li key={p}>{p}</li>
                           ))}
                         </ul>
                       </div>
-                      <div className="rounded-lg border border-red-500/25 bg-red-500/5 p-2.5">
-                        <p className="text-xs font-bold text-red-300">缺点 / 注意</p>
+                      <div className="rounded-lg border border-primary/25 bg-primary/5 p-2.5">
+                        <p className="text-xs font-bold text-primary">缺点 / 注意</p>
                         <ul className="mt-1 list-disc space-y-1 pl-4 text-xs leading-relaxed text-foreground/85">
                           {s.cons.map((c) => (
                             <li key={c}>{c}</li>

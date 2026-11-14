@@ -3,6 +3,7 @@ import path from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import { viteSingleFile } from 'vite-plugin-singlefile';
 
 // ── 妙搭部署协议（参考《妙搭应用构建产物规范》）─────────────────────────
 // 构建期环境变量（托管构建时由部署链路自动注入；本地开发不需要，缺省回退）：
@@ -82,6 +83,25 @@ function sparkJsonPlugin(): Plugin {
   };
 }
 
+// 桌面离线版（DESKTOP_BUILD）专用：把根模板里的「file:// 引导」整段移除。
+// 否则桌面版自身也是用 file:// 双击打开的，会误触发引导、反而看不到应用。
+// 用 /*XW_FILE_GUIDE_START*/ ... /*XW_FILE_GUIDE_END*/ 精确切掉这段逻辑，
+// 非桌面构建原样保留（线上/开发入口被 file:// 误打开时仍要引导到桌面版）。
+function stripFileGuidePlugin(): Plugin {
+  return {
+    name: 'xw-strip-file-guide',
+    apply: 'build',
+    enforce: 'pre',
+    transformIndexHtml(html) {
+      if (process.env.DESKTOP_BUILD !== '1') return html;
+      return html.replace(
+        /\/\*XW_FILE_GUIDE_START\*\/[\s\S]*?\/\*XW_FILE_GUIDE_END\*\//,
+        '',
+      );
+    },
+  };
+}
+
 // 收集 <Route path="..."> 声明的路由；index 路由计为 "/"，通配 "*" 不进枚举
 function collectRoutePaths(srcDir: string): string[] {
   const paths = new Set<string>(['/']);
@@ -105,7 +125,7 @@ function collectRoutePaths(srcDir: string): string[] {
 }
 
 export default defineConfig(({ command }) => ({
-  plugins: [react(), tailwindcss(), process.env.SKIP_MIAODA ? null : miaodaOutputPlugin(), sparkJsonPlugin()].filter(Boolean),
+  plugins: [react(), tailwindcss(), process.env.SKIP_MIAODA ? null : miaodaOutputPlugin(), sparkJsonPlugin(), stripFileGuidePlugin(), process.env.DESKTOP_BUILD === '1' ? viteSingleFile() : null].filter(Boolean),
   // 生产构建：JS/CSS 引用带 CDN 前缀（无 CDN 时退回 base path）；dev 恒为 /
   base: command === 'build' ? cdnPrefix || basePath : '/',
   define: {
@@ -143,21 +163,23 @@ export default defineConfig(({ command }) => ({
   },
   build: {
     outDir: 'dist/client',
-    // 桌面离线版（DESKTOP_BUILD=1）：把所有懒加载页面内联进主 bundle。
-    // 浏览器在 file:// 协议下禁止动态 import()（CORS 安全限制），
-    // 双击本地 index.html 时 React.lazy 的页面 chunk 会永远加载失败、卡在转圈。
-    // 单 bundle 后双击直接可用；线上 GitHub Pages 走 HTTP，保持代码分割不影响。
-    // 产物格式用 IIFE：桌面版以经典 <script src> 外部引用加载（file:// 下不受
-    // module script 的 CORS 限制），且外部 JS 不会被 HTML 解析器扫描，
-    // 彻底规避内联 module script 中 "</script" 字面量提前截断脚本的问题。
+    // 桌面离线版（DESKTOP_BUILD=1）：用 vite-plugin-singlefile 把 JS/CSS/图片
+    // 全部内联进单个 index.html，双击 file:// 即可运行，无需服务器、无需外部文件。
+    // 浏览器在 file:// 下禁止「外链」ESM（CORS），但「内联」的 <script type=module>
+    // 可以正常执行；singlefile 插件会正确处理 "</script" 等字面量转义，避免手工内联
+    // 时脚本被提前截断。inlineDynamicImports 消除动态 import()，单 bundle 离线可用；
+    // assetsInlineLimit 调大把图片也内联为 base64，使桌面版完全自包含。
+    // （早期方案用 IIFE 经典脚本，但 Vite 8/rolldown 因 import.meta 不支持 iife，已弃用。）
     ...(process.env.DESKTOP_BUILD === '1'
       ? {
           rollupOptions: {
             output: {
               inlineDynamicImports: true,
-              format: 'iife',
             },
           },
+          // 单文件离线版：图片也内联为 base64，桌面版/index.html 完全自包含
+          assetsInlineLimit: 100000000,
+          cssCodeSplit: false,
           chunkSizeWarningLimit: 6000,
         }
       : {}),

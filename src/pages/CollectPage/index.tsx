@@ -292,7 +292,7 @@ export default function CollectPage() {
               type="checkbox"
               checked={onlyFitness}
               onChange={(e) => setOnlyFitness(e.target.checked)}
-              className="mt-0.5 accent-[#F7E7CE]"
+              className="mt-0.5 accent-[#FF3B4A]"
             />
             <span>
               <strong className="text-foreground">仅导入健身相关内容</strong>（默认开启）：

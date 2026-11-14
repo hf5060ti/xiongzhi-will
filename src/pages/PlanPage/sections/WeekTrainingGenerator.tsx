@@ -251,7 +251,7 @@ export default function WeekTrainingGenerator() {
             </div>
           </div>
 
-          <p className="flex items-start gap-1.5 rounded-md border border-amber-500/25 bg-amber-500/10 p-2.5 text-xs leading-relaxed text-amber-700 dark:text-amber-300">
+          <p className="flex items-start gap-1.5 rounded-md border border-primary/25 bg-primary/10 p-2.5 text-xs leading-relaxed text-foreground/85">
             <ShieldAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
             <span>
               在安全的范围内去运动：单次训练建议控制在 70 分钟左右（超过多为垃圾容量，只影响恢复；长跑等耐力有氧除外），一天两练可以但不建议天天如此，以恢复为准。

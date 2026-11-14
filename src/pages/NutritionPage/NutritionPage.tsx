@@ -7,12 +7,14 @@ import SupplementLibrary from './sections/SupplementLibrary';
 import NutritionCalculator from './sections/NutritionCalculator';
 import ProteinGuide from './sections/ProteinGuide';
 import DailyLog from './sections/DailyLog';
+import TakeoutLibrary from './sections/TakeoutLibrary';
 import AiFoodEstimator from './sections/AiFoodEstimator';
 import MealPlanGenerator from './sections/MealPlanGenerator';
 import { FOODS, type IFood } from '@/data/foods';
 import { CHEN_SHI } from '@/data/coach-videos';
 import { Badge } from '@/components/ui/badge';
-import { PlayCircle, UtensilsCrossed } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { PlayCircle, Search, UtensilsCrossed, X } from 'lucide-react';
 import { ABSORPTION_GUIDE, TEF_RULE } from '@/lib/absorption';
 
 export default function NutritionPage() {
@@ -20,6 +22,7 @@ export default function NutritionPage() {
   const [selectedFood, setSelectedFood] = useState<IFood | null>(null);
   const [weight, setWeight] = useState('');
   const [refreshLog, setRefreshLog] = useState(0);
+  const [query, setQuery] = useState('');
 
   // 全局搜索跳转过来时，按 ?foodId=xxx 自动选中。
   // props/URL 变化时调整 state 在渲染期做（React 官方推荐），避免 effect 里 setState 造成的二次渲染。
@@ -54,16 +57,37 @@ export default function NutritionPage() {
           食物营养库与计算器
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          搜索常见食物的综合营养表，点选后输入克数直接算出实际摄入；也可以拍下任何产品的营养表，
-          自动识别数字后按重量换算热量与营养。
+          一个搜索框同时查找食物、外卖门店、餐食和补剂；点选食物后输入克数，即可算出实际摄入。
         </p>
       </header>
 
+      <div className="relative">
+        <Search className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-primary" />
+        <Input
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="搜索食物、外卖门店、餐食或补剂"
+          aria-label="统一搜索食物、外卖和补剂"
+          className="h-12 border-border/70 bg-card/60 pl-11 pr-11 backdrop-blur-xl [&::-webkit-search-cancel-button]:hidden"
+        />
+        {query && (
+          <button
+            type="button"
+            onClick={() => setQuery('')}
+            aria-label="清空统一搜索"
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        )}
+      </div>
+
       {/* 烟酒警示横幅 */}
-      <div className="rounded-xl border border-red-500/40 bg-red-500/5 p-4 sm:p-5">
+      <div className="rounded-xl border border-primary/45 bg-primary/[0.06] p-4 sm:p-5">
         <div className="flex flex-wrap items-start gap-2">
-          <span className="rounded-md bg-red-500/15 px-2 py-0.5 text-xs font-bold text-red-300">⚠ 烟酒警示</span>
-          <p className="min-w-0 flex-1 text-xs leading-relaxed text-red-200/90">
+          <span className="rounded-md bg-primary/15 px-2 py-0.5 text-xs font-bold text-primary">⚠ 烟酒警示</span>
+          <p className="min-w-0 flex-1 text-xs leading-relaxed text-foreground/80">
             吸烟有害健康，可致肺癌等多种癌症与心脑血管疾病，本站不提供任何烟草数据、也不鼓励吸烟。
             酒精是「空热量」——1g 乙醇约 7kcal，过量饮酒伤肝（脂肪肝/肝硬化）、升高血压与尿酸、抑制肌肉蛋白合成与深睡眠，
             是健身与恢复的大敌。未成年人、孕妇绝对禁烟禁酒；服药期间、驾驶前请勿饮酒。
@@ -72,10 +96,10 @@ export default function NutritionPage() {
       </div>
 
       {/* 药食同源免责声明 */}
-      <div className="rounded-xl border border-amber-500/40 bg-amber-500/5 p-4 sm:p-5">
+      <div className="rounded-xl border border-primary/40 bg-primary/5 p-4 sm:p-5">
         <div className="flex flex-wrap items-start gap-2">
-          <span className="rounded-md bg-amber-500/15 px-2 py-0.5 text-xs font-bold text-amber-300">ℹ 药食同源声明</span>
-          <p className="min-w-0 flex-1 text-xs leading-relaxed text-amber-200/90">
+          <span className="rounded-md bg-primary/15 px-2 py-0.5 text-xs font-bold text-primary">ℹ 药食同源声明</span>
+          <p className="min-w-0 flex-1 text-xs leading-relaxed text-foreground/80">
             本库收录的枸杞、红枣、桂圆、莲子、银耳、茯苓、芡实、葛根、山药、薏苡仁、赤小豆、百合、陈皮、山楂、罗汉果、决明子、菊花、蜂蜜、黑芝麻、核桃、杏仁、白果、乌梅、桑葚、五味子、甘草、生姜、干辣椒等，
             均为国家药食同源目录中的<strong>常见食物/汤料/茶饮</strong>，仅作为健身营养参考。
             本站<strong>不提供任何医疗建议、不诊断、不治疗、不替代任何药物</strong>；
@@ -86,7 +110,10 @@ export default function NutritionPage() {
       </div>
 
       {/* 今日饮食记录 */}
-      <DailyLog refreshKey={refreshLog} />
+      <DailyLog refreshKey={refreshLog} query={query} />
+
+      {/* 外卖门店库：选门店 → 选招牌餐 → 记入今日饮食 */}
+      <TakeoutLibrary query={query} onLogged={handleLogged} />
 
       {/* AI 热量估算 */}
       <AiFoodEstimator />
@@ -95,10 +122,14 @@ export default function NutritionPage() {
       <MealPlanGenerator />
 
       {/* 健身补剂库：独立类别，按作用 / 剂量说明，不按热量 */}
-      <SupplementLibrary key={searchParams.get('suppId') ?? 'none'} initialId={searchParams.get('suppId') ?? undefined} />
+      <SupplementLibrary
+        key={searchParams.get('suppId') ?? 'none'}
+        initialId={searchParams.get('suppId') ?? undefined}
+        query={query}
+      />
 
       <div className="grid gap-8 lg:grid-cols-2">
-        <FoodLibrary selectedId={selectedFood?.id ?? ''} onSelect={handleSelect} />
+        <FoodLibrary query={query} selectedId={selectedFood?.id ?? ''} onSelect={handleSelect} />
         <div className="lg:sticky lg:top-20 lg:self-start">
           <NutritionCalculator
             selectedFood={selectedFood}

@@ -171,7 +171,7 @@ export default function TrainingArchitecture() {
                             className="h-16 w-16 object-contain"
                           />
                           {md.approx && (
-                            <span className="absolute -left-1 -top-1 rounded bg-amber-500/90 px-0.5 py-px text-xs font-bold text-white">
+                            <span className="absolute -left-1 -top-1 rounded bg-primary px-0.5 py-px text-xs font-bold text-primary-foreground">
                               近似演示
                             </span>
                           )}
@@ -183,7 +183,7 @@ export default function TrainingArchitecture() {
                       )}
                       <span className="text-center text-xs leading-tight text-foreground">
                         {m.label}
-                        {md?.approx && <span className="ml-0.5 text-xs text-amber-600">（近似演示）</span>}
+                        {md?.approx && <span className="ml-0.5 text-xs text-primary">（近似演示）</span>}
                       </span>
                     </Link>
                   );

@@ -151,15 +151,15 @@ const CARD_W = 1080;
 const CARD_H = 1440;
 const M = 76; // 页面边距
 
-const BG_TOP = '#1C1C1C'; // 墨黑：纯正黑，无绿调
-const BG_BOTTOM = '#141414';
-const GOLD = '#F7E7CE'; // 香槟金：暖调米金，优雅低调
-const GOLD_BRIGHT = '#F7E7CE'; // 香槟金本体即浅色，无需另行提亮
-const GOLD_DIM = 'rgba(247,231,206,0.25)';
-const WHITE = '#F7E7CE'; // 香槟金（站名/主体文字）
-const MUTED = '#A99C85'; // 暖灰（小标签/辅助文字，与香槟金同系）
-const CARD_BG = 'rgba(255,255,255,0.05)';
-const CARD_BORDER = 'rgba(247,231,206,0.28)';
+const BG_TOP = '#0B0B0C'; // 墨黑：与站点背景一致
+const BG_BOTTOM = '#070708';
+const GOLD = '#FF3B4A'; // 猩红：黑红主题的主强调色（变量名沿用历史命名）
+const GOLD_BRIGHT = '#FF6B75'; // 亮红：需要提亮的小标题
+const GOLD_DIM = 'rgba(255,59,74,0.28)';
+const WHITE = '#F5F5F7'; // 冷白（站名/主体文字）
+const MUTED = '#A3A3AA'; // 中性灰（小标签/辅助文字）
+const CARD_BG = 'rgba(255,255,255,0.04)';
+const CARD_BORDER = 'rgba(255,59,74,0.30)';
 
 function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
   ctx.beginPath();
@@ -203,15 +203,15 @@ export function renderShareCard(data: ShareCardData): string {
   const ctx = canvas.getContext('2d');
   if (!ctx) return '';
 
-  // 背景（垂直渐变 + 左上金辉）
+  // 背景（垂直渐变 + 左上红辉）
   const bg = ctx.createLinearGradient(0, 0, 0, CARD_H);
   bg.addColorStop(0, BG_TOP);
   bg.addColorStop(1, BG_BOTTOM);
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, CARD_W, CARD_H);
   const glow = ctx.createRadialGradient(CARD_W - 200, 260, 40, CARD_W - 200, 260, 560);
-  glow.addColorStop(0, 'rgba(247,231,206,0.08)');
-  glow.addColorStop(1, 'rgba(247,231,206,0)');
+  glow.addColorStop(0, 'rgba(255,59,74,0.10)');
+  glow.addColorStop(1, 'rgba(255,59,74,0)');
   ctx.fillStyle = glow;
   ctx.fillRect(0, 0, CARD_W, CARD_H);
 

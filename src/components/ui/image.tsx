@@ -128,7 +128,7 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
             role="img"
             aria-label="演示图暂不可用"
             className={cn(
-              'flex items-center justify-center bg-muted/40 text-[11px] text-muted-foreground',
+              'flex items-center justify-center bg-muted/40 text-[0.65rem] text-muted-foreground',
               className,
             )}
             style={{ width: width ?? '100%', height: height ?? '100%' }}

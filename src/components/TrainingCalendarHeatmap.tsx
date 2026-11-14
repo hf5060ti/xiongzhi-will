@@ -191,7 +191,7 @@ function CalendarGrid({
           aria-hidden
         >
           {marks.map((m, i) => (
-            <div key={i} className="whitespace-nowrap text-[10px] leading-4 text-muted-foreground">
+            <div key={i} className="whitespace-nowrap text-[0.6rem] leading-4 text-muted-foreground">
               {m ?? ''}
             </div>
           ))}
@@ -200,7 +200,7 @@ function CalendarGrid({
           {/* 星期标签列 */}
           <div className="grid grid-rows-7 gap-[3px] pt-px" aria-hidden>
             {WEEKDAY_LABELS.map((d, i) => (
-              <div key={i} className="h-3 text-[10px] leading-3 text-muted-foreground">
+              <div key={i} className="h-3 text-[0.6rem] leading-3 text-muted-foreground">
                 {d}
               </div>
             ))}

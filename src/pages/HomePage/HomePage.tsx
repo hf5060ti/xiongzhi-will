@@ -12,6 +12,7 @@ import GoalPicker from './sections/GoalPicker';
 import DietPicker from './sections/DietPicker';
 import TodayPanel from './sections/TodayPanel';
 import OverviewPanel from './sections/OverviewPanel';
+import ModuleGrid from './sections/ModuleGrid';
 import { useNow } from '@/hooks/useNow';
 import { GOALS } from '@/data/goals';
 import { DIETS } from '@/data/diets';
@@ -120,6 +121,9 @@ export default function HomePage() {
 
       {/* 总体数据：本周训练 / 每日消耗估算 / 当前体重 / 围度趋势 */}
       <OverviewPanel />
+
+      {/* 所有模块入口：暗色艺术卡网格 */}
+      <ModuleGrid />
 
       {hasSaved && (
         <Card className="border-primary/30 bg-primary/5">

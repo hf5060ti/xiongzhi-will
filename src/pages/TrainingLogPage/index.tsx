@@ -768,7 +768,7 @@ export default function TrainingLogPage() {
                         {best!.weightKg}kg × {best!.reps} 次 · {fmtDate(best!.date)}
                       </p>
                       {diff != null && diff > 0 ? (
-                        <p className="mt-1 inline-block rounded bg-green-500/15 px-1.5 py-0.5 text-xs text-green-400">
+                        <p className="mt-1 inline-block rounded bg-primary/15 px-1.5 py-0.5 text-xs text-primary">
                           +{Math.round(diff)} kg 新 PR
                         </p>
                       ) : (
@@ -927,7 +927,7 @@ export default function TrainingLogPage() {
               const last = entries[entries.length - 1];
               const diff = Math.round((last.weight - first.weight) * 10) / 10;
               const sign = diff > 0 ? '+' : '';
-              const color = diff > 0.3 ? 'text-red-400' : diff < -0.3 ? 'text-green-400' : 'text-muted-foreground';
+              const color = diff > 0.3 ? 'text-primary' : diff < -0.3 ? 'text-foreground/80' : 'text-muted-foreground';
               return (
                 <span className={cn('text-xs', color)}>
                   {first.weight} → {last.weight} kg（{sign}{diff} kg）
@@ -1030,12 +1030,12 @@ export default function TrainingLogPage() {
         const dl = shouldDeload(volumeTrend);
         if (!dl) return null;
         return (
-          <Card className="border-yellow-500/40">
+          <Card className="border-primary/45">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start gap-2">
-                <Moon className="mt-0.5 h-4 w-4 shrink-0 text-yellow-400" />
+                <Moon className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <div>
-                  <p className="text-sm font-medium text-yellow-300">
+                  <p className="text-sm font-medium text-primary">
                     建议下周安排减载周
                   </p>
                   <p className="mt-1 type-meta text-muted-foreground">
@@ -1062,10 +1062,10 @@ export default function TrainingLogPage() {
             if (v) {
               const color =
                 v.level === 'bad'
-                  ? 'border-red-500/40 text-red-300'
+                  ? 'border-primary/60 text-primary'
                   : v.level === 'warn'
-                  ? 'border-yellow-500/40 text-yellow-300'
-                  : 'border-green-500/40 text-green-300';
+                  ? 'border-primary/35 text-[#FF7A85]'
+                  : 'border-white/20 text-foreground/85';
               return (
                 <div className={cn('rounded-md border p-3 text-xs leading-relaxed', color)}>
                   <p className="font-medium">{v.title}</p>
@@ -1305,7 +1305,7 @@ export default function TrainingLogPage() {
                           progressed
                             ? 'border-primary/30 bg-primary/10 text-primary'
                             : sameAsPrev && prevTwoSame
-                              ? 'border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400'
+                              ? 'border-primary/40 bg-primary/10 text-primary'
                               : 'border-primary/20 bg-primary/5 text-primary',
                         )}
                       >
@@ -1315,7 +1315,7 @@ export default function TrainingLogPage() {
                           </span>
                         )}
                         {h.pr && (
-                          <span className={cn('ml-2', progressed ? 'text-amber-600 dark:text-amber-400' : '')}>
+                          <span className={cn('ml-2', progressed ? 'text-primary' : '')}>
                             PR：{h.pr.weightKg}kg × {h.pr.reps} 次（{daysAgo(h.pr.date)}）
                           </span>
                         )}
@@ -1527,7 +1527,7 @@ export default function TrainingLogPage() {
                                     vsPrev.tone === 'good'
                                       ? 'border-primary/50 bg-primary/10 text-primary'
                                       : vsPrev.tone === 'flat'
-                                        ? 'border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400'
+                                        ? 'border-primary/40 bg-primary/10 text-primary'
                                         : 'border-border text-muted-foreground',
                                   )}
                                   title={
@@ -1768,7 +1768,7 @@ function WorkoutRunner({
                   onChange={(e) => setWeight(e.target.value)}
                   inputMode="decimal"
                   placeholder="自重留空"
-                  className="mt-1 h-14 w-full rounded-xl border border-border bg-black/30 text-center font-display text-2xl font-bold text-foreground outline-none focus:border-[#F7E7CE]"
+                  className="mt-1 h-14 w-full rounded-xl border border-border bg-black/30 text-center font-display text-2xl font-bold text-foreground outline-none focus:border-[#FF3B4A]"
                 />
               </div>
               <div>
@@ -1779,13 +1779,13 @@ function WorkoutRunner({
                   onChange={(e) => setReps(e.target.value)}
                   inputMode="numeric"
                   placeholder="如 8"
-                  className="mt-1 h-14 w-full rounded-xl border border-border bg-black/30 text-center font-display text-2xl font-bold text-foreground outline-none focus:border-[#F7E7CE]"
+                  className="mt-1 h-14 w-full rounded-xl border border-border bg-black/30 text-center font-display text-2xl font-bold text-foreground outline-none focus:border-[#FF3B4A]"
                 />
               </div>
             </div>
             <button
               onClick={completeSet}
-              className="mt-6 h-14 w-full rounded-xl bg-[#F7E7CE] font-display text-lg font-bold text-black transition-transform active:scale-[0.98]"
+              className="mt-6 h-14 w-full rounded-xl bg-[#FF3B4A] font-display text-lg font-bold text-[#120607] transition-transform active:scale-[0.98]"
             >
               完成本组
             </button>

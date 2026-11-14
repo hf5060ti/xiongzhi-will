@@ -38,10 +38,10 @@ const SOURCE_ROWS = [
 const EVIDENCE_BADGE: Record<string, { cls: string; label: string }> = {
   原话: { cls: 'border-primary/40 bg-primary/10 text-primary', label: '原话' },
   整理: { cls: 'border-border bg-muted/40 text-foreground/80', label: '整理' },
-  '文献整理': { cls: 'border-blue-500/40 bg-blue-500/10 text-blue-600 dark:text-blue-400', label: '文献整理' },
-  计算: { cls: 'border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-400', label: '计算' },
+  '文献整理': { cls: 'border-white/20 bg-white/5 text-foreground/80', label: '文献整理' },
+  计算: { cls: 'border-primary/40 bg-primary/10 text-primary', label: '计算' },
   素材: { cls: 'border-border bg-muted/40 text-foreground/80', label: '素材' },
-  AI: { cls: 'border-purple-500/40 bg-purple-500/10 text-purple-600 dark:text-purple-400', label: 'AI 生成' },
+  AI: { cls: 'border-[#FFB3B9]/40 bg-[#FFB3B9]/10 text-[#FFB3B9]', label: 'AI 生成' },
 };
 
 export default function SourcesPage() {

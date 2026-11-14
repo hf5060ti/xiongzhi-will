@@ -199,8 +199,8 @@ export default function MeasurementTracker() {
           <div className="space-y-3">
           {/* 30 天复查提醒 */}
           {daysSinceLast != null && daysSinceLast >= 30 && (
-            <div className="flex items-start gap-2 rounded-md border border-amber-500/30 bg-amber-500/10 px-3 py-2">
-              <AlarmClock className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+            <div className="flex items-start gap-2 rounded-md border border-primary/30 bg-primary/10 px-3 py-2">
+              <AlarmClock className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <p className="text-xs leading-snug text-foreground/90">
                 距上次体测已 <b>{daysSinceLast} 天</b>（建议每 30 天复查一次）。
                 同口径早晨空腹复测一次，和历史曲线对比才能看出真实进展——体重会骗人，围度和照片不会。

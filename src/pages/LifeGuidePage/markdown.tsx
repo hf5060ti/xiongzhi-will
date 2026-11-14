@@ -119,7 +119,7 @@ export function markdownToReact(text: string, keyBase = 'md'): React.ReactNode[]
       }
       i++;
       pushBlock(
-        <pre className="overflow-x-auto rounded-xl border border-border/40 bg-black/40 p-3 text-[13px] leading-relaxed text-foreground/90">
+        <pre className="overflow-x-auto rounded-xl border border-border/40 bg-black/40 p-3 text-[0.78rem] leading-relaxed text-foreground/90">
           <code>{buf.join('\n')}</code>
         </pre>,
       );
@@ -163,7 +163,7 @@ export function markdownToReact(text: string, keyBase = 'md'): React.ReactNode[]
       if (table) {
         pushBlock(
           <div className="my-2 overflow-x-auto rounded-xl border border-border/40 bg-white/[0.03]">
-            <table className="w-full text-[13px] leading-relaxed">
+            <table className="w-full text-[0.78rem] leading-relaxed">
               <thead>
                 <tr className="border-b border-border/50 bg-white/[0.04]">
                   {table.header.map((c, ci) => (
@@ -193,7 +193,7 @@ export function markdownToReact(text: string, keyBase = 'md'): React.ReactNode[]
         i++;
       }
       pushBlock(
-        <ul className="my-2 space-y-1.5 pl-5 text-[14px] leading-relaxed text-foreground/90">
+        <ul className="my-2 space-y-1.5 pl-5 text-[0.82rem] leading-relaxed text-foreground/90">
           {items.map((it, ii) => (
             <li key={ii} className="list-disc marker:text-primary/60">{renderInline(it, `${keyBase}-li${blockIdx}-${ii}`)}</li>
           ))}
@@ -208,7 +208,7 @@ export function markdownToReact(text: string, keyBase = 'md'): React.ReactNode[]
         i++;
       }
       pushBlock(
-        <ol className="my-2 space-y-1.5 pl-5 text-[14px] leading-relaxed text-foreground/90">
+        <ol className="my-2 space-y-1.5 pl-5 text-[0.82rem] leading-relaxed text-foreground/90">
           {items.map((it, ii) => (
             <li key={ii} className="list-decimal marker:text-primary/60">{renderInline(it, `${keyBase}-ol${blockIdx}-${ii}`)}</li>
           ))}
@@ -223,7 +223,7 @@ export function markdownToReact(text: string, keyBase = 'md'): React.ReactNode[]
       i++;
     }
     pushBlock(
-      <p className="my-2 text-[14px] leading-[1.85] text-foreground/90">
+      <p className="my-2 text-[0.82rem] leading-[1.85] text-foreground/90">
         {buf.map((b, bi) => (
           <React.Fragment key={bi}>
             {bi > 0 && <br />}
