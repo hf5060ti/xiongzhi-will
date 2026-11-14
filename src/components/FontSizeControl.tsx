@@ -8,9 +8,19 @@ const STORAGE_KEY = 'xy-font-size';
 /** 同页多实例同步事件：桌面侧栏与手机顶栏各渲染一份，
  *  改其中一份时另一份（隐藏的那个）也要跟上，否则窗口宽度跨断点后会显示旧数字 */
 const SYNC_EVENT = 'xy-font-change';
-/** 默认字号：与 src/index.css 里 html { font-size } 保持一致 */
-export const FONT_DEFAULT = 18;
-/** 可调范围：14px（小屏紧凑）~ 22px（大字模式，约为默认的 122%）。
+/** 设备默认字号，与 src/index.css 保持一致：桌面 18px、手机(<=640px) 16px。
+ *  手机收一档是为了窄屏不再被大标题和大留白撑满（用户反馈「很大、很不舒服」）。 */
+const FONT_DEFAULT_DESKTOP = 18;
+const FONT_DEFAULT_MOBILE = 16;
+/** 兼容既有导出：桌面基准值 */
+export const FONT_DEFAULT = FONT_DEFAULT_DESKTOP;
+function defaultSize(): number {
+  if (typeof window === 'undefined') return FONT_DEFAULT_DESKTOP;
+  return window.matchMedia('(max-width: 640px)').matches
+    ? FONT_DEFAULT_MOBILE
+    : FONT_DEFAULT_DESKTOP;
+}
+/** 可调范围：14px（小屏紧凑）~ 22px（大字模式）。
  *  上限不含 24：24px 时首页大标题「雄性意志」会被挤成两行（"志。"落单），
  *  22px 是标题仍能一行放下的临界值。 */
 const FONT_MIN = 14;
@@ -30,7 +40,8 @@ function readSize(): number {
   } catch {
     /* 隐私模式 / 禁用存储时静默降级 */
   }
-  return FONT_DEFAULT;
+  // 未自定义：交给 CSS 媒体查询决定（桌面 18 / 手机 16）
+  return defaultSize();
 }
 
 /** 应用并持久化：全站文字/间距以 rem 为单位，改根字号即整体等比缩放 */
@@ -64,13 +75,14 @@ export default function FontSizeControl({ compact = false }: { compact?: boolean
   // 多标签页同步：另一个标签调了字号，这里跟着变
   useEffect(() => {
     const onStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY && e.newValue) {
-        const n = parseInt(e.newValue, 10);
-        if (Number.isFinite(n)) {
-          const next = clampSize(n);
-          sizeRef.current = next;
-          setSize(next);
-        }
+      if (e.key !== STORAGE_KEY) return;
+      // newValue 为 null = 另一标签点了「重置」并清除了自定义值，
+      // 此时跟随 CSS 设备默认（桌面 18 / 手机 16），而不是停留在旧数字。
+      const n = e.newValue ? parseInt(e.newValue, 10) : defaultSize();
+      if (Number.isFinite(n)) {
+        const next = clampSize(n);
+        sizeRef.current = next;
+        setSize(next);
       }
     };
     // 同页另一实例调整时同步显示值（根字号已由对方写入，这里只更新数字）
@@ -81,9 +93,29 @@ export default function FontSizeControl({ compact = false }: { compact?: boolean
         setSize(next);
       }
     };
+    // 窗口跨过 640px 断点（手机横竖屏 / 桌面拖窄）时，CSS 会自动切换设备默认，
+    // 但组件里显示的数字不会自己变。仅在「用户没自定义过」时把它对齐，
+    // 避免覆盖用户用 A−/A+ 做出的显式选择。
+    const onBreakpoint = () => {
+      let hasCustom = false;
+      try {
+        hasCustom = localStorage.getItem(STORAGE_KEY) !== null;
+      } catch {
+        /* 隐私模式 / 禁用存储时静默降级 */
+      }
+      if (hasCustom || document.documentElement.style.fontSize) return;
+      const next = defaultSize();
+      if (next !== sizeRef.current) {
+        sizeRef.current = next;
+        setSize(next);
+      }
+    };
+    const mql = window.matchMedia('(max-width: 640px)');
+    mql.addEventListener('change', onBreakpoint);
     window.addEventListener('storage', onStorage);
     window.addEventListener(SYNC_EVENT, onSync);
     return () => {
+      mql.removeEventListener('change', onBreakpoint);
       window.removeEventListener('storage', onStorage);
       window.removeEventListener(SYNC_EVENT, onSync);
     };
@@ -107,9 +139,19 @@ export default function FontSizeControl({ compact = false }: { compact?: boolean
     applySize(next);
   };
   const reset = () => {
-    sizeRef.current = FONT_DEFAULT;
-    setSize(FONT_DEFAULT);
-    applySize(FONT_DEFAULT);
+    // 清除自定义值，让 index.css 的设备默认（桌面 18 / 手机 16）重新接管。
+    // 不能用 applySize(FONT_DEFAULT)：那会写入死的 18px 内联样式并覆盖手机媒体查询，
+    // 导致在手机上点「重置」反而又变回大字号。
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      /* 隐私模式 / 禁用存储时静默降级 */
+    }
+    document.documentElement.style.removeProperty('font-size');
+    const next = defaultSize();
+    sizeRef.current = next;
+    setSize(next);
+    window.dispatchEvent(new CustomEvent<number>(SYNC_EVENT, { detail: next }));
   };
 
   // ── 手机端：顶栏单按钮 + 弹出面板 ──
@@ -150,7 +192,7 @@ export default function FontSizeControl({ compact = false }: { compact?: boolean
               type="button"
               onClick={reset}
               aria-label={`当前 ${size}px，点击恢复默认字号`}
-              title={`点击恢复默认（${FONT_DEFAULT}px）`}
+              title={`点击恢复默认（${defaultSize()}px）`}
               className="w-12 shrink-0 rounded-md py-1 text-center text-sm font-medium tabular-nums text-foreground transition-colors hover:bg-accent"
             >
               {size}px
@@ -198,7 +240,7 @@ export default function FontSizeControl({ compact = false }: { compact?: boolean
       <button
         type="button"
         onClick={reset}
-        title={`当前 ${size}px，点击恢复默认（${FONT_DEFAULT}px）`}
+        title={`当前 ${size}px，点击恢复默认（${defaultSize()}px）`}
         className="rounded py-0.5 text-xs leading-none text-muted-foreground transition-colors hover:text-foreground"
       >
         字号 {size}

@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- 首屏防闪：在解析 body 之前根据 localStorage 设定 data-theme 与字号，
-         避免主题闪烁和「先 18px 后用户字号」的跳变 -->
+         避免主题闪烁和「先 18px 后用户字号」的跳变。
+         注意：这里只在用户显式调过字号时才写 inline style；未自定义时留空，
+         由 index.css 的媒体查询决定设备默认（桌面 18px / 手机 16px）。 -->
     <script>
       (function () {
         var d = document.documentElement;

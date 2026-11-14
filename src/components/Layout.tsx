@@ -487,7 +487,7 @@ export const Layout = () => {
       {/* 手机端顶部导航：整行左右对调（右手持机时按钮更顺手）。
           用 flex-row-reverse 只翻转视觉顺序、不动 DOM 顺序，读屏/键盘 Tab 顺序仍是品牌在前 */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-card/70 backdrop-blur-2xl lg:hidden">
-        <div className="flex h-14 flex-row-reverse items-center justify-between gap-2 px-3">
+        <div className="flex h-12 flex-row-reverse items-center justify-between gap-2 px-3 sm:h-14">
           <Link to="/" className="flex min-w-0 items-center gap-2">
             <Shield className="h-5 w-5 shrink-0 text-primary" strokeWidth={2.2} />
             <span className="truncate font-display text-base font-bold tracking-[0.15em] text-foreground">
@@ -515,7 +515,7 @@ export const Layout = () => {
           </div>
         </div>
         {/* 手机端导航横向滚动（同样按组分段，组名与竖线随内容一起滚） */}
-        <nav className="flex items-center gap-1 overflow-x-auto px-3 pb-2">
+        <nav className="flex items-center gap-1 overflow-x-auto px-3 pb-1.5 sm:pb-2">
           {NAV_GROUPS.map((group, gi) => (
             <div key={group.key} className="flex shrink-0 items-center gap-1">
               {gi > 0 && <span className="mx-1 h-3.5 w-px shrink-0 bg-border/70" />}
@@ -529,7 +529,7 @@ export const Layout = () => {
                   end={item.end}
                   className={({ isActive }) =>
                     cn(
-                      'shrink-0 rounded-md px-3 py-1.5 text-xs transition-colors',
+                      'shrink-0 rounded-md px-2.5 py-1 text-xs transition-colors sm:px-3 sm:py-1.5',
                       isActive
                         ? 'bg-primary/15 font-medium text-primary'
                         : 'text-muted-foreground hover:bg-accent hover:text-foreground',
@@ -625,7 +625,7 @@ export const Layout = () => {
         </div>
 
         )}
-        <div className="mx-auto w-full max-w-7xl px-3 py-5 sm:px-4 sm:py-6 lg:px-8 lg:py-8">
+        <div className="mx-auto w-full max-w-7xl px-3 py-3 sm:px-4 sm:py-6 lg:px-8 lg:py-8">
           <ErrorBoundary>
             <Outlet />
           </ErrorBoundary>
