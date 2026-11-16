@@ -2,7 +2,7 @@
 // See LICENSE / NOTICE for details.
 import { useEffect, useRef, useState } from 'react';
 import { BASE } from '@/lib/base';
-import HandLayer from '@/components/HandLayer';
+
 // 站点级全屏动态视频背景
 // - 横屏宽幅素材（1280x680），桌面/平板/横屏手机共用，object-cover 自动适配
 // - 无水印、无音频、muted + playsInline，保证移动端可自动播放
@@ -11,8 +11,10 @@ import HandLayer from '@/components/HandLayer';
 // - 人物左眼叠加「血瞳」：素材里眼睛被盔甲遮住，只从甲片间一道窄缝透出猩红，
 //   与视频人物左眼严格对齐（先压黑原有白光，再叠血红，最后用甲片把光切断）
 
-const POSTER = `${BASE}images/bg-main-poster.jpg`;
-const VIDEO = `${BASE}images/bg-main.mp4`;
+// 背景合成片：格斯（黑甲+披风，抠出后叠入）站在素材的红天/黑太阳/神之手环境里，
+// 两层都做了 ping-pong 无缝循环。素材已裁掉抖音水印。原始 bg-main 仍保留可回退。
+const POSTER = `${BASE}images/berserk-world-poster.jpg`;
+const VIDEO = `${BASE}images/berserk-world.mp4`;
 
 export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -61,7 +63,7 @@ export default function VideoBackground() {
       <img
         src={POSTER}
         alt=""
-        className="absolute inset-0 h-full w-full object-cover object-center opacity-70"
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-80 [filter:brightness(1.5)_saturate(1.12)]"
       />
 
       {/* 动态层：视频 + 遮罩 + 血瞳统一放进同一个 drift 包裹，
@@ -81,21 +83,17 @@ export default function VideoBackground() {
           playsInline
           preload="metadata"
           poster={POSTER}
-          className={`bg-video-motion absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${playing ? 'opacity-80' : 'opacity-0'}`}
+          className={`bg-video-motion absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${playing ? 'opacity-95' : 'opacity-0'} [filter:brightness(1.5)_saturate(1.12)]`}
         >
           <source src={VIDEO} type="video/mp4" />
         </video>
 
-        {/* 神之手 + 黑太阳（月食）：素材原样保留，只给位置——披风后偏右。
-            放在视频之后、所有压暗遮罩之前，让站点自己的黑场遮罩把它一起压进环境里。 */}
-        <HandLayer />
-
         {/* 遮罩 1：整体压暗，保证前景文字可读（黑要压得够沉，红色才立得住） */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/14" />
         {/* 遮罩 2：上下渐深，顶栏 / 页脚区域更沉，视线集中到中间 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/15 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/38 via-black/6 to-black/66" />
         {/* 遮罩 3：四角暗角，突出中央玻璃卡片 */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(0,0,0,0.6)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_52%,rgba(0,0,0,0.44)_100%)]" />
         {/* 遮罩 4：黑红氛围——红色不整片洗色（那样黑会发灰发脏），
             只做「光」：右缘一道警戒红光缓慢涨落（xw-alert-glow，警戒/压迫感），
             左下一点余烬红，人物轮廓一圈极淡血色（见 xw-eye-layer 内的 xw-figure-aura）。

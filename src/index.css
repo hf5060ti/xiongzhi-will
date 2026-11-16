@@ -296,44 +296,6 @@ html {
   46% { opacity: 1; }
 }
 
-/* ── 神之手层：黑太阳（月食）+ 神之手 + 格斯剪影 ────────────────
- * 素材原样保留（已裁抖音水印、做成 ping-pong 无缝循环），不加改造，
- * 只给位置：叠在背景格斯的披风后面、偏右一点点。
- * 径向遮罩羽化四边 + 低不透明度，且位于站点压暗遮罩之下，
- * 让它融进黑白格斯的暗场里，而不是贴一块红色矩形。
- */
-.xw-hand-layer {
-  position: absolute;
-  top: 9%;
-  right: 20%;
-  width: clamp(270px, 30vw, 440px);
-  aspect-ratio: 640 / 512;
-  z-index: 0;
-  opacity: 0.86;
-  pointer-events: none;
-  /* 双向羽化 + intersect：上下、左右各留一段透明过渡，
-     避免视频矩形的硬边露出来（尤其是顶部那条亮红直线）。 */
-  -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, #000 11%, #000 72%, transparent 100%),
-    linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
-  mask-image:
-    linear-gradient(to bottom, transparent 0%, #000 11%, #000 72%, transparent 100%),
-    linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
-  filter: brightness(2.05) saturate(118%) contrast(104%);
-}
-.xw-hand-layer-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-:root[data-theme='light'] .xw-hand-layer { display: none; }
-@media (max-width: 767px) {
-  .xw-hand-layer { display: none; }
-}
-
 /* ── 玻璃拟态（glassmorphism）────────────────────────────
  * 半透明灰黑玻璃面板：背景模糊 + 高光描边 + 深阴影
  */

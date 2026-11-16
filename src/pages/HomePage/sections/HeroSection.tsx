@@ -11,7 +11,7 @@ export default function HeroSection() {
       {/* 背景层：动态视频由站点级 VideoBackground 提供，这里只叠加压暗与光线特效 */}
       <div className="absolute inset-0 overflow-hidden">
         {/* 横向渐变压暗：左侧重、右侧轻，保证标题可读；明亮模式下换成浅底压暗 */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/10 light:from-background/85 light:via-background/40 light:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/62 via-black/26 to-black/5 light:from-background/85 light:via-background/40 light:to-transparent" />
         {/* 顶部 / 底部渐隐，与页面其余部分自然衔接 */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-background/85 light:from-background/55" />
         {/* 呼吸光晕：右上角缓慢明暗，比之前更大更亮，强化视觉焦点 */}
