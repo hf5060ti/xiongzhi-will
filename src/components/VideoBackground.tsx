@@ -140,8 +140,6 @@ export default function VideoBackground() {
               <span className="xw-eye-core" />
               <span className="xw-eye-rim" />
               <span className="xw-eye-sheen" />
-              <span className="xw-eye-plate xw-eye-plate-a" />
-              <span className="xw-eye-plate xw-eye-plate-b" />
               <span className="xw-eye-ember" />
             </div>
           </div>

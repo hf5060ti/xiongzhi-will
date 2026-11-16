@@ -238,24 +238,9 @@ html {
   opacity: 0;
   animation: xw-eye-seep 6.8s ease-in-out infinite;
 }
-/* 甲片遮挡：两道近乎全黑的窄条压在光上，把缝隙里的光切断成几段。
-   黑叠黑看不见，只「吃掉」红光 —— 这就是被盔甲挡住的效果。
-   两端用 mask 渐隐，避免在脸甲上出现生硬的黑矩形边。 */
-.xw-eye-plate {
-  /* 上沿留一点金属反光，下面纯黑 —— 读起来是甲片边缘，而不是一块污渍 */
-  background: linear-gradient(180deg, #161020 0%, #080510 20%, #030206 100%);
-  opacity: 0.97;
-  -webkit-mask: linear-gradient(90deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
-          mask: linear-gradient(90deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
-}
-.xw-eye-plate-a {
-  inset: 38% -18% 56% -18%;
-  transform: rotate(-4deg);
-}
-.xw-eye-plate-b {
-  inset: 74% -18% -6% -18%;
-  transform: rotate(3deg);
-}
+/* 甲片遮挡（已停用）：原本用两道近黑窄条把缝里的光切断成几段，
+   但背景循环里格斯缩到 0.62 倍后，窄条相对眼睛过粗，读起来是一道横穿红光的黑线，
+   反而像渲染错误 —— 现在只保留血玉本体，光连续不断。 */
 /* 缝隙上端的一点炽亮：血玉的高光，只闪不扩 */
 .xw-eye-ember {
   left: 28%;
