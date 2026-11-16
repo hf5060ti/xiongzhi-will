@@ -2,6 +2,7 @@
 // See LICENSE / NOTICE for details.
 import { useEffect, useRef, useState } from 'react';
 import { BASE } from '@/lib/base';
+import { INTRO_DONE_EVENT } from '@/components/OpeningScene';
 
 // 站点级全屏动态视频背景
 // - 横屏宽幅素材（1280x680），桌面/平板/横屏手机共用，object-cover 自动适配
@@ -54,6 +55,27 @@ export default function VideoBackground() {
     };
   }, []);
 
+  // 等开场放完再启动背景循环：开场片尾（月食+格斯）与循环首帧同源，
+  // 淡出后直接接上，视觉上是一条连续的镜头。12s 兜底防止开场组件异常时黑场。
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const start = () => {
+      const p = v.play();
+      if (p) void p.catch(() => {});
+    };
+    const fallback = window.setTimeout(start, 12000);
+    const onIntroDone = () => {
+      window.clearTimeout(fallback);
+      start();
+    };
+    window.addEventListener(INTRO_DONE_EVENT, onIntroDone);
+    return () => {
+      window.clearTimeout(fallback);
+      window.removeEventListener(INTRO_DONE_EVENT, onIntroDone);
+    };
+  }, []);
+
   return (
     <div
       aria-hidden="true"
@@ -77,7 +99,6 @@ export default function VideoBackground() {
             而省电模式（禁用自动播放）和弱网下则直接省掉这 0.92 MB。 */}
         <video
           ref={videoRef}
-          autoPlay
           loop
           muted
           playsInline

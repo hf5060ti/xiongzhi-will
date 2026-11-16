@@ -10,6 +10,7 @@ import { ErrorFallback } from '@/components/ErrorFallback';
 import { handleAuthCallback } from '@/lib/auth';
 import { initSyncIfLoggedIn } from '@/lib/sync';
 import App from '@/App';
+import OpeningScene from '@/components/OpeningScene';
 
 // 线上与桌面统一使用 HashRouter：
 // 桌面版是 file:// 协议，history.pushState 会被浏览器拒绝（origin 为 null）；
@@ -81,6 +82,7 @@ export function Root() {
     <Router>
       <ReactErrorBoundary FallbackComponent={ErrorFallback}>
         <App />
+        <OpeningScene />
       </ReactErrorBoundary>
     </Router>
   );
