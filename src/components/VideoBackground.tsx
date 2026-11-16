@@ -12,8 +12,10 @@ import { INTRO_DONE_EVENT } from '@/components/OpeningScene';
 // - 人物左眼叠加「血瞳」：素材里眼睛被盔甲遮住，只从甲片间一道窄缝透出猩红，
 //   与视频人物左眼严格对齐（先压黑原有白光，再叠血红，最后用甲片把光切断）
 
-// 背景合成片：格斯（黑甲+披风，抠出后叠入）站在素材的红天/黑太阳/神之手环境里，
-// 两层都做了 ping-pong 无缝循环。素材已裁掉抖音水印。原始 bg-main 仍保留可回退。
+// 背景合成片：素材 11.4–16.4s（星云成形、黑太阳/神之手/地面十字尖桩最完整的一段）
+// 按原生比例铺在 1280×680 画布中央，左右用自身虚化镜像羽化补满，不放大裁切；
+// 格斯（黑甲+披风）缩至 0.62 倍叠在前景中央，巨手指尖与黑太阳从他披风上方露出。
+// 两层各自 ping-pong 无缝循环（各 5s，合 10s）。素材已裁掉抖音水印。
 const POSTER = `${BASE}images/berserk-world-poster.jpg`;
 const VIDEO = `${BASE}images/berserk-world.mp4`;
 
@@ -123,8 +125,9 @@ export default function VideoBackground() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_36%_at_-8%_106%,rgba(230,12,34,0.12),transparent_65%)] mix-blend-screen" />
 
         {/* 人物左眼·血瞳：素材里眼睛被盔甲遮住，只有甲片间一道上宽下尖的窄缝
-            （视频内约 46.0% / 46.5%）漏光。这层先用暗影压黑原有白光，再沿缝形叠深血红，
-            最后用两道黑色甲片把光切断 —— 呈现"被盔甲挡住、从缝里透出猩红"的状态。 */}
+            （格斯在原画里是 46.0% / 46.5%，合成后 0.62 倍落到画布 53.5% / 66.8%）。
+            这层先用暗影压黑原有白光，再沿缝形叠深血红，最后用两道黑色甲片把光切断
+            —— 呈现"被盔甲挡住、从缝里透出猩红"的状态。 */}
         <div className="xw-eye-layer">
           <div className="xw-eye-stage">
             {/* 人物轮廓的血色氛围：随 drift 一起动，让人物从黑里"浮"出来 */}

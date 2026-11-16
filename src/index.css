@@ -67,10 +67,10 @@ html {
    极淡的一圈红，让人物从纯黑里"浮"出来 —— 存在感，但不糊成一团。 */
 .xw-figure-aura {
   position: absolute;
-  left: 46%;
-  top: 46.5%;
-  width: 46cqw;
-  height: 44cqh;
+  left: 53.52%;
+  top: 66.77%;
+  width: 28.5cqw;
+  height: 27.3cqh;
   transform: translate(-50%, -50%);
   background: radial-gradient(
     closest-side,
@@ -116,13 +116,15 @@ html {
 /* 定位锚点：整只「眼」的坐标系，尺寸随视频显示盒等比缩放（约等于素材里的甲缝大小） */
 .xw-eye-rig {
   position: absolute;
-  left: 46%;
-  top: 46.5%;
+  /* 格斯在新循环里的落位：0.62 倍缩放后置于 (320, 258)，
+     眼睛由整幅的 (46%, 46.5%) 换算为 (53.52%, 66.77%) */
+  left: 53.52%;
+  top: 66.77%;
   /* 兜底尺寸：不支持容器查询单位时用 vmin；支持时用 cqw 随显示盒等比缩放 */
-  width: clamp(17px, 2vmin, 40px);
-  height: clamp(30px, 3.5vmin, 70px);
-  width: 1.5cqw;
-  height: 2.75cqw;
+  width: clamp(11px, 1.25vmin, 25px);
+  height: clamp(19px, 2.2vmin, 43px);
+  width: 0.93cqw;
+  height: 1.705cqw;
   transform: translate(-50%, -50%) rotate(-7deg);
   animation: xw-eye-throb 5.6s ease-in-out infinite;
   will-change: opacity;
