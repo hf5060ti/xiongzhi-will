@@ -2,8 +2,7 @@
 // See LICENSE / NOTICE for details.
 import { useEffect, useRef, useState } from 'react';
 import { BASE } from '@/lib/base';
-import BattleFlames from '@/components/BattleFlames';
-
+import HandLayer from '@/components/HandLayer';
 // 站点级全屏动态视频背景
 // - 横屏宽幅素材（1280x680），桌面/平板/横屏手机共用，object-cover 自动适配
 // - 无水印、无音频、muted + playsInline，保证移动端可自动播放
@@ -87,6 +86,10 @@ export default function VideoBackground() {
           <source src={VIDEO} type="video/mp4" />
         </video>
 
+        {/* 神之手 + 黑太阳（月食）：素材原样保留，只给位置——披风后偏右。
+            放在视频之后、所有压暗遮罩之前，让站点自己的黑场遮罩把它一起压进环境里。 */}
+        <HandLayer />
+
         {/* 遮罩 1：整体压暗，保证前景文字可读（黑要压得够沉，红色才立得住） */}
         <div className="absolute inset-0 bg-black/40" />
         {/* 遮罩 2：上下渐深，顶栏 / 页脚区域更沉，视线集中到中间 */}
@@ -125,10 +128,6 @@ export default function VideoBackground() {
         {/* 亮色遮罩：仅在明亮模式下启用，把暗色视频压到近白底，避免深色视频在浅色 UI 上发灰发脏。
             放在血瞳之后，浅色模式下连血瞳一并盖住，保证浅色主题干净。 */}
         <div className="absolute inset-0 light:bg-background/90" />
-
-        {/* 战场火焰：全宽底部火带，与右缘红雾、血瞳同色系（偏玫红/绯红的"血火"）。
-            放在最后（最上层但仍在 main z-10 之下），浅色模式隐藏。 */}
-        <BattleFlames />
       </div>
     </div>
   );

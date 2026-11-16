@@ -1,12 +1,11 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
-// 应用根组件：路由 + 错误边界 + 启动动画 + 账号系统初始化。
+// 应用根组件：路由 + 错误边界 + 账号系统初始化（启动动画已移除，直接进入主界面）。
 // 路由选择放在这里而不是入口 index.tsx：入口文件不带任何 export，
 // 在其中定义组件会让 react-refresh 失效（eslint react-refresh/only-export-components 报错）。
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { HashRouter } from 'react-router-dom';
 import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary';
-import LoadingScreen from '@/components/LoadingScreen';
 import { ErrorFallback } from '@/components/ErrorFallback';
 import { handleAuthCallback } from '@/lib/auth';
 import { initSyncIfLoggedIn } from '@/lib/sync';
@@ -63,15 +62,12 @@ function markAppHealthy() {
   try { sessionStorage.removeItem(RECOVERY_KEY); } catch { /* ignore */ }
 }
 
-/** 启动加载动画：刷新 / 首次进入时先展示动画，随后淡出进入主界面 */
+/** 启动：不再有全屏入场动画，直接进入主界面（背景视频本身承担开场氛围） */
 export function Root() {
-  const [splashDone, setSplashDone] = useState(false);
   useEffect(() => {
-    // 动画时长缩短到 1.6 秒：视频首帧 poster 已足够建立品牌感，不等完整视频加载
-    const t = setTimeout(() => setSplashDone(true), 1600);
     // 只有组件真的挂载并稳定运行后才算「这次加载成功」
     const healthy = setTimeout(markAppHealthy, 3000);
-    return () => { clearTimeout(t); clearTimeout(healthy); };
+    return () => { clearTimeout(healthy); };
   }, []);
 
   // 账号系统初始化：处理 GitHub 登录回调（落地会话 + 拉取云端数据），
@@ -84,7 +80,6 @@ export function Root() {
   return (
     <Router>
       <ReactErrorBoundary FallbackComponent={ErrorFallback}>
-        <LoadingScreen visible={!splashDone} />
         <App />
       </ReactErrorBoundary>
     </Router>

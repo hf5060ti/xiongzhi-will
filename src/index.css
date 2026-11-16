@@ -296,87 +296,42 @@ html {
   46% { opacity: 1; }
 }
 
-/* ── 战场火焰：全宽底部「烧刃纹」血火带 ────────────────────────
- * 形状不再是软塌塌的火舌，而是武士刀淬火刃纹（hamon）：连绵起伏、
- * 大小交替的锋利波浪。颜色锁死在血红区间（暗红→猩红），绝不加粉白核心，
- * 以免盖住背景里原本的猩红压迫感。三层：① 底部暗红辉光床 ② 两层横向循环
- * 平移的刃纹 SVG ③ 少量暗红余烬。容器固定在视频背景层底部、铺满视口宽。
+/* ── 神之手层：黑太阳（月食）+ 神之手 + 格斯剪影 ────────────────
+ * 素材原样保留（已裁抖音水印、做成 ping-pong 无缝循环），不加改造，
+ * 只给位置：叠在背景格斯的披风后面、偏右一点点。
+ * 径向遮罩羽化四边 + 低不透明度，且位于站点压暗遮罩之下，
+ * 让它融进黑白格斯的暗场里，而不是贴一块红色矩形。
  */
-.xw-battle-flames {
+.xw-hand-layer {
   position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  height: clamp(200px, 34vh, 420px);
+  top: 9%;
+  right: 20%;
+  width: clamp(270px, 30vw, 440px);
+  aspect-ratio: 640 / 512;
+  z-index: 0;
+  opacity: 0.86;
   pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
+  /* 双向羽化 + intersect：上下、左右各留一段透明过渡，
+     避免视频矩形的硬边露出来（尤其是顶部那条亮红直线）。 */
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, #000 11%, #000 72%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, #000 11%, #000 72%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  filter: brightness(2.05) saturate(118%) contrast(104%);
 }
-:root[data-theme='light'] .xw-battle-flames { display: none; }
-
-/* SVG 画布铺两屏宽：内部两份刃纹平移一屏即可无缝循环。
-   -1200px 对应 BattleFlames.tsx 里的 WIDTH，改动时需同步。 */
-.xw-flame-svg {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 200%;
+.xw-hand-layer-video {
+  width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
-  mix-blend-mode: screen;
 }
-.xw-flame-layer { will-change: transform; }
-.xw-flame-layer-back {
-  opacity: 0.72;
-  animation: xw-flame-scroll 15s linear infinite;
-}
-.xw-flame-layer-front {
-  opacity: 0.9;
-  animation: xw-flame-scroll 9s linear infinite;
-}
-@keyframes xw-flame-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-1200px); }
-}
-
-/* 底部辉光床：暗红→透明，只做氛围衔接，不提亮成粉 */
-.xw-flame-bed {
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  height: 52%;
-  background:
-    radial-gradient(ellipse 130% 100% at 50% 122%, rgba(150, 4, 20, 0.55) 0%, rgba(96, 0, 14, 0.30) 45%, transparent 76%),
-    linear-gradient(to top, rgba(110, 0, 16, 0.42), transparent 70%);
-  mix-blend-mode: screen;
-  filter: blur(14px);
-}
-
-/* 余烬：细小暗红火星从底部缓缓上飘并渐隐 */
-.xw-flame-embers { position: absolute; inset: 0; mix-blend-mode: screen; }
-.xw-flame-ember {
-  position: absolute;
-  bottom: -2%;
-  display: block;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(224, 34, 55, 0.9) 0%, rgba(140, 6, 22, 0.5) 55%, transparent 100%);
-  box-shadow: 0 0 6px 1px rgba(160, 8, 26, 0.5);
-  will-change: transform, opacity;
-  animation-name: xw-flame-ember-rise;
-  animation-timing-function: ease-in;
-  animation-iteration-count: infinite;
-}
-@keyframes xw-flame-ember-rise {
-  0% { transform: translate3d(0, 0, 0) scale(0.6); opacity: 0; }
-  12% { opacity: 0.75; }
-  70% { opacity: 0.4; }
-  100% { transform: translate3d(14px, -220px, 0) scale(0.2); opacity: 0; }
-}
-
-/* 减少动态效果：冻结成静态血色刃纹，不移动不飘火星 */
-@media (prefers-reduced-motion: reduce) {
-  .xw-flame-layer,
-  .xw-flame-ember { animation: none !important; }
-  .xw-flame-ember { display: none; }
+:root[data-theme='light'] .xw-hand-layer { display: none; }
+@media (max-width: 767px) {
+  .xw-hand-layer { display: none; }
 }
 
 /* ── 玻璃拟态（glassmorphism）────────────────────────────
