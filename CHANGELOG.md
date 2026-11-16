@@ -4,26 +4,54 @@
 
 ---
 
-## Unreleased
+## v0.5.0 - 2026-11-16
 
 ### 新增
 
+- **「点哪练哪」人体图交互**：首页右侧的解剖图 39 块热区可点，点胸出卧推系列、点二头出弯举系列等。
+  由 `scripts/build-muscle-map.ts` 合并动作库/扩展/fitwill 共 2400+ 动作，按 17 个肌群各选 14 个经典动作，
+  产出 `muscle-exercise-map.json`（226 条）。`MusclePicker` 支持悬停高亮、选中、`?m=` 深链；
+  点动作在卡片内滑出详情抽屉（不跳页），抽屉内按钮再走 `?e=` 深链去动作库看完整演示与要点。
+  动作库页新增 `?e=`（自动开详情）与 `?m=`（预置筛选）深链支持
+- **全局字号调节器**：桌面侧栏与手机设置菜单均可 A−/A+ 调整根字号（14–22px，默认桌面 18px），
+  `localStorage['xy-font-size']` 持久化 + 首屏内联脚本防闪；同页多实例事件同步、连续快点用 ref 取实时值。
+  全站基准字号 17→18px，并把 33 处写死 px 的小字改成 rem 以跟随缩放。
+  首页大标题改用 `min(144px,18.4cqw)` 按容器宽度收放，任何字号档都保持一行
+- **外卖库扩容**：从 33 家 / 99 道扩到 59 家 / 313 道 / 11 个分类，新增粉面米线、烧烤夜宵、
+  便利店餐、甜品烘焙四类；小字从 8–11px 抬到 9–13px
+- **背景视频氛围**：Guts 左眼甲缝血红微光（7 层结构，对齐素材 12×22px 缝隙位置）、
+  右缘三层叠加红雾 + 呼吸动画 + 人物轮廓血色，压深黑色遮罩；保留 `prefers-reduced-motion` 静态兜底
+- **手机端统一设置菜单**：主题/语言/字号合并为一个「设置」入口，顶栏从 5 个按钮减到 3 个，
+  最大字号档也能完整显示品牌名；三个控件复用同一套 inline 形态，逻辑与桌面侧栏同源
+- **战场火焰（全宽底部火带）**：`BattleFlames` 用 SVG feTurbulence + feDisplacementMap 把
+  7 条绯红火舌扭成翻卷形态，叠余烬上飘与底部辉光床，铺满视口宽度、与右缘红雾/血瞳同色系
+  （玫红酒火而非橙黄生活火）；`prefers-reduced-motion` 冻结为静态火带，浅色主题隐藏
+- **饮料口味快捷选择**：营养页搜「魔爪 / 红牛」时，搜索框下方直接弹出该品牌全部口味
+  （带罐色圆点 + kcal），一点即选中对应食物并带入计算器；数据完全复用 `foods/drinks.ts` 的独立条目
 - **社交分享卡片（Open Graph / Twitter Card）**：`index.html` 与两份 `landing.html`
   补全 `og:type` / `og:locale=zh_CN` / `og:site_name` / `og:image` / `twitter:image`
   （封面 1200×630，随 `vite.config.ts` 的 `base` 走相对路径，GitHub Pages 与 Gitee Pages
   任意子路径均可正确拉到图）；封面由 `scripts/gen-og-cover.py`（numpy 高斯光晕 + 独立 RGBA
   水印层，避免 banding）一次性生成，非运行依赖
 - **结构化数据（JSON-LD）**：`index.html` 注入 `WebSite` + `SearchAction`，
-  帮助搜索引擎识别站点与站内搜索入口（目标指向 HashRouter 的 `#/library?q=`；官网 URL 指向 Gitee Pages，国内可访问）
+  帮助搜索引擎识别站点与站内搜索入口（目标指向 HashRouter 的 `#/library?q=`；官网 URL 指向实测可访问的 GitHub Pages）
 - **规范链接 `canonical` 与 `og:url`**：`index.html` 与两份 `landing.html` 补全
-  `rel=canonical` 与 `og:url`，统一指向 Gitee Pages
-  （`xiongzhi_project.gitee.io/masculine-consciousness`），避免搜索引擎收录被墙的 `github.io` 地址
+  `rel=canonical` 与 `og:url`，统一指向 GitHub Pages（`hf5060ti.github.io/xiongzhi-will/`）。
+  原计划指向 Gitee Pages，但该免费版长期未重新部署、整站 404，故改回 GitHub Pages 作为唯一规范地址；
+  `sitemap.xml` / `robots.txt` 也同步指向 GitHub Pages
 - **PWA iOS 适配元信息**：补齐 `apple-mobile-web-app-capable` / `mobile-web-app-capable` /
   `apple-mobile-web-app-status-bar-style` / `apple-mobile-web-app-title`，提升 iOS「添加到主屏幕」体验
   （`index.html` 与两份 `landing.html` 副本同步）
 
 ### 修复
 
+- **动作演示图 / 背景视频稳定度**：图床熔断从「3 次失败封 7 天」改为「5 次 / 10 分钟时间窗 / 封 2 天」，
+  加载成功即清零失败计数，避免图床偶发抖动或长期误封；详情 GIF 改用明确的
+  gif→静态图→占位三段状态机（此前静态图 onLoad 就把 src 换成 gif，弱网下闪烁/竞态），
+  GIF 最多重试 2 次；背景视频加「卡住 6 秒退回海报」兜底，不再出现 video 盖住 poster 却不动的死画面
+- **精简多余缓存**：Service Worker 不再缓存 GIF（单张 1–3MB、每次从头播，收益低却最占磁盘），
+  静态图缓存上限 500→120 张、加 7 天过期时间戳，升级时一次性回收旧版 img-v1；
+  加载动画视频（仅用 1.6s）不再入缓存，只缓存常驻的背景视频
 - **`public/sitemap.xml` 遗漏 `/strength` 路由**：逐条比对 `ROUTE_META`（27 条）与
   sitemap（26 条），仅缺 `/strength`，已补 `<loc>…/strength</loc><priority>0.8</priority>`；
   无多余 / 失效项

@@ -102,6 +102,33 @@ function stripFileGuidePlugin(): Plugin {
   };
 }
 
+// 桌面离线版：SW 缓存名里的 __XW_BUILD__ 占位符在 CI 里由 deploy.yml 用 commit SHA
+// 替换，但桌面版不走 CI，占位符会原样留在 sw.js 里（缓存名变成永久固定的字符串）。
+// 桌面版是 file://，src/index.tsx 已跳过 SW 注册，实际不影响使用；这里仍在构建期
+// 替换成稳定版本号，避免把未替换的占位符交付出去。
+function stampDesktopSwPlugin(): Plugin {
+  let outDir = '';
+  return {
+    name: 'xw-stamp-desktop-sw',
+    apply: 'build',
+    configResolved(config) {
+      outDir = config.build.outDir;
+    },
+    closeBundle() {
+      if (process.env.DESKTOP_BUILD !== '1') return;
+      const swPath = path.join(path.resolve(import.meta.dirname, outDir), 'sw.js');
+      if (!fs.existsSync(swPath)) return;
+      const pkg = JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, 'package.json'), 'utf8'));
+      const stamp = `desktop-${pkg.version}`;
+      const before = fs.readFileSync(swPath, 'utf8');
+      if (before.includes('__XW_BUILD__')) {
+        fs.writeFileSync(swPath, before.replaceAll('__XW_BUILD__', stamp));
+        console.log(`[xw-stamp-desktop-sw] sw.js 缓存版本 = ${stamp}`);
+      }
+    },
+  };
+}
+
 // 收集 <Route path="..."> 声明的路由；index 路由计为 "/"，通配 "*" 不进枚举
 function collectRoutePaths(srcDir: string): string[] {
   const paths = new Set<string>(['/']);
@@ -125,7 +152,7 @@ function collectRoutePaths(srcDir: string): string[] {
 }
 
 export default defineConfig(({ command }) => ({
-  plugins: [react(), tailwindcss(), process.env.SKIP_MIAODA ? null : miaodaOutputPlugin(), sparkJsonPlugin(), stripFileGuidePlugin(), process.env.DESKTOP_BUILD === '1' ? viteSingleFile() : null].filter(Boolean),
+  plugins: [react(), tailwindcss(), process.env.SKIP_MIAODA ? null : miaodaOutputPlugin(), sparkJsonPlugin(), stripFileGuidePlugin(), stampDesktopSwPlugin(), process.env.DESKTOP_BUILD === '1' ? viteSingleFile() : null].filter(Boolean),
   // 生产构建：JS/CSS 引用带 CDN 前缀（无 CDN 时退回 base path）；dev 恒为 /
   base: command === 'build' ? cdnPrefix || basePath : '/',
   define: {

@@ -2,9 +2,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Globe, Check } from 'lucide-react';
 import { LANGS, getLang, setLang, t } from '@/lib/i18n';
+import { cn } from '@/lib/utils';
 
-/** 语言切换按钮：Globe 图标，点开 4 个语言选项 */
-export default function LanguageSwitcher({ compact }: { compact?: boolean }) {
+/** 语言切换按钮：Globe 图标，点开 4 个语言选项。
+ *  inline：内嵌在「设置」面板里，直接铺开语言列表、不再套一层弹出菜单。 */
+export default function LanguageSwitcher({ compact, inline }: { compact?: boolean; inline?: boolean }) {
   const [open, setOpen] = useState(false);
   const [lang, setLangState] = useState(getLang());
   const ref = useRef<HTMLDivElement>(null);
@@ -22,6 +24,30 @@ export default function LanguageSwitcher({ compact }: { compact?: boolean }) {
     setLangState(code);
     setOpen(false);
   };
+
+  if (inline) {
+    return (
+      <div>
+        <p className="px-2 pb-1.5 text-xs leading-relaxed text-muted-foreground">{t('lang_scope')}</p>
+        <div className="grid grid-cols-2 gap-1">
+          {LANGS.map((l) => (
+            <button
+              key={l.code}
+              type="button"
+              onClick={() => pick(l.code)}
+              className={cn(
+                'flex items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm transition-colors hover:bg-accent',
+                lang === l.code ? 'bg-primary/10 text-primary' : 'text-foreground',
+              )}
+            >
+              <span>{l.flag}</span>
+              <span className="truncate">{l.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={ref} className="relative shrink-0">

@@ -19,13 +19,24 @@
  * 网络正常时不会触发，行为与原来完全一致 —— 属于纯兜底，不牺牲可用网络下的画质。
  */
 
-const STORAGE_KEY = 'xw-img-host-down-v1';
-/** 连续失败多少次后熔断 */
-const FAIL_LIMIT = 3;
-/** 熔断保留时长：7 天。过期后重新给一次机会（网络环境可能变了） */
-const DOWN_TTL = 7 * 24 * 60 * 60 * 1000;
+const STORAGE_KEY = 'xw-img-host-down-v2';
+/**
+ * 连续失败多少次后熔断。
+ * 3 次太激进：图床偶发 502 / 弱网抖动就会把整个图床封掉，用户看到大片占位。
+ * 放宽到 5 次，并配合下面的时间窗——只有「短时间内」连续失败才算数。
+ */
+const FAIL_LIMIT = 5;
+/** 失败计数时间窗：10 分钟内的失败才累计，超时的旧失败会清零重算 */
+const FAIL_WINDOW = 10 * 60 * 1000;
+/**
+ * 熔断保留时长：2 天（原来 7 天）。
+ * 图床故障多数在 1–2 天内恢复；封太久会让已经修好的图床继续被跳过，
+ * 用户明明网络正常却长时间看不到动图。过期后自动给一次重新机会。
+ */
+const DOWN_TTL = 2 * 24 * 60 * 60 * 1000;
 
-type GuardRecord = { fails: number; until: number };
+/** firstAt 记录本轮第一次失败时间，用于时间窗判定 */
+type GuardRecord = { fails: number; firstAt: number; until: number };
 
 let memory: Record<string, GuardRecord> = {};
 
@@ -79,18 +90,33 @@ export function markHostFailed(url: string | undefined | null): boolean {
   const host = hostOf(url);
   if (!host) return false;
   const store = load();
-  const rec = store[host] || { fails: 0, until: 0 };
-  // 熔断已过期的记录要重新计数：否则 fails 会一直 >= FAIL_LIMIT，
-  // 网络刚恢复时只要再失败 1 次就立刻重新熔断（与「再给 3 次机会」的设计不符）。
-  if (rec.until && rec.until <= Date.now()) {
+  const now = Date.now();
+  const rec = store[host] || { fails: 0, firstAt: now, until: 0 };
+  // 两种情况重新计数：① 熔断已过期（网络环境可能变了）② 距首次失败超过时间窗
+  // ——避免几天前零星失败的计数一直挂着，导致这次刚抖一下就误封。
+  if ((rec.until && rec.until <= now) || (rec.firstAt && now - rec.firstAt > FAIL_WINDOW)) {
     rec.fails = 0;
+    rec.firstAt = now;
     rec.until = 0;
   }
+  if (!rec.firstAt) rec.firstAt = now;
   rec.fails += 1;
-  if (rec.fails >= FAIL_LIMIT) rec.until = Date.now() + DOWN_TTL;
+  if (rec.fails >= FAIL_LIMIT) rec.until = now + DOWN_TTL;
   store[host] = rec;
   save();
-  return rec.until > Date.now();
+  return rec.until > now;
+}
+
+/** 记录一次加载成功：清零该图床的失败计数（弱网下成败交替时不要越攒越多） */
+export function markHostOk(url: string | undefined | null): void {
+  if (!url) return;
+  const host = hostOf(url);
+  if (!host) return;
+  const store = load();
+  if (store[host]) {
+    delete store[host];
+    save();
+  }
 }
 
 /**

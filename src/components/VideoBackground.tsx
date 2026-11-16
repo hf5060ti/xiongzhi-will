@@ -1,6 +1,8 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
+import { useEffect, useRef, useState } from 'react';
 import { BASE } from '@/lib/base';
+import BattleFlames from '@/components/BattleFlames';
 
 // 站点级全屏动态视频背景
 // - 横屏宽幅素材（1280x680），桌面/平板/横屏手机共用，object-cover 自动适配
@@ -14,6 +16,43 @@ const POSTER = `${BASE}images/bg-main-poster.jpg`;
 const VIDEO = `${BASE}images/bg-main.mp4`;
 
 export default function VideoBackground() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  // 视频「真正开始播放」才置 true。卡在首帧 / 解码失败 / 自动播放被拒时保持 false，
+  // 视频层淡出、露出下面的静态海报——避免出现「video 盖住 poster 却不动」的死画面。
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const onPlaying = () => setPlaying(true);
+    const onStalled = () => {
+      // 卡住超过 6 秒仍未恢复就退回海报；恢复播放时 onPlaying 会再置回
+      const t = window.setTimeout(() => {
+        if (v.readyState < 3) setPlaying(false);
+      }, 6000);
+      v.dataset.stallTimer = String(t);
+    };
+    const onWaiting = onStalled;
+    const onCanPlay = () => {
+      const t = Number(v.dataset.stallTimer);
+      if (t) window.clearTimeout(t);
+    };
+    v.addEventListener('playing', onPlaying);
+    v.addEventListener('stalled', onStalled);
+    v.addEventListener('waiting', onWaiting);
+    v.addEventListener('canplay', onCanPlay);
+    v.addEventListener('canplaythrough', onCanPlay);
+    return () => {
+      const t = Number(v.dataset.stallTimer);
+      if (t) window.clearTimeout(t);
+      v.removeEventListener('playing', onPlaying);
+      v.removeEventListener('stalled', onStalled);
+      v.removeEventListener('waiting', onWaiting);
+      v.removeEventListener('canplay', onCanPlay);
+      v.removeEventListener('canplaythrough', onCanPlay);
+    };
+  }, []);
+
   return (
     <div
       aria-hidden="true"
@@ -36,13 +75,14 @@ export default function VideoBackground() {
             poster 已经提供了完整视觉兜底，视频迟几百毫秒进场用户察觉不到，
             而省电模式（禁用自动播放）和弱网下则直接省掉这 0.92 MB。 */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
           poster={POSTER}
-          className="bg-video-motion absolute inset-0 h-full w-full object-cover object-center opacity-80"
+          className={`bg-video-motion absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${playing ? 'opacity-80' : 'opacity-0'}`}
         >
           <source src={VIDEO} type="video/mp4" />
         </video>
@@ -85,6 +125,10 @@ export default function VideoBackground() {
         {/* 亮色遮罩：仅在明亮模式下启用，把暗色视频压到近白底，避免深色视频在浅色 UI 上发灰发脏。
             放在血瞳之后，浅色模式下连血瞳一并盖住，保证浅色主题干净。 */}
         <div className="absolute inset-0 light:bg-background/90" />
+
+        {/* 战场火焰：全宽底部火带，与右缘红雾、血瞳同色系（偏玫红/绯红的"血火"）。
+            放在最后（最上层但仍在 main z-10 之下），浅色模式隐藏。 */}
+        <BattleFlames />
       </div>
     </div>
   );

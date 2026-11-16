@@ -1,11 +1,11 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 // 「点哪练哪」人体导航：在解剖图上点击肌群，下方立即列出该部位的代表动作，
-// 点击动作跳转动作库并自动打开详情。挂在首页 Hero 右侧。
+// 点击动作在卡片内滑出详情抽屉（不跳页），抽屉里再去动作库看完整演示与要点。挂在首页 Hero 右侧。
 // 数据：anatomy-regions.json（可点区域坐标） + muscle-exercise-map.json（肌群→动作索引，构建期生成）。
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { MousePointerClick } from 'lucide-react';
+import { MousePointerClick, X, ArrowUpRight, Dumbbell, Activity } from 'lucide-react';
 import { BASE } from '@/lib/base';
 import regionData from '@/data/anatomy-regions.json';
 import muscleMap from '@/data/muscle-exercise-map.json';
@@ -66,6 +66,17 @@ const EQUIP_CN: Record<string, string> = {
   none: '徒手',
 };
 
+/** 难度 / 动作类型中文（抽屉详情用） */
+const LEVEL_CN: Record<string, string> = {
+  beginner: '入门',
+  intermediate: '进阶',
+  advanced: '高阶',
+};
+const MECHANIC_CN: Record<string, string> = {
+  isolation: '孤立动作',
+  compound: '复合动作',
+};
+
 interface MapEntry {
   id: string;
   n: string;
@@ -109,12 +120,24 @@ export default function MusclePicker() {
   const initial = params.get('m');
   const [group, setGroup] = useState<string | null>(initial && GROUPS[initial] ? initial : null);
   const [hover, setHover] = useState<string | null>(null);
+  /** 点动作名后在本卡片内滑出的详情（不跳页）；null = 抽屉关闭 */
+  const [detail, setDetail] = useState<MapEntry | null>(null);
+
+  // 抽屉打开时按 Esc 关闭，和动作库弹窗的交互保持一致
+  useEffect(() => {
+    if (!detail) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setDetail(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [detail]);
 
   const exercises = useMemo(() => (group ? GROUPS[group] ?? [] : []), [group]);
   const groupLabel = group ? GROUP_CN[group] ?? group : '';
 
   return (
-    <div className="rounded-2xl border border-border/70 bg-card/70 p-4 backdrop-blur-xl">
+    <div className="relative rounded-2xl border border-border/70 bg-card/70 p-4 backdrop-blur-xl">
       <h3 className="flex items-center gap-2 font-display text-lg font-bold text-foreground">
         <MousePointerClick className="h-5 w-5 text-primary" />
         点哪练哪
@@ -188,7 +211,8 @@ export default function MusclePicker() {
               <li key={e.id}>
                 <button
                   type="button"
-                  onClick={() => navigate(`/library?e=${encodeURIComponent(e.id)}`)}
+                  onClick={() => setDetail(e)}
+                  aria-label={`查看${e.n || e.en}详情`}
                   className="flex w-full items-center gap-2 rounded-lg border border-border/50 bg-black/20 px-2.5 py-1.5 text-left transition-colors hover:border-primary/60 hover:bg-primary/10"
                 >
                   <span className="min-w-0 flex-1 truncate text-[0.78rem] font-medium text-foreground/90">
@@ -216,6 +240,71 @@ export default function MusclePicker() {
       <p className="mt-3 border-t border-border/60 pt-2 text-center text-[0.6rem] leading-relaxed text-muted-foreground/70">
         动作库共 2400+ 条，这里只列各部位最常用的；进动作库可查全部与替代动作。
       </p>
+
+      {/* 动作详情抽屉：点列表项后从卡片底部滑出，不离开首页。
+          这里只放「一眼看要点」的元信息，演示动图/替代动作仍由动作库详情页统一维护，
+          底部按钮走原来的 ?e= 深链过去，避免两处重复一套动图逻辑。 */}
+      {detail && (
+        <div className="absolute inset-0 z-20 flex flex-col justify-end rounded-2xl bg-black/65 backdrop-blur-sm">
+          <div className="max-h-[88%] overflow-y-auto rounded-2xl border border-primary/40 bg-card/95 p-4 shadow-2xl">
+            <div className="flex items-start justify-between gap-2">
+              <div className="min-w-0">
+                <p className="font-display text-lg font-bold leading-tight text-foreground">
+                  {detail.n || detail.en}
+                </p>
+                {detail.n && detail.en && (
+                  <p className="mt-0.5 truncate text-xs text-muted-foreground">{detail.en}</p>
+                )}
+              </div>
+              <button
+                type="button"
+                onClick={() => setDetail(null)}
+                aria-label="关闭详情"
+                className="shrink-0 rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              <span className="inline-flex items-center gap-1 rounded-md bg-primary/15 px-2 py-1 text-xs font-medium text-primary">
+                <Dumbbell className="h-3.5 w-3.5" />
+                {EQUIP_CN[detail.eq] ?? detail.eq}
+              </span>
+              {detail.lv && (
+                <span className="rounded-md bg-foreground/10 px-2 py-1 text-xs text-muted-foreground">
+                  {LEVEL_CN[detail.lv] ?? detail.lv}
+                </span>
+              )}
+              {detail.mc && (
+                <span className="rounded-md bg-foreground/10 px-2 py-1 text-xs text-muted-foreground">
+                  {MECHANIC_CN[detail.mc] ?? detail.mc}
+                </span>
+              )}
+              {!!detail.media && (
+                <span className="inline-flex items-center gap-1 rounded-md bg-foreground/10 px-2 py-1 text-xs text-muted-foreground">
+                  <Activity className="h-3.5 w-3.5" />
+                  有演示
+                </span>
+              )}
+            </div>
+
+            <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+              这里展示动作要点与演示动图请进动作库 —— 站内有 {2400}+ 个动作、带演示的均可悬停播放，
+              还能查看针对你的替代动作。
+            </p>
+
+            <button
+              type="button"
+              onClick={() => navigate(`/library?e=${encodeURIComponent(detail.id)}`)}
+              className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-lg bg-primary px-3 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              在动作库看完整演示与要点
+              <ArrowUpRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

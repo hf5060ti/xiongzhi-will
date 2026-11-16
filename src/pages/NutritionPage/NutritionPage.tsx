@@ -16,6 +16,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { PlayCircle, Search, UtensilsCrossed, X } from 'lucide-react';
 import { ABSORPTION_GUIDE, TEF_RULE } from '@/lib/absorption';
+import DrinkVariants from '@/components/DrinkVariants';
 
 export default function NutritionPage() {
   const [searchParams] = useSearchParams();
@@ -82,6 +83,15 @@ export default function NutritionPage() {
           </button>
         )}
       </div>
+
+      {/* 饮料口味快捷条：搜「魔爪 / 红牛」时直接弹出原味、蓝罐等选项，一点即选中 */}
+      <DrinkVariants
+        query={query}
+        onPick={(food) => {
+          setQuery(food.name);
+          handleSelect(food);
+        }}
+      />
 
       {/* 烟酒警示横幅 */}
       <div className="rounded-xl border border-primary/45 bg-primary/[0.06] p-4 sm:p-5">

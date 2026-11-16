@@ -28,7 +28,7 @@ function applyTheme(theme: Theme) {
   if (meta) meta.setAttribute('content', theme === 'light' ? '#F4F1EA' : '#0a0a0a');
 }
 
-export default function ThemeToggle({ compact = false }: { compact?: boolean }) {
+export default function ThemeToggle({ compact = false, inline = false }: { compact?: boolean; inline?: boolean }) {
   const [theme, setTheme] = useState<Theme>(readTheme);
   const isDark = theme === 'dark';
 
@@ -48,6 +48,23 @@ export default function ThemeToggle({ compact = false }: { compact?: boolean }) 
     setTheme(next);
     applyTheme(next);
   };
+
+  // 设置面板内嵌行：左侧图标+名称，右侧当前值，整行可点
+  if (inline) {
+    return (
+      <button
+        type="button"
+        onClick={toggle}
+        className="flex w-full items-center justify-between gap-3 rounded-lg px-2.5 py-2 text-left text-sm transition-colors hover:bg-accent"
+      >
+        <span className="flex items-center gap-2 text-foreground">
+          {isDark ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+          主题
+        </span>
+        <span className="text-muted-foreground">{isDark ? '暗黑' : '明亮'}</span>
+      </button>
+    );
+  }
 
   return (
     <button

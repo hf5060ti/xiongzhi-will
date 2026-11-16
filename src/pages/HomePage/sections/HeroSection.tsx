@@ -22,8 +22,10 @@ export default function HeroSection() {
         <div className="animate-light-sweep pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent light:via-black/5" />
       </div>
 
-      {/* 文字层 + 右侧「点哪练哪」人体导航（大屏并排，小屏堆叠） */}
-      <div className="relative z-10 px-4 py-7 sm:px-6 sm:py-18 md:px-12 md:py-28 lg:flex lg:items-start lg:gap-10">
+      {/* 文字层 + 右侧「点哪练哪」人体导航（大屏并排，小屏堆叠）。
+          大屏右侧 padding 收到 8px、gap 收一档，让卡片尽量贴视口右缘 ——
+          把中间的动态人物和左眼血红缝露出来（用户反馈卡片挡住了背景与红眼）。 */}
+      <div className="relative z-10 px-4 py-7 sm:px-6 sm:py-18 md:px-12 md:py-28 lg:flex lg:items-start lg:gap-6 lg:pr-2">
         {/* [container-type:inline-size] 让大标题能用 cqw 量自身容器宽度（见下） */}
         <div className="animate-hero-rise max-w-xl flex-1 [container-type:inline-size]">
           <p className="mb-3 flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-[0.25em] text-primary sm:mb-4 sm:text-sm sm:tracking-[0.35em]">
@@ -92,7 +94,7 @@ export default function HeroSection() {
         </div>
 
         {/* 右侧：点哪练哪 · 人体导航 */}
-        <div className="mt-6 w-full max-w-md shrink-0 sm:mt-10 lg:mt-0 lg:w-[330px] xl:w-[360px]">
+        <div className="mt-6 w-full max-w-md shrink-0 sm:mt-10 lg:mt-0 lg:ml-auto lg:w-[330px] xl:w-[360px]">
           <MusclePicker />
         </div>
       </div>

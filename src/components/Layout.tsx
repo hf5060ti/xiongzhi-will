@@ -35,6 +35,7 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeToggle from '@/components/ThemeToggle';
 import FontSizeControl from '@/components/FontSizeControl';
+import MobileSettingsMenu from '@/components/MobileSettingsMenu';
 import { t, onLangChange } from '@/lib/i18n';
 
 interface NavItem {
@@ -494,12 +495,10 @@ export const Layout = () => {
               {t('brand')}
             </span>
           </Link>
-          {/* gap-1.5：字号调节器加入后顶栏共 5 个按钮，间距收一档才能留住品牌名 */}
+          {/* 主题/语言/字号合并进「设置」菜单，顶栏只剩 设置/搜索/账号 3 个按钮，
+              最大字号档也能完整显示品牌名（原先 5 个按钮会把品牌压成「雄…」） */}
           <div className="flex shrink-0 items-center gap-1.5">
-            <ThemeToggle compact />
-            <LanguageSwitcher compact />
-            {/* 字号调节：A− / A+，随根字号等比缩放全站，localStorage 记忆 */}
-            <FontSizeControl compact />
+            <MobileSettingsMenu />
             {/* 手机端搜索入口：桌面搜索框在 lg 以下断点被隐藏，这里补一个图标入口 */}
             <button
               type="button"

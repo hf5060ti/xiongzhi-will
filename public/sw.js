@@ -21,13 +21,19 @@
  */
 const BUILD = '__XW_BUILD__';
 const CACHE = 'xiongzhi-will-' + BUILD;
-const IMG_CACHE = 'xiongzhi-will-img-v1'; // 不要随主缓存版本变化，保住已缓存的演示图
+// v2：不再缓存 GIF（单张 1–3MB、每次从头播放，缓存收益低却最占磁盘），
+// 且缓存条目带时间戳，7 天后视为过期。旧版 v1 会在 activate 里清掉。
+const IMG_CACHE = 'xiongzhi-will-img-v2';
 const CORE = ['./', './index.html', './manifest.webmanifest', './images/icon-192.png', './images/icon-512.png'];
 
 const NAV_TIMEOUT = 4500;   // 导航请求：4.5s 拿不到就先用缓存，弱网不再干等
 const IMG_TIMEOUT = 8000;   // 第三方图片：8s 超时，尽快触发 <img onError> 切换候选图源
 const ASSET_TIMEOUT = 12000;
-const IMG_CACHE_MAX = 500;
+/** 第三方静态图缓存上限：120 张足以覆盖常看的动作，不再无上限囤积 */
+const IMG_CACHE_MAX = 120;
+/** 单条缓存有效期：7 天。过期后重新拉取，避免图床换图后一直显示旧内容 */
+const IMG_CACHE_TTL = 7 * 24 * 60 * 60 * 1000;
+const CACHED_AT_HEADER = 'x-xw-cached-at';
 
 const IMG_HOSTS = [
   'fitness.xingshuwen.com',          // 动作百科演示图 / 动图
@@ -73,10 +79,28 @@ async function trimImageCache() {
   try {
     const c = await caches.open(IMG_CACHE);
     const keys = await c.keys();
-    if (keys.length > IMG_CACHE_MAX) {
-      await Promise.all(keys.slice(0, keys.length - IMG_CACHE_MAX).map((k) => c.delete(k)));
+    const now = Date.now();
+    // 1) 先清过期条目（带时间戳的按 TTL 判定，老版本无时间戳的按 7 天前的写入时间算）
+    const expired = [];
+    for (const k of keys) {
+      const res = await c.match(k);
+      const at = Number(res && res.headers.get(CACHED_AT_HEADER)) || 0;
+      if (at && now - at > IMG_CACHE_TTL) expired.push(k);
+    }
+    if (expired.length) await Promise.all(expired.map((k) => c.delete(k)));
+    // 2) 再按 FIFO 裁到上限（Cache API 的 keys() 按插入顺序返回）
+    const rest = await c.keys();
+    if (rest.length > IMG_CACHE_MAX) {
+      await Promise.all(rest.slice(0, rest.length - IMG_CACHE_MAX).map((k) => c.delete(k)));
     }
   } catch (e) { /* 存储配额紧张时静默忽略，不影响图片显示 */ }
+}
+
+/** 写入缓存时附时间戳，供过期判定使用 */
+function withCachedAt(res) {
+  const headers = new Headers(res.headers);
+  headers.set(CACHED_AT_HEADER, String(Date.now()));
+  return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
 }
 
 self.addEventListener('install', (event) => {
@@ -94,7 +118,8 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
       const keys = await caches.keys();
-      // 只清本站主缓存的旧版本；IMG_CACHE 必须保留，否则每次发版演示图都要重下
+      // 清掉本站所有非当前缓存：包括旧版本主缓存，以及升级前的 img-v1
+      // （v1 囤了最多 500 张 GIF，升级到 v2 时在这里一次性回收，立竿见影省磁盘）
       await Promise.all(
         keys
           .filter((k) => k.startsWith('xiongzhi-will-') && k !== CACHE && k !== IMG_CACHE)
@@ -133,13 +158,22 @@ self.addEventListener('fetch', (event) => {
   if (isImageReq && IMG_HOSTS.some((h) => url.hostname === h || url.hostname.endsWith('.' + h))) {
     event.respondWith(
       (async () => {
+        // GIF 动图不缓存：单张体积大、每次都从头播放，缓存它最占磁盘却几乎没有收益
+        const isGif = /\.gif(\?|$)/i.test(url.pathname);
         const c = await caches.open(IMG_CACHE);
-        const cached = await c.match(req);
-        if (cached) return cached;
+        if (!isGif) {
+          const cached = await c.match(req);
+          if (cached) {
+            const at = Number(cached.headers.get(CACHED_AT_HEADER)) || 0;
+            // 无时间戳的是旧版 v1 残留，不做信任；过期的删除后重新拉
+            if (at && Date.now() - at <= IMG_CACHE_TTL) return cached;
+            c.delete(req).catch(() => {});
+          }
+        }
         try {
           const res = await fetchWithTimeout(req, IMG_TIMEOUT);
-          if (res && (res.ok || res.type === 'opaque')) {
-            c.put(req, res.clone()).then(trimImageCache).catch(() => {});
+          if (!isGif && res && (res.ok || res.type === 'opaque')) {
+            c.put(req, withCachedAt(res.clone())).then(trimImageCache).catch(() => {});
           }
           return res || unavailable('image');
         } catch (e) {
@@ -173,8 +207,10 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // ── 背景 / 加载视频：cache-first（文件几乎不变）──
-  if (/\/images\/.*\.mp4$/.test(url.pathname)) {
+  // ── 背景视频：cache-first（文件几乎不变、每页都要用）──
+  // 加载动画视频（loading-bg.mp4）只在开场 1.6s 用一次，不值得长期占用缓存，直接走网络；
+  // 只缓存常驻的背景视频 bg-main.mp4。
+  if (/\/images\/.*\.mp4$/.test(url.pathname) && !/loading-bg\.mp4/.test(url.pathname)) {
     event.respondWith(
       (async () => {
         const cached = await caches.match(req);

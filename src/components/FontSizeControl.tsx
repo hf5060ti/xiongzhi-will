@@ -64,7 +64,7 @@ const BTN =
  * - 桌面端（侧栏）：一行 [A− A+] + 底部「字号」文字（点文字恢复默认）
  * - 手机端（顶栏）：单按钮弹出小面板（− 数值 + / 重置）
  */
-export default function FontSizeControl({ compact = false }: { compact?: boolean }) {
+export default function FontSizeControl({ compact = false, inline = false }: { compact?: boolean; inline?: boolean }) {
   const [size, setSize] = useState(readSize);
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -153,6 +153,40 @@ export default function FontSizeControl({ compact = false }: { compact?: boolean
     setSize(next);
     window.dispatchEvent(new CustomEvent<number>(SYNC_EVENT, { detail: next }));
   };
+
+  // ── 设置面板内嵌：A− / 数值（点击重置）/ A+ 一行 ──
+  if (inline) {
+    return (
+      <div className="flex items-center gap-1.5" role="group" aria-label="字号设置">
+        <button
+          type="button"
+          aria-label="减小字号"
+          onClick={() => change(-1)}
+          disabled={size <= FONT_MIN}
+          className={cn(BTN, 'h-9 w-9 shrink-0 text-xs font-semibold')}
+        >
+          A−
+        </button>
+        <button
+          type="button"
+          onClick={reset}
+          aria-label={`当前 ${size}px，点击恢复默认字号`}
+          className="w-14 shrink-0 rounded-md py-1 text-center text-sm font-medium tabular-nums text-foreground transition-colors hover:bg-accent"
+        >
+          {size}px
+        </button>
+        <button
+          type="button"
+          aria-label="增大字号"
+          onClick={() => change(1)}
+          disabled={size >= FONT_MAX}
+          className={cn(BTN, 'h-9 w-9 shrink-0 text-sm font-bold')}
+        >
+          A+
+        </button>
+      </div>
+    );
+  }
 
   // ── 手机端：顶栏单按钮 + 弹出面板 ──
   if (compact) {
