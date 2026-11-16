@@ -9,13 +9,15 @@ import { INTRO_DONE_EVENT } from '@/components/OpeningScene';
 // - 无水印、无音频、muted + playsInline，保证移动端可自动播放
 // - poster 作为首屏兜底：视频未就绪 / 系统省电模式禁用自动播放 / 用户开启"减少动态效果"时也好看
 // - 叠三层遮罩（压暗 + 上下渐变 + 暗角），保证玻璃卡片上的文字对比度
-// - 人物左眼叠加「血瞳」：素材里眼睛被盔甲遮住，只从甲片间一道窄缝透出猩红，
-//   与视频人物左眼严格对齐（先压黑原有白光，再叠血红，最后用甲片把光切断）
+// - 不再叠加 CSS 血瞳：新主角是红色格斯壁纸，原画自带一颗炽亮红眼
 
-// 背景合成片：素材 11.4–16.4s（星云成形、黑太阳/神之手/地面十字尖桩最完整的一段）
-// 按原生比例铺在 1280×680 画布中央，左右用自身虚化镜像羽化补满，不放大裁切；
-// 格斯（黑甲+披风）缩至 0.62 倍叠在前景中央，巨手指尖与黑太阳从他披风上方露出。
-// 两层各自 ping-pong 无缝循环（各 5s，合 10s）。素材已裁掉抖音水印。
+// 背景合成片（1280×680, 9.93s 无缝循环）：
+// 1) 基底用素材 11.4–16.4s（星云/黑太阳/神之手/地面骷髅十字阵最完整的一段），
+//    原生比例铺中央、左右虚化羽化补满，裁到 y<530 彻底避开上移的抖音水印；
+// 2) 前景是把用户给的红色格斯壁纸抠出人物（含披风/盔甲/剑），600×338 叠在中央，
+//    带轻微缩放呼吸与上下浮动；披风顶部做渐隐，避免出现硬切线；
+// 3) 往返转折处叠一段血红聚能 + 双层冲击波环，做出「神之手爆发」的节奏；
+// 4) 素材自带小剪影被格斯盖住，两层 ping-pong 循环，两端各丢一帧避免定格。
 const POSTER = `${BASE}images/berserk-world-poster.jpg`;
 const VIDEO = `${BASE}images/berserk-world.mp4`;
 
@@ -124,26 +126,8 @@ export default function VideoBackground() {
         <div className="xw-alert-glow absolute inset-0" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_36%_at_-8%_106%,rgba(230,12,34,0.12),transparent_65%)] mix-blend-screen" />
 
-        {/* 人物左眼·血瞳：素材里眼睛被盔甲遮住，只有甲片间一道上宽下尖的窄缝
-            （格斯在原画里是 46.0% / 46.5%，合成后 0.62 倍落到画布 53.5% / 66.8%）。
-            这层先用暗影压黑原有白光，再沿缝形叠深血红，最后用两道黑色甲片把光切断
-            —— 呈现"被盔甲挡住、从缝里透出猩红"的状态。 */}
-        <div className="xw-eye-layer">
-          <div className="xw-eye-stage">
-            {/* 人物轮廓的血色氛围：随 drift 一起动，让人物从黑里"浮"出来 */}
-            <div className="xw-figure-aura" />
-            <div className="xw-eye-rig">
-              <span className="xw-eye-socket" />
-              <span className="xw-eye-halo" />
-              <span className="xw-eye-blackout" />
-              <span className="xw-eye-leak" />
-              <span className="xw-eye-core" />
-              <span className="xw-eye-rim" />
-              <span className="xw-eye-sheen" />
-              <span className="xw-eye-ember" />
-            </div>
-          </div>
-        </div>
+        {/* 血瞳层已停用：背景主角换成红色格斯壁纸，原画自带炽亮红眼，
+            再叠一层 CSS 血瞳会出现两颗眼睛。相关样式保留但不再渲染。 */}
 
         {/* 亮色遮罩：仅在明亮模式下启用，把暗色视频压到近白底，避免深色视频在浅色 UI 上发灰发脏。
             放在血瞳之后，浅色模式下连血瞳一并盖住，保证浅色主题干净。 */}
