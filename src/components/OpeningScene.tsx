@@ -12,27 +12,55 @@
  */
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BASE } from '@/lib/base';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const INTRO_SRC = `${BASE}images/berserk-intro.mp4`;
 export const INTRO_DONE_EVENT = 'xy-intro-done';
+// 同一会话内开场只放一次：刷新/切页回来不再重播 9.6 秒、不再重复下载 3MB 视频。
+// 用 sessionStorage（关闭标签页即失效），下次打开网站还能再看到完整开场。
+const INTRO_SEEN_KEY = 'xy-intro-seen';
 
 export default function OpeningScene() {
+  const isMobile = useIsMobile();
   const [closing, setClosing] = useState(false);
   const [mounted, setMounted] = useState(true);
   const doneRef = useRef(false);
 
-  const finish = useCallback(() => {
+  const finish = useCallback((instant = false) => {
     if (doneRef.current) return;
     doneRef.current = true;
-    setClosing(true);
+    // 只有真正播完/跳过才记账；异常中断（且没走到 finish）不记，下次仍会播。
+    try {
+      window.sessionStorage.setItem(INTRO_SEEN_KEY, '1');
+    } catch {
+      /* 隐私模式下 sessionStorage 不可用，忽略即可 */
+    }
     window.dispatchEvent(new Event(INTRO_DONE_EVENT));
-    window.setTimeout(() => setMounted(false), 760);
+    if (instant) {
+      // 本次会话已看过 / 减少动态效果：立即卸载，连视频 DOM 都不渲染，
+      // 避免 <video autoPlay> 白下载 3MB 开场片。
+      setMounted(false);
+    } else {
+      setClosing(true);
+      window.setTimeout(() => setMounted(false), 760);
+    }
   }, []);
 
   useEffect(() => {
-    // 减少动态效果 / 无法播放视频：不拖住首屏
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      finish();
+    // 减少动态效果 / 本次会话已播过：不拖住首屏，但仍要派发事件让背景启动
+    let seen = false;
+    try {
+      seen = window.sessionStorage.getItem(INTRO_SEEN_KEY) === '1';
+    } catch {
+      /* 忽略 */
+    }
+    // 手机端也直接跳过：9.6 秒开场片在手机上又占带宽又发热，且竖屏 letterbox 留黑边多。
+    if (
+      isMobile ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      seen
+    ) {
+      finish(true);
       return;
     }
     const onKey = (e: KeyboardEvent) => {
@@ -45,7 +73,7 @@ export default function OpeningScene() {
       window.removeEventListener('keydown', onKey);
       window.clearTimeout(hardStop);
     };
-  }, [finish]);
+  }, [finish, isMobile]);
 
   if (!mounted) return null;
 
@@ -54,7 +82,7 @@ export default function OpeningScene() {
       className={`fixed inset-0 z-[120] flex items-center justify-center bg-black transition-opacity duration-700 ${
         closing ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
-      onClick={finish}
+      onClick={() => finish()}
       role="presentation"
     >
       <video
@@ -63,8 +91,8 @@ export default function OpeningScene() {
         playsInline
         preload="auto"
         className="absolute inset-0 h-full w-full object-contain"
-        onEnded={finish}
-        onError={finish}
+        onEnded={() => finish()}
+        onError={() => finish()}
       >
         <source src={INTRO_SRC} type="video/mp4" />
       </video>

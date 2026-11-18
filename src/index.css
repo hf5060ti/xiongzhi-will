@@ -394,6 +394,22 @@ html {
     display: none;
   }
 }
+
+/* ── 手机端省电：停掉背景层的持续动画 ──────────────────────
+ * 视频已在组件里按 isMobile 不挂载；这里再停掉红光涨落，
+ * 静态渐变保留（配色不变），只是不再逐帧合成，减少发热与掉帧。
+ * 640px 与字号/布局的手机断点保持一致。 */
+@media (max-width: 640px) {
+  .xw-alert-glow {
+    animation: none;
+    opacity: 0.75;
+    will-change: auto;
+  }
+  .xw-figure-aura {
+    animation: none;
+    will-change: auto;
+  }
+}
 /* 光线扫过效果：缓慢移动的光斑 */
 @keyframes light-sweep {
   0% { transform: translateX(-100%) skewX(-15deg); opacity: 0; }

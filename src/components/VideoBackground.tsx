@@ -2,6 +2,7 @@
 // See LICENSE / NOTICE for details.
 import { useEffect, useRef, useState } from 'react';
 import { BASE } from '@/lib/base';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { INTRO_DONE_EVENT } from '@/components/OpeningScene';
 
 // 站点级全屏动态视频背景
@@ -23,11 +24,15 @@ const VIDEO = `${BASE}images/berserk-world.mp4`;
 
 export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isMobile = useIsMobile();
   // 视频「真正开始播放」才置 true。卡在首帧 / 解码失败 / 自动播放被拒时保持 false，
   // 视频层淡出、露出下面的静态海报——避免出现「video 盖住 poster 却不动」的死画面。
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
+    // 手机端不播放动态背景：宽幅视频在竖屏上被放大裁切，既发热耗电、低速设备还会掉帧。
+    // 只保留下面的静态海报，观感与配色一致。
+    if (isMobile) return;
     const v = videoRef.current;
     if (!v) return;
     const onPlaying = () => setPlaying(true);
@@ -57,11 +62,12 @@ export default function VideoBackground() {
       v.removeEventListener('canplay', onCanPlay);
       v.removeEventListener('canplaythrough', onCanPlay);
     };
-  }, []);
+  }, [isMobile]);
 
   // 等开场放完再启动背景循环：开场片尾（月食+格斯）与循环首帧同源，
   // 淡出后直接接上，视觉上是一条连续的镜头。12s 兜底防止开场组件异常时黑场。
   useEffect(() => {
+    if (isMobile) return;
     const v = videoRef.current;
     if (!v) return;
     const start = () => {
@@ -78,7 +84,7 @@ export default function VideoBackground() {
       window.clearTimeout(fallback);
       window.removeEventListener(INTRO_DONE_EVENT, onIntroDone);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div
@@ -95,23 +101,22 @@ export default function VideoBackground() {
       {/* 动态层：视频 + 遮罩 + 血瞳统一放进同一个 drift 包裹，
           这样人物左眼的辉光会跟视频一起缩放/位移，永远锁在眼睛上，不会漂移。
           注意：视频本体保留 bg-video-motion 标记，减少动态效果时仅隐藏视频、保留海报。 */}
-      <div className="bg-drift absolute inset-0">
-        {/* 动态视频层 */}
-        {/* preload 用 metadata 而不是 auto：背景视频本体约 0.92 MB，
-            auto 会让它在首屏就整段开下，与 JS / CSS 争带宽；
-            poster 已经提供了完整视觉兜底，视频迟几百毫秒进场用户察觉不到，
-            而省电模式（禁用自动播放）和弱网下则直接省掉这 0.92 MB。 */}
-        <video
-          ref={videoRef}
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          poster={POSTER}
-          className={`bg-video-motion absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${playing ? 'opacity-95' : 'opacity-0'} [filter:brightness(1.5)_saturate(1.12)]`}
-        >
-          <source src={VIDEO} type="video/mp4" />
-        </video>
+      <div className={`absolute inset-0 ${isMobile ? '' : 'bg-drift'}`}>
+        {/* 动态视频层：手机端根本不挂载 <video>，彻底不下载、不解码、不发热。
+            只显示上面的静态 poster，配色/构图与桌面一致；桌面仍用动态循环。 */}
+        {!isMobile && (
+          <video
+            ref={videoRef}
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={POSTER}
+            className={`bg-video-motion absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${playing ? 'opacity-95' : 'opacity-0'} [filter:brightness(1.5)_saturate(1.12)]`}
+          >
+            <source src={VIDEO} type="video/mp4" />
+          </video>
+        )}
 
         {/* 遮罩 1：整体压暗，保证前景文字可读（黑要压得够沉，红色才立得住） */}
         <div className="absolute inset-0 bg-black/14" />
