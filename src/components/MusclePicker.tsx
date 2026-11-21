@@ -31,9 +31,9 @@ const VB_H = regionData.height;
 const GROUP_CN: Record<string, string> = {
   chest: '胸部',
   lats: '背阔肌',
-  'middle back': '上背部',
-  'lower back': '下背部',
-  traps: '斜方肌',
+  'middle back': '上背（菱形肌/冈下肌）',
+  'lower back': '下背（竖脊肌）',
+  traps: '斜方肌（上背）',
   shoulders: '肩部',
   biceps: '二头肌',
   triceps: '三头肌',

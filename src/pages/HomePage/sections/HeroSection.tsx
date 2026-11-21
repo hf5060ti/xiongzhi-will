@@ -25,7 +25,7 @@ export default function HeroSection() {
       {/* 文字层 + 右侧「点哪练哪」人体导航（大屏并排，小屏堆叠）。
           大屏右侧 padding 收到 8px、gap 收一档，让卡片尽量贴视口右缘 ——
           把中间的动态人物和左眼血红缝露出来（用户反馈卡片挡住了背景与红眼）。 */}
-      <div className="relative z-10 px-4 py-7 sm:px-6 sm:py-18 md:px-12 md:py-28 lg:flex lg:items-start lg:gap-4 lg:pr-0">
+      <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-18 md:px-12 md:py-28 lg:flex lg:items-start lg:gap-4 lg:pr-0">
         {/* [container-type:inline-size] 让大标题能用 cqw 量自身容器宽度（见下） */}
         <div className="animate-hero-rise max-w-xl flex-1 [container-type:inline-size]">
           <p className="mb-3 flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-[0.25em] text-primary sm:mb-4 sm:text-sm sm:tracking-[0.35em]">
@@ -37,7 +37,7 @@ export default function HeroSection() {
               与原 144px 几乎无差；但用户把「字号」调到 22px 时，侧栏/内边距/间距的 rem
               也会变宽、正文容器缩到 ~697px，rem 版标题会涨到 176px/字，「雄性意志。」
               需要 880px 从而被迫断行（"志。"落单）。cqw 版按容器等比收放，任何档位都一行。 */}
-          <h1 className="font-display text-[36px] font-extrabold leading-[0.95] tracking-tight text-foreground sm:text-[72px] md:text-[108px] lg:text-[min(144px,18.4cqw)]">
+          <h1 className="font-display text-[30px] font-extrabold leading-[1.02] tracking-tight text-foreground min-[380px]:text-[34px] sm:text-[72px] md:text-[108px] lg:text-[min(144px,18.4cqw)]">
             记录你的
             <br />
             <span className="text-primary">雄性意志</span>。

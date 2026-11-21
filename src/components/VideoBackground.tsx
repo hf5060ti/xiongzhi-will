@@ -20,6 +20,10 @@ import { INTRO_DONE_EVENT } from '@/components/OpeningScene';
 // 3) 往返转折处叠一段血红聚能 + 双层冲击波环，做出「神之手爆发」的节奏；
 // 4) 素材自带小剪影被格斯盖住，两层 ping-pong 循环，两端各丢一帧避免定格。
 const POSTER = `${BASE}images/berserk-world-poster.jpg`;
+// 手机竖屏专用构图：从横版裁出完整主体竖条重排成 9:16（月食/披风/格斯全身都在画内）。
+// 横图在竖屏用 object-cover 会按高度撑满、只露中间约 1/4、人物被放大数倍（用户反馈「太大、比例不对」）。
+// 竖版图 cover 竖屏只轻微裁掉左右约 9%，主体比例自然、不被放大。
+const POSTER_MOBILE = `${BASE}images/berserk-world-poster-mobile.jpg`;
 const VIDEO = `${BASE}images/berserk-world.mp4`;
 
 export default function VideoBackground() {
@@ -91,9 +95,10 @@ export default function VideoBackground() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-black"
     >
-      {/* 静态海报层：视频未加载完成时先显示，避免黑屏跳变 */}
+      {/* 静态海报层：视频未加载完成时先显示，避免黑屏跳变。
+          手机端换成 9:16 竖版构图，避免横图在竖屏被放大裁切导致人物过大、比例走样。 */}
       <img
-        src={POSTER}
+        src={isMobile ? POSTER_MOBILE : POSTER}
         alt=""
         className="absolute inset-0 h-full w-full object-cover object-center opacity-80 [filter:brightness(1.5)_saturate(1.12)]"
       />

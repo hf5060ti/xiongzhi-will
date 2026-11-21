@@ -45,7 +45,7 @@ export default function MobileSettingsMenu() {
         <div
           role="dialog"
           aria-label="显示设置"
-          className="absolute left-0 top-full z-50 mt-2 w-60 rounded-xl border border-border/60 bg-background p-2 shadow-2xl"
+          className="absolute left-0 top-full z-50 mt-2 w-60 max-w-[calc(100vw-1.5rem)] rounded-xl border border-border/60 bg-background p-2 shadow-2xl"
         >
           <p className="px-2 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             显示设置
