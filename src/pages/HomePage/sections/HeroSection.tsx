@@ -37,7 +37,7 @@ export default function HeroSection() {
               与原 144px 几乎无差；但用户把「字号」调到 22px 时，侧栏/内边距/间距的 rem
               也会变宽、正文容器缩到 ~697px，rem 版标题会涨到 176px/字，「雄性意志。」
               需要 880px 从而被迫断行（"志。"落单）。cqw 版按容器等比收放，任何档位都一行。 */}
-          <h1 className="font-display text-[30px] font-extrabold leading-[1.02] tracking-tight text-foreground min-[380px]:text-[34px] sm:text-[72px] md:text-[108px] lg:text-[min(144px,18.4cqw)]">
+          <h1 className="font-display text-[28px] font-extrabold leading-[1.02] tracking-tight text-foreground min-[380px]:text-[31px] sm:text-[72px] md:text-[108px] lg:text-[min(144px,18.4cqw)]">
             记录你的
             <br />
             <span className="text-primary">雄性意志</span>。
