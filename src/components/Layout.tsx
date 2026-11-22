@@ -2,7 +2,7 @@
 // See LICENSE / NOTICE for details.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Shield, Dumbbell, Apple, Sigma, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair, LogIn, LogOut, Hand, CalendarDays, Utensils, Library, Activity, Trophy, type LucideIcon } from 'lucide-react';
+import { Search, Shield, Dumbbell, Apple, Sigma, BookOpen, User, Bot, Brain, Briefcase, Coins, Heart, Wrench, Mountain, Soup, TrendingDown, ClipboardList, Bookmark, BookMarked, Crosshair, LogIn, LogOut, Hand, CalendarDays, Utensils, Library, Activity, Trophy, LayoutGrid, X, type LucideIcon } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 // 搜索索引属于「按需加载」：它内部会在模块顶层把动作 / 食物 / 补剂 / 自重 / 饮食知识
 // 全站数据摊平成一条大数组（约 176 KB 源数据）。若在此处以值导入的形式静态引用，
@@ -320,9 +320,29 @@ export const Layout = () => {
   const [open, setOpen] = useState(false);
   /** 手机端搜索面板（lg 以下断点使用，桌面端仍用内容区顶部搜索框） */
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  /** 手机端「全部分类」面板：21 项分组网格，一览无余、点选即跳 */
+  const [mobileCatsOpen, setMobileCatsOpen] = useState(false);
+  const mobileCatsRef = useRef<HTMLElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   /** 动态加载进来的搜索索引；未就绪时搜索面板保持可用，只是没有结果 */
   const [searchApi, setSearchApi] = useState<SearchIndexApi | null>(null);
+
+  // 切页后关闭分类面板，并把当前页在横滚条里滚到可视区（否则用户会以为分类丢了）
+  useEffect(() => {
+    setMobileCatsOpen(false);
+    const el = mobileCatsRef.current?.querySelector<HTMLElement>('[aria-current="page"]');
+    el?.scrollIntoView({ block: 'nearest', inline: 'center' });
+  }, [pathname]);
+
+  // 分类面板打开时锁背景滚动，关闭时还原（与搜索面板一致）
+  useEffect(() => {
+    if (!mobileCatsOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mobileCatsOpen]);
 
   // 空闲预取：趁浏览器空闲把索引 chunk 拉下来，等用户真正敲字时通常已就绪。
   // setState 发生在异步回调里（不在 effect 同步体内），因此不会触发额外渲染。
@@ -495,10 +515,7 @@ export const Layout = () => {
               {t('brand')}
             </span>
           </Link>
-          {/* 语言按钮独立常驻顶栏（地球图标），面板改为向左展开、完整可见——
-              用户反馈把语言藏进「设置」菜单后别人找不到、旧版面版又被屏幕裁成半截。
-              语言放按钮组最右（账号之后）：顶栏 row-reverse，按钮组视觉在左，
-              该位置是全组最靠右的一档；面板 left-0 向右展开落在屏幕内，不裁切。 */}
+          {/* 语言按钮独立常驻顶栏，显示当前国旗（一眼看出在用哪种语言），面板 left-0 向右展开不裁切 */}
           <div className="flex shrink-0 items-center gap-1.5">
             <MobileSettingsMenu />
             {/* 手机端搜索入口：桌面搜索框在 lg 以下断点被隐藏，这里补一个图标入口 */}
@@ -513,39 +530,111 @@ export const Layout = () => {
             </button>
             {/* 账号：GitHub 登录 / 云同步（手机端） */}
             <AuthSection compact />
-            {/* 语言：独立常驻，一眼可见、点开即选 */}
+            {/* 语言：独立常驻，国旗当前态 + 点开即选 */}
             <LanguageSwitcher compact />
           </div>
         </div>
-        {/* 手机端导航横向滚动（同样按组分段，组名与竖线随内容一起滚） */}
-        <nav className="flex items-center gap-1 overflow-x-auto px-3 pb-1.5 sm:pb-2">
-          {NAV_GROUPS.map((group, gi) => (
-            <div key={group.key} className="flex shrink-0 items-center gap-1">
-              {gi > 0 && <span className="mx-1 h-3.5 w-px shrink-0 bg-border/70" />}
-              <span className="shrink-0 type-meta font-medium text-muted-foreground/70">
-                {t(group.labelKey)}
-              </span>
-              {group.items.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  end={item.end}
-                  className={({ isActive }) =>
-                    cn(
-                      'shrink-0 rounded-md px-2.5 py-1 text-xs transition-colors sm:px-3 sm:py-1.5',
-                      isActive
-                        ? 'bg-primary/15 font-medium text-primary'
-                        : 'text-muted-foreground hover:bg-accent hover:text-foreground',
-                    )
-                  }
-                >
-                  {t(item.labelKey)}
-                </NavLink>
+        {/* 手机端分类条：横滚当前可见分类 + 右侧固定「全部」按钮。
+            去掉原先混在横滚里的组名（组名「训练」与分类「训练」重名，用户分不清），
+            并让当前页分类自动滚到可视区，避免用户以为被裁掉。 */}
+        <div className="flex items-center gap-1 px-3 pb-1.5 sm:pb-2">
+          <nav
+            ref={mobileCatsRef}
+            className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {NAV_GROUPS.flatMap((group) => group.items).map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.end}
+                className={({ isActive }) =>
+                  cn(
+                    'shrink-0 rounded-md px-2.5 py-1 text-xs transition-colors sm:px-3 sm:py-1.5',
+                    isActive
+                      ? 'bg-primary/15 font-medium text-primary'
+                      : 'text-muted-foreground hover:bg-accent hover:text-foreground',
+                  )
+                }
+              >
+                {t(item.labelKey)}
+              </NavLink>
+            ))}
+          </nav>
+          {/* 固定在右侧、不随横滚：点开分组网格面板，21 项一览无余 */}
+          <button
+            type="button"
+            aria-label={t('nav_all')}
+            onClick={() => setMobileCatsOpen(true)}
+            className="flex h-7 shrink-0 items-center gap-1 rounded-md border border-border/60 bg-card/80 px-2 text-xs font-medium text-foreground shadow-sm transition-colors hover:bg-accent"
+          >
+            <LayoutGrid className="h-3.5 w-3.5 text-primary" strokeWidth={2} />
+            {t('nav_all')}
+          </button>
+        </div>
+      </header>
+
+      {/* 手机端「全部分类」面板：按 NAV_GROUPS 分组的网格，带图标、当前高亮、点选即跳 */}
+      {mobileCatsOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col justify-end lg:hidden">
+          <button
+            type="button"
+            tabIndex={-1}
+            aria-hidden="true"
+            onClick={() => setMobileCatsOpen(false)}
+            className="absolute inset-0 h-full w-full cursor-default bg-black/60 backdrop-blur-sm"
+          />
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={t('nav_all')}
+            className="relative mx-2 mb-2 max-h-[82vh] overflow-y-auto rounded-2xl border border-border/60 bg-popover/95 p-4 shadow-2xl backdrop-blur-2xl sm:mx-3 sm:mb-3"
+          >
+            <div className="mb-3 flex items-center justify-between">
+              <h2 className="font-display text-base font-bold tracking-wide text-foreground">
+                {t('nav_all')}
+              </h2>
+              <button
+                type="button"
+                aria-label={t('cancel')}
+                onClick={() => setMobileCatsOpen(false)}
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              >
+                <X className="h-5 w-5" strokeWidth={2} />
+              </button>
+            </div>
+            <div className="space-y-4">
+              {NAV_GROUPS.map((group) => (
+                <section key={group.key}>
+                  <h3 className="mb-2 border-l-2 border-primary/70 pl-2 type-meta font-semibold text-muted-foreground">
+                    {t(group.labelKey)}
+                  </h3>
+                  <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+                    {group.items.map((item) => (
+                      <NavLink
+                        key={item.path}
+                        to={item.path}
+                        end={item.end}
+                        onClick={() => setMobileCatsOpen(false)}
+                        className={({ isActive }) =>
+                          cn(
+                            'flex flex-col items-center gap-1.5 rounded-xl border px-1 py-3 text-center text-xs transition-colors',
+                            isActive
+                              ? 'border-primary/50 bg-primary/10 font-medium text-primary'
+                              : 'border-border/50 bg-card/40 text-foreground hover:bg-accent',
+                          )
+                        }
+                      >
+                        <item.icon className="h-5 w-5" strokeWidth={1.8} />
+                        <span className="w-full truncate">{t(item.labelKey)}</span>
+                      </NavLink>
+                    ))}
+                  </div>
+                </section>
               ))}
             </div>
-          ))}
-        </nav>
-      </header>
+          </div>
+        </div>
+      )}
 
       {/* 手机端搜索面板：lg 以下断点使用，桌面端沿用内容区顶部搜索框 */}
       {mobileSearchOpen && (
