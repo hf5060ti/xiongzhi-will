@@ -509,13 +509,19 @@ export const Layout = () => {
           用 flex-row-reverse 只翻转视觉顺序、不动 DOM 顺序，读屏/键盘 Tab 顺序仍是品牌在前 */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-card/70 backdrop-blur-2xl lg:hidden">
         <div className="flex h-12 flex-row-reverse items-center justify-between gap-2 px-3 sm:h-14">
-          <Link to="/" className="flex min-w-0 items-center gap-2">
-            <Shield className="h-5 w-5 shrink-0 text-primary" strokeWidth={2.2} />
-            <span className="truncate font-display text-base font-bold tracking-[0.15em] text-foreground">
-              {t('brand')}
-            </span>
-          </Link>
-          {/* 语言按钮独立常驻顶栏，显示当前国旗（一眼看出在用哪种语言），面板 left-0 向右展开不裁切 */}
+          {/* 右侧组：语言按钮紧贴品牌左侧（右手持机拇指最易够到）。
+              DOM 仍保持品牌在前，仅用 flex-row-reverse 翻视觉顺序，读屏 / Tab 顺序不变 */}
+          <div className="flex min-w-0 flex-row-reverse items-center gap-2">
+            <Link to="/" className="flex min-w-0 items-center gap-2">
+              <Shield className="h-5 w-5 shrink-0 text-primary" strokeWidth={2.2} />
+              <span className="truncate font-display text-base font-bold tracking-[0.15em] text-foreground">
+                {t('brand')}
+              </span>
+            </Link>
+            {/* 语言：常驻顶栏靠右，显示当前国旗；面板 right-0 向左展开，避免越出屏幕右边界 */}
+            <LanguageSwitcher compact />
+          </div>
+          {/* 左侧组：设置 / 搜索 / 账号 */}
           <div className="flex shrink-0 items-center gap-1.5">
             <MobileSettingsMenu />
             {/* 手机端搜索入口：桌面搜索框在 lg 以下断点被隐藏，这里补一个图标入口 */}
@@ -530,8 +536,6 @@ export const Layout = () => {
             </button>
             {/* 账号：GitHub 登录 / 云同步（手机端） */}
             <AuthSection compact />
-            {/* 语言：独立常驻，国旗当前态 + 点开即选 */}
-            <LanguageSwitcher compact />
           </div>
         </div>
         {/* 手机端分类条：横滚当前可见分类 + 右侧固定「全部」按钮。

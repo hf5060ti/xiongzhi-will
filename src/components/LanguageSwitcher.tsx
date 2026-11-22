@@ -87,7 +87,7 @@ export default function LanguageSwitcher({ compact, inline }: { compact?: boolea
         <div
           className={
             compact
-              ? 'absolute left-0 top-full z-50 mt-2 w-52 max-w-[calc(100vw-1.5rem)] rounded-xl border border-border/60 bg-popover/95 p-1.5 shadow-2xl backdrop-blur-2xl'
+              ? 'absolute right-0 top-full z-50 mt-2 w-52 max-w-[calc(100vw-1.5rem)] rounded-xl border border-border/60 bg-popover/95 p-1.5 shadow-2xl backdrop-blur-2xl'
               : 'absolute left-full top-0 z-50 ml-3 w-52 rounded-xl border border-border/60 bg-popover/95 p-1.5 shadow-2xl backdrop-blur-2xl'
           }
         >
