@@ -11,6 +11,16 @@ export function getAbsorptionTips(food: IFood): string[] {
   const tips: string[] = [];
   const cat = food.cat;
 
+  // ---- 胶原蛋白 / 结缔组织类：不完全蛋白，须氨基酸互补 + 维 C ----
+  // 依据见 src/data/foods/connective-tissue.ts 文件头 [3][4][5]：
+  // 缺色氨酸（不完全蛋白）、维 C 是脯氨酸/赖氨酸羟化酶辅因子、口服不定向沉积。
+  if (food.proteinProfile === 'collagen') {
+    tips.push('胶原蛋白是不完全蛋白：几乎不含色氨酸、亮氨酸偏低，不能单独计入增肌蛋白目标。');
+    tips.push('氨基酸互补：搭配鸡蛋 / 牛奶 / 瘦肉 / 鱼 / 豆制品等完全蛋白，补齐必需氨基酸后才谈吸收效率最大化。');
+    tips.push('搭配维生素 C：脯氨酸 / 赖氨酸羟化需维 C 作辅因子（彩椒、猕猴桃、柑橘、西兰花），可在训练前 30–60 分钟同摄。');
+    tips.push('久炖使胶原转为明胶更好消化；但口服胶原不定向沉积到肌腱，属营养支持，关节相关疗效证据有限。');
+  }
+
   // ---- 脂溶性维生素 A/D/E/K：需油脂 ----
   const fatVit = food.vitFat;
   if (fatVit.includes('A')) {
@@ -73,7 +83,7 @@ export function getAbsorptionTips(food: IFood): string[] {
   }
 
   // ---- 蛋白质 / 氨基酸互补 ----
-  if (cat === 'meat' || cat === 'seafood' || cat === 'dairy') {
+  if ((cat === 'meat' || cat === 'seafood' || cat === 'dairy') && food.proteinProfile !== 'collagen') {
     tips.push('动物蛋白：必需氨基酸齐全、吸收率高（约 90%+），是增肌主力蛋白。');
   }
   if (cat === 'legume') {
@@ -108,6 +118,16 @@ export interface AbsGuideItem {
 
 /** 营养素吸收率指南（营养页板块数据） */
 export const ABSORPTION_GUIDE: AbsGuideItem[] = [
+  {
+    title: '胶原蛋白与结缔组织',
+    badge: '要搭配才有效',
+    body: '脆骨 / 筋膜 / 肌腱的蛋白几乎全是胶原蛋白（Ⅰ/Ⅱ/Ⅲ型），缺乏色氨酸、亮氨酸偏低，属不完全蛋白，不能替代肌肉蛋白来源。',
+    tips: [
+      '配完全蛋白（蛋、奶、瘦肉、鱼、大豆）做氨基酸互补，补齐必需氨基酸后再计入每日蛋白目标。',
+      '配维生素 C：脯氨酸 / 赖氨酸羟化的必需辅因子，缺乏时胶原纤维交联异常（坏血病机制）；Shaw 等 2017 采用运动前 30–60 分钟同摄。',
+      '炖煮软化成明胶更好消化；口服胶原不定向补到肌腱，EFSA 2011 未确认其与维持关节健康的因果关系。',
+    ],
+  },
   {
     title: '蛋白质吸收率',
     badge: '最影响增肌',

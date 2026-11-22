@@ -24013,5 +24013,38 @@
     "gif": "https://fitness.xingshuwen.com/videos/2363-O2K9Vb5.gif",
     "page": "https://fitness.xingshuwen.com/exercise/2363",
     "source": "动作百科"
+  },
+  {
+    "id": "xw-field-tilling",
+    "name": "Field Tilling / Pickaxe Diagonal Swing",
+    "nameZh": "耕地（镐锄斜劈）",
+    "force": "pull",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "other",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [
+      "lats",
+      "middle back",
+      "shoulders",
+      "forearms",
+      "calves",
+      "glutes"
+    ],
+    "instructions": [
+      "在荒地或未翻过的土面上前后分腿站稳，双手一上一下握镐柄（或锄柄），像砸轮胎那样把镐头举过惯用侧肩。",
+      "对侧脚蹬地、转髋带动躯干，沿对角线把镐头劈进前方土里；核心抗旋，不是用胳膊硬抡。",
+      "镐头入土后屈髋屈膝，用腿和臀部把土块向后上方撬起翻松；背部保持中立，别弯腰硬拽。",
+      "控制回弹，回举到起始侧，换边重复；每侧 10–15 次为一组，左右交替。",
+      "没有木材、只有荒地时用它替代伐木劈柴；阻力来自土壤，可逐步加深入土深度或换成更重的镐来渐进超负荷。"
+    ],
+    "category": "plyometrics",
+    "images": [],
+    "image": "",
+    "gif": "",
+    "page": "",
+    "source": "本站自写（劳作型替代动作）"
   }
 ]

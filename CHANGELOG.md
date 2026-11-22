@@ -4,6 +4,29 @@
 
 ---
 
+## Unreleased
+
+### 多语言 / 劳作动作 / 结缔组织营养
+
+- **语言拓展包改用 GitHub 现成开源资源**：接入 wger-project/wger（AGPL-3.0）gettext
+  语言包，机械提取为 `src/locales/wger-{de,ru,zh-Hans}.json`（各 600+ 条健身/营养
+  UI 词条，译文逐条来自上游、本站未改写）。动态 import 打成独立 chunk，不进首屏主
+  chunk；`src/lib/i18n-pack.ts` 提供 `localizeTerm` / `localizeFoodName` /
+  `useI18nPack`，未收录的专有名词（动作名、食物名、正文）按原文回退。不再自行编写
+  翻译包；出处与许可见 `NOTICE`。
+- **新增「耕地（镐锄斜劈）」**：与砸轮胎 / 伐木同一套动力学（对角线斜劈 + 转髋 +
+  抗旋 + 髋主导撬拉），面向没有木材、周围是荒地的训练者。`exercises-ext.json` 新增
+  1 条；综合体能目标的劳作日与伐木 tip 同步标注替代关系；动作总数 2428→2429。
+- **新增结缔组织类食物 5 条**（鸡脆骨 / 牛脆骨 / 牛蹄筋·肌腱 / 牛筋膜 / 鸡爪）：
+  权威数值取自 USDA FoodData Central（CC0）与中国食物成分表，推算条目标注 ±20%
+  不确定性、非实测；`IFood.proteinProfile='collagen'` 驱动吸收提示——不完全蛋白、
+  氨基酸互补、维生素 C 为脯氨酸/赖氨酸羟化辅因子、口服不定向沉积的证据边界；
+  吸收指南新增对应板块。**既有 14 个食物数据文件零改动。**
+- **验证**：vitest 226 passed（22 文件）/ typecheck 干净 / 改动文件 eslint 零警告 /
+  build 1.32s，语言包独立 chunk（de 46K / ru 63K / zh 38K）。全量 eslint 仍有 2 处
+  既有 `react-hooks/set-state-in-effect`（`Layout.tsx:332`、`OpeningScene.tsx:63`），
+  与本次无关。
+
 ## v0.5.1 - 2026-11-18（未提交）
 
 ### 性能与移动端

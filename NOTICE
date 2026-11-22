@@ -18,5 +18,25 @@ Copyright (c) 2026 hf5060ti
 - 营养数据为市面常见品牌的平均参考值，仅供健身参考，不构成医疗建议；
 - 训练与饮食内容均以"自然健身、健康自然、遵守当地法律法规"为原则。
 
+结缔组织类食物（脆骨 / 筋膜 / 肌腱 / 蹄筋）营养数据：
+- USDA FoodData Central（public domain / CC0 1.0），
+  https://fdc.nal.usda.gov/ ，条目 fdcId 2706085（Chicken feet）；
+  建议引用：U.S. Department of Agriculture, Agricultural Research Service,
+  Beltsville Human Nutrition Research Center. FoodData Central.
+- 中国疾病预防控制中心营养与健康所《中国食物成分表》食物营养成分查询平台，
+  https://nlc.chinanutri.cn/fq/foodinfo/831.html （牛蹄筋）。
+  该站声明数据未经允许不得用于商业目的，本项目仅作非商业开源参考引用。
+- 鸡脆骨 / 牛脆骨 / 牛筋膜为同组织推算的参考值（±20%），属预测值、非实测；
+  用于饮食记录请以包装标签或实测成分检测为准。
+- 胶原合成相关机制出处见 src/data/foods/connective-tissue.ts 文件头 [3][4][5]。
+
+多语言拓展包：
+- 德语 / 俄语 / 简体中文 UI 词条来自 wger-project/wger（AGPL-3.0），
+  https://github.com/wger-project/wger/tree/master/wger/locale 。
+  src/locales/wger-*.json 由其 gettext .po 语言包机械提取，译文逐条来自上游、
+  本站未改写；未收录的专有名词（动作名、食物名、文章正文）按原文回退。
+  仅引用其翻译数据文件，未引入其程序代码；若本项目后续商用，需另行复核
+  AGPL-3.0 数据兼容性。
+
 第三方开源组件（React / Vite / Tailwind CSS / shadcn/ui 等）的许可
 信息以各组件自身声明的许可证为准。

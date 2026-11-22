@@ -104,7 +104,7 @@ cd masculine-consciousness
 npm install
 npm run dev          # 开发：http://localhost:26666
 npm run typecheck    # 类型检查
-npm run test         # 单元测试（vitest，149 项；覆盖 1RM / 力量判级 / BMR·TDEE / 热身 / 渐进超负荷 / 恢复 / 智能搜索 / 饮食方案 等纯计算）
+npm run test         # 单元测试（vitest，226 项；覆盖 1RM / 力量判级 / BMR·TDEE / 热身 / 渐进超负荷 / 恢复 / 智能搜索 / 饮食方案 / 胶原蛋白吸收提示 等）
 npm run lint         # 类型检查 + eslint（--max-warnings=0，warning 也算失败）
 npm run build        # 构建：产物在 dist/
 ```

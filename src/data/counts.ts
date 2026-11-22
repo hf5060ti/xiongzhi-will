@@ -13,7 +13,7 @@
  */
 
 /** 动作百科动作总数：exercises-db + exercises-ext + fitwill */
-export const EXERCISE_COUNT = 2428;
+export const EXERCISE_COUNT = 2429;
 
 /** 力量等级计算器支持的动作数 */
 export const STRENGTH_LIFT_COUNT = 42;

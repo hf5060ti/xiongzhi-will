@@ -4,8 +4,7 @@ import { useMemo, useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { FOODS, FOOD_CATEGORIES, getServings, type IFood, type FoodCategory } from '@/data/foods';
-import { FOOD_NAME_EN } from '@/data/foods/food-names-en';
-import { getLang } from '@/lib/i18n';
+import { localizeTerm, localizeFoodName, useI18nPack } from '@/lib/i18n-pack';
 import { smartMatch } from '@/lib/smart-search';
 import { getAbsorptionTips } from '@/lib/absorption';
 import { getFatComposition } from '@/lib/fat-composition';
@@ -22,6 +21,8 @@ type CatFilter = FoodCategory | 'all';
 
 export default function FoodLibrary({ query, selectedId, onSelect }: FoodLibraryProps) {
   const [cat, setCat] = useState<CatFilter>('all');
+  // 订阅语言切换并按当前语言懒加载开源语言包（加载完成后重渲染）
+  useI18nPack();
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -50,7 +51,7 @@ export default function FoodLibrary({ query, selectedId, onSelect }: FoodLibrary
             className={cn('cursor-pointer select-none', cat !== 'all' && 'hover:bg-accent')}
             onClick={() => setCat('all')}
           >
-            全部
+            {localizeTerm('All', '全部')}
           </Badge>
           {FOOD_CATEGORIES.map((c) => (
             <Badge
@@ -88,7 +89,7 @@ export default function FoodLibrary({ query, selectedId, onSelect }: FoodLibrary
               >
                 <span className="flex items-center justify-between gap-2">
                   <span className="font-display text-lg font-bold leading-none tracking-wide text-foreground">
-                    {getLang() === 'zh' ? food.name : (FOOD_NAME_EN[food.name] || food.name)}
+                    {localizeFoodName(food.name)}
                   </span>
                   <span className="shrink-0 type-meta font-medium uppercase tracking-wider text-muted-foreground">
                     {FOOD_CATEGORIES.find((c) => c.id === food.cat)?.label}
@@ -98,9 +99,9 @@ export default function FoodLibrary({ query, selectedId, onSelect }: FoodLibrary
                   <span>
                     <b className="font-semibold text-foreground">{food.kcal}</b> kcal
                   </span>
-                  <span>蛋白 {food.protein}g</span>
-                  <span>脂肪 {food.fat}g</span>
-                  <span>碳水 {food.carb}g</span>
+                  <span>{localizeTerm('Protein', '蛋白')} {food.protein}g</span>
+                  <span>{localizeTerm('Fat', '脂肪')} {food.fat}g</span>
+                  <span>{localizeTerm('Carbohydrates', '碳水')} {food.carb}g</span>
                 </span>
                 {food.fat > 0 &&
                   (() => {

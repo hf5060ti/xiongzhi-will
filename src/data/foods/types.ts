@@ -40,6 +40,9 @@ export interface IFood {
   minerals?: string[]; // 主要矿物质
   phytochem?: string[]; // 植物化学物 / 活性成分（如花青素、番茄红素、萝卜硫素）
   note?: string; // 嘌呤等特别提醒
+  /** 蛋白质类型：'collagen' = 以胶原蛋白/明胶为主的不完全蛋白（脆骨、筋膜、肌腱、蹄筋）。
+   *  用于吸收提示：需搭配完全蛋白与维生素 C，不能单独计入增肌蛋白目标。 */
+  proteinProfile?: 'collagen';
   /** 脂肪构成（饱和/单不饱和/多不饱和/反式），单位 g/100g。
    *  缺省时由 getFatComposition() 按食物类别推导典型参考值。 */
   fatComp?: FatComposition;

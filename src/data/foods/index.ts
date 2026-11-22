@@ -16,6 +16,7 @@ import { COOKED } from './cooked';
 import { WORLD_CUISINES } from './world-cuisines';
 import { CONDIMENTS } from './condiments';
 import { DRINKS } from './drinks';
+import { CONNECTIVE_TISSUE_FOODS } from './connective-tissue';
 
 export const FOODS: IFood[] = [
   ...MEATS,
@@ -31,6 +32,7 @@ export const FOODS: IFood[] = [
   ...WORLD_CUISINES,
   ...CONDIMENTS,
   ...DRINKS,
+  ...CONNECTIVE_TISSUE_FOODS,
 ];
 
 export type { FoodCategory, IFood } from './types';
