@@ -16,14 +16,17 @@ import { findGuidance } from '@/data/exercise-guidance';
 import { restFor } from '@/lib/training-plan';
 import { smartMatch, buildMuscleAliases } from '@/lib/smart-search';
 import { getLang } from '@/lib/i18n';
+import { localizeExerciseName, localizeTerm, useI18nPack } from '@/lib/i18n-pack';
 import { pickSrc, nextSrc, markHostFailed, markHostOk, isHostDown } from '@/lib/img-guard';
 import { findSubstitutes } from '@/lib/exercise-substitute';
 import AnatomyFigure from '@/components/AnatomyFigure';
 import ExercisePRBox from './ExercisePRBox';
 
-/** 显示名：中文环境显示中文名，其他语言显示英文名（数据里本来就有） */
+/** 显示名：中文→中文名；en/de/ru→英文原名，命中开源词库时显示 de/ru 译名 */
 function displayName(ex: ExerciseView): string {
-  return getLang() === 'zh' ? (ex.nameZh || ex.name) : ex.name;
+  const lang = getLang();
+  if (lang === 'zh') return ex.nameZh || ex.name;
+  return localizeExerciseName(ex.name, lang);
 }
 
 // 图片 CDN 前缀
@@ -395,6 +398,8 @@ function ExerciseThumb({ ex, alt }: { ex: ExerciseView; alt: string }) {
 }
 
 export default function ExerciseLibraryPage() {
+  // 订阅语言切换并预加载当前语言的开源词库（切换后刷新动作名与筛选词条）
+  useI18nPack();
   // 支持从计划页带 ?q=动作名 跳转过来时自动搜索
   const [params] = useSearchParams();
   const [query, setQuery] = useState(params.get('q') ?? '');
@@ -544,7 +549,7 @@ export default function ExerciseLibraryPage() {
         <select
           value={cat}
           onChange={(e) => setCat(e.target.value)}
-          aria-label="训练类型"
+          aria-label={localizeTerm('Categories', '训练类型')}
           className="h-10 rounded-md border border-border bg-background px-3 text-sm text-foreground"
         >
           {CAT_OPTIONS.map((c) => (
@@ -554,10 +559,10 @@ export default function ExerciseLibraryPage() {
         <select
           value={equip}
           onChange={(e) => setEquip(e.target.value)}
-          aria-label="器械"
+          aria-label={localizeTerm('Equipment', '器械')}
           className="h-10 rounded-md border border-border bg-background px-3 text-sm text-foreground"
         >
-          <option value="all">全部器械</option>
+          <option value="all">{localizeTerm('All', '全部器械')}</option>
           {equips.filter((e) => e !== 'all').map((e) => (
             <option key={e} value={e}>{EQUIP_CN[e] || e}</option>
           ))}

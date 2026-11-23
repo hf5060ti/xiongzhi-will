@@ -38,5 +38,23 @@ Copyright (c) 2026 hf5060ti
   仅引用其翻译数据文件，未引入其程序代码；若本项目后续商用，需另行复核
   AGPL-3.0 数据兼容性。
 
+- 食物名 en / de / ru 词条来自 openfoodfacts/openfoodfacts-server 的
+  taxonomies/food/ingredients.txt 与 taxonomies/food/categories.txt：
+  https://github.com/openfoodfacts/openfoodfacts-server/tree/main/taxonomies/food 。
+  按上游条目的 en/de/ru/zh 同义词机械提取为 src/locales/extra-{en,de,ru}.json
+  的 food 字段，译文逐条来自上游、本站未改写、未改动任何营养数值。
+  上游为社区维护词条，未经人工校对，可能含上位词 / 近似（如口味细分回退到
+  基础食材名）。仓库 COPYRIGHT 声明程序适用 AGPL-3.0；Open Food Facts 数据库
+  另适用 ODbL-1.0，具体以官方声明为准，商用前需由法务复核。
+- 动作名 de / ru 词条来自 wger-project/wger（AGPL-3.0）的
+  wger/exercises/fixtures/translations.json 与 wger/core/fixtures/languages.json：
+  按本站英文动作名与上游英文动作名做精确 / 同词集合匹配，提取为 extra-{de,ru}.json
+  的 exercise 字段；器械词明显冲突的 1 条（Barbell Squat）已按确定性规则过滤。
+  上游社区译文未经人工校对。
+- 英文食物名另有本项目自有映射 src/data/foods/food-names-en.ts，优先级高于上游词条。
+- 覆盖率（机械提取，非全量翻译）：食物名 de 235 / ru 187 / 英文补缺 182
+  （本站食物约 1300 条）；动作名 de 26 / ru 2（英文动作名 2427 条）。
+  未命中按 i18n-pack.ts 的规则回退，不影响任何原始数据。
+
 第三方开源组件（React / Vite / Tailwind CSS / shadcn/ui 等）的许可
 信息以各组件自身声明的许可证为准。

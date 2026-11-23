@@ -90,7 +90,7 @@
 - **Vite 8** 构建
 - **Tailwind CSS 4** + shadcn/ui
 - **react-router-dom** 路由（线上与桌面统一使用 HashRouter，规避静态托管子页刷新 404）
-- **界面多语言**：简体中文 / English / Русский / Deutsch，切换即时生效（导航与界面文案；动作名、食物名保留原文，专有名词翻译反而更难查）
+- **界面多语言**：简体中文 / English / Русский / Deutsch，切换即时生效。UI 词条（wger gettext 语言包）与部分食物 / 动作名译文来自 GitHub 开源词库（wger、Open Food Facts taxonomies，出处见 `NOTICE`）；未收录的专名按英文 / 中文回退，正文保留原文
 - 所有数据存 **localStorage**，无需登录即可使用全部功能
 - 可选的本地 AI 后台：`node server/server.js`，把豆包 / Marvis / Ollama 统一代理给前端，**API Key 只留在本机**（也可在页面里填自己的硅基流动 Key 直连）
 

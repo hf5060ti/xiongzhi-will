@@ -6,6 +6,22 @@
 
 ## Unreleased
 
+### 开源语言包续接：专名 de / ru / en 与 UI 词条融合
+
+- 继续沿用 GitHub 现成开源词库，不自造翻译：
+  - 食物名：`openfoodfacts/openfoodfacts-server` 的 `taxonomies/food/{ingredients,categories}.txt`
+    中 en/de/ru/zh 同义词，机械提取为 `src/locales/extra-{en,de,ru}.json`；
+    de 235 / ru 187 / 英文补缺 182 条（另有项目自有 `FOOD_NAME_EN` 208 条）。
+  - 动作名：`wger-project/wger` 的 `exercises/fixtures/translations.json`，按英文动作名
+    精确 / 同词集合匹配，de 26 / ru 2 条；器械词冲突的 1 条已确定性过滤。
+- `i18n-pack.ts` 新增 `preloadExtraPack` / `localizeExerciseName`，扩展 `localizeFoodName`
+  回退链（de/ru 未命中 → 项目英文名 → 开源英文补名 → 中文）；`preloadI18nPack`
+  同时加载 UI 词条与专名映射，全部动态 import 独立 chunk。
+- 动作库接入 `useI18nPack` + 译名显示，筛选区的「全部器械 / 器械 / 训练类型」
+  接入 wger UI 词条；食物库自动获得 de/ru 名称。四处 `lang_scope` 说明同步更新。
+- 上游社区译文未经人工校对、可能含上位词或近似；出处、许可与覆盖率见 `NOTICE`。
+  **既有 14 个食物数据文件与所有动作原始数据零改动。**
+
 ### 多语言 / 劳作动作 / 结缔组织营养
 
 - **语言拓展包改用 GitHub 现成开源资源**：接入 wger-project/wger（AGPL-3.0）gettext

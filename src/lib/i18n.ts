@@ -1,6 +1,7 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
-// 轻量 i18n：仅翻译 UI 框架文字（导航、按钮、搜索、页脚）。
-// 动作名/食物名/知识正文保留原文——专有名词翻译反而降低可用性。
+// 轻量 i18n：翻译 UI 框架文字（导航、按钮、搜索、页脚）。
+// 动作名 / 食物名的多语言译文由开源词库提供（见 i18n-pack.ts）；
+// 未命中词条与知识正文保留原文，避免机翻专名降低可检索性。
 // 语言存 localStorage，切换时全站即时生效。
 
 export type Lang = 'zh' | 'en' | 'ru' | 'de';
@@ -60,7 +61,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: '本站只提供健康自然的健身方式，不提供任何极端训练或药物方案；请遵守你所在国家 / 地区的法律法规。',
     suitable: '适合健康成年人的力量 / 体能训练与营养参考。慢性病患者、孕期 / 哺乳期女性、老年人、大病初愈者及关节旧伤者，开始训练或调整饮食前请优先遵从医嘱。出现头晕、胸痛、关节刺痛、异常气短时立即停止并就医。',
     lang_settings: '语言 / Language',
-    lang_scope: '界面文案已翻译；动作名、食物名与正文保留原文，专有名词翻过去反而更难查。',
+    lang_scope: '界面文案与部分食物 / 动作名已由开源词库翻译；未收录的专名回退英文或中文，正文保留原文。',
     type_movement: '动作', type_food: '食物', type_formula: '公式', type_knowledge: '讲解',
   },
   en: {
@@ -85,7 +86,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: 'This site provides only healthy, natural fitness guidance. No extreme training or drugs. Follow your local laws.',
     suitable: 'For healthy adults doing strength / conditioning training. If you have chronic disease, are pregnant / nursing, elderly, recovering from illness, or have old joint injuries, consult a doctor before training or changing diet. Stop immediately and seek help for dizziness, chest pain, joint sharp pain, or unusual shortness of breath.',
     lang_settings: 'Language',
-    lang_scope: 'UI text is translated. Exercise names, food names and articles stay in Chinese — translated proper nouns are harder to look up.',
+    lang_scope: 'UI text and some food / exercise names come from open-source dictionaries; unlisted names fall back to English or Chinese. Articles stay in Chinese.',
     type_movement: 'Exercise', type_food: 'Food', type_formula: 'Formula', type_knowledge: 'Note',
   },
   ru: {
@@ -110,7 +111,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: 'Сайт даёт только здоровые естественные рекомендации. Никакого экстрима и фармы. Соблюдайте закон.',
     suitable: 'Для здоровых взрослых. При хронических болезнях, беременности, после травм — сначала к врачу. Головокружение, боль в груди, резкая боль в суставе — сразу остановиться.',
     lang_settings: 'Язык',
-    lang_scope: 'Переведён интерфейс. Названия упражнений, еды и статьи остаются на китайском — так их проще найти.',
+    lang_scope: 'Интерфейс и часть названий продуктов / упражнений переведены из открытых словарей; остальные названия даны на английском или китайском. Статьи остаются на китайском.',
     type_movement: 'Упр.', type_food: 'Еда', type_formula: 'Формула', type_knowledge: 'Заметка',
   },
   de: {
@@ -135,7 +136,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: 'Diese Seite bietet nur gesunde, natürliche Fitness. Kein Extremtraining, keine Drogen. Gesetze beachten.',
     suitable: 'Für gesunde Erwachsene. Bei chronischen Krankheiten, Schwangerschaft, alten Verletzungen: zuerst Arzt fragen. Bei Schwindel, Brustschmerz, Gelenkschmerz sofort aufhören.',
     lang_settings: 'Sprache',
-    lang_scope: 'Die Oberfläche ist übersetzt. Übungs- und Lebensmittelnamen sowie Artikel bleiben auf Chinesisch — so findet man sie leichter.',
+    lang_scope: 'Oberfläche und einige Lebensmittel- / Übungsnamen stammen aus Open-Source-Wörterbüchern; nicht erfasste Namen fallen auf Englisch oder Chinesisch zurück. Artikel bleiben auf Chinesisch.',
     type_movement: 'Übung', type_food: 'Essen', type_formula: 'Formel', type_knowledge: 'Notiz',
   },
 };
