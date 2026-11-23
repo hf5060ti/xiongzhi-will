@@ -62,7 +62,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: '本站只提供健康自然的健身方式，不提供任何极端训练或药物方案；请遵守你所在国家 / 地区的法律法规。',
     suitable: '适合健康成年人的力量 / 体能训练与营养参考。慢性病患者、孕期 / 哺乳期女性、老年人、大病初愈者及关节旧伤者，开始训练或调整饮食前请优先遵从医嘱。出现头晕、胸痛、关节刺痛、异常气短时立即停止并就医。',
     lang_settings: '语言 / Language',
-    lang_scope: '全站短文案与专名按开源词库实时切换；未收录词条与长正文保留中文。切换即时生效，无需刷新。',
+    lang_scope: '全站文案与专名按开源词库和离线模型词条实时切换；机器译文为预测值，供参考。未收录的超长正文保留中文，切换无需刷新。',
     type_movement: '动作', type_food: '食物', type_formula: '公式', type_knowledge: '讲解',
   },
   en: {
@@ -87,7 +87,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: 'This site provides only healthy, natural fitness guidance. No extreme training or drugs. Follow your local laws.',
     suitable: 'For healthy adults doing strength / conditioning training. If you have chronic disease, are pregnant / nursing, elderly, recovering from illness, or have old joint injuries, consult a doctor before training or changing diet. Stop immediately and seek help for dizziness, chest pain, joint sharp pain, or unusual shortness of breath.',
     lang_settings: 'Language',
-    lang_scope: 'Short UI text and proper names switch instantly via open-source dictionaries. Unlisted terms and long articles stay in Chinese. No reload needed.',
+    lang_scope: 'UI text and proper names switch instantly via open-source dictionaries plus offline-model entries. Machine translations are predictions for reference. Unlisted long articles stay in Chinese. No reload needed.',
     type_movement: 'Exercise', type_food: 'Food', type_formula: 'Formula', type_knowledge: 'Note',
   },
   ru: {
@@ -112,7 +112,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: 'Сайт даёт только здоровые естественные рекомендации. Никакого экстрима и фармы. Соблюдайте закон.',
     suitable: 'Для здоровых взрослых. При хронических болезнях, беременности, после травм — сначала к врачу. Головокружение, боль в груди, резкая боль в суставе — сразу остановиться.',
     lang_settings: 'Язык',
-    lang_scope: 'Короткие подписи и названия переключаются мгновенно по открытым словарям. Не найденные слова и длинные статьи остаются на китайском. Перезагрузка не нужна.',
+    lang_scope: 'Текст интерфейса и названия переключаются мгновенно по открытым словарям и офлайн-модели. Машинный перевод — прогноз, требующий проверки. Не найденные длинные статьи остаются на китайском.',
     type_movement: 'Упр.', type_food: 'Еда', type_formula: 'Формула', type_knowledge: 'Заметка',
   },
   de: {
@@ -137,7 +137,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: 'Diese Seite bietet nur gesunde, natürliche Fitness. Kein Extremtraining, keine Drogen. Gesetze beachten.',
     suitable: 'Für gesunde Erwachsene. Bei chronischen Krankheiten, Schwangerschaft, alten Verletzungen: zuerst Arzt fragen. Bei Schwindel, Brustschmerz, Gelenkschmerz sofort aufhören.',
     lang_settings: 'Sprache',
-    lang_scope: 'Kurze UI-Texte und Namen wechseln sofort über Open-Source-Wörterbücher. Nicht erfasste Begriffe und lange Artikel bleiben Chinesisch. Kein Neuladen nötig.',
+    lang_scope: 'UI-Texte und Namen wechseln sofort über Open-Source-Wörterbücher und ein Offline-Modell. Maschinelle Übersetzungen sind Vorhersagen und sollten geprüft werden. Nicht erfasste lange Artikel bleiben Chinesisch.',
     type_movement: 'Übung', type_food: 'Essen', type_formula: 'Formel', type_knowledge: 'Notiz',
   },
 };

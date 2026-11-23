@@ -3,7 +3,7 @@
 import { describe, expect, it } from 'vitest';
 import dePack from '@/locales/ui-de.json';
 import enPack from '@/locales/ui-en.json';
-import { buildPattern, translateText } from './i18n-dom';
+import { buildPattern, mergeDict, translateText } from './i18n-dom';
 
 const dict = {
   '钾': 'Kalium',
@@ -23,9 +23,17 @@ describe('全站实时文本层 · 纯函数', () => {
     expect(translateText('  保存  ', dict, re)).toBe('  Speichern  ');
   });
 
-  it('超过阈值的长段落保留中文，避免中德混杂', () => {
+  it('超过阈值的长段落未收录时保留中文，避免中德混杂', () => {
     const long = '全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。';
     expect(translateText(long, dict, re)).toBe(long);
+  });
+
+  it('整句收录时即使超过阈值也能整段切换，且长句不进词级正则', () => {
+    const sentence = '蛋白质不足时，肌肉修复速度会下降，建议训练后及时补充。';
+    const full = { ...dict, [sentence]: 'Low protein slows muscle repair.' };
+    const fullRe = buildPattern(full);
+    expect(translateText(sentence, full, fullRe)).toBe('Low protein slows muscle repair.');
+    expect(fullRe?.test(sentence)).toBe(false); // 长句只走整段命中，避免巨型正则
   });
 
   it('无中文 / 空词典 / 未收录词一律原样返回', () => {
@@ -33,6 +41,12 @@ describe('全站实时文本层 · 纯函数', () => {
     expect(translateText('钾', {}, null)).toBe('钾');
     expect(translateText('未收录的中文词', dict, re)).toBe('未收录的中文词');
     expect(buildPattern({})).toBeNull();
+  });
+
+  it('开源人工词条优先于机器预测词条', () => {
+    const merged = mergeDict({ '保存': 'Speichern' }, { '保存': 'Saved', '取消': 'Cancel' });
+    expect(merged['保存']).toBe('Speichern');
+    expect(merged['取消']).toBe('Cancel');
   });
 
   it('真实开源词条：OFF / wger 上游译文逐条可核验', () => {

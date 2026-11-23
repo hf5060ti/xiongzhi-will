@@ -1,16 +1,19 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
 // See LICENSE / NOTICE for details.
 /**
- * 全站实时文本层：把未接入 t() / i18n-pack 的中文短文案、标签、专名按语言切换。
+ * 全站实时文本层：把未接入 t() / i18n-pack 的中文文案、标签、专名按语言切换。
  *
- * 词条只来自 src/locales/ui-{en,de,ru}.json（由 tools/generate-i18n-terms.py
- * 从 GitHub 开源上游机械提取：OFF gettext PO / taxonomies、wger .po 与专名映射，
- * 另加项目数据里本来就有的英文字段）。本站不自行撰写任何译文。
+ * 词典来源（本站不自行撰写译文）：
+ *  - ui-{en,de,ru}.json：tools/generate-i18n-terms.py 从 GitHub 开源上游机械提取
+ *    （OFF gettext PO / taxonomies、wger .po 与专名映射、项目自带英文字段）；
+ *  - mt-{en,de,ru}.json：tools/translate-ui-mt.py 用开源 NLLB 离线模型批量预测
+ *    （CC BY-NC 4.0，非商用；译文为模型预测值，需人工抽检）。
+ * 开源人工词条优先，机器译文只在前者未命中时生效。
  *
- * 覆盖范围（刻意保守）：
- *  - 文本节点整段命中词典 → 整段替换；
- *  - 不超过 MAX_INLINE 字的短节点 → 按最长匹配替换其中收录的词；
- *  - 更长的正文段落保留中文，避免把长句翻成中德 / 中俄混杂；
+ * 覆盖范围：
+ *  - 整段命中词典 → 整段替换，长句也能整句切换；
+ *  - 未整段命中且不超过 MAX_INLINE 字的短节点 → 按最长匹配替换其中收录的词；
+ *  - 其余长正文保留中文，避免把长句翻成中德 / 中俄混杂；
  *  - placeholder / title / aria-label / alt 属性同上。
  * 切换语言时先回滚到原文再按新词典重译；MutationObserver 负责 React 异步渲染
  * 与路由切换后新增的节点，因此不需要每个页面单独订阅语言变化。
@@ -20,11 +23,25 @@ import { getLang, onLangChange, type Lang } from './i18n';
 type Dict = Record<string, string>;
 type TargetLang = Exclude<Lang, 'zh'>;
 
-const loaders: Record<TargetLang, () => Promise<Dict>> = {
-  en: () => import('@/locales/ui-en.json').then((m) => m.default as Dict),
-  de: () => import('@/locales/ui-de.json').then((m) => m.default as Dict),
-  ru: () => import('@/locales/ui-ru.json').then((m) => m.default as Dict),
+const loaders: Record<TargetLang, () => Promise<[Dict, Dict]>> = {
+  en: () => Promise.all([
+    import('@/locales/ui-en.json').then((m) => m.default as Dict),
+    import('@/locales/mt-en.json').then((m) => m.default as Dict),
+  ]),
+  de: () => Promise.all([
+    import('@/locales/ui-de.json').then((m) => m.default as Dict),
+    import('@/locales/mt-de.json').then((m) => m.default as Dict),
+  ]),
+  ru: () => Promise.all([
+    import('@/locales/ui-ru.json').then((m) => m.default as Dict),
+    import('@/locales/mt-ru.json').then((m) => m.default as Dict),
+  ]),
 };
+
+/** 人工/开源词条优先，机器译文只补空缺；不影响任何原始数据。 */
+export function mergeDict(openSource: Dict, machine: Dict): Dict {
+  return { ...machine, ...openSource };
+}
 
 const ATTRS = ['placeholder', 'title', 'aria-label', 'alt'] as const;
 const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT', 'PRE', 'CODE']);
@@ -46,10 +63,10 @@ const originalAttrs = new Map<Element, Partial<Record<(typeof ATTRS)[number], st
 
 /** 纯函数：供单元测试与运行时共用。按最长匹配替换，短节点才做词级替换。 */
 export function translateText(source: string, table: Dict, re: RegExp | null): string {
-  if (!HAS_ZH.test(source) || !re) return source;
+  if (!HAS_ZH.test(source)) return source;
   const trimmed = source.trim();
   if (table[trimmed]) return source.replace(trimmed, table[trimmed]);
-  if (source.length > MAX_INLINE) return source;
+  if (!re || source.length > MAX_INLINE) return source;
   re.lastIndex = 0;
   return source.replace(re, (match) => table[match] ?? match);
 }
@@ -60,8 +77,9 @@ export function translateText(source: string, table: Dict, re: RegExp | null): s
  * 避免把「其中」「生前」「水」这类语法字当成营养素 / 单位误译。
  */
 export function buildPattern(table: Dict): RegExp | null {
+  // 长句只走整段命中，不进词级正则：避免上万条机器译文把正则撑得过大。
   const keys = Object.keys(table)
-    .filter((k) => k.length >= 1)
+    .filter((k) => k.length >= 1 && k.length <= MAX_INLINE)
     .sort((a, b) => b.length - a.length || a.localeCompare(b));
   if (!keys.length) return null;
   const escape = (k: string) => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -178,13 +196,13 @@ async function refresh(lang: Lang): Promise<void> {
     resumeObserver();
     return;
   }
-  const table = await loaders[lang]();
+  const [openSource, machine] = await loaders[lang]();
   if (ticket !== generation) return; // 语言又切了一次，丢弃过期结果
   suspendObserver();
   pending = [];
   restore();
-  dict = table;
-  pattern = buildPattern(table);
+  dict = mergeDict(openSource, machine);
+  pattern = buildPattern(dict);
   activeLang = lang;
   walk(document.body);
   resumeObserver();

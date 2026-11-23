@@ -90,7 +90,7 @@
 - **Vite 8** 构建
 - **Tailwind CSS 4** + shadcn/ui
 - **react-router-dom** 路由（线上与桌面统一使用 HashRouter，规避静态托管子页刷新 404）
-- **界面多语言**：简体中文 / English / Русский / Deutsch，切换即时生效、全站无需刷新。框架文字走 `t()` 字典；其余页面短文案与专名由 `i18n-dom.ts` 实时文本层按语言重译，词条全部机械提取自 GitHub 开源词库（wger gettext .po、Open Food Facts `po/*` 与 `taxonomies/*`，生成脚本 `tools/generate-i18n-terms.py`，出处见 `NOTICE`）。未收录词条与长中文正文保留原文，不做机翻
+- **界面多语言**：简体中文 / English / Русский / Deutsch，切换即时生效、全站无需刷新。框架文字走 `t()` 字典；其余页面文案与专名由 `i18n-dom.ts` 实时文本层按语言重译。人工/开源优先词条由 `tools/generate-i18n-terms.py` 从 GitHub 开源词库（wger、Open Food Facts `po/*` 与 `taxonomies/*`）机械提取；未覆盖的整句由 `tools/translate-ui-mt.py` 调用开源离线模型 NLLB-200-distilled-600M（CT2 int8）批量预测为静态词条，**机器译文为预测值，需人工抽检**，且模型为 CC BY-NC 4.0 非商用许可（详见 `NOTICE`）。未收录的超长正文保留中文
 - 所有数据存 **localStorage**，无需登录即可使用全部功能
 - 可选的本地 AI 后台：`node server/server.js`，把豆包 / Marvis / Ollama 统一代理给前端，**API Key 只留在本机**（也可在页面里填自己的硅基流动 Key 直连）
 
