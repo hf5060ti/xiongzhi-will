@@ -83,5 +83,11 @@ Copyright (c) 2026 hf5060ti
   仅供免费非商业使用；本项目若商用，必须先替换为可商用译源并移除 mt-*.json。
   开源人工词条 ui-*.json 优先级高于机器词条，未命中词条与超长正文回退中文。
 
+- 页面实抓语料译文 src/locales/fix-{en,de,ru}.json 由 tools/translate-visible-mt.py
+  生成：用浏览器遍历本站各路由、切到英文后抓取 DOM 中仍含中文的可见文本，
+  整条送同一 NLLB 模型预测（en 2673 / de 2188 / ru 2403 条）。
+  与 mt-*.json 同为 CC BY-NC 4.0 模型输出、非商用、需人工抽检；
+  词典优先级 ui-* > fix-* > mt-*。文档标题亦由该词典按语言重译。
+
 第三方开源组件（React / Vite / Tailwind CSS / shadcn/ui 等）的许可
 信息以各组件自身声明的许可证为准。

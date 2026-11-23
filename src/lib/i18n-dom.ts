@@ -6,14 +6,17 @@
  * 词典来源（本站不自行撰写译文）：
  *  - ui-{en,de,ru}.json：tools/generate-i18n-terms.py 从 GitHub 开源上游机械提取
  *    （OFF gettext PO / taxonomies、wger .po 与专名映射、项目自带英文字段）；
- *  - mt-{en,de,ru}.json：tools/translate-ui-mt.py 用开源 NLLB 离线模型批量预测
- *    （CC BY-NC 4.0，非商用；译文为模型预测值，需人工抽检）。
- * 开源人工词条优先，机器译文只在前者未命中时生效。
+ *  - mt-{en,de,ru}.json：tools/translate-ui-mt.py 用开源 NLLB 离线模型批量预测；
+ *  - fix-{en,de,ru}.json：tools/translate-visible-mt.py 对真实浏览器抓取的
+ *    「英文模式下仍含中文」的可见文案整条预测，覆盖动态拼接与属性。
+ * 全部 NLLB 译文为 CC BY-NC 4.0（非商用）模型预测值，需人工抽检。
+ * 优先级：开源人工词条 > 页面实抓译文 > 源码机器译文。
  *
  * 覆盖范围：
  *  - 整段命中词典 → 整段替换，长句也能整句切换；
- *  - 未整段命中且不超过 MAX_INLINE 字的短节点 → 按最长匹配替换其中收录的词；
- *  - 其余长正文保留中文，避免把长句翻成中德 / 中俄混杂；
+ *  - 未整段命中 → 按词典最长匹配替换其中收录的词（长句同样处理，
+ *    否则动态数据里的已收录短词会纹丝不动）；
+ *  - 词典完全未收录的中文保留原文；
  *  - placeholder / title / aria-label / alt 属性同上。
  * 切换语言时先回滚到原文再按新词典重译；MutationObserver 负责 React 异步渲染
  * 与路由切换后新增的节点，因此不需要每个页面单独订阅语言变化。
@@ -23,26 +26,41 @@ import { getLang, onLangChange, type Lang } from './i18n';
 type Dict = Record<string, string>;
 type TargetLang = Exclude<Lang, 'zh'>;
 
-const loaders: Record<TargetLang, () => Promise<[Dict, Dict]>> = {
+type Pack = [Dict, Dict, Dict]; // [开源人工, 页面实抓机翻, 源码机翻]
+const loaders: Record<TargetLang, () => Promise<Pack>> = {
   en: () => Promise.all([
     import('@/locales/ui-en.json').then((m) => m.default as Dict),
+    import('@/locales/fix-en.json').then((m) => m.default as Dict),
     import('@/locales/mt-en.json').then((m) => m.default as Dict),
   ]),
   de: () => Promise.all([
     import('@/locales/ui-de.json').then((m) => m.default as Dict),
+    import('@/locales/fix-de.json').then((m) => m.default as Dict),
     import('@/locales/mt-de.json').then((m) => m.default as Dict),
   ]),
   ru: () => Promise.all([
     import('@/locales/ui-ru.json').then((m) => m.default as Dict),
+    import('@/locales/fix-ru.json').then((m) => m.default as Dict),
     import('@/locales/mt-ru.json').then((m) => m.default as Dict),
   ]),
 };
+
+/** 源码机翻 → 页面实抓译文 → 开源人工词条；后者覆盖前者。 */
+export function mergePacks(source: Pack): Dict {
+  return { ...source[2], ...source[1], ...source[0] };
+}
+
+/** 供 Layout 等直接设置 document.title 的调用方使用；同一原文只翻一次。 */
+export function translateTitle(title: string): string {
+  return translateText(title, dict, pattern);
+}
 
 /** 人工/开源词条优先，机器译文只补空缺；不影响任何原始数据。 */
 export function mergeDict(openSource: Dict, machine: Dict): Dict {
   return { ...machine, ...openSource };
 }
 
+// 不处理 value：React 受控输入靠受控值，改 DOM 会破坏输入状态。
 const ATTRS = ['placeholder', 'title', 'aria-label', 'alt'] as const;
 const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT', 'PRE', 'CODE']);
 const MAX_INLINE = 24;
@@ -57,17 +75,21 @@ let timer: ReturnType<typeof setTimeout> | undefined;
 let generation = 0;
 let pending: MutationRecord[] = [];
 
+let originalTitle: string | null = null;
+
 const originalText = new Map<Text, string>();
 const appliedText = new Map<Text, string>();
 const originalAttrs = new Map<Element, Partial<Record<(typeof ATTRS)[number], string>>>();
 
-/** 纯函数：供单元测试与运行时共用。按最长匹配替换，短节点才做词级替换。 */
+/** 纯函数：供单元测试与运行时共用。整段优先，其余按词典最长匹配替换。 */
 export function translateText(source: string, table: Dict, re: RegExp | null): string {
   if (!HAS_ZH.test(source)) return source;
   const trimmed = source.trim();
   if (table[trimmed]) return source.replace(trimmed, table[trimmed]);
-  if (!re || source.length > MAX_INLINE) return source;
+  if (!re) return source;
   re.lastIndex = 0;
+  // 长句也做词级替换：动态数据（营养素说明、份量等）里含大量已收录短词，
+  // 只在整段未命中时保留中文会让这些句子纹丝不动（用户截图里的核心问题）。
   return source.replace(re, (match) => table[match] ?? match);
 }
 
@@ -169,6 +191,23 @@ function walk(root: Node): void {
   }
 }
 
+/** Layout 切页会重设中文 title：捕获原文并按当前语言重译。 */
+function applyTitle(): void {
+  const current = document.title;
+  if (originalTitle === null || !current || !HAS_ZH.test(current)) {
+    // 切页后的新中文标题 = 新原文；纯英文标题不记录
+    if (current && HAS_ZH.test(current)) originalTitle = current;
+    else return;
+  }
+  const out = translateText(originalTitle, dict, pattern);
+  if (out !== current) document.title = out;
+}
+
+function restoreTitle(): void {
+  if (originalTitle !== null) document.title = originalTitle;
+  originalTitle = null;
+}
+
 function restore(): void {
   for (const [node, source] of originalText) {
     if (node.isConnected && node.nodeValue !== source) node.nodeValue = source;
@@ -190,21 +229,24 @@ async function refresh(lang: Lang): Promise<void> {
     suspendObserver();
     pending = [];
     restore();
+    restoreTitle();
     dict = {};
     pattern = null;
     activeLang = lang;
     resumeObserver();
     return;
   }
-  const [openSource, machine] = await loaders[lang]();
+  const pack = await loaders[lang]();
   if (ticket !== generation) return; // 语言又切了一次，丢弃过期结果
+  const table = mergePacks(pack);
   suspendObserver();
   pending = [];
   restore();
-  dict = mergeDict(openSource, machine);
+  dict = table;
   pattern = buildPattern(dict);
   activeLang = lang;
   walk(document.body);
+  applyTitle();
   resumeObserver();
 }
 
@@ -243,6 +285,13 @@ function flush(): void {
 export function startDomI18n(): void {
   if (started || typeof document === 'undefined' || !document.body) return;
   started = true;
+  // 标题由 Layout 直接写 document.title：观察 <title> 文本节点，切页后即时重译
+  const titleEl = document.querySelector('title');
+  if (titleEl) {
+    new MutationObserver(() => {
+      if (activeLang !== 'zh' && HAS_ZH.test(document.title)) applyTitle();
+    }).observe(titleEl, { childList: true, characterData: true, subtree: true });
+  }
   observer = new MutationObserver((records) => {
     pending.push(...records);
     if (timer) clearTimeout(timer);
@@ -251,4 +300,9 @@ export function startDomI18n(): void {
   // 语言切换：全站回滚后按新词典重译，无需刷新页面
   onLangChange(() => { void refresh(getLang()); });
   void refresh(activeLang);
+  // 兜底：React 异步渲染 / 数据加载可能在 observer 之外替换节点，
+  // 每隔几秒幂等重扫一次（已翻译节点 nodeValue 不再是中文，walk 会跳过）。
+  window.setInterval(() => {
+    if (activeLang !== 'zh' && document.body) walk(document.body);
+  }, 3000);
 }

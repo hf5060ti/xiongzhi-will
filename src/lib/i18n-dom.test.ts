@@ -3,7 +3,7 @@
 import { describe, expect, it } from 'vitest';
 import dePack from '@/locales/ui-de.json';
 import enPack from '@/locales/ui-en.json';
-import { buildPattern, mergeDict, translateText } from './i18n-dom';
+import { buildPattern, mergeDict, mergePacks, translateText } from './i18n-dom';
 
 const dict = {
   '钾': 'Kalium',
@@ -23,7 +23,12 @@ describe('全站实时文本层 · 纯函数', () => {
     expect(translateText('  保存  ', dict, re)).toBe('  Speichern  ');
   });
 
-  it('超过阈值的长段落未收录时保留中文，避免中德混杂', () => {
+  it('长句未整段收录时，仍替换其中已收录的多字词（动态数据场景）', () => {
+    const long = '钾含量与铁要搭配，全程控制节奏，别借惯性甩起。';
+    expect(translateText(long, dict, re)).toBe('Kaliumgehalt与铁要搭配，全程控制节奏，别借惯性甩起。');
+  });
+
+  it('词典完全未收录的中文长句保留原文', () => {
     const long = '全程控制节奏，顶峰稍作停顿，靠目标肌群发力，别借惯性甩起。';
     expect(translateText(long, dict, re)).toBe(long);
   });
@@ -47,6 +52,17 @@ describe('全站实时文本层 · 纯函数', () => {
     const merged = mergeDict({ '保存': 'Speichern' }, { '保存': 'Saved', '取消': 'Cancel' });
     expect(merged['保存']).toBe('Speichern');
     expect(merged['取消']).toBe('Cancel');
+  });
+
+  it('三层词典优先级：开源 > 页面实抓 > 源码机翻', () => {
+    const merged = mergePacks([
+      { '查看': 'View' },
+      { '查看': 'Open', '详情': 'Details' },
+      { '查看': 'Look', '详情': 'Info', '动作': 'Exercise' },
+    ]);
+    expect(merged['查看']).toBe('View');
+    expect(merged['详情']).toBe('Details');
+    expect(merged['动作']).toBe('Exercise');
   });
 
   it('真实开源词条：OFF / wger 上游译文逐条可核验', () => {
