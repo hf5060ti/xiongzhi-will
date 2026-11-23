@@ -6,6 +6,30 @@
 
 ## Unreleased
 
+### 全站实时文本层：未接入 t() 的页面也随语言切换
+
+- 新增 `src/lib/i18n-dom.ts`，在 `Root` 启动时挂载一次：
+  - 遍历文本节点与 `placeholder / title / aria-label / alt`，按开源词库替换中文短文案；
+  - 切换语言先回滚原文再按新词典重译，`MutationObserver` 覆盖 React 异步渲染与路由跳转，
+    **无需每个页面单独订阅、无需刷新页面**；
+  - 整段命中优先、≤24 字短节点按最长匹配、长正文保留中文；单字条目（钾 / 铁 / 克…）
+    仅在前后非汉字时命中，避免把「其中」「生前」误当术语；
+  - 静态 `landing.html`（紫色主页）不加载 React，不受影响。
+- 新增 `tools/generate-i18n-terms.py`：从 GitHub 开源上游机械提取「中文 → en/de/ru」词条，
+  生成 `src/locales/ui-{en,de,ru}.json`（en 936 / de 623 / ru 571 条，动态 import 独立 chunk，
+  gzip 7.8–12.8 KB）。来源：
+  - `openfoodfacts/openfoodfacts-server`：`po/common/*.po`、`po/tags/*.po` 的 zh/de/ru
+    同源 msgid 配对，以及 `taxonomies/` 下 21 个词表（nutrients / minerals / units /
+    states / allergens / labels / countries 等）的 en/de/ru/zh 同义词；
+  - `wger-project/wger` gettext .po（已有 `wger-*.json` 反查）；
+  - 已有 `extra-*.json` 专名映射与项目数据里本就存在的英文字段（非译文）。
+  - 按本站源码语料过滤，只保留会渲染出来的词条；**本站不自行撰写任何译文**。
+- 实测覆盖：UI 中文短文案约 en 44.8% / de 41.0% / ru 41.1% 随语言改写
+  （中文字符级替换 12.7–15.5%）；剩余为本站自写的长中文句子，开源词库无对应译文，
+  刻意保留原文而非机翻。四处 `lang_scope` 与 README / NOTICE 同步说明。
+- 新增 5 项纯函数测试；`vitest 236 passed`、typecheck 干净、改动文件 eslint 零警告、build 成功。
+  **既有食物数据文件、动作原始数据、紫色主页零改动。**
+
 ### 开源语言包续接：专名 de / ru / en 与 UI 词条融合
 
 - 继续沿用 GitHub 现成开源词库，不自造翻译：

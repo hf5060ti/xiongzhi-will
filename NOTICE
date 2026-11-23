@@ -56,5 +56,21 @@ Copyright (c) 2026 hf5060ti
   （本站食物约 1300 条）；动作名 de 26 / ru 2（英文动作名 2427 条）。
   未命中按 i18n-pack.ts 的规则回退，不影响任何原始数据。
 
+- 全站实时文本层词条 src/locales/ui-{en,de,ru}.json 由
+  tools/generate-i18n-terms.py 机械提取，来源为同一批 GitHub 开源上游：
+  - openfoodfacts/openfoodfacts-server 的 po/common/{zh,zh_CN,de,ru}.po、
+    po/tags/{zh_CN,de,ru}.po：按同源 (msgctxt, msgid) 把中文 msgstr 与
+    de / ru msgstr 及英文 msgid 配对；
+  - 同仓库 taxonomies/ 下 21 个词表（nutrients、minerals、units、states、
+    allergens、labels、countries、languages、packaging_* 等）的
+    en/de/ru/zh 同义词；
+  - wger-project/wger 的 gettext .po（经已有 wger-*.json 反查）；
+  - 已有 extra-*.json 专名映射，以及本站数据里本来就存在的英文字段
+    （如 FOOD_NAME_EN、动作 nameZh → name），这些是事实数据而非译文。
+  上游许可同上：OFF 仓库 COPYRIGHT 声明程序适用 AGPL-3.0，Open Food Facts
+  数据库另适用 ODbL-1.0；wger 为 AGPL-3.0。商用前需由法务复核数据兼容性。
+  本站未撰写、未改写任何译文，仅按确定性规则做提取、配对、过滤与替换；
+  上游社区译文未经人工校对。生成脚本可复跑，无需联网时复用本地缓存。
+
 第三方开源组件（React / Vite / Tailwind CSS / shadcn/ui 等）的许可
 信息以各组件自身声明的许可证为准。

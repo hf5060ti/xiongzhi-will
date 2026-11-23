@@ -1,8 +1,9 @@
 // 雄性意志（XiongZhi Will）· Copyright (c) 2026 hf5060ti · Licensed under Apache License 2.0
-// 轻量 i18n：翻译 UI 框架文字（导航、按钮、搜索、页脚）。
-// 动作名 / 食物名的多语言译文由开源词库提供（见 i18n-pack.ts）；
-// 未命中词条与知识正文保留原文，避免机翻专名降低可检索性。
-// 语言存 localStorage，切换时全站即时生效。
+// 轻量 i18n：字典翻译导航 / 搜索 / 页脚等框架文字（t()）。
+// 其余页面的中文短文案由 i18n-dom.ts 的全站实时文本层按语言切换，
+// 词条来自 i18n-pack.ts 与 src/locales/ui-*.json 的开源词库（本站不自撰译文）。
+// 长正文段落保留中文，避免机翻专名降低可检索性。
+// 语言存 localStorage，切换时全站即时生效，无需刷新。
 
 export type Lang = 'zh' | 'en' | 'ru' | 'de';
 
@@ -61,7 +62,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: '本站只提供健康自然的健身方式，不提供任何极端训练或药物方案；请遵守你所在国家 / 地区的法律法规。',
     suitable: '适合健康成年人的力量 / 体能训练与营养参考。慢性病患者、孕期 / 哺乳期女性、老年人、大病初愈者及关节旧伤者，开始训练或调整饮食前请优先遵从医嘱。出现头晕、胸痛、关节刺痛、异常气短时立即停止并就医。',
     lang_settings: '语言 / Language',
-    lang_scope: '界面文案与部分食物 / 动作名已由开源词库翻译；未收录的专名回退英文或中文，正文保留原文。',
+    lang_scope: '全站短文案与专名按开源词库实时切换；未收录词条与长正文保留中文。切换即时生效，无需刷新。',
     type_movement: '动作', type_food: '食物', type_formula: '公式', type_knowledge: '讲解',
   },
   en: {
@@ -86,7 +87,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: 'This site provides only healthy, natural fitness guidance. No extreme training or drugs. Follow your local laws.',
     suitable: 'For healthy adults doing strength / conditioning training. If you have chronic disease, are pregnant / nursing, elderly, recovering from illness, or have old joint injuries, consult a doctor before training or changing diet. Stop immediately and seek help for dizziness, chest pain, joint sharp pain, or unusual shortness of breath.',
     lang_settings: 'Language',
-    lang_scope: 'UI text and some food / exercise names come from open-source dictionaries; unlisted names fall back to English or Chinese. Articles stay in Chinese.',
+    lang_scope: 'Short UI text and proper names switch instantly via open-source dictionaries. Unlisted terms and long articles stay in Chinese. No reload needed.',
     type_movement: 'Exercise', type_food: 'Food', type_formula: 'Formula', type_knowledge: 'Note',
   },
   ru: {
@@ -111,7 +112,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: 'Сайт даёт только здоровые естественные рекомендации. Никакого экстрима и фармы. Соблюдайте закон.',
     suitable: 'Для здоровых взрослых. При хронических болезнях, беременности, после травм — сначала к врачу. Головокружение, боль в груди, резкая боль в суставе — сразу остановиться.',
     lang_settings: 'Язык',
-    lang_scope: 'Интерфейс и часть названий продуктов / упражнений переведены из открытых словарей; остальные названия даны на английском или китайском. Статьи остаются на китайском.',
+    lang_scope: 'Короткие подписи и названия переключаются мгновенно по открытым словарям. Не найденные слова и длинные статьи остаются на китайском. Перезагрузка не нужна.',
     type_movement: 'Упр.', type_food: 'Еда', type_formula: 'Формула', type_knowledge: 'Заметка',
   },
   de: {
@@ -136,7 +137,7 @@ const DICT: Record<Lang, Record<string, string>> = {
     disclaimer: 'Diese Seite bietet nur gesunde, natürliche Fitness. Kein Extremtraining, keine Drogen. Gesetze beachten.',
     suitable: 'Für gesunde Erwachsene. Bei chronischen Krankheiten, Schwangerschaft, alten Verletzungen: zuerst Arzt fragen. Bei Schwindel, Brustschmerz, Gelenkschmerz sofort aufhören.',
     lang_settings: 'Sprache',
-    lang_scope: 'Oberfläche und einige Lebensmittel- / Übungsnamen stammen aus Open-Source-Wörterbüchern; nicht erfasste Namen fallen auf Englisch oder Chinesisch zurück. Artikel bleiben auf Chinesisch.',
+    lang_scope: 'Kurze UI-Texte und Namen wechseln sofort über Open-Source-Wörterbücher. Nicht erfasste Begriffe und lange Artikel bleiben Chinesisch. Kein Neuladen nötig.',
     type_movement: 'Übung', type_food: 'Essen', type_formula: 'Formel', type_knowledge: 'Notiz',
   },
 };

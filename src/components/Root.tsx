@@ -9,6 +9,7 @@ import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from '@/components/ErrorFallback';
 import { handleAuthCallback } from '@/lib/auth';
 import { initSyncIfLoggedIn } from '@/lib/sync';
+import { startDomI18n } from '@/lib/i18n-dom';
 import App from '@/App';
 import OpeningScene from '@/components/OpeningScene';
 
@@ -76,6 +77,8 @@ export function Root() {
   useEffect(() => {
     void handleAuthCallback();
     initSyncIfLoggedIn();
+    // 全站实时文本层：开源词库词条 + 语言切换即时重译（不影响静态 landing.html）
+    startDomI18n();
   }, []);
 
   return (

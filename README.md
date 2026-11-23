@@ -90,7 +90,7 @@
 - **Vite 8** 构建
 - **Tailwind CSS 4** + shadcn/ui
 - **react-router-dom** 路由（线上与桌面统一使用 HashRouter，规避静态托管子页刷新 404）
-- **界面多语言**：简体中文 / English / Русский / Deutsch，切换即时生效。UI 词条（wger gettext 语言包）与部分食物 / 动作名译文来自 GitHub 开源词库（wger、Open Food Facts taxonomies，出处见 `NOTICE`）；未收录的专名按英文 / 中文回退，正文保留原文
+- **界面多语言**：简体中文 / English / Русский / Deutsch，切换即时生效、全站无需刷新。框架文字走 `t()` 字典；其余页面短文案与专名由 `i18n-dom.ts` 实时文本层按语言重译，词条全部机械提取自 GitHub 开源词库（wger gettext .po、Open Food Facts `po/*` 与 `taxonomies/*`，生成脚本 `tools/generate-i18n-terms.py`，出处见 `NOTICE`）。未收录词条与长中文正文保留原文，不做机翻
 - 所有数据存 **localStorage**，无需登录即可使用全部功能
 - 可选的本地 AI 后台：`node server/server.js`，把豆包 / Marvis / Ollama 统一代理给前端，**API Key 只留在本机**（也可在页面里填自己的硅基流动 Key 直连）
 
