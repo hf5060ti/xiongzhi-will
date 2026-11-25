@@ -4,9 +4,13 @@
   "license": "Apache-2.0",
   "private": true,
   "type": "module",
+  "main": "electron/main.cjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:offline": "node scripts/build-offline.mjs",
+    "dist:win": "npm run build:offline && electron-builder --win --x64",
+    "dist:win:dir": "npm run build:offline && electron-builder --win --dir --x64",
     "typecheck": "tsc -p tsconfig.app.json",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -82,6 +86,8 @@
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^5",
     "concurrently": "^9",
+    "electron": "^37.10.3",
+    "electron-builder": "^26.18.0",
     "eslint": "^9",
     "eslint-plugin-react-hooks": "^7",
     "eslint-plugin-react-refresh": "^0.5",
@@ -92,5 +98,40 @@
     "vite-plugin-singlefile": "^2.3.4",
     "vitest": "^5.0.3",
     "wrangler": "^4.147.0"
+  },
+  "build": {
+    "appId": "com.hf5060ti.xiongzhi-will",
+    "productName": "雄性意志",
+    "copyright": "Copyright © 2026 hf5060ti",
+    "directories": {
+      "output": "dist/desktop"
+    },
+    "files": [
+      "electron/**/*",
+      "桌面版/index.html",
+      "桌面版/manifest.webmanifest",
+      "桌面版/images/icon-main-192.png",
+      "桌面版/images/icon-main-512.png",
+      "!node_modules/**"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "雄性意志"
+    },
+    "portable": {
+      "artifactName": "雄性意志-便携版-${version}.exe"
+    },
+    "artifactName": "雄性意志-安装包-${version}.${ext}"
   }
 }

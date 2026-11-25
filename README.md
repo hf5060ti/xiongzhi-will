@@ -113,6 +113,19 @@ npm run build        # 构建：产物在 dist/
 
 构建后把 `dist/` 内容复制到 `桌面版/`，双击 `index.html` 即可离线使用（已处理 file:// 下 module 加载的 CORS 问题）。
 
+### Windows 桌面软件（.exe）
+
+```bash
+npm run dist:win        # 生成安装包 + 便携版，输出到 dist/desktop/
+npm run dist:win:dir    # 只生成免安装目录，输出到 dist/desktop/win-unpacked/
+npm run build:offline   # 仅重建桌面版/index.html（Electron 与双击版共用）
+```
+
+- `雄性意志-安装包-<版本>.exe`：NSIS 安装，可选安装目录、创建桌面/开始菜单快捷方式。
+- `雄性意志-便携版-<版本>.exe`：无需安装，双击直接运行。
+- 国内构建走 npmmirror 镜像（`ELECTRON_MIRROR`、`ELECTRON_BUILDER_BINARIES_MIRROR`），无需科学上网。
+- 主进程 `electron/main.cjs` 只加载离线单文件页面；业务代码、线上构建与食物数据均不受影响。
+
 ---
 
 ## 在线部署

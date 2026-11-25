@@ -61,6 +61,7 @@ def main():
     ap.add_argument("--scan", required=True)
     ap.add_argument("--extra", help="额外中文语料 JSON 数组（如路由标题）")
     ap.add_argument("--titles-only", action="store_true", help="只翻 --extra，不读扫描结果")
+    ap.add_argument("--langs", help="只跑指定语言，逗号分隔（如 de,ru）；用于中断续跑")
     args = ap.parse_args()
 
     import ctranslate2
@@ -75,7 +76,10 @@ def main():
     sp = sentencepiece.SentencePieceProcessor(model_file=os.path.join(args.model, "sentencepiece.bpe.model"))
     tr = ctranslate2.Translator(args.model, device="cpu", compute_type="int8", inter_threads=4, intra_threads=4)
 
+    only = set(args.langs.split(',')) if args.langs else None
     for code, tag in LANGS:
+        if only and code not in only:
+            continue
         started = time.time()
         done = {}
         # 按长度分桶减少 padding
