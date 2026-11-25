@@ -1,0 +1,232 @@
+{
+  "深蹲": {
+    "en": "Squat",
+    "de": "Kniebeuge",
+    "ru": "Присед"
+  },
+  "硬拉": {
+    "en": "Deadlift",
+    "de": "Kreuzheben",
+    "ru": "Тяга"
+  },
+  "公式": {
+    "en": "Formula",
+    "de": "Formel",
+    "ru": "Формула"
+  },
+  "素材": {
+    "en": "Material",
+    "de": "Material",
+    "ru": "Материал"
+  },
+  "你": {
+    "en": "You",
+    "de": "Du",
+    "ru": "Вы"
+  },
+  "约 ": {
+    "en": "about ",
+    "de": "ca. ",
+    "ru": "ок. "
+  },
+  "按你 ": {
+    "en": "based on your ",
+    "de": "basierend auf deinem ",
+    "ru": "на основе вашего "
+  },
+  "基准 ": {
+    "en": "baseline ",
+    "de": "Basiswert ",
+    "ru": "базовый уровень "
+  },
+  "区间 ": {
+    "en": "range ",
+    "de": "Bereich ",
+    "ru": "диапазон "
+  },
+  "兜底）。": {
+    "en": "as a fallback).",
+    "de": "als Rückfalloption).",
+    "ru": "в качестве резерва)."
+  },
+  "：早上": {
+    "en": ": in the morning",
+    "de": ": morgens",
+    "ru": ": утром"
+  },
+  "g / 天": {
+    "en": "g / day",
+    "de": "g / Tag",
+    "ru": "г / день"
+  },
+  "kcal / 天": {
+    "en": "kcal / day",
+    "de": "kcal / Tag",
+    "ru": "ккал / день"
+  },
+  "kg / 周": {
+    "en": "kg / week",
+    "de": "kg / Woche",
+    "ru": "кг / неделю"
+  },
+  " kg，落在「": {
+    "en": " kg, fall into the \"",
+    "de": " kg, in den Bereich \"",
+    "ru": " кг, попадает в «"
+  },
+  "」加权 ≈ ": {
+    "en": "\" weighted ≈ ",
+    "de": "\" gewichtet ≈ ",
+    "ru": "» с весом ≈ "
+  },
+  " kg 的体重，每月合理增长约": {
+    "en": " kg of body weight, a reasonable monthly gain is about",
+    "de": " kg Körpergewicht, ein angemessener monatlicher Zuwachs beträgt etwa",
+    "ru": " кг веса, разумный ежемесячный прирост составляет около"
+  },
+  "⚠ 烟酒警示": {
+    "en": "⚠ Tobacco & alcohol warning",
+    "de": "⚠ Warnung zu Tabak & Alkohol",
+    "ru": "⚠ Предупреждение о табаке и алкоголе"
+  },
+  "ℹ 药食同源声明": {
+    "en": "ℹ Medicinal-food homology note",
+    "de": "ℹ Hinweis zur lebensmittelmedizinischen Verwendung",
+    "ru": "ℹ Заявление о лечебно-пищевой совместимости"
+  },
+  "Owen 简易式": {
+    "en": "Owen simplified formula",
+    "de": "Owen-Einfachformel",
+    "ru": "Упрощённая формула Оуэна"
+  },
+  "常见食物/汤料/茶饮": {
+    "en": "Common foods / soups / herbal teas",
+    "de": "Häufige Lebensmittel / Suppen / Kräutertees",
+    "ru": "Обычные продукты / супы / травяные чаи"
+  },
+  "谭成义（健身博主公开教学视频）": {
+    "en": "Tan Chengyi (public fitness tutorial videos)",
+    "de": "Tan Chengyi (öffentliche Fitness-Lehrvideos)",
+    "ru": "Тань Чэньи (публичные видеоуроки по фитнесу)"
+  },
+  "吸烟有害健康，可致肺癌等多种癌症与心脑血管疾病，本站不提供任何烟草数据、也不鼓励吸烟。 酒精是「空热量」——1g 乙醇约 7kcal，过量饮酒伤肝（脂肪肝/肝硬化）、升高血压与尿酸、抑制肌肉蛋白合成与深睡眠， 是健身与恢复的大敌。未成年人、孕妇绝对禁烟禁酒；服药期间、驾驶前请勿饮酒。": {
+    "en": "Smoking harms health and can cause lung cancer and many other cancers as well as cardiovascular and cerebrovascular diseases. This site provides no tobacco data and does not encourage smoking. Alcohol is \"empty calories\" — 1 g of ethanol is about 7 kcal; excessive drinking damages the liver (fatty liver/cirrhosis), raises blood pressure and uric acid, and suppresses muscle protein synthesis and deep sleep, making it a major enemy of fitness and recovery. Minors and pregnant women must not smoke or drink at all; do not drink while taking medication or before driving.",
+    "de": "Rauchen schadet der Gesundheit und kann Lungenkrebs sowie viele andere Krebsarten und Herz-Kreislauf- und Gehirngefäßerkrankungen verursachen. Diese Website stellt keine Tabakdaten bereit und ermutigt nicht zum Rauchen. Alkohol sind \"leere Kalorien\" — 1 g Ethanol entspricht etwa 7 kcal; übermäßiger Alkoholkonsum schädigt die Leber (Fettleber/Zirrhose), erhöht Blutdruck und Harnsäure und unterdrückt die Muskelproteinsynthese und den Tiefschlaf. Er ist damit ein großer Feind von Fitness und Erholung. Minderjährige und Schwangere dürfen absolut nicht rauchen oder trinken; trinken Sie nicht während der Medikamenteneinnahme oder vor dem Fahren.",
+    "ru": "Курение вредит здоровью и может вызвать рак лёгких и многие другие виды рака, а также сердечно-сосудистые и цереброваскулярные заболевания. Этот сайт не предоставляет данных о табаке и не поощряет курение. Алкоголь — это «пустые калории»: 1 г этанола ≈ 7 ккал; чрезмерное употребление вредит печени (жировая дистрофия/цирроз), повышает кровяное давление и уровень мочевой кислоты, подавляет синтез мышечного белка и глубокий сон, являясь серьёзным врагом фитнеса и восстановления. Несовершеннолетним и беременным категорически нельзя курить и пить; не употребляйте алкоголь во время приёма лекарств и перед вождением."
+  },
+  "本库收录的枸杞、红枣、桂圆、莲子、银耳、茯苓、芡实、葛根、山药、薏苡仁、赤小豆、百合、陈皮、山楂、罗汉果、决明子、菊花、蜂蜜、黑芝麻、核桃、杏仁、白果、乌梅、桑葚、五味子、甘草、生姜、干辣椒等， 均为国家药食同源目录中的": {
+    "en": "The goji berries, red dates, longan, lotus seeds, tremella, poria, euryale seeds, kudzu root, Chinese yam, coix seed, adzuki beans, lily bulbs, dried tangerine peel, hawthorn, monk fruit, cassia seeds, chrysanthemum, honey, black sesame, walnuts, almonds, ginkgo nuts, dark plums, mulberries, schisandra, licorice, ginger, dried chili peppers and others included in this database are all on the national list of medicinal and edible substances",
+    "de": "Die in dieser Datenbank enthaltenen Goji-Beeren, roten Datteln, Longan, Lotussamen, Tremella, Poria, Euryale-Samen, Kudzu-Wurzel, Chinesische Yamswurzel, Coix-Samen, Adzuki-Bohnen, Lilienzwiebeln, getrocknete Mandarinen-Schale, Weißdorn, Mönchsfrucht, Cassia-Samen, Chrysanthemen, Honig, schwarzer Sesam, Walnüsse, Mandeln, Ginkgonüsse, dunkle Pflaumen, Maulbeeren, Schisandra, Lakritze, Ingwer, getrocknete Chilis und andere stehen alle auf der nationalen Liste medizinisch essbarer Substanzen",
+    "ru": "Годжи, красные финики, лонган, семена лотоса, тремелла, пория, семена эвриалы, корень пуэрарии, китайский ямс, семена коикса, адзуки, лилия, сушёная мандариновая кожура, боярышник, монк-фрут, семена кассии, хризантема, мёд, чёрный кунжут, грецкие орехи, миндаль, семена гинкго, тёмная слива, шелковица, шизандра, солодка, имбирь, сушёный перец и другие, включённые в эту базу, входят в национальный перечень лечебно-пищевых продуктов"
+  },
+  "1–5 次（85% 以上 1RM）= 神经募集 / 最大力量训练：3–5 组、组间休息 2–3 分钟，放在训练最开头、精力最充沛时做；动作质量永远优先于重量。": {
+    "en": "1–5 reps (above 85% 1RM) = neural recruitment / maximal strength training: 3–5 sets, 2–3 minutes rest between sets, done at the very start of the workout when energy is highest; movement quality always takes priority over weight.",
+    "de": "1–5 Wiederholungen (über 85 % 1RM) = neuronale Rekrutierung / Maximal Krafttraining: 3–5 Sätze, 2–3 Minuten Pause zwischen den Sätzen, ganz am Anfang des Trainings ausführen, wenn die Energie am größten ist; die Bewegungsqualität hat immer Vorrang vor dem Gewicht.",
+    "ru": "1–5 повторений (более 85% от 1ПМ) = нейронная мобилизация / тренировка на максимальную силу: 3–5 подходов, отдых 2–3 минуты между подходами, выполнять в самом начале тренировки, когда больше всего энергии; качество движения всегда важнее веса."
+  },
+  "选武器 + 时长，按你当前体重自动折算。剑道基准 270 kcal/h；唐刀 / 武士刀 / 苗刀 / 长枪 200–600 kcal/h；重兵器按重量上浮。": {
+    "en": "Choose a weapon + duration, and it is automatically converted based on your current weight. Kendo baseline 270 kcal/h; Tang dao / katana / miao dao / spear 200–600 kcal/h; heavier weapons scale up with weight.",
+    "de": "Waffe + Dauer wählen, automatisch anhand deines aktuellen Gewichts umgerechnet. Kendo-Basiswert 270 kcal/h; Tang-Dao / Katana / Miao-Dao / Speer 200–600 kcal/h; schwerere Waffen steigen mit dem Gewicht.",
+    "ru": "Выберите оружие и длительность — расчёт автоматически пересчитывается по вашему текущему весу. Базис кэндо 270 ккал/ч; тан-дао / катана / мяо-дао / копьё 200–600 ккал/ч; тяжёлое оружие даёт больше с ростом веса."
+  },
+  "关于蛋白质、碳水、脂肪、维生素怎么吃，与其自己猜，不如看专业营养师的讲解。 以下视频由陈石老师讲解，点击跳转抖音观看（视频版权归原作者所有）。": {
+    "en": "When it comes to how to eat protein, carbs, fat, and vitamins, instead of guessing, it's better to watch a professional nutritionist explain it. The following videos are explained by teacher Chen Shi; click to jump to Douyin to watch (video copyright belongs to the original author).",
+    "de": "Wenn es darum geht, wie man Eiweiß, Kohlenhydrate, Fett und Vitamine isst, ist es besser, statt zu raten, einem professionellen Ernährungsberater zuzuhören. Die folgenden Videos werden vom Lehrer Chen Shi erklärt; klicken Sie, um zu Douyin zu springen (Urheberrecht der Videos liegt beim Originalautor).",
+    "ru": "Что касается того, как есть белки, углеводы, жиры и витамины, лучше не гадать, а посмотреть объяснение профессионала-диетолога. Следующие видео объясняет преподаватель Чэнь Ши; нажмите, чтобы перейти в Douyin (авторские права на видео принадлежат автору)."
+  },
+  "； 「明目/安神/祛湿/降血脂/壮阳」等传统说法均未在本站作为疗效主张。 如有疾病、孕产期、服药期间，请先咨询医生或注册营养师。": {
+    "en": "; traditional claims such as \"improves eyesight / calms the mind / removes dampness / lowers blood lipids / boosts libido\" are not presented as therapeutic effects on this site. If you have a disease, are pregnant or postpartum, or are taking medication, please consult a doctor or registered dietitian first.",
+    "de": "; traditionelle Aussagen wie \"verbessert die Sehkraft / beruhigt den Geist / leitet Feuchtigkeit aus / senkt Blutfette / steigert die Libido\" werden auf dieser Website nicht als therapeutische Wirkungen behauptet. Bei Erkrankung, Schwangerschaft, Wochenbett oder Medikamenteneinnahme bitte zuerst einen Arzt oder registrierten Ernährungsberater konsultieren.",
+    "ru": "; традиционные утверждения вроде «улучшает зрение / успокаивает / выводит влагу / снижает липиды в крови / повышает потенцию» на этом сайте не заявлены как терапевтический эффект. При заболеваниях, беременности, послеродовом периоде или приёме лекарств сначала проконсультируйтесь с врачом или диетологом."
+  },
+  "吸收率因人而异（消化系统、年龄、疾病都会影响）；孕妇、老年人、大病初愈者、糖尿病及相关疾病人群，优先遵从医嘱。": {
+    "en": "Absorption rates vary from person to person (the digestive system, age, and illness all have an effect); pregnant women, the elderly, people recovering from serious illness, and those with diabetes or related conditions should follow medical advice first.",
+    "de": "Die Absorptionsrate ist von Person zu Person unterschiedlich (Verdauungssystem, Alter und Krankheiten wirken sich alle aus); Schwangere, ältere Menschen, Genesende nach schwerer Krankheit sowie Diabetiker und Menschen mit verwandten Erkrankungen sollten zuerst ärztlichem Rat folgen.",
+    "ru": "Степень усвоения у каждого человека разная (влияют пищеварение, возраст и заболевания); беременным, пожилым, людям после тяжёлой болезни, а также при диабете и связанных заболеваниях следует прежде всего соблюдать рекомендации врача."
+  },
+  "本站不构成医疗建议，也不诊断、治疗、预防任何疾病；本站鼓励\"在安全的范围内去运动\"，不建议任何人逞强。": {
+    "en": "This site does not constitute medical advice, nor does it diagnose, treat, or prevent any disease; this site encourages \"exercising within safe limits\" and does not advise anyone to push beyond their limits.",
+    "de": "Diese Website stellt keine medizinische Beratung dar und diagnostiziert, behandelt oder verhindert keine Krankheiten; sie ermutigt zu \"Bewegung im sicheren Rahmen\" und rät niemandem, sich zu überschätzen.",
+    "ru": "Этот сайт не является медицинской консультацией и не диагностирует, не лечит и не предотвращает заболевания; сайт поощряет «занятия в безопасных пределах» и не советует никому перенапрягаться."
+  },
+  "用户提供的卧推 1–10RM 换算表（印刷错误已按相邻行规律修正）+ Epley 公式": {
+    "en": "User-provided bench press 1–10RM conversion table (printing errors corrected according to neighboring rows) + Epley formula",
+    "de": "Vom Nutzer bereitgestellte Bankdrücken-1–10RM-Umrechnungstabelle (Druckfehler anhand benachbarter Zeilen korrigiert) + Epley-Formel",
+    "ru": "Предоставленная пользователем таблица пересчёта жима лёжа 1–10ПМ (опечатки исправлены по соседним строкам) + формула Эпли"
+  },
+  "」档。把深蹲 / 卧推 / 硬拉的最好成绩除体重，对照上表即可知道自己处于哪个等级。": {
+    "en": "\" tier. Divide your best squat / bench press / deadlift by your body weight and compare with the table above to find your level.",
+    "de": "\"-Stufe. Teile deine besten Werte für Kniebeuge / Bankdrücken / Kreuzheben durch dein Körpergewicht und vergleiche mit der obigen Tabelle, um dein Niveau zu sehen.",
+    "ru": "» уровень. Разделите свои лучшие результаты в приседе / жиме лёжа / тяге на вес тела и сравните с таблицей выше, чтобы узнать свой уровень."
+  },
+  "一个搜索框同时查找食物、外卖门店、餐食和补剂；点选食物后输入克数，即可算出实际摄入。": {
+    "en": "One search box finds foods, takeout restaurants, meals, and supplements at the same time; select a food and enter the grams to calculate your actual intake.",
+    "de": "Ein Suchfeld durchsucht gleichzeitig Lebensmittel, Lieferdienste, Mahlzeiten und Nahrungsergänzungsmittel; Lebensmittel auswählen, Gramm eingeben und die tatsächliche Zufuhr berechnen.",
+    "ru": "Одно поле поиска одновременно ищет продукты, рестораны доставки, блюда и добавки; выберите продукт, введите граммы — и getInstance费等实际摄入 wird berechnet."
+  },
+  "与来源链接，多数来自公开博主讲解（含陈石），生酮等条目依据公开学术 / 官方文献。": {
+    "en": "and source links, mostly from public bloggers' explanations (including Chen Shi); keto and similar entries are based on public academic / official literature.",
+    "de": "und Quellenlinks, größtenteils aus öffentlichen Erklärungen von Bloggern (einschließlich Chen Shi); Keto- und ähnliche Einträge basieren auf öffentlicher akademischer / offizieller Literatur.",
+    "ru": "и ссылки на источники, в основном из публичных объяснений блогеров (включая Чэнь Ши); кетогенные и подобные записи основаны на открытой академической / официальной литературе."
+  },
+  "，版权归原作者所有；本站仅整理入口，方便你在看文字要点之外，直接对照真实演示。": {
+    "en": ", copyright belongs to the original author; this site only organizes the entry points so you can watch the real demonstration in addition to reading the key points.",
+    "de": ", das Urheberrecht liegt beim Originalautor; diese Website stellt nur die Einstiegspunkte zusammen, damit du zusätzlich zu den Textpunkten die echte Demonstration ansehen kannst.",
+    "ru": ", авторские права принадлежат автору; этот сайт лишь систематизирует ссылки, чтобы вы могли посмотреть реальную демонстрацию помимо текстовых тезисов."
+  },
+  "链接到健身博主谭成义的公开教学视频，覆盖卧推、深蹲、引体、弯举等常用动作。": {
+    "en": "Links to public tutorial videos by fitness blogger Tan Chengyi, covering common exercises such as bench press, squat, pull-ups, and bicep curls.",
+    "de": "Verlinkt öffentliche Lehrvideos des Fitness-Bloggers Tan Chengyi zu gängigen Übungen wie Bankdrücken, Kniebeuge, Klimmzuge und Bizeps-Curls.",
+    "ru": "Ссылки на публичные видеоуроки фитнес-блогера Тань Чэньи, охватывающие жим лёжа, присед, подтягивания, сгибания рук и другие упражнения."
+  },
+  "同样一份食物，会吃的人吸收率高一截。掌握这些搭配原则，营养利用率立竿见影。": {
+    "en": "For the same food, those who know how to eat it absorb noticeably more. Master these pairing principles and nutrient utilization improves right away.",
+    "de": "Bei demselben Lebensmittel nehmen diejenigen, die wissen, wie man es isst, deutlich mehr auf. Beherrsche diese Kombinationsprinzipien, und die Nährstoffverwertung verbessert sich sofort.",
+    "ru": "Тот же продукт усваивается заметно лучше теми, кто знает, как его есть. Освойте эти принципы сочетания — и усвоение питательных веществ улучшится сразу."
+  },
+  "生酮碳水极低：蛋白质建议按区间上限吃（多出的部分替代碳水供能）。": {
+    "en": "Keto is very low in carbs: protein is recommended at the upper end of the range (the extra portion replaces carbs as energy).",
+    "de": "Keto ist sehr kohlenhydratarm: Eiweiß wird am oberen Ende des Bereichs empfohlen (der zusätzliche Anteil ersetzt Kohlenhydrate als Energiequelle).",
+    "ru": "Кетогенная диета очень бедна углеводами: белок рекомендуется принимать по верхней границе диапазона (дополнительная часть заменяет углеводы как источник энергии)."
+  },
+  "AI 建议仅供参考，不构成医疗建议；数据只存本地，不上传": {
+    "en": "AI suggestions are for reference only and do not constitute medical advice; data is stored locally only and is not uploaded",
+    "de": "KI-Vorschläge dienen nur als Referenz und stellen keine medizinische Beratung dar; Daten werden nur lokal gespeichert und nicht hochgeladen",
+    "ru": "Советы ИИ носят справочный характер и не являются медицинской консультацией; данные хранятся только локально и не загружаются"
+  },
+  "碳循环蛋白质恒定不降：两日的蛋白质需求按同一天算。": {
+    "en": "Carb cycling keeps protein constant and does not reduce it: the protein requirement for both days is calculated as the same day.",
+    "de": "Beim Carb-Cycling bleibt Eiweiß konstant und wird nicht reduziert: der Eiweißbedarf für beide Tage wird wie für denselben Tag berechnet.",
+    "ru": "При углеводном циклировании белок остаётся постоянным и не снижается: потребность в белке на оба дня рассчитывается как на один и тот же день."
+  },
+  "站内同名或最接近动作；无同名时明确标注「近似演示」": {
+    "en": "Same-named or closest exercise on the site; when there is no exact match, it is clearly labeled \"approximate demonstration\"",
+    "de": "Gleichnamige oder ähnlichste Übung auf der Website; wenn es keine exakte Übereinstimmung gibt, wird sie klar als \"ungefähre Demonstration\" gekennzeichnet",
+    "ru": "Одноимённое или наиболее близкое упражнение на сайте; при отсутствии точного совпадения явно помечено как «приблизительная демонстрация»"
+  },
+  "）。 超过太多大概率是脂肪或水分，别高兴太早。": {
+    "en": "). If it's well above, it's most likely fat or water, so don't celebrate too early.",
+    "de": "). Wenn der Wert deutlich darüber liegt, ist es höchstwahrscheinlich Fett oder Wasser — freu dich also nicht zu früh.",
+    "ru": "). Если показатель намного выше, это скорее всего жир или вода — не радуйтесь слишком рано."
+  },
+  "尚未设定，去「目标设定」页选择后会在此联动。": {
+    "en": "Not set yet; go to the \"Goal Settings\" page and make a selection, then it will update here automatically.",
+    "de": "Noch nicht festgelegt; gehe zur Seite \"Ziel Einstellungen\", triff eine Auswahl, und hier wird es automatisch aktualisiert.",
+    "ru": "Ещё не задано; перейдите на страницу «Настройка цели», выберите значение — и здесь оно обновится автоматически."
+  },
+  "请遵守你所在国家 / 地区的法律法规。": {
+    "en": "Please comply with the laws and regulations of your country / region.",
+    "de": "Bitte beachte die Gesetze und Vorschriften deines Landes / deiner Region.",
+    "ru": "Пожалуйста, соблюдайте законы и правила вашей страны / региона."
+  },
+  "用于挑选与替换动作时参考，非逐句引用": {
+    "en": "For reference when selecting and replacing exercises, not a verbatim quote",
+    "de": "Als Referenz bei der Auswahl und dem Ersetzen von Übungen, kein wörtliches Zitat",
+    "ru": "Для справки при выборе и замене упражнений, не дословная цитата"
+  },
+  "一个搜索框同时查找食物、外卖门店、餐食和补剂；点选食物后输入克数，即可算出实际摄入。": {
+    "en": "One search box finds foods, takeout restaurants, meals, and supplements at the same time; select a food and enter the grams to calculate your actual intake.",
+    "de": "Ein Suchfeld durchsucht gleichzeitig Lebensmittel, Lieferdienste, Mahlzeiten und Nahrungsergänzungsmittel; Lebensmittel auswählen, Gramm eingeben und die tatsächliche Zufuhr berechnen.",
+    "ru": "Одно поле поиска одновременно ищет продукты, рестораны доставки, блюда и добавки; выберите продукт и введите граммы, чтобы рассчитать фактическое потребление."
+  }
+}

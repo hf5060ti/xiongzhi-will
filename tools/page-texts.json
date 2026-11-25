@@ -1,0 +1,890 @@
+[
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": " 体重折算。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": " g / kg 瘦体重"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": " g / kg 体重"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": " g 脂肪/天。 体脂越多，可动员的脂肪组织越多，上限越高。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": " g/kg 体重。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": " kg 的体重，每月合理增长约"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": " kg，落在「"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": " kg，约为推荐值的 "
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "——热量极低，去水肿效果好，紫甘蓝的花青素对皮肤也友好。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "，版权归原作者所有；本站仅整理入口，方便你在看文字要点之外，直接对照真实演示。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "，包装食品以实物标签为准。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "，不是长脂肪。 盐吃多了、睡得晚、久坐、经期前后都会让脸肿一圈，通常一两天就会消。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "，观点归原作者；平台 AI 章节要点一律标注「AI 章节要点 / 未逐句核对」，不作为原话引用。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "，仅作为健身营养参考。 本站"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "； 「明目/安神/祛湿/降血脂/壮阳」等传统说法均未在本站作为疗效主张。 如有疾病、孕产期、服药期间，请先咨询医生或注册营养师。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "：钾能帮助排出多余钠、平衡体液——香蕉、橙子、猕猴桃、菠菜、番茄、土豆、牛油果、菌菇都是好选择。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "：盐要少吃，但不能低于人体所需（钠是必需电解质），不是完全不吃。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "：早上"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "：FFMI 肌肉上限、Casey Butt 骨架模型、Martin Berkham、BuiltLean、Alan Aragon 增肌速率、6 式 BMR、TDEE、食物热效应。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "（不加糖奶）+ 几片"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "（公开学术 / 官方文献）、"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "（公式推导）、"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "（可查原文）、"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "（平台摘要，非逐句）、"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "（未设饮食，按 10% 通用估）"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "（演示动图等第三方素材）、"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "（用户自配模型实时产出）。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "）。 超过太多大概率是脂肪或水分，别高兴太早。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "「饮食讲解」页的每一条都标注"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "」档。把深蹲 / 卧推 / 硬拉的最好成绩除体重，对照上表即可知道自己处于哪个等级。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "」加权 ≈ "
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "% 体脂）= 瘦体重。肌肉量上限与代谢都以此为准。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "% 体重/周）。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "⚠ 烟酒警示"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "1–5 次（85% 以上 1RM）= 神经募集 / 最大力量训练：3–5 组、组间休息 2–3 分钟，放在训练最开头、精力最充沛时做；动作质量永远优先于重量。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "1RM 最大筋力换算"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "3HFIT / SNC 运动营养咨询师"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "70 kg 参考"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "安全极限口径"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "按你 "
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "按你当前体重段高亮。数字为「该项 / 体重」的倍数；三项总重 = 深蹲 + 卧推 + 硬拉。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "保留原计划的组次结构与频率逻辑，重量按个人能力取"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "本库收录的枸杞、红枣、桂圆、莲子、银耳、茯苓、芡实、葛根、山药、薏苡仁、赤小豆、百合、陈皮、山楂、罗汉果、决明子、菊花、蜂蜜、黑芝麻、核桃、杏仁、白果、乌梅、桑葚、五味子、甘草、生姜、干辣椒等， 均为国家药食同源目录中的"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "本站不构成医疗建议，也不诊断、治疗、预防任何疾病；本站鼓励\"在安全的范围内去运动\"，不建议任何人逞强。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "本站定位"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "本站所有内容都有来源：动作、饮食、公式、数据分别来自哪些公开资料，属于什么证据等级，页面里都写清楚。 我们不生产\"玄学健身\"——每个数字都能追溯到出处。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "边界与免责"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "不提供任何医疗建议、不诊断、不治疗、不替代任何药物"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "不要节食！不要节食！不要节食！"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "常见食物/汤料/茶饮"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "吃进去 ≠ 吸收进去"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "次"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "次数"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "打开任意动作 → 详情弹窗 → 「名师教学视频」"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "蛋白质偏好 "
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "当前训练目标"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "当前饮食方案"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "的健身与饮食方式：不提供任何极端训练，不推荐任何药物方案。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "等级"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "第一列是你预估的 1RM；横向是不同次数下建议使用的重量。上方估算出 1RM 后会自动高亮对应行。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "动作百科"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "动作百科与训练页的"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "动作教学视频"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "动作演示动图（fitness.xingshuwen.com，Gym Visual 素材）"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "动作要点 / 优缺点"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "兜底）。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "多吃高钾食物"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "该方案蛋白质比例适中，按上方基准吃即可，训练日可略偏上限。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "公开健身博主讲解（陈石等）与公开文献"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "公开营养学知识（脂溶性维生素需油脂同餐等）+ 用户给定的 TEF 区间"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "公式"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "公式与计算"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "估算 1RM："
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "关于蛋白质、碳水、脂肪、维生素怎么吃，与其自己猜，不如看专业营养师的讲解。 以下视频由陈石老师讲解，点击跳转抖音观看（视频版权归原作者所有）。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "含食物热效应后。当前方案「"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "黑咖啡"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "基础代谢 BMR（6 个公式对照）"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "基准 "
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "计算"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "建议重量"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "健康、自然"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "讲解 + 文献"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "节食＝掉肌肉、降代谢、反弹、伤身体。每天摄入应达到基础代谢，短期 3 天左右缺口可以，但别当成常态。 本站所有热量与营养计算都建立在「健康减脂」前提上，不提供也不鼓励任何极端节食方案。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "经典方案"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "距当前瘦体重"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "觉得脸特别肿、像胖了？先别急着节食——这多半是"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "口径"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "来源"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "类型"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "冷兵器 / 剑道训练消耗速查"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "理论每周上限"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "力量换算表"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "链接到健身博主谭成义的公开教学视频，覆盖卧推、深蹲、引体、弯举等常用动作。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "每日总消耗 TDEE"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "每日最多分解脂肪"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "每条在饮食讲解页注明证据等级与来源链接"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "名师教学视频"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "模块"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "男性"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "内容来源与循证"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "内容来源总览"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "内容为公开讲解与公开文献的"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "你"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "你当前体重 "
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "女性"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "清空统一搜索"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "请遵守你所在国家 / 地区的法律法规。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "区间 "
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "热量目标"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "如 100"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "入口：导航「饮食」→「饮食讲解」"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "三项总重"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "上限"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "尚未设定，去「目标设定」页选择后会在此联动。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "少盐，但别为零"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "谁叫你去节食？——先把他按住，一耳巴子呼死他！（这句是警告语，不是真打人。）"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "身体数据公式库"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "身体数据页内置"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "深蹲"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "生酮碳水极低：蛋白质建议按区间上限吃（多出的部分替代碳水供能）。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "时长（分钟）"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "食物热效应 TEF"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "食物营养库与计算器"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "食物营养数据"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "食物营养数据以《中国食物成分表》为口径，熟食与家常菜按常见做法"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "视频在动作详情弹窗内展示，"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "适合人群：面向健康成年人。糖尿病、高血压、心脏病、肝肾疾病、痛风等慢性病患者，孕期 / 哺乳期女性、老年人、大病初愈者，以及任何有关节旧伤或长期服药者，开始训练或调整饮食前请"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "瘦体重"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "瘦体重（去脂体重）"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "瘦体重（约 5% 体脂）"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "输入时长后自动算消耗。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "熟食与家常菜为熟重估算；包装食品以实物标签为准"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "熟重估算"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "数据"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "水肿（水钠潴留）"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "说明"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "搜索食物、外卖门店、餐食或补剂"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "素材"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "谭成义（健身博主公开教学视频）"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "碳循环蛋白质恒定不降：两日的蛋白质需求按同一天算。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "体脂总量 "
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "体重段"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "填好体重与体脂率后自动得出。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "填入身体数据，自动计算瘦体重、每日蛋白质、肌肉量上限、基础代谢与热量目标；下方可追踪力量 / 耐力 / 运动能力，看档位与曲线。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "填上年龄后即可计算 6 种 BMR。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "填上完成重量后自动估算 1RM。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "填手腕+脚踝围"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "跳转原平台观看"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "跳转原平台观看，版权归原作者，本站仅整理入口"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "通用"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "通用训练常识与公开健身资料整理"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "同样一份食物，会吃的人吸收率高一截。掌握这些搭配原则，营养利用率立竿见影。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "统一搜索食物、外卖和补剂"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "推荐"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "完成次数"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "完成重量"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "为什么可以信"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "为体重的"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "未训练 = 基本没进过健身房；初学者 = 规律训练半年到一年；中级 = 2–3 年规律训练；高级 = 4–6 年；精英级 ≈ 业余赛水平；大师级以上接近竞技。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "文献整理"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "卧推"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "卧推 1–10RM 重量查表"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "无论男生还是女生，一定要在健康的范围内减脂。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "武器 / 项目"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "吸收率 / 食物热效应"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "吸收率因人而异（消化系统、年龄、疾病都会影响）；孕妇、老年人、大病初愈者、糖尿病及相关疾病人群，优先遵从医嘱。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "吸烟有害健康，可致肺癌等多种癌症与心脑血管疾病，本站不提供任何烟草数据、也不鼓励吸烟。 酒精是「空热量」——1g 乙醇约 7kcal，过量饮酒伤肝（脂肪肝/肝硬化）、升高血压与尿酸、抑制肌肉蛋白合成与深睡眠， 是健身与恢复的大敌。未成年人、孕妇绝对禁烟禁酒；服药期间、驾驶前请勿饮酒。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "先填好体重、身高、体脂率，就会自动算出瘦体重、每日蛋白质、肌肉量上限与热量需求。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "选武器 + 时长，按你当前体重自动折算。剑道基准 270 kcal/h；唐刀 / 武士刀 / 苗刀 / 长枪 200–600 kcal/h；重兵器按重量上浮。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "训练计划组次参数"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "训练与代谢公式"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "演示素材"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "一定要在安全的前提下健康减脂。每日摄入能量应达到基础代谢（BMR），不要长期低于它。 短时间（3 天左右）吃不够基础代谢是可以的，但不建议每次都这样做——长期缺口过大易掉肌肉、降代谢、反弹。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "一个搜索框同时查找食物、外卖门店、餐食和补剂；点选食物后输入克数，即可算出实际摄入。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "以《中国食物成分表》为口径的公开营养数据 + 用户自定义食物库"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "易水肿体质试试"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "饮食方案"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "营养数据与 AI"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "营养素吸收率指南"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "硬拉"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "用户提供的卧推 1–10RM 换算表（印刷错误已按相邻行规律修正）+ Epley 公式"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "用户自行配置的第三方大模型直连（硅基流动，默认 Qwen2.5-7B）"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "用于挑选与替换动作时参考，非逐句引用"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "优先遵从医嘱"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "与来源链接，多数来自公开博主讲解（含陈石），生酮等条目依据公开学术 / 官方文献。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "原创简要整理"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "原话"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "原话 / AI 章节要点 / 文献整理"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "约 "
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "占 1RM"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "站内同名或最接近动作；无同名时明确标注「近似演示」"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "这是「安全极限下的生理天花板」，不是推荐值：超过上限的体重下降大多是水分、糖原或肌肉，不是脂肪。 实际减脂还受热量缺口、蛋白质、睡眠与激素影响；建议每周减重 0.5–1 kg（本例理论上限约 "
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "整理"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "正好在上限"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "证据等级"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "证据等级口径与「饮食讲解」页一致："
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "知识"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "脂肪 1–5%、碳水 5–10%、蛋白质 25–30%，默认按 10% 计"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "脂肪可供能上限"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "只提供"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "注意：肾功能不全、正在服用保钾类药物者，高钾饮食须先问医生；黑咖啡敏感人群（心悸、失眠、胃不适）酌情减量或避开。 若水肿持续不退或伴随胸闷、下肢明显凹陷性水肿，请就医排查。"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "紫包菜（紫甘蓝）"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "自然健身公式库"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "自然健身肌肉量上限（5 个公式对照）"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "自然健身者优先看 Katch-McArdle 与 Cunningham——它们基于瘦体重，更贴近真实肌肉量。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "总体重（约 5–6% 体脂）"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "AI 建议仅供参考，不构成医疗建议；数据只存本地，不上传"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "AI 教练 / AI 热量估算"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "AI 教练与 AI 热量估算由你自行配置的第三方大模型直连（默认硅基流动 Qwen2.5-7B），Key 只存在你浏览器本地；AI 输出仅供参考，不构成医疗建议。"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "AI 生成"
+  },
+  {
+    "file": "src/pages/SourcesPage.tsx",
+    "text": "AI 章节要点"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "BMR 计算后自动得出。"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "Casey Butt 骨架模型"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "FAO / WHO / UNU（按年龄段）"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "FFMI 上限（男 25 / 女 21）"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "g / 天"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "Harris-Benedict（修订版）"
+  },
+  {
+    "file": "src/pages/NutritionPage/NutritionPage.tsx",
+    "text": "ℹ 药食同源声明"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "kcal / 天"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "kg / 周"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "Owen 简易式"
+  },
+  {
+    "file": "src/pages/BodyDataPage/index.tsx",
+    "text": "RM（占 1RM 的 "
+  }
+]

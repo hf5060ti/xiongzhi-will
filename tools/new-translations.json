@@ -1,0 +1,187 @@
+{
+  "脂肪分解上限 · 由体脂率决定": {
+    "en": "Daily fat-breakdown ceiling · Determined by body-fat percentage",
+    "de": "Tägliche Fettabbaugrenze · Bestimmt durch den Körperfettanteil",
+    "ru": "Дневной предел сжигания жира · Определяется процентом жира в организме"
+  },
+  "安全极限口径": {
+    "en": "Safe upper-limit basis",
+    "de": "Sichere Obergrenze",
+    "ru": "Безопасный верхний предел"
+  },
+  "每日最多分解脂肪": {
+    "en": "Max fat broken down per day",
+    "de": "Maximaler Fettabbau pro Tag",
+    "ru": "Максимум сжигания жира в день"
+  },
+  "脂肪可供能上限": {
+    "en": "Fat energy ceiling",
+    "de": "Obergrenze der Fettenergie",
+    "ru": "Предел энергии из жира"
+  },
+  "理论每周上限": {
+    "en": "Theoretical weekly ceiling",
+    "de": "Theoretisches Wochenmaximum",
+    "ru": "Теоретический недельный предел"
+  },
+  "体脂总量 ": {
+    "en": "Total body fat ",
+    "de": "Gesamtkörperfett ",
+    "ru": "Общая масса жира "
+  },
+  "每 kg 脂肪每天最多释放约 70 kcal": {
+    "en": "each kg of fat releases at most ~70 kcal per day",
+    "de": "jedes kg Fett setzt pro Tag höchstens ca. 70 kcal frei",
+    "ru": "каждый кг жира выделяет в день не более ~70 ккал"
+  },
+  " g 脂肪/天。 体脂越多，可动员的脂肪组织越多，上限越高。": {
+    "en": " g of fat/day. The more body fat you have, the more fat tissue can be mobilized and the higher the ceiling.",
+    "de": " g Fett/Tag. Je mehr Körperfett vorhanden ist, desto mehr Fettgewebe kann mobilisiert werden und desto höher liegt die Grenze.",
+    "ru": " г жира/день. Чем больше жира в организме, тем больше жировой ткани можно мобилизовать и тем выше предел."
+  },
+  "健康减脂 · 安全前提": {
+    "en": "Healthy fat loss · Safety prerequisites",
+    "de": "Gesunder Fettabbau · Sicherheitsvoraussetzungen",
+    "ru": "Здоровое похудение · Условия безопасности"
+  },
+  "一定要在安全的前提下健康减脂。每日摄入能量应达到基础代谢（BMR），不要长期低于它。 短时间（3 天左右）吃不够基础代谢是可以的，但不建议每次都这样做——长期缺口过大易掉肌肉、降代谢、反弹。": {
+    "en": "Always lose fat safely. Daily energy intake should reach your basal metabolic rate (BMR) and should not stay below it for long. Eating below BMR for a short time (about 3 days) is fine, but it is not recommended to do this every time — a large, prolonged deficit causes muscle loss, a slower metabolism, and rebound weight gain.",
+    "de": "Fettabbau immer unter sicheren Bedingungen. Die tägliche Energiezufuhr sollte den Grundumsatz (BMR) erreichen und nicht dauerhaft darunter liegen. Kurzzeitig (etwa 3 Tage) unter den Grundumsatz zu essen ist möglich, wird aber nicht empfohlen, es regelmäßig zu tun — ein zu großer, anhaltender Defizit führt zu Muskelverlust, langsamerem Stoffwechsel und Jojo-Effekt.",
+    "ru": "Всегда худейте безопасно. Суточная энергия должна достигать базального метаболизма (BMR) и не опускаться ниже него надолго. Кратковременно (около 3 дней) недоедать до уровня ниже BMR допустимо, но не рекомендуется делать это постоянно — слишком большой и длительный дефицит ведёт к потере мышц, замедлению метаболизма и возврату веса."
+  },
+  "这是「安全极限下的生理天花板」，不是推荐值：超过上限的体重下降大多是水分、糖原或肌肉，不是脂肪。 实际减脂还受热量缺口、蛋白质、睡眠与激素影响；建议每周减重 0.5–1 kg（本例理论上限约 ": {
+    "en": "This is a physiological ceiling under safe limits, not a recommendation: weight loss beyond the ceiling is mostly water, glycogen, or muscle, not fat. Real fat loss also depends on the calorie deficit, protein, sleep, and hormones; a healthy rate is 0.5–1 kg per week (the theoretical ceiling here is about ",
+    "de": "Dies ist eine physiologische Obergrenze unter sicheren Bedingungen, kein Empfehlungswert: Gewichtsverlust über die Grenze hinaus ist meist Wasser, Glykogen oder Muskel, kein Fett. Tatsächlicher Fettabbau hängt auch von Kaloriendefizit, Eiweiß, Schlaf und Hormonen ab; empfohlen sind 0,5–1 kg pro Woche (die theoretische Obergrenze liegt hier bei etwa ",
+    "ru": "Это физиологический потолок в безопасных пределах, а не рекомендация: снижение веса сверх предела — это в основном вода, гликоген или мышцы, а не жир. Реальное похудение зависит أيضо от дефицита калорий, белка, сна и гормонов; рекомендуется терять 0,5–1 кг в неделю (теоретический предел здесь около "
+  },
+  " kg，约为推荐值的 ": {
+    "en": " kg, about ",
+    "de": " kg, etwa ",
+    "ru": " кг, примерно "
+  },
+  "% 体重/周）。": {
+    "en": "% of body weight/week).",
+    "de": "% des Körpergewichts/Woche).",
+    "ru": "% массы тела/неделю)."
+  },
+  "填好体重与体脂率后自动得出。": {
+    "en": "Calculated automatically once you enter your weight and body-fat percentage.",
+    "de": "Wird automatisch berechnet, sobald Gewicht und Körperfettanteil eingegeben sind.",
+    "ru": "Рассчитывается автоматически после ввода веса и процента жира."
+  },
+  "健康减脂 · 头号警告": {
+    "en": "Healthy fat loss · Top warning",
+    "de": "Gesunder Fettabbau · Wichtigste Warnung",
+    "ru": "Здоровое похудение · Главное предупреждение"
+  },
+  "无论男生还是女生，一定要在健康的范围内减脂。": {
+    "en": "Whether male or female, always lose fat within a healthy range.",
+    "de": "Egal ob Mann oder Frau: Fettabbau immer im gesunden Rahmen.",
+    "ru": "Независимо от пола, худейте всегда в здоровых пределах."
+  },
+  "不要节食！不要节食！不要节食！": {
+    "en": "Don't crash diet! Don't crash diet! Don't crash diet!",
+    "de": "Keine Crash-Diät! Keine Crash-Diät! Keine Crash-Diät!",
+    "ru": "Не садитесь на жёсткую диету! Не садитесь на жёсткую диету! Не садитесь на жёсткую диету!"
+  },
+  "谁叫你去节食？——先把他按住，一耳巴子呼死他！（这句是警告语，不是真打人。）": {
+    "en": "Who told you to crash diet? — Hold them down and give them a good slap! (That's a figure of speech, not real violence.)",
+    "de": "Wer hat dir geraten zu fasten? — Halt ihn fest und gib ihm eine Ohrfeige! (Nur eine Redewendung, keine echte Gewalt.)",
+    "ru": "Кто велел тебе сидеть на жёсткой диете? — Прижми его и дай ему пощёчину! (Это образное выражение, не призыв к насилию.)"
+  },
+  "节食＝掉肌肉、降代谢、反弹、伤身体。每天摄入应达到基础代谢，短期 3 天左右缺口可以，但别当成常态。 本站所有热量与营养计算都建立在「健康减脂」前提上，不提供也不鼓励任何极端节食方案。": {
+    "en": "Crash dieting = muscle loss, slower metabolism, rebound, and harm to your health. Daily intake should reach your basal metabolic rate; a short deficit of about 3 days is acceptable, but don't make it a habit. All calorie and nutrition calculations on this site are based on healthy fat loss — we do not provide or encourage any extreme dieting plans.",
+    "de": "Crash-Diät = Muskelverlust, langsamerer Stoffwechsel, Jojo-Effekt und Schaden für den Körper. Die tägliche Zufuhr sollte den Grundumsatz erreichen; ein kurzes Defizit von etwa 3 Tagen ist in Ordnung, aber mach es nicht zur Gewohnheit. Alle Kalorien- und Nährstoffberechnungen auf dieser Website basieren auf gesundem Fettabbau — wir stellen keine extremen Diätpläne bereit und empfehlen sie nicht.",
+    "ru": "Жёсткая диета = потеря мышц, замедление метаболизма, возврат веса и вред здоровью. Суточная норма должна достигать базального метаболизма; кратковременный дефицит около 3 дней допустим, но не делайте его правилом. Все расчёты калорий и питаний на этом сайте основаны на здоровом похудении — мы не предоставляем и не поощряем никакие экстремальные диеты."
+  },
+  "脸肿急救 · 消水肿": {
+    "en": "Puffy-face first aid · Reduce edema",
+    "de": "Notfall bei geschwollenem Gesicht · Ödeme lindern",
+    "ru": "Скорая помощь при отёчном лице · Снятие отёков"
+  },
+  "觉得脸特别肿、像胖了？先别急着节食——这多半是": {
+    "en": "Does your face look especially puffy, as if you've gained weight? Don't rush to diet — this is most likely",
+    "de": "Wirkt dein Gesicht besonders geschwollen, als hättest du zugenommen? Greif nicht gleich zur Diät — dies ist höchstwahrscheinlich",
+    "ru": "Лицо выглядит сильно отекшим, будто вы поправились? Не спешите садиться на диету — это скорее всего"
+  },
+  "水肿（水钠潴留）": {
+    "en": "edema (water and sodium retention)",
+    "de": "Ödem (Wasser- und Natriumretention)",
+    "ru": "отёк (задержка воды и натрия)"
+  },
+  "，不是长脂肪。 盐吃多了、睡得晚、久坐、经期前后都会让脸肿一圈，通常一两天就会消。": {
+    "en": ", not fat gain. Too much salt, late nights, long periods of sitting, and the days around your period can all make your face puffy; it usually goes away in a day or two.",
+    "de": ", kein Fettzuwachs. Zu viel Salz, spätes Aufstehen, langes Sitzen und die Tage rund um die Periode können das Gesicht anschwellen lassen; meist verschwindet es innerhalb von ein bis zwei Tagen.",
+    "ru": ", а не жир. Избыток соли, поздние ночи, долгое сидение и дни вокруг менструации — всё это может отек лицо; обычно проходит за день-два."
+  },
+  "少盐，但别为零": {
+    "en": "Less salt, but not zero",
+    "de": "Weniger Salz, aber nicht null",
+    "ru": "Меньше соли, но не ноль"
+  },
+  "：盐要少吃，但不能低于人体所需（钠是必需电解质），不是完全不吃。": {
+    "en": ": Eat less salt, but not below what your body needs (sodium is an essential electrolyte) — don't cut it out completely.",
+    "de": ": Salz reduzieren, aber nicht unter den Bedarf des Körpers (Natrium ist ein essenzieller Elektrolyt) — nicht vollständig streichen.",
+    "ru": ": Уменьшите соль, но не ниже потребности организма (натрий — важный электролит) — не исключайте её полностью."
+  },
+  "多吃高钾食物": {
+    "en": "Eat more potassium-rich foods",
+    "de": "Mehr kaliumreiche Lebensmittel essen",
+    "ru": "Ешьте больше продуктов, богатых калием"
+  },
+  "：钾能帮助排出多余钠、平衡体液——香蕉、橙子、猕猴桃、菠菜、番茄、土豆、牛油果、菌菇都是好选择。": {
+    "en": ": Potassium helps flush out excess sodium and balance body fluids — bananas, oranges, kiwi, spinach, tomatoes, potatoes, avocado, and mushrooms are all good choices.",
+    "de": ": Kalium hilft, überschüssiges Natrium auszuscheiden und den Flüssigkeitshaushalt auszugleichen — Bananen, Orangen, Kiwi, Spinat, Tomaten, Kartoffeln, Avocado und Pilze sind gute Optionen.",
+    "ru": ": Калий помогает вывести лишний натрий и сбалансировать жидкости — бананы, апельсины, киви, шпинат, томаты, картофель, авокадо и грибы — хороший выбор."
+  },
+  "易水肿体质试试": {
+    "en": "If you're prone to puffiness, try",
+    "de": "Wenn du zu Ödemen neigst, versuche",
+    "ru": "Если вы склонны к отёкам, попробуйте"
+  },
+  "黑咖啡": {
+    "en": "black coffee",
+    "de": "schwarzer Kaffee",
+    "ru": "чёрный кофе"
+  },
+  "（不加糖奶）+ 几片": {
+    "en": "(no sugar or milk) + a few slices of",
+    "de": "(ohne Zucker und Milch) + ein paar Scheiben",
+    "ru": "(без сахара и молока) + несколько ломтиков"
+  },
+  "紫包菜（紫甘蓝）": {
+    "en": "purple cabbage (red cabbage)",
+    "de": "Rotkohl (Blaukohl)",
+    "ru": "красная капуста (краснокочанная капуста)"
+  },
+  "——热量极低，去水肿效果好，紫甘蓝的花青素对皮肤也友好。": {
+    "en": "— very low in calories, great for reducing edema, and the anthocyanins in red cabbage are also good for the skin.",
+    "de": "— sehr kalorienarm, wirkt gut gegen Ödeme, und die Anthocyane im Rotkohl sind ebenfalls gut für die Haut.",
+    "ru": "— очень низкая калорийность, отлично снимает отёки, а антоцианы красной капусты полезны и для кожи."
+  },
+  "配合：睡够、别久坐、适量活动，水肿消得更快。": {
+    "en": "Also: get enough sleep, don't sit for too long, and stay moderately active — edema clears faster.",
+    "de": "Zusätzlich: genug schlafen, nicht zu lange sitzen, sich maßvoll bewegen — Ödeme klingen schneller ab.",
+    "ru": "Кроме того: высыпайтесь, не сидите слишком долго, умеренно двигайтесь — отёки проходят быстрее."
+  },
+  "注意：肾功能不全、正在服用保钾类药物者，高钾饮食须先问医生；黑咖啡敏感人群（心悸、失眠、胃不适）酌情减量或避开。 若水肿持续不退或伴随胸闷、下肢明显凹陷性水肿，请就医排查。": {
+    "en": "Note: If you have impaired kidney function or take potassium-sparing medication, consult a doctor before a high-potassium diet; those sensitive to caffeine (palpitations, insomnia, stomach discomfort) should reduce the amount or avoid black coffee. If edema persists or is accompanied by chest tightness or pronounced pitting edema in the lower limbs, see a doctor.",
+    "de": "Hinweis: Bei eingeschränkter Nierenfunktion oder Einnahme kaliumsparender Medikamente bitte vor einer kaliumreichen Ernährung den Arzt fragen; wer empfindlich auf Koffein reagiert (Herzklopfen, Schlaflosigkeit, Magenbeschwerden), sollte die Menge reduzieren oder Schwarzen Kaffee meiden. Wenn Ödeme anhalten oder von Brustenge oder ausgeprägten Dellenödemen an den Beinen begleitet werden, bitte ärztlich abklären.",
+    "ru": "Примечание: при нарушении функции почек или приёме калийсберегающих препаратов перед диетой с высоким содержанием калия проконсультируйтесь с врачом; чувствительным к кофеину (сердцебиение, бессонница, дискомфорт в желудке) следует уменьшить количество или избегать чёрного кофе. Если отёк не проходит или сопровождается стеснением в груди и выраженными ямочными отёками на ногах, обратитесь к врачу."
+  },
+  "脂肪分解上限（每日最大脂肪供能）：由体重 × 体脂率决定，生理极限口径": {
+    "en": "Fat-breakdown ceiling (max daily energy from fat): determined by weight × body-fat percentage; a physiological-limit basis",
+    "de": "Fettabbaugrenze (maximale tägliche Energie aus Fett): bestimmt durch Gewicht × Körperfettanteil; eine physiologische Grenze",
+    "ru": "Предел сжигания жира (максимум энергии из жира в день): определяется весом × процентом жира; физиологический предел"
+  },
+  "蛋白 25–30% · 碳水 5–10% · 脂肪 1–5%；不想细算就按 10% 直接加。": {
+    "en": "Protein 25–30% · Carbs 5–10% · Fat 1–5%; if you don't want to calculate, just use 10%.",
+    "de": "Eiweiß 25–30 % · Kohlenhydrate 5–10 % · Fett 1–5 %; wenn du es nicht genau ausrechnen willst, einfach 10 % annehmen.",
+    "ru": "Белок 25–30% · Углеводы 5–10% · Жиры 1–5%; если не хотите считать точно, просто используйте 10%."
+  },
+  "脂肪 1–5%、碳水 5–10%、蛋白质 25–30%，默认按 10% 计": {
+    "en": "Fat 1–5%, carbs 5–10%, protein 25–30%, default 10%",
+    "de": "Fett 1–5 %, Kohlenhydrate 5–10 %, Eiweiß 25–30 %, Standard 10 %",
+    "ru": "Жиры 1–5%, углеводы 5–10%, белок 25–30%, по умолчанию 10%"
+  }
+}
