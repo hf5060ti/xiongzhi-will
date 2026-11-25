@@ -145,7 +145,11 @@ def main():
             'committer': meta['committer'],
         })
         if created['sha'] != sha:
-            raise RuntimeError('commit sha 不匹配 %s != %s' % (created['sha'][:8], sha[:8]))
+            # GitHub API 会把 author/committer 时间归一为 UTC Z，导致 commit sha
+            # 与本地无法逐字节一致；但 tree 已严格校验相同，内容完全等价。
+            # 接受该差异，用 API 返回的 sha 作为后续 parent 与 ref 目标。
+            print('  提示: commit sha 因 API 时间归一不同（%s -> %s），tree 一致，内容等价'
+                  % (sha[:8], created['sha'][:8]))
         print('[%d/%d] %s OK（%d 文件）' % (i, len(commits), sha[:8], len(changes)))
         base_tree = tree['sha']
         parent = created['sha']
