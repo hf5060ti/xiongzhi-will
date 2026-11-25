@@ -6,9 +6,19 @@ on:
   pull_request:
     branches: [main]
 
+# 同一分支连续 push 时只跑最新一次，避免重复构建占满 runner、拖慢部署。
+# 与 deploy.yml 用不同 group：CI 校验和 Pages 部署互不取消。
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
