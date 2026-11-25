@@ -16,7 +16,7 @@ import urllib.error
 import urllib.request
 
 REPO = 'hf5060ti/xiongzhi-will'
-WD = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WD = os.environ.get('XW_REPO') or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 API = 'https://api.github.com'
 
 
@@ -64,15 +64,18 @@ def parse_commit(sha):
             kind, rest = line.split(' ', 1)
             name_mail, ts, tz = rest.rsplit(' ', 2)
             name, mail = name_mail.rsplit(' <', 1)
-            # GitHub API 要求 ISO 8601 时区带冒号（+08:00），git raw 头是 +0800
+            # GitHub API 要求 ISO 8601 时区带冒号（+08:00），git raw 头是 +0800。
+            # 且 GitHub 按该字符串反算 unix 时间戳，必须传「本地墙钟时间 + 偏移」，
+            # 而不是 UTC 时间 + 偏移，否则 commit sha 对不上。
+            import datetime as dt
+            sign = 1 if tz[0] == '+' else -1
+            offset = sign * (int(tz[1:3]) * 3600 + int(tz[3:5]) * 60)
+            wall = dt.datetime.fromtimestamp(int(ts) + offset, dt.timezone.utc)
             iso_tz = tz[:3] + ':' + tz[3:] if len(tz) == 5 else tz
             meta[kind] = {
                 'name': name,
                 'email': mail.rstrip('>'),
-                'date': '%s%s' % (
-                    __import__('datetime').datetime.fromtimestamp(int(ts), __import__('datetime').timezone.utc).strftime('%Y-%m-%dT%H:%M:%S'),
-                    iso_tz,
-                ),
+                'date': wall.strftime('%Y-%m-%dT%H:%M:%S') + iso_tz,
             }
     return meta, body
 
