@@ -60,7 +60,9 @@ export default function OpeningScene() {
       window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
       seen
     ) {
-      finish(true);
+      // 微任务里收尾：避免 effect 同步体内 setState 的级联渲染；
+      // finish 内 doneRef 保证 StrictMode 重复执行只生效一次。
+      queueMicrotask(() => finish(true));
       return;
     }
     const onKey = (e: KeyboardEvent) => {

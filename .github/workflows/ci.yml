@@ -23,3 +23,5 @@ jobs:
         env:
           MIAODA_CLIENT_BASE_PATH: /xiongzhi-will/
           SKIP_MIAODA: "1"
+      # 桌面版走同一份源码，单独构建一次，防止离线单文件/语言包内联回归
+      - run: npm run build:offline

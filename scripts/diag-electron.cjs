@@ -32,8 +32,22 @@ app.whenReady().then(() => {
 
   win.webContents.once('did-finish-load', async () => {
     try {
+      // did-finish-load 只代表文档加载完，React 可能还在渲染 loading 占位。
+      // 轮询等待真实内容出现，否则自检会把「正在加载内容…」误判为成功。
+      const rendered = await win.webContents.executeJavaScript(`
+        new Promise((resolve) => {
+          const started = Date.now();
+          const check = () => {
+            const root = document.getElementById('root');
+            if (root && root.innerText.trim().length > 120) return resolve(true);
+            if (Date.now() - started > 12000) return resolve(false);
+            setTimeout(check, 200);
+          };
+          check();
+        })
+      `);
       const info = await win.webContents.executeJavaScript(
-        `JSON.stringify({title:document.title,len:document.body.innerText.length,hasRoot:!!document.getElementById('root'),sample:document.body.innerText.slice(0,160)})`,
+        `JSON.stringify({rendered:${String(rendered)},title:document.title,len:document.body.innerText.length,hasRoot:!!document.getElementById('root'),sample:document.body.innerText.slice(0,160)})`,
       );
       fs.writeFileSync(out, info, 'utf8');
     } catch (err) {

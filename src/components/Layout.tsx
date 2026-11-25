@@ -328,8 +328,9 @@ export const Layout = () => {
   const [searchApi, setSearchApi] = useState<SearchIndexApi | null>(null);
 
   // 切页后关闭分类面板，并把当前页在横滚条里滚到可视区（否则用户会以为分类丢了）
+  // 关面板放到微任务：effect 同步体内 setState 会触发级联渲染，也能通过 react-hooks lint。
   useEffect(() => {
-    setMobileCatsOpen(false);
+    queueMicrotask(() => setMobileCatsOpen(false));
     const el = mobileCatsRef.current?.querySelector<HTMLElement>('[aria-current="page"]');
     el?.scrollIntoView({ block: 'nearest', inline: 'center' });
   }, [pathname]);
