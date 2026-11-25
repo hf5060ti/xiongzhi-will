@@ -29,6 +29,7 @@ import {
   aragonGain,
   builtLeanLbmMax,
   calcBmr,
+  calcFatLossCeiling,
   calcLbm,
   calcProtein,
   caseyButtLbmMax,
@@ -106,6 +107,9 @@ export default function BodyDataPage() {
 
     const gain = hasCore ? aragonGain(weight, level) : null;
 
+    // 脂肪分解上限（每日最大脂肪供能）：由体重 × 体脂率决定，生理极限口径
+    const fatCeiling = hasCore ? calcFatLossCeiling(weight, fat) : null;
+
     // 热量目标：与营养页「今日饮食记录」共用同一计算源（含 TEF 的 TDEE 为基数，增肌 +300~500 / 减脂 −500~−300）
     const targets = getDailyTargets();
     const useTargets = targets.source === 'profile';
@@ -148,6 +152,7 @@ export default function BodyDataPage() {
       activityLabel: ACTIVITY_FACTORS.find((a) => a.id === profile.activity)?.label ?? '',
       activityFactor: activity,
       gain,
+      fatCeiling,
       levelLabel: LEVEL_LABEL[level],
       phaseLabel: PHASE_LABEL[phase],
       phase,
@@ -288,13 +293,67 @@ export default function BodyDataPage() {
                 {!d.diet && '（未设饮食，按 10% 通用估）'}
               </p>
               <p className="mt-1 type-meta text-muted-foreground">
-                蛋白 20–25% · 碳水 5–10% · 脂肪 1–5%；不想细算就按 10% 直接加。
+                蛋白 25–30% · 碳水 5–10% · 脂肪 1–5%；不想细算就按 10% 直接加。
               </p>
             </>
           ) : (
             <p className="mt-2 text-sm text-muted-foreground">BMR 计算后自动得出。</p>
           )}
         </div>
+      </section>
+
+      {/* 脂肪分解上限：由体脂率决定的生理极限口径，非推荐值 */}
+      <section className="rounded-lg border border-border bg-card p-4 sm:p-5">
+        <div className="flex items-center gap-2">
+          <Flame className="h-4 w-4 text-primary" />
+          <p className="font-medium text-foreground">脂肪分解上限 · 由体脂率决定</p>
+          <Badge variant="outline" className="ml-auto type-meta">安全极限口径</Badge>
+        </div>
+        {d.fatCeiling && d.fatCeiling.fatMassKg > 0 ? (
+          <>
+            <div className="mt-3 grid gap-3 sm:grid-cols-3">
+              <div>
+                <p className="type-meta text-muted-foreground">每日最多分解脂肪</p>
+                <p className="mt-1 font-display text-3xl font-extrabold tracking-wide text-primary">
+                  {d.fatCeiling.fatGPerDay}
+                  <span className="ml-1 text-base font-bold text-muted-foreground">g / 天</span>
+                </p>
+              </div>
+              <div>
+                <p className="type-meta text-muted-foreground">脂肪可供能上限</p>
+                <p className="mt-1 font-display text-3xl font-extrabold tracking-wide text-foreground">
+                  {d.fatCeiling.kcalPerDay}
+                  <span className="ml-1 text-base font-bold text-muted-foreground">kcal / 天</span>
+                </p>
+              </div>
+              <div>
+                <p className="type-meta text-muted-foreground">理论每周上限</p>
+                <p className="mt-1 font-display text-3xl font-extrabold tracking-wide text-foreground">
+                  {d.fatCeiling.weeklyKg}
+                  <span className="ml-1 text-base font-bold text-muted-foreground">kg / 周</span>
+                </p>
+              </div>
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              体脂总量 {d.fatCeiling.fatMassKg} kg（{d.weight} kg × {d.fat}%）× 每 kg 脂肪每天最多释放约 70 kcal
+              = {d.fatCeiling.kcalPerDay} kcal；÷ 7700 kcal/kg ≈ {d.fatCeiling.fatGPerDay} g 脂肪/天。
+              体脂越多，可动员的脂肪组织越多，上限越高。
+            </p>
+            <div className="mt-3 rounded-md border border-primary/30 bg-primary/5 p-3">
+              <p className="text-sm font-medium text-foreground">健康减脂 · 安全前提</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                一定要在安全的前提下健康减脂。每日摄入能量应达到基础代谢（BMR），不要长期低于它。
+                短时间（3 天左右）吃不够基础代谢是可以的，但不建议每次都这样做——长期缺口过大易掉肌肉、降代谢、反弹。
+              </p>
+            </div>
+            <p className="mt-2 type-meta leading-relaxed text-muted-foreground">
+              这是「安全极限下的生理天花板」，不是推荐值：超过上限的体重下降大多是水分、糖原或肌肉，不是脂肪。
+              实际减脂还受热量缺口、蛋白质、睡眠与激素影响；建议每周减重 0.5–1 kg（本例理论上限约 {d.fatCeiling.weeklyKg} kg，约为推荐值的 {round1(d.fatCeiling.pctPerWeek)}% 体重/周）。
+            </p>
+          </>
+        ) : (
+          <p className="mt-2 text-sm text-muted-foreground">填好体重与体脂率后自动得出。</p>
+        )}
       </section>
 
       {/* 行动导向：由每日热量与三大营养素目标直接生成简易饮食框架（金字塔） */}

@@ -33,6 +33,45 @@ export function calcLbm(weightKg: number, bodyFatPct: number): number {
   return weightKg * (1 - bodyFatPct / 100);
 }
 
+// ---------- 脂肪分解上限（每日最大脂肪供能，体脂率决定） ----------
+// 口径：每 kg 脂肪组织每天最多释放约 70 kcal（ Fat oxidation ceiling，常见文献/科普口径），
+// 1 kg 脂肪 ≈ 7700 kcal。体脂越多 → 可动员的脂肪组织越多 → 上限越高。
+// 注：这是「安全极限情况下的生理上限」，不是推荐值；实际减脂还受热量缺口、激素、睡眠制约，
+// 且超过上限的体重下降多半是水分/糖原/肌肉，不是脂肪。
+export const FAT_KCAL_PER_KG_PER_DAY = 70;
+export const KCAL_PER_KG_FAT = 7700;
+
+export interface FatLossCeiling {
+  fatMassKg: number; // 体脂总量 kg = 体重 × 体脂率
+  kcalPerDay: number; // 每日脂肪可供能上限 kcal
+  fatKgPerDay: number; // 每日最多可分解脂肪 kg
+  fatGPerDay: number; // 同上，克
+  weeklyKg: number; // 理论每周脂肪上限 kg（×7）
+  pctPerWeek: number; // 理论每周最多下降的体脂百分点（相对体重）
+}
+
+/** 由体重与体脂率算每日脂肪分解上限（安全极限口径）。体重/体脂非法时返回全 0。 */
+export function calcFatLossCeiling(weightKg: number, bodyFatPct: number): FatLossCeiling {
+  const empty: FatLossCeiling = {
+    fatMassKg: 0, kcalPerDay: 0, fatKgPerDay: 0, fatGPerDay: 0, weeklyKg: 0, pctPerWeek: 0,
+  };
+  if (!Number.isFinite(weightKg) || weightKg <= 0 || !Number.isFinite(bodyFatPct) || bodyFatPct <= 0 || bodyFatPct >= 100) {
+    return empty;
+  }
+  const fatMassKg = weightKg * (bodyFatPct / 100);
+  const kcalPerDay = fatMassKg * FAT_KCAL_PER_KG_PER_DAY;
+  const fatKgPerDay = kcalPerDay / KCAL_PER_KG_FAT;
+  const weeklyKg = fatKgPerDay * 7;
+  return {
+    fatMassKg: round1(fatMassKg),
+    kcalPerDay: Math.round(kcalPerDay),
+    fatKgPerDay: Math.round(fatKgPerDay * 1000) / 1000,
+    fatGPerDay: Math.round(fatKgPerDay * 1000),
+    weeklyKg: Math.round(weeklyKg * 100) / 100,
+    pctPerWeek: Math.round((weeklyKg / weightKg) * 1000) / 10,
+  };
+}
+
 // ---------- 蛋白质需求（按阶段 × 瘦体重，用户基准：减脂 LBM×2.3） ----------
 export interface ProteinResult {
   target: number; // 每日蛋白质克数（基准值）
@@ -132,10 +171,10 @@ export function tdee(bmr: number, factor: number): number {
 }
 
 // ---------- 食物热效应 TEF（用户给定区间，取中值） ----------
-// 蛋白 20–25%（取 22.5）/ 碳水 5–10%（取 7.5）/ 脂肪 1–5%（取 3）
+// 蛋白 25–30%（取 27.5）/ 碳水 5–10%（取 7.5）/ 脂肪 1–5%（取 3）
 // 按宏量供能百分比加权：macro 三项加起来应=100
 export function tefPct(macro: { carb: number; protein: number; fat: number }): number {
-  return (macro.carb * 7.5 + macro.protein * 22.5 + macro.fat * 3) / 100;
+  return (macro.carb * 7.5 + macro.protein * 27.5 + macro.fat * 3) / 100;
 }
 
 // ---------- 增肌速率（Alan Aragon，月增长） ----------

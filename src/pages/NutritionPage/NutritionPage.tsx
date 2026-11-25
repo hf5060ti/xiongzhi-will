@@ -14,7 +14,7 @@ import { FOODS, type IFood } from '@/data/foods';
 import { CHEN_SHI } from '@/data/coach-videos';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { PlayCircle, Search, UtensilsCrossed, X } from 'lucide-react';
+import { PlayCircle, Search, ShieldAlert, UtensilsCrossed, X } from 'lucide-react';
 import { ABSORPTION_GUIDE, TEF_RULE } from '@/lib/absorption';
 import DrinkVariants from '@/components/DrinkVariants';
 
@@ -61,6 +61,50 @@ export default function NutritionPage() {
           一个搜索框同时查找食物、外卖门店、餐食和补剂；点选食物后输入克数，即可算出实际摄入。
         </p>
       </header>
+
+      {/* 健康减脂警示：进页面第一眼必须看到，无论男女 */}
+      <div className="rounded-xl border-2 border-destructive/60 bg-destructive/[0.07] p-4 sm:p-5">
+        <div className="flex flex-wrap items-start gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-md bg-destructive/15 px-2.5 py-1 text-xs font-bold text-destructive">
+            <ShieldAlert className="h-3.5 w-3.5" />
+            健康减脂 · 头号警告
+          </span>
+          <p className="min-w-0 flex-1 text-sm font-semibold leading-relaxed text-foreground">
+            无论男生还是女生，一定要在健康的范围内减脂。
+          </p>
+        </div>
+        <p className="mt-3 font-display text-base font-extrabold tracking-wide text-destructive sm:text-lg">
+          不要节食！不要节食！不要节食！
+        </p>
+        <p className="mt-1.5 text-sm leading-relaxed text-foreground/85">
+          谁叫你去节食？——先把他按住，一耳巴子呼死他！（这句是警告语，不是真打人。）
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+          节食＝掉肌肉、降代谢、反弹、伤身体。每天摄入应达到基础代谢，短期 3 天左右缺口可以，但别当成常态。
+          本站所有热量与营养计算都建立在「健康减脂」前提上，不提供也不鼓励任何极端节食方案。
+        </p>
+      </div>
+
+      {/* 消水肿提示：脸肿≠胖，多为水钠潴留；高钾 + 少盐 + 黑咖啡 + 紫包菜 */}
+      <div className="rounded-xl border border-primary/40 bg-primary/[0.06] p-4 sm:p-5">
+        <div className="flex flex-wrap items-start gap-2">
+          <span className="rounded-md bg-primary/15 px-2.5 py-1 text-xs font-bold text-primary">脸肿急救 · 消水肿</span>
+          <p className="min-w-0 flex-1 text-sm leading-relaxed text-foreground">
+            觉得脸特别肿、像胖了？先别急着节食——这多半是<strong>水肿（水钠潴留）</strong>，不是长脂肪。
+            盐吃多了、睡得晚、久坐、经期前后都会让脸肿一圈，通常一两天就会消。
+          </p>
+        </div>
+        <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-foreground/85">
+          <li>· <strong>少盐，但别为零</strong>：盐要少吃，但不能低于人体所需（钠是必需电解质），不是完全不吃。</li>
+          <li>· <strong>多吃高钾食物</strong>：钾能帮助排出多余钠、平衡体液——香蕉、橙子、猕猴桃、菠菜、番茄、土豆、牛油果、菌菇都是好选择。</li>
+          <li>· <strong>易水肿体质试试</strong>：早上<strong>黑咖啡</strong>（不加糖奶）+ 几片<strong>紫包菜（紫甘蓝）</strong>——热量极低，去水肿效果好，紫甘蓝的花青素对皮肤也友好。</li>
+          <li>· 配合：睡够、别久坐、适量活动，水肿消得更快。</li>
+        </ul>
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+          注意：肾功能不全、正在服用保钾类药物者，高钾饮食须先问医生；黑咖啡敏感人群（心悸、失眠、胃不适）酌情减量或避开。
+          若水肿持续不退或伴随胸闷、下肢明显凹陷性水肿，请就医排查。
+        </p>
+      </div>
 
       <div className="relative">
         <Search className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-primary" />
