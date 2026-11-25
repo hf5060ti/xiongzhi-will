@@ -689,7 +689,8 @@ export default function ExerciseLibraryPage() {
             className="max-h-[90vh] w-full max-w-2xl overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <CardContent className="space-y-4 p-6">
+            {/* 移动端演示卡+标题这一片往下挪：加大顶部留白，避免贴到分类栏下沿、看演示要仰头 */}
+            <CardContent className="space-y-4 px-6 pb-6 pt-14 sm:px-6 sm:pb-6 sm:pt-6">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
                 <div className="flex shrink-0 flex-col gap-2 self-center sm:self-start">
                   {selected.gif ? (

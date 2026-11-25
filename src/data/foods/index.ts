@@ -17,6 +17,7 @@ import { WORLD_CUISINES } from './world-cuisines';
 import { CONDIMENTS } from './condiments';
 import { DRINKS } from './drinks';
 import { CONNECTIVE_TISSUE_FOODS } from './connective-tissue';
+import { CHAIN_STORE_FOODS } from './chain-stores';
 
 export const FOODS: IFood[] = [
   ...MEATS,
@@ -33,6 +34,7 @@ export const FOODS: IFood[] = [
   ...CONDIMENTS,
   ...DRINKS,
   ...CONNECTIVE_TISSUE_FOODS,
+  ...CHAIN_STORE_FOODS,
 ];
 
 export type { FoodCategory, IFood } from './types';
