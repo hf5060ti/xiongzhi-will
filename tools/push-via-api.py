@@ -94,14 +94,21 @@ def main():
         return
     print('远端 %s，本地 %s，待推 %d 个提交' % (remote[:8], local_head[:8], len(commits)))
 
-    # 远端 tree 作为第一个 base_tree
-    base_tree = api('GET', '/repos/%s/git/commits/%s' % (REPO, remote))['tree']['sha']
-    parent = remote
+    # 远端 tree 作为第一个 base_tree。
+    # 注意：--base 可能是本地等价提交（sha 与远端不同，如 API 时间归一场景），
+    # 此时 base 在远端不存在，改用远端 main 的真实 sha 取 tree。
+    remote_head = api('GET', '/repos/%s/git/ref/heads/main' % REPO)['object']['sha']
+    base_tree = api('GET', '/repos/%s/git/commits/%s' % (REPO, remote_head))['tree']['sha']
+    parent = remote_head
 
+    # 提交链连续性按本地历史校验（base 可能是本地等价提交，与远端 parent sha 不同）
+    local_base = git('rev-parse', remote) if git('cat-file', '-e', remote + '^{commit}') else remote
     for i, sha in enumerate(commits, 1):
         parent_check = git('rev-parse', sha + '^')
-        if parent_check != parent:
-            raise RuntimeError('提交链不连续: %s 的父提交是 %s，期望 %s' % (sha[:8], parent_check[:8], parent[:8]))
+        expected_parent = commits[i - 2] if i > 1 else local_base
+        if parent_check != expected_parent:
+            raise RuntimeError('提交链不连续: %s 的父提交是 %s，期望 %s'
+                               % (sha[:8], parent_check[:8], expected_parent[:8]))
         lines = git('diff-tree', '--no-commit-id', '--name-status', '-r', sha).splitlines()
         changes = []
         for line in lines:
