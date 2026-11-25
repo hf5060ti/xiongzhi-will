@@ -738,7 +738,6 @@ export const Layout = () => {
             </p>
             <p className="mt-2 flex flex-wrap gap-3">
               <a href="https://github.com/hf5060ti/xiongzhi-will/issues" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">{t('feedback')}</a>
-              <a href="https://github.com/hf5060ti/xiongzhi-will" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">{t('github')}</a>
               <Link to="/privacy" className="underline hover:text-foreground">{t('privacy')}</Link>
               <Link to="/sources" className="underline hover:text-foreground">{t('sources')}</Link>
               <Link to="/faq" className="underline hover:text-foreground">{t('faq')}</Link>
