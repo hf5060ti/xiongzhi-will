@@ -64,12 +64,14 @@ def parse_commit(sha):
             kind, rest = line.split(' ', 1)
             name_mail, ts, tz = rest.rsplit(' ', 2)
             name, mail = name_mail.rsplit(' <', 1)
+            # GitHub API 要求 ISO 8601 时区带冒号（+08:00），git raw 头是 +0800
+            iso_tz = tz[:3] + ':' + tz[3:] if len(tz) == 5 else tz
             meta[kind] = {
                 'name': name,
                 'email': mail.rstrip('>'),
                 'date': '%s%s' % (
                     __import__('datetime').datetime.fromtimestamp(int(ts), __import__('datetime').timezone.utc).strftime('%Y-%m-%dT%H:%M:%S'),
-                    tz,
+                    iso_tz,
                 ),
             }
     return meta, body
